@@ -1,0 +1,19 @@
+.cart_modals{
+	display: block;
+	position: fixed;
+	right: 0;
+	top: 0;
+	width: 520px;
+	height:100%;
+	background-color: #fff;
+	z-index: 9999;
+	.close{
+		top: 35px;
+		right: 35px;
+	}
+	
+}
+.addres_map{
+	max-width: 50%;
+	height: 520px;
+}
