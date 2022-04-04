@@ -1,0 +1,38 @@
+version: "3.9"
+
+services:
+    proxy:
+        image: docker/proxy
+        build: ./proxy
+        container_name: proxy
+        ports:
+           - "80:80"
+           - "443:443"
+        depends_on: 
+           - mobile
+           - descktop   
+        networks:
+          - mynetwork
+    client:
+        image: docker/client
+        container_name: client
+        build:
+        context: ./client
+        ports:
+          - "88:88"
+        networks:
+          - mynetwork  
+        command: /bin/sh -c "nginx -g 'daemon off;'"
+    desktop:
+        image: docker/desktop
+        build: ./client_desktop
+        container_name: desktop
+        ports:
+          - "3000:3000"    
+        networks:
+          - mynetwork    
+
+networks:
+  mynetwork:
+    external:
+      name: delivglobalnetwork 
