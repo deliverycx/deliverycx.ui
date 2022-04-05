@@ -1,0 +1,49 @@
+version: "3.9"
+
+services:
+    
+    deliverycx_client_desktop:
+        container_name: development_client_desktop
+        build:
+            context: ./client_desktop
+        depends_on:
+          - deliverycx_backend
+        networks:
+          - development_net
+        volumes:
+            - ./client_desktop/.next:/usr/apps/cx/.next
+            - ./certbot/data:/etc/app/cx/letsencrypt
+    deliverycx_client:
+        container_name: development_client
+        build:
+            context: .
+            dockerfile: ./Dockerfile.webserver
+        ports:
+          - "80:80"
+          - "443:443"
+        depends_on:
+          - deliverycx_backend
+        volumes:
+          - 
+          - ./dhparam:/etc/nginx/dhparam
+          - ./certbot/conf/:/etc/nginx/ssl/:ro
+          - ./certbot/data:/etc/app/cx/letsencrypt
+          - ./nginx/logs:/etc/app/cx/logs
+        command: "/bin/sh -c 'while :; do sleep 6h & wait $${!}; nginx -s reload; done & nginx -g \"daemon off;\"'"
+        networks:
+          - development_net
+    certbot:
+        image: certbot/certbot
+        entrypoint: "/bin/sh -c 'trap exit TERM; while :; do certbot renew; sleep 12h & wait $${!}; done;'"
+        volumes:
+            - ./certbot/logs/:/var/log/letsencrypt
+            - ./certbot/conf/:/etc/letsencrypt/:rw
+            - ./certbot/data:/etc/app/cx/letsencrypt
+
+networks:
+  development_net:
+        name: development_net
+        driver: bridge
+  mynetwork:
+    external:
+      name: delivglobalnetwork 
