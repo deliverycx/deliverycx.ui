@@ -22,7 +22,6 @@ services:
           - "443:443"
         
         volumes:
-          - 
           - ./dhparam:/etc/nginx/dhparam
           - ./certbot/conf/:/etc/nginx/ssl/:ro
           - ./certbot/data:/etc/app/cx/letsencrypt
