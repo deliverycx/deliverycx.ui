@@ -6,8 +6,7 @@ services:
         container_name: development_client_desktop
         build:
             context: ./client_desktop
-        depends_on:
-          - deliverycx_backend
+        
         networks:
           - development_net
         volumes:
@@ -21,8 +20,7 @@ services:
         ports:
           - "80:80"
           - "443:443"
-        depends_on:
-          - deliverycx_backend
+        
         volumes:
           - 
           - ./dhparam:/etc/nginx/dhparam
