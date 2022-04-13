@@ -12,7 +12,6 @@ import { format } from 'date-fns'
 
 const history = createBrowserHistory()
 
-console.log(`${format(new Date(), 'yyyy-MM-dd')} ${new Date().toLocaleTimeString()}`)
 
 ReactDOM.render(
   <Provider store={store}>

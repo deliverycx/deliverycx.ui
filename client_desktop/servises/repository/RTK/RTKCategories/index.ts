@@ -26,7 +26,7 @@ export const RTKCategories = createApi({
         } else {
           return ({
             method: "GET",
-            url: `category/all?organizationId=${process.env.NEXT_PUBLIC_DEFAULT_ORG}`
+            url: `category/allByid?organizationId=${process.env.NEXT_PUBLIC_DEFAULT_ORG}`
           })
         }
         
