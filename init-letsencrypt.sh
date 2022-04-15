@@ -5,7 +5,7 @@ if ! [ -x "$(command -v docker-compose)" ]; then
   exit 1
 fi
 
-domains=(xn--e1aybc.xn--80apgfh0ct5a.xn--p1ai,xn--90avg.xn--e1aybc.xn--80apgfh0ct5a.xn--p1ai)
+domains=(xn--80aqu.xn--80apgfh0ct5a.xn--p1ai)
 rsa_key_size=4096
 data_path="./certbot"
 email="" # Adding a valid address is strongly recommended
@@ -67,7 +67,7 @@ esac
 if [ $staging != "0" ]; then staging_arg="--staging"; fi
 
 docker-compose -f docker-compose.dev.yml run --rm --entrypoint "\
-  certbot certonly --webroot -w /etc/app/cx/letsencrypt \
+  certbot certonly --webroot -w /var/www/certbot \
     $staging_arg \
     $email_arg \
     $domain_args \
@@ -78,4 +78,4 @@ docker-compose -f docker-compose.dev.yml run --rm --entrypoint "\
 echo
 
 echo "### Reloading nginx ..."
-docker-compose exec development_client nginx -s reload
+docker-compose exec proxy nginx -s reload

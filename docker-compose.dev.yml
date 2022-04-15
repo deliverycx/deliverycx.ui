@@ -5,11 +5,19 @@ services:
         image: docker/proxy
         build: ./proxy
         container_name: proxy
+        restart: unless-stopped
+        volumes:
+            - ./proxy/nginx:/etc/nginx/conf.d
+            - ./certbot/conf:/etc/letsencrypt
+            - ./certbot/www:/var/www/certbot
+            
         ports:
-           - 80:80
+            - "80:80"
+            - "443:443"
         depends_on: 
            - deliverycx_client_desktop
            - deliverycx_client   
+        command: "/bin/sh -c 'while :; do sleep 6h & wait $${!}; nginx -s reload; done & nginx -g \"daemon off;\"'"   
         networks:
           - mynetwork
     deliverycx_client_desktop:
@@ -31,7 +39,14 @@ services:
         command: "/bin/sh -c 'while :; do sleep 6h & wait $${!}; nginx -s reload; done & nginx -g \"daemon off;\"'"
         networks:
           - mynetwork
-
+    certbot:
+      image: certbot/certbot
+      restart: unless-stopped
+      volumes:
+        - ./certbot/conf:/etc/letsencrypt
+        - ./certbot/www:/var/www/certbot
+      entrypoint: "/bin/sh -c 'trap exit TERM; while :; do certbot renew; sleep 12h & wait $${!}; done;'"
+      
 networks:
   mynetwork:
     external:
