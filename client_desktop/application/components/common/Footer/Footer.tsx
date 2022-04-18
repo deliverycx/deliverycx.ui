@@ -15,7 +15,7 @@ const Footer = () => {
   						<a className="footer_box-link" href="">Обратная связь</a>
   						<a className="footer_box-link" href="">Информация о франшизе</a>
   						<div className="footer_box-soc">
-  							<img src="/images/icon/vk.png" alt="" />
+  							<img className="vk" src="/images/icon/vk.png" alt="" />
   							<img src="/images/icon/inst.png" alt="" />
   						</div>
   					</div>

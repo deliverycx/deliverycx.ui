@@ -18,7 +18,7 @@ const geoCodeValidAdress = (name:string,request: string,disp:(valid:boolean)=> v
     if (validAdress === 'exact') {
       disp(false)
     }
-    if (validAdress === 'street') {
+    if (validAdress === 'street' || validAdress === 'other') {
       disp(true)
     }
     

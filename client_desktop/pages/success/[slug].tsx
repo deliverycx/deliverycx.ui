@@ -20,13 +20,11 @@ const Success: NextPage = () => {
   				<img className="header_logo" src="../images/logo-top.svg" alt="" />
   			</div>
   			<div className="header__center">
-  				
+          
   			</div>
-  			<div className="header__right">
-          <a onClick={handleBacktoShop} className="back_shop">
+  			<a onClick={handleBacktoShop} className="back_shop">
           Вернуться в меню
           </a>
-  			</div>
       </div>
       <div className="cart_page-container cart_page-container--center">
         

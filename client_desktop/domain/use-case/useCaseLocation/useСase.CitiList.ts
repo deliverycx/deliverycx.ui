@@ -40,7 +40,7 @@ export function useYouCiti(this: any,show:any){
   useEffect(() => {
     let tik = setTimeout(() => {
       show(false)
-    }, 10000)
+    }, 3000)
     return () => clearTimeout(tik)
   },[])
 

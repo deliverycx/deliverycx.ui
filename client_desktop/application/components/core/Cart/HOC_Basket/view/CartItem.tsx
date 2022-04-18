@@ -9,6 +9,7 @@ import cn from "classnames";
 import { fetchChangeAmount, fetchRemoveCart } from "servises/redux/slice/cartSlice";
 import classNames from "classnames";
 import { CartContext } from "./CartList";
+import { imgRout } from "application/helpers/imgInit";
 
 interface IProps{
   product: IReqCart,
@@ -75,7 +76,7 @@ const CartItem: FC<IProps> = ({ product, errorSchema }) => {
             
             <div className="cart_item-img">
 							<img className="cart_item-img"
-								src={product.productImage}
+								src={imgRout(product.productImage)}
 								alt="" />
 						</div>
 

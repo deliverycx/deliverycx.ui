@@ -37,7 +37,11 @@ const PopupPoint = () => {
                </div>
             </div>
 
-            <div className="welcome__select-adress__work-time">
+              <div className="welcome__select-adress__info phone">
+              <img
+                  src="/images/i/timework.png"
+                  alt="Телефон заведения"
+               />
                {address.workTime}
             </div>
 

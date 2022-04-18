@@ -6,6 +6,7 @@ import { FC, useEffect, useRef, useState } from "react"
 import cn from "classnames";
 import AddToFavorites from "../../Presentation/AddToFavorites";
 import AddToCart from "../../Presentation/AddToCart";
+import { imgRout } from "application/helpers/imgInit";
 
 type IProps = {
     products:IProduct<{ image: string }>
@@ -23,7 +24,7 @@ const ShopProductItem: FC<IProps> = ({ products }) => {
     return (
         <div ref={cardRef} className={CN}  data-id={id} onClick={(e)=> clickItemHandler(e,id)}>
             <div className="shop_grid__item__img-wrap">
-                <img src={image} alt={name} />
+                <img src={imgRout(image)} alt={name} />
                 {
                     disableItem && <div className="stoplist_title">Упс... <br/> закончилось</div>
                 }
@@ -37,15 +38,16 @@ const ShopProductItem: FC<IProps> = ({ products }) => {
                 </div>
                 
 
-                <div className="shop_grid__item-option">
+                
+            </div>
+            <div className="shop_grid__item-option">
                     <div>
                         <div className="measure">{measureUnit === "порц" ? `${convertWeight(weight)} г` : "1 шт"}</div>
                         <div className="price">{price} ₽</div>
                     </div>
                    
                     {!disableItem && <AddToCart id={id} _class={"add-to-cart"} groupImage={categoryImage} />} 
-                </div>
-            </div>
+              </div>
         </div>   
     )
 }

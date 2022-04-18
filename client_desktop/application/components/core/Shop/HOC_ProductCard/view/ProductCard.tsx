@@ -1,5 +1,6 @@
 import { IProduct } from "@types"
 import convertWeight from "application/helpers/convertWeight"
+import { imgRout } from "application/helpers/imgInit"
 import { FC } from "react"
 import AddToCart from "../../Presentation/AddToCart"
 
@@ -15,19 +16,23 @@ const ProductCard:FC<IProps> = ({product,onClose}) => {
       product && (
       <div className="product_card">
     		<div className="product_card-container">
+          
     			<div className="close" onClick={onClose}>
     				<img src="/images/icon/close.png" alt=""/>
     			</div>
     			<div className="product_card__item__img-wrap">
     				<div>
-    					<img src={product.image} alt=""/>
+    					<img src={imgRout(product.image)} alt=""/>
     				</div>
     			</div>
+          
     			<div className="product_card__item__content">
-    				<div className="product_card__item-title">{product.name}</div>
-    				<div className="product_card__item-text">
-    					{product.description}
-    				</div>
+            <section>
+      				<div className="product_card__item-title">{product.name}</div>
+      				<div className="product_card__item-text">
+      					{product.description}
+      				</div>
+            </section>
     				{
               /**
                * <div className="product_card__sous">

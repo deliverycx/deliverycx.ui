@@ -23,7 +23,7 @@ const PointsMap = () => {
   const useCaseLocationPoints = useContext(LocationPointsContext);
   const { handlerCloseMapModal,handlerGoToCity} = useCaseLocationPoints.handlers;
 
-  const useCasePoints = adapterComponentUseCase(usePointsMaps,handlerGoToCity)
+  const useCasePoints = adapterComponentUseCase(usePointsMaps,{handlerGoToCity,handlerCloseMapModal})
   const { addresses,statePoint,refMap} = useCasePoints.data
   const { placemarkClickHandler} = useCasePoints.handlers
 

@@ -37,7 +37,7 @@ const MapSuggestComponent = ({dispatchMap,stateReduceMap}: any) => {
           })
           //formik.setFieldValue("address", request);
         }
-        if (validAdress === 'street') {
+        if (validAdress === 'street' || validAdress === 'other') {
          
           dispatchMap().setDisclaimer(true)
         }

@@ -10,7 +10,7 @@ export class FormBuilderCart {
                 builder.adress(),
                 builder.name(),
                 builder.phone(),
-                builder.paymentRadio(metods.paymentsMetod),
+                //builder.paymentRadio(metods.paymentsMetod),
             ];
         };
     }

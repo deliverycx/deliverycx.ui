@@ -14,15 +14,24 @@ import { setProfileAction } from "servises/redux/slice/profileSlice";
 import { ROUTE_APP } from "application/contstans/route.const";
 import { adapterSelector } from "servises/redux/selectors/selectors";
 import { RootState } from 'servises/redux/createStore';
+import { accessOrder, fetchDeleteCart } from "servises/redux/slice/cartSlice";
 
 export function usePoints(this: any) {
   const dispatch = useDispatch();
   const {city,point} =  useSelector((state:RootState) => state.location)
+  const { id } = adapterSelector.useSelectors((selector) => selector.point);
   const { data: addresses, isFetching } = useGetPointsQuery(city.id);
 
   const handlerPoint = (address: IPoint)=>{
     dispatch(setPoint(address));
     dispatch(setModal(false))
+    if (address.id !== point.id) {
+      dispatch(fetchDeleteCart());
+      dispatch(accessOrder());
+    }
+    
+    
+    RequestProfile.update({ organizationId: address.id });
   }
 
   
@@ -40,7 +49,7 @@ export function usePoints(this: any) {
   })
 }
 
-export function usePointsMaps(this: any,handlerGoToCity:any) {
+export function usePointsMaps(this: any,{handlerGoToCity,handlerCloseMapModal}:any) {
   const dispatch = useDispatch();
   const refMap = useRef<any>()
   const selectedCity = adapterSelector.useSelectors(
@@ -133,21 +142,17 @@ export function usePointsMaps(this: any,handlerGoToCity:any) {
     const selectPointHandler = async (address: IPoint) => {
         try {
             const { data: regData } = await RequestProfile.register();
-            /*
-      if (regData.isNew) {
-        localStorage.setItem("authToken", regData.access!);
-      }
-      
-      const { data } = await RequestProfile.update({
-        organization: address._id,
-      })
-      */
 
             dispatch(setProfileAction(regData));
             dispatch(setPoint(address));
-            //address.id !== id && dispatch(fetchDeleteCart());
+            if (address.id !== id) {
+              dispatch(fetchDeleteCart());
+              dispatch(accessOrder());
+            }
+            
             
             RequestProfile.update({ organizationId: address.id });
+            handlerCloseMapModal()
         } catch (error) {
             
         }

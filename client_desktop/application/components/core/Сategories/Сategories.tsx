@@ -6,6 +6,7 @@ import { adapterComponentUseCase } from "adapters/adapterComponents";
 import { useCategories } from "domain/use-case/useCaseCategories";
 import LoaderProduct from "application/components/common/Loaders/loaderProduct";
 import { Link, Element, Events, animateScroll as scroll, scrollSpy, scroller } from 'react-scroll'
+import { imgRout } from "application/helpers/imgInit";
 
 const Categories = () => {
   const slider = useRef<typeof Slider>(null);
@@ -21,9 +22,6 @@ const Categories = () => {
     scrollSpy.update()
   }, [])
 
-  const handleSetActive = (e:any) => {
-    console.log(e);
-  }
   
   
   
@@ -46,7 +44,7 @@ const Categories = () => {
                 <div className="categories__item__content-wrapper">
       						<div className="categories__item__img-wrap">
       							<div>
-                      <img src={category.image} alt={category.name} />
+                      <img src={imgRout(category.image)} alt={category.name} />
       							</div>
       						</div>
       						<div className="categories__item__title">{category.name}</div> 

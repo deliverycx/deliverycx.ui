@@ -13,7 +13,7 @@
 	.product_card-container{
 		position: relative;
 		display: flex;
-		padding:8% 5%;
+		padding:5% 5%;
 	}
 	.product_card__item__img-wrap{
 		position: relative;
@@ -24,6 +24,9 @@
 		}
 	}
 	.product_card__item__content{
+		display: flex;
+		flex-direction: column;
+		justify-content: space-around;
 		width: 50%;
 	}
 	.product_card__item-title{
