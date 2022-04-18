@@ -22,6 +22,7 @@ export function usePoints(this: any) {
   const { id } = adapterSelector.useSelectors((selector) => selector.point);
   const { data: addresses, isFetching } = useGetPointsQuery(city.id);
 
+  console.log('point',addresses);
   const handlerPoint = (address: IPoint)=>{
     dispatch(setPoint(address));
     dispatch(setModal(false))
@@ -63,6 +64,8 @@ export function usePointsMaps(this: any,{handlerGoToCity,handlerCloseMapModal}:a
     PointsReducer,
     initialStatePoints
   );
+
+  console.log('point map',addresses);
 
 
      
