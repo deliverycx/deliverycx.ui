@@ -50,6 +50,9 @@ const schemaBuild = (type:string) => {
   const valid ={
       name: yup
           .string()
+          .matches(/\D/g, {
+            message: "Только строки"
+          })
           .required('Поле обязательно для заполнения'),
       address: yup
           .string()
