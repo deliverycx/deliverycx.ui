@@ -50,7 +50,6 @@ export function useOrder() {
     };
 
     useEffect(() => {
-      /*
         if (location.pathname.split("/")[1] === "success" && url) {
             presentOrder(url);
         } else {
@@ -58,8 +57,7 @@ export function useOrder() {
         }
         () => {
             clearInterval(ref.current as any);
-        };
-        */
+        };      
     }, [url]);
 
     const handleBacktoShop = () => {
