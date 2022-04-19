@@ -4,6 +4,4 @@ help:
 	make -pRrq  -f $(THIS_FILE) : 2>/dev/null | awk -v RS= -F: '/^# File/,/^# Finished Make data base/ {if ($$1 !~ "^[#.]") {print $$1}}' | sort | egrep -v -e '^[^[:alnum:]]' -e '^$@$$'
 
 build:
-	docker-compose -f docker-compose.dev.yml up -d --build 
-deck:
-	docker-compose -f docker-compose.dev.yml up -d --build deliverycx_client_desktop			
+	docker-compose -f docker-compose.dev.yml up -d --build 	
