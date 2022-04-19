@@ -52,8 +52,10 @@ export function useCartSmallButton(this: any) {
 
    //const scrolis = Math.round(window.scrollY)
   const onScroll = useCallback(debounce(() => {
+    const docu = document.documentElement.scrollHeight - 1000
     const scrolis = Math.round(window.scrollY)
-    if (scrolis > 100) {
+    console.log(scrolis > 100 && docu > scrolis)
+    if (scrolis > 100 && docu > scrolis) {
       !fixCart && setFixCart(true)
     } else {
       setFixCart(false)

@@ -15,7 +15,7 @@ type IProps = {
 const ShopProductItem: FC<IProps> = ({ products }) => {
     const { id, name, price, categoryImage, measureUnit, weight, description, image, isFav } = products
     
-    const useCasePoints = adapterComponentUseCase(useCaseShopItem,id);
+    const useCasePoints = adapterComponentUseCase(useCaseShopItem,{id,isFav});
     const { cardRef,disableItem } = useCasePoints.data;
     const { clickItemHandler } = useCasePoints.handlers;
     
@@ -32,7 +32,7 @@ const ShopProductItem: FC<IProps> = ({ products }) => {
             </div>
             <div className="shop_grid__item__content">
                 
-
+            
                 <div className="shop_grid__item-title">
                     {name}
                 </div>

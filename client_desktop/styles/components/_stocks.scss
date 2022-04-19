@@ -1,6 +1,5 @@
 .stocks{
 	margin-top: 30px;
-	height: 400px;
 	position: relative;
 	img{
 		width: 100%;
@@ -58,5 +57,10 @@
 		.slick-active button{
 				background-color: #8D191D;
 		}
+	}
+}
+@media screen and (max-width: 1024px) {
+	.stocks .slick-prev,.stocks .slick-next{
+		display: none !important;
 	}
 }

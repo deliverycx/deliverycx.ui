@@ -7,22 +7,18 @@ import { RequestShop } from "servises/repository/Axios/Request";
 interface IProps {
     id: string,
     isFav: boolean,
-    _class: string
+    _class: string,
+    handlfav:any
 }
 
-const AddToFavorites: FC<IProps> = ({ id, isFav, _class}) => {
-    const [isActive, setIsActive] = useState<boolean>(isFav);
+const AddToFavorites: FC<IProps> = ({ id, isFav, _class,handlfav}) => {
     
-    const favoriteCN = cn(_class, { favorite_active: isActive });
+    const favoriteCN = cn(_class, { favorite_active: isFav });
     
 
-    const debaunceHandleClick = debounce(async () => {
-        const {data} = await RequestShop.addFavorites({productId: id})
-        setIsActive(data.isFav);
-        
-    }, 400);
+  
 
-    return <button className={favoriteCN} onClick={debaunceHandleClick}></button>
+    return <button className={favoriteCN} onClick={() => handlfav(id)}></button>
 }
 
 export default memo(AddToFavorites);

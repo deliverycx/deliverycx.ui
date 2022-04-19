@@ -31,26 +31,29 @@ const Categories = () => {
       <div className="categories_flex">
         {
           (!isFetching && categories) &&
-          categories.map((category:ICategory, i:number) => {
-            const CN = cn("categories__item", { active: currentSlide === i });
-            return (
-              <Link
-                key={i}
-                className="categories__item"
-                activeClass="active"
-                to={category.id} spy={true} smooth={true} offset={-160} duration={500}
-                onClick={() => handleSliderClick(i, slider)}
-                >
-                <div className="categories__item__content-wrapper">
-      						<div className="categories__item__img-wrap">
-      							<div>
-                      <img src={imgRout(category.image)} alt={category.name} />
-      							</div>
-      						</div>
-      						<div className="categories__item__title">{category.name}</div> 
-      					</div>
-              </Link>
-            );
+            categories.map((category: ICategory, i: number) => {
+              if (category.name !== 'Избранное') {
+                const CN = cn("categories__item", { active: currentSlide === i });
+                return (
+                  <Link
+                    key={i}
+                    className="categories__item"
+                    activeClass="active"
+                    to={category.id} spy={true} smooth={true} offset={-160} duration={500}
+                    onClick={() => handleSliderClick(i, slider)}
+                    >
+                    <div className="categories__item__content-wrapper">
+          						<div className="categories__item__img-wrap">
+          							<div>
+                          <img src={imgRout(category.image)} alt={category.name} />
+          							</div>
+          						</div>
+          						<div className="categories__item__title">{category.name}</div> 
+          					</div>
+                  </Link>
+                );
+            }
+            
           })  
         }
 				

@@ -18,13 +18,16 @@ const ShopList = () => {
       {
         (!isFetching && categories) ?
         categories.map((category: ICategory, i: number) => {
-          return (
-            <Element key={i} name={category.id}>
-              <div className="title">{category.name}</div>
-              <ShopProducts idCategory={category.id} />
-            </Element>
+          if (category.name !== 'Избранное') {
+            return (
+              <Element key={i} name={category.id}>
+                <div className="title">{category.name}</div>
+                <ShopProducts idCategory={category.id} />
+              </Element>
             
-          )
+            )
+          }
+          
         })  
         : <LoaderProduct />
       

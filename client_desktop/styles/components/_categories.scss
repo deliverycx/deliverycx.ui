@@ -19,7 +19,7 @@
 			cursor: pointer;
 			height: auto;
 			margin-right: 30px;
-
+			
 			&__content-wrapper {
 					display: flex;
 					flex-direction: column;
@@ -78,4 +78,7 @@
 					}
 			}
 	}
+}
+.categories__item:last-child{
+	margin-right: 0;
 }
