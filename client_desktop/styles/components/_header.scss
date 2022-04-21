@@ -3,7 +3,7 @@
 	justify-content: space-between;
 	padding-top: 15px;
 	.header__left{
-		
+
 		.header_logo{
 			width: 100%;
 		}
@@ -36,7 +36,7 @@
 				cursor: pointer;
 				text-align: center;
 				border: 1px solid #666666;
-				
+
 				border-radius: 200px;
 				transition: all 0.3s;
 				&:hover{
@@ -57,6 +57,9 @@
 				cursor: pointer;
 				&:last-child{
 					margin-right: 0;
+				}
+				&_franchise {
+					color:#8D191D;
 				}
 			}
 		}
@@ -80,8 +83,8 @@
 					margin-right: 10px;
 				}
 			}
-			
-			
+
+
 		}
 		.header_cart{
 			height: 72px;
@@ -90,13 +93,13 @@
 			justify-content: center;
 			align-items: center;
 			margin-top: 12px;
-			
+
 			.cart_icon{
 				fill:#CCCCCC
 			}
 		}
 		.fixcart{
-			position: fixed !important; 
+			position: fixed !important;
 			bottom: 20px;
 			right: 20px;
 			z-index: 999;

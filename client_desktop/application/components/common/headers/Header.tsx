@@ -6,7 +6,7 @@ import HeaderLocation from "./HeaderLocation";
 /* eslint-disable react/no-unknown-property */
 const Header = () => {
   const dispatch = useDispatch()
-  
+
     return (
         <div className="header">
             <div className="header__left">
@@ -28,10 +28,12 @@ const Header = () => {
                     <a className="header_menu_link" onClick={()=> dispatch(setMapModal(true))}>
                         Старик Хинкалыч на карте
                     </a>
+                    <a className="header_menu_link_franchise" href={'https://франшиза.хинкалыч.рф/'} target={'_blank'} rel="noreferrer">
+                        Франшиза
+                    </a>
                 </div>
             </div>
             <div className="header__right">
-                
                 <CartSmall />
             </div>
         </div>
