@@ -15,7 +15,7 @@ const CartSmallButton:FC<IProps> = ({modal}) => {
 
   return (
         <div onClick={() => linkHandler(modal)} className={emptyCN}>
-					{itemsCount > 0 && <div className="cart_coutn">{itemsCount}</div>} 
+					{itemsCount > 0 && <div className="cart_coutn">{itemsCount}</div>}
 					<svg width="40" height="48" className="cart_icon" viewBox="0 0 40 48" fill="none"
 						xmlns="http://www.w3.org/2000/svg">
 						<path clip-rule="evenodd"

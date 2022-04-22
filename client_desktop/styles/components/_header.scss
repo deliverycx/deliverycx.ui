@@ -86,6 +86,9 @@
 
 
 		}
+		.categoriesCartVisible {
+			display: none;
+		}
 		.header_cart{
 			height: 72px;
 			width: 72px;
@@ -93,7 +96,6 @@
 			justify-content: center;
 			align-items: center;
 			margin-top: 12px;
-
 			.cart_icon{
 				fill:#CCCCCC
 			}

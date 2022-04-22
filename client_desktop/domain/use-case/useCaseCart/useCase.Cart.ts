@@ -28,9 +28,9 @@ export function useCartSmall(this: any) {
 export function useCartSmallButton(this: any) {
     const dispatch = useDispatch();
     const cartList = useSelector(cartSelector.selectAll);
-    const [fixCart, setFixCart] = useState(false);
+    const [isCategoriesCartVisible, setIsCategoriesCartVisible] = useState(false);
     const [itemsCount, setItemsCount] = useState(0);
-    const emptyCN = cn("header_cart", { incart: itemsCount,fixcart:fixCart });
+    const emptyCN = cn("header_cart", { incart: itemsCount, categoriesCartVisible: isCategoriesCartVisible });
     const selectedCity = adapterSelector.useSelectors((selector) => selector.city);
 
     const linkHandler = (modal: any) => {
@@ -50,27 +50,21 @@ export function useCartSmallButton(this: any) {
         }
     }, [cartList]);
 
-   //const scrolis = Math.round(window.scrollY)
   const onScroll = useCallback(debounce(() => {
     const docu = document.documentElement.scrollHeight - 1000
     const scrolis = Math.round(window.scrollY)
-    console.log(scrolis > 100 && docu > scrolis)
-    if (scrolis > 100 && docu > scrolis) {
-      !fixCart && setFixCart(true)
+
+    if (scrolis && docu > scrolis) {
+      !isCategoriesCartVisible && setIsCategoriesCartVisible(true)
     } else {
-      setFixCart(false)
+      setIsCategoriesCartVisible(false)
     }
   }, 100), []);
-  
 
   useEffect(() => {
     window.addEventListener("scroll", onScroll);
     return () => window.removeEventListener("scroll", onScroll);
   }, [])
-  
-  
-
-  
 
     this.data({
         itemsCount,
@@ -86,15 +80,14 @@ export function useCartItems(this: any, empty: any) {
     const dispatch = useDispatch();
     const cartList = useSelector(cartSelector.selectAll);
     const orderError = useSelector((state: RootState) => state.cart.orderError);
-  
+
   useEffect(() => {
-      console.log(checkPoint(false));
+
       if (!checkPoint(false)) {
         dispatch(fetchDeleteCart())
         empty();
       } else {
         dispatch(fetchAllCart())
-         
       }
     },[])
     useEffect(() => {

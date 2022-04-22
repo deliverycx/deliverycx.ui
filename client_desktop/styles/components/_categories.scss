@@ -10,6 +10,19 @@
 	.categories_flex{
 		display: flex;
 		justify-content: space-around;
+		.categories__item__cart {
+			height: 72px;
+			width: 72px
+		}
+		.header_cart {
+			display: none;
+		}
+		.categoriesCartVisible {
+			display: block;
+		}
+		.cart_icon{
+			fill:#CCCCCC
+		}
 	}
 	.carousel-initialized {
 			overflow: initial;
@@ -19,7 +32,7 @@
 			cursor: pointer;
 			height: auto;
 			margin-right: 30px;
-			
+
 			&__content-wrapper {
 					display: flex;
 					flex-direction: column;
@@ -62,7 +75,7 @@
 					}
 					.categories__item__title {
 							margin-top: 0;
-							
+
 							font-family: 800;
 							color: #8D191D;
 					}

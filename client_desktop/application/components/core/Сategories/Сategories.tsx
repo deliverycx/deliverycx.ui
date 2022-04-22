@@ -7,6 +7,7 @@ import { useCategories } from "domain/use-case/useCaseCategories";
 import LoaderProduct from "application/components/common/Loaders/loaderProduct";
 import { Link, Element, Events, animateScroll as scroll, scrollSpy, scroller } from 'react-scroll'
 import { imgRout } from "application/helpers/imgInit";
+import CartSmall from "../Cart/HOC_CartSmall/HOC.CartSmall";
 
 const Categories = () => {
   const slider = useRef<typeof Slider>(null);
@@ -17,14 +18,9 @@ const Categories = () => {
   const { isFetching } = useCasePoints.status
 
   useEffect(() => {
-    
-
     scrollSpy.update()
   }, [])
 
-  
-  
-  
   return (
     <div className="categories">
       <div className="container">
@@ -48,19 +44,19 @@ const Categories = () => {
                           <img src={imgRout(category.image)} alt={category.name} />
           							</div>
           						</div>
-          						<div className="categories__item__title">{category.name}</div> 
+          						<div className="categories__item__title">{category.name}</div>
           					</div>
                   </Link>
                 );
             }
-            
-          })  
+          })
         }
-				
+          <div className="categories__item__cart">
+              <CartSmall />
+          </div>
       </div>
       </div>
     </div>
-    
   )
 }
 export default Categories
