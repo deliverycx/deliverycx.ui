@@ -37,7 +37,10 @@ const Points = () => {
                 
                 !isLoading && addresses && addresses.map((points:IPoint) => {
                   const CN = cn("welcome__city", { active: points.address === point.address}) //city.name === selectedCity?.name 
-                  return <li key={points.id} onClick={() => handlerPoint(points)} className={CN}>{points.address}</li>
+                  return <li key={points.id} onClick={() => handlerPoint(points)} className={CN}>
+                    {points.address}
+                    {points.delivMetod && <span className="onlypickup_small">только самовывоз</span>}
+                  </li>
                 })
                 
             }
