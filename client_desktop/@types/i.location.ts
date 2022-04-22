@@ -8,5 +8,6 @@ export interface IPoint {
   city:	string
   cords:	number[]
   phone:	string
-  workTime:	string
+  workTime: string
+  delivMetod:string | null
 }

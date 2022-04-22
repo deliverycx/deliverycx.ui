@@ -32,7 +32,7 @@ export function usePoints() {
     PointsReducer,
     initialStatePoints
   );
-     
+  
   useEffect(() => {
     (addresses && !isFetching) && getRecvisites(addresses[statePoint.slideIndex].id) 
   }, [statePoint.slideIndex]) 

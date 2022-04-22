@@ -5,10 +5,18 @@ import CartModals from "../CartModals/CartModals";
 import { ROUTE_APP } from './../../../../contstans/route.const';
 import { adapterSelector } from './../../../../../servises/redux/selectors/selectors';
 import { CART_CHOICE } from "application/contstans/cart.const";
+import { useEffect } from 'react';
+import { useHistory } from "react-router-dom";
 
 
 const CartDelivery = () => {
+  const history = useHistory();
   const { deltaPrice, orderType } = adapterSelector.useSelectors(selector => selector.cart)
+  
+  
+
+  
+
   return (
     <>
       <div className="cart__memo">

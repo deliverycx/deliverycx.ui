@@ -60,6 +60,10 @@ const PopupPoint = () => {
                </a>
             </div>
             {
+              address.delivMetod &&
+              <div className="onlypickup">Только самовывоз</div>
+            }
+            {
               (recvisites && Object.keys(recvisites).length !== 0) && <div className="recvisites" onClick={()=>recvisitesHandler(true)}>Реквизиты компании</div>
             }
             <div
