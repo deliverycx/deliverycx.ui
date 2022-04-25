@@ -8,6 +8,9 @@ const Footer = () => {
   						<div className="footer_box-title">О нас</div>
   						<a className="footer_box-link" href="">Работа в Старик Хинкалыч</a>
   						<a className="footer_box-link" href="https://франшиза.хинкалыч.рф/">Франчайзинг</a>
+						<a href="https://t.me/franchise_hinkalych">
+							<img className="tg" src="/images/icon/tg-plane.png" alt=""/>
+						</a>
   					</div>
   					<div className="footer_box">
   						<div className="footer_box-title">Контакты</div>
@@ -16,9 +19,6 @@ const Footer = () => {
   						<div className="footer_box-soc">
   							<img className="vk" src="/images/icon/vk.png" alt=""/>
   							<img src="/images/icon/inst.png" alt="" />
-							<a href="https://t.me/franchise_hinkalych">
-								<img className="tg" src="/images/icon/tg-plane.png" alt=""/>
-							</a>
   						</div>
   					</div>
   				</div>
