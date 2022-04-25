@@ -2,7 +2,7 @@ import { FC, ReactNode, useEffect, useState } from "react";
 import ReactDOM from "react-dom";
 
 type IProps = {
-  onClose:any
+  onClose?:any
   children:ReactNode
 }
 

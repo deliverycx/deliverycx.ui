@@ -43,9 +43,10 @@ export function useCaseShopItem(this: any, id: string) {
   const [disableItem, setDisableItem] = useState(false)
   
   const clickItemHandler = (e: any, id: string) => {
-      if(disableItem) return
+    if (disableItem) return
     
-    if ((e.target as HTMLButtonElement).type !== 'submit') {
+    
+    if ((e.target as HTMLButtonElement).type !== 'submit' && checkPoint()) {
       
         dispatch(setProductItem(id))
     }

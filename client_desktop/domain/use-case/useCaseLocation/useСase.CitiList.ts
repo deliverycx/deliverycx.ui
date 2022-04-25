@@ -37,12 +37,14 @@ export function useCitiList(this: any,show:any){
 export function useYouCiti(this: any,show:any){
   const selectedCity = adapterSelector.useSelectors(selector => selector.city)
     
+  /*
   useEffect(() => {
     let tik = setTimeout(() => {
       show(false)
     }, 3000)
     return () => clearTimeout(tik)
   },[])
+  */
 
   this.data({
     selectedCity

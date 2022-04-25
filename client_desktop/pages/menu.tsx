@@ -4,7 +4,6 @@ import Header from "application/components/common/headers/Header";
 import SlideBar from "application/components/common/SlideBar/SlideBar";
 import Stocks from "application/components/common/Stocks/Stocks";
 import LocationLayout from "application/components/core/Location/LocationLayout";
-import MainShopLayout from "application/components/core/Shop/MainShopLayout";
 import ShopLayout from "application/components/core/Shop/ShopLayout";
 
 import type { NextPage } from "next";
@@ -20,7 +19,7 @@ const Home: NextPage = () => {
                 <Stocks />
             </div>
         
-            <MainShopLayout />
+            <ShopLayout />
             
             <Footer />
         </>

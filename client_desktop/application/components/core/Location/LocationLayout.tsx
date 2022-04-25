@@ -16,7 +16,7 @@ export const LocationPointsContext = React.createContext<TadapterCaseCallback>({
 const LocationLayout = () => {
   const useCaseLocation = adapterComponentUseCase(useLocations)
   const { modal,showCiti,modalMap,youSity } = useCaseLocation.data
-  const {handlerCloseModal,handlerCloseMapModal,setShow} = useCaseLocation.handlers
+  const {handlerCloseModal,handlerCloseMapModal,setYouSyty} = useCaseLocation.handlers
 
   return (
     <>
@@ -42,9 +42,9 @@ const LocationLayout = () => {
       }
       {
         youSity &&
-        <NotificationModal>
+        <Modals>
           <NotificatCity />
-        </NotificationModal>
+        </Modals>
       }
       </LocationPointsContext.Provider>
     </>

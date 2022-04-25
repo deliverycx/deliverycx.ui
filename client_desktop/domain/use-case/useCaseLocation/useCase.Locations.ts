@@ -1,16 +1,20 @@
+import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux"
 import { RootState } from 'servises/redux/createStore';
 import { adapterSelector } from "servises/redux/selectors/selectors";
 import { setMapModal, setModal } from "servises/redux/slice/locationSlice";
+import { ROUTE_APP } from 'application/contstans/route.const';
 
 export function useLocations(this: any){
   const dispatch = useDispatch()
+  const router = useRouter()
   const modal = useSelector((state: RootState) => state.location.locationModal)
   const modalMap = useSelector((state: RootState) => state.location.locationMap)
   const selectedCity = adapterSelector.useSelectors((selector) => selector.city);
   const [showCiti, setShow] = useState(true)
-  const [youSity,setYouSyty] = useState(false)
+  const [youSity, setYouSyty] = useState(false)
+  
 
   const handlerCloseModal = () => {
     dispatch(setModal(false))
@@ -39,7 +43,7 @@ export function useLocations(this: any){
   }, [selectedCity]);
 
   useEffect(() => {
-    if (Object.keys(selectedCity).length) {
+    if (Object.keys(selectedCity).length && router.asPath === ROUTE_APP.MAIN) {
       setYouSyty(true)
     }
   }, []);

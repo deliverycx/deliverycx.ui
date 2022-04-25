@@ -2,8 +2,10 @@
 	display: block;
 	position: fixed;
 	z-index: 9999;
-	left: 5%;
-	top: 5%;
+	left: 0;
+	right: 0;
+	margin: 0 auto;
+	top: 35%;
 	box-shadow: 0px 16px 29px rgba(0, 0, 0, 0.1), 0px 6.16296px 9.23704px rgba(0, 0, 0, 0.0607407), 0px 1.3037px 2.36296px rgba(0, 0, 0, 0.0392593);
 	border-radius: 15px;
 	background: #FFFFFF;
@@ -16,16 +18,18 @@
 
 
 .notification_city{
-	width: 320px;
+	width: 420px;
+	padding: 5px 0;
 	.you_city{
 		margin-top: 10px;
+		font-size: 16px;
 	}
 	.notification_city__change{
-		
+		margin-top: 20px;
 	}
 	.notification_city-btn-succses{
 			display: inline-block;
-			width: 130px;
+			width: 180px;
 			background-color: #8D191D;
 			height: 36px;
 			cursor: pointer;
@@ -41,8 +45,8 @@
 	}
 	.notification_city-swap{
 		display: inline-block;
-		font-size: 13px;
-		line-height: 16px;
+		font-size: 14px;
+		line-height: 18px;
 		color: #132A3E;
 		margin-top: 10px;
 		margin-left: 20px;
