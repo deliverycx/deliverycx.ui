@@ -53,6 +53,23 @@
 	}
 }
 
+.more_shop{
+	display: block;
+	background-color: #8D191D;
+	border-radius: 100px;
+	text-align: center;
+	color: #fff !important;
+	height: 56px;
+	line-height: 56px;
+	width: 220px;
+	margin-bottom: 40px;
+	cursor: pointer;
+	transition: all 0.3s;
+	&:hover{
+		background-color: #75151C;
+	}
+}
+
 .product__item__favorite{
 	background-image: url("/images/i/favorite.svg");
 	background-repeat: no-repeat;

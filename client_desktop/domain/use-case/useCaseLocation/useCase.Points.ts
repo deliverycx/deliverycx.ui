@@ -15,14 +15,16 @@ import { ROUTE_APP } from "application/contstans/route.const";
 import { adapterSelector } from "servises/redux/selectors/selectors";
 import { RootState } from 'servises/redux/createStore';
 import { accessOrder, fetchDeleteCart } from "servises/redux/slice/cartSlice";
+import { useRouter } from 'next/router'
 
 export function usePoints(this: any) {
   const dispatch = useDispatch();
+  const router = useRouter()
   const {city,point} =  useSelector((state:RootState) => state.location)
   const { id } = adapterSelector.useSelectors((selector) => selector.point);
   const { data: addresses, isFetching } = useGetPointsQuery(city.id);
 
-  console.log('point',addresses);
+
   const handlerPoint = (address: IPoint)=>{
     dispatch(setPoint(address));
     dispatch(setModal(false))
@@ -31,8 +33,8 @@ export function usePoints(this: any) {
       dispatch(accessOrder());
     }
     
-    
     RequestProfile.update({ organizationId: address.id });
+    router.push(ROUTE_APP.MAIN)
   }
 
   

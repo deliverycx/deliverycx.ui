@@ -14,8 +14,8 @@ const NotificatCity = () => {
     return (
       <div className="notification_modal notification_city">
          <div className="notification_modal-container">
-         <div className="close" onClick={()=> setYouSyty(false)}>
-  				<img src="/images/icon/smal_close.png" alt="" />
+         <div className="close" >
+  				
     			</div>
           <div className="you_city">
               <div className="you_city-adress">
