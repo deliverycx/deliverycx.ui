@@ -1,3 +1,5 @@
+import FooterLocation from "./FooterLocation";
+
 const Footer = () => {
   return (
     <div className="footer">
@@ -13,13 +15,7 @@ const Footer = () => {
 						</a>
   					</div>
   					<div className="footer_box">
-  						<div className="footer_box-title">Контакты</div>
-  						<a className="footer_box-link" href="">Обратная связь</a>
-  						<a className="footer_box-link" href="">Информация о франшизе</a>
-  						<div className="footer_box-soc">
-  							<img className="vk" src="/images/icon/vk.png" alt=""/>
-  							<img src="/images/icon/inst.png" alt="" />
-  						</div>
+                        <FooterLocation/>
   					</div>
   				</div>
 

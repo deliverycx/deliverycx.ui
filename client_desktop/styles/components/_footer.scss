@@ -9,7 +9,7 @@
 		border-bottom: 1px solid rgba(255, 255, 255, 0.2);
 		padding-bottom: 30px;
 		.footer_grid-left{
-			width: 40%;
+			width: 55%;
 			display: flex;
 			justify-content: space-between;
 		}
@@ -24,6 +24,10 @@
 			font-family: $manrope;
 			font-weight: 800;
 			margin-bottom: 20px;
+		}
+		.footer_box_address_line {
+			font-size: 15px;
+			margin-bottom: 15px;
 		}
 		.footer_box-link{
 			display: block;
