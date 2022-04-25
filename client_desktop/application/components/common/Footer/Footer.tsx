@@ -7,24 +7,26 @@ const Footer = () => {
   					<div className="footer_box">
   						<div className="footer_box-title">О нас</div>
   						<a className="footer_box-link" href="">Работа в Старик Хинкалыч</a>
-  						<a className="footer_box-link" href="">Франчайзинг</a>
-
+  						<a className="footer_box-link" href="https://франшиза.хинкалыч.рф/">Франчайзинг</a>
   					</div>
   					<div className="footer_box">
   						<div className="footer_box-title">Контакты</div>
   						<a className="footer_box-link" href="">Обратная связь</a>
   						<a className="footer_box-link" href="">Информация о франшизе</a>
   						<div className="footer_box-soc">
-  							<img className="vk" src="/images/icon/vk.png" alt="" />
+  							<img className="vk" src="/images/icon/vk.png" alt=""/>
   							<img src="/images/icon/inst.png" alt="" />
+							<a href="https://t.me/franchise_hinkalych">
+								<img className="tg" src="/images/icon/tg-plane.png" alt=""/>
+							</a>
   						</div>
   					</div>
   				</div>
-  				
+
   			</div>
   			<div className="foot">
   				<div className="foot-item">
-  					<span>«Старик Хинкалыч» © 2021</span>
+  					<span>«Старик Хинкалыч» © 2022</span>
   				</div>
   				<div className="foot-item">
   					<a href="">Пользовательское соглашение</a>
