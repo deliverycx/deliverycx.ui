@@ -17,7 +17,7 @@ namespace Res{
 class RequestLocation extends ApiSuper {
  
   @methods('get')
-  addFavorites(city:string) {
+  getAll(city:string) {
     return this.request(`city/all?search=${city}`)
   }
 }

@@ -17,7 +17,7 @@ const CityList = () => {
 
   const useCaseCitiList = adapterComponentUseCase(useCitiList,setShow)
   const { cities,selectedCity } = useCaseCitiList.data
-  const { selectCiti, setSerchCiti } = useCaseCitiList.handlers
+  const { selectCiti, setSerchCiti, hadleCitySerch } = useCaseCitiList.handlers
   const { isLoading } = useCaseCitiList.status
 
 
@@ -44,13 +44,17 @@ const CityList = () => {
           {
 
                 !isLoading && cities && cities.map((city:ICity) => {
-                  console.log(city);
+                  
                   const CN = cn("welcome__city", { active: city.name === selectedCity.name}) //city.name === selectedCity?.name
                   return <li key={city.id} onClick={() => selectCiti(city)} className={CN}>{city.name}</li>
                 })
 
-            }
-  				</ul>
+           }
+           
+          </ul>
+          {
+             !isLoading && cities && cities.length === 0 && <img className="nocity" src="/images/icon/nocity.png" />
+           }
   			</div>
   		</div>
 	</div>
