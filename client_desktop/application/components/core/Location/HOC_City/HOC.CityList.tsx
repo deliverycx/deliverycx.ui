@@ -44,6 +44,7 @@ const CityList = () => {
           {
                 
                 !isLoading && cities && cities.map((city:ICity) => {
+                  console.log(city);
                   const CN = cn("welcome__city", { active: city.name === selectedCity.name}) //city.name === selectedCity?.name 
                   return <li key={city.id} onClick={() => selectCiti(city)} className={CN}>{city.name}</li>
                 })
