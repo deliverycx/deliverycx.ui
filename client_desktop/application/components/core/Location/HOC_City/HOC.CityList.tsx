@@ -18,9 +18,9 @@ const CityList = () => {
   const useCaseCitiList = adapterComponentUseCase(useCitiList,setShow)
   const { cities,selectedCity } = useCaseCitiList.data
   const { selectCiti, setSerchCiti } = useCaseCitiList.handlers
-  const { isLoading } = useCaseCitiList.status 
+  const { isLoading } = useCaseCitiList.status
 
-  
+
 
   return (
     <div className="location_city">
@@ -29,25 +29,25 @@ const CityList = () => {
   				<img src="/images/icon/close.png" alt="" />
   			</div>
   			<div className="modals-top_box">
-  				<div className="modals_title">Ваш <span>город</span></div>
-  				
+  				<div className="modals_title">Выберите <span>город</span></div>
+
   			</div>
   			<div className="serch_city">
   				<input type="text" name="" id="" placeholder="Поиск города" onChange={(e) => setSerchCiti(e.target.value)} />
   				<button></button>
-  				
+
   			</div>
-  			
+
   			<div className="you_city__points">
-  				
+
   				<ul className="points-list">
           {
-                
+
                 !isLoading && cities && cities.map((city:ICity) => {
-                  const CN = cn("welcome__city", { active: city.name === selectedCity.name}) //city.name === selectedCity?.name 
+                  const CN = cn("welcome__city", { active: city.name === selectedCity.name}) //city.name === selectedCity?.name
                   return <li key={city.id} onClick={() => selectCiti(city)} className={CN}>{city.name}</li>
                 })
-                
+
             }
   				</ul>
   			</div>
