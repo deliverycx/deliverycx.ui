@@ -40,6 +40,7 @@ const Points = () => {
                   return <li key={points.id} onClick={() => handlerPoint(points)} className={CN}>
                     {points.address}
                     {points.delivMetod && <span className="onlypickup_small">только самовывоз</span>}
+                    {!points.delivMetod && <span className="onlypickup_small">только самовывоз и доставка</span>}
                   </li>
                 })
                 
