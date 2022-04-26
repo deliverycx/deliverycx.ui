@@ -11,7 +11,7 @@ const FooterLocation = () => {
             <div className="footer_box_address_line">{selectedPoint.address}</div>
             <div className="footer_box_address_line phones">{selectedPoint.phone}</div>
             <div>
-                <a href="https://t.me/starikhinkalych">
+                <a href="https://t.me/starikhinkalych" target="_blank" rel="noreferrer">
                     <img className="tg" src="/images/icon/tg-plane.png" alt="" />
                 </a>
             </div>

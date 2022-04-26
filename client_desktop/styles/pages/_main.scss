@@ -3,6 +3,11 @@
 	justify-content: space-between;
 	margin-top: 60px;
 }
+
+.no-scroll {
+	height: 100%;
+	overflow: hidden;
+}
 // выбор доставки
 .change_choice{
 	.choice_contain{
@@ -95,7 +100,7 @@
 	color: #333333;
 	margin-bottom: 20px;
 }
-// компания 
+// компания
 
 
 // блоки перед футером

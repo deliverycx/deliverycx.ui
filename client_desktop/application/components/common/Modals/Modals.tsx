@@ -10,7 +10,11 @@ const Modals:FC<IProps> = ({onClose,children}) => {
   const [isBrowser, setIsBrowser] = useState<boolean>(false);
 
   useEffect(() => {
+    document.body.className = "no-scroll";
     setIsBrowser(true);
+    return () => {
+      document.body.className = "";
+    }
   }, []);
 
 
@@ -19,7 +23,6 @@ const Modals:FC<IProps> = ({onClose,children}) => {
       <div className="modal_overlay" onClick={onClose}></div>
       {children}
     </div>
-    
   )
 
   if (isBrowser) {
@@ -30,7 +33,6 @@ const Modals:FC<IProps> = ({onClose,children}) => {
   } else {
     return null;
   }
-  
 
 }
 export default Modals
