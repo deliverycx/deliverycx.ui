@@ -57,14 +57,14 @@
 }
 .not-valid.error{
 	.form__field-wrapper__input,.adress_fild__address{
-		border-color: red;
+		border-color: #8D191D;
 	}
 }
 .form__field-wrapper__error{
 	margin-top: 10px;
 	margin-left: 15px;
-	font-size: 11px;
-	color: red;
+	font-size: 13px;
+	color: #8D191D;
 }
 .fild-short{
 	margin-top: 15px;
