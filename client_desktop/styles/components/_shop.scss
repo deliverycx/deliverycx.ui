@@ -70,6 +70,20 @@
 	}
 }
 
+.hot_box {
+	position: relative;
+}
+.hot {
+	width: 35px;
+	height: 35px;
+	position: absolute;
+	left: -70px;
+	overflow: hidden;
+	background-repeat: no-repeat;
+	background-position: 0px 0px;
+	z-index: 99;
+}
+
 .product__item__favorite{
 	background-image: url("/images/i/favorite.svg");
 	background-repeat: no-repeat;
