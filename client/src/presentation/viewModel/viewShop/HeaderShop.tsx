@@ -22,7 +22,7 @@ const HeaderShop: FC<IProps> = ({setSearch}) => {
     }, [isActiveMenu]);
 
     return (
-        <header className="header">
+        <header className="header" id="header">
             <Menu isActive={isActiveMenu} setter={() => setIsActiveMenu(false)} />
 
             <div className="header__burger-menu" onClick={() => setIsActiveMenu(true)}></div>

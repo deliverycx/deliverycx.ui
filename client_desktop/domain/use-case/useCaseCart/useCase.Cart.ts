@@ -51,7 +51,7 @@ export function useCartSmallButton(this: any) {
     }, [cartList]);
 
   const onScroll = useCallback(debounce(() => {
-    const docu = document.documentElement.scrollHeight - 1000
+    const docu = document.documentElement.scrollHeight - 500
     const scrolis = Math.round(window.scrollY)
 
     if (scrolis && docu > scrolis) {

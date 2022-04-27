@@ -53,6 +53,10 @@
 		.cart_icon{
 			fill:#CCCCCC
 		}
+		.categories__logo-mini {
+			width: 100px;
+			height: 72px;
+		}
 	}
 	.carousel-initialized {
 			overflow: initial;
@@ -124,4 +128,27 @@
 }
 .categories__item:last-child{
 	margin-right: 0;
+}
+
+.logo-mini {
+	position: absolute;
+	visibility: hidden;
+	opacity: 0;
+	height: 72px;
+	width: 72px;
+	background-image: url('/images/logo-mini.svg');
+	background-size: 100%;
+	background-repeat: no-repeat;
+	background-position: center;
+	transition: visibility 0s ease-in-out, opacity 0.5s linear;
+	justify-content: center;
+	align-items: center;
+	-webkit-transition: visibility 0s ease-in-out, opacity 0.5s linear;
+	-moz-transition: visibility 0s ease-in-out, opacity 0.5s linear;
+	-o-transition: visibility 0s ease-in-out, opacity 0.5s linear;
+}
+
+.islogominivisible {
+	visibility: visible;
+	opacity: 1;
 }
