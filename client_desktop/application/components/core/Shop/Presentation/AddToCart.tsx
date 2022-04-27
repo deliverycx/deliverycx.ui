@@ -8,6 +8,8 @@ import { ReactNode } from 'react';
 import { adapterComponentUseCase } from "adapters/adapterComponents";
 import { useCaseShopAddToCard } from "domain/use-case/useCaseShop";
 import { imgRout } from "application/helpers/imgInit";
+import { checkPoint } from "application/helpers/checkPoint";
+import { fetchAddToCart } from "servises/redux/slice/cartSlice";
 
 interface IProps { 
     id: string,
@@ -18,6 +20,7 @@ interface IProps {
 
 const AddToCart: FC<IProps> = ({ id, _class, groupImage, children }) => {
   const useCaseProductCard = adapterComponentUseCase(useCaseShopAddToCard,id)
+  const dispatch = useDispatch();
   const {  } = useCaseProductCard.handlers
   
   const springRef = useRef<any>();
@@ -32,11 +35,21 @@ const AddToCart: FC<IProps> = ({ id, _class, groupImage, children }) => {
   const root = document.querySelector("html") as HTMLElement;
   const AnimateHandle = () => {
     try {
-
+      //(springRef.current.offsetTop - (queryCartRef.current.offsetTop + root.scrollTop))
+      const scrolltope =
+        (queryCartRef.current.offsetParent.offsetTop - root.scrollTop) < queryCartRef.current.offsetTop
+          ? queryCartRef.current.offsetTop
+          : queryCartRef.current.offsetParent.offsetTop - root.scrollTop + 25
+      
+        console.log(springRef.current.offsetTop,root.scrollTop);
         if(springRef.current && queryCartRef.current && root){
             animate({
-                x: ((queryCartRef.current.offsetLeft - springRef.current.offsetLeft) + 70),
-                y: - (springRef.current.offsetTop - (queryCartRef.current.offsetTop + root.scrollTop)),
+                x: _class === 'product-card__add'
+                    ? springRef.current.offsetLeft
+                    : ((queryCartRef.current.offsetLeft - springRef.current.offsetLeft) + 70),
+                y: _class === 'product-card__add'
+                    ? - springRef.current.offsetTop - scrolltope
+                    : - (springRef.current.offsetTop - (scrolltope + root.scrollTop)),
                 opacity: 1,
                 loop: {
                     x: 0,
@@ -53,7 +66,7 @@ const AddToCart: FC<IProps> = ({ id, _class, groupImage, children }) => {
         console.log(e)
     }
     
-    //addCart(id)
+    checkPoint() && dispatch(fetchAddToCart(id))
   }
 
   const debouncedChangeHandler = debounce(AnimateHandle, 400)
