@@ -23,8 +23,11 @@ const AddToCart: FC<IProps> = ({ id, _class, groupImage, children }) => {
   const dispatch = useDispatch();
   const {  } = useCaseProductCard.handlers
   
+  
   const springRef = useRef<any>();
   let queryCartRef = useRef<any>();
+
+
   const [style, animate] = useSpring(() => ({
         x: 0,
         y: 0,
@@ -41,14 +44,17 @@ const AddToCart: FC<IProps> = ({ id, _class, groupImage, children }) => {
           ? queryCartRef.current.offsetTop
           : queryCartRef.current.offsetParent.offsetTop - root.scrollTop + 25
       
-        console.log(springRef.current.offsetTop,root.scrollTop);
-        if(springRef.current && queryCartRef.current && root){
+
+        if (springRef.current && queryCartRef.current && root) {
+          const cardRef = springRef.current.closest('.product_card')
+
+          
             animate({
                 x: _class === 'product-card__add'
-                    ? springRef.current.offsetLeft
+                    ? queryCartRef.current.offsetLeft - springRef.current.offsetLeft - cardRef.offsetLeft + 70
                     : ((queryCartRef.current.offsetLeft - springRef.current.offsetLeft) + 70),
                 y: _class === 'product-card__add'
-                    ? - springRef.current.offsetTop - scrolltope
+                    ? - ((springRef.current.offsetTop + cardRef.offsetTop - 70) - scrolltope)
                     : - (springRef.current.offsetTop - (scrolltope + root.scrollTop)),
                 opacity: 1,
                 loop: {
