@@ -58,9 +58,15 @@
 				&:last-child{
 					margin-right: 0;
 				}
+				&:hover {
+					color: #8D191D;
+				}
 				&_franchise {
 					color:#8D191D;
 				}
+			}
+			.hinkRedColor {
+				color: #8D191D;
 			}
 		}
 	}

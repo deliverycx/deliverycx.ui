@@ -1,5 +1,5 @@
 import CartSmall from "application/components/core/Cart/HOC_CartSmall/HOC.CartSmall";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { setMapModal, setModal } from "servises/redux/slice/locationSlice";
 import HeaderLocation from "./HeaderLocation";
 import Link from 'next/link'
@@ -7,10 +7,15 @@ import { checkPoint } from "application/helpers/checkPoint";
 import { useCallback } from "react";
 import { useRouter } from 'next/router'
 import { ROUTE_APP } from 'application/contstans/route.const';
+import { RootState } from "../../../../servises/redux/createStore";
+import cn from "classnames";
 
 /* eslint-disable react/no-unknown-property */
 const Header = () => {
+    const mapShowModal = useSelector((state: RootState) => state.location.locationMap);
+    const colorCN = cn("header_menu_link", {hinkRedColor: mapShowModal});
   const dispatch = useDispatch()
+
   const router = useRouter()
 
   const heandleToMenu = useCallback(() => {
@@ -39,7 +44,7 @@ const Header = () => {
                     <a className="header_menu_link" href="">
                         Новинки и акции
                     </a>
-                    <a className="header_menu_link" onClick={()=> dispatch(setMapModal(true))}>
+                    <a className={colorCN} onClick={()=> dispatch(setMapModal(true))}>
                         Старик Хинкалыч на карте
                     </a>
                     <a className="header_menu_link_franchise" href={'https://франшиза.хинкалыч.рф/'} target={'_blank'} rel="noreferrer">

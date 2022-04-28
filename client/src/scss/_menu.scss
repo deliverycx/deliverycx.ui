@@ -1,5 +1,5 @@
-.header{
-    &__menu{
+.header {
+    &__menu {
         position: absolute;
         background: $white;
         height: 100%;
@@ -15,19 +15,21 @@
         display: flex;
         flex-direction: column;
         justify-content: space-between;
-        
-        &__bg-images{
+
+        &__bg-images {
             background-image: url("../assets/img/menu-background_tile.png");
             background-position: bottom;
-            background-repeat: repeat no-repeat; 
+            background-repeat: repeat no-repeat;
             height: 49px;
             width: 100%;
-            
+
         }
-        &.active{
+
+        &.active {
             left: 0;
         }
-        &__link{
+
+        &__link {
             font-size: $fstitle;
             text-decoration: none;
             color: $gray3;
@@ -36,14 +38,16 @@
             align-self: flex-start;
 
 
-            &__list{
+            &__list {
                 display: flex;
                 flex-direction: column;
             }
-            &:not(:last-child){
+
+            &:not(:last-child) {
                 margin-bottom: 25px;
             }
-            &:before{
+
+            &:before {
                 content: '';
                 background-repeat: no-repeat;
                 background-size: contain;
@@ -51,45 +55,53 @@
                 height: 16px;
                 margin-right: 12px;
             }
-            &.profile{
-                &:before{
+
+            &.profile {
+                &:before {
                     background-image: url("../assets/i/profile.svg");
                 }
             }
-            &.qrcode{
-                &:before{
+
+            &.qrcode {
+                &:before {
                     background-image: url("../assets/i/qrcode.svg");
                 }
             }
-            &.mark{
-                &:before{
+
+            &.mark {
+                &:before {
                     background-image: url("../assets/i/mark.svg");
                 }
             }
-            &.order-history{
-                &:before{
+
+            &.order-history {
+                &:before {
                     background-image: url("../assets/i/checkue.svg");
                 }
             }
-            &.messanger{
-                &:before{
+
+            &.messanger {
+                &:before {
                     background-image: url("../assets/i/messages.svg");
                 }
             }
-            &.faq{
-                &:before{
+
+            &.faq {
+                &:before {
                     background-image: url("../assets/i/faq.svg");
                 }
             }
-            &.franchise{
+
+            &.franchise {
                 color: $red;
-                &:before{
+
+                &:before {
                     background-image: url("../assets/i/franchise.svg");
                 }
             }
         }
 
-        &__table-number{
+        &__table-number {
             color: $gray6;
             margin-top: 15px;
             padding: 9px 0;
@@ -99,7 +111,8 @@
             border-radius: 8px;
             margin-bottom: 30px;
         }
-        &__close{
+
+        &__close {
             margin-right: auto;
             position: absolute;
             left: 0;
@@ -110,29 +123,33 @@
             height: 21px;
             background-size: cover;
         }
-        &__header{
+
+        &__header {
             display: flex;
             justify-content: center;
             align-items: center;
             position: relative;
-            margin:0 46px;
+            margin: 0 46px;
         }
-        .header__logo{
+
+        .header__logo {
             margin: 0 auto;
         }
 
-        &__table{
+        &__table {
             font-size: $fsprice;
             font-family: $bold;
             margin-bottom: 8px;
         }
-        &__list{
+
+        &__list {
             display: flex;
             flex-direction: column;
-            align-items: center;    
-            margin:30px 46px;
+            align-items: center;
+            margin: 30px 46px;
         }
-        &__qrcode{
+
+        &__qrcode {
             text-align: center;
             background-image: url("../assets/i/qrcode_border.svg");
             background-repeat: no-repeat;
@@ -147,7 +164,7 @@
             justify-content: center;
             margin-top: 15px;
 
-            &__memo{
+            &__memo {
                 font-size: $fstext;
                 color: $grayAB;
             }
