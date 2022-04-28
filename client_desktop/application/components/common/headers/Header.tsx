@@ -13,8 +13,10 @@ import cn from "classnames";
 /* eslint-disable react/no-unknown-property */
 const Header = () => {
     const mapShowModal = useSelector((state: RootState) => state.location.locationMap);
-    const colorCN = cn("header_menu_link", {hinkRedColor: mapShowModal});
-  const dispatch = useDispatch()
+    const mapColorCN = cn("header_menu_link", {hinkRedColor: mapShowModal});
+    const menuLinkColor = window.location.href.includes('menu');
+    const menuLinkWithColorCN = cn("header_menu_link", {hinkRedColor: menuLinkColor});
+    const dispatch = useDispatch()
 
   const router = useRouter()
 
@@ -38,13 +40,13 @@ const Header = () => {
             <div className="header__center">
                 <HeaderLocation />
                 <div className="header_menu">
-                    <a className="header_menu_link" onClick={() => heandleToMenu()}>
+                    <a className={menuLinkWithColorCN} onClick={() => heandleToMenu()}>
                         Меню
                     </a>
                     <a className="header_menu_link" href="">
                         Новинки и акции
                     </a>
-                    <a className={colorCN} onClick={()=> dispatch(setMapModal(true))}>
+                    <a className={mapColorCN} onClick={()=> dispatch(setMapModal(true))}>
                         Старик Хинкалыч на карте
                     </a>
                     <a className="header_menu_link_franchise" href={'https://франшиза.хинкалыч.рф/'} target={'_blank'} rel="noreferrer">
