@@ -139,5 +139,11 @@
 	}
 }
 .phones{
+	display: inline-block;
+	font-size: 13px;
+	line-height: 16px;
+	margin-right: 30px;
+	padding-top: 7px;
+	color: #666;
 	font-family: $manrope;
 }
