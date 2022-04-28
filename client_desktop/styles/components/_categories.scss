@@ -140,12 +140,12 @@
 	background-size: 100%;
 	background-repeat: no-repeat;
 	background-position: center;
-	transition: visibility 0s ease-in-out, opacity 0.5s linear;
+	transition: visibility 0s ease-in-out, opacity 0.1s linear;
 	justify-content: center;
 	align-items: center;
-	-webkit-transition: visibility 0s ease-in-out, opacity 0.5s linear;
-	-moz-transition: visibility 0s ease-in-out, opacity 0.5s linear;
-	-o-transition: visibility 0s ease-in-out, opacity 0.5s linear;
+	-webkit-transition: visibility 0s ease-in-out, opacity 0.1s linear;
+	-moz-transition: visibility 0s ease-in-out, opacity 0.1s linear;
+	-o-transition: visibility 0s ease-in-out, opacity 0.1s linear;
 }
 
 .islogominivisible {

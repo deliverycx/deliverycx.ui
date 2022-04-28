@@ -8,7 +8,7 @@ import LoaderProduct from "application/components/common/Loaders/loaderProduct";
 import { Link, Element, Events, animateScroll as scroll, scrollSpy, scroller } from 'react-scroll'
 import { imgRout } from "application/helpers/imgInit";
 import CartSmall from "../Cart/HOC_CartSmall/HOC.CartSmall";
-import LogoMini from "./LogoMini";
+import LogoMini from "../Shop/Presentation/LogoMini";
 
 const Categories = () => {
   const slider = useRef<typeof Slider>(null);

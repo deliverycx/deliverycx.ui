@@ -3,7 +3,7 @@ import debounce from "lodash.debounce";
 import { Link } from "react-scroll";
 import cn from "classnames";
 
-const LogoMini = (props: any) => {
+const LogoMini = () => {
     const [isLogoVisible, setIsLogoVisible] = useState(false);
     const emptyCN = cn("categories__item logo-mini", { islogominivisible: isLogoVisible });
 
