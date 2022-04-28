@@ -4,7 +4,7 @@ import NewsItem from "../News/NewsItem";
 const SlideBarNews = () => {
 	const settings = {
 		className: 'slider-news',
-		infinite: false,
+		infinite: true,
 		slidesToShow: 3,
 		speed: 500,
 		rows: 1,
