@@ -5,7 +5,6 @@ services:
         image: docker/proxy
         build: ./proxy
         container_name: proxy
-        restart: unless-stopped
         volumes:
             - ./proxy/nginx:/etc/nginx/conf.d
             - ./certbot/conf:/etc/letsencrypt
