@@ -6,10 +6,10 @@ const HeaderLocation = () => {
     const { selectedPoint } = useCaseLocationHeader.data;
     const {handlerHeader } = useCaseLocationHeader.handlers;
     return (
-        <div className="header_adress-info" onClick={handlerHeader}>
-            <span className="header_adress-info-active">{selectedPoint.city}</span>
-            <span>{selectedPoint.address}</span>
-            <span className="phones">{selectedPoint.phone}</span>
+        <div className="header_adress-info">
+            <span onClick={handlerHeader} className="header_adress-info-active">{selectedPoint.city}</span>
+            <span onClick={handlerHeader}>{selectedPoint.address}</span>
+            <a href={`tel:${selectedPoint.phone}`} className="phones">{selectedPoint.phone}</a>
         </div>
     );
 };
