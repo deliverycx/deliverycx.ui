@@ -8,7 +8,7 @@ interface INews{
 const NewsItem: FC<INews> = ({title, idx}) => {
 
     return (
-        <div>
+        <div className="coruselus">
             <div className="about-comp_grind-item" style={{}}>
                 <div className="about-comp_grind-item--but">{title}</div>
             </div>

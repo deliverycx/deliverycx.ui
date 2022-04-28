@@ -131,6 +131,7 @@
 .about-comp_grind{
 	display: flex;
 	justify-content: space-between;
+	margin: 0 20px;
 	margin-top: 30px;
 	.about-comp_grind-item{
 		display: flex;
@@ -175,6 +176,11 @@
 		flex-direction: row;
 		justify-content: space-between
 	}
+	.coruselus{
+		display: flex;
+		justify-content: center;
+	}
+
 	.about-comp_grind-item{
 		display: flex;
 		flex-direction: column;
@@ -200,5 +206,8 @@
 			background-color: #FDC935;
 			color: #8D191D;
 		}
+	}
+	.coruselus .about-comp_grind-item{
+		box-shadow: none;
 	}
 }
