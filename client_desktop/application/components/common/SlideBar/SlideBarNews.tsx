@@ -3,7 +3,7 @@ import NewsItem from "../News/NewsItem";
 
 const SlideBarNews = () => {
 	const settings = {
-		className: 'slider-news',
+		className: 'slider-company-news',
 		infinite: true,
 		slidesToShow: 3,
 		speed: 500,
@@ -13,27 +13,35 @@ const SlideBarNews = () => {
 	let news = [
 		{
 			id: 1,
-			title: "Новость 1"
+			imgUrl: "/images/news/banner-2.png"
 		},
 		{
 			id: 2,
-			title: "Новость 2"
+			imgUrl: "/images/news/banner-4.png"
 		},
 		{
 			id: 3,
-			title: "Новость 3"
+			imgUrl: "/images/news/banner-6.png"
 		},
 		{
 			id: 4,
-			title: "Новость 4"
+			imgUrl: "/images/news/banner-8.png"
+		},
+		{
+			id: 5,
+			imgUrl: "/images/news/banner-10.png"
+		},
+		{
+			id: 6,
+			imgUrl: "/images/news/banner-12.png"
 		}
 	];
 
 	return (
 		<div className="stocks about-comp_grind_news">
 			<Slider {...settings}>
-					{news.map((el,idx) => {
-						return <NewsItem key={el.id} title={el.title} idx={idx}/>;
+					{news.map((el) => {
+						return <NewsItem key={el.id} imgUrl={el.imgUrl}/>;
 					})
 					}
 			</Slider>
