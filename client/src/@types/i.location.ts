@@ -9,5 +9,6 @@ export interface IPoint {
   cords:	number[]
   phone:	string
   workTime: string
-  delivMetod:string | null
+  delivMetod: string | null
+  isHidden:boolean
 }

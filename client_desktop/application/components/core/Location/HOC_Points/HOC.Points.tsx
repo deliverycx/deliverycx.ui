@@ -35,13 +35,15 @@ const Points = () => {
   				<ul className="points-list">
           {
                 
-                !isLoading && addresses && addresses.map((points:IPoint) => {
-                  const CN = cn("welcome__city", { active: points.address === point.address}) //city.name === selectedCity?.name 
-                  return <li key={points.id} onClick={() => handlerPoint(points)} className={CN}>
-                    {points.address}
-                    {points.delivMetod && <span className="onlypickup_small">только самовывоз</span>}
-                    {!points.delivMetod && <span className="onlypickup_small">самовывоз и доставка</span>}
-                  </li>
+              !isLoading && addresses && addresses.map((points: IPoint) => {
+                  if (!points.isHidden) {
+                    const CN = cn("welcome__city", { active: points.address === point.address }) //city.name === selectedCity?.name 
+                    return <li key={points.id} onClick={() => handlerPoint(points)} className={CN}>
+                      {points.address}
+                      {points.delivMetod && <span className="onlypickup_small">только самовывоз</span>}
+                      {!points.delivMetod && <span className="onlypickup_small">самовывоз и доставка</span>}
+                    </li>
+                  }
                 })
                 
             }

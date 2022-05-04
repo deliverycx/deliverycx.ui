@@ -27,6 +27,8 @@ const PointsMap = () => {
   const { addresses,statePoint,refMap} = useCasePoints.data
   const { placemarkClickHandler} = useCasePoints.handlers
 
+  console.log(addresses);
+
   return (
     <div ref={refMap} className="location_city location_Maps">
   		<div className="location_city-container">
@@ -38,7 +40,8 @@ const PointsMap = () => {
           <div className="tomap" onClick={handlerGoToCity}>Выбрать другой город</div>
   			</div>
   			
-        { addresses &&
+        {addresses &&
+          
                     <YMaps>
                         <Map
                             className="welcome__map"

@@ -59,7 +59,7 @@ export function usePointsMaps(this: any,{handlerGoToCity,handlerCloseMapModal}:a
     (selector) => selector.city
   );
   const { id } = adapterSelector.useSelectors((selector) => selector.point);
-  const { data: addresses, isFetching } = useGetPointsQuery(selectedCity.id);
+  const { data: org, isFetching } = useGetPointsQuery(selectedCity.id);
   const [getRecvisites, { data: recvisites }] = useGetRecvisitesMutation()
 
   const [statePoint, dispatchPoint] = useReducer(
@@ -67,8 +67,7 @@ export function usePointsMaps(this: any,{handlerGoToCity,handlerCloseMapModal}:a
     initialStatePoints
   );
 
-  console.log('point map',addresses);
-
+  const addresses =  org && org.filter((val:IPoint,index:number) => val.isHidden !== true)
 
      
   useEffect(() => {
