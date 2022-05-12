@@ -7,6 +7,7 @@ type IProps = {
 }
 
 const Modals:FC<IProps> = ({onClose,children}) => {
+  console.log('Modal');
   const [isBrowser, setIsBrowser] = useState<boolean>(false);
 
   useEffect(() => {

@@ -27,12 +27,12 @@
 @import './layout/general';
 
 
-//  Components 
+//  Components
 
 @import './components/header';
-@import './components/stocks'; 
-@import './components/categories'; 
-@import './components/shop'; 
+@import './components/stocks';
+@import './components/categories';
+@import './components/shop';
 @import './components/cart';
 @import './components/ordering';
 @import './components/footer';
@@ -52,6 +52,7 @@
 @import './modals/cart_modals';
 @import './modals/notification';
 @import './modals/modals';
+@import './modals/_reserve-modal';
 
 //  Pages
 

@@ -9,6 +9,7 @@ import { useRouter } from 'next/router'
 import { ROUTE_APP } from 'application/contstans/route.const';
 import { RootState } from "../../../../servises/redux/createStore";
 import cn from "classnames";
+import ReserveModalBtnContainer from "./ReserveModalBtnContainer";
 
 /* eslint-disable react/no-unknown-property */
 const Header = () => {
@@ -38,7 +39,10 @@ const Header = () => {
                 /></Link>
             </div>
             <div className="header__center">
-                <HeaderLocation />
+                <div className="header__center__location">
+                    <HeaderLocation />
+                    <ReserveModalBtnContainer/>
+                </div>
                 <div className="header_menu">
                     <a className={menuLinkWithColorCN} onClick={() => heandleToMenu()}>
                         Меню

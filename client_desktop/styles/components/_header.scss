@@ -11,10 +11,24 @@
 	.header__center{
 		width: 50%;
 		padding-top: 15px;
+		.header__center__location {
+			display: flex;
+			.reserve-btn {
+				color: #666666;
+				font-size: 13px;
+				font-family: 'manrope', serif;
+				width: 175px;
+				border-radius: 20px;
+				border-width: 1px;
+				border-color: #666666;
+				background-color: #fff;
+				outline: none;
+			}
+		}
 		.header_adress-info{
 			color: #666666;
 			display: flex;
-			font-family: 'manrope';
+			font-family: 'manrope', serif;
 			cursor: pointer;
 			span{
 				display: inline-block;
