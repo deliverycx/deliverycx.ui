@@ -9,12 +9,166 @@
 		border-bottom: 1px solid rgba(255, 255, 255, 0.2);
 		padding-bottom: 30px;
 		.footer_grid-left{
-			width: 55%;
+			width: 45%;
 			display: flex;
 			justify-content: space-between;
 		}
-		.footer_grid-right{
-			width: 35%;
+
+		.footer_grid-right {
+			width: 45%;
+		}
+
+		.footer_grid-form {
+			width: 36%;
+			.footer_form-title {
+				font-size: 21px;
+				font-family: "manrope", sans-serif;
+				font-weight: 800;
+				margin-bottom: 15px;
+				color: #fff;
+			}
+
+			form {
+				position: relative;
+
+				.email-input{
+					display: block;
+					width: 100%;
+					padding: 14px 30px;
+					border: none;
+					border-radius: 30px;
+					color: #fff;
+					background: rgba(255, 255, 255, 0.1);
+					font-size: 14px;
+				}
+
+				.email-input::placeholder{
+					color: #fff;
+					font-size: 14px;
+				}
+
+				.form-button{
+					position: absolute  ;
+					right: 0;
+					top: -1px;
+					display: block;
+					width: 40%;
+					padding: 14px 43px;
+					background: rgba(255, 255, 255, 0.25);
+					border: none;
+					border-radius: 30px;
+					color: #fff;
+					transition: 0.5s ease;
+					font-size: 14px;
+				}
+
+				.form-button:active{
+					transform: scale(0.9);
+				}
+
+				.form-checkbox-container {
+					display: flex;
+					align-items: center;
+				}
+
+				input[type='checkbox'] {
+					display: none;
+				}
+
+				input[type='checkbox']:checked + label .mark {
+					visibility: visible;
+					animation: check .2s;
+				}
+
+				input[type='checkbox']:not(:checked) + label .mark {
+					width: 0;
+					height: 0;
+					visibility: hidden;
+				}
+
+				.checkbox {
+					width: 24px;
+					height: 24px;
+					margin-right: 1em;
+					position: relative;
+					background: rgba(255, 255, 255, 0.1);
+					border-radius: 8px;
+				}
+
+				label {
+					cursor: pointer;
+					font-size: 13px;
+					color: #fff;
+					font-family: sf-ui-light, sans-serif;
+				}
+
+				.mark {
+					position: absolute;
+					bottom: 13px;
+					left: 5px;
+					display: block;
+					width: 8px;
+					height: 13px;
+					border-bottom: 2px solid #FFF;
+					border-right: 2px solid #FFF;
+					transform: rotate(45deg);
+					transform-origin: bottom left;
+				}
+
+				@keyframes check {
+					0% {
+						width: 0;
+						height: 0;
+						border-right: 4px solid transparent;
+					}
+
+					10% {
+						width: 0;
+						height: 0;
+						border-right: 4px solid transparent;
+					}
+
+					30% {
+						width: 7px;
+						height: 0;
+						border-right: 4px solid transparent;
+					}
+
+					40% {
+						width: 7px;
+						height: 0;
+						border-right: 4px solid transparent;
+					}
+
+					50% {
+						width: 7px;
+						height: 14px;
+						border-right: 4px solid #FFF;
+					}
+				}
+
+				.form-checkbox-container {
+					margin-top: 33px;
+				}
+
+				.footer_form-agreement {
+					font-family: sf-ui-light, sans-serif;
+					margin-top: 18px;
+					color: #FFFFFF;
+					font-weight: 400;
+					font-size: 11px;
+
+					div {
+						opacity: 0.5;
+						margin-bottom: 4px;
+					}
+					a {
+						font-size: 11px;
+						color: #FFF;
+						text-decoration: underline #fff;
+					}
+				}
+			}
 		}
 	}
 	.footer_box{

@@ -18,7 +18,24 @@ const Footer = () => {
                         <FooterLocation/>
   					</div>
   				</div>
-
+				<div className="footer_grid-form">
+					<div className="footer_form-title">Подписывайтесь на рассылку</div>
+					<form>
+						<input type="email" placeholder="Введите адрес эл. почты" className="email-input"/>
+						<button type="button" className="form-button">Подписаться</button>
+						<div className="form-checkbox-container">
+							<input type="checkbox" id="check" className="check"/>
+							<label htmlFor="check" className="checkbox">
+								<div className="mark"></div>
+							</label>
+							<label htmlFor="check">Соглашаюсь на обработку персональных данных <span>*</span></label>
+						</div>
+						<div className='footer_form-agreement'>
+							<div><span>*</span>Настоящим я свободно, своей волей и в своём интересе даю согласие на то что...</div>
+							<a href="#">Показать соглашение</a>
+						</div>
+					</form>
+				</div>
   			</div>
   			<div className="foot">
   				<div className="foot-item">
@@ -28,7 +45,7 @@ const Footer = () => {
   					<a href="">Пользовательское соглашение</a>
   				</div>
   				<div className="foot-item">
-  					<a href="">Политика обработки персональных данных</a>
+  					<a href="#">Политика обработки персональных данных</a>
   				</div>
   			</div>
   		</div>
