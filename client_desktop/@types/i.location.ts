@@ -8,6 +8,7 @@ export interface IPoint {
   city:	string
   cords:	number[]
   phone:	string
+	guid:string
   workTime: string
   delivMetod: string | null
   isHidden:boolean

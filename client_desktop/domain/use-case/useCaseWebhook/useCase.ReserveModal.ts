@@ -28,7 +28,7 @@ export function useReserveModal(this: any) {
 
   const submitHandler = async (values:Tvalue, meta:any) => {
 		try {
-			const result = await RequestWebhook.reverveTable({...values,organizationId:point.id})
+			const result = await RequestWebhook.reverveTable({...values,organizationId:point.guid})
 			result.status === 200 && dispatchReserve({
 				type: ReducerActionTypePoints.setStatus,
 				payload: true
