@@ -8,7 +8,7 @@ import ruLocale from 'date-fns/locale/ru';
 import { MobileDatePicker } from '@mui/x-date-pickers/MobileDatePicker';
 import { Field, FormikProvider } from "formik";
 import InputMask from "react-input-mask";
-import { useReserveModal } from "domain/use-case/useCaseModals";
+import { useReserveModal } from "domain/use-case/useCaseWebhook";
 import FormFieldWrapper from "../../Forms/FormFieldWrapper";
 import { compareAsc, format } from 'date-fns'
 
