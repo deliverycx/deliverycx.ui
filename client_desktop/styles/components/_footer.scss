@@ -28,6 +28,19 @@
 				color: #fff;
 			}
 
+			.error-message {
+				color: #8D191D;
+				margin-left: 20px;
+				position: absolute;
+				font-size: 15px;
+			}
+			.success-message {
+				color: green;
+				margin-left: 20px;
+				position: absolute;
+				font-size: 15px;
+			}
+
 			form {
 				position: relative;
 
@@ -48,7 +61,8 @@
 				}
 
 				.form-button{
-					position: absolute  ;
+					position: absolute;
+					height: 45px;
 					right: 0;
 					top: -1px;
 					display: block;
