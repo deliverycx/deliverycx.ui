@@ -9,7 +9,7 @@ import { useRouter } from 'next/router'
 import { ROUTE_APP } from 'application/contstans/route.const';
 import { RootState } from "../../../../servises/redux/createStore";
 import cn from "classnames";
-import ReserveModalBtnContainer from "./ReserveModalBtnContainer";
+import ReserveModalBtnContainer from "../Modals/reserveModal/HOC.ReserveModalBtn";
 
 /* eslint-disable react/no-unknown-property */
 const Header = () => {

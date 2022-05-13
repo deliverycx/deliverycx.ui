@@ -3,8 +3,8 @@ import { FC, memo, PropsWithChildren } from "react";
 import {isEqual} from "lodash";
 
 interface IProps{
-    placeholderIco: string,
-    placeholderValue: string,
+    placeholderIco?: string,
+    placeholderValue?: string,
     isValid?: boolean,
     error?: boolean,
     errorValue?: string,

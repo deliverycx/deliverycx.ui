@@ -46,25 +46,27 @@ import * as yup from "yup";
 
 // const debounceCheckAddress = debounce(checkAddress, 200);
 
-const schemaBuild = (type:string) => {
-  const valid ={
-      name: yup
-          .string()
-          .matches(/\D/g, {
-            message: "Только строки"
-          })
-          .required('Поле обязательно для заполнения'),
-      address: yup
-          .string()
-          .required('Поле обязательно для заполнения'),
-      phone: yup
-          .string()
-          .trim()
-          .matches(/^(\+7)(\s(\d){3}){2}(\s(\d){2}){2}/, {
-              message: "Не верный формат телефона"
-          })
-          .required('Поле обязательно для заполнения')
-  }
+const valid ={
+  name: yup
+      .string()
+      .matches(/\D/g, {
+        message: "Только строки"
+      })
+      .required('Поле обязательно для заполнения'),
+  address: yup
+      .string()
+      .required('Поле обязательно для заполнения'),
+  phone: yup
+      .string()
+      .trim()
+      .matches(/^(\+7)(\s(\d){3}){2}(\s(\d){2}){2}/, {
+          message: "Не верный формат телефона"
+      })
+    .required('Поле обязательно для заполнения'),
+}
+
+
+const schemaBuild = (type?:string) => {
   switch (type) {
     case 'COURIER':
       return yup.object().shape({
@@ -89,5 +91,20 @@ const schemaBuild = (type:string) => {
   }
 
 }
+
+export const shemaReserve = () => yup.object().shape({
+  fullname: valid.name,
+  phone: valid.phone,
+  date: yup
+      .string()
+    .required('Поле обязательно для заполнения'),
+  time: yup
+    .string()
+    .min(5, 'Неверный формат времени')
+    .required('Поле обязательно для заполнения'),
+  person: yup
+    .string()
+    .required('Поле обязательно для заполнения'),
+})
 
 export default schemaBuild;

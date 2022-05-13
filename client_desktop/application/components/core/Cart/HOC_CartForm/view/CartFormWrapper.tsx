@@ -18,7 +18,7 @@ export interface IWrapper {
   phone(): ReactNode
   deliv(): ReactNode
 }
-export const FormWrapper = (formik: any,usecase:any): IWrapper => {
+export const FormWrapper = (formik: any,usecase?:any): IWrapper => {
   const { stateForm,paths,paymentMetod } = usecase.data
   const { selectPayment, choicePayment,setShowMap } = usecase.handlers
   return {

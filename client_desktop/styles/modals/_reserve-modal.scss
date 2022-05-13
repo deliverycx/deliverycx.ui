@@ -3,14 +3,18 @@
   position: fixed;
   left: 0;
   right: 0;
-  top: 30%;
+  top: 20%;
   margin: 0 auto;
   max-width: 475px;
   box-shadow: 0px 31px 60px rgba(0, 0, 0, 0.05), 0px 11.9407px 19.1111px rgba(0, 0, 0, 0.0303704), 0px 2.52593px 4.88889px rgba(0, 0, 0, 0.0196296);
   border-radius: 30px;
   background: #FFFFFF;
   z-index: 999;
+	.fild__box{
+		margin-bottom: 20px;
+	}
 
+	
   .reserve-container {
     padding: 5%;
     position: relative;
@@ -55,12 +59,27 @@
       }
     }
   }
+	.sucsess{
+		font-size: 11px;
+		color: green;
+		text-align: center;
+		margin-top: 15px;
+	}
+	.error{
+		font-size: 11px;
+		color: red;
+		text-align: center;
+		margin-top: 15px;
+	}
 
   .product_card-container {
     position: relative;
     display: flex;
     padding: 5% 5%;
   }
+	.date-and-time_box{
+		width: 180px;
+	}
 
   .name, .phone {
     border: 1px solid #666666;
@@ -84,15 +103,15 @@
   }
   .date-and-time-container {
     display: flex;
+		justify-content: space-between;
     .date-text {
       font-size: 12px;
       margin-left: auto;
       margin-right: auto;
       padding-bottom: 0;
-      border: 1px solid #666666;
       border-radius: 100px;
+			border-color: #132A3E !important;
       width: 100%;
-      margin-top: 15px;
       display: flex;
       justify-content: space-between;
       position: relative;
@@ -105,5 +124,14 @@
       line-height: 48px;
       width: 100%;
     }
+		.css-9ddj71-MuiInputBase-root-MuiOutlinedInput-root.Mui-error .MuiOutlinedInput-notchedOutline,
+		.css-o9k5xi-MuiInputBase-root-MuiOutlinedInput-root.Mui-error .MuiOutlinedInput-notchedOutline{
+			border-color: none !important;
+			color: #132A3E;
+			&:hover{
+				border-color: none;
+			}
+		}
+		
   }
 }

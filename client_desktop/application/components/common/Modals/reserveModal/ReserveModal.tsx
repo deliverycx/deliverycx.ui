@@ -10,12 +10,8 @@ const ReserveModal = ({onClose}:any) => {
                     <img src="/images/icon/close.png" alt="" />
                 </div>
                 <div className="modals_title"><span>Забронировать</span> стол</div>
-                <ReserveModalRows empty={() => onClose()} />
-                <a className="cart__order-btn btn" href="/checkout">Отправить</a>
-                <div>
-                    Нажимая кнопку «Отправить» вы соглашаетесь
-                    с условиями Пользовательского соглашения
-                </div>
+                <ReserveModalRows />
+                
             </div>
         </div>
     )
