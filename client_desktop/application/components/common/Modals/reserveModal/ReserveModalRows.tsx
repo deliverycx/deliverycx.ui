@@ -15,7 +15,7 @@ import { compareAsc, format } from 'date-fns'
 
 const ReserveModalRows = () => {
   const useCaseReserve = adapterComponentUseCase(useReserveModal)  
-  const {formik,ReducerActionTypePoints,stateReserve} = useCaseReserve.data
+  const {formik,point,ReducerActionTypePoints,stateReserve} = useCaseReserve.data
   const {dispatchReserve} = useCaseReserve.handlers
 
   return (
@@ -23,6 +23,14 @@ const ReserveModalRows = () => {
     <form onSubmit={formik.handleSubmit}>
         <LocalizationProvider dateAdapter={AdapterDateFns} locale={ruLocale}>
         <div className="rows-container">
+				<div className="welcome__select-adress__info street">
+               <img
+                  src="/images/i/mark-red.svg"
+                  alt="Телефон заведения"
+               />
+
+               {point.address}
+            </div>	
         <FormFieldWrapper
             isValid={
               !formik.values.fullname.length || formik.errors.fullname ? true : false
