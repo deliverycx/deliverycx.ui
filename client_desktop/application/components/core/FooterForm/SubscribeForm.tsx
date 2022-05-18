@@ -1,69 +1,35 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import CircularProgress from "@mui/material/CircularProgress";
-import SubscribeRequest from "../../../../servises/repository/Axios/Request/Request.Subscription";
+import { adapterComponentUseCase } from "../../../../adapters/adapterComponents";
+import { useSubscribe } from "../../../../domain/use-case/useCaseWebhook/useCase.Subscribe";
 
 const SubscribeForm = () => {
-    const [email, setEmail] = useState<string>('');
-    const [errorMessage, setErrorMessage] = useState<string>('');
-    const [successMessage, setSuccessMessage] = useState<string>('');
-    const [checked, setChecked] = useState<boolean>(false);
-    const [isLoading, setIsLoading] = useState<boolean>(false);
+    const useCaseSubscribe = adapterComponentUseCase(useSubscribe);
+    const {ReducerActionTypePoints,stateSubscribe} = useCaseSubscribe.data;
+    const {dispatchSubscribe} = useCaseSubscribe.handlers;
 
     const onChangeHandler = (evt: any) => {
-        setErrorMessage('');
-        setEmail(evt.target.value);
+        dispatchSubscribe({type: ReducerActionTypePoints.errorMessage, payload: ''});
+        dispatchSubscribe({type: ReducerActionTypePoints.email, payload: evt.target.value});
     }
 
     useEffect(()=>{
         const timerId = setTimeout(()=>{
-            setSuccessMessage('');
+            dispatchSubscribe({type: ReducerActionTypePoints.successMessage, payload: ''});
         }, 3000)
 
         return () => clearTimeout(timerId);
     }, [])
 
-
-    const validateEmail = () => {
-        const reg = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
-        if(!email || !reg.test(email)){
-            setErrorMessage('Введите корректный email');
-            return false;
-        } else {
-            setErrorMessage('');
-            return true;
-        }
-    }
-
-    const subscribe = async (email: string) => {
-        setIsLoading(true);
-        if (validateEmail())
-            if (checked) {
-                try {
-                    const result = await SubscribeRequest.subscribe({to:email});
-
-                    if (result.status === 200) {
-                        setSuccessMessage('Подписка оформлена!');
-                        setEmail('');
-                        setChecked(false);
-                    }
-                } catch (error: any) {
-                    setErrorMessage('Не получилось подписаться на рассылку')
-                }
-            } else {
-                setErrorMessage('Вы должны согласится на обработку персональных данных')
-            }
-        setIsLoading(false);
-    }
-
     return (
         <div className="footer_grid-form">
             <div className="footer_form-title">Подписывайтесь на рассылку</div>
             <form>
-                <input type="email" placeholder="Введите адрес эл. почты" value={email} className="email-input" onChange={(e) => onChangeHandler(e)}/>
-                {errorMessage && <span className="error-message">{errorMessage}</span>}
-                {successMessage && <span className="success-message">{successMessage}</span>}
-                <button disabled={isLoading} type="button" className="form-button" onClick={() => subscribe(email)}>
-                    {isLoading ? (
+                <input type="email" placeholder="Введите адрес эл. почты" value={stateSubscribe.email} className="email-input" onChange={(e) => onChangeHandler(e)}/>
+                {stateSubscribe.errorMessage && <span className="error-message">{stateSubscribe.errorMessage}</span>}
+                {stateSubscribe.successMessage && <span className="success-message">{stateSubscribe.successMessage}</span>}
+                <button disabled={stateSubscribe.isLoading} type="button" className="form-button" onClick={() => dispatchSubscribe(stateSubscribe.email)}>
+                    {stateSubscribe.isLoading ? (
                         <CircularProgress
                             size={24}
                             sx={{
@@ -78,7 +44,7 @@ const SubscribeForm = () => {
                 </button>
 
                 <div className="form-checkbox-container">
-                    <input type="checkbox" id="check" className="check" checked={checked} onChange={() => setChecked(!checked)}/>
+                    <input type="checkbox" id="check" className="check" checked={stateSubscribe.checked} onChange={() => dispatchSubscribe({type: ReducerActionTypePoints.checked, payload: !stateSubscribe.checked})}/>
                     <label htmlFor="check" className="checkbox">
                         <div className="mark"></div>
                     </label>
