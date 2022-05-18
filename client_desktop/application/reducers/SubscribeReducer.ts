@@ -8,55 +8,51 @@ export const initialStateSubscribe = {
     isLoading: false,
     status: null
 };
-export type typeInitialState = typeof initialStateSubscribe
+type typeInitialState = typeof initialStateSubscribe
 
 export enum ReducerActionTypePoints {
-    email,
-    checked,
-    isLoading,
-    errorMessage,
-    successMessage,
-    status
+    setEmail,
+    setChecked,
+    setisLoading,
+    setErrorMessage,
+    setSuccessMessage,
+    setStatus
 }
 
 export function SubscribeReducer(state: typeInitialState, action: ReducerAction<ReducerActionTypePoints>) {
     switch (action.type) {
-        case ReducerActionTypePoints.email:
+        case ReducerActionTypePoints.setEmail:
             return {
                 ...state,
                 email: action.payload,
             };
-        case ReducerActionTypePoints.checked:
+						
+        case ReducerActionTypePoints.setChecked:
             return {
                 ...state,
                 checked: action.payload,
             };
-        case ReducerActionTypePoints.isLoading:
+						
+        case ReducerActionTypePoints.setisLoading:
             return {
                 ...state,
                 isLoading: action.payload,
             };
-        case ReducerActionTypePoints.errorMessage:
+						
+        case ReducerActionTypePoints.setErrorMessage:
             return {
                 ...state,
                 errorMessage: action.payload,
             };
-        // case ReducerActionTypePoints.successMessage:
-        //     return {
-        //         ...state,
-        //         email: "",
-        //         checked:"",
-        //         successMessage:action.payload
-        //     };
 
-        case ReducerActionTypePoints.status:
+        case ReducerActionTypePoints.setStatus:
             return {
                 ...state,
-                email: "",
-                checked:"",
-                success: action.payload
+								successMessage: action.payload,
+                email: '',
+                checked:false,
+                
             };
-
         default:
             return state
     }
