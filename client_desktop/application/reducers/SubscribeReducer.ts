@@ -6,7 +6,7 @@ export const initialStateSubscribe = {
     successMessage:'',
     checked:false,
     isLoading: false,
-    status: null
+    success: null
 };
 type typeInitialState = typeof initialStateSubscribe
 
@@ -57,6 +57,7 @@ export function SubscribeReducer(state: typeInitialState, action: ReducerAction<
                 successMessage: action.payload,
                 email: '',
                 checked:false,
+                isLoading: false
             };
         default:
             return state
