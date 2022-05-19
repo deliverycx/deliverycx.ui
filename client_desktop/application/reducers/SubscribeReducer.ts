@@ -2,7 +2,7 @@ import { ReducerAction } from ".";
 
 export const initialStateSubscribe = {
     email:'',
-    errorMessage:'Вы должны согласится на обработку персональных данных',
+    errorMessage:'',
     successMessage:'',
     checked:false,
     isLoading: false,
