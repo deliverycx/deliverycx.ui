@@ -1,6 +1,7 @@
 export interface ICity {
   id: string,
   name: string
+	isHidden:boolean
 }
 export interface IPoint {
   id:	string

@@ -26,9 +26,12 @@ const CityList = () => {
                 
                 !isLoading && cities && cities.map((city:ICity) => {
                     const CN = cn("welcome__city", { selected: city.name === selectedCity.name}) //city.name === selectedCity?.name 
-                    return <div key={city.id} onClick={() => selectCiti(city)} className={CN}>
+										if(!city.isHidden){
+											return <div key={city.id} onClick={() => selectCiti(city)} className={CN}>
                         {city.name}
                     </div>
+										}
+                    
                 })
                 
             }
