@@ -2,7 +2,7 @@ import { ReducerAction } from ".";
 
 export const initialStateSubscribe = {
     email:'',
-    errorMessage:'',
+    errorMessage:'Вы должны согласится на обработку персональных данных',
     successMessage:'',
     checked:false,
     isLoading: false,
@@ -26,32 +26,37 @@ export function SubscribeReducer(state: typeInitialState, action: ReducerAction<
                 ...state,
                 email: action.payload,
             };
-						
+
         case ReducerActionTypePoints.setChecked:
             return {
                 ...state,
                 checked: action.payload,
             };
-						
+
         case ReducerActionTypePoints.setisLoading:
             return {
                 ...state,
                 isLoading: action.payload,
             };
-						
+
         case ReducerActionTypePoints.setErrorMessage:
             return {
                 ...state,
                 errorMessage: action.payload,
             };
 
+        case ReducerActionTypePoints.setSuccessMessage:
+            return {
+                ...state,
+                successMessage: action.payload,
+            };
+
         case ReducerActionTypePoints.setStatus:
             return {
                 ...state,
-								successMessage: action.payload,
+                successMessage: action.payload,
                 email: '',
                 checked:false,
-                
             };
         default:
             return state

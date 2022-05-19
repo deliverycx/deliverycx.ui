@@ -32,14 +32,14 @@
 				color: #8D191D;
 				margin-left: 20px;
 				position: absolute;
-				font-size: 15px;
+				font-size: 13px;
 				margin-top: 5px;
 			}
 			.success-message {
 				color: green;
 				margin-left: 20px;
 				position: absolute;
-				font-size: 15px;
+				font-size: 14px;
 				margin-top: 5px;
 			}
 
@@ -66,10 +66,9 @@
 					position: absolute;
 					height: 45px;
 					right: 0;
-					top: -1px;
+					top: 0;
 					display: block;
 					width: 40%;
-					padding: 14px 43px;
 					background: rgba(255, 255, 255, 0.25);
 					border: none;
 					border-radius: 30px;
