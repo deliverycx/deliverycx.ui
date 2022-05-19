@@ -40,8 +40,14 @@ const Header = () => {
             </div>
             <div className="header__center">
                 <div className="header__center__location">
-                    <HeaderLocation />
-                    <ReserveModalBtnContainer/>
+                    {
+											checkPoint(false) &&
+											<>
+												<HeaderLocation />
+												<ReserveModalBtnContainer/>
+											</>
+										}
+										
                 </div>
                 <div className="header_menu">
                     <a className={menuLinkWithColorCN} onClick={() => heandleToMenu()}>
