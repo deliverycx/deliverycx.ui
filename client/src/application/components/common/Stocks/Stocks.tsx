@@ -20,7 +20,6 @@ const Stocks = () => {
         dots: true,
         dotsClass:'stocks__points'
       };
-
     return (
         <div className="stocks">
           <Slider {...settings}>

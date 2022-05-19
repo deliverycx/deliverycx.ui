@@ -49,7 +49,7 @@ export function useReserveModal(this: any) {
     onSubmit: submitHandler
   });
 
-	console.log(formik);
+
   
   this.data({
     formik,

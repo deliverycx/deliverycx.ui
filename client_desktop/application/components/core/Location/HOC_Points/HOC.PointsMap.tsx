@@ -27,7 +27,6 @@ const PointsMap = () => {
   const { addresses,statePoint,refMap} = useCasePoints.data
   const { placemarkClickHandler} = useCasePoints.handlers
 
-  console.log(addresses);
 
   return (
     <div ref={refMap} className="location_city location_Maps">
