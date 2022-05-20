@@ -7,7 +7,7 @@ export default class MyDocument extends Document {
         <Head>
             <link rel="shortcut icon" href="/favicon.svg" type="image/x-icon"/>
         </Head>
-        <script async src="https://api-maps.yandex.ru/2.1/?lang=ru_RU&apikey=fa9674dc-9524-4159-a9ae-88861c637505"></script>
+        <script async src="https://api-maps.yandex.ru/2.1/?lang=ru_RU&apikey=164ee8b6-9e22-4e21-84ed-a0778bdf0f37"></script>
         <body>
           <Main />
           <NextScript />
