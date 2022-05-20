@@ -81,7 +81,7 @@ export function usePointsMaps(this: any,{handlerGoToCity,handlerCloseMapModal}:a
         } else {
           handlerGoToCity()
         }
-    }, [addresses]);
+    }, []);
 
     const placemarkClickHandler = (address: IPoint, index: number) => {
         dispatchPoint({
