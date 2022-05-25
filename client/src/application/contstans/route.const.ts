@@ -16,5 +16,8 @@ export const ROUTE_APP = {
   ORDER: '/success',
   PAGES: {
     ABOUT:'/about'
+  },
+  PROFILE: {
+    ORDERS_HISTORY: '/orders'
   }
 }

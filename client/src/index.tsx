@@ -9,7 +9,6 @@ import { createBrowserHistory } from 'history';
 import { BrowserRouter } from 'react-router-dom';
 import { PersistGate } from 'redux-persist/integration/react';
 import { format } from 'date-fns'
-import ProfileScreen from "./application/components/common/PersonalProfile/ProfileScreen";
 
 const history = createBrowserHistory()
 
@@ -17,7 +16,6 @@ const history = createBrowserHistory()
 ReactDOM.render(
   <Provider store={store}>
      <PersistGate loading={null} persistor={persistor}>
-         {/*<ProfileScreen/>*/}
      <App />
      </PersistGate>
   </Provider>,

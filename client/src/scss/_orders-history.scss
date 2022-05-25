@@ -1,0 +1,95 @@
+.history-header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  padding-top: 59px;
+  padding-bottom: 28px;
+  background-color: #fff;
+  box-shadow: 0px 7px 16px 0px #0000000A;
+  margin-bottom: 30px;
+
+  .history-header-title {
+    font-family: SF UI Display, sans-serif;
+    font-size: 17px;
+    font-weight: 700;
+    letter-spacing: 0;
+
+    span {
+      color: #8D191D;
+    }
+  }
+  a {
+    position: absolute;
+    left: 10%;
+    display: flex;
+  }
+}
+
+.orders {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  .order-item {
+    background-color: #FFFFFF;
+    width: 80%;
+    display: flex;
+    justify-content: space-around;
+    border-radius: 15px;
+    padding: 10px;
+  }
+}
+
+.order-info-row {
+  display: flex;
+  align-items: center;
+  .order-info-title {
+    color: #666666;
+    font-family: SF UI Display, sans-serif;
+    font-size: 11px;
+    font-weight: 400;
+    margin-left: 10px;
+  }
+  .order-data-item {
+    display: flex;
+    align-items: center;
+    font-family: SF UI Display, sans-serif;
+    font-size: 13px;
+    font-weight: 600;
+    height: 24px;
+  }
+  .status {
+    color: #478641;
+  }
+  .summ {
+    color: #8D191D;
+  }
+}
+
+.order-buttons {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  .repeat-btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #8D191D;
+    width: 36px;
+    height: 36px;
+    border-radius: 8px;
+  }
+  .info-btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 2px solid #BDBDBD;
+    width: 36px;
+    height: 36px;
+    border-radius: 8px;
+  }
+}
+
+
+
+
