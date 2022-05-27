@@ -35,9 +35,8 @@ const Categories = () => {
                 return (
                   <Link
                     key={i}
-                    className="categories__item"
-                    activeClass="active"
-                    to={category.id} spy={true} smooth={true} offset={-160} duration={500}
+                    className={CN}
+                    to={category.id} smooth={true} offset={-160}
                     onClick={() => handleSliderClick(i, slider)}
                     >
                     <div className="categories__item__content-wrapper">
