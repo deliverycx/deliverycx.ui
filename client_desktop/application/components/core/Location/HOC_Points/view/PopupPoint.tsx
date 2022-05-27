@@ -12,7 +12,7 @@ const PopupPoint = () => {
   const address = addresses && addresses[statePoint.slideIndex]
   const selectAdressCN = cn("welcome__select-adress", { opened: statePoint.isOpen });
   return (
-    <> 
+    <>
     {
       address &&  (
           <div className="welcome__select-adress opened">
@@ -24,7 +24,7 @@ const PopupPoint = () => {
                      alt="Предыдущее заведенеие"
                   />
                </div>
-               
+
                 <div className="welcome__select-adress__adress">
                   <div className="welcome__select-adress__city">г. {selectedCity.name}</div>
                   Старик Хинкалыч
@@ -50,9 +50,10 @@ const PopupPoint = () => {
                   src="/images/i/mark-red.svg"
                   alt="Телефон заведения"
                />
-
                {address.address}
             </div>
+           {address.delivMetod && <span className="deliv-method">только самовывоз</span>}
+           {!address.delivMetod && <span className="deliv-method">самовывоз и доставка</span>}
             <div className="welcome__select-adress__info phone">
                <img
                   src="/images/i/phone-green.svg"
@@ -63,10 +64,6 @@ const PopupPoint = () => {
                   {address.phone}
                </a>
             </div>
-            {
-              address.delivMetod &&
-              <div className="onlypickup">Только самовывоз</div>
-            }
             {
               (recvisites && Object.keys(recvisites).length !== 0) && <div className="recvisites" onClick={()=>recvisitesHandler(true)}>Реквизиты компании</div>
             }
