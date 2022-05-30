@@ -95,10 +95,11 @@ export function usePoints() {
                     ? r
                     : i;
             }, -1);
+						const randomindex = Math.floor(Math.random() * data.length)
 
             dispatchPoint({
                 type: ReducerActionTypePoints.slidePoint,
-                payload: index
+                payload: randomindex
             });
         }
       } catch (error) {
