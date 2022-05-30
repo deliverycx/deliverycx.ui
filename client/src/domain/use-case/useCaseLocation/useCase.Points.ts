@@ -96,7 +96,7 @@ export function usePoints() {
                     : i;
             }, -1);
 						const randomindex = Math.floor(Math.random() * data.length)
-
+						console.log('random',randomindex)
             dispatchPoint({
                 type: ReducerActionTypePoints.slidePoint,
                 payload: randomindex
