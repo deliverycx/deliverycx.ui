@@ -84,8 +84,10 @@ export function usePoints() {
     };
     const nearPoint = async (data: IPoint[]) => {
       try {
-        const cord = await getGeoLocation();
+        //const cord = await getGeoLocation();
+				console.log('near')
         if (data) {
+						/*
             const index = data.reduce(function (r, val, i, array) {
                 return i &&
                     Math.abs(array[r].cords[0] - cord[0]) <
@@ -95,6 +97,7 @@ export function usePoints() {
                     ? r
                     : i;
             }, -1);
+						*/
 						const randomindex = Math.floor(Math.random() * data.length)
 						console.log('random',randomindex)
             dispatchPoint({
