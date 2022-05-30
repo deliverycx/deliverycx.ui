@@ -45,7 +45,7 @@ export function usePoints() {
         } else {
             history.goBack();
         }
-    }, []);
+    }, [org]);
 
     const placemarkClickHandler = (address: IPoint, index: number) => {
         dispatchPoint({
