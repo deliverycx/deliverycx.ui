@@ -21,6 +21,7 @@ const App = (): JSX.Element => {
       })
       
   },[])
+	console.log('near')  
 
 	return (
     <>

@@ -105,7 +105,7 @@ export function usePoints() {
       } catch (error) {
         console.log(error)
       }
-      console.log('near')  
+      
     };
 
     const selectPointHandler = async (address: IPoint) => {
