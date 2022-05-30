@@ -16,6 +16,7 @@ import { setProfileAction } from "servises/redux/slice/profileSlice";
 import { ROUTE_APP } from "application/contstans/route.const";
 import { adapterSelector } from "servises/redux/selectors/selectors";
 import { fetchDeleteCart } from "servises/redux/slice/cartSlice";
+import _ from "lodash";
 
 export function usePoints() {
   const history = useHistory();
@@ -99,6 +100,9 @@ export function usePoints() {
             }, -1);
 						*/
 						const randomindex = Math.floor(Math.random() * data.length)
+						console.log(_.shuffle(_.range(0,data.length)).slice(0,20))
+					
+					
 						console.log('random',randomindex)
             dispatchPoint({
                 type: ReducerActionTypePoints.slidePoint,
