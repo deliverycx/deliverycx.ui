@@ -1,16 +1,16 @@
 import { ReducerAction } from ".";
 
 export const initialStateReserve = {
-  dateValue:'',
-	timeValue:'',
-	sucsess:null
+    dateValue: "",
+    timeValue: "",
+    sucsess: null
 };
 type typeinitialState = typeof initialStateReserve
 
 export enum ReducerActionTypePoints {
-  setDate,
-	setTime,
-	setStatus
+    setDate,
+    setTime,
+    setStatus
 }
 
 
@@ -33,7 +33,7 @@ export function ReserveReducer(state: typeinitialState, action: ReducerAction<Re
 				dateValue:"",
 				sucsess:action.payload
     };
-    
+
     default:
       return state
   }
