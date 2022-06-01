@@ -117,7 +117,7 @@ const ReserveModalRows = () => {
                               });
                           }
                       }}
-                      minDate={new Date()}
+                      disablePast={true}
                       maxDate={formik.initialValues.maxDate}
                   />
                   </FormFieldWrapper>

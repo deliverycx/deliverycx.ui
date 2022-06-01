@@ -26,9 +26,8 @@ export const fetchAllCart = createAsyncThunk(
   "cart/getAll",
   async (_, { dispatch, getState,rejectWithValue }) => {
       try {
-          
           const request = await RequestCart.allCart(helperOrderType(getState));
-            
+
           if (request.status == 200 && request.data) {
               dispatch(addAllCart(request.data.cart));
               dispatch(
@@ -48,10 +47,10 @@ export const fetchRefreshCart = createAsyncThunk(
   "cart/refresh",
   async (_, { dispatch, getState,rejectWithValue }) => {
       try {
-          
+
           const request = await RequestCart.allCart(helperOrderType(getState));
-          
-          
+
+
           if (request.status == 200 && request.data) {
               dispatch(refreshCart(request.data.cart));
               dispatch(
@@ -95,7 +94,6 @@ export const fetchChangeAmount = createAsyncThunk(
       try {
           const state = getState() as RootState
           const request = await RequestCart.changeAmount({...change,...helperOrderType(getState)});
-          
           if (request.status == 200) {
               dispatch(
                   changeCart({
@@ -164,19 +162,17 @@ export const fetchOrderCart = createAsyncThunk(
           const request = await RequestCart.OrderCheckCart(value);
           if (request.data && request.status === 200) {
               const order = await RequestCart.OrderCart(value);
-            
-              
-              return order.data 
+              return order.data
           }
       } catch (error: any) {
           // Ошибка валидации по количеству
-          
           if (error.response.status === 422) {
-              dispatch(setErrors(error.response.data));
+              let objToStr = JSON.stringify(error.response);
+              if (objToStr.includes('RabbitMq')) dispatch(setErrors('Что-то пошло не так...'))
+              else dispatch(setErrors(error.response.data));
           } else {
               return rejectWithValue(error.response.data);
           }
-          
       }
   }
 );
