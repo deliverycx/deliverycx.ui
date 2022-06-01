@@ -112,8 +112,7 @@
 					border-radius: 8px;
 				}
 
-				label {
-					cursor: pointer;
+				label a{
 					font-size: 13px;
 					color: #fff;
 					font-family: sf-ui-light, sans-serif;
@@ -166,24 +165,6 @@
 
 				.form-checkbox-container {
 					margin-top: 33px;
-				}
-
-				.footer_form-agreement {
-					font-family: sf-ui-light, sans-serif;
-					margin-top: 18px;
-					color: #FFFFFF;
-					font-weight: 400;
-					font-size: 11px;
-
-					div {
-						opacity: 0.5;
-						margin-bottom: 4px;
-					}
-					a {
-						font-size: 11px;
-						color: #FFF;
-						text-decoration: underline #fff;
-					}
 				}
 			}
 		}
