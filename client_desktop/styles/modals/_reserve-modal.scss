@@ -158,8 +158,8 @@
   visibility: hidden !important;
 }
 
-.time-picker {
-  [class*='-MuiSvgIcon-root'] {
-    visibility: hidden !important;
+.MuiButtonBase-root {
+  [class*='MuiSvgIcon-root'] {
+    display: none !important;
   }
 }

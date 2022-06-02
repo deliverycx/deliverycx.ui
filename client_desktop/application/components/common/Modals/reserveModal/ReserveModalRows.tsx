@@ -138,10 +138,10 @@ const ReserveModalRows = () => {
                       value={stateReserve.timeValue}
                       onChange={(newValue, value) => {
                           formik.setFieldValue("time", newValue);
-                              dispatchReserve({
-                                  type: ReducerActionTypePoints.setTime,
-                                  payload: newValue
-                              });
+                          dispatchReserve({
+                              type: ReducerActionTypePoints.setTime,
+                              payload: newValue
+                          });
                       }}
                       renderInput={(params) => {
                           return <>
