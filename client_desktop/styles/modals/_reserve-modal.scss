@@ -151,21 +151,15 @@
         border-color: #8D191D !important;
       }
     }
-    //.css-ctu4nj .PrivateDatePickerToolbar-penIcon {
-    //  visibility: hidden
-    //}
-    //.MuiGrid-root .MuiGrid-container .PrivatePickersToolbar-dateTitleContainer {
-    //  svg {
-    //    display: none !important;
-    //  }
-    //}
-    //
-    //.PrivateDatePickerToolbar-penIcon {
-    //  visibility: hidden !important;
-    //}
   }
 }
-
+// hide penIcon on MUI pickers
 .PrivateDatePickerToolbar-penIcon {
   visibility: hidden !important;
+}
+
+.time-picker {
+  [class*='-MuiSvgIcon-root'] {
+    visibility: hidden !important;
+  }
 }

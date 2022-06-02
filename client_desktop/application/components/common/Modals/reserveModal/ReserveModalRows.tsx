@@ -117,6 +117,7 @@ const ReserveModalRows = () => {
                               });
                           }
                       }}
+                      className="time-picker"
                       disablePast={true}
                       maxDate={formik.initialValues.maxDate}
                   />
