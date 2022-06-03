@@ -86,16 +86,15 @@ const ReserveModalRows = () => {
               </FormFieldWrapper>
             <div className="date-and-time-container">
               <div className="date-and-time_box">
-              <FormFieldWrapper
-                isValid={
-                  !stateReserve.dateValue || formik.errors.date
-                }
-                error={!!(formik.errors.date && formik.touched.date)}
-                errorValue={formik.errors.date}
-              >
                   <MobileDatePicker
                       inputFormat="dd.MM.yyyy"
-                      renderInput={(params) => <TextField
+                      renderInput={(params) => <FormFieldWrapper
+                          isValid={
+                              !stateReserve.dateValue || formik.errors.date
+                          }
+                          error={!!(formik.errors.date && formik.touched.date)}
+                          errorValue={formik.errors.date}
+                      ><TextField
                           className="date-text"
                           InputProps={{ className: "date-input" , style:{outline:'#8D191D' }}}
                           {...params}
@@ -105,7 +104,7 @@ const ReserveModalRows = () => {
                               }
                           }
                           }
-                      />}
+                      /></FormFieldWrapper>}
                       label="Дата"
                       value={stateReserve.dateValue}
                       onChange={(newValue) => {
@@ -121,7 +120,6 @@ const ReserveModalRows = () => {
                       disablePast={true}
                       maxDate={formik.initialValues.maxDate}
                   />
-                  </FormFieldWrapper>
                 </div>
 
               <div className="date-and-time_box">

@@ -34,10 +34,10 @@ import * as yup from "yup";
 //         .metaDataProperty
 //         .GeocoderMetaData
 //         .Address
-        
- 
+
+
 //         if(+data.response.GeoObjectCollection.metaDataProperty.GeocoderResponseMetaData.found === 0 ) throw Error();
-        
+
 //         resolve(true);
 //     }catch(e){
 //         resolve(false);
@@ -100,6 +100,7 @@ export const shemaReserve = () => yup.object().shape({
     .required('Поле обязательно для заполнения'),
   time: yup
     .string()
+      .nullable()
     .min(5, 'Неверный формат времени')
     .required('Поле обязательно для заполнения'),
   person: yup
