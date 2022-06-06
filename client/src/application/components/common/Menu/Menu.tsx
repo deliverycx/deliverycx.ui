@@ -52,6 +52,8 @@ const Menu: FC<IProps> = ({isActive, setter})=>{
     )
 }
 
+export default Menu
+/*
 export default memo(Menu, (prev: Readonly<PropsWithChildren<IProps>>, next: Readonly<PropsWithChildren<IProps>>)=>{
     if(isEqual(prev, next)){
         return true;
@@ -59,3 +61,4 @@ export default memo(Menu, (prev: Readonly<PropsWithChildren<IProps>>, next: Read
         return false;
     }
 });
+*/
