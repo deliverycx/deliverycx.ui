@@ -5,7 +5,7 @@ if ! [ -x "$(command -v docker-compose)" ]; then
   exit 1
 fi
 
-domains=(xn--80aafg6avvi.xn--80apgfh0ct5a.xn--p1ai,xn--d1acpqfji.xn--80apgfh0ct5a.xn--p1ai)
+domains=(xn--e1aybc.xn--80apgfh0ct5a.xn--p1ai,xn--90avg.xn--e1aybc.xn--80apgfh0ct5a.xn--p1ai)
 rsa_key_size=4096
 data_path="./certbot"
 email="" # Adding a valid address is strongly recommended
@@ -30,7 +30,7 @@ fi
 echo "### Creating dummy certificate for $domains ..."
 path="/etc/letsencrypt/live/$domains"
 mkdir -p "$data_path/conf/live/$domains"
-docker-compose -f docker-compose.dev.yml run --rm --entrypoint "\
+docker-compose -f docker-compose.test.yml run --rm --entrypoint "\
   openssl req -x509 -nodes -newkey rsa:$rsa_key_size -days 1\
     -keyout '$path/privkey.pem' \
     -out '$path/fullchain.pem' \
@@ -39,11 +39,11 @@ echo
 
 
 echo "### Starting nginx ..."
-docker-compose -f docker-compose.dev.yml up --force-recreate -d deliverycx_client
+docker-compose -f docker-compose.test.yml up --force-recreate -d deliverycx_client
 echo
 
 echo "### Deleting dummy certificate for $domains ..."
-docker-compose -f docker-compose.dev.yml run --rm --entrypoint "\
+docker-compose -f docker-compose.test.yml run --rm --entrypoint "\
   rm -Rf /etc/letsencrypt/live/$domains && \
   rm -Rf /etc/letsencrypt/archive/$domains && \
   rm -Rf /etc/letsencrypt/renewal/$domains.conf" certbot
@@ -66,7 +66,7 @@ esac
 # Enable staging mode if needed
 if [ $staging != "0" ]; then staging_arg="--staging"; fi
 
-docker-compose -f docker-compose.dev.yml run --rm --entrypoint "\
+docker-compose -f docker-compose.test.yml run --rm --entrypoint "\
   certbot certonly --webroot -w /var/www/certbot \
     $staging_arg \
     $email_arg \
@@ -74,8 +74,9 @@ docker-compose -f docker-compose.dev.yml run --rm --entrypoint "\
     -v \
     --rsa-key-size $rsa_key_size \
     --agree-tos \
-    --force-renewal" certbot
+    --force-renewal \
+		--dry-run" certbot
 echo
 
 echo "### Reloading nginx ..."
-docker-compose -f docker-compose.dev.yml exec proxy nginx -s reload
+docker-compose -f docker-compose.test.yml exec proxy nginx -s reload
