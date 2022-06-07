@@ -5,7 +5,7 @@ if ! [ -x "$(command -v docker-compose)" ]; then
   exit 1
 fi
 
-domains=(xn--80aafg6avvi.xn--80apgfh0ct5a.xn--p1ai,xn--d1acpqfji.xn--80apgfh0ct5a.xn--p1ai)
+domains=(xn--e1aybc.xn--80apgfh0ct5a.xn--p1ai,xn--90avg.xn--e1aybc.xn--80apgfh0ct5a.xn--p1ai)
 rsa_key_size=4096
 data_path="./certbot"
 email="" # Adding a valid address is strongly recommended
@@ -74,7 +74,8 @@ docker-compose -f docker-compose.dev.yml run --rm --entrypoint "\
     -v \
     --rsa-key-size $rsa_key_size \
     --agree-tos \
-    --force-renewal" certbot
+    --force-renewal \
+		--dry-run" certbot
 echo
 
 echo "### Reloading nginx ..."
