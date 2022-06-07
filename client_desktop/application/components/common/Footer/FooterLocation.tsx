@@ -5,7 +5,7 @@ const FooterLocation = () => {
     const useCaseLocationHeader = adapterComponentUseCase(useHeaderLocations);
     const { selectedPoint } = useCaseLocationHeader.data;
     const {handlerHeader } = useCaseLocationHeader.handlers;
-    console.log('selectedPoint', selectedPoint);
+
     return (
         <div className="header_adress-info" onClick={handlerHeader}>
             <div className="footer_box-title">{selectedPoint.city}</div>
