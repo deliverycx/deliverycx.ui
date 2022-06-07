@@ -11,7 +11,6 @@ const ReserveModal = ({onClose}:any) => {
                 </div>
                 <div className="modals_title"><span>Забронировать</span> стол</div>
                 <ReserveModalRows />
-                
             </div>
         </div>
     )

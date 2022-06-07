@@ -20,8 +20,6 @@ export function useReserveModal(this: any) {
     initialStateReserve
   );
 
-    console.log('point', point);
-
     const initialValues: Tvalue = {
         fullname: "",
         phone: "",
@@ -50,6 +48,13 @@ export function useReserveModal(this: any) {
 		meta.resetForm()
   }
 
+  const onCloseSuccessHandler = () => {
+      dispatchReserve({
+          type: ReducerActionTypePoints.setStatus,
+          payload: null
+      })
+  }
+
   const formik = useFormik({
     initialValues,
     validationSchema: shemaReserve(),
@@ -61,7 +66,8 @@ export function useReserveModal(this: any) {
         formik,
         point,
         stateReserve,
-        ReducerActionTypePoints
+        ReducerActionTypePoints,
+        onCloseSuccessHandler
     });
     this.handlers({
         dispatchReserve

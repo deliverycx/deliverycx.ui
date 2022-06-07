@@ -3,7 +3,7 @@ import { ReducerAction } from ".";
 export const initialStateReserve = {
     dateValue: "",
     timeValue: "",
-    sucsess: null
+    success: null
 };
 type typeinitialState = typeof initialStateReserve
 
@@ -26,13 +26,14 @@ export function ReserveReducer(state: typeinitialState, action: ReducerAction<Re
         ...state,
         timeValue: action.payload,
     };
-		case ReducerActionTypePoints.setStatus:
-      return {
-        ...state,
-        timeValue: "",
-				dateValue:"",
-				sucsess:action.payload
-    };
+      case ReducerActionTypePoints.setStatus:
+          console.log('action.payload', action.payload);
+          return {
+              ...state,
+              timeValue: "",
+              dateValue: "",
+              success: action.payload
+          };
 
     default:
       return state

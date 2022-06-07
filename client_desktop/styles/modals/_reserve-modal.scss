@@ -167,3 +167,87 @@
     display: none !important;
   }
 }
+
+.ded-popup {
+  display: block;
+  position: fixed;
+  left: 0;
+  right: 0;
+  top: 20%;
+  margin: 0 auto;
+  max-width: 475px;
+  box-shadow: 0px 31px 60px rgb(0 0 0 / 5%), 0px 11.9407px 19.1111px rgb(0 0 0 / 3%), 0px 2.52593px 4.88889px rgb(0 0 0 / 2%);
+  border-radius: 30px;
+  background: #FFFFFF;
+  z-index: 999;
+
+  .popup-container {
+    padding: 5% 5% 0;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
+
+    .close-btn {
+      background-image: url("/images/reserve/close.svg");
+      background-size: 100%;
+      background-repeat: no-repeat;
+      background-position: center;
+      width: 32px;
+      height: 32px;
+      display: flex;
+      align-self: end;
+    }
+
+    .popup-check {
+      background-image: url("/images/reserve/check.svg");
+      background-size: 100%;
+      background-repeat: no-repeat;
+      background-position: center;
+      width: 90px;
+      height: 90px;
+      display: flex;
+      align-self: center;
+      margin-top: 10px;
+    }
+
+    .popup-info {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      margin-top: 20px;
+
+      .sent {
+        font-family: Manrope, sans-serif;
+        font-size: 26px;
+        font-weight: 400;
+        text-align: center;
+
+        span {
+          color: #8D191D;
+        }
+      }
+      .admin {
+        font-family: Manrope, sans-serif;
+        font-size: 15px;
+        font-weight: 400;
+        text-align: center;
+        margin-top: 5px;
+      }
+    }
+
+    .ded {
+      background-image: url("/images/reserve/ded.svg");
+      background-size: 100%;
+      background-repeat: no-repeat;
+      background-position: center;
+      width: 364px;
+      height: 256px;
+      display: flex;
+      align-self: center;
+      margin-top: 36px;
+    }
+  }
+}
