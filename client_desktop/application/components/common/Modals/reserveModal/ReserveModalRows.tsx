@@ -1,26 +1,18 @@
-import { adapterComponentUseCase } from "adapters/adapterComponents";
 import MobileTimePicker from '@mui/lab/MobileTimePicker';
 import TextField from '@mui/material/TextField';
-import React, { FC, useState } from "react";
+import React from "react";
 import LocalizationProvider from '@mui/lab/LocalizationProvider';
 import AdapterDateFns from '@mui/lab/AdapterDateFns';
 import ruLocale from 'date-fns/locale/ru';
 import { MobileDatePicker } from '@mui/x-date-pickers/MobileDatePicker';
 import { Field, FormikProvider } from "formik";
 import InputMask from "react-input-mask";
-import { useReserveModal } from "domain/use-case/useCaseWebhook";
 import FormFieldWrapper from "../../Forms/FormFieldWrapper";
 import { compareAsc, format } from 'date-fns'
-import Modals from "../Modals";
-import SuccessReserveModal from "./SuccessReserveModal";
 
-
-const ReserveModalRows = () => {
-  const useCaseReserve = adapterComponentUseCase(useReserveModal)
-  const {formik,point,ReducerActionTypePoints,stateReserve} = useCaseReserve.data
-  const {dispatchReserve} = useCaseReserve.handlers
+const ReserveModalRows = ({reserveProps}:any) => {
+    const {formik,point,ReducerActionTypePoints,stateReserve,dispatchReserve} = reserveProps
     const now = Date.now();
-    console.log('stateReserve.success', stateReserve)
 
   return (
       <FormikProvider value={formik}>
@@ -166,11 +158,6 @@ const ReserveModalRows = () => {
               >
                   Забронировать
               </button>
-              {stateReserve.success &&
-                  <Modals>
-                      <SuccessReserveModal />
-                  </Modals>
-              }
               {
                   stateReserve.success === false && typeof stateReserve.success !== null &&
                   <div className="error">Произошла ошибка</div>

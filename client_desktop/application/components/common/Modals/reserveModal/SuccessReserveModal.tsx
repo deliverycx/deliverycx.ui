@@ -1,16 +1,11 @@
 import React from "react";
-import { adapterComponentUseCase } from "../../../../../adapters/adapterComponents";
-import { useReserveModal } from "../../../../../domain/use-case/useCaseWebhook";
 
-const SuccessReserveModal = ({onCloseReserveModal}:any) => {
-    const useCaseReserve = adapterComponentUseCase(useReserveModal)
-    const {onCloseSuccessHandler} = useCaseReserve.data
+const SuccessReserveModal = ({onCloseSuccessHandler}:any) => {
 
     return (
         <div className="ded-popup">
             <div className="popup-container">
                 <div className="close-btn" onClick={() =>{
-                    console.log('closws');
                     onCloseSuccessHandler()
                 }}></div>
                 <div className="popup-check"></div>
