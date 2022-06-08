@@ -17,6 +17,7 @@ const Stocks = () => {
 	const getStocks = async () =>{
 		try {
 			const {data} = await RequestAdmin.bannersList(point.guid)
+			console.log(data);
 			if(data){
 				setBaners(data)
 			}else{
