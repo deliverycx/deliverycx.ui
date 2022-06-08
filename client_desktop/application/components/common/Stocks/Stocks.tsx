@@ -1,11 +1,43 @@
-import { memo, useState } from "react";
+import { memo, useEffect, useState } from "react";
 import StockItem from "./Stocksitem";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
+import { RequestAdmin } from "servises/repository/Axios/RequestAdmin";
+import { adapterSelector } from 'servises/redux/selectors/selectors';
+import LoaderProduct from "../Loaders/loaderProduct";
+import { imgRout, imgRoutDef } from "application/helpers/imgInit";
+import StocksItem from "./Stocksitem";
 
 
 const Stocks = () => {
+	const [baners,setBaners] = useState<any | null>(null)
+	const point = adapterSelector.useSelectors((selector) => selector.point);
+
+	const getStocks = async () =>{
+		try {
+			const {data} = await RequestAdmin.bannersList(point.guid)
+			if(data){
+				setBaners(data)
+			}else{
+				const result = await RequestAdmin.bannersList('all')
+				if(result.data){
+					setBaners(result.data)
+				}else{
+					setBaners(null)
+				}
+			}
+		} catch (error) {
+			console.log(error);
+		}
+		
+	}
+
+	console.log(baners);
+
+	useEffect(()=>{
+		point.guid && getStocks()
+	},[point.guid])
 
     const settings = {
         className: "center",
@@ -19,14 +51,19 @@ const Stocks = () => {
 
     return (
         <div className="stocks">
-            <Slider {...settings}>
-                <StockItem content={'stocks/stok1.png'} />
-                <StockItem content={'stocks/stok2.png'} />
-                <StockItem content={'stocks/stok3.png'} />
-                <StockItem content={'stocks/stok4.png'} />
-                <StockItem content={'stocks/stok5.png'} />
-                <StockItem content={'stocks/stok6.png'} />
-            </Slider>
+						{
+							baners 
+							? <Slider {...settings}>
+										{
+											baners.images.map((val:string)=>{
+												return <StocksItem key={val} content={imgRoutDef(val)} />
+											})
+											
+										}
+								</Slider>
+							: <LoaderProduct />
+						}
+            
         </div>
     )
 };

@@ -30,7 +30,7 @@ type Iparams = {
  * @returns AxiosRequest
  */
 export abstract class ApiSuper {
-    protected readonly api: AxiosInstance = Api.getInstance.api;
+    protected readonly api: AxiosInstance = Api.getInstance(process.env.NEXT_PUBLIC_API_URL as string).api;
     protected params = {};
     protected request<T>(url: string): AxiosPromise<T> {
         return this.api({
@@ -38,6 +38,17 @@ export abstract class ApiSuper {
             url
         });
     }
+}
+
+export abstract class ApiAdminSuper {
+	protected readonly api: AxiosInstance = Api.getInstance(process.env.NEXT_PUBLIC_ADMIN as string).api;
+	protected params = {};
+	protected request<T>(url: string): AxiosPromise<T> {
+			return this.api({
+					...this.params,
+					url
+			});
+	}
 }
 
 /**

@@ -8,13 +8,12 @@ import axios, {
 
 class AxiosCreate {
     static _instanse: null | AxiosCreate = null;
-    private URL: string = process.env.NEXT_PUBLIC_API_URL as string;
     api: AxiosInstance;
 
-    private constructor() {
+    private constructor(URL:string) {
         this.api = axios.create({
             withCredentials: true,
-            baseURL: this.URL
+            baseURL: URL
         });
 
         this.api.interceptors.response.use(
@@ -37,11 +36,14 @@ class AxiosCreate {
         });
         /**/
     }
-    static get getInstance() {
+    static getInstance(url:string) {
+			return new AxiosCreate(url)
+				/*
         if (!AxiosCreate._instanse) {
-            AxiosCreate._instanse = new AxiosCreate();
+            AxiosCreate._instanse = new AxiosCreate(url);
         }
         return AxiosCreate._instanse;
+				*/
     }
 }
 

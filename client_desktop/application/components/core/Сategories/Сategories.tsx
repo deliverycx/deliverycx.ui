@@ -31,17 +31,16 @@ const Categories = () => {
           <LogoMini/>
         {
           (!isFetching && categories) &&
-          categories.map((category: ICategory, i: number) => {
-            if (category.name !== "Избранное") {
-              const CN = cn("categories__item", { active: currentSlide === i });
-              return (
-                <Link
-                  key={i}
-                  className="categories__item"
-                  activeClass="active"
-                  to={category.id} spy={true} smooth={true} offset={-160} duration={500}
-                  onClick={() => handleSliderClick(i, slider, category)}
-                >
+    categories.map((category: ICategory, i: number) => {
+          if (category.name !== 'Избранное') {
+          const CN = cn("categories__item", { active: currentSlide === i });
+          return (
+          <Link
+          key={i}
+          className={CN}
+          to={category.id} smooth={true} offset={-160}
+          onClick={() => handleSliderClick(i, slider)}
+          >
                   <LinkNext href={`${ROUTE_APP.MENU}?cat=${category.id}`}>
                     <div className="categories__item__content-wrapper">
                       <div className="categories__item__img-wrap">

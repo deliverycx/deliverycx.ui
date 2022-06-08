@@ -1,28 +1,43 @@
 import React, { useState } from "react";
-import CartSmallButton from "../../../core/Cart/HOC_CartSmall/view/CartSmallButton";
 import Modals from "../Modals";
-import CartSmallList from "../../../core/Cart/HOC_CartSmall/view/CartSmallList";
 import ReserveModal from "./ReserveModal";
+import SuccessReserveModal from "./SuccessReserveModal";
 import { adapterComponentUseCase } from "../../../../../adapters/adapterComponents";
-import { useCartSmall } from "../../../../../domain/use-case/useCaseCart";
+import { useReserveModal } from "../../../../../domain/use-case/useCaseWebhook";
 
 const ReserveModalBtnContainer = () => {
-    const [isModalOpen, setIsModalOpen] = useState(false);
+    const [isModalOpen, setIsModalOpen] = useState(false)
+    const useCaseReserve = adapterComponentUseCase(useReserveModal)
+    const {formik,point,ReducerActionTypePoints,stateReserve, onCloseSuccessHandler} = useCaseReserve.data
+    const {dispatchReserve} = useCaseReserve.handlers
+
+    const reserveProps = {
+        formik,point,ReducerActionTypePoints,stateReserve,dispatchReserve
+    }
+
+    const modalsCloseHandler = () => {
+        setIsModalOpen(false)
+        onCloseSuccessHandler()
+    }
 
     return (
         <>
-            <button className="reserve-btn" onClick={()=> setIsModalOpen(true)}>
+            <button className="reserve-btn" onClick={() => setIsModalOpen(true)}>
                 Забронировать стол
             </button>
-            {/*<CartSmallButton modal={reserveModalHandler} />*/}
             {
                 isModalOpen &&
-                <Modals onClose={() => setIsModalOpen(false)}>
-                    <ReserveModal onClose={() => setIsModalOpen(false)} />
+                <Modals onClose={() => modalsCloseHandler()}>
+                    <ReserveModal reserveProps={reserveProps} onClose={() => setIsModalOpen(false)} />
+                </Modals>
+            }
+            {stateReserve.success &&
+                <Modals>
+                    <SuccessReserveModal onCloseSuccessHandler={modalsCloseHandler} />
                 </Modals>
             }
         </>
-    )
-}
+    );
+};
 
 export default ReserveModalBtnContainer;
