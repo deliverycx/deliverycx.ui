@@ -6,9 +6,11 @@ import { adapterComponentUseCase } from "adapters/adapterComponents";
 import { useCategories } from "domain/use-case/useCaseCategories";
 import LoaderProduct from "application/components/common/Loaders/loaderProduct";
 import { Link, Element, Events, animateScroll as scroll, scrollSpy, scroller } from 'react-scroll'
+import LinkNext from 'next/link'
 import { imgRout } from "application/helpers/imgInit";
 import CartSmall from "../Cart/HOC_CartSmall/HOC.CartSmall";
 import LogoMini from "../Shop/Presentation/LogoMini";
+import { ROUTE_APP } from "../../../contstans/route.const";
 
 const Categories = () => {
   const slider = useRef<typeof Slider>(null);
@@ -29,27 +31,29 @@ const Categories = () => {
           <LogoMini/>
         {
           (!isFetching && categories) &&
-            categories.map((category: ICategory, i: number) => {
-              if (category.name !== 'Избранное') {
-                const CN = cn("categories__item", { active: currentSlide === i });
-                return (
-                  <Link
-                    key={i}
-                    className="categories__item"
-                    activeClass="active"
-                    to={category.id} spy={true} smooth={true} offset={-160} duration={500}
-                    onClick={() => handleSliderClick(i, slider)}
-                    >
+          categories.map((category: ICategory, i: number) => {
+            if (category.name !== "Избранное") {
+              const CN = cn("categories__item", { active: currentSlide === i });
+              return (
+                <Link
+                  key={i}
+                  className="categories__item"
+                  activeClass="active"
+                  to={category.id} spy={true} smooth={true} offset={-160} duration={500}
+                  onClick={() => handleSliderClick(i, slider, category)}
+                >
+                  <LinkNext href={`${ROUTE_APP.MENU}?cat=${category.id}`}>
                     <div className="categories__item__content-wrapper">
-          						<div className="categories__item__img-wrap">
-          							<div>
+                      <div className="categories__item__img-wrap">
+                        <div>
                           <img src={imgRout(category.image)} alt={category.name} />
-          							</div>
-          						</div>
-          						<div className="categories__item__title">{category.name}</div>
-          					</div>
-                  </Link>
-                );
+                        </div>
+                      </div>
+                      <div className="categories__item__title">{category.name}</div>
+                    </div>
+                  </LinkNext>
+                </Link>
+              );
             }
           })
         }
