@@ -18,13 +18,14 @@
 	.tomap{
 		display: inline-block;
 		font-size: 13px;
+		font-weight: 500;
 		line-height: 16px;
 		padding-bottom: 0px;
-		color: #132A3E;
+		color: #666666;
 		height: 18px;
 		margin-top: 8px;
 		cursor: pointer;
-		border-bottom: 1px dotted #132A3E;
+		border-bottom: 0.75px dotted #666666;
 		&::before{
 			content: "";
 			display: inline-block;
@@ -35,6 +36,7 @@
 		}
 		&:hover{
 			border: none;
+			color: #333333;
 		}
 	}
 	.serch_city{

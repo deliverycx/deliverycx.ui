@@ -47,7 +47,7 @@ const Header = () => {
 												<ReserveModalBtnContainer/>
 											</>
 										}
-										
+
                 </div>
                 <div className="header_menu">
                     <a className={menuLinkWithColorCN} onClick={() => heandleToMenu()}>
@@ -59,7 +59,7 @@ const Header = () => {
                     <a className={mapColorCN} onClick={()=> dispatch(setMapModal(true))}>
                         Старик Хинкалыч на карте
                     </a>
-                    <a className="header_menu_link_franchise" href={'https://франшиза.хинкалыч.рф/'} target={'_blank'} rel="noreferrer">
+                    <a className="header_menu_link" href={'https://франшиза.хинкалыч.рф/'} target={'_blank'} rel="noreferrer">
                         Франшиза
                     </a>
                 </div>
