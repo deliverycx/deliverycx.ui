@@ -27,39 +27,39 @@ const Categories = () => {
   return (
     <div className="categories">
       <div className="container">
-      <div className="categories_flex">
-          <LogoMini/>
-        {
-          (!isFetching && categories) &&
-    categories.map((category: ICategory, i: number) => {
-          if (category.name !== 'Избранное') {
-          const CN = cn("categories__item", { active: currentSlide === i });
-          return (
-          <Link
-          key={i}
-          className={CN}
-          to={category.id} smooth={true} offset={-160}
-          onClick={() => handleSliderClick(i, slider)}
-          >
-                  <LinkNext href={`${ROUTE_APP.MENU}?cat=${category.id}`}>
-                    <div className="categories__item__content-wrapper">
-                      <div className="categories__item__img-wrap">
-                        <div>
-                          <img src={imgRout(category.image)} alt={category.name} />
+        <div className="categories_flex">
+          <LogoMini />
+          {
+            (!isFetching && categories) &&
+            categories.map((category: ICategory, i: number) => {
+              if (category.name !== "Избранное") {
+                const CN = cn("categories__item", { active: currentSlide === i });
+                return (
+                  // <LinkNext href={`${ROUTE_APP.MENU}?cat=${category.id}`}>
+                  <Link
+                    key={i}
+                    className={CN}
+                    to={category.id} smooth={true} offset={-160}
+                    onClick={() => handleSliderClick(i, slider)}
+                  >
+                      <div className="categories__item__content-wrapper">
+                        <div className="categories__item__img-wrap">
+                          <div>
+                            <img src={imgRout(category.image)} alt={category.name} />
+                          </div>
                         </div>
+                        <div className="categories__item__title">{category.name}</div>
                       </div>
-                      <div className="categories__item__title">{category.name}</div>
-                    </div>
-                  </LinkNext>
-                </Link>
-              );
-            }
-          })
-        }
+                  </Link>
+                  // </LinkNext>
+                );
+              }
+            })
+          }
           <div className="categories__item__cart">
-              <CartSmall />
+            <CartSmall />
           </div>
-      </div>
+        </div>
       </div>
     </div>
   )
