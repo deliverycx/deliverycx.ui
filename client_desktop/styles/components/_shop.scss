@@ -30,7 +30,7 @@
 			color: #333333;
 			text-align: center;
 		}
-		
+
 	}
 	.shop_grid__item-option{
 		display: flex;
@@ -46,7 +46,7 @@
 			font-size: 21px;
 			color: #8D191D;
 		}
-		
+
 	}
 	.shop_grid__item:nth-child(4n){
 		margin-right: 0;
@@ -55,18 +55,18 @@
 
 .more_shop{
 	display: block;
-	background-color: #8D191D;
+	width: 175px;
+	border: 1px solid #666666;
+	color: #666666;
 	border-radius: 100px;
 	text-align: center;
-	color: #fff !important;
-	height: 56px;
-	line-height: 56px;
-	width: 220px;
 	margin-bottom: 40px;
 	cursor: pointer;
-	transition: all 0.3s;
+	padding: 9px 45px;
 	&:hover{
-		background-color: #75151C;
+		border-color: #333333;
+		color: #333333;
+		font-weight: 600;
 	}
 }
 

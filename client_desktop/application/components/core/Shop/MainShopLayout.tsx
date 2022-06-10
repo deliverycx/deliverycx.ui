@@ -11,18 +11,17 @@ const MainShopLayout = () => {
     <>
       <Categories />
       <div className="space">
-        
         <div className="container">
           <MainShopList />
           {
             checkPoint(false) &&
             <Link href={ROUTE_APP.MENU}><a href="" className='more_shop'>Показать ещё</a></Link>
-          } 
+          }
           <SlideBar />
-        </div>  
+        </div>
       </div>
       <ShopProductCard />
-      
+
     </>
   )
 }
