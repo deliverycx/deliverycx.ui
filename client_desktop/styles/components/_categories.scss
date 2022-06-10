@@ -63,6 +63,15 @@
 				border: 2px solid #CCCCCC;
 				border-radius: 15px;
 			}
+
+			.categoriesCartVisible:hover {
+				background-color: #8D191D;
+				overflow: hidden;
+				border:none;
+				.cart-icon {
+					background-image: url('/images/icon/carts/hoverCart.svg');
+				}
+			}
 		}
 		.header_cart {
 			display: none;

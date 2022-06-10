@@ -140,6 +140,12 @@
 			background-repeat: no-repeat;
 			background-position: center;
 		}
+		.header_cart:hover {
+			background-color: #8D191D;
+			overflow: hidden;
+			border:none;
+			background-image: url('/images/icon/carts/hoverCart.svg');
+		}
 		.fixcart{
 			position: fixed !important;
 			bottom: 20px;
