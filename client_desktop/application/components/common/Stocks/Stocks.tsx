@@ -16,10 +16,10 @@ const Stocks = () => {
 
 	const getStocks = async () =>{
 		try {
-			const {data} = await RequestAdmin.bannersList(point.guid)
-			console.log(data);
-			if(data){
-				setBaners(data)
+			const result1:any = await RequestAdmin.bannersList(point.guid)
+			
+			if(result1.data.length !== 0){
+				setBaners(result1.data)
 			}else{
 				const result = await RequestAdmin.bannersList('all')
 				if(result.data){
@@ -34,7 +34,6 @@ const Stocks = () => {
 		
 	}
 
-	console.log(baners);
 
 	useEffect(()=>{
 		point.guid && getStocks()
@@ -56,8 +55,8 @@ const Stocks = () => {
 							baners 
 							? <Slider {...settings}>
 										{
-											baners.images.map((val:string)=>{
-												return <StocksItem key={val} content={imgRoutDef(val)} />
+											baners.sort((a:any,b:any) => (a.order - b.order)).map((val:any)=>{	
+												return <a key={val._id} className="stocks__item"  href={val.url}><StocksItem  content={imgRoutDef(val.images[0])} /></a>
 											})
 											
 										}
