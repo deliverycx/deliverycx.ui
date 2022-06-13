@@ -52,7 +52,7 @@ const NewsItem = () => {
 												return (
 													<div key={val._id} className="coruselus">
             <div className="about-comp_grind-item">
-							<a href={val.url}><img  className="about-comp_grind-item--img" src={imgRoutDef(val.images[0])} /></a>
+							<a href={val.url}><img  className="about-comp_grind-item--img" src={imgRoutDef(val.smallimages[0])} /></a>
             </div>
         </div>
 												)
