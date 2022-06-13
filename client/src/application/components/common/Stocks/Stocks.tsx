@@ -6,13 +6,14 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css"; 
 import { adapterSelector } from "servises/redux/selectors/selectors";
 import { RequestAdmin } from "servises/repository/Axios/RequestAdmin";
+import { imgRoutDef } from "application/helpers/imgInit";
 
 
 const Stocks = () => {
 
 		const [baners,setBaners] = useState<any | null>(null)
 		const point = adapterSelector.useSelectors((selector) => selector.point);
-		console.log(point);
+		console.log(baners);
 
 		const getStocks = async () =>{
 			try {
@@ -53,15 +54,15 @@ const Stocks = () => {
       };
     return (
         <div className="stocks">
+
           <Slider {...settings}>
-								<StockItem content={'stock15.png'} />
-								<StockItem content={'stock14.png'} />
-                <StockItem content={'stock6.png'} />
-                
-                <StockItem content={'stock3.png'} />
-                <StockItem content={'stock4.png'} />
-                
-                <StockItem content={'stock7.png'} />
+									{
+											baners &&
+											baners.sort((a:any,b:any) => (a.order - b.order)).map((val:any)=>{	
+												return <a key={val._id} className="stocks__item"  href={val.url}><StockItem  content={imgRoutDef(val.images[0])} /></a>
+											})
+											
+									}
             </Slider>
             
         </div>

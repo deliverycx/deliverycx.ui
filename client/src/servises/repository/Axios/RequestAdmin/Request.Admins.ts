@@ -1,4 +1,3 @@
-import { IReverveTable } from "@types"
 import { ApiAdminSuper, ApiSuper, methods } from "../AxiosApi"
 
 

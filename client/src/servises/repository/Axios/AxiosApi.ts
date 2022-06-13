@@ -40,7 +40,7 @@ export abstract class ApiSuper {
     }
 }
 export abstract class ApiAdminSuper {
-	protected readonly api: AxiosInstance = Api.getInstance(process.env.REACT_APP_ADMIN as string).api;
+	protected readonly api: AxiosInstance = Api.getInstance(process.env.REACT_APP_API_ADMIN as string).api;
 	protected params = {};
 	protected request<T>(url: string): AxiosPromise<T> {
 			return this.api({
