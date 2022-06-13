@@ -105,11 +105,12 @@
 
 // блоки перед футером
 .about_comp-switch{
+	font-family: sf-ui, sans-serif;
 	display: flex;
-	background: #DFDFDF;
+	background: #CCCCCC;
 	border-radius: 200px;
 	padding: 10px;
-	width: 430px;
+	width: 437px;
 	.link_news{
 		display: block;
 		border-radius: 100px;
@@ -117,22 +118,28 @@
 		align-items: center;
 		line-height: 50px;
 		padding: 0px 30px;
-		color: #666666 !important;
 		cursor: pointer;
+		color: #666666;
+		font-weight: 500;
+	}
+	.link_news:hover {
+		color: #333333;
 	}
 	.active{
-		background: #fff;
-		color: #132A3E;
+		background: #FFF;
+		color: #333333;
 		a{
 			color: #8D191D;;
 		}
+	}
+	.active:hover {
+		color: #333333;
 	}
 }
 .about-comp_grind{
 	display: flex;
 	justify-content: space-between;
-	margin: 0 20px;
-	margin-top: 30px;
+	margin: 30px 20px 0;
 	.about-comp_grind-item{
 		width: 30%;
 		border-radius: 30px;
@@ -147,8 +154,7 @@
 		height: 56px;
 		line-height: 56px;
 		width: 70%;
-		margin: 0 15%;
-		margin-bottom: 30px;
+		margin: 0 15% 30px;
 		cursor: pointer;
 		transition: all 0.3s;
 		&:hover{
