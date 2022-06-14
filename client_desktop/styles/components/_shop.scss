@@ -102,16 +102,22 @@
 	width: 48px;
 	height: 48px;
 	border: none;
-	background: none;
 	cursor: pointer;
-	@include bgImage('/images/icon/add-item.png')
+	background: url("/images/icon/add-item.svg") no-repeat;
+	justify-content: center;
+	align-items: center;
 }
 .product-card__add{
 	width: 56px;
 	height: 56px;
 	border: none;
-	background: none;
 	cursor: pointer;
+	background: url("/images/icon/add-item-btn.svg");
+	justify-content: center;
+	align-items: center;
+}
+
+.product-card__add:hover{
 	@include bgImage('/images/icon/add_to-big.svg')
 }
 @media screen and (max-width: 1024px){

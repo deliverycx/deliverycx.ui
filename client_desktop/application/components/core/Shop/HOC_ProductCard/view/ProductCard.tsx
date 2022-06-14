@@ -16,7 +16,7 @@ const ProductCard:FC<IProps> = ({product,onClose}) => {
       product && (
       <div className="product_card">
     		<div className="product_card-container">
-          
+
     			<div className="close" onClick={onClose}>
     				<img src="/images/icon/close.png" alt=""/>
     			</div>
@@ -25,7 +25,7 @@ const ProductCard:FC<IProps> = ({product,onClose}) => {
     					<img src={imgRout(product.image)} alt=""/>
     				</div>
     			</div>
-          
+
     			<div className="product_card__item__content">
             <section>
       				<div className="product_card__item-title">{product.name}</div>
@@ -60,7 +60,7 @@ const ProductCard:FC<IProps> = ({product,onClose}) => {
     						</div>
     					</div>
     				</div>
-               * 
+               *
                */
             }
     				<div className="product_card__option">
@@ -80,11 +80,7 @@ const ProductCard:FC<IProps> = ({product,onClose}) => {
       						<div className="count-option__increment"><img src="/images/icon/plus.svg" alt="плюс"/></div>
       					</div>
               }
-    					
-    					
-              <AddToCart id={product.id} groupImage={product.categoryImage} _class={"product-card__add"}>
-                <img className="add_to" src="/images/icon/add_to-big.svg" alt=""/>
-              </AddToCart>
+              <AddToCart id={product.id} groupImage={product.categoryImage} _class={"product-card__add"}/>
     				</div>
     			</div>
     		</div>
@@ -92,7 +88,7 @@ const ProductCard:FC<IProps> = ({product,onClose}) => {
       )
     }
     </>
-    
+
   )
 }
 export default ProductCard
