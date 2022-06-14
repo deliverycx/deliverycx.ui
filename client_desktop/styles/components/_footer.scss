@@ -51,11 +51,15 @@
 					width: 100%;
 					min-width: 380px;
 					padding: 14px 30px;
-					border: none;
+					border: 1px solid transparent;
 					border-radius: 30px;
 					color: #fff;
 					background: rgba(255, 255, 255, 0.1);
 					font-size: 14px;
+				}
+
+				.email-input.error {
+					border: 1px solid #8D191D;
 				}
 
 				.email-input::placeholder{
@@ -199,9 +203,6 @@
 				height: 100%;
 				margin: 0 10px;
 			}
-			.tg {
-				height: 90%;
-			}
 		}
 		.footer_box__subcrub{
 			display: flex;
@@ -268,7 +269,16 @@
 			}
 		}
 	}
+}
 
+.tg {
+	fill: #FFFFFF;
+	opacity:0.5;
+	transition: opacity 0.3s ease-in-out;
+}
+
+.tg:hover {
+	opacity: 1;
 }
 @media screen and (max-width: 1024px) {
 	.footer .footer_grid .footer_grid-left{

@@ -107,6 +107,10 @@
 	justify-content: center;
 	align-items: center;
 }
+
+.add-to-cart:hover {
+	background: url("/images/icon/add-item-green.svg") no-repeat;
+}
 .product-card__add{
 	width: 56px;
 	height: 56px;

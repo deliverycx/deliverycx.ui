@@ -14,11 +14,11 @@ type IProps = {
 
 const ShopProductItem: FC<IProps> = ({ products }) => {
     const { id, name, price, categoryImage, measureUnit, weight, description, image, isFav } = products
-    
+
     const useCasePoints = adapterComponentUseCase(useCaseShopItem,{id,isFav});
     const { cardRef,disableItem } = useCasePoints.data;
     const { clickItemHandler } = useCasePoints.handlers;
-    
+
     const CN = cn("shop_grid__item", { product__stoplist: disableItem})
 
     return (
@@ -28,27 +28,20 @@ const ShopProductItem: FC<IProps> = ({ products }) => {
                 {
                     disableItem && <div className="stoplist_title">Упс... <br/> закончилось</div>
                 }
-                
             </div>
             <div className="shop_grid__item__content">
-                
-            
                 <div className="shop_grid__item-title">
                     {name}
                 </div>
-                
-
-                
             </div>
             <div className="shop_grid__item-option">
                     <div>
                         <div className="measure">{measureUnit === "порц" ? `${convertWeight(weight)} г` : "1 шт"}</div>
                         <div className="price">{price} ₽</div>
                     </div>
-                   
-                    {!disableItem && <AddToCart id={id} _class={"add-to-cart"} groupImage={categoryImage} />} 
+                    {!disableItem && <AddToCart id={id} _class={"add-to-cart"} groupImage={categoryImage} />}
               </div>
-        </div>   
+        </div>
     )
 }
 export default ShopProductItem
