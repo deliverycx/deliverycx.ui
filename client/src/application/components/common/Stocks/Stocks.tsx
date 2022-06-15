@@ -13,7 +13,6 @@ const Stocks = () => {
 
 		const [baners,setBaners] = useState<any | null>(null)
 		const point = adapterSelector.useSelectors((selector) => selector.point);
-		console.log(baners);
 
 		const getStocks = async () =>{
 			try {
@@ -59,7 +58,7 @@ const Stocks = () => {
 									{
 											baners &&
 											baners.sort((a:any,b:any) => (a.order - b.order)).map((val:any)=>{	
-												return <a key={val._id} className="stocks__item"  href={val.url}><StockItem  content={imgRoutDef(val.images[0])} /></a>
+												return <a key={val._id} className="stocks__item"  href={val.url}><StockItem  content={imgRoutDef(val.mobimages[0])} /></a>
 											})
 											
 									}
