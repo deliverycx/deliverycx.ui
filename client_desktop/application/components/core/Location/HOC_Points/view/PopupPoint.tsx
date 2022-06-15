@@ -19,10 +19,9 @@ const PopupPoint = () => {
          <div className="location-container">
             <div className="welcome__select-adress__header ">
                <div className="prev" onClick={() => SlidePointsHandler("prev")}>
-                  <img
-                     src="/images/i/prev-btn.svg"
-                     alt="Предыдущее заведенеие"
-                  />
+                 <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                   <path d="M6.53816 12.5L1 7L6.53816 1.5M1.76984 6.99999L13 6.99999" stroke="#ABABAB" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+                 </svg>
                </div>
 
                 <div className="welcome__select-adress__adress">
@@ -30,10 +29,9 @@ const PopupPoint = () => {
                   Старик Хинкалыч
                </div>
                <div className="next" onClick={() => SlidePointsHandler("next")}>
-                  <img
-                     src="/images/i/next-btn.svg"
-                     alt="Следующее заведенеие"
-                  />
+                 <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                   <path d="M7.46184 12.5L13 7L7.46184 1.5M12.2302 6.99999L1 6.99999" stroke="#ABABAB" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+                 </svg>
                </div>
             </div>
 

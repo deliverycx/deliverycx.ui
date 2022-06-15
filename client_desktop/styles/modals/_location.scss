@@ -299,7 +299,16 @@
 			align-items: center;
 			justify-content: center;
 			border-radius: 50%;
-			border: 1px solid #CCCCCC;
+			border: 2px solid #CCCCCC;
+		transition: all 0.3s ease-in-out;
+	}
+	.prev:hover, .next:hover {
+		border-color: #666666;
+		svg{
+			path {
+				stroke:#666666
+			}
+		}
 	}
 	&__work-time{
 			color: #333;
@@ -342,6 +351,11 @@
 		font-size: 17px;
 		font-weight: 700;
 		margin-top: 25px;
+		transition: background-color 0.3s ease-in-out;
+	}
+	&__btn:hover {
+		background-color: #FDCB3D;
+		color: #333333;
 	}
 	&__counter{
 			display: flex;
