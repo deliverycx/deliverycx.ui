@@ -16,11 +16,11 @@ const PopupPoint = () => {
     {
       address &&  (
           <div className="welcome__select-adress opened">
-         <div className="container">
+         <div className="location-container">
             <div className="welcome__select-adress__header ">
                <div className="prev" onClick={() => SlidePointsHandler("prev")}>
                   <img
-                     src="/images/i/prev.svg"
+                     src="/images/i/prev-btn.svg"
                      alt="Предыдущее заведенеие"
                   />
                </div>
@@ -31,7 +31,7 @@ const PopupPoint = () => {
                </div>
                <div className="next" onClick={() => SlidePointsHandler("next")}>
                   <img
-                     src="/images/i/next.svg"
+                     src="/images/i/next-btn.svg"
                      alt="Следующее заведенеие"
                   />
                </div>
@@ -39,7 +39,7 @@ const PopupPoint = () => {
 
               <div className="welcome__select-adress__info phone">
               <img
-                  src="/images/i/timework.png"
+                  src="/images/i/clock.svg"
                   alt="Телефон заведения"
                />
                {address.workTime}
@@ -52,18 +52,17 @@ const PopupPoint = () => {
                />
                {address.address}
             </div>
-           {address.delivMetod && <span className="deliv-method">только самовывоз</span>}
-           {!address.delivMetod && <span className="deliv-method">самовывоз и доставка</span>}
             <div className="welcome__select-adress__info phone">
                <img
                   src="/images/i/phone-green.svg"
                   alt="Телефон заведения"
                />
-
                <a href={`tel: ${address.phone}`}>
                   {address.phone}
                </a>
             </div>
+           {address.delivMetod && <div className="deliv-method">Только самовывоз</div>}
+           {!address.delivMetod && <div className="deliv-method">Самовывоз и доставка</div>}
             {
               (recvisites && Object.keys(recvisites).length !== 0) && <div className="recvisites" onClick={()=>recvisitesHandler(true)}>Реквизиты компании</div>
             }

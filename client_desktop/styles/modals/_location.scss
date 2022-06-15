@@ -207,9 +207,9 @@
 }
 .welcome__map{
 	position: relative;
-	margin-top: 2%;
+	margin-top: 28px;
 	height: 400px;
-	border-radius: 25px;
+	border-radius: 30px;
 	overflow: hidden;
 	.welcome{
 		background-color: #fff;
@@ -256,17 +256,16 @@
 
 .welcome__select-adress{
 	position: absolute;
-	left: 10px;
-	top: 20px;
+	left: 15px;
+	top: 15px;
 	z-index: 99;
 	width: 350px;
-	height: 370px;
 	background-color: #fff;
 	padding: 24px 0;
 	text-align: center;
 	color: #fff;
 	font-size: 19px;
-	border-radius: 25px;
+	border-radius: 30px;
 	box-shadow: -1.45153px -30.966px 60px rgba(0, 0, 0, 0.25), -0.559108px -11.9276px 19.1111px rgba(0, 0, 0, 0.151852), -0.118273px -2.52316px 4.88889px rgba(0, 0, 0, 0.0981481);;
 	transition: bottom 0.6s cubic-bezier(0, -0.02, 0.54, 1.18);
 
@@ -285,6 +284,12 @@
 		color: #666666;
 		font-size: 11px;
 	}
+	.location-container {
+		max-width: 1230px;
+		padding: 0 30px 30px;
+		margin: 0 auto;
+	}
+
 	.prev,
 	.next{
 			cursor: pointer;
@@ -293,8 +298,8 @@
 			height: 36px;
 			align-items: center;
 			justify-content: center;
-			border-radius: 8px;
-			background-color: #efefef;
+			border-radius: 50%;
+			border: 1px solid #CCCCCC;
 	}
 	&__work-time{
 			color: #333;
@@ -303,41 +308,40 @@
 			margin-bottom: 15px;
 	}
 	&__info{
-			width: 100%;
-			padding: 9px 0;
-			background-color: #efefef;
-			margin-bottom: 15px;
-			color:#333;
-			font-size: 17px;
-			border-radius: 8px;
-			position: relative;
-
+		width: 100%;
+		padding: 15px 0;
+		background-color: #EFEFEF;
+		margin-bottom: 14px;
+		color: #333;
+		font-size: 15px;
+		border-radius: 100px;
+		position: relative;
+		font-weight: 500;
 			a{
-					font-family: Arial, Helvetica, sans-serif;
+					font-family: sf-ui, sans-serif;
 					color:#333;
 			}
 			img{
 					position: absolute;
-					left: 10px;
+					left: 16px;
 			}
-	}
-	.street {
-		margin-bottom: 5px;
 	}
 	.deliv-method{
 		color: #8D191D;
-		font-size: 16px;
+		font-size: 12px;
+		font-weight: 500;
+		margin: 25px 0;
 	}
 
 	&__btn{
-			width: 100%;
-			background-color: #8d191d;
-			padding: 25px 0;
-			cursor: pointer;
-			border-radius: 15px;
-			font-size: 21px;
-			font-weight: 500;
-			margin-top: 30px;
+		width: 100%;
+		background-color: #8d191d;
+		padding: 19.5px 0;
+		cursor: pointer;
+		border-radius: 100px;
+		font-size: 17px;
+		font-weight: 700;
+		margin-top: 25px;
 	}
 	&__counter{
 			display: flex;
