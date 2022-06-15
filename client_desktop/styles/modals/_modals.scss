@@ -5,14 +5,15 @@
 	cursor: pointer;
 }
 .modals-top_box{
-	margin-top: 30px;
+	//margin-top: 30px;
 	display: flex;
 	justify-content: space-between;
 }
 .modals_title{
 	font-size: 26px;
 	color: #132A3E;
-	font-family: $manrope;
+	//font-family: $manrope, sans-serif;
+	font-weight: 500;
 	span{
 		color: #8D191D;
 	}

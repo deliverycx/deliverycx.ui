@@ -7,13 +7,12 @@
 	margin: 0 auto;
 	max-width: 720px;
 	z-index: 9999;
-
 	box-shadow: 0px 31px 60px rgba(0, 0, 0, 0.05), 0px 11.9407px 19.1111px rgba(0, 0, 0, 0.0303704), 0px 2.52593px 4.88889px rgba(0, 0, 0, 0.0196296);
 	border-radius: 30px;
 	background: #FFFFFF;
 	.location_city-container{
 		position: relative;
-		padding:30px 40px;
+		padding: 50px;
 	}
 	.tomap{
 		display: inline-block;
@@ -32,26 +31,24 @@
 			margin-right: 5px;
 			width: 12px;
 			height: 12px;
-			@include bgImage('/images/icon/icon_tomap.png')
+			@include bgImage('/images/icon/topmap.svg')
 		}
 		&:hover{
 			border: none;
 			color: #333333;
 		}
 	}
-	.serch_city{
-		border: 1px solid #666666;
-		border-radius: 100px;
+	.search_city{
+		border: 1px solid #ABABAB;
+		border-radius: 30px;
 		width: 100%;
 		padding-left: 25px;
 		padding-right: 15px;
-		margin-top: 35px;
-		width: 100%;
+		margin-top: 16px;
 		display: flex;
 		justify-content: space-between;
 		position: relative;
 		input{
-			color: #fff;
 			border: none;
 			color: #666666;
 			font-size: 15px;
@@ -59,12 +56,18 @@
 			line-height: 48px;
 			width: 100%;
 		}
+		input::placeholder {
+			color: #ABABAB;
+			font-family: sf-ui, sans-serif;
+			font-weight: 500;
+			font-size: 15px;
+		}
 		button{
 			border: none;
 			width: 25px;
 			height: 48px;
 			background-color: transparent;
-			@include bgImage('/images/icon/serch-icon.png');
+			@include bgImage('/images/icon/search-icon.svg');
 			background-position: center center;
 		}
 		.serch_city-list{
@@ -92,8 +95,6 @@
 			}
 		}
 	}
-
-
 }
 .you_city{
 	margin-top: 25px;
@@ -113,7 +114,7 @@
 				display: inline-block;
 				width: 12px;
 				height: 12px;
-				@include bgImage('/images/icon/icon-city.png');
+				@include bgImage('/images/icon/icon-city.svg');
 			}
 		}
 	}
@@ -129,9 +130,9 @@
 	}
 }
 .you_city__points{
-	margin-top: 20px;
-	border-top: 1px solid #EFEFEF;
-	border-bottom: 1px solid #EFEFEF;
+	margin-top: 15px;
+	border-top: 1px solid #D9D9D9;
+	border-bottom: 1px solid #D9D9D9;
 	padding: 10px 0;
 
 	.points-title{
@@ -158,29 +159,30 @@
 		list-style: none;
 		padding:5px 0;
 		margin: 0;
-
 		max-height: 180px;
 		overflow-y: auto;
 
 		li{
+			padding-top: 16px;
+			padding-bottom: 16px;
+			padding-left: 20.3px;
 			width: calc(100% - 20px);
-			height: 36px;
-			margin-bottom: 5px;
 			font-size: 13px;
 			color: #333333;
 			cursor: pointer;
-			padding: 0 15px;
-			line-height: 36px;
+			font-weight: 500;
 			margin-right: 20px;
-			font-family: 'manrope';
+			font-family: sf-ui, sans-serif;
 		}
 		li.active{
-			background: #8D191D;
 			border-radius: 100px;
 			color: #FFFFFF;
 			font-weight: 600;
-			@include bgImage('/images/icon/ok-icon.png');
-			background-position: right 20px center;
+			background-color: #8D191D;
+			background-image: url('/images/icon/ok-icon.svg');
+			background-repeat: no-repeat;
+			background-position: 97%;
+
 			.onlypickup_small{
 				color: #fff;
 			}

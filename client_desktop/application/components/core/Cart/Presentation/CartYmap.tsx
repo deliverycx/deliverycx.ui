@@ -22,15 +22,15 @@ const placeMarkOption = {
 }
 
 const CartYmap = ({close}:any) => {
-  
+
   const city = useSelector((state: RootState) => state.location.point.city);
 
   const usecaseCartMap = adapterComponentUseCase(useCartMap,close)
   const { stateReduceMap,mapstate } = usecaseCartMap.data
   const { onMapTyping,getGeoLoc,onMapClick,hendleMapPopup } = usecaseCartMap.handlers
-  
-  const CN = cn("serch_city", { error_map: stateReduceMap.disclaimer })
-  
+
+  const CN = cn("search_city", { error_map: stateReduceMap.disclaimer })
+
   const SuggestComponent = useMemo(() => {
     return withYMaps(MapSuggestComponent, true, [
         "SuggestView",
@@ -38,10 +38,10 @@ const CartYmap = ({close}:any) => {
         "coordSystem.geo"
     ]);
   }, []);
-  
-  
-  
-  
+
+
+
+
   return (
     <div className="location_city location_Maps addres_map">
   		<div className="location_city-container">
@@ -66,8 +66,8 @@ const CartYmap = ({close}:any) => {
                     <div className="welcome">
                         <div className="welcome__header">
                                     <div className={CN}>
-                                        
-                                        
+
+
                                         {
                                             !stateReduceMap.inputMap
                                                 ? <div className="mapsPopup__value" onClick={() => onMapTyping().setInputMap(true)}>{stateReduceMap.valueMap}</div>
@@ -75,17 +75,17 @@ const CartYmap = ({close}:any) => {
                                         }
                                         <button></button>
                                     </div>
-                                    
-                                
+
+
 
                               {
 
-                                (city || stateReduceMap.valueMap) && 
+                                (city || stateReduceMap.valueMap) &&
                                 <div className="mapsPopup__button btn" onClick={hendleMapPopup}>Заказать доставку</div>
-                              }   
+                              }
 
-                                
-                            
+
+
                               </div>
                               {
                                 stateReduceMap.disclaimer && <div className="disclaimer">Не точный адрес, в ведите дом</div>
@@ -96,11 +96,11 @@ const CartYmap = ({close}:any) => {
                         options={placeMarkOption}
                         geometry={stateReduceMap.cord}
                     />
-                    
-                        
+
+
                 </Map>
       </YMaps>
-      
+
       </div>
 	  </div>
   )
