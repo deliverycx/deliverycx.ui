@@ -7,9 +7,9 @@ const ReserveModal = ({onClose, reserveProps}:any) => {
         <div className="reserve">
             <div className="reserve-container">
                 <div className="close" onClick={onClose}>
-                    <img src="/images/icon/close.png" alt="" />
+                    <img src="/images/icon/close.svg" alt="" />
                 </div>
-                <div className="modals_title"><span>Забронировать</span> стол</div>
+                <div className="modals_title">Забронировать стол</div>
                 <ReserveModalRows reserveProps={reserveProps}/>
             </div>
         </div>

@@ -154,7 +154,7 @@ const ReserveModalRows = ({reserveProps}:any) => {
               </LocalizationProvider>
               <button
                   type="submit"
-                  className="cart__order-btn btn"
+                  className="cart__order-btn btn reserve-btn"
               >
                   Забронировать
               </button>
