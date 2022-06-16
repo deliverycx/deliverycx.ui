@@ -18,7 +18,6 @@ const NewsItem = () => {
 		rows: 1,
 	};
 
-
 	const getStocks = async () =>{
 			try {
 				const result1:any = await RequestAdmin.bannersList(point.guid)
@@ -35,37 +34,35 @@ const NewsItem = () => {
 			} catch (error) {
 				console.log(error);
 			}
-			
-		}
 
+		}
 
 		useEffect(()=>{
 			getStocks()
 		},[point.guid])
-    return (
-			<>
+
+	return (
+		<>
+			{
+				baners
+					? <Slider {...settings}>
 						{
-							baners 
-							? <Slider {...settings}>
-										{
-											baners.sort((a:any,b:any) => (a.order - b.order)).map((val:any)=>{
-												return (
-													<div key={val._id} className="coruselus">
-            <div className="about-comp_grind-item">
-							<a href={val.url}><img  className="about-comp_grind-item--img" src={imgRoutDef(val.smallimages[0])} /></a>
-            </div>
-        </div>
-												)
-												
-												
-											})
-											
-										}
-								</Slider>
-							: <LoaderProduct />
+							baners.sort((a: any, b: any) => (a.order - b.order)).map((val: any) => {
+								return (
+									<div key={val._id} className="coruselus">
+										<div className="about-comp_grind-item">
+											<a href={val.url}><img className="about-comp_grind-item--img"
+																						 src={imgRoutDef(val.smallimages[0])} /></a>
+										</div>
+									</div>
+								);
+							})
 						}
-				</>
-    )
+					</Slider>
+					: <LoaderProduct />
+			}
+		</>
+	);
 }
 
 export default NewsItem;
