@@ -50,6 +50,8 @@
 	display: flex;
 	border-bottom: 2px solid #EFEFEF;
 	.cart_title{
+		font-family: Manrope, sans-serif;
+		font-weight: 600;
 		font-size: 26px;
 		color: #132A3E;
 		padding-bottom: 20px;
@@ -162,9 +164,8 @@
 .cart__order-btn.btn{
 	width: 100%;
 	background: #8D191D;
-	border-radius: 100px;
-	height: 50px;
-	line-height: 50px;
+	border-radius: 65px;
+	padding: 21.5px;
 	text-align: center;
 	color: #fff;
 	font-size: 17px;
@@ -173,7 +174,8 @@
 	transition: all 0.3s;
 	cursor: pointer;
 	&:hover{
-		opacity: 0.9;
+		background: #FDCB3D;
+		color: #333333;
 	}
 	&[disabled] {
 		filter: grayscale(1);
