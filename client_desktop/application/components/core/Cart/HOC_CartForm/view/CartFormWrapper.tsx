@@ -23,7 +23,7 @@ export const FormWrapper = (formik: any,usecase?:any): IWrapper => {
   const { selectPayment, choicePayment,setShowMap } = usecase.handlers
   return {
     paymentPopup() {
-      
+
       return (
         <FormFieldWrapper
           placeholderIco="images/i/card-red.svg"
@@ -33,18 +33,18 @@ export const FormWrapper = (formik: any,usecase?:any): IWrapper => {
           <div className="adress_fild__address" onClick={choicePayment}>{paymentMetod.value}</div>
           {
             //CartFormMetods.paymentsMetod[1].id === stateForm.payment.id
-            false && 
+            false &&
             <div className="addnew_cart" >
               <img src="images/i/credit_card.png" />
               <span>Добавить новую карту</span>
             </div>
           }
-          
+
         </FormFieldWrapper>
       )
     },
     paymentRadio(paymentsMetod) {
-      
+
       return (
         <div className="fild__box">
 					<div className="fild-lable">Способ оплаты</div>
@@ -63,10 +63,10 @@ export const FormWrapper = (formik: any,usecase?:any): IWrapper => {
                 )
               })
             }
-						
-           
+
+
           </div>
-					
+
 				</div>
       )
     },
@@ -102,14 +102,14 @@ export const FormWrapper = (formik: any,usecase?:any): IWrapper => {
       )
     },
     adress() {
-       
+
       return(
       <div className="adress_fild">
         <FormFieldWrapper
           placeholderIco="images/i/mark-red.svg"
-          placeholderValue="Где"
-          isValid={!formik.values.address.length ? true : false}
-          error={formik.errors.address ? true : false}
+          placeholderValue="Адрес доставки"
+          isValid={!formik.values.address.length}
+          error={!!formik.errors.address}
           errorValue={formik.errors.address}
         >
           <div className="adress_fild__address" onClick={() => setShowMap(true)}>

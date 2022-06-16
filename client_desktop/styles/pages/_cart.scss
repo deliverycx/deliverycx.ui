@@ -2,26 +2,31 @@
 	padding-bottom: 120px;
 }
 .cart_page-title{
-	font-size: 27px;
-	color: #132A3E;
+	font-size: 26px;
+	font-weight: 500;
+	color: #666666;
 	font-family: $manrope;
 	text-align: center;
 	margin-top: 10px;
-	span{
-		color: #8D191D;
-	}
 }
 .back_shop{
-	background: #EFEFEF;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	border: 2px solid #ABABAB;
 	border-radius: 200px;
 	font-size: 13px;
 	width: 175px;
 	height: 30px;
-	line-height: 30px;
-	color: #132A3E;
+	padding: 9px 0;
+	color: #ABABAB;
 	text-align: center;
 	margin-top: 25px;
 	cursor: pointer;
+	a {
+		color: #ABABAB;
+		font-weight: 500;
+	}
 }
 .cart_page-container{
 	display: flex;
