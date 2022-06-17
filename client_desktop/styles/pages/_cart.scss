@@ -10,6 +10,7 @@
 	margin-top: 10px;
 }
 .back_shop{
+	font-family: sf-ui-m, sans-serif;
 	display: flex;
 	justify-content: center;
 	align-items: center;
@@ -17,15 +18,21 @@
 	border-radius: 200px;
 	font-size: 13px;
 	width: 175px;
-	height: 30px;
-	padding: 9px 0;
+	height: 36px;
+	padding: 9px 31.5px;
 	color: #ABABAB;
 	text-align: center;
 	margin-top: 25px;
 	cursor: pointer;
 	a {
 		color: #ABABAB;
-		font-weight: 500;
+	}
+	&:hover {
+		border-color: #333333;
+		font-family: sf-ui-semibold, sans-serif;
+		a {
+			color: #333333;
+		}
 	}
 }
 .cart_page-container{
