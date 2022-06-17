@@ -42,7 +42,6 @@ const Stocks = () => {
 	// 	}
 	// }
 
-	console.log(point);
 
 
 	// useEffect(()=>{

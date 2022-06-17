@@ -16,10 +16,11 @@ export const staticCategories = {
 
 export function useCategories(this: any) {
   const dispatch = useDispatch();
+	const [catid,setCatId] = useState('')
   const [currentSlide, setCurrentSlide] = useState<number>(0) 
-  const {id} = adapterSelector.useSelectors<IPoint>(selector => selector.point)
+  const {id,guid} = adapterSelector.useSelectors<IPoint>(selector => selector.point)
   const category = adapterSelector.useSelectors<ICategory>(selector => selector.category)
-  const { data: categories, isFetching } = useGetCategoriQuery(id)
+  const { data: categories, isFetching } = useGetCategoriQuery(catid)
   
   const handleSliderClick = useCallback((index: number,slider?:any) => {
     setCurrentSlide(index);
@@ -29,8 +30,8 @@ export function useCategories(this: any) {
 
 
   useEffect(() => {
-    
-  }, [])
+    id && setCatId(id)
+  }, [id])
   
  
   

@@ -3,8 +3,9 @@ import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux"
 import { RootState } from 'servises/redux/createStore';
 import { adapterSelector } from "servises/redux/selectors/selectors";
-import { setMapModal, setModal } from "servises/redux/slice/locationSlice";
+import { setCiti, setMapModal, setModal, setPoint } from "servises/redux/slice/locationSlice";
 import { ROUTE_APP } from 'application/contstans/route.const';
+import RequestLocation from "servises/repository/Axios/Request/Request.Location";
 
 export function useLocations(this: any){
   const dispatch = useDispatch()
@@ -34,6 +35,23 @@ export function useLocations(this: any){
     dispatch(setMapModal(false))
     setShow(true)
   }
+
+
+
+	const byOrg = async (org:string) =>{
+		
+		const {data}:any = await RequestLocation.geBuOrg(org)
+		if(data){
+			console.log(data);
+			const res = await RequestLocation.geBuCity(data.cityid._id)
+			if(res.status === 200){
+				dispatch(setCiti(res.data));
+				dispatch(setPoint(data));
+				router.push(ROUTE_APP.MENU)
+			}
+			
+		}
+	}
     
 
   useEffect(() => {
@@ -48,6 +66,11 @@ export function useLocations(this: any){
     }
   }, []);
 
+
+	useEffect(() => {
+    const queryOrg = router.query.organuzation as string
+		queryOrg && byOrg(queryOrg)
+  }, [router.query]);
 
 
   this.data({
@@ -75,7 +98,13 @@ export function useHeaderLocations(this: any) {
   const selectedCity = adapterSelector.useSelectors(selector => selector.city)
   const selectedPoint = adapterSelector.useSelectors(selector => selector.point)
   
+
+
+
+
   useEffect(() => {
+		
+
     if (Object.keys(selectedCity).length) {
       setShow(true)
     } else {

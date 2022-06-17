@@ -1,4 +1,4 @@
-import { useEffect, useReducer, useRef } from "react";
+import { useEffect, useReducer, useRef, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useGetPointsQuery, useGetRecvisitesMutation } from "servises/repository/RTK/RTKLocation";
 import { IPoint } from "@types";
@@ -20,9 +20,10 @@ import { useRouter } from 'next/router'
 export function usePoints(this: any) {
   const dispatch = useDispatch();
   const router = useRouter()
+	const [cityid,setCityId] = useState('')
   const {city,point} =  useSelector((state:RootState) => state.location)
   const { id } = adapterSelector.useSelectors((selector) => selector.point);
-  const { data: addresses, isFetching } = useGetPointsQuery(city.id);
+  const { data: addresses, isFetching } = useGetPointsQuery(cityid);
 
 
   const handlerPoint = (address: IPoint)=>{
@@ -36,6 +37,10 @@ export function usePoints(this: any) {
     RequestProfile.update({ organizationId: address.id });
     router.push(ROUTE_APP.MAIN)
   }
+
+	useEffect(()=>{
+		city.id && setCityId(city.id)
+	},[city.id])
 
   
 
@@ -146,7 +151,7 @@ export function usePointsMaps(this: any,{handlerGoToCity,handlerCloseMapModal}:a
     const selectPointHandler = async (address: IPoint) => {
         try {
             const { data: regData } = await RequestProfile.register();
-
+						console.log(address);
             dispatch(setProfileAction(regData));
             dispatch(setPoint(address));
             if (address.id !== id) {
