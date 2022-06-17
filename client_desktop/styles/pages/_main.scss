@@ -181,6 +181,14 @@
 		justify-content: center;
 	}
 
+	.slick-prev:before {
+		right: 48px;
+	}
+
+	.slick-next:before {
+		left: -4px;
+	}
+
 	.about-comp_grind-item{
 		width: 360px;
 		box-shadow: 0px 31px 60px rgba(0, 0, 0, 0.05), 0px 11.9407px 19.1111px rgba(0, 0, 0, 0.0303704), 0px 2.52593px 4.88889px rgba(0, 0, 0, 0.0196296);

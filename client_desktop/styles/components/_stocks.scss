@@ -22,7 +22,7 @@
 	.slick-prev:before {
 		content: url("/images/icon/slide-left.svg");
 		position: relative;
-		right: 50px;
+		right: 33px;
 		transition: all 0.3s ease-in-out;
 	}
 	.slick-prev:hover:before {
@@ -32,6 +32,7 @@
 	.slick-next:before {
 		content: url("/images/icon/slide-right.svg");
 		position: relative;
+		left: 15px;
 		transition: all 0.3s ease-in-out;
 	}
 

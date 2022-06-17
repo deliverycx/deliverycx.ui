@@ -11,35 +11,43 @@ import StocksItem from "./Stocksitem";
 
 
 const Stocks = () => {
-	const [baners,setBaners] = useState<any | null>(null)
+	// const [baners,setBaners] = useState<any | null>(null)
 	const point = adapterSelector.useSelectors((selector) => selector.point);
 
-	const getStocks = async () =>{
-		try {
-			const result1:any = await RequestAdmin.bannersList(point.guid)
-			console.log(result1);
-			if(result1.data.length !== 0){
-				setBaners(result1.data)
-			}else{
-				const result = await RequestAdmin.bannersList('all')
-				if(result.data){
-					setBaners(result.data)
-				}else{
-					setBaners(null)
-				}
-			}
-		} catch (error) {
-			console.log(error);
-		}
-		
-	}
+	const baners = [
+		"/images/stocks/stok1.png",
+		"/images/stocks/stok2.png",
+		"/images/stocks/stok3.png",
+		"/images/stocks/stok4.png",
+		"/images/stocks/stok5.png",
+		"/images/stocks/stok6.png",
+	]
+
+	// const getStocks = async () =>{
+	// 	try {
+	// 		const result1:any = await RequestAdmin.bannersList(point.guid)
+	// 		console.log(result1);
+	// 		if(result1.data.length !== 0){
+	// 			setBaners(result1.data)
+	// 		}else{
+	// 			const result = await RequestAdmin.bannersList('all')
+	// 			if(result.data){
+	// 				setBaners(result.data)
+	// 			}else{
+	// 				setBaners(null)
+	// 			}
+	// 		}
+	// 	} catch (error) {
+	// 		console.log(error);
+	// 	}
+	// }
 
 	console.log(point);
 
 
-	useEffect(()=>{
-		getStocks()
-	},[point.guid])
+	// useEffect(()=>{
+	// 	getStocks()
+	// },[point.guid])
 
     const settings = {
         className: "center",
@@ -54,18 +62,18 @@ const Stocks = () => {
     return (
         <div className="stocks">
 						{
-							baners 
+							baners
 							? <Slider {...settings}>
 										{
-											baners.sort((a:any,b:any) => (a.order - b.order)).map((val:any)=>{	
-												return <a key={val._id} className="stocks__item"  href={val.url}><StocksItem  content={imgRoutDef(val.images[0])} /></a>
+											baners.sort((a:any,b:any) => (a.order - b.order)).map((val:any)=>{
+												return <a key={val} className="stocks__item"  href={val}><StocksItem  content={val} /></a>
 											})
-											
+
 										}
 								</Slider>
 							: <LoaderProduct />
 						}
-            
+
         </div>
     )
 };
