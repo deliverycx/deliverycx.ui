@@ -7,17 +7,8 @@ import LoaderProduct from "../Loaders/loaderProduct";
 
 
 const NewsItem = () => {
-	// const [baners,setBaners] = useState<any | null>(null)
+	const [baners,setBaners] = useState<any | null>(null)
 	const point = adapterSelector.useSelectors((selector) => selector.point);
-
-	const baners = [
-		"/images/news/banner-2.png",
-		"/images/news/banner-4.png",
-		"/images/news/banner-6.png",
-		"/images/news/banner-8.png",
-		"/images/news/banner-10.png",
-		"/images/news/banner-12.png",
-	]
 
 	const settings = {
 		className: 'slider-company-news',
@@ -27,28 +18,28 @@ const NewsItem = () => {
 		rows: 1,
 	};
 
-	// const getStocks = async () =>{
-	// 		try {
-	// 			const result1:any = await RequestAdmin.bannersList(point.guid)
-	// 			if(result1.data.length !== 0){
-	// 				setBaners(result1.data)
-	// 			}else{
-	// 				const result = await RequestAdmin.bannersList('all')
-	// 				if(result.data){
-	// 					setBaners(result.data)
-	// 				}else{
-	// 					setBaners(null)
-	// 				}
-	// 			}
-	// 		} catch (error) {
-	// 			console.log(error);
-	// 		}
-	//
-	// 	}
+	const getStocks = async () =>{
+			try {
+				const result1:any = await RequestAdmin.bannersList(point.guid)
+				if(result1.data.length !== 0){
+					setBaners(result1.data)
+				}else{
+					const result = await RequestAdmin.bannersList('all')
+					if(result.data){
+						setBaners(result.data)
+					}else{
+						setBaners(null)
+					}
+				}
+			} catch (error) {
+				console.log(error);
+			}
 
-		// useEffect(()=>{
-		// 	getStocks()
-		// },[point.guid])
+		}
+
+		useEffect(()=>{
+			getStocks()
+		},[point.guid])
 
 	return (
 		<>
@@ -61,7 +52,7 @@ const NewsItem = () => {
 									<div key={val._id} className="coruselus">
 										<div className="about-comp_grind-item">
 											<a href={val}><img className="about-comp_grind-item--img"
-																						 src={val} /></a>
+																						 src={imgRoutDef(val.images[0])} /></a>
 										</div>
 									</div>
 								);
