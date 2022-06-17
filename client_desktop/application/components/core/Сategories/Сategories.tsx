@@ -13,7 +13,7 @@ import LogoMini from "../Shop/Presentation/LogoMini";
 import { ROUTE_APP } from "../../../contstans/route.const";
 
 type IProps ={
-	pages:string
+	pages?:string
 }
 
 const Categories:FC<IProps> = ({pages}) => {
