@@ -1,4 +1,4 @@
-import { IReverveTable } from "@types"
+import { IReverveTable, ISocial } from "@types"
 import { ApiAdminSuper, ApiSuper, methods } from "../AxiosApi"
 
 
@@ -10,8 +10,8 @@ class RequestAdmin extends ApiAdminSuper {
     return this.request(`/mainbanner/all?organization=${org}`)
   }
 	@methods('get')
-  social(org:string) {
-    return this.request(`/mainbanner/all?organization=${org}`)
+  social(query:string) {
+    return this.request<ISocial>(`/organization/socialbu?idorganization=${query}`)
   }
 }
 export default new RequestAdmin()

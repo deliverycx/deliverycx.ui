@@ -6,6 +6,8 @@ import { adapterSelector } from "servises/redux/selectors/selectors";
 import { setCiti, setMapModal, setModal, setPoint } from "servises/redux/slice/locationSlice";
 import { ROUTE_APP } from 'application/contstans/route.const';
 import RequestLocation from "servises/repository/Axios/Request/Request.Location";
+import { RequestAdmin } from "servises/repository/Axios/RequestAdmin";
+import { ISocial } from "@types";
 
 export function useLocations(this: any){
   const dispatch = useDispatch()
@@ -95,22 +97,35 @@ export function useLocations(this: any){
 export function useHeaderLocations(this: any) {
   const dispatch = useDispatch()
   const [show, setShow] = useState(false)
+	const [social, setSoclial] = useState<ISocial | null>(null)
   const selectedCity = adapterSelector.useSelectors(selector => selector.city)
   const selectedPoint = adapterSelector.useSelectors(selector => selector.point)
   
 
+	const getSocial = async (id:string) =>{
+		const response = await RequestAdmin.social(id)
+		
+		if(response.status === 200 && response.data){	
+			setSoclial(response.data)
+		}else{
+			setSoclial(null)
+		}
+	}
 
 
 
   useEffect(() => {
-		
-
     if (Object.keys(selectedCity).length) {
       setShow(true)
     } else {
       setShow(false)
     }
   }, [])
+
+	useEffect(() => {
+		selectedPoint.guid && getSocial(selectedPoint.guid)
+  }, [selectedPoint.guid])
+
 
   const handlerHeader = () => {
     dispatch(setModal(true))
@@ -119,6 +134,7 @@ export function useHeaderLocations(this: any) {
 
   
   this.data({
+		social,
     show,
     selectedCity,
     selectedPoint

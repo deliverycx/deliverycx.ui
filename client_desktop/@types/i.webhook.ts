@@ -9,3 +9,10 @@ export interface IReverveTable {
     organizationId: string,
     maxDate: Date
 }
+
+export interface ISocial {
+	idorganization:string
+	social:{
+		vk:string
+	}
+}
