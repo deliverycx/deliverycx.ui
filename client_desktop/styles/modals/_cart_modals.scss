@@ -11,11 +11,14 @@
 		top: 35px;
 		right: 35px;
 	}
-	
 }
 .addres_map{
 	max-width: 50%;
 	height: 520px;
+	&.delivery-map {
+		margin-top: 10%;
+		height: 554px;
+	}
 }
 @media screen and (max-width: 1024px){
 	.addres_map{
