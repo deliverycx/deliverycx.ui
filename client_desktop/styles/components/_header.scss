@@ -34,6 +34,9 @@
 			font-family: 'manrope', serif;
 			font-weight: 500;
 			cursor: pointer;
+			a:hover {
+				color: #333333;
+			}
 			span{
 				display: inline-block;
 				font-size: 13px;
@@ -41,7 +44,7 @@
 				margin-right: 30px;
 				padding-top: 7px;
 			}
-			&:hover {
+			span:hover {
 				color: #333333;
 			}
 			span.header_adress-info-active{

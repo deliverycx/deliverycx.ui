@@ -70,7 +70,7 @@ const ReserveModalRows = ({reserveProps}:any) => {
                           <Field
                               className="form__field-wrapper__input"
                               name="person"
-                              placeholder="Количество персон"
+                              placeholder="Количество гостей"
                               value={formik.values.person}
                               onChange={formik.handleChange}
                           />
