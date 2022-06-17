@@ -17,7 +17,9 @@ const CityList = () => {
 		<div className="location_city">
 			<div className="location_city-container">
 				<div className="close" onClick={handlerCloseModal}>
-					<img src="/images/icon/close-city.svg" alt="" />
+					<svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+						<path d="M1 1L12.9991 13M13 1L1.0009 13" stroke="" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+					</svg>
 				</div>
 				<div className="modals-top_box">
 					<div className="modals_title">Выберите <span>город</span></div>

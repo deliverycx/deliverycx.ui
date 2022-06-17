@@ -32,15 +32,17 @@ const PointsMap = () => {
     <div ref={refMap} className="location_city location_Maps">
   		<div className="location_city-container">
   			<div className="close" onClick={handlerCloseMapModal} >
-  				<img src="/images/icon/close.png" alt="" />
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M1 1L12.9991 13M13 1L1.0009 13" stroke="" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+          </svg>
   			</div>
   			<div className="modals-top_box">
   				<div className="modals_title">Старик Хинкалыч <span>на карте</span></div>
           <div className="tomap" onClick={handlerGoToCity}>Выбрать другой город</div>
   			</div>
-  			
+
         {addresses &&
-          
+
                     <YMaps>
                         <Map
                             className="welcome__map"
@@ -53,7 +55,7 @@ const PointsMap = () => {
                             state={{
                                 center: addresses[0] ? [addresses[statePoint.slideIndex].cords[0], addresses[statePoint.slideIndex].cords[1]] : [0.0, 0.0],
                                 zoom: 18,
-                                
+
                             }}
                         >
                             {
@@ -76,12 +78,12 @@ const PointsMap = () => {
                                 }
                                 <PopupPoint />
                               </PointsContext.Provider>
-                              
+
                             }
                         </Map>
                     </YMaps>
                 }
-  			
+
   		</div>
 	  </div>
   )

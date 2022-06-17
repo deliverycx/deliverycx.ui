@@ -121,9 +121,7 @@ const CartItem: FC<IProps> = ({ product, errorSchema }) => {
 
 								<section className="grid">
 
-									<div className="delet" onClick={removeHandler}>
-										<img src="/images/i/delete-btn.svg" alt="" />
-									</div>
+									<div className="delet" onClick={removeHandler}></div>
             </section>
 
 							</div>

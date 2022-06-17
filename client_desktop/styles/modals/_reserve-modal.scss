@@ -45,11 +45,16 @@
       height: 32px;
       display: flex;
       justify-content: center;
-
-      img {
-        width: 12px;
-        height: 12px;
-        align-self: center;
+      transition: all 0.3s ease-in-out;
+      svg {
+        path {
+          stroke: #ABABAB;
+        }
+      }
+      svg:hover {
+        path {
+          stroke: #333333;
+        }
       }
     }
   }

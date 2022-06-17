@@ -5,6 +5,9 @@
 	flex-direction: column;
 	justify-content: space-between;
 	height: 100%;
+	.close-cart {
+
+	}
 	.promocode_contain{
 		width: 100%;
 		margin-top: 20px;
@@ -149,6 +152,21 @@
 		}
 		.delet{
 			cursor: pointer;
+			width: 30px;
+			height: 30px;
+			background-image: url('/images/i/delete-box-st.svg');
+			background-size: 100%;
+			background-repeat: no-repeat;
+			background-position: center;
+			transition: all 0.1s;
+			justify-content: center;
+			align-items: center;
+			-webkit-transition: all 0.1s;
+			-moz-transition: all 0.1s;
+			-o-transition: all 0.1s;
+		}
+		.delet:hover {
+			background-image: url('/images/i/delete-box-hov.svg');
 		}
 	}
 }
