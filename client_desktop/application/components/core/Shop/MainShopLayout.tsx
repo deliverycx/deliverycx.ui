@@ -9,7 +9,7 @@ import { checkPoint } from 'application/helpers/checkPoint';
 const MainShopLayout = () => {
   return (
     <>
-      <Categories />
+      <Categories pages='main' />
       <div className="space">
         <div className="container">
           <MainShopList />
