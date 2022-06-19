@@ -26,25 +26,24 @@ const Categories:FC<IProps> = ({pages}) => {
 
   useEffect(() => {
     scrollSpy.update()
-		scroller.scrollTo('6259409102dae23bd9a4cc94', {
-			duration: 800,
-			delay: 0,
-			smooth: 'easeInOutQuart'
-		});
   }, [])
 
 	useEffect(() => {
-		//const cat = router.query.cat
+		const cat = router.query.cat
+		let time:any
+		console.log(isFetching,categories,cat);
+		if(categories){
+			time = setTimeout(()=>{
+				scroller.scrollTo(cat, {
+					duration: 800,
+					delay: 800,
+					offset:-160,
+				});
+			},2000)
+		}
 		
-		setTimeout(()=>{
-			scroller.scrollTo('6259409102dae23bd9a4cc94', {
-				duration: 300,
-				offset:-160,
-				spy:true,
-				smooth:true
-			});
-		},3000)
-  }, [])
+		return () => clearTimeout(time)
+  }, [categories])
 
 
   return (
