@@ -17,20 +17,26 @@ const CityList = () => {
 		<div className="location_city">
 			<div className="location_city-container">
 				<div className="close" onClick={handlerCloseModal}>
-					<svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
-						<path d="M1 1L12.9991 13M13 1L1.0009 13" stroke="" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+					<svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+						<g clipPath="url(#clip0_329_8395)">
+							<path d="M0 0L11.9991 12M12 0L0.00090279 12" stroke="#ABABAB" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+						</g>
+						<defs>
+							<clipPath id="clip0_329_8395">
+								<rect width="12" height="12" fill="white"/>
+							</clipPath>
+						</defs>
 					</svg>
 				</div>
 				<div className="modals-top_box">
-					<div className="modals_title">Выберите <span>город</span></div>
+					<div className="modals_title city-list">Выберите <span>город</span></div>
 				</div>
-				<div className="search_city">
+				<div className="search_city city-list">
 					<input type="text" name="" id="" placeholder="Поиск города" onChange={(e) => setSerchCiti(e.target.value)} />
 					<button></button>
 				</div>
-
-				<div className="you_city__points">
-					<ul className="points-list">
+				<div className="you_city__points city-list">
+					<ul className="points-list city-list">
 						{
 							!isLoading && cities && cities.map((city: ICity) => {
 								const CN = cn("welcome__city", { active: city.name === selectedCity.name }); //city.name === selectedCity?.name

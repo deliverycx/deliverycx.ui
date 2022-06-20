@@ -68,6 +68,9 @@
 		display: flex;
 		justify-content: space-between;
 		position: relative;
+		&.city-list {
+			width: 100%;
+		}
 		input{
 			border: none;
 			color: #333333;
@@ -157,6 +160,9 @@
 	border-top: 1px solid #D9D9D9;
 	border-bottom: 1px solid #D9D9D9;
 	padding: 10px 0;
+	&.city-list {
+		margin-top: 17px;
+	}
 
 	.points-title{
 		width: 100%;
@@ -184,6 +190,13 @@
 		margin: 0;
 		max-height: 180px;
 		overflow-y: auto;
+		&.city-list {
+			li {
+				padding-top: 15px;
+				padding-bottom: 15px;
+				padding-left: 16px;
+			}
+		}
 
 		li{
 			padding-top: 16px;
