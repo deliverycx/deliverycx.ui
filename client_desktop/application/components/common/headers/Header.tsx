@@ -53,7 +53,7 @@ const Header = () => {
                     <a className={menuLinkWithColorCN} onClick={() => heandleToMenu()}>
                         Меню
                     </a>
-                    <a className="header_menu_link" href="">
+                    <a className="header_menu_link" href="http://starikkhinkalich.ru/" target="_blank" rel="noreferrer" >
                         Новинки и акции
                     </a>
                     <a className={mapColorCN} onClick={()=> dispatch(setMapModal(true))}>
