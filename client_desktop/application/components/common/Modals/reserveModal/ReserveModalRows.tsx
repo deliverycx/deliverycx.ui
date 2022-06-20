@@ -91,7 +91,9 @@ const ReserveModalRows = ({reserveProps}:any) => {
                                       {...params}
                                       InputLabelProps={{
                                           style: {
-                                              color: "#666666"
+                                              color: "#ABABAB",
+                                              fontFamily: "manrope",
+                                              fontWeight: 600,
                                           }
                                       }
                                       }
@@ -137,7 +139,9 @@ const ReserveModalRows = ({reserveProps}:any) => {
                                               <TextField {...params}
                                                          InputLabelProps={{
                                                              style: {
-                                                                 color: "#666666"
+                                                                 color: "#ABABAB",
+                                                                 fontFamily: "manrope",
+                                                                fontWeight: 600,
                                                              }
                                                          }
                                                          }
