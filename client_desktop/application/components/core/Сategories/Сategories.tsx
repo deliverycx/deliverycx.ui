@@ -31,7 +31,6 @@ const Categories:FC<IProps> = ({pages}) => {
 	useEffect(() => {
 		const cat = router.query.cat
 		let time:any
-		console.log(isFetching,categories,cat);
 		if(categories){
 			time = setTimeout(()=>{
 				scroller.scrollTo(cat, {

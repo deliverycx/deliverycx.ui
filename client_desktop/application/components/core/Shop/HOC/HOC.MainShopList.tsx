@@ -18,7 +18,7 @@ const MainShopList = () => {
       {
         (!isFetching && categories) ?
         categories.map((category: ICategory, i: number) => {
-          if (category.name !== 'Избранное' && category.name === 'Хинкали') {
+          if (category.name.trim() !== 'Избранное' && category.name.trim() === 'Хинкали') {
             return (
               <Element key={i} name={category.id}>
                 <div className="title">{category.name}</div>
