@@ -24,9 +24,8 @@ const PopupPoint = () => {
                  </svg>
                </div>
 
-                <div className="welcome__select-adress__adress">
+                <div className="welcome__select-adress__adress popup-point">
                   <div className="welcome__select-adress__city">г. {selectedCity.name}</div>
-                  Старик Хинкалыч
                </div>
                <div className="next" onClick={() => SlidePointsHandler("next")}>
                  <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">

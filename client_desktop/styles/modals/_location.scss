@@ -314,8 +314,14 @@
 			font-weight: 500;
 	}
 	.welcome__select-adress__city{
-		color: #666666;
-		font-size: 11px;
+		display: flex;
+		align-self: center;
+		color: #132A3E;
+		font-size: 15px;
+		font-weight: 600;
+	}
+	.popup-point {
+		display: flex;
 	}
 	.location-container {
 		max-width: 1230px;
