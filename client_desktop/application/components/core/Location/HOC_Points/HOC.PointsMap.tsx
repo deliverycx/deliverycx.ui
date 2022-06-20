@@ -9,7 +9,7 @@ import PopupPoint from "./view/PopupPoint";
 
 const placeMarkOption = {
   iconLayout: 'default#image',
-  iconImageHref: "/images/map_placemark2.png",
+  iconImageHref: "images/i/place-mark.svg",
   iconImageSize: [50, 60],
   iconImageOffset: [-25, -60]
 }
