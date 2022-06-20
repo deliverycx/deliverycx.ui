@@ -3,7 +3,7 @@
 	position: fixed;
 	left: 0;
 	right: 0;
-	top: 20%;
+	top: 15%;
 	margin: 0 auto;
 	max-width: 720px;
 	z-index: 9999;
@@ -13,6 +13,9 @@
 	.location_city-container{
 		position: relative;
 		padding: 50px;
+		&.point-map {
+			padding: 52px 45px 45px
+		}
 	}
 	.tomap{
 		display: inline-block;
@@ -40,6 +43,21 @@
 			border: none;
 			color: #333333;
 		}
+	}
+	.tomap_point-map {
+		display: inline-block;
+		font-size: 13px;
+		font-weight: 500;
+		line-height: 16px;
+		padding-bottom: 0px;
+		color: #666666;
+		height: 18px;
+		margin-top: 8px;
+		cursor: pointer;
+		background-image: linear-gradient(to right, #666666 33%, rgba(255,255,255,0) 0%);
+		background-position: bottom;
+		background-size: 3px 1px;
+		background-repeat: repeat-x;
 	}
 	.search_city{
 		border: 1px solid #CCCCCC;
@@ -203,6 +221,10 @@
 	max-width: 70%;
 	height: 550px;
 	margin-bottom: 20%;
+	&.point-map {
+		max-width: 79%;
+		height: 590px;
+	}
 }
 .welcome__map{
 	position: relative;
@@ -213,6 +235,11 @@
 	&.delivery-map {
 		border-radius: 0;
 		margin-top: 33.5px;
+	}
+	&.point-map {
+		height: 433px;
+		margin-bottom: 10px;
+		margin-top: 20px
 	}
 	.welcome{
 		background-color: #fff;
@@ -267,13 +294,13 @@
 	z-index: 99;
 	width: 350px;
 	background-color: #fff;
-	padding: 24px 0;
 	text-align: center;
 	color: #fff;
 	font-size: 19px;
 	border-radius: 30px;
 	box-shadow: -1.45153px -30.966px 60px rgba(0, 0, 0, 0.25), -0.559108px -11.9276px 19.1111px rgba(0, 0, 0, 0.151852), -0.118273px -2.52316px 4.88889px rgba(0, 0, 0, 0.0981481);;
 	transition: bottom 0.6s cubic-bezier(0, -0.02, 0.54, 1.18);
+	height: 403px;
 
 	&.opened{
 			bottom: 0%;
@@ -292,7 +319,7 @@
 	}
 	.location-container {
 		max-width: 1230px;
-		padding: 0 30px 30px;
+		padding: 30px;
 		margin: 0 auto;
 	}
 
