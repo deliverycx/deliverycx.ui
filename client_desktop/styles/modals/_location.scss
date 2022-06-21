@@ -16,6 +16,9 @@
 		&.point-map {
 			padding: 52px 45px 45px
 		}
+		&.delivery-map {
+			padding: 48px;
+		}
 	}
 	.tomap{
 		display: inline-block;
@@ -31,6 +34,7 @@
 		background-position: bottom;
 		background-size: 3px 1px;
 		background-repeat: repeat-x;
+		transition: all .3s linear;
 		&::before{
 			content: "";
 			display: inline-block;
@@ -42,6 +46,7 @@
 		&:hover{
 			border: none;
 			color: #333333;
+			background-image: none;
 		}
 	}
 	.tomap_point-map {
@@ -58,6 +63,9 @@
 		background-position: bottom;
 		background-size: 3px 1px;
 		background-repeat: repeat-x;
+		&:hover {
+			background-image: none;
+		}
 	}
 	.search_city{
 		border: 1px solid #CCCCCC;
@@ -150,8 +158,9 @@
 		background-size: 4px 1px;
 		background-repeat: repeat-x;
 		cursor: pointer;
+		transition: all .3s linear;
 		&:hover{
-			border: none;
+			background-image: none;
 		}
 	}
 }
@@ -162,6 +171,10 @@
 	padding: 10px 0;
 	&.city-list {
 		margin-top: 17px;
+	}
+	&.choose-hink {
+		padding: 20px 0;
+		margin-top: 20px;
 	}
 
 	.points-title{
@@ -195,6 +208,11 @@
 				padding-top: 15px;
 				padding-bottom: 15px;
 				padding-left: 16px;
+			}
+		}
+		&.choose-hink {
+			li {
+				padding: 16px;
 			}
 		}
 
@@ -235,8 +253,8 @@
 	height: 550px;
 	margin-bottom: 20%;
 	&.point-map {
-		max-width: 79%;
-		height: 590px;
+		max-width: 1290px;
+		height: 606px;
 	}
 }
 .welcome__map{
@@ -250,8 +268,7 @@
 		margin-top: 33.5px;
 	}
 	&.point-map {
-		height: 433px;
-		margin-bottom: 10px;
+		height: 460px;
 		margin-top: 20px
 	}
 	.welcome{
@@ -311,7 +328,6 @@
 	color: #fff;
 	font-size: 19px;
 	border-radius: 30px;
-	box-shadow: -1.45153px -30.966px 60px rgba(0, 0, 0, 0.25), -0.559108px -11.9276px 19.1111px rgba(0, 0, 0, 0.151852), -0.118273px -2.52316px 4.88889px rgba(0, 0, 0, 0.0981481);;
 	transition: bottom 0.6s cubic-bezier(0, -0.02, 0.54, 1.18);
 	height: 403px;
 

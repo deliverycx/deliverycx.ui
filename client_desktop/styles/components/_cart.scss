@@ -195,7 +195,8 @@
 		color: #333333;
 	}
 	&[disabled] {
-		filter: grayscale(1);
+		background-color: #EFEFEF;
+		color: #CCCCCC;
 	}
 }
 .fild_btn-disabled{
@@ -257,7 +258,7 @@
 	}
 	.cart-info--total{
 		font-size: 13px;
-		color: #8D191D;
+		color: #666666;
 		text-align: right;
 	}
 	.cart-info--price{

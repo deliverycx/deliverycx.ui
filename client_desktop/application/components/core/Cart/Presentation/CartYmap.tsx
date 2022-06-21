@@ -34,8 +34,15 @@ const CartYmap = ({close}:any) => {
     <div className="location_city location_Maps addres_map delivery-map">
       <div className="location_city-container delivery-map">
         <div className="close" onClick={close}>
-          <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M1 1L12.9991 13M13 1L1.0009 13" stroke="" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+          <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <g clipPath="url(#clip0_329_8395)">
+              <path d="M0 0L11.9991 12M12 0L0.00090279 12" stroke="#ABABAB" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+            </g>
+            <defs>
+              <clipPath id="clip0_329_8395">
+                <rect width="12" height="12" fill="white"/>
+              </clipPath>
+            </defs>
           </svg>
         </div>
         <div className="modals_title">Укажите <span>адрес доставки</span></div>

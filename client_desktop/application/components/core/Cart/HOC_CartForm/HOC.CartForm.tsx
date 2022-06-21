@@ -38,6 +38,8 @@ const CartFrom: FC<IProps> = ({ builder,paths }) => {
   } = useCaseForm.data
   const {setShowMap} = useCaseForm.handlers
 
+  console.log('useCaseForm.data', useCaseForm.data);
+
   const formik = useFormik({
     initialValues,
     validationSchema: schema(orderType),
@@ -78,6 +80,10 @@ const CartFrom: FC<IProps> = ({ builder,paths }) => {
     selectAddress && formik.setFieldValue("address", selectAddress)
   },[selectAddress])
 
+  const disabledData = ()=> {
+    return !formik.values.name || !formik.values.address || !formik.values.phone;
+  }
+
   return (
     <FormikProvider value={formik}>
       <form onSubmit={formik.handleSubmit}>
@@ -91,7 +97,6 @@ const CartFrom: FC<IProps> = ({ builder,paths }) => {
               <CartYmap close={() => setShowMap(false)} />
             </Modals>
           }
-
           <textarea
             value={formik.values.comment}
             name="comment"
@@ -99,14 +104,13 @@ const CartFrom: FC<IProps> = ({ builder,paths }) => {
             className="form__textarea cart"
             placeholder="Комментарии к заказу"
           ></textarea>
-
           <div className="row align-center form__create"></div>
         </div>
         <div className="cart__order-btnbox">
           <button
               type="submit"
               className="cart__order-btn btn"
-              disabled={loadingOrder}
+              disabled={loadingOrder || disabledData()}
             >
               Заказать
           </button>
@@ -123,7 +127,6 @@ const CartFrom: FC<IProps> = ({ builder,paths }) => {
                   })
                   : <li>{orderError.error.errors}</li>
               }
-
             </div>
           )}
         </div>

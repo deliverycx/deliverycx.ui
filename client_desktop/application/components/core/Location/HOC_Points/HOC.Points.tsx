@@ -2,14 +2,13 @@ import { adapterComponentUseCase } from "adapters/adapterComponents"
 import { usePoints } from "domain/use-case/useCaseLocation"
 import { IPoint } from '@types';
 import cn from "classnames";
-import { FC, useContext } from "react";
+import { useContext } from "react";
 import { LocationPointsContext } from "../LocationLayout";
 
 
 const Points = () => {
   const useCaseLocationPoints = useContext(LocationPointsContext);
   const { handlerCloseModal,handlerMapModal,setShow } = useCaseLocationPoints.handlers;
-
   const useCasePoints = adapterComponentUseCase(usePoints)
   const { addresses,point,city } = useCasePoints.data
   const {handlerPoint} = useCasePoints.handlers
@@ -19,8 +18,15 @@ const Points = () => {
     <div className="location_city">
   		<div className="location_city-container">
   			<div className="close" onClick={handlerCloseModal}>
-					<svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
-						<path d="M1 1L12.9991 13M13 1L1.0009 13" stroke="" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+					<svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+						<g clipPath="url(#clip0_329_8395)">
+							<path d="M0 0L11.9991 12M12 0L0.00090279 12" stroke="#ABABAB" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+						</g>
+						<defs>
+							<clipPath id="clip0_329_8395">
+								<rect width="12" height="12" fill="white"/>
+							</clipPath>
+						</defs>
 					</svg>
   			</div>
   			<div className="modals-top_box">
@@ -30,11 +36,8 @@ const Points = () => {
             handlerCloseModal()
           }}>Посмотреть на карте</div>
   			</div>
-
-
-  			<div className="you_city__points">
-
-  				<ul className="points-list">
+  			<div className="you_city__points choose-hink">
+  				<ul className="points-list choose-hink">
           {
 
               !isLoading && addresses && addresses.map((points: IPoint) => {
@@ -47,7 +50,6 @@ const Points = () => {
                     </li>
                   }
                 })
-
             }
   				</ul>
         </div>
