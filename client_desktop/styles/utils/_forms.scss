@@ -1,9 +1,16 @@
 .fild__box {
 	margin-bottom: 35px;
+
 	&.cart {
 		margin-bottom: 15px;
+		&.not-valid {
+			.adress_fild__address {
+				color: #ABABAB;
+			}
+		}
 	}
 }
+
 .fild__grid-two{
 	display: flex;
 	justify-content: space-between;
@@ -65,7 +72,7 @@
 }
 .adress_fild__address{
 	cursor: pointer;
-	color: #ABABAB;
+	color: #333333;
 }
 .fild-lable{
 	font-size: 15px;

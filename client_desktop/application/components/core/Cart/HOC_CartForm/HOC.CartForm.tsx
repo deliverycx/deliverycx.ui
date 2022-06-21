@@ -1,23 +1,15 @@
-
-import { IInitialValues, ISubmitData } from "@types";
+import { ISubmitData } from "@types";
 import submitHandler from "application/helpers/submitFormHandler";
 import schema from "application/helpers/validationSchema";
 import { useFormik, FormikProvider } from "formik";
-import { debounce } from "lodash";
-import { FC, useState } from "react";
-import { useSelector } from "react-redux";
-import { RootState } from "servises/redux/createStore";
-import { useDispatch } from 'react-redux';
-import { fetchDeleteCart, setErrors } from "servises/redux/slice/cartSlice";
+import { FC } from "react";
 import { useEffect } from 'react';
 
-import { ROUTE_APP } from 'application/contstans/route.const';
 import { adapterComponentUseCase, TadapterCaseCallback } from 'adapters/adapterComponents';
 import { useCartForm } from "domain/use-case/useCaseCart";
 import { FormBuilder } from "application/components/common/Forms";
 
 import React from "react";
-import { CartFormMetods } from "./CartMetods";
 import Modals from "application/components/common/Modals/Modals";
 import CartYmap from "../Presentation/CartYmap";
 
@@ -32,8 +24,6 @@ export const CartFormContext = React.createContext<TadapterCaseCallback>({
   status:{}
 });
 const CartFrom: FC<IProps> = ({ builder,paths }) => {
-
-  const dispatch = useDispatch()
 
   const useCaseForm = adapterComponentUseCase(useCartForm,paths)
   const {
