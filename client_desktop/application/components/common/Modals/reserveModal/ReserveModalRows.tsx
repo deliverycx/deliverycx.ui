@@ -14,6 +14,10 @@ const ReserveModalRows = ({reserveProps}:any) => {
     const {formik,point,ReducerActionTypePoints,stateReserve,dispatchReserve} = reserveProps
     const now = Date.now();
 
+    const isDisabled = () => {
+      return !stateReserve.timeValue || !formik.values.fullname || !formik.values.phone || !stateReserve.dateValue;
+    }
+
   return (
       <FormikProvider value={formik}>
           <form onSubmit={formik.handleSubmit}>
@@ -159,6 +163,7 @@ const ReserveModalRows = ({reserveProps}:any) => {
               <button
                   type="submit"
                   className="cart__order-btn btn reserve-btn"
+                  disabled={isDisabled()}
               >
                   Забронировать
               </button>

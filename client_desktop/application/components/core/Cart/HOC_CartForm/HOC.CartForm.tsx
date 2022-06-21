@@ -38,8 +38,6 @@ const CartFrom: FC<IProps> = ({ builder,paths }) => {
   } = useCaseForm.data
   const {setShowMap} = useCaseForm.handlers
 
-  console.log('useCaseForm.data', useCaseForm.data);
-
   const formik = useFormik({
     initialValues,
     validationSchema: schema(orderType),
