@@ -100,8 +100,6 @@
 	color: #333333;
 	margin-bottom: 20px;
 }
-// компания
-
 
 // блоки перед футером
 .about_comp-switch{
@@ -136,10 +134,16 @@
 		color: #333333;
 	}
 }
-.about-comp_grind{
-	display: flex;
+.slidebars {
+	height: 304px;
+	position: relative;
+}
+.about-comp_grind {
+	opacity: 0;
+	transition: all .4s linear;
 	justify-content: space-between;
-	margin: 30px 20px 0;
+	margin: -304px 20px 0;
+	display: flex;
 	.about-comp_grind-item{
 		width: 30%;
 		border-radius: 30px;
@@ -168,9 +172,14 @@
 		border-radius: 30px;
 		box-shadow: 0px 31px 60px rgba(0, 0, 0, 0.05), 0px 11.9407px 19.1111px rgba(0, 0, 0, 0.0303704), 0px 2.52593px 4.88889px rgba(0, 0, 0, 0.0196296);
 	}
+	&.isVisible {
+		opacity: 1;
+	}
 }
 
 .about-comp_grind_news {
+	opacity: 0;
+	transition: all .4s linear;
 	.slider-news {
 		display: flex;
 		flex-direction: row;
@@ -180,15 +189,12 @@
 		display: flex;
 		justify-content: center;
 	}
-
 	.slick-prev:before {
 		right: 48px;
 	}
-
 	.slick-next:before {
 		left: -4px;
 	}
-
 	.about-comp_grind-item{
 		width: 360px;
 		box-shadow: 0px 31px 60px rgba(0, 0, 0, 0.05), 0px 11.9407px 19.1111px rgba(0, 0, 0, 0.0303704), 0px 2.52593px 4.88889px rgba(0, 0, 0, 0.0196296);
@@ -219,5 +225,8 @@
 	}
 	.coruselus .about-comp_grind-item{
 		box-shadow: none;
+	}
+	&.isVisible {
+		opacity: 1;
 	}
 }

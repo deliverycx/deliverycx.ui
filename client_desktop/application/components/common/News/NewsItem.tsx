@@ -6,7 +6,7 @@ import { RequestAdmin } from "servises/repository/Axios/RequestAdmin";
 import LoaderProduct from "../Loaders/loaderProduct";
 
 
-const NewsItem = () => {
+const NewsItems = () => {
 	const [baners,setBaners] = useState<any | null>(null)
 	const point = adapterSelector.useSelectors((selector) => selector.point);
 
@@ -66,4 +66,4 @@ const NewsItem = () => {
 	);
 }
 
-export default NewsItem;
+export default NewsItems;
