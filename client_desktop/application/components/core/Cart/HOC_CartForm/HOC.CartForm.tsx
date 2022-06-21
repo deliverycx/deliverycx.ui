@@ -79,7 +79,11 @@ const CartFrom: FC<IProps> = ({ builder,paths }) => {
   },[selectAddress])
 
   const disabledData = ()=> {
-    return !formik.values.name || !formik.values.address || !formik.values.phone;
+    if(useCaseForm.data.orderType === 'COURIER') {
+      return !formik.values.name || !formik.values.address || !formik.values.phone;
+    } else if(useCaseForm.data.orderType === 'PICKUP') {
+      return !formik.values.name || !formik.values.phone;
+    }
   }
 
   return (
@@ -128,7 +132,6 @@ const CartFrom: FC<IProps> = ({ builder,paths }) => {
             </div>
           )}
         </div>
-
       </form>
     </FormikProvider>
   );
