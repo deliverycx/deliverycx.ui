@@ -17,10 +17,10 @@ const placeMarkOption = {
 const CartYmap = ({close}:any) => {
   const city = useSelector((state: RootState) => state.location.point.city);
   const usecaseCartMap = adapterComponentUseCase(useCartMap,close)
-  const { stateReduceMap,mapstate } = usecaseCartMap.data
+  const { stateReduceMap, mapstate } = usecaseCartMap.data
   const { onMapTyping,getGeoLoc,onMapClick,hendleMapPopup } = usecaseCartMap.handlers
 
-  const CN = cn("search_city", { error_map: stateReduceMap.disclaimer })
+  const CN = cn("search_city delivery-map", { error_map: stateReduceMap.disclaimer })
 
   const SuggestComponent = useMemo(() => {
     return withYMaps(MapSuggestComponent, true, [
@@ -69,11 +69,10 @@ const CartYmap = ({close}:any) => {
                              onClick={() => onMapTyping().setInputMap(true)}>{stateReduceMap.valueMap}</div>
                       : <SuggestComponent dispatchMap={onMapTyping} stateReduceMap={stateReduceMap} />
                   }
-                  <button></button>
                 </div>
                 {
                   (city || stateReduceMap.valueMap) &&
-                    <div className="mapsPopup__button btn" onClick={hendleMapPopup}>Я здесь</div>
+                    <button disabled={!stateReduceMap.valueMap} className="mapsPopup__button btn" onClick={hendleMapPopup}>Я здесь</button>
                 }
               </div>
               {

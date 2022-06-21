@@ -13,12 +13,13 @@
 	}
 }
 .addres_map{
-	max-width: 50%;
 	height: 520px;
 	&.delivery-map {
-		height: 554px;
+		height: 656px;
+		width: 886px;
 	}
 }
+
 @media screen and (max-width: 1024px){
 	.addres_map{
 		width: 90%;
