@@ -58,8 +58,6 @@
 		font-size: 26px;
 		color: #132A3E;
 		padding-bottom: 20px;
-		border-bottom: 2px solid #8D191D;
-
 	}
 	.clear_cart{
 		display: inline-block;
@@ -186,11 +184,12 @@
 	padding: 21.5px;
 	text-align: center;
 	color: #fff;
-	font-size: 17px;
-	font-weight: 700;
 	border: none;
 	transition: all 0.3s;
 	cursor: pointer;
+	font-weight: 500;
+	font-size: 21px;
+	font-family: Manrope, sans-serif;
 	&:hover{
 		background: #FDCB3D;
 		color: #333333;

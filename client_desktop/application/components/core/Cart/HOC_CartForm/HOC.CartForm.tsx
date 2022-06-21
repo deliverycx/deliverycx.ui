@@ -34,7 +34,7 @@ export const CartFormContext = React.createContext<TadapterCaseCallback>({
 const CartFrom: FC<IProps> = ({ builder,paths }) => {
 
   const dispatch = useDispatch()
-  
+
   const useCaseForm = adapterComponentUseCase(useCartForm,paths)
   const {
     city,
@@ -76,21 +76,17 @@ const CartFrom: FC<IProps> = ({ builder,paths }) => {
           },
           meta
         );
-        
+
       }
       */
-      
+
     },
   });
   const formWrapper = new FormBuilder(formik,useCaseForm);
-  
-  
-  
 
   useEffect(() => {
     selectAddress && formik.setFieldValue("address", selectAddress)
   },[selectAddress])
-  
 
   return (
     <FormikProvider value={formik}>
@@ -105,23 +101,16 @@ const CartFrom: FC<IProps> = ({ builder,paths }) => {
               <CartYmap close={() => setShowMap(false)} />
             </Modals>
           }
-          
+
           <textarea
             value={formik.values.comment}
             name="comment"
             onChange={formik.handleChange}
-            className="form__textarea"
-            placeholder="Напишите сюда, если хотите добавить еще какую-то информацию о заказе..."
+            className="form__textarea cart"
+            placeholder="Комментарии к заказу"
           ></textarea>
 
-          
-
-          <div className="row align-center form__create">
-            
-            
-          </div>
-          
-          
+          <div className="row align-center form__create"></div>
         </div>
         <div className="cart__order-btnbox">
           <button
@@ -144,11 +133,11 @@ const CartFrom: FC<IProps> = ({ builder,paths }) => {
                   })
                   : <li>{orderError.error.errors}</li>
               }
-              
+
             </div>
           )}
         </div>
-        
+
       </form>
     </FormikProvider>
   );

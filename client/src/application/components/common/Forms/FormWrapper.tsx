@@ -23,7 +23,7 @@ export const FormWrapper = (formik: any,usecase:any): IWrapper => {
   const { selectPayment, choicePayment } = usecase.handlers
   return {
     paymentPopup() {
-      
+
       return (
         <FormFieldWrapper
           placeholderIco={require("assets/i/card-red.svg").default}
@@ -33,13 +33,13 @@ export const FormWrapper = (formik: any,usecase:any): IWrapper => {
           <div className="adress_fild__address" onClick={choicePayment}>{paymentMetod.value}</div>
           {
             //CartFormMetods.paymentsMetod[1].id === stateForm.payment.id
-            false && 
+            false &&
             <div className="addnew_cart" onClick={() => history.push(paths + '/card') }>
               <img src={require("assets/i/credit_card.png").default} />
               <span>Добавить новую карту</span>
             </div>
           }
-          
+
         </FormFieldWrapper>
       )
     },
@@ -63,9 +63,9 @@ export const FormWrapper = (formik: any,usecase:any): IWrapper => {
           placeholderIco={require("assets/i/delev.svg").default}
           placeholderValue="Доставка"
           isValid={
-            !formik.values.deliv.length || formik.errors.deliv ? true : false
+            !formik.values.deliv.length || formik.errors.deliv
           }
-          error={formik.errors.deliv && formik.touched.deliv ? true : false}
+          error={!!(formik.errors.deliv && formik.touched.deliv)}
           errorValue={formik.errors.deliv}
         >
           <div className="adress_fild__address" onClick={() => history.push("/cart/delivery/pop")}>
@@ -75,14 +75,13 @@ export const FormWrapper = (formik: any,usecase:any): IWrapper => {
       )
     },
     adress() {
-       
       return(
       <div className="adress_fild">
         <FormFieldWrapper
           placeholderIco={require("assets/i/mark-red.svg").default}
           placeholderValue="Где"
-          isValid={!formik.values.address.length ? true : false}
-          error={formik.errors.address ? true : false}
+          isValid={!formik.values.address.length}
+          error={!!formik.errors.address}
           errorValue={formik.errors.address}
         >
           <div className="adress_fild__address" onClick={() => history.push(ROUTE_APP.CART.CART_MAP)}>
@@ -128,11 +127,11 @@ export const FormWrapper = (formik: any,usecase:any): IWrapper => {
       return(
       <FormFieldWrapper
         placeholderIco={require("assets/i/profile-red.svg").default}
-        placeholderValue="Имя"
+        placeholderValue="Контакты"
         isValid={
-          !formik.values.name.length || formik.errors.name ? true : false
+          !formik.values.name.length || formik.errors.name
         }
-        error={formik.errors.name && formik.touched.name ? true : false}
+        error={!!(formik.errors.name && formik.touched.name)}
         errorValue={formik.errors.name}
       >
         <Field
@@ -151,9 +150,9 @@ export const FormWrapper = (formik: any,usecase:any): IWrapper => {
         placeholderIco={require("assets/i/phone-red.svg").default}
         placeholderValue="Телефон"
         isValid={
-          !formik.values.phone.length || formik.errors.phone ? true : false
+          !formik.values.phone.length || formik.errors.phone
         }
-        error={formik.errors.phone && formik.touched.phone ? true : false}
+        error={!!(formik.errors.phone && formik.touched.phone)}
         errorValue={formik.errors.phone}
       >
         <Field

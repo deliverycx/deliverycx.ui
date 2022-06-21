@@ -90,9 +90,9 @@ export const FormWrapper = (formik: any,usecase?:any): IWrapper => {
           placeholderIco="images/i/delev.svg"
           placeholderValue="Доставка"
           isValid={
-            !formik.values.deliv.length || formik.errors.deliv ? true : false
+            !formik.values.deliv.length || formik.errors.deliv
           }
-          error={formik.errors.deliv && formik.touched.deliv ? true : false}
+          error={!!(formik.errors.deliv && formik.touched.deliv)}
           errorValue={formik.errors.deliv}
         >
           <div className="adress_fild__address" >
@@ -104,7 +104,7 @@ export const FormWrapper = (formik: any,usecase?:any): IWrapper => {
     adress() {
 
       return(
-      <div className="adress_fild">
+      <div className="adress_fild cart">
         <FormFieldWrapper
           placeholderIco="images/i/mark-red.svg"
           placeholderValue="Адрес доставки"
@@ -155,11 +155,11 @@ export const FormWrapper = (formik: any,usecase?:any): IWrapper => {
       return(
       <FormFieldWrapper
         placeholderIco="images/i/profile-red.svg"
-        placeholderValue="Имя"
+        placeholderValue="Контакты"
         isValid={
-          !formik.values.name.length || formik.errors.name ? true : false
+          !formik.values.name.length || formik.errors.name
         }
-        error={formik.errors.name && formik.touched.name ? true : false}
+        error={!!(formik.errors.name && formik.touched.name)}
         errorValue={formik.errors.name}
       >
         <Field
@@ -176,11 +176,11 @@ export const FormWrapper = (formik: any,usecase?:any): IWrapper => {
       return(
       <FormFieldWrapper
         placeholderIco="images/i/phone-red.svg"
-        placeholderValue="Телефон"
+        placeholderValue=""
         isValid={
-          !formik.values.phone.length || formik.errors.phone ? true : false
+          !formik.values.phone.length || formik.errors.phone
         }
-        error={formik.errors.phone && formik.touched.phone ? true : false}
+        error={!!(formik.errors.phone && formik.touched.phone)}
         errorValue={formik.errors.phone}
       >
         <Field
@@ -191,7 +191,7 @@ export const FormWrapper = (formik: any,usecase?:any): IWrapper => {
               mask="+7 999 999 99 99"
               maskPlaceholder={null}
               className="form__field-wrapper__input"
-              placeholder="Ваш телефон"
+              placeholder="+7"
               value={formik.values.phone}
               onChange={formik.handleChange}
             />
