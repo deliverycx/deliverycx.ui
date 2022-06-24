@@ -58,7 +58,7 @@ const Stocks = () => {
 									{
 											baners &&
 											baners.sort((a:any,b:any) => (a.order - b.order)).map((val:any)=>{	
-												return <a key={val._id} className="stocks__item"  href={val.url}><StockItem  content={imgRoutDef(val.mobimages[0])} /></a>
+												return <a key={val._id} className="stocks__item"><StockItem  content={imgRoutDef(val.mobimages[0])} /></a>
 											})
 											
 									}
