@@ -8,6 +8,7 @@ import LoaderProduct from "../Loaders/loaderProduct";
 
 const NewsItems = () => {
 	const [baners,setBaners] = useState<any | null>(null)
+	console.log('baners', baners);
 	const point = adapterSelector.useSelectors((selector) => selector.point);
 
 	const settings = {
@@ -51,7 +52,7 @@ const NewsItems = () => {
 								return (
 									<div key={val._id} className="coruselus">
 										<div className="about-comp_grind-item">
-											<a href={val}><img className="about-comp_grind-item--img"
+											<a href={val.url}><img className="about-comp_grind-item--img"
 																						 src={imgRoutDef(val.
 																							smallimages[0])} /></a>
 										</div>

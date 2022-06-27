@@ -140,6 +140,7 @@
 }
 .about-comp_grind {
 	opacity: 0;
+	pointer-events: none;
 	transition: all .4s linear;
 	justify-content: space-around;
 	margin: -304px 20px 0;
@@ -174,11 +175,14 @@
 	}
 	&.isVisible {
 		opacity: 1;
+		pointer-events: auto;
+		z-index: 5;
 	}
 }
 
 .about-comp_grind_news {
 	opacity: 0;
+	pointer-events: none;
 	transition: all .4s linear;
 	.slider-news {
 		display: flex;
@@ -228,5 +232,7 @@
 	}
 	&.isVisible {
 		opacity: 1;
+		pointer-events: auto;
+		z-index: 5;
 	}
 }
