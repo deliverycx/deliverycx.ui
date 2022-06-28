@@ -23,22 +23,20 @@ const LocationLayout = () => {
       <LocationPointsContext.Provider value={useCaseLocation}>
       {
         modal &&
-        <Modals onClose={handlerCloseModal}>
+        <>
             {
               showCiti
-                ? <CityList />
-                : <Points />
+                ? <Modals onClose={handlerCloseModal}><CityList /></Modals>
+                : <Modals><Points /></Modals>
             }
-            
-        </Modals>
-
+        </>
       }
       {
         modalMap &&
         <Modals onClose={handlerCloseMapModal}>
           <PointsMap />
         </Modals>
-          
+
       }
       {
         youSity &&

@@ -56,7 +56,7 @@ const Stocks = () => {
 							? <Slider {...settings}>
 										{
                       baners.sort((a:any,b:any) => (a.order - b.order)).map((val:any)=>{
-                        return <a key={val._id} className="stocks__item"  href={val.url}><StocksItem  content={imgRoutDef(val.images[0])} /></a>
+                        return <a key={val._id} className="stocks__item"  href={val.url} target="_blank" rel="noreferrer"><StocksItem  content={imgRoutDef(val.images[0])} /></a>
                       })
 										}
 								</Slider>
