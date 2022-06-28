@@ -8,9 +8,11 @@ import { LocationPointsContext } from "../LocationLayout";
 
 const Points = () => {
   const useCaseLocationPoints = useContext(LocationPointsContext);
-  const { handlerCloseModal,handlerMapModal,setShow } = useCaseLocationPoints.handlers;
-  const useCasePoints = adapterComponentUseCase(usePoints)
-  const { addresses,point,city } = useCasePoints.data
+	const {selectCity} = useCaseLocationPoints.data
+  const { handlerCloseModal,handlerMapModal,handleSelectOrganitztion,setShow } = useCaseLocationPoints.handlers;
+
+  const useCasePoints = adapterComponentUseCase(usePoints,{selectCity,handleSelectOrganitztion})
+  const { addresses,point } = useCasePoints.data
   const {handlerPoint} = useCasePoints.handlers
   const { isLoading } = useCasePoints.status
 
@@ -43,7 +45,7 @@ const Points = () => {
         <div className="you_city">
   				<div className="you_city-adress">
   					<span>Ваш город:</span>
-  					<div className="you_city-adress--city">{city.name}</div>
+  					<div className="you_city-adress--city">{selectCity.name}</div>
   				</div>
   				<div className="you_city-change" onClick={()=> setShow(true)}>Выбрать другой</div>
   			</div>

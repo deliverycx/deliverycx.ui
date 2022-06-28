@@ -8,6 +8,7 @@ import { ICategory, IPoint } from "@types";
 
 import { RTKCategories, useGetCategoriQuery } from "servises/repository/RTK/RTKCategories";
 import { useRouter } from "next/router";
+import { checkPoint } from "application/helpers/checkPoint";
 
 export const staticCategories = {
   image: "./images/icon/favorite.png",
@@ -30,6 +31,10 @@ export function useCategories(this: any) {
     localStorage.removeItem('prod')
   }, [categories])
 
+	const hanleMainClick = (id:string) =>{
+		checkPoint(false) ? router.push(`/menu?cat=${id}`)  : checkPoint(true)
+	}
+
 
   useEffect(() => {
     id && setCatId(id)
@@ -44,7 +49,8 @@ export function useCategories(this: any) {
     category
   })
   this.handlers({
-    handleSliderClick
+    handleSliderClick,
+		hanleMainClick
   })
   this.status({
     isFetching

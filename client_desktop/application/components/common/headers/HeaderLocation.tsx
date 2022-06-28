@@ -7,8 +7,8 @@ const HeaderLocation = () => {
     const {handlerHeader } = useCaseLocationHeader.handlers;
     return (
         <div className="header_adress-info">
-            <span onClick={handlerHeader} className="header_adress-info-active">{selectedPoint.city}</span>
-            <span onClick={handlerHeader}>{selectedPoint.address}</span>
+            <span onClick={() => handlerHeader('city')} className="header_adress-info-active">{selectedPoint.city}</span>
+            <span onClick={() => handlerHeader('point')}>{selectedPoint.address}</span>
             <a href={`tel:${selectedPoint.phone}`} className="phones">{selectedPoint.phone}</a>
         </div>
     );

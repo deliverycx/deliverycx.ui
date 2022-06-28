@@ -17,7 +17,7 @@ import { RootState } from 'servises/redux/createStore';
 import { accessOrder, fetchDeleteCart } from "servises/redux/slice/cartSlice";
 import { useRouter } from 'next/router'
 
-export function usePoints(this: any) {
+export function usePoints(this: any,{selectCity,handleSelectOrganitztion}:any) {
   const dispatch = useDispatch();
   const router = useRouter()
 	const [cityid,setCityId] = useState('')
@@ -27,7 +27,8 @@ export function usePoints(this: any) {
 
 
   const handlerPoint = (address: IPoint)=>{
-    dispatch(setPoint(address));
+		handleSelectOrganitztion(address)
+    //dispatch(setPoint(address));
     dispatch(setModal(false))
     if (address.id !== point.id) {
       dispatch(fetchDeleteCart());
@@ -38,9 +39,11 @@ export function usePoints(this: any) {
     router.push(ROUTE_APP.MAIN)
   }
 
+	console.log(cityid);
+
 	useEffect(()=>{
-		city.id && setCityId(city.id)
-	},[city.id])
+		selectCity.id && setCityId(selectCity.id)
+	},[selectCity.id])
 
   
 
@@ -57,14 +60,16 @@ export function usePoints(this: any) {
   })
 }
 
-export function usePointsMaps(this: any,{handlerGoToCity,handlerCloseMapModal}:any) {
+export function usePointsMaps(this: any,{selectCity,handlerGoToCity,handlerCloseMapModal,handleSelectOrganitztion}:any) {
   const dispatch = useDispatch();
   const refMap = useRef<any>()
+	/*
   const selectedCity = adapterSelector.useSelectors(
     (selector) => selector.city
   );
+	*/
   const { id } = adapterSelector.useSelectors((selector) => selector.point);
-  const { data: org, isFetching } = useGetPointsQuery(selectedCity.id);
+  const { data: org, isFetching } = useGetPointsQuery(selectCity.id);
   const [getRecvisites, { data: recvisites }] = useGetRecvisitesMutation()
 
   const [statePoint, dispatchPoint] = useReducer(
@@ -80,7 +85,7 @@ export function usePointsMaps(this: any,{handlerGoToCity,handlerCloseMapModal}:a
   }, [statePoint.slideIndex]) 
   
     useEffect(() => {
-        if (Object.keys(selectedCity).length) {
+        if (Object.keys(selectCity).length) {
           (addresses && !isFetching) && nearPoint(addresses);
           refMap.current.scrollIntoView({behavior: "smooth", block: "end", inline: "nearest"});
         } else {
@@ -151,9 +156,9 @@ export function usePointsMaps(this: any,{handlerGoToCity,handlerCloseMapModal}:a
     const selectPointHandler = async (address: IPoint) => {
         try {
             const { data: regData } = await RequestProfile.register();
-						console.log(address);
             dispatch(setProfileAction(regData));
-            dispatch(setPoint(address));
+						handleSelectOrganitztion(address)
+            //dispatch(setPoint(address));
             if (address.id !== id) {
               dispatch(fetchDeleteCart());
               dispatch(accessOrder());
@@ -175,7 +180,7 @@ export function usePointsMaps(this: any,{handlerGoToCity,handlerCloseMapModal}:a
     }
 
     this.data({
-        selectedCity,
+				selectCity,
         addresses,
         statePoint,
         recvisites,

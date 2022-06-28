@@ -7,7 +7,7 @@ import { setCiti, setMapModal, setModal, setPoint } from "servises/redux/slice/l
 import { ROUTE_APP } from 'application/contstans/route.const';
 import RequestLocation from "servises/repository/Axios/Request/Request.Location";
 import { RequestAdmin } from "servises/repository/Axios/RequestAdmin";
-import { ISocial } from "@types";
+import { ICity, ISocial,IPoint } from "@types";
 
 export function useLocations(this: any){
   const dispatch = useDispatch()
@@ -17,10 +17,11 @@ export function useLocations(this: any){
   const selectedCity = adapterSelector.useSelectors((selector) => selector.city);
   const [showCiti, setShow] = useState(true)
   const [youSity, setYouSyty] = useState(false)
+	const [selectCity, setSelectCity] = useState<ICity | null>(null)
   
 
   const handlerCloseModal = () => {
-    dispatch(setModal(false))
+   	dispatch(setModal(false))
   }
   const handlerCloseMapModal = () => {
     dispatch(setMapModal(false))
@@ -38,13 +39,21 @@ export function useLocations(this: any){
     setShow(true)
   }
 
+	const handleSelectCity = (city:ICity) => {
+		setSelectCity(city)
+		setShow(false)
+	}
+	const handleSelectOrganitztion = (address:IPoint) => {
+		dispatch(setCiti(selectCity));
+		dispatch(setPoint(address));
+	}
 
 
+	//таргетерная
 	const byOrg = async (org:string) =>{
 		
 		const {data}:any = await RequestLocation.geBuOrg(org)
 		if(data){
-			console.log(data);
 			const res = await RequestLocation.geBuCity(data.cityid._id)
 			if(res.status === 200){
 				dispatch(setCiti(res.data));
@@ -58,7 +67,8 @@ export function useLocations(this: any){
 
   useEffect(() => {
     if (Object.keys(selectedCity).length) {
-      setShow(false)
+      setSelectCity(selectedCity)
+			//setShow(false)
     }
   }, [selectedCity]);
 
@@ -67,6 +77,17 @@ export function useLocations(this: any){
       setYouSyty(true)
     }
   }, []);
+
+	useEffect(() => {
+		const loc = router.query.location
+    if (Object.keys(selectedCity).length && loc) {
+      if(loc === 'point'){
+				setShow(false)
+			}else if(loc === 'city'){
+				setShow(true)
+			}
+    }
+  }, [router.query.location]);
 
 
 	useEffect(() => {
@@ -79,7 +100,8 @@ export function useLocations(this: any){
     modal,
     showCiti,
     modalMap,
-    youSity
+    youSity,
+		selectCity
   })
   this.handlers({
     handlerCloseModal,
@@ -87,6 +109,8 @@ export function useLocations(this: any){
     handlerMapModal,
     handlerModal,
     handlerGoToCity,
+		handleSelectOrganitztion,
+		handleSelectCity,
     setShow,
     setYouSyty
   })
@@ -97,19 +121,25 @@ export function useLocations(this: any){
 export function useHeaderLocations(this: any) {
   const dispatch = useDispatch()
   const [show, setShow] = useState(false)
+	const router = useRouter()
 	const [social, setSoclial] = useState<ISocial | null>(null)
   const selectedCity = adapterSelector.useSelectors(selector => selector.city)
   const selectedPoint = adapterSelector.useSelectors(selector => selector.point)
   
 
 	const getSocial = async (id:string) =>{
-		const response = await RequestAdmin.social(id)
-		
-		if(response.status === 200 && response.data){	
-			setSoclial(response.data)
-		}else{
-			setSoclial(null)
+		try {
+			const response = await RequestAdmin.social(id)
+			
+			if(response.status === 200 && response.data){	
+				setSoclial(response.data)
+			}else{
+				setSoclial(null)
+			}
+		} catch (error) {
+			console.log(error);
 		}
+		
 	}
 
 
@@ -127,8 +157,9 @@ export function useHeaderLocations(this: any) {
   }, [selectedPoint.guid])
 
 
-  const handlerHeader = () => {
+  const handlerHeader = (location:string) => {
     dispatch(setModal(true))
+		router.push(`/?location=${location}`)
   }
 
 

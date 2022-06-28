@@ -21,9 +21,10 @@ export const PointsContext = React.createContext<TadapterCaseCallback>({
 });
 const PointsMap = () => {
   const useCaseLocationPoints = useContext(LocationPointsContext);
-  const { handlerCloseMapModal,handlerGoToCity} = useCaseLocationPoints.handlers;
+	const {selectCity} = useCaseLocationPoints.data
+  const { handlerCloseMapModal,handlerGoToCity,handleSelectOrganitztion} = useCaseLocationPoints.handlers;
 
-  const useCasePoints = adapterComponentUseCase(usePointsMaps,{handlerGoToCity,handlerCloseMapModal})
+  const useCasePoints = adapterComponentUseCase(usePointsMaps,{selectCity,handlerGoToCity,handlerCloseMapModal,handleSelectOrganitztion})
   const { addresses,statePoint,refMap} = useCasePoints.data
   const { placemarkClickHandler} = useCasePoints.handlers
 

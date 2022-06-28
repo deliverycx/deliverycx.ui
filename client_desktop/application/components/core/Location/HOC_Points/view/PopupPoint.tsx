@@ -6,7 +6,7 @@ import { PointsContext } from "../HOC.PointsMap";
 
 const PopupPoint = () => {
   const useCasePoints = useContext(PointsContext)
-  const { addresses, statePoint, recvisites,selectedCity } = useCasePoints.data
+  const { addresses, statePoint, recvisites,selectCity } = useCasePoints.data
   const { selectPointHandler, buttonClickHandler, SlidePointsHandler, recvisitesHandler } = useCasePoints.handlers
 
   const address = addresses && addresses[statePoint.slideIndex]
@@ -25,7 +25,7 @@ const PopupPoint = () => {
                </div>
 
                 <div className="welcome__select-adress__adress popup-point">
-                  <div className="welcome__select-adress__city">г. {selectedCity.name}</div>
+                  <div className="welcome__select-adress__city">г. {selectCity.name}</div>
                </div>
                <div className="next" onClick={() => SlidePointsHandler("next")}>
                  <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
