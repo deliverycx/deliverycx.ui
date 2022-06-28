@@ -19,33 +19,33 @@ const LocationLayout = () => {
   const {handlerCloseModal,handlerCloseMapModal,setYouSyty} = useCaseLocation.handlers
 
   return (
-    <>
-      <LocationPointsContext.Provider value={useCaseLocation}>
-      {
-        modal &&
-        <>
-            {
+		<>
+		<LocationPointsContext.Provider value={useCaseLocation}>
+		{
+         modal &&
+				 <Modals>
+					{
               showCiti
-                ? <Modals onClose={handlerCloseModal}><CityList /></Modals>
+                ? <Modals><CityList /></Modals>
                 : <Modals><Points /></Modals>
-            }
-        </>
-      }
-      {
+          }
+				 </Modals>
+     }
+		 {
         modalMap &&
         <Modals onClose={handlerCloseMapModal}>
           <PointsMap />
         </Modals>
 
       }
-      {
+			{
         youSity &&
         <Modals>
           <NotificatCity />
         </Modals>
       }
-      </LocationPointsContext.Provider>
-    </>
+		</LocationPointsContext.Provider>
+		</>
   )
 }
 export default LocationLayout

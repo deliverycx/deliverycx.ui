@@ -11,6 +11,7 @@ import { imgRout } from "application/helpers/imgInit";
 import CartSmall from "../Cart/HOC_CartSmall/HOC.CartSmall";
 import LogoMini from "../Shop/Presentation/LogoMini";
 import { ROUTE_APP } from "../../../contstans/route.const";
+import { checkPoint } from "application/helpers/checkPoint";
 
 type IProps ={
 	pages?:string
@@ -21,7 +22,7 @@ const Categories:FC<IProps> = ({pages}) => {
 
   const useCasePoints = adapterComponentUseCase(useCategories)
   const { router,categories, currentSlide, category } = useCasePoints.data
-  const { handleSliderClick } = useCasePoints.handlers
+  const { handleSliderClick,hanleMainClick } = useCasePoints.handlers
   const { isFetching } = useCasePoints.status
 
   useEffect(() => {
@@ -43,6 +44,7 @@ const Categories:FC<IProps> = ({pages}) => {
 		
 		return () => clearTimeout(time)
   }, [categories])
+
 
 
   return (
@@ -77,7 +79,7 @@ const Categories:FC<IProps> = ({pages}) => {
 	                );
 								}else{
 									return (
-									<a key={i} className="categories__item" href={`/menu?cat=${category.id}`}>
+									<a key={i} className="categories__item" onClick={() => hanleMainClick(category.id)}>
 											<div className="categories__item__content-wrapper">
 	          						<div className="categories__item__img-wrap">
 	          							<div>
