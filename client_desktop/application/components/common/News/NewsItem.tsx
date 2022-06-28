@@ -52,7 +52,7 @@ const NewsItems = () => {
 								return (
 									<div key={val._id} className="coruselus">
 										<div className="about-comp_grind-item">
-											<a href={val.url}><img className="about-comp_grind-item--img"
+											<a href={val.url} target="_blank" rel="noreferrer"><img className="about-comp_grind-item--img"
 																						 src={imgRoutDef(val.
 																							smallimages[0])} /></a>
 										</div>
