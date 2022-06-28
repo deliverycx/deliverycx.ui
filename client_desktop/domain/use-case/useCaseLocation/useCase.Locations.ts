@@ -17,7 +17,7 @@ export function useLocations(this: any){
   const selectedCity = adapterSelector.useSelectors((selector) => selector.city);
   const [showCiti, setShow] = useState(true)
   const [youSity, setYouSyty] = useState(false)
-	const [selectCity, setSelectCity] = useState<ICity | null>(null)
+	const [selectCity, setSelectCity] = useState<ICity | Object>({})
   
 
   const handlerCloseModal = () => {
