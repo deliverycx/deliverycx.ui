@@ -28,10 +28,10 @@ const Footer = () => {
   					<span>«Старик Хинкалыч» © 2022</span>
   				</div>
   				<div className="foot-item">
-  					<a href="">Пользовательское соглашение</a>
+  					<a href="/private.pdf">Пользовательское соглашение</a>
   				</div>
   				<div className="foot-item">
-  					<a href="#">Политика обработки персональных данных</a>
+  					<a href="/private.pdf">Политика обработки персональных данных</a>
   				</div>
   			</div>
   		</div>
