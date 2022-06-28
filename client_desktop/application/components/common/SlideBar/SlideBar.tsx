@@ -17,8 +17,8 @@ const SlideBar = () => {
         <div className={CN2} onClick={() => setSwtch(true)}>Новости</div>
       </section>
       <section className="slidebars">
-        <SlideBarNews isVisible={!swtch} />
-        <SlideBarInfo isVisible={swtch} />
+        <SlideBarNews isVisible={swtch} />
+        <SlideBarInfo isVisible={!swtch} />
       </section>
     </div>
   );
