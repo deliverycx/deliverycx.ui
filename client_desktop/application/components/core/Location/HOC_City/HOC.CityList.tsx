@@ -12,6 +12,9 @@ const CityList = () => {
   const { cities,selectedCity } = useCaseCitiList.data
   const { selectCiti, setSerchCiti, hadleCitySerch } = useCaseCitiList.handlers
   const { isLoading } = useCaseCitiList.status
+	let sortedCities;
+
+	if (cities) sortedCities = cities.slice().sort((a: { name: string; }, b: { name: string; }) => a.name > b.name ? 1 : -1);
 
   return (
 		<div className="location_city">
@@ -38,7 +41,7 @@ const CityList = () => {
 				<div className="you_city__points city-list">
 					<ul className="points-list city-list">
 						{
-							!isLoading && cities && cities.map((city: ICity) => {
+							!isLoading && sortedCities && sortedCities.slice().sort().map((city: ICity) => {
 								const CN = cn("welcome__city", { active: city.name === selectedCity.name }); //city.name === selectedCity?.name
 								if (!city.isHidden) {
 									return <li key={city.id} onClick={() => selectCiti(city)} className={CN}>{city.name}</li>;
