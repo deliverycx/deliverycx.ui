@@ -1,36 +1,27 @@
-import { IGeoCodeResponse } from "@types";
-import axios from "axios";
-import { useContext, useEffect, useMemo, useState } from "react";
-import { YMaps, Map, SearchControl, Placemark, YMapsApi, withYMaps } from "react-yandex-maps";
-import { useDispatch, useSelector } from 'react-redux';
-import { setAdress } from "servises/redux/slice/cartSlice";
-import { getGeoLocation } from "application/helpers/yandexapi";
+import { useMemo } from "react";
+import { YMaps, Map, Placemark, withYMaps } from "react-yandex-maps";
+import { useSelector } from 'react-redux';
 import { RootState } from "servises/redux/createStore";
 import MapSuggestComponent from "application/components/common/Maps/MapSuggest";
-import { push } from 'connected-react-router';
-import { ROUTE_APP } from "application/contstans/route.const";
 import { adapterComponentUseCase } from 'adapters/adapterComponents';
 import { useCartMap } from "domain/use-case/useCaseCart";
 import cn from "classnames";
-import { CartFormContext } from "../HOC_CartForm/HOC.CartForm";
 
 const placeMarkOption = {
   iconLayout: 'default#image',
-  iconImageHref: "images/i/map_placemark2.png",
+  iconImageHref: "images/i/place-mark.svg",
   iconImageSize: [50, 60],
   iconImageOffset: [-25, -60]
 }
 
 const CartYmap = ({close}:any) => {
-  
   const city = useSelector((state: RootState) => state.location.point.city);
-
   const usecaseCartMap = adapterComponentUseCase(useCartMap,close)
-  const { stateReduceMap,mapstate } = usecaseCartMap.data
+  const { stateReduceMap, mapstate } = usecaseCartMap.data
   const { onMapTyping,getGeoLoc,onMapClick,hendleMapPopup } = usecaseCartMap.handlers
-  
-  const CN = cn("serch_city", { error_map: stateReduceMap.disclaimer })
-  
+
+  const CN = cn("search_city delivery-map", { error_map: stateReduceMap.disclaimer })
+
   const SuggestComponent = useMemo(() => {
     return withYMaps(MapSuggestComponent, true, [
         "SuggestView",
@@ -38,71 +29,64 @@ const CartYmap = ({close}:any) => {
         "coordSystem.geo"
     ]);
   }, []);
-  
-  
-  
-  
+
   return (
-    <div className="location_city location_Maps addres_map">
-  		<div className="location_city-container">
-  			<div className="close" onClick={close}>
-  				<img src="/images/icon/close.png" alt="" />
-  			</div>
-  			<div className="modals_title">Укажите <span>адрес доставки</span></div>
-    <YMaps
-                enterprise
-                query={{ apikey: "164ee8b6-9e22-4e21-84ed-a0778bdf0f37"}}
-            >
-                <Map className="welcome__map" width="100" height="100" modules={['geocode']} onClick={onMapClick} state={mapstate} defaultState={
-                    {
-                        center: stateReduceMap.myPosition,
-                        zoom: 17,
-                        controls: [],
-                        scrollZoom: false,
-
-                    }
+    <div className="location_city location_Maps addres_map delivery-map">
+      <div className="location_city-container delivery-map">
+        <div className="close" onClick={close}>
+          <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <g clipPath="url(#clip0_329_8395)">
+              <path d="M0 0L11.9991 12M12 0L0.00090279 12" stroke="#ABABAB" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+            </g>
+            <defs>
+              <clipPath id="clip0_329_8395">
+                <rect width="12" height="12" fill="white"/>
+              </clipPath>
+            </defs>
+          </svg>
+        </div>
+        <div className="modals_title">Укажите <span>адрес доставки</span></div>
+        <YMaps
+          enterprise
+          query={{ apikey: "164ee8b6-9e22-4e21-84ed-a0778bdf0f37" }}
+        >
+          <Map className="welcome__map delivery-map" width="100" height="100" modules={["geocode"]} onClick={onMapClick}
+               state={mapstate} defaultState={
+            {
+              center: stateReduceMap.myPosition,
+              zoom: 17,
+              controls: [],
+              scrollZoom: false
+            }
+          }
+          >
+            <div className="welcome delivery-map">
+              <div className="welcome__header">
+                <div className={CN}>
+                  {
+                    !stateReduceMap.inputMap
+                      ? <div className="mapsPopup__value"
+                             onClick={() => onMapTyping().setInputMap(true)}>{stateReduceMap.valueMap}</div>
+                      : <SuggestComponent dispatchMap={onMapTyping} stateReduceMap={stateReduceMap} />
+                  }
+                </div>
+                {
+                  (city || stateReduceMap.valueMap) &&
+                    <button disabled={!stateReduceMap.valueMap} className="mapsPopup__button btn" onClick={hendleMapPopup}>Я здесь</button>
                 }
-                >
-                    <div className="welcome">
-                        <div className="welcome__header">
-                                    <div className={CN}>
-                                        
-                                        
-                                        {
-                                            !stateReduceMap.inputMap
-                                                ? <div className="mapsPopup__value" onClick={() => onMapTyping().setInputMap(true)}>{stateReduceMap.valueMap}</div>
-                                                : <SuggestComponent dispatchMap={onMapTyping} stateReduceMap={stateReduceMap}  />
-                                        }
-                                        <button></button>
-                                    </div>
-                                    
-                                
-
-                              {
-
-                                (city || stateReduceMap.valueMap) && 
-                                <div className="mapsPopup__button btn" onClick={hendleMapPopup}>Заказать доставку</div>
-                              }   
-
-                                
-                            
-                              </div>
-                              {
-                                stateReduceMap.disclaimer && <div className="disclaimer">Не точный адрес, в ведите дом</div>
-                              }
-                    </div>
-
-                    <Placemark
-                        options={placeMarkOption}
-                        geometry={stateReduceMap.cord}
-                    />
-                    
-                        
-                </Map>
-      </YMaps>
-      
+              </div>
+              {
+                stateReduceMap.disclaimer && <div className="disclaimer">Не точный адрес, в ведите дом</div>
+              }
+            </div>
+            <Placemark
+              options={placeMarkOption}
+              geometry={stateReduceMap.cord}
+            />
+          </Map>
+        </YMaps>
       </div>
-	  </div>
-  )
+    </div>
+  );
 }
 export default CartYmap

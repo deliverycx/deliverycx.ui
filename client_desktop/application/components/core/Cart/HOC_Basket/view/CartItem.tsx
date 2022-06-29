@@ -23,7 +23,7 @@ const CartItem: FC<IProps> = ({ product, errorSchema }) => {
   const [error, setError] = useState<null | string>(null);
 
   const debouncedChangeHandler = useMemo(() => debounce(({ id, count }: any) =>
-    dispatch(fetchChangeAmount({ amount:count,cartId:id,orderType: "PICKUP" })), 200), [product.amount]) 
+    dispatch(fetchChangeAmount({ amount:count,cartId:id,orderType: "PICKUP" })), 200), [product.amount])
   const removeHandler = ()=>{
       dispatch(fetchRemoveCart(product.id));
   }
@@ -34,7 +34,7 @@ const CartItem: FC<IProps> = ({ product, errorSchema }) => {
   })
 
   useEffect(() => () => debouncedChangeHandler.cancel(), [product.amount]);
-  
+
   useEffect(() => {
     if (product.productTags) {
       const tag = product.productTags.find(el => el !== "HIDDEN"); //?.match(/[a-z]{2,}/i)![0]
@@ -43,7 +43,7 @@ const CartItem: FC<IProps> = ({ product, errorSchema }) => {
           setError(errorSchema?.HI?.message);
       }
     }
-    
+
   }, [errorSchema])
 
   const changeCountHandler = ({ id, type, code}: any) => {
@@ -51,29 +51,29 @@ const CartItem: FC<IProps> = ({ product, errorSchema }) => {
          switch (type) {
              case 'inc':
               setChangeCount(prev => {
-                   let count =  prev + 1 
-                   debouncedChangeHandler({ id, count})  
+                   let count =  prev + 1
+                   debouncedChangeHandler({ id, count})
                    return count
                  });
                   break;
              case 'dec':
                  if (!(changeCount <= 1)) {
                   setChangeCount(prev => {
-                          let count =  prev - 1 
-                          debouncedChangeHandler({ id, count })  
+                          let count =  prev - 1
+                          debouncedChangeHandler({ id, count })
                           return count
                      });
-                 }  
+                 }
                   break;
               default : setChangeCount(product.amount)
-        } 
+        }
         setError(null)
       }
   }
 
     return (
         <div className={CN}>
-            
+
             <div className="cart_item-img">
 							<img className="cart_item-img"
 								src={imgRout(product.productImage)}
@@ -87,7 +87,7 @@ const CartItem: FC<IProps> = ({ product, errorSchema }) => {
 							</div>
 							<div className="cart_item-box">
 								<section className="grid">
-									
+
 									<div className="product_card__count-option">
                   <div className={
                             changeCount <= 1
@@ -98,7 +98,7 @@ const CartItem: FC<IProps> = ({ product, errorSchema }) => {
                           changeCountHandler({
                               id: product.id,
                               type: "dec",
-                              
+
                           })
                       }
                 >
@@ -110,7 +110,7 @@ const CartItem: FC<IProps> = ({ product, errorSchema }) => {
                       changeCountHandler({
                           id: product.id,
                           type: "inc",
-                          
+
                       })
                   }
                   >
@@ -118,17 +118,15 @@ const CartItem: FC<IProps> = ({ product, errorSchema }) => {
                   </div>
 									</div>
 								</section>
-								
+
 								<section className="grid">
-									
-									<div className="delet" onClick={removeHandler}>
-										<img src="/images/icon/delete.png" alt="" />
-									</div>
+
+									<div className="delet" onClick={removeHandler}></div>
             </section>
-            
+
 							</div>
 						</div>
-            {error && 
+            {error &&
                 <div className="cart__item__validate">
                     {
                         error

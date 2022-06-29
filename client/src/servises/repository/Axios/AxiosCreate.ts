@@ -11,10 +11,10 @@ class AxiosCreate {
     private URL: string = process.env.REACT_APP_API_URL as string;
     api: AxiosInstance;
 
-    private constructor() {
+    private constructor(URL:string) {
         this.api = axios.create({
             withCredentials: true,
-            baseURL: this.URL
+            baseURL: URL
         });
 
         this.api.interceptors.response.use(
@@ -37,11 +37,8 @@ class AxiosCreate {
         });
         /**/
     }
-    static get getInstance() {
-        if (!AxiosCreate._instanse) {
-            AxiosCreate._instanse = new AxiosCreate();
-        }
-        return AxiosCreate._instanse;
+    static getInstance(url:string) {
+			return new AxiosCreate(url)
     }
 }
 

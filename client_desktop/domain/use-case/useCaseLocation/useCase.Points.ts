@@ -1,4 +1,4 @@
-import { useEffect, useReducer, useRef } from "react";
+import { useEffect, useReducer, useRef, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useGetPointsQuery, useGetRecvisitesMutation } from "servises/repository/RTK/RTKLocation";
 import { IPoint } from "@types";
@@ -17,16 +17,18 @@ import { RootState } from 'servises/redux/createStore';
 import { accessOrder, fetchDeleteCart } from "servises/redux/slice/cartSlice";
 import { useRouter } from 'next/router'
 
-export function usePoints(this: any) {
+export function usePoints(this: any,{selectCity,handleSelectOrganitztion}:any) {
   const dispatch = useDispatch();
   const router = useRouter()
+	const [cityid,setCityId] = useState('')
   const {city,point} =  useSelector((state:RootState) => state.location)
   const { id } = adapterSelector.useSelectors((selector) => selector.point);
-  const { data: addresses, isFetching } = useGetPointsQuery(city.id);
+  const { data: addresses, isFetching } = useGetPointsQuery(cityid);
 
 
   const handlerPoint = (address: IPoint)=>{
-    dispatch(setPoint(address));
+		handleSelectOrganitztion(address)
+    //dispatch(setPoint(address));
     dispatch(setModal(false))
     if (address.id !== point.id) {
       dispatch(fetchDeleteCart());
@@ -36,6 +38,12 @@ export function usePoints(this: any) {
     RequestProfile.update({ organizationId: address.id });
     router.push(ROUTE_APP.MAIN)
   }
+
+	console.log(cityid);
+
+	useEffect(()=>{
+		selectCity.id && setCityId(selectCity.id)
+	},[selectCity.id])
 
   
 
@@ -52,14 +60,16 @@ export function usePoints(this: any) {
   })
 }
 
-export function usePointsMaps(this: any,{handlerGoToCity,handlerCloseMapModal}:any) {
+export function usePointsMaps(this: any,{selectCity,handlerGoToCity,handlerCloseMapModal,handleSelectOrganitztion}:any) {
   const dispatch = useDispatch();
   const refMap = useRef<any>()
+	/*
   const selectedCity = adapterSelector.useSelectors(
     (selector) => selector.city
   );
+	*/
   const { id } = adapterSelector.useSelectors((selector) => selector.point);
-  const { data: org, isFetching } = useGetPointsQuery(selectedCity.id);
+  const { data: org, isFetching } = useGetPointsQuery(selectCity.id);
   const [getRecvisites, { data: recvisites }] = useGetRecvisitesMutation()
 
   const [statePoint, dispatchPoint] = useReducer(
@@ -75,7 +85,7 @@ export function usePointsMaps(this: any,{handlerGoToCity,handlerCloseMapModal}:a
   }, [statePoint.slideIndex]) 
   
     useEffect(() => {
-        if (Object.keys(selectedCity).length) {
+        if (Object.keys(selectCity).length) {
           (addresses && !isFetching) && nearPoint(addresses);
           refMap.current.scrollIntoView({behavior: "smooth", block: "end", inline: "nearest"});
         } else {
@@ -146,9 +156,9 @@ export function usePointsMaps(this: any,{handlerGoToCity,handlerCloseMapModal}:a
     const selectPointHandler = async (address: IPoint) => {
         try {
             const { data: regData } = await RequestProfile.register();
-
             dispatch(setProfileAction(regData));
-            dispatch(setPoint(address));
+						handleSelectOrganitztion(address)
+            //dispatch(setPoint(address));
             if (address.id !== id) {
               dispatch(fetchDeleteCart());
               dispatch(accessOrder());
@@ -170,7 +180,7 @@ export function usePointsMaps(this: any,{handlerGoToCity,handlerCloseMapModal}:a
     }
 
     this.data({
-        selectedCity,
+				selectCity,
         addresses,
         statePoint,
         recvisites,

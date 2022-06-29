@@ -12,31 +12,32 @@
 		top: 50%;
 		width: 48px;
 		height: 48px;
+	}
 
+	.slick-prev,
+	.slick-next {
+		height: 40px;
 	}
-	.slick-prev{
-		@include bgImage('/images/icon/slide-left.png');
-		left: - 60px;
-		width: 48px;
-		height: 48px;
-		font-size: 22px;
-		line-height: 100%;
-		&:hover,&:focus{
-			opacity: 1;
-			@include bgImage('/images/icon/slide-left.png');
-		}
+
+	.slick-prev:before {
+		content: url("/images/icon/slide-left.svg");
+		position: relative;
+		right: 33px;
+		transition: all 0.3s ease-in-out;
 	}
-	.slick-next{
-		@include bgImage('/images/icon/slide-right.png');
-		right: - 60px;
-		width: 48px;
-		height: 48px;
-		font-size: 22px;
-		line-height: normal;
-		&:hover,&:focus{
-			opacity: 1;
-			@include bgImage('/images/icon/slide-right.png');
-		}
+	.slick-prev:hover:before {
+		content: url("/images/icon/slide-left-hov.svg");
+	}
+
+	.slick-next:before {
+		content: url("/images/icon/slide-right.svg");
+		position: relative;
+		left: 15px;
+		transition: all 0.3s ease-in-out;
+	}
+
+	.slick-next:hover:before {
+		content: url("/images/icon/slide-right-hov.svg");
 	}
 
 	.stocks__points{

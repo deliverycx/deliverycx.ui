@@ -10,31 +10,26 @@ const NotificatCity = () => {
   const useCaseCitiList = adapterComponentUseCase(useYouCiti,setYouSyty)
   const { selectedCity } = useCaseCitiList.data
 
-  
-    return (
-      <div className="notification_modal notification_city">
-         <div className="notification_modal-container">
-         <div className="close" >
-  				
-    			</div>
-          <div className="you_city">
-              <div className="you_city-adress">
-                  <span>Ваш город:</span>
-                  <div className="you_city-adress--city">{selectedCity.name}</div>
-              </div>
-              
+  return (
+    <div className="notification_modal notification_city">
+      <div className="notification_modal-container">
+        <div className="close"/>
+        <div className="you_city">
+          <div className="you_city-adress">
+            <span>Ваш город:</span>
+            <div className="you_city-adress--city">{selectedCity.name}</div>
           </div>
-          <div className="notification_city__change">
-            <div className="notification_city-btn-succses" onClick={()=> setYouSyty(false)}>Да, верно</div>
-            <span className="notification_city-swap" onClick={() => {
-              setYouSyty(false)
-              handlerModal(true)
-              setShow(true)
-            }} >Выбрать другой</span>
-          </div>
-         </div>   
+        </div>
+        <div className="notification_city__change">
+          <div className="notification_city-btn-success" onClick={() => setYouSyty(false)}>Да, верно</div>
+          <span className="notification_city-swap" onClick={() => {
+            setYouSyty(false);
+            handlerModal(true);
+            setShow(true);
+          }}>Выбрать другой</span>
+        </div>
       </div>
-
-    );
+    </div>
+  );
 };
 export default NotificatCity;

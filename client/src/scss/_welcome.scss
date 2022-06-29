@@ -62,10 +62,10 @@
             border: none;
             background: none;
             color: $gray3;
-            &,&::placeholder{ 
+            &,&::placeholder{
                 font-family: $light;
             }
-            &::placeholder{ 
+            &::placeholder{
                 color: $gray6;
             }
         }
@@ -81,7 +81,7 @@
         &.selected{
             color: $red;
             font-family: $bold;
-            
+
             &:after{
                 content: '';
                 background-image: url("../assets/i/checked-red.svg");
@@ -160,8 +160,8 @@
             height: 36px;
             align-items: center;
             justify-content: center;
-            border-radius: 8px;
-            background-color: $grayEF;
+            border-radius: 50%;
+            border: 1px solid #CCCCCC;
         }
         &__work-time{
             color: $gray6;
@@ -178,7 +178,7 @@
             font-size: $fsstocktitle;
             border-radius: 8px;
             position: relative;
-            
+
             a{
                 color: $gray3;
             }
@@ -286,5 +286,5 @@
 			display: block;
 		}
 	}
-	
+
 }

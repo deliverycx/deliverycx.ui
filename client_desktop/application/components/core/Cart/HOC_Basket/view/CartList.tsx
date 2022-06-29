@@ -22,23 +22,26 @@ const CartList:FC<IProps> = ({empty}) => {
     <div className="cart_head">
 				<div className="cart_title-box">
 					<h2 className="cart_title">Корзина</h2>
-					<div className="clear_cart" onClick={debounceClearHandler}>Очистить</div>
+					<div className="clear_cart" onClick={debounceClearHandler}>
+            <span className="cart-svg"/>
+            <span className="clear">Очистить</span>
+          </div>
 				</div>
         <div className="cart_list">
             {
-        
+
                 cartList.map((el:IReqCart)=>{
                   return (
                     <CartContext.Provider key={el.id} value={useCaseCart}>
                       <CartItem product={el} errorSchema={orderError} />
-                   </CartContext.Provider> 
+                   </CartContext.Provider>
                   )
-                   
+
                 })
             }
-            
+
         </div>
-      </div> 
+      </div>
   )
 }
 export default CartList

@@ -1,6 +1,16 @@
-.fild__box{
+.fild__box {
 	margin-bottom: 35px;
+
+	&.cart {
+		margin-bottom: 15px;
+		&.not-valid {
+			.adress_fild__address {
+				color: #ABABAB;
+			}
+		}
+	}
 }
+
 .fild__grid-two{
 	display: flex;
 	justify-content: space-between;
@@ -10,11 +20,13 @@
 }
 .adress_fild{
 	margin-bottom: 35px;
+	&.cart {
+		margin-bottom: 30px;
+	}
 }
 .from__box-adress{
 	display: flex;
 	justify-content: space-between;
-	margin-top: -15px;
 	.form__field-wrapper__input{
 		width: 22%;
 	}
@@ -23,21 +35,27 @@
 	width: 100%;
 	height: 50px;
 	background: #FFFFFF;
-	border: 1px solid #CCCCCC;
+	border: 1px solid #ABABAB;
 	box-sizing: border-box;
 	border-radius: 100px;
-	font-size: 13px;
+	font-size: 15px;
 	font-feature-settings: 'liga' off;
 	color: #333333;
 	line-height: 50px;
 	padding:0 15px;
 	font-family: $manrope;
+	font-weight: 600;
 }
+
+.form__field-wrapper__input::placeholder {
+	color: #ABABAB;
+}
+
 .form__textarea{
 	width: 100%;
 	height: 120px;
 	background: #FFFFFF;
-	border: 1px solid #CCCCCC;
+	border: 1px solid #ABABAB;
 	box-sizing: border-box;
 	border-radius: 25px;
 	font-size: 13px;
@@ -45,15 +63,28 @@
 	color: #333333;
 	line-height: 50px;
 	padding:0 15px;
+	&.cart {
+		font-family: 'Manrope', sans-serif;
+		font-weight: 500;
+		font-size: 15px;
+		color: #ABABAB;
+	}
 }
 .adress_fild__address{
 	cursor: pointer;
+	color: #333333;
 }
 .fild-lable{
-	font-size: 17px;
+	font-size: 15px;
+	font-family: Manrope, sans-serif;
+	font-weight: 400;
 	color: #333333;
 	margin-bottom: 15px;
 	margin-left: 15px;
+	&.cart {
+		margin-left: 0;
+		margin-bottom: 10px;
+	}
 }
 .not-valid.error{
 	.form__field-wrapper__input,.adress_fild__address{

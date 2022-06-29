@@ -6,6 +6,7 @@ import { PersistGate } from 'redux-persist/integration/react';
 import { useEffect, useLayoutEffect, useMemo } from 'react';
 import debounce from 'lodash.debounce';
 import { useState } from 'react';
+import RequestLocation from 'servises/repository/Axios/Request/Request.Location';
 
 
 function MyApp({ Component, pageProps }: AppProps) {
@@ -21,6 +22,7 @@ function MyApp({ Component, pageProps }: AppProps) {
     window.addEventListener('resize', handleWindowResize);
     return () => window.removeEventListener('resize', handleWindowResize);
   }, [])
+
   
   
   

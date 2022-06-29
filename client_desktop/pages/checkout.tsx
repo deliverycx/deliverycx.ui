@@ -5,15 +5,17 @@ import { NextPage } from "next";
 import Link from "next/link";
 
 const CheckOut: NextPage = () => {
-  
+
   return (
     <>
     <section className="checkout_page">
     <div className="container">
 		  <div className="header">
   			<div className="header__left">
+          <Link href="/">
   				<img className="header_logo" src="../images/logo-top.svg" alt="" />
-  			</div>
+          </Link>
+          </div>
   			<div className="header__center">
   				<h1 className="cart_page-title">Оформление заказа</h1>
   			</div>
@@ -30,7 +32,7 @@ const CheckOut: NextPage = () => {
         </div>
       </div>
       </div>
-     </section> 
+     </section>
     <Footer />
     </>
   );

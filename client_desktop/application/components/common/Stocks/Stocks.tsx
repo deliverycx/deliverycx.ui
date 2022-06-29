@@ -1,11 +1,43 @@
-import { memo, useState } from "react";
+import { memo, useEffect, useState } from "react";
 import StockItem from "./Stocksitem";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
+import { RequestAdmin } from "servises/repository/Axios/RequestAdmin";
+import { adapterSelector } from 'servises/redux/selectors/selectors';
+import LoaderProduct from "../Loaders/loaderProduct";
+import { imgRout, imgRoutDef } from "application/helpers/imgInit";
+import StocksItem from "./Stocksitem";
 
 
 const Stocks = () => {
+	const [baners,setBaners] = useState<any | null>(null)
+	const point = adapterSelector.useSelectors((selector) => selector.point);
+
+	const getStocks = async () =>{
+		try {
+			const result1:any = await RequestAdmin.bannersList(point.guid)
+			console.log(result1);
+			if(result1.data.length !== 0){
+				setBaners(result1.data)
+			}else{
+				const result = await RequestAdmin.bannersList('all')
+				if(result.data){
+					setBaners(result.data)
+				}else{
+					setBaners(null)
+				}
+			}
+		} catch (error) {
+			console.log(error);
+		}
+	}
+
+
+
+	useEffect(()=>{
+		getStocks()
+	},[point.guid])
 
     const settings = {
         className: "center",
@@ -19,14 +51,18 @@ const Stocks = () => {
 
     return (
         <div className="stocks">
-            <Slider {...settings}>
-                <StockItem content={'stocks/stok1.png'} />
-                <StockItem content={'stocks/stok2.png'} />
-                <StockItem content={'stocks/stok3.png'} />
-                <StockItem content={'stocks/stok4.png'} />
-                <StockItem content={'stocks/stok5.png'} />
-                <StockItem content={'stocks/stok6.png'} />
-            </Slider>
+						{
+							baners
+							? <Slider {...settings}>
+										{
+                      baners.sort((a:any,b:any) => (a.order - b.order)).map((val:any)=>{
+                        return <a key={val._id} className="stocks__item"  href={val.url} target="_blank" rel="noreferrer"><StocksItem  content={imgRoutDef(val.images[0])} /></a>
+                      })
+										}
+								</Slider>
+							: <LoaderProduct />
+						}
+
         </div>
     )
 };

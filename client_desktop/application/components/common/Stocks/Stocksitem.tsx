@@ -8,7 +8,7 @@ const StocksItem: FC<IStock> = ({content}) => {
 
 
     return (
-        <img className="stocks__item" src={"./images/" + content} />
+        <img src={content} />
     )
 }
 

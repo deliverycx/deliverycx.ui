@@ -205,6 +205,9 @@ const cartSlice = createSlice({
         setErrors: (state, action) => {
             state.orderError = action.payload.errors;
         },
+				setENErrors: (state, action) => {
+					state.orderError = action.payload;
+			},
         setOrderType:(state, action) => {
             state.orderType = action.payload;
         },
@@ -241,6 +244,7 @@ export const {
     setTotalPrice,
     setErrors,
     accessOrder,
-    setOrderType
+    setOrderType,
+		setENErrors
 } = cartSlice.actions;
 export default cartSlice;

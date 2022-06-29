@@ -29,6 +29,16 @@ const Header = () => {
     }
   },[router.asPath])
 
+
+	const handleClickMap = () =>{
+		if (checkPoint(false)){
+			dispatch(setMapModal(true))
+		}else{
+			dispatch(setModal(true))
+		}
+		
+	}
+
     return (
         <div className="header">
             <div className="header__left">
@@ -47,19 +57,19 @@ const Header = () => {
 												<ReserveModalBtnContainer/>
 											</>
 										}
-										
+
                 </div>
                 <div className="header_menu">
                     <a className={menuLinkWithColorCN} onClick={() => heandleToMenu()}>
                         Меню
                     </a>
-                    <a className="header_menu_link" href="">
+                    <a className="header_menu_link" href="http://starikkhinkalich.ru/" target="_blank" rel="noreferrer" >
                         Новинки и акции
                     </a>
-                    <a className={mapColorCN} onClick={()=> dispatch(setMapModal(true))}>
+                    <a className={mapColorCN} onClick={()=> handleClickMap()}>
                         Старик Хинкалыч на карте
                     </a>
-                    <a className="header_menu_link_franchise" href={'https://франшиза.хинкалыч.рф/'} target={'_blank'} rel="noreferrer">
+                    <a className="header_menu_link" href={'https://франшиза.хинкалыч.рф/'} target={'_blank'} rel="noreferrer">
                         Франшиза
                     </a>
                 </div>

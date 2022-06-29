@@ -3,18 +3,33 @@
 	right: 25px;
 	top: 25px;
 	cursor: pointer;
+	transition: all 0.3s ease-in-out;
+	svg {
+		path {
+			stroke: #ABABAB;
+		}
+	}
+	svg:hover {
+		path {
+			stroke: #333333;
+		}
+	}
 }
 .modals-top_box{
-	margin-top: 30px;
+	//margin-top: 30px;
 	display: flex;
 	justify-content: space-between;
 }
 .modals_title{
 	font-size: 26px;
 	color: #132A3E;
-	font-family: $manrope;
+	//font-family: $manrope, sans-serif;
+	font-weight: 500;
 	span{
 		color: #8D191D;
+	}
+	&.city-list {
+		margin-bottom: 16px;
 	}
 }
 .modals_second-title{
@@ -28,7 +43,7 @@
 	left: 0;
 	width: 100%;
 	height: 100%;
-	background-color: #3333332b;
+	background-color: #132A3E80;
 	z-index: 900;
 }
 .modals{

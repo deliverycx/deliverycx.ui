@@ -3,15 +3,19 @@
 	padding-top: 60px;
 	padding-bottom: 30px;
 	font-family: $sf;
+	.container {
+		max-width: 1220px;
+	}
 	.footer_grid{
 		display: flex;
 		justify-content: space-between;
 		border-bottom: 1px solid rgba(255, 255, 255, 0.2);
 		padding-bottom: 30px;
 		.footer_grid-left{
-			width: 45%;
+			width: 48%;
 			display: flex;
 			justify-content: space-between;
+
 		}
 
 		.footer_grid-right {
@@ -19,7 +23,7 @@
 		}
 
 		.footer_grid-form {
-			width: 36%;
+			width: 40%;
 			.footer_form-title {
 				font-size: 21px;
 				font-family: "manrope", sans-serif;
@@ -51,11 +55,15 @@
 					width: 100%;
 					min-width: 380px;
 					padding: 14px 30px;
-					border: none;
+					border: 1px solid transparent;
 					border-radius: 30px;
 					color: #fff;
 					background: rgba(255, 255, 255, 0.1);
 					font-size: 14px;
+				}
+
+				.email-input.error {
+					border: 1px solid #8D191D;
 				}
 
 				.email-input::placeholder{
@@ -77,6 +85,12 @@
 					color: #fff;
 					transition: 0.5s ease;
 					font-size: 14px;
+					font-weight: 500;
+				}
+
+				.form-button.ready {
+					background-color: #FFFFFF;
+					color: #333333;
 				}
 
 				.form-button:active{
@@ -112,8 +126,7 @@
 					border-radius: 8px;
 				}
 
-				label {
-					cursor: pointer;
+				label a{
 					font-size: 13px;
 					color: #fff;
 					font-family: sf-ui-light, sans-serif;
@@ -167,45 +180,40 @@
 				.form-checkbox-container {
 					margin-top: 33px;
 				}
-
-				.footer_form-agreement {
-					font-family: sf-ui-light, sans-serif;
-					margin-top: 18px;
-					color: #FFFFFF;
-					font-weight: 400;
-					font-size: 11px;
-
-					div {
-						opacity: 0.5;
-						margin-bottom: 4px;
-					}
-					a {
-						font-size: 11px;
-						color: #FFF;
-						text-decoration: underline #fff;
-					}
-				}
 			}
 		}
 	}
 	.footer_box{
 		color: #fff;
+		&.first-block {
+
+		}
+		&.second-block {
+			width: 25%;
+		}
 		.footer_box-title{
 			font-size: 21px;
 			font-family: $manrope;
 			font-weight: 800;
 			margin-bottom: 20px;
 		}
-		.footer_box_address_line {
+		.footer_box_address_line, .footer_box-link {
 			font-size: 15px;
 			margin-bottom: 15px;
 			color: #fff;
+			opacity: 0.5;
+			transition: opacity 0.4s ease-in-out;
 		}
 		.footer_box-link{
 			display: block;
 			font-size: 15px;
 			color: #fff;
 			margin-bottom: 15px;
+			opacity: 0.5;
+			transition: opacity 0.4s ease-in-out;
+		}
+		.footer_box-link:hover, .footer_box_address_line:hover {
+			opacity: 1;
 		}
 		.footer_box-soc{
 			display: flex;
@@ -217,9 +225,6 @@
 				width: 24px;
 				height: 100%;
 				margin: 0 10px;
-			}
-			.tg {
-				height: 90%;
 			}
 		}
 		.footer_box__subcrub{
@@ -270,6 +275,7 @@
 			}
 		}
 	}
+
 	.foot{
 		display: flex;
 		margin-top: 30px;
@@ -287,7 +293,22 @@
 			}
 		}
 	}
+}
+.socialbox{
+	display: flex;
+	a{
+		margin-right: 10px;
+	}
+}
 
+.tg {
+	fill: #FFFFFF;
+	opacity:0.5;
+	transition: opacity 0.3s ease-in-out;
+}
+
+.tg:hover {
+	opacity: 1;
 }
 @media screen and (max-width: 1024px) {
 	.footer .footer_grid .footer_grid-left{

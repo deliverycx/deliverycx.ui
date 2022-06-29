@@ -7,6 +7,8 @@ import { adapterSelector } from "servises/redux/selectors/selectors";
 import { ICategory, IPoint } from "@types";
 
 import { RTKCategories, useGetCategoriQuery } from "servises/repository/RTK/RTKCategories";
+import { useRouter } from "next/router";
+import { checkPoint } from "application/helpers/checkPoint";
 
 export const staticCategories = {
   image: "./images/icon/favorite.png",
@@ -16,10 +18,12 @@ export const staticCategories = {
 
 export function useCategories(this: any) {
   const dispatch = useDispatch();
+	const [catid,setCatId] = useState('')
+	const router = useRouter()
   const [currentSlide, setCurrentSlide] = useState<number>(0) 
-  const {id} = adapterSelector.useSelectors<IPoint>(selector => selector.point)
+  const {id,guid} = adapterSelector.useSelectors<IPoint>(selector => selector.point)
   const category = adapterSelector.useSelectors<ICategory>(selector => selector.category)
-  const { data: categories, isFetching } = useGetCategoriQuery(id)
+  const { data: categories, isFetching } = useGetCategoriQuery(catid)
   
   const handleSliderClick = useCallback((index: number,slider?:any) => {
     setCurrentSlide(index);
@@ -27,20 +31,26 @@ export function useCategories(this: any) {
     localStorage.removeItem('prod')
   }, [categories])
 
+	const hanleMainClick = (id:string) =>{
+		checkPoint(false) ? router.push(`/menu?cat=${id}`)  : checkPoint(true)
+	}
+
 
   useEffect(() => {
-    
-  }, [])
+    id && setCatId(id)
+  }, [id])
   
  
   
   this.data({
+		router,
     categories,
     currentSlide,
     category
   })
   this.handlers({
-    handleSliderClick
+    handleSliderClick,
+		hanleMainClick
   })
   this.status({
     isFetching
