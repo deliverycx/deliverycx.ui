@@ -22,9 +22,13 @@ const ReserveModalBtnContainer = () => {
 
     return (
         <>
-            <button className="reserve-btn" onClick={() => setIsModalOpen(true)}>
+				{
+					false &&
+					<button className="reserve-btn" onClick={() => setIsModalOpen(true)}>
                 Забронировать стол
             </button>
+				}
+            
             {
                 isModalOpen &&
                 <Modals onClose={() => modalsCloseHandler()}>
