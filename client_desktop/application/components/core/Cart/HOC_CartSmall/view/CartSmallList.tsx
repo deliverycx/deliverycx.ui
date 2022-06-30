@@ -14,7 +14,7 @@ const CartSmallList = ({onClose}:any) => {
 			<CartList empty={() => onClose()} />
 			<CartTotal />
 			{/* eslint-disable-next-line @next/next/no-html-link-for-pages */}
-      <a className="cart__order-btn btn" href="/checkout">Оформить заказ </a>
+      <a className="cart__order-btn btn cart-btn" href="/checkout">Оформить заказ </a>
 		</div>
 	</div>
   )
