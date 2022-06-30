@@ -1,7 +1,6 @@
 import { adapterSelector } from 'servises/redux/selectors/selectors';
-import CartDeliveryPrice from '../../Presentation/CartDeliveryPrice';
 import CartPriceInfo from '../../Presentation/CartPriceInfo';
-import SpecialOfferGift from "../../../../common/SpecialOffer/SpecialOfferGift";
+import SpecialOfferFree from "../../../../common/SpecialOffer/SpecialOfferGift";
 import React from "react";
 import SpecialOfferLeft from "../../../../common/SpecialOffer/SpecialOfferLeft";
 
@@ -9,8 +8,8 @@ const CartTotal = () => {
   const {totalPrice} = adapterSelector.useSelectors(selector => selector.cart)
   return (
     <div className="cart_bottom">
-			{/*<SpecialOfferGift/>*/}
-			<SpecialOfferLeft/>
+			<SpecialOfferFree/>
+			{/*<SpecialOfferLeft/>*/}
 				<div className="cart-info">
 					<div className="cart-info__box price_info">
 						<CartPriceInfo />
