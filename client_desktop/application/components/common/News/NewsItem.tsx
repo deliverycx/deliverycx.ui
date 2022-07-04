@@ -8,7 +8,6 @@ import LoaderProduct from "../Loaders/loaderProduct";
 
 const NewsItems = () => {
 	const [baners,setBaners] = useState<any | null>(null)
-	console.log('baners', baners);
 	const point = adapterSelector.useSelectors((selector) => selector.point);
 
 	const settings = {
