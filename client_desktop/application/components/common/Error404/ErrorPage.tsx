@@ -1,10 +1,15 @@
 import React from "react";
+import Header from "../headers/Header";
+import ErrorContainer from "./ErrorContainer";
 
 const ErrorPage = () => {
   return (
-    <div>
-
-    </div>
+    <>
+      <div className="container">
+        <Header />
+        <ErrorContainer />
+      </div>
+    </>
   );
 };
 

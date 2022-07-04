@@ -4,10 +4,17 @@ export interface IReverveTable {
     date: string,
     time: string,
     person: string,
-    startTime: string | Date,
-    endTime: string | Date,
     organizationId: string,
-    maxDate: Date
+}
+export interface IReverveTableValue {
+	fullname: string,
+	phone: string,
+	date: Date,
+	time: Date,
+	person: string,
+	startTime:Date
+	endTime:Date
+	maxDate:Date
 }
 
 export interface ISocial {

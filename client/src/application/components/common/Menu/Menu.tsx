@@ -16,7 +16,7 @@ const Menu: FC<IProps> = ({isActive, setter})=>{
 
     return (
         <div className={menuCN}>
-            
+
                 <div className="header__menu__header">
                     <div className="header__menu__close" onClick={setter}></div>
                     <div className="header__logo"><img src={require("assets/img/logo.png").default} alt="Логотип" /></div>
@@ -41,13 +41,13 @@ const Menu: FC<IProps> = ({isActive, setter})=>{
                         {/* <a href="#" className="header__menu__link qrcode">Номер столика</a> */}
                         <Link to="/" className="header__menu__link mark">Выбор заведения</Link>
                         {/* <a href="#" className="header__menu__link order-history">История заказов</a> */}
-                        <a href="https://t.me/lokolyapis" target="_blank" className="header__menu__link messanger">Связаться с нами</a>
+                        <a href="https://t.me/Starik_Khinkalych" target="_blank" className="header__menu__link messanger">Связаться с нами</a>
                         <Link to={ROUTE_APP.PAGES.ABOUT} className="header__menu__link faq">О сервисе</Link>
                         <a target="_blank" rel="noreferrer" href="//xn--80aaudyq1a9a.xn--80apgfh0ct5a.xn--p1ai/" className="header__menu__link franchise">Франшиза</a>
                     </div>
                 </div>
                 <div className="header__menu__bg-images"></div>
-            
+
         </div>
     )
 }

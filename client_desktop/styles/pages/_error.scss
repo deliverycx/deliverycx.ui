@@ -1,0 +1,84 @@
+.error-container {
+  margin-top: 104px;
+  width: 100%;
+  display: flex;
+
+  .error-info-block {
+    font-family: Manrope, sans-serif;
+    font-style: normal;
+    font-weight: 500;
+    div {
+      margin-top: 58px;
+      font-size: 45px;
+      color: #333333;
+    }
+    span {
+      font-size: 20px;
+      line-height: 27px;
+    }
+    .error-btn {
+      margin-top: 35px;
+      display: block;
+      width: 277px;
+      height: 56px;
+      font-family: sf-ui-m, sans-serif;
+      font-size: 17px;
+      background: #8D191D;
+      border-radius: 65px;
+      text-align: center;
+      color: #fff;
+      border: none;
+      transition: all 0.3s;
+      cursor: pointer;
+      &.cart-btn {
+        padding: 0;
+        height: 60px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 17px;
+      }
+      &:hover{
+        background: #FDCB3D;
+        color: #333333;
+      }
+      &[disabled] {
+        background-color: #EFEFEF;
+        color: #CCCCCC;
+      }
+    }
+  }
+
+  .error {
+    display: inline-block;
+    height: 275px;
+    width: 635px;
+    background-image: url('/images/error/404.svg');
+    background-size: 100%;
+    background-repeat: no-repeat;
+    background-position: center;
+    transition: visibility 0s ease-in-out, opacity 0.1s linear;
+    justify-content: center;
+    align-items: center;
+    -webkit-transition: visibility 0s ease-in-out, opacity 0.1s linear;
+    -moz-transition: visibility 0s ease-in-out, opacity 0.1s linear;
+    -o-transition: visibility 0s ease-in-out, opacity 0.1s linear;
+  }
+  .fork-hink {
+    display: inline-block;
+    margin-top: -21px;
+    margin-left: -15px;
+    height: 633px;
+    width: 671px;
+    background-image: url('/images/error/fork.svg');
+    background-size: 100%;
+    background-repeat: no-repeat;
+    background-position: center;
+    transition: visibility 0s ease-in-out, opacity 0.1s linear;
+    justify-content: center;
+    align-items: center;
+    -webkit-transition: visibility 0s ease-in-out, opacity 0.1s linear;
+    -moz-transition: visibility 0s ease-in-out, opacity 0.1s linear;
+    -o-transition: visibility 0s ease-in-out, opacity 0.1s linear;
+  }
+}

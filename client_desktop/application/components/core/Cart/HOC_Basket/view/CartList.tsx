@@ -3,6 +3,7 @@ import { adapterComponentUseCase, TadapterCaseCallback } from "adapters/adapterC
 import { useCartItems } from "domain/use-case/useCaseCart"
 import React, { FC } from "react";
 import CartItem from "./CartItem";
+import SpecialOfferGift from "../../../../common/SpecialOffer/SpecialOfferGift";
 
 type IProps = {
   empty:any
@@ -20,28 +21,26 @@ const CartList:FC<IProps> = ({empty}) => {
 
   return (
     <div className="cart_head">
-				<div className="cart_title-box">
-					<h2 className="cart_title">Корзина</h2>
-					<div className="clear_cart" onClick={debounceClearHandler}>
-            <span className="cart-svg"/>
-            <span className="clear">Очистить</span>
-          </div>
-				</div>
-        <div className="cart_list">
-            {
-
-                cartList.map((el:IReqCart)=>{
-                  return (
-                    <CartContext.Provider key={el.id} value={useCaseCart}>
-                      <CartItem product={el} errorSchema={orderError} />
-                   </CartContext.Provider>
-                  )
-
-                })
-            }
-
+      <div className="cart_title-box">
+        <h2 className="cart_title">Корзина</h2>
+        <div className="clear_cart" onClick={debounceClearHandler}>
+          <span className="cart-svg" />
+          <span className="clear">Очистить</span>
         </div>
       </div>
+      <div className="cart_list cart-price-info">
+        {
+          cartList.map((el: IReqCart) => {
+            return (
+              <CartContext.Provider key={el.id} value={useCaseCart}>
+                <CartItem product={el} errorSchema={orderError} />
+              </CartContext.Provider>
+            );
+          })
+        }
+      </div>
+    </div>
   )
 }
+
 export default CartList
