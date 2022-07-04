@@ -36,7 +36,7 @@ export function usePoints(this: any,{selectCity,handleSelectOrganitztion}:any) {
     }
     
     RequestProfile.update({ organizationId: address.id });
-    router.push(ROUTE_APP.MAIN)
+    router.push(ROUTE_APP.MENU)
   }
 
 	console.log(cityid);
@@ -63,6 +63,7 @@ export function usePoints(this: any,{selectCity,handleSelectOrganitztion}:any) {
 export function usePointsMaps(this: any,{selectCity,handlerGoToCity,handlerCloseMapModal,handleSelectOrganitztion}:any) {
   const dispatch = useDispatch();
   const refMap = useRef<any>()
+	const router = useRouter()
 	/*
   const selectedCity = adapterSelector.useSelectors(
     (selector) => selector.city
@@ -167,6 +168,7 @@ export function usePointsMaps(this: any,{selectCity,handlerGoToCity,handlerClose
             
             RequestProfile.update({ organizationId: address.id });
             handlerCloseMapModal()
+						router.push(ROUTE_APP.MENU)
         } catch (error) {
             
         }

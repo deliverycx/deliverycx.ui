@@ -159,7 +159,7 @@ export function useHeaderLocations(this: any) {
 
   const handlerHeader = (location:string) => {
     dispatch(setModal(true))
-		router.push(`/?location=${location}`)
+		router.push(`?location=${location}`)
   }
 
 

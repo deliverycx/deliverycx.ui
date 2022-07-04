@@ -1,10 +1,11 @@
-import { IReverveTable } from "@types";
+import { IReverveTable, IReverveTableValue } from "@types";
 import schemaBuild, { shemaReserve } from "application/helpers/validationSchema";
 import { ReserveReducer,initialStateReserve,ReducerActionTypePoints } from "application/reducers/ReserveReducer";
 import { useFormik } from "formik";
 import React, { FC, useReducer, useState } from "react";
 import { adapterSelector } from 'servises/redux/selectors/selectors';
 import { RequestWebhook } from "servises/repository/Axios/Request";
+import { compareAsc, format } from 'date-fns'
 
 export function useReserveModal(this: any) {
 	const point = adapterSelector.useSelectors(selector => selector.point)
@@ -13,27 +14,38 @@ export function useReserveModal(this: any) {
     const maxDate = new Date();
     maxDate.setDate(maxDate.getDate() + 6);
 
-	type Tvalue = Omit<IReverveTable, "organizationId">
 
 	const [stateReserve, dispatchReserve] = useReducer(
     ReserveReducer,
     initialStateReserve
   );
 
-    const initialValues: Tvalue = {
+    const initialValues: IReverveTableValue = {
         fullname: "",
         phone: "",
-        date: "",
-        time: "",
+        date: new Date(),
+        time: new Date(),
         person: "",
         startTime: new Date(new Date().setHours(+workTimeArr[0][0], +workTimeArr[0][1])),
         endTime: new Date(new Date().setHours(+workTimeArr[1][0], +workTimeArr[1][1])),
         maxDate: maxDate
     };
 
-  const submitHandler = async (values:Tvalue, meta:any) => {
+
+
+  const submitHandler = async (values:IReverveTableValue, meta:any) => {
 		try {
-			const result = await RequestWebhook.reverveTable({...values,organizationId:point.guid})
+			const data = {
+				fullname: values.fullname,
+        phone: values.phone,
+        date: format(values.date, "yyyy-MM-dd"),
+        time: format(values.time, "HH:mm"),
+        person: values.person,
+			}
+			
+
+
+			const result = await RequestWebhook.reverveTable({...data,organizationId:point.guid})
 			result.status === 200 && dispatchReserve({
 				type: ReducerActionTypePoints.setStatus,
 				payload: true

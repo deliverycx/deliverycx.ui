@@ -1,8 +1,8 @@
 import { ReducerAction } from ".";
 
 export const initialStateReserve = {
-    dateValue: "",
-    timeValue: "",
+    dateValue: new Date(),
+    timeValue: new Date(),
     success: null
 };
 type typeinitialState = typeof initialStateReserve
@@ -30,8 +30,8 @@ export function ReserveReducer(state: typeinitialState, action: ReducerAction<Re
           console.log('action.payload', action.payload);
           return {
               ...state,
-              timeValue: "",
-              dateValue: "",
+              timeValue: new Date(),
+              dateValue: new Date(),
               success: action.payload
           };
 
