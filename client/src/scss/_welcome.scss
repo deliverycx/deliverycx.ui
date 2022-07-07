@@ -52,8 +52,11 @@
     }
     &__search{
         display: flex;
-        margin-top: 30px;
+        margin-top: 36px;
         margin-bottom: 18px;
+      img {
+        margin-left: 13px;
+      }
 
         &__input{
             margin-left: 15px;
@@ -63,16 +66,18 @@
             background: none;
             color: $gray3;
             &,&::placeholder{
-                font-family: $light;
+                font-family: $regular;
             }
             &::placeholder{
-                color: $gray6;
+                color: $grayAB;
             }
         }
     }
     &__city{
         padding: 22px 0;
-        border-bottom: 1px solid rgba(102, 102, 102, .5);
+        border-bottom: 1px solid #666666;
+        font-family: $regular;
+        color: #333333;
         display: flex;
         justify-content: space-between;
         align-items: center;
@@ -178,7 +183,6 @@
             font-size: $fsstocktitle;
             border-radius: 8px;
             position: relative;
-
             a{
                 color: $gray3;
             }

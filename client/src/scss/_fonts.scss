@@ -5,10 +5,16 @@
     src: url("../assets/fonts/sf-ui-display-thin.woff") format("woff");
 }
 @font-face{
-    font-family: 'sf-ui-light';
-    font-display: swap;
+    font-family: 'sf-ui-regular';
     font-weight: 400;
-    src: url("../assets/fonts/sf-ui-display-light.woff") format("woff");
+    font-display: swap;
+    src: url("../assets/fonts/SF-UI-Display-Regular.woff") format("woff");
+}
+@font-face{
+    font-family: 'sf-ui-medium';
+    font-weight: 500;
+    font-display: swap;
+    src: url("../assets/fonts/sf-ui-display-medium.woff") format("woff");
 }
 @font-face{
     font-family: 'sf-ui-semibold';
@@ -21,10 +27,4 @@
     font-weight: 700;
     font-display: swap;
     src: url("../assets/fonts/sf-ui-display-bold.woff") format("woff");
-}
-@font-face{
-    font-family: 'sf-ui-black';
-    font-weight: 800;
-    font-display: swap;
-    src: url("../assets/fonts/sf-ui-display-black.woff") format("woff");
 }
