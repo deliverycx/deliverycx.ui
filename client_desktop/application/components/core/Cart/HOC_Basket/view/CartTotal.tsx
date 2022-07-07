@@ -8,8 +8,8 @@ const CartTotal = () => {
   const {totalPrice} = adapterSelector.useSelectors(selector => selector.cart)
   return (
     <div className="cart_bottom">
-			<SpecialOfferFree/>
-			{/*<SpecialOfferLeft/>*/}
+			
+			{/*<SpecialOfferLeft/><SpecialOfferFree/>*/}
 				<div className="cart-info">
 					<div className="cart-info__box price_info">
 						<CartPriceInfo />
