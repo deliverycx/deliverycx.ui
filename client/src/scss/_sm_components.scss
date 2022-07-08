@@ -1,15 +1,20 @@
 //adress_info
 .adress_info {
     display: flex;
-    font-size: $fstext;
+    font-size: 10px;
     justify-content: space-between;
     padding-top: 20px;
     cursor: pointer;
+    font-family: $regular;
 
     &__city,
     &__phone {
         color: $gray6;
     }
+}
+
+.carousel-row {
+    font-family: $regular;
 }
 
 //header
@@ -72,11 +77,11 @@
                 outline: none;
                 margin-right: auto;
                 margin-left: 20px;
-                font-family: $light;
+                font-family: $regular;
                 font-size: 21px;
 
                 &::placeholder {
-                    font-family: $light;
+                    font-family: $regular;
                     font-size: $fsprice;
                 }
             }
@@ -338,7 +343,7 @@
         margin-top: 30px;
 
         &::placeholder {
-            font-family: $light;
+            font-family: $regular;
             font-size: $fstitle;
             color: $gray6;
         }
@@ -390,7 +395,7 @@
 
             &::placeholder {
                 color: $gray3;
-                font-family: $light;
+                font-family: $regular;
                 font-size: $fstitle;
             }
             &:focus {
@@ -498,7 +503,7 @@
             white-space: pre-line;
 
             &-street {
-                font-family: $light;
+                font-family: $regular;
                 margin-top: 0.5px;
             }
         }

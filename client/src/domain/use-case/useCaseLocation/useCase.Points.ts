@@ -35,11 +35,11 @@ export function usePoints() {
   );
 
   const addresses =  org && org.filter((val:IPoint,index:number) => val.isHidden !== true)
-  
+
   useEffect(() => {
-    (addresses && !isFetching) && getRecvisites(addresses[statePoint.slideIndex].id) 
-  }, [statePoint.slideIndex]) 
-  
+    (addresses && !isFetching) && getRecvisites(addresses[statePoint.slideIndex].id)
+  }, [statePoint.slideIndex])
+
     useEffect(() => {
         if (Object.keys(selectedCity).length) {
           (addresses && !isFetching) && nearPoint(addresses);
@@ -101,8 +101,7 @@ export function usePoints() {
 						*/
 						const randomindex = Math.floor(Math.random() * data.length)
 						console.log(_.shuffle(_.range(0,data.length)).slice(0,20))
-					
-					
+
 						console.log('random',randomindex)
             dispatchPoint({
                 type: ReducerActionTypePoints.slidePoint,
@@ -112,7 +111,6 @@ export function usePoints() {
       } catch (error) {
         console.log(error)
       }
-      
     };
 
     const selectPointHandler = async (address: IPoint) => {
@@ -122,7 +120,7 @@ export function usePoints() {
       if (regData.isNew) {
         localStorage.setItem("authToken", regData.access!);
       }
-      
+
       const { data } = await RequestProfile.update({
         organization: address._id,
       })

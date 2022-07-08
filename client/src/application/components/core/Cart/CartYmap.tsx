@@ -17,7 +17,7 @@ import { useCartMap } from "domain/use-case/useCaseCart";
 
 const placeMarkOption = {
   iconLayout: 'default#image',
-  iconImageHref: require("assets/i/map_placemark2.png").default,
+  iconImageHref: require("assets/i/placemark.svg").default,
   iconImageSize: [50, 60],
   iconImageOffset: [-25, -60]
 }
@@ -28,7 +28,7 @@ const CartYmap = () => {
   const usecaseCartMap = adapterComponentUseCase(useCartMap)
   const { stateReduceMap,mapstate } = usecaseCartMap.data
   const { onMapTyping,getGeoLoc,onMapClick,hendleMapPopup } = usecaseCartMap.handlers
-  
+
   const SuggestComponent = useMemo(() => {
     return withYMaps(MapSuggestComponent, true, [
         "SuggestView",
@@ -36,10 +36,7 @@ const CartYmap = () => {
         "coordSystem.geo"
     ]);
   }, []);
-  
-  
-  
-  
+
   return (
     <div className="address-select-map">
     <YMaps
@@ -52,7 +49,6 @@ const CartYmap = () => {
                         zoom: 17,
                         controls: [],
                         scrollZoom: false,
-
                     }
                 }
                 >
@@ -62,21 +58,17 @@ const CartYmap = () => {
                                 <div className="mapsPopup__adress-box">
                                     <div className="mapsPopup__adress">
                                         <img src={require("assets/i/mark-red.svg").default} alt="Телефон заведения" />
-                                        
                                         {
                                             !stateReduceMap.inputMap
                                                 ? <div className="mapsPopup__value" onClick={() => onMapTyping().setInputMap(true)}>{stateReduceMap.valueMap}</div>
                                                 : <SuggestComponent dispatchMap={onMapTyping} stateReduceMap={stateReduceMap}  />
                                         }
-                                    
+
                                     </div>
                                     {
                                         stateReduceMap.disclaimer && <div className="disclaimer">Не точный адрес, в ведите дом</div>
                                     }
                                 </div>
-
-                                
-
                                 <div className="welcome__header__ico-wrapper" onClick={getGeoLoc}>
                                     <img src={require("assets/i/aim.svg").default} alt="Цель" />
                                 </div>
@@ -88,17 +80,17 @@ const CartYmap = () => {
                         options={placeMarkOption}
                         geometry={stateReduceMap.cord}
                     />
-                    
-                        
+
+
                 </Map>
       </YMaps>
       {
 
-      (city || stateReduceMap.valueMap) && 
+      (city || stateReduceMap.valueMap) &&
       <div className="mapsPopup">
           <div className="container">
               <div className="mapsPopup__button btn" onClick={hendleMapPopup}>Заказать доставку</div>
-              
+
           </div>
       </div>
       }
