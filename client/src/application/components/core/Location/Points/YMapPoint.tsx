@@ -75,7 +75,7 @@ export const mokPoint = [
 
 const placeMarkOption = {
   iconLayout: 'default#image',
-  iconImageHref: require("assets/i/map_placemark2.png").default,
+  iconImageHref: require("assets/i/placemark.svg").default,
   iconImageSize: [50, 60],
   iconImageOffset: [-25, -60]
 }
@@ -84,7 +84,7 @@ const YMapPoint = () => {
   const useCasePoints = useContext(PointsContext)
   const { addresses,statePoint} = useCasePoints.data
   const { placemarkClickHandler, buttonClickHandler, SlidePointsHandler } = useCasePoints.handlers
-  
+
   return (
     <>
       { addresses &&
@@ -95,12 +95,12 @@ const YMapPoint = () => {
                             height="100vh"
                             defaultState={{
                                 center: addresses[0] ? [addresses[statePoint.slideIndex].cords[0], addresses[statePoint.slideIndex].cords[1]] : [0.0, 0.0],
-                                zoom: 18
+                                zoom: 13
                             }}
                             state={{
                                 center: addresses[0] ? [addresses[statePoint.slideIndex].cords[0], addresses[statePoint.slideIndex].cords[1]] : [0.0, 0.0],
-                                zoom: 18,
-                                
+                                zoom: 13,
+
                             }}
                         >
                             {

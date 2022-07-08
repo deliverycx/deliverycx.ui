@@ -24,13 +24,6 @@
                     justify-content: space-around;
                     align-items: center;
                     cursor: pointer;
-
-                    &:after{
-                        content: '';
-                        border: 4px solid transparent;
-                        border-top: 6px solid #8D191D;
-                        margin-top: 6px;
-                    }
                 }
             }
         }
@@ -46,8 +39,11 @@
             justify-content: center;
             background-color: $white;
             border-radius: 15px;
-
             cursor: pointer;
+        }
+        &__ico-wrapper-blank {
+          width: 60px;
+          height: 60px;
         }
     }
     &__search{
@@ -119,6 +115,8 @@
 		.onlypickup{
 			color: #8D191D;
 			font-size: 16px;
+            font-family: $regular;
+            margin-top: 25px;
 		}
 
     button.welcome__select-adress{
@@ -154,19 +152,8 @@
             justify-content: space-between;
             color: $gray3;
             font-size: $fsprice;
-            margin-bottom: 15px;
+            margin-bottom: 25px;
             font-family: $bold;
-        }
-        .prev,
-        .next{
-            cursor: pointer;
-            display: flex;
-            width: 36px;
-            height: 36px;
-            align-items: center;
-            justify-content: center;
-            border-radius: 50%;
-            border: 1px solid #CCCCCC;
         }
         &__work-time{
             color: $gray6;
@@ -176,19 +163,23 @@
         }
         &__info{
             width: 100%;
-            padding: 9px 0;
+            padding: 11px  0;
             background-color: $grayEF;
-            margin-bottom: 15px;
+            margin-bottom: 10px;
             color: $gray3;
+            font-family: $regular;
             font-size: $fsstocktitle;
-            border-radius: 8px;
+            border-radius: 100px;
             position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
             a{
                 color: $gray3;
             }
             img{
                 position: absolute;
-                left: 10px;
+                left: 12px;
             }
         }
         &__btn{
@@ -196,10 +187,10 @@
             background-color: $red;
             padding: 25px 0;
             cursor: pointer;
-            border-radius: 15px;
+            border-radius: 100px;
             font-size: 21px;
             font-family: $bold;
-            margin-top: 30px;
+            margin-top: 25px;
         }
         &__counter{
             display: flex;

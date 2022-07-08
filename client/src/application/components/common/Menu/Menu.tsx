@@ -19,7 +19,7 @@ const Menu: FC<IProps> = ({isActive, setter})=>{
 
                 <div className="header__menu__header">
                     <div className="header__menu__close" onClick={setter}></div>
-                    <div className="header__logo"><img src={require("assets/img/logo.png").default} alt="Логотип" /></div>
+                    <div className="header__logo"><img src={require("assets/img/hink-logo-map.svg").default} alt="Логотип" /></div>
                 </div>
                 <div className="header__menu__list">
                     {/* <div className="header__menu__table">

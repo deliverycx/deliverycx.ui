@@ -13,9 +13,9 @@
         text-align: center;
         width: 100%;
         max-width: 291px;
-        
+
     }
-    
+
     &__type{
         margin-bottom: 10px;
     }
@@ -23,7 +23,7 @@
         font-size: $fsstocktitle;
         color: $red;
         margin-bottom: 16px;
-        font-family: $black;
+        font-family: $bold;
     }
     &__text{
         font-family: $semibold;
