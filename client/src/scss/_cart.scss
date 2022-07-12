@@ -192,6 +192,36 @@
             }
         }
     }
+    .point-closed-cart-container {
+        margin-top: 30px;
+        border: 2px solid #CCCCCC;
+        border-radius: 15px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        padding: 20px 0;
+        .top-text {
+            color: #333333;
+            font-size: 14px;
+            font-family: $semibold;
+            flex-direction: column;
+            align-items: center;
+            white-space: nowrap;
+            line-height: 120%;
+            text-align: center;
+            span {
+                color: #8D191D;
+            }
+        }
+        .text-secondary {
+            font-size: 12px;
+            line-height: 14px;
+            text-align: center;
+            color: #ABABAB;
+            margin-top: 10px;
+        }
+    }
     &__order-info {
         margin: 16.5px 0;
         &__title {
