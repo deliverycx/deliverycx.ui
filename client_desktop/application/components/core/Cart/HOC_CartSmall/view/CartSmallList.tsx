@@ -15,9 +15,10 @@ const CartSmallList = ({onClose}:any) => {
 			<CartTotal />
 			{/* eslint-disable-next-line @next/next/no-html-link-for-pages */}
       		<a className="cart__order-btn btn cart-btn" href="/checkout">Оформить заказ </a>
-			<button disabled className="order-btn-pointclosed">Хинкальная сейчас закрыта.<br/>
-				Оформить заказ вы сможете: 9:00-21:30
-			</button>
+			{/* Point closed button*/}
+			{/*<button disabled className="order-btn-pointclosed">Хинкальная сейчас закрыта.<br/>*/}
+			{/*	Оформить заказ вы сможете: 9:00-21:30*/}
+			{/*</button>*/}
 		</div>
 	</div>
   )
