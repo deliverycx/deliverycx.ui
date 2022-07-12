@@ -396,14 +396,13 @@
     bottom: 0;
     width: 100%;
     max-width: 375px;
-    //background-color: #FFFFFF;
+    background-color: #FFFFFF;
     padding: 24px 0;
     text-align: center;
     z-index: 9999;
-    color: #ffffff;
     font-size: 19px;
-    border-radius: 24px 24px 0 0;
-    //box-shadow: -1.45153px -30.966px 60px rgba(0, 0, 0, 0.25), -0.559108px -11.9276px 19.1111px rgba(0, 0, 0, 0.151852), -0.118273px -2.52316px 4.88889px rgba(0, 0, 0, 0.0981481);
+    box-shadow: -1.45153px -30.966px 60px rgba(0, 0, 0, 0.25), -0.559108px -11.9276px 19.1111px rgba(0, 0, 0, 0.151852), -0.118273px -2.52316px 4.88889px rgba(0, 0, 0, 0.0981481);
+    border-radius: 30px 30px 0px 0px;
     transition: bottom 0.6s cubic-bezier(0, -0.02, 0.54, 1.18);
 
     &__adress-box {
@@ -411,22 +410,21 @@
         width: 100%;
     }
     &__adress {
+        background: #EFEFEF;
+        border-radius: 80px;
         display: flex;
         align-items: center;
         width: 100%;
         padding: 10px 0;
-        background-color: #fff;
         margin-right: 9px;
         color: #333333;
         font-size: 15px;
-        border-radius: 8px;
         position: relative;
         height: 60px;
-        box-shadow: 0px 0px 5px 0px rgba(34, 60, 80, 0.2);
         img {
-            margin-left: 15px;
-            min-width: 11px;
-            height: 16px;
+            margin-left: 20px;
+            min-width: 13.75px;
+            height: 20px;
         }
     }
     &__value {
@@ -447,20 +445,16 @@
 
     &__button {
         width: 100%;
-        color: #8d191d;
+        color: $white;
         padding: 25px 0;
         cursor: pointer;
-        border-radius: 15px;
+        border-radius: 100px;
         font-size: 21px;
-        font-family: "sf-ui-bold";
+        font-family: $bold;
         font-weight: bold;
         margin-top: 10px;
         text-align: center;
-        background: url("../assets/i/delev.svg") 30px center no-repeat;
-        background-color: #fdc935;
-        box-shadow: -1.45153px -30.966px 60px rgba(0, 0, 0, 0.25),
-            -0.559108px -11.9276px 19.1111px rgba(0, 0, 0, 0.151852),
-            -0.118273px -2.52316px 4.88889px rgba(0, 0, 0, 0.0981481);
+        background-color: $red;
     }
     .noactive {
         background-color: #fdc935;

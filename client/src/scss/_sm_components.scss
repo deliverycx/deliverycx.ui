@@ -193,7 +193,7 @@
     min-height: 72px;
     cursor: pointer;
     overflow: hidden;
-    z-index: 999;
+    z-index: 9999;
     text-decoration: none;
     transition: all 0.2s ease-in;
     &__empty {
@@ -252,7 +252,15 @@
 .link-to-cart.open {
     min-height: 300px;
     background-color: transparent;
+    &.overlay {
+        position: fixed;
+        height: 100%;
+        width: 100%;
+        background-color: rgba(19, 42, 62, 0.75);
+        z-index: 999;
+    }
 }
+
 .link-to-cart.open .link-to-cart__empty {
     bottom: 0;
     height: 300px;
@@ -652,6 +660,12 @@
     z-index: 999;
     max-height: 86vh;
     overflow: hidden;
+
+    &.map {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+    }
 
     button {
         position: absolute;
