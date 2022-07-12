@@ -1,0 +1,35 @@
+import { IReqCart } from "@types";
+import { number } from "yup";
+
+export const validationHIdiscount = (cart:IReqCart[]) =>{
+	const regex = new RegExp('HI' + "-\\d+", "i");
+
+	const {count,sum} = cart.reduce((acc:{count:number,sum:number[]},cartEl) =>{
+		const tagIndex = cartEl.productTags
+                    ? cartEl.productTags.findIndex((el) => el.match(regex))
+                    : -1;
+		
+		if (cartEl.productTags && tagIndex !== -1) {
+			return {
+				count:acc.count + cartEl.amount,
+				sum:[...acc.sum,cartEl.oneprice]
+			}
+			
+			
+		}else{
+			return acc
+		}							
+		
+	}, {
+		count:0,
+		sum:[]
+	})
+
+	console.log('remder valid');
+
+	return {
+		count,
+		min:Math.min(...sum)
+	}
+
+}

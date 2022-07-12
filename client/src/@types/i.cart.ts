@@ -7,7 +7,8 @@ export interface ICart {
     orderNumber: ICheckout;
     deliveryPrice: number;
     deltaPrice: number;
-    orderType:string
+    orderType:string;
+		loadingDiscount:boolean;
 }
 
 export interface ICheckout {
