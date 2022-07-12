@@ -7,12 +7,12 @@ import { memo } from "react"
 const Discounts = () =>{
 	/**/
 	const useCaseCartDiscount = adapterComponentUseCase(useCartDiscountDzone)
-	const {countDiscount} = useCaseCartDiscount.data
+	const {countDiscount,freeHi} = useCaseCartDiscount.data
 
 	return(
 		<>
 		{
-			countDiscount !== 0 && (countDiscount >= 12 && <SpecialOfferFree/>)
+			countDiscount !== 0 && (countDiscount >= 12 && <SpecialOfferFree free={freeHi}/>)
 		}
 		{
 			countDiscount !== 0 && (countDiscount < 12 && <SpecialOfferLeft count={countDiscount} />)

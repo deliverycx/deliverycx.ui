@@ -117,19 +117,25 @@ export function useCartItems(this: any, empty: any) {
 export function useCartDiscountDzone(this: any) {
 	const dispatch = useDispatch()
 	const cartList = useSelector(cartSelector.selectAll);
-	const {totalPrice} = adapterSelector.useSelectors((selector) => selector.cart);
+	const {totalPrice,deltaPrice} = adapterSelector.useSelectors((selector) => selector.cart);
 	const [countDiscount,setCountDiscount] = useState(0)
+	const [freeHi,setFreeHi] = useState(0)
 	
-	const {count} = useMemo(()=>validationHIdiscount(cartList),[totalPrice]) 
+	const {count,free} = validationHIdiscount(cartList) 
+
 
 	useEffect(()=>{
-		count !== 0 && setCountDiscount(count)
+		if(count !== 0){
+			setCountDiscount(count)
+			setFreeHi(free)
+		}
 	},[count])
 
 
 
 	this.data({
-		countDiscount
+		countDiscount,
+		freeHi
 	});
 	this.handlers({
 			
