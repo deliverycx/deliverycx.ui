@@ -384,12 +384,11 @@
 }
 
 .disclaimer {
-    background-color: #ff000060;
-    color: #000;
-    padding: 10px 15px;
+    color: #FF0000;
     font-size: 11px;
-    margin-top: 10px;
-    border-radius: 5px;
+    margin-top: 5px;
+    display: flex;
+    margin-left: 8%;
 }
 .mapsPopup {
     position: absolute;
@@ -397,7 +396,10 @@
     width: 100%;
     max-width: 375px;
     background-color: #FFFFFF;
-    padding: 24px 0;
+    padding-top: 27px;
+    padding-bottom: 40px;
+    padding-left: 22px;
+    padding-right: 22px;
     text-align: center;
     z-index: 9999;
     font-size: 19px;
@@ -446,15 +448,31 @@
     &__button {
         width: 100%;
         color: $white;
-        padding: 25px 0;
+        padding: 23px 0;
         cursor: pointer;
         border-radius: 100px;
         font-size: 21px;
         font-family: $bold;
         font-weight: bold;
-        margin-top: 10px;
+        margin-top: 20px;
         text-align: center;
         background-color: $red;
+        display: flex;
+        justify-content: space-evenly;
+        align-items: center;
+        border: 2px solid $red;
+        outline: none;
+        svg {
+            fill: #FFFFFF;
+        }
+        &[disabled] {
+            background-color: #EFEFEF;
+            color: #CCCCCC;
+            border: 2px solid #CCCCCC;
+            svg {
+                fill: #CCCCCC;
+            }
+        }
     }
     .noactive {
         background-color: #fdc935;
