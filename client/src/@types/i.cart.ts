@@ -43,4 +43,5 @@ export interface IReqCart {
     productId: string;
     amount: number;
     price: number;
+		oneprice:number;
 }
