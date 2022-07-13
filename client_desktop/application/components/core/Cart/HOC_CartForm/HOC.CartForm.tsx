@@ -12,6 +12,7 @@ import { FormBuilder } from "application/components/common/Forms";
 import React from "react";
 import Modals from "application/components/common/Modals/Modals";
 import CartYmap from "../Presentation/CartYmap";
+import { workTimeHelp } from "application/helpers/workTime";
 
 
 type IProps = {
@@ -28,6 +29,7 @@ const CartFrom: FC<IProps> = ({ builder,paths }) => {
   const useCaseForm = adapterComponentUseCase(useCartForm,paths)
   const {
     city,
+		workTime,
     selectAddress,
     orderError,
     loadingOrder,
@@ -109,13 +111,16 @@ const CartFrom: FC<IProps> = ({ builder,paths }) => {
           <div className="row align-center form__create"></div>
         </div>
         <div className="cart__order-btnbox">
-          <button
-              type="submit"
-              className="cart__order-btn btn"
-              disabled={loadingOrder || disabledData()}
-            >
-              Заказать
-          </button>
+					{
+						workTimeHelp()
+						? <button disabled className="order-btn-pointclosed">Хинкальная сейчас закрыта.<br/>
+								Оформить заказ вы сможете: {workTime}
+							</button>
+						: <button type="submit" className="cart__order-btn btn" disabled={loadingOrder || disabledData()}>
+		              Заказать
+		          </button>
+					}
+          
           {orderError.status === 500 && (
             <div className="server-error">
               Что-то пошло не так

@@ -1,8 +1,12 @@
 import Link from "next/link"
 import CartList from "../../HOC_Basket/view/CartList"
 import CartTotal from "../../HOC_Basket/view/CartTotal"
+import { workTimeHelp } from "application/helpers/workTime";
+import { adapterSelector } from "servises/redux/selectors/selectors";
 
 const CartSmallList = ({onClose}:any) => {
+	const points = adapterSelector.useSelectors((selector) => selector.point);
+
   return (
     <div className="cart_modals">
 		<div className="cart-container">
@@ -14,11 +18,16 @@ const CartSmallList = ({onClose}:any) => {
 			<CartList empty={() => onClose()} />
 			<CartTotal />
 			{/* eslint-disable-next-line @next/next/no-html-link-for-pages */}
-      		<a className="cart__order-btn btn cart-btn" href="/checkout">Оформить заказ </a>
-			{/* Point closed button*/}
-			{/*<button disabled className="order-btn-pointclosed">Хинкальная сейчас закрыта.<br/>*/}
-			{/*	Оформить заказ вы сможете: 9:00-21:30*/}
-			{/*</button>*/}
+			{
+				workTimeHelp()
+				? <button disabled className="order-btn-pointclosed">Хинкальная сейчас закрыта.<br/>
+					Оформить заказ вы сможете: {points.workTime}
+					</button>
+				: <a className="cart__order-btn btn cart-btn" href="/checkout">Оформить заказ </a>
+			}
+      		
+			
+			
 		</div>
 	</div>
   )
