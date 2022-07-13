@@ -6,6 +6,7 @@ import CartHeader from "presentation/viewModel/viewCart/CartHeader";
 import { FC, ReactNode } from "react";
 import CartDeliveryPrice from "application/components/core/Cart/CartBasket/CartDeliveryPrice";
 import { workTimeHelp } from "application/helpers/workTime";
+import Discounts from "application/components/core/Cart/CartBasket/HOC_Discount";
 
 type ICartLayout = {
     children:ReactNode
@@ -25,6 +26,7 @@ const CartLayout: FC<ICartLayout> = ({ children }) => {
           <div className="container">
             <CartDeliveryPrice />
           <CartTotal />
+					<Discounts />
 					{workTimeHelp() 
             ? <div className="point-closed-cart-container">
                 <div className="top-text">Хинкальная сейчас закрыта.<br/>

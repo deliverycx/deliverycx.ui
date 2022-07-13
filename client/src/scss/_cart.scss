@@ -609,10 +609,11 @@
     height: 60px;
     background-color: #EFEFEF;
     margin-bottom: 30px;
+		margin-top: 30px;
     border-radius: 30px;
     display: flex;
     align-items: center;
-    padding: 10px;
+    padding: 10px 20px 10px 10px;
     .hink-free-container {
         background: #558950;
         width: 40px;
@@ -635,8 +636,8 @@
         }
     }
     .hink-number-left {
-        width: 57px;
-        height: 40px;
+        width: 70px;
+        height: 45px;
         background-color: #fff;
         border-radius: 30px;
         display: flex;
@@ -664,11 +665,11 @@
     .hink-left-text {
         font-family: Manrope, sans-serif;
         color: #666666;
-        font-size: 14px;
+        font-size: 13px;
         span {
             color: #ABABAB;
-            font-size: 12px;
-            line-height: 14px;
+            font-size: 11px;
+            line-height: 11px;
         }
     }
     .text-container {

@@ -21,6 +21,7 @@ const CartTotal = () => {
                 <div className="cart__order__total-sum">{totalPrice} ₽</div>
             </div>
         {/* point closed cart*/}
+				
         
         </div>
   )
