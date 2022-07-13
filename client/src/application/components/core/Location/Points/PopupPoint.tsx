@@ -57,11 +57,11 @@ const PopupPoint = () => {
                </a>
             </div>
             {
-              !address.delivMetod &&
+              address.delivMetod &&
               <div className="onlypickup">Только самовывоз</div>
             }
            {
-             address.delivMetod &&
+             !address.delivMetod &&
                <div className="onlypickup">Доставка и самовывоз</div>
            }
             {
