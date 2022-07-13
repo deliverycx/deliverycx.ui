@@ -1,5 +1,5 @@
 .product{
-    
+
     &__item{
         padding: 17px;
         border-radius: 15px;
@@ -8,7 +8,7 @@
         justify-content: space-between;
         box-shadow: 0px 16px 29px rgba(0, 0, 0, 0.1), 0px 6.16296px 9.23704px rgba(0, 0, 0, 0.0607407), 0px 1.3037px 2.36296px rgba(0, 0, 0, 0.0392593);
         margin-bottom: 21px;
-    
+
         &__content{
             min-width: 145px;
             display: flex;
@@ -51,7 +51,7 @@
         &__options{
             display: flex;
             align-items: center;
-    
+
         }
         &__img-wrap{
             img{
@@ -69,7 +69,7 @@
             background-repeat: no-repeat;
             background-position: center;
             background-size: 12px;
-    
+
         }
     }
     &__stoplist{
@@ -79,7 +79,7 @@
             text-align: center;
             font-size: 12px;
             font-weight: 600;
-           
+
             width: 100%;
         }
         .product__item__img-wrap img{
@@ -131,7 +131,10 @@
         }
         &__price{
             font-size: 27px;
-            text-align: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
         }
         &__image{
             width: 100%;
@@ -149,7 +152,7 @@
             .category-image-wrap{
                 overflow: hidden;
                 width: 30px;
-                
+
 
                 img{
                     width: 60px;
@@ -162,9 +165,7 @@
             padding-bottom: 20px;
             background-color: $white;
             border-radius: 0 0 24px 24px;
-            box-shadow: 0px 16px 10px 0px rgba(0,0,0, .5),
-            -4px 16px 9px 0px rgba(0,0,0, .3),
-            0px 1.3037px 0px rgba(0,0,0, .2);
+            box-shadow: 0px 16px 29px rgba(0, 0, 0, 0.1), 0px 6.16296px 9.23704px rgba(0, 0, 0, 0.0607407), 0px 1.3037px 2.36296px rgba(0, 0, 0, 0.0392593);
         }
         &__henkali-info{
             background-image: url("../assets/img/product_ornament.png");
@@ -237,7 +238,7 @@
                     }
                 }
             }
-            
+
         }
         .sauce{
             display: flex;

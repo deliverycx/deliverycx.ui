@@ -17,20 +17,17 @@ type IProps = {
 const ShopProductCard: FC<IProps> = ({ productId, setgrop }) => {
   const organization = adapterSelector.createSelectors<IPoint>(selector => selector.point, val => val.id)
   const { data:product, isLoading } = useGetProductCartQuery(productId)
-  
-  useEffect(() => {
 
+  useEffect(() => {
     !isLoading && setgrop(product?.categoryImage)
   }, [product])
-  
+
   return (
-    (!isLoading && product) ? 
+    (!isLoading && product) ?
       <>
       <div className="product-card__image-wrap">
         <div className="container">
-
             <img className="product-card__image" src={product.image} alt="Картинка продукта" />
-
             <div className="product-card__title">{product.name}</div>
             <div className="row justify-between">
                 <AddToFavorites id={productId} _class="add-favorite" isFav={product.isFav} />
@@ -41,14 +38,14 @@ const ShopProductCard: FC<IProps> = ({ productId, setgrop }) => {
                             product.measureUnit === "порц" ? `${convertWeight(product.weight)} г` : "1 шт"
                         }
                     </div>
-                    <span className="select-red">{product.price} ₽</span>
+                    <span className="select-red">{product.price}₽</span>
                 </div>
                 <AddToCart id={productId} groupImage={product.categoryImage} _class={"product-card__add"} />
             </div>
           </div>
-          
+
         </div>
-        
+
         <div className="container">
                 <div className="product-card__description">
                     {
@@ -79,7 +76,7 @@ const ShopProductCard: FC<IProps> = ({ productId, setgrop }) => {
                                     return <Sauce key={sauce.id} {...sauce}/>
                                 })
                             }
-                            
+
                         </div>
                     ) : ''
                 } */}
@@ -87,7 +84,7 @@ const ShopProductCard: FC<IProps> = ({ productId, setgrop }) => {
             </div>
       </>
      : <LoaderProduct />
-    
+
   )
 }
 export default ShopProductCard
