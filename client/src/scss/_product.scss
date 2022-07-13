@@ -1,7 +1,6 @@
 .product{
-
     &__item{
-        padding: 17px;
+        padding: 17px 17px 17px 7px;
         border-radius: 15px;
         background-color: $white;
         display: flex;
@@ -10,6 +9,7 @@
         margin-bottom: 21px;
 
         &__content{
+            margin-left: 6px;
             min-width: 145px;
             display: flex;
             flex-direction: column;
