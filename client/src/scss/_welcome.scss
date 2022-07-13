@@ -146,6 +146,20 @@
 
         &.opened{
             bottom: 0%;
+          .point-closed-container {
+            margin-top: 25px;
+            color: #8D191D;
+            .text-bold {
+              color: #333333;
+              font-family: $bold;
+              font-size: 16px;
+            }
+            .text-secondary {
+              margin-top: 10px;
+              color: #ABABAB;
+              font-size: 12px;
+            }
+          }
         }
         &__header{
             display: flex;

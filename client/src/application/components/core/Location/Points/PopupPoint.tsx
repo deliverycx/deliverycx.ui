@@ -1,6 +1,7 @@
 import { useContext, useEffect } from "react"
 import { PointsContext } from "./Points"
 import cn from "classnames";
+import { workTimeHelp } from "application/helpers/workTime";
 
 /* eslint-disable @typescript-eslint/no-var-requires */
 const PopupPoint = () => {
@@ -66,6 +67,14 @@ const PopupPoint = () => {
             {
               (recvisites && Object.keys(recvisites).length !== 0) && <div className="recvisites" onClick={()=>recvisitesHandler(true)}>Реквизиты компании</div>
             }
+             {/* point closed*/}
+             {workTimeHelp() &&
+                 <div className="point-closed-container">
+                     <div className="text-bold">Оформить заказ нельзя.<br/> Хинкальная сейчас закрыта.</div>
+                     <div className="text-secondary">Приносим извинения за неудобства.<br/>
+                         Сейчас вы можете ознакомиться с меню для будущих заказов и узнать об акциях и новинках. </div>
+                 </div>
+             }
             <div
                className="btn welcome__select-adress__btn"
                onClick={() => selectPointHandler(address)}
