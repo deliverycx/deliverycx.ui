@@ -4,7 +4,7 @@ import ReactDOM from 'react-dom';
 import App from 'application/App';
 import { store,persistor } from 'servises/redux/createStore';
 import { Provider } from 'react-redux';
-import { createBrowserHistory } from 'history';;
+import { createBrowserHistory } from 'history';
 import { PersistGate } from 'redux-persist/integration/react';
 
 const history = createBrowserHistory()
