@@ -11,6 +11,8 @@ const PopupPoint = () => {
 
   const address = addresses && addresses[statePoint.slideIndex]
   const selectAdressCN = cn("welcome__select-adress", { opened: statePoint.isOpen });
+
+	console.log('www',workTimeHelp());
   return (
     <>
       <button onClick={() => buttonClickHandler()} className={selectAdressCN}>
@@ -67,7 +69,7 @@ const PopupPoint = () => {
             {
               (recvisites && Object.keys(recvisites).length !== 0) && <div className="recvisites" onClick={()=>recvisitesHandler(true)}>Реквизиты компании</div>
             }
-             {/* point closed*/}
+        
              {workTimeHelp() &&
                  <div className="point-closed-container">
                      <div className="text-bold">Оформить заказ нельзя.<br/> Хинкальная сейчас закрыта.</div>
