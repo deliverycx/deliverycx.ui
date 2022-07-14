@@ -7,13 +7,16 @@ import { FC, ReactNode } from "react";
 import CartDeliveryPrice from "application/components/core/Cart/CartBasket/CartDeliveryPrice";
 import { workTimeHelp } from "application/helpers/workTime";
 import Discounts from "application/components/core/Cart/CartBasket/HOC_Discount";
+import { adapterSelector } from "servises/redux/selectors/selectors";
 
 type ICartLayout = {
     children:ReactNode
 }
 
 const CartLayout: FC<ICartLayout> = ({ children }) => {
-
+	const point = adapterSelector.useSelectors(
+    (selector) => selector.point
+  );
 	const q = workTimeHelp() ? { minHeight: "86vh"} : { minHeight: "100vh" }
   return (
     <div className="cat_app" style={{ backgroundColor: "#fff" }}>
@@ -30,7 +33,7 @@ const CartLayout: FC<ICartLayout> = ({ children }) => {
 					{workTimeHelp() 
             ? <div className="point-closed-cart-container">
                 <div className="top-text">Хинкальная сейчас закрыта.<br/>
-                    Оформить заказ вы сможете: <span>9:00-21:30</span></div>
+                    Оформить заказ вы сможете: <span>{point.workTime}</span></div>
                 <div className="text-secondary">
                     Приносим извинения за неудобства. <br/>
                     Сейчас вы можете ознакомиться с меню для будущих заказов и узнать об акциях и новинках.
