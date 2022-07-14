@@ -6,17 +6,18 @@ import { store,persistor } from 'servises/redux/createStore';
 import { Provider } from 'react-redux';
 import { createBrowserHistory } from 'history';
 import { PersistGate } from 'redux-persist/integration/react';
+import LoaderScreen from "application/components/core/LoaderScreen/LoaderScreen";
 
 const history = createBrowserHistory()
 
 
 ReactDOM.render(
-  <Provider store={store}>
-    <PersistGate loading={null} persistor={persistor}>
-    <App />
-        {/*<LoaderScreen/>*/}
-    </PersistGate>
-  </Provider>,
-	document.getElementById('root')
+    <Provider store={store}>
+        <PersistGate loading={<LoaderScreen />} persistor={persistor}>
+            <App />
+        </PersistGate>
+        <LoaderScreen />
+    </Provider>,
+    document.getElementById("root")
 );
 
