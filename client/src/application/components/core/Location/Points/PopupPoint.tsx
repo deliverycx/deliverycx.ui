@@ -12,7 +12,7 @@ const PopupPoint = () => {
   const address = addresses && addresses[statePoint.slideIndex]
   const selectAdressCN = cn("welcome__select-adress", { opened: statePoint.isOpen });
 
-	console.log('www',workTimeHelp());
+	console.log(address);
   return (
     <>
       <button onClick={() => buttonClickHandler()} className={selectAdressCN}>
@@ -59,7 +59,7 @@ const PopupPoint = () => {
               </a>
             </div>
               {
-                  !address.delivMetod &&
+                  address.delivMetod === 'PICKUP' &&
                   <div className="welcome__select-adress__info onlypickup">
                       <img
                           src={require("assets/i/bag-red.svg").default}
@@ -69,7 +69,7 @@ const PopupPoint = () => {
                   </div>
               }
               {
-                  address.delivMetod &&
+                  !address.delivMetod &&
                   <div className="welcome__select-adress__info onlypickup">
                       <img
                           src={require("assets/i/moto-red.svg").default}
