@@ -42,7 +42,7 @@ const CartLayout: FC<ICartLayout> = ({ children }) => {
             </div>
 						<button
               type="submit"
-              className="cart__order-btn btn"
+              className="order-btn-pointclosed"
               disabled={true}
             >
               Заказать
