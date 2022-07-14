@@ -17,7 +17,7 @@ const CartLayout: FC<ICartLayout> = ({ children }) => {
 	const q = workTimeHelp() ? { minHeight: "86vh"} : { minHeight: "100vh" }
   return (
     <div className="cat_app" style={{ backgroundColor: "#fff" }}>
-      <div className="cart" style={q}>
+      <div className="cart">
         <CartHeader />
         <div className="container">
           <CartChoise />
