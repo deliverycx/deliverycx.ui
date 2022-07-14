@@ -47,7 +47,7 @@
 }
 
 .cart_head{
-	height: 80%;
+	height: 66%;
 	overflow: hidden;
 }
 .cart_bottom{
@@ -186,6 +186,20 @@
 	}
 }
 
+.order-btn-pointclosed[disabled] {
+	width: 100%;
+	border-radius: 65px;
+	padding: 10px 0;
+	text-align: center;
+	color:  #ABABAB;
+	border: none;
+	cursor: pointer;
+	font-weight: 500;
+	font-size: 17px;
+	font-family: sf-ui, sans-serif;
+	background: #EFEFEF;
+}
+
 .cart__order-btn.btn{
 	width: 100%;
 	background: #8D191D;
@@ -287,7 +301,7 @@
 	width: 100%;
 	height: 60px;
 	background-color: #EFEFEF;
-	margin-bottom: 30px;
+	margin-bottom: 20px;
 	border-radius: 30px;
 	display: flex;
 	align-items: center;

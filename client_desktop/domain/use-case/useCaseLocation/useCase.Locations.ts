@@ -8,6 +8,7 @@ import { ROUTE_APP } from 'application/contstans/route.const';
 import RequestLocation from "servises/repository/Axios/Request/Request.Location";
 import { RequestAdmin } from "servises/repository/Axios/RequestAdmin";
 import { ICity, ISocial,IPoint } from "@types";
+import { workTimeHelp } from "application/helpers/workTime";
 
 export function useLocations(this: any){
   const dispatch = useDispatch()
@@ -15,9 +16,11 @@ export function useLocations(this: any){
   const modal = useSelector((state: RootState) => state.location.locationModal)
   const modalMap = useSelector((state: RootState) => state.location.locationMap)
   const selectedCity = adapterSelector.useSelectors((selector) => selector.city);
+
   const [showCiti, setShow] = useState(true)
   const [youSity, setYouSyty] = useState(false)
 	const [selectCity, setSelectCity] = useState<ICity | Object>({})
+	const [workOrg, setWorkOrg] = useState(false)
   
 
   const handlerCloseModal = () => {
@@ -64,7 +67,7 @@ export function useLocations(this: any){
 		}
 	}
     
-
+	// 
   useEffect(() => {
     if (Object.keys(selectedCity).length) {
       setSelectCity(selectedCity)
@@ -72,12 +75,14 @@ export function useLocations(this: any){
     }
   }, [selectedCity]);
 
+	// выбранный город
   useEffect(() => {
     if (Object.keys(selectedCity).length && router.asPath === ROUTE_APP.MAIN) {
       setYouSyty(true)
     }
   }, []);
 
+	// переключение на точки и город
 	useEffect(() => {
 		const loc = router.query.location
     if (Object.keys(selectedCity).length && loc) {
@@ -90,10 +95,23 @@ export function useLocations(this: any){
   }, [router.query.location]);
 
 
+	// таргетерная ссылка
 	useEffect(() => {
     const queryOrg = router.query.organuzation as string
 		queryOrg && byOrg(queryOrg)
   }, [router.query]);
+
+	// время работы организации
+	useEffect(() => {
+		const worktime = router.query.worktime as string
+
+    if(!modal && !modalMap){
+			setWorkOrg(workTimeHelp)
+		}
+		if(worktime){
+			setWorkOrg(false)
+		}
+  }, [modal,modalMap,router.query.worktime]);
 
 
   this.data({
@@ -101,7 +119,8 @@ export function useLocations(this: any){
     showCiti,
     modalMap,
     youSity,
-		selectCity
+		selectCity,
+		workOrg
   })
   this.handlers({
     handlerCloseModal,
@@ -112,7 +131,8 @@ export function useLocations(this: any){
 		handleSelectOrganitztion,
 		handleSelectCity,
     setShow,
-    setYouSyty
+    setYouSyty,
+		setWorkOrg
   })
   this.status({
   })

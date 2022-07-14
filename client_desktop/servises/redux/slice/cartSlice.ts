@@ -17,9 +17,9 @@ export const cartSelector = cartAdapter.getSelectors(
   (state: RootState) => state.cart
 );
 
-const helperOrderType = (getState: any) : {orderType:string} => {
+const helperOrderType = (getState: any) : {orderType:string,organization:string} => {
   const state = getState() as RootState
-  return {orderType:state.cart.orderType}
+  return {orderType:state.cart.orderType,organization:state.location.point.guid}
 }
 
 export const fetchAllCart = createAsyncThunk(
@@ -177,6 +177,29 @@ export const fetchOrderCart = createAsyncThunk(
   }
 );
 
+export const fetchDiscountCart = createAsyncThunk(
+  "cart/getDiscount",
+  async (_, { dispatch,getState, rejectWithValue }) => {
+      try {
+          const request = await RequestCart.DzoneDicountCart(helperOrderType(getState));
+          if (request.data && request.status === 200) {
+							dispatch(
+								setTotalPrice({
+										totalPrice: request.data.totalPrice - request.data.discountDozen,
+										deltaPrice: request.data.deltaPrice,
+										deliveryPrice: request.data.deliveryPrice
+								})
+							);
+              return request.data
+							
+          }
+      } catch (error: any) {
+					return rejectWithValue(error.response.data);
+      }
+  }
+);
+
+
 const cartSlice = createSlice({
   name: "cart",
   initialState: cartAdapter.getInitialState(CartEntities.getEntities),
@@ -221,6 +244,18 @@ const cartSlice = createSlice({
           };
           state.loadingOrder = false;
       });
+			builder.addCase(fetchDiscountCart.pending, (state) => {
+				state.loadingDiscount = true;
+				state.loadingOrder = true;
+			})
+			builder.addCase(fetchDiscountCart.fulfilled, (state) => {
+				state.loadingDiscount = false;
+				state.loadingOrder = false;
+			})
+			builder.addCase(fetchDiscountCart.rejected, (state) => {
+				state.loadingDiscount = false;
+				state.loadingOrder = false;
+			})
   }
 });
 export const {

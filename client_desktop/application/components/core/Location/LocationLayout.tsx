@@ -7,6 +7,7 @@ import CityList from "./HOC_City/HOC.CityList"
 import NotificatCity from "./HOC_City/view/NotificatCity"
 import Points from "./HOC_Points/HOC.Points"
 import PointsMap from "./HOC_Points/HOC.PointsMap"
+import PointWorkTimeModal from "./HOC_Points/view/PointWorkTimeModal"
 
 export const LocationPointsContext = React.createContext<TadapterCaseCallback>({
   data: {},
@@ -15,7 +16,7 @@ export const LocationPointsContext = React.createContext<TadapterCaseCallback>({
 });
 const LocationLayout = () => {
   const useCaseLocation = adapterComponentUseCase(useLocations)
-  const { modal,showCiti,modalMap,youSity } = useCaseLocation.data
+  const { modal,showCiti,modalMap,youSity,workOrg } = useCaseLocation.data
   const {handlerCloseModal,handlerCloseMapModal,setYouSyty} = useCaseLocation.handlers
 
   return (
@@ -44,6 +45,12 @@ const LocationLayout = () => {
           <NotificatCity />
         </Modals>
       }
+			{
+				workOrg &&
+				<Modals>
+          <PointWorkTimeModal />
+        </Modals>
+			}
 		</LocationPointsContext.Provider>
 		</>
   )

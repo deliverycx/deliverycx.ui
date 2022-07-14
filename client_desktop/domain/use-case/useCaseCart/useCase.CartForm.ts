@@ -13,7 +13,7 @@ import { setErrors } from "servises/redux/slice/cartSlice";
 
 export function useCartForm(this: any, paths:string) {
   const dispatch = useDispatch()
-  const { city } = useSelector((state: RootState) => state.location.point);
+  const { city,workTime } = useSelector((state: RootState) => state.location.point);
   const {address:selectAddress,orderError,orderNumber,loadingOrder,orderType} = useSelector((state: RootState) => state.cart);
   
   const [stateForm, dispathFrom] = useReducer(CartFormReducer, initialStateCartForm)
@@ -48,6 +48,7 @@ export function useCartForm(this: any, paths:string) {
 
   this.data({
     city,
+		workTime,
     selectAddress,
     orderError,
     loadingOrder,
