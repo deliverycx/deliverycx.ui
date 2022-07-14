@@ -16,7 +16,6 @@ ReactDOM.render(
         <PersistGate loading={<LoaderScreen />} persistor={persistor}>
             <App />
         </PersistGate>
-        <LoaderScreen />
     </Provider>,
     document.getElementById("root")
 );
