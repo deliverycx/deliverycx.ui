@@ -10,7 +10,6 @@ export const workTimeHelp = (work?:string) =>{
 		const [min,max] = work ? work.split('-') : workTime.split('-')
 		const time = format(new Date(), "HH:mm")
 
-		console.log('yandex',time);
 		if(min >= time){
 			return true
 		}else if(max <= time){
