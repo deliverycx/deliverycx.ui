@@ -38,7 +38,7 @@ const ShopProductCard: FC<IProps> = ({ productId, setgrop }) => {
                             product.measureUnit === "порц" ? `${convertWeight(product.weight)} г` : "1 шт"
                         }
                     </div>
-                    <span className="select-red">{product.price}₽</span>
+                    <span className="select-red">{product.price} ₽</span>
                 </div>
                 <AddToCart id={productId} groupImage={product.categoryImage} _class={"product-card__add"} />
             </div>
