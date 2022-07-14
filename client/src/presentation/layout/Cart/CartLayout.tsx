@@ -32,7 +32,7 @@ const CartLayout: FC<ICartLayout> = ({ children }) => {
           <CartTotal />
 					<Discounts />
 					{workTimeHelp() 
-            ? <div className="point-closed-cart-container">
+            ? <><div className="point-closed-cart-container">
                 <div className="top-text">Хинкальная сейчас закрыта.<br/>
                     Оформить заказ вы сможете: <span>{point.workTime}</span></div>
                 <div className="text-secondary">
@@ -40,6 +40,14 @@ const CartLayout: FC<ICartLayout> = ({ children }) => {
                     Сейчас вы можете ознакомиться с меню для будущих заказов и узнать об акциях и новинках.
                 </div>
             </div>
+						<button
+              type="submit"
+              className="cart__order-btn btn"
+              disabled={true}
+            >
+              Заказать
+            </button>
+						</>
 						: children
         	}
           
