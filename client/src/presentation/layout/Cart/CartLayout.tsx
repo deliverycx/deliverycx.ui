@@ -18,6 +18,7 @@ const CartLayout: FC<ICartLayout> = ({ children }) => {
     (selector) => selector.point
   );
 	const q = workTimeHelp() ? { minHeight: "86vh"} : { minHeight: "100vh" }
+	console.log('cart',workTimeHelp());
   return (
     <div className="cat_app" style={{ backgroundColor: "#fff" }}>
       <div className="cart">
