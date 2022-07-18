@@ -21,6 +21,7 @@ export const cartSelector = cartAdapter.getSelectors(
 
 const helperOrderType = (getState: any) : {orderType:string,organization:string} => {
     const state = getState() as RootState
+		console.log('orderrr ---',state.cart.orderType);
     return {orderType:state.cart.orderType,organization:state.location.point.guid}
 }
 
