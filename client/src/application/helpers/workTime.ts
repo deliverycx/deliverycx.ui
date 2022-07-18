@@ -5,9 +5,9 @@ import { store } from "servises/redux/createStore";
 export const workTimeHelp = (work?:string) =>{
 	const storage = store.getState();
 	const  {workTime} = storage.location.point
-	if(workTime){
+	if(workTime || work){
 		const mok = "10:00-12:00"
-		const [min,max] = work ? work.split('-') : workTime.split('-')
+		const [min,max] = mok ? mok.split('-') : workTime.split('-')
 		const time = format(new Date(), "HH:mm")
 
 		if(min >= time){

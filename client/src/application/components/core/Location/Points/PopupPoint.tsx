@@ -78,24 +78,13 @@ const PopupPoint = () => {
                       <span>Доставка и самовывоз</span>
                   </div>
               }
-            {false &&
-              <div className="point-closed">
-                <div className="bold-text">
-                  <div>Оформить заказ нельзя.<br/>
-                  Хинкальная сейчас закрыта.</div>
-                </div>
-                <div className="small-text">
-                  Приносим извинения за неудобства.<br/>
-                  Сейчас вы можете ознакомиться с меню для будущих заказов и узнать об акциях и новинках.
-                </div>
-              </div>
-            }
+
             {
               (recvisites && Object.keys(recvisites).length !== 0) &&
                 <div className="recvisites" onClick={() => recvisitesHandler(true)}>Реквизиты компании</div>
             }
 
-             {workTimeHelp() &&
+             {workTimeHelp(address.workTime) &&
                  <div className="point-closed-container">
                      <div className="text-bold">Оформить заказ нельзя.<br/> Хинкальная сейчас закрыта.</div>
                      <div className="text-secondary">Приносим извинения за неудобства.<br/>
