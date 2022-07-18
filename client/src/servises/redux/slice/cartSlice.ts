@@ -21,6 +21,7 @@ export const cartSelector = cartAdapter.getSelectors(
 
 const helperOrderType = (getState: any) : {orderType:string,organization:string} => {
     const state = getState() as RootState
+		console.log('orderrr ---',state.cart.orderType);
     return {orderType:state.cart.orderType,organization:state.location.point.guid}
 }
 
@@ -147,7 +148,7 @@ export const fetchDeleteCart = createAsyncThunk(
             const request = await RequestCart.deleteCart();
             if (request.status == 200) {
                 dispatch(deleteCart());
-								dispatch(setOrderType("COURIER"))
+								//dispatch(setOrderType("COURIER"))
                 dispatch(
                     setTotalPrice({
                         totalPrice: 0,

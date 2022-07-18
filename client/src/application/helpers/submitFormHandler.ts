@@ -25,7 +25,7 @@ const submitHandler = async <T>(values: any, meta: FormikHelpers<any>) => {
             address: {
                 city: storage.location.point.city,
                 street: prepareAddress.street || "",
-                home: prepareAddress.home || 1,
+                home: prepareAddress.home || "",
                 flat: values.flat,
                 intercom: values.intercom,
                 entrance: values.entrance,

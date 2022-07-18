@@ -14,7 +14,7 @@ import { setProfileAction } from "servises/redux/slice/profileSlice";
 import { ROUTE_APP } from "application/contstans/route.const";
 import { adapterSelector } from "servises/redux/selectors/selectors";
 import { RootState } from 'servises/redux/createStore';
-import { accessOrder, fetchDeleteCart } from "servises/redux/slice/cartSlice";
+import { accessOrder, fetchDeleteCart, fetchRefreshCart, setOrderType } from "servises/redux/slice/cartSlice";
 import { useRouter } from 'next/router'
 
 export function usePoints(this: any,{selectCity,handleSelectOrganitztion}:any) {
@@ -164,7 +164,10 @@ export function usePointsMaps(this: any,{selectCity,handlerGoToCity,handlerClose
               dispatch(fetchDeleteCart());
               dispatch(accessOrder());
             }
-            
+            if(address.delivMetod){
+							dispatch(setOrderType(address.delivMetod))
+							dispatch(fetchRefreshCart())
+						} 
             
             RequestProfile.update({ organizationId: address.id });
             handlerCloseMapModal()

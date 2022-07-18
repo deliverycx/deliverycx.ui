@@ -15,7 +15,7 @@ import { setPoint } from "servises/redux/slice/locationSlice";
 import { setProfileAction } from "servises/redux/slice/profileSlice";
 import { ROUTE_APP } from "application/contstans/route.const";
 import { adapterSelector } from "servises/redux/selectors/selectors";
-import { fetchDeleteCart } from "servises/redux/slice/cartSlice";
+import { fetchDeleteCart, fetchRefreshCart, setOrderType } from "servises/redux/slice/cartSlice";
 import _ from "lodash";
 
 export function usePoints() {
@@ -130,6 +130,10 @@ export function usePoints() {
             dispatch(setProfileAction(regData));
             dispatch(setPoint(address));
             address.id !== id && dispatch(fetchDeleteCart());
+						if(address.delivMetod){
+							dispatch(setOrderType(address.delivMetod))
+							dispatch(fetchRefreshCart())
+						} 
             history.push(ROUTE_APP.SHOP.SHOP_MAIN);
             RequestProfile.update({ organizationId: address.id });
         } catch (error) {
