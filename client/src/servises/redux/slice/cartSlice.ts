@@ -148,7 +148,7 @@ export const fetchDeleteCart = createAsyncThunk(
             const request = await RequestCart.deleteCart();
             if (request.status == 200) {
                 dispatch(deleteCart());
-								dispatch(setOrderType("COURIER"))
+								//dispatch(setOrderType("COURIER"))
                 dispatch(
                     setTotalPrice({
                         totalPrice: 0,
