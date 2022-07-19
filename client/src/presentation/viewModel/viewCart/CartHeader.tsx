@@ -16,9 +16,16 @@ const CartHeader = () => {
     history.push(ROUTE_APP.SHOP.SHOP_MAIN);
     dispatch(setENErrors({}))
   }
+
+  const declinationDishes = (num: number) => {
+    const n = num % 10;
+    if(num === 1 || (n === 1 && num !== 11)) return 'блюдо'
+    if(num > 1 && num < 5 || (n > 1 && n < 5) && (num > 14)) return 'блюда'
+    else return 'блюд'
+  }
   return (
     <HeaderBack onClickCb={historyHandler}>
-        Ваш заказ <span className="select-red">{itemsCount}</span> блюд
+        Ваш заказ <span className="select-red">{itemsCount}</span> {declinationDishes(itemsCount)}
     </HeaderBack>
   )
 }

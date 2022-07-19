@@ -396,6 +396,21 @@
         border-radius: 8px;
     }
 }
+.order-btn-pointclosed[disabled] {
+	width: 100%;
+	border-radius: 65px;
+	height: 50px;
+	padding: 10px 0;
+	text-align: center;
+	color:  #ABABAB;
+	border: none;
+	cursor: pointer;
+	font-weight: 500;
+	font-size: 17px;
+	font-family: sf-ui, sans-serif;
+	background: #EFEFEF;
+	margin-bottom: 30px;
+}
 .order-container{
 	min-height: 100% !important;
   height: 100% !important;
