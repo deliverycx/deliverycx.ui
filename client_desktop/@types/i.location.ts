@@ -14,4 +14,5 @@ export interface IPoint {
   workTime: string;
   delivMetod: string | null;
   isHidden: boolean;
+	reservetable:boolean
 }
