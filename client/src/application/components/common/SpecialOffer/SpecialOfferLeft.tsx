@@ -8,7 +8,7 @@ const SpecialOfferLeft = ({count}:any)  => {
       </div>
       <div className="hink-left-text">
         <div>хинкали осталось до ДЮЖИНЫ</div>
-        <span>при заказе дюжины (12ти)<br /> вы платите за 11-ть!</span>
+        <span>при заказе дюжины (12ти) вы платите за 11-ть!</span>
       </div>
     </div>
   );

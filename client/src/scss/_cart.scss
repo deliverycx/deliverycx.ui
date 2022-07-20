@@ -639,7 +639,7 @@
 
 .special-offer-container {
     width: 100%;
-    height: 60px;
+    height: 40px;
     background-color: #EFEFEF;
     margin-bottom: 20px;
     margin-top: 20px;
@@ -669,8 +669,8 @@
         }
     }
     .hink-number-left {
-        width: 70px;
-        height: 45px;
+        width: 55px;
+        height: 30px;
         background-color: #fff;
         border-radius: 30px;
         display: flex;
@@ -679,8 +679,8 @@
         margin-right: 15px;
         .hink-offer {
             display: inline-block;
-            height: 20px;
-            width: 19.61px;
+            height: 14px;
+            width: 13.73px;
             background-image: url('../assets/i/hink/hink-offer.svg');
             background-size: 100%;
             background-repeat: no-repeat;
@@ -691,17 +691,17 @@
         .number {
             font-family: Manrope, sans-serif;
             font-weight: 600;
-            font-size: 22px;
+            font-size: 15px;
             color: #666666;
         }
     }
     .hink-left-text {
         font-family: Manrope, sans-serif;
         color: #666666;
-        font-size: 13px;
+        font-size: 12px;
         span {
             color: #ABABAB;
-            font-size: 11px;
+            font-size: 10px;
             line-height: 11px;
         }
     }
