@@ -51,7 +51,7 @@ const CartFrom: FC<IProps> = ({ builder,paths }) => {
     notCall: false,
   };
   //mocki array
-  
+
   const timesArray: object[] = [
     {
       id: "1",
@@ -63,7 +63,7 @@ const CartFrom: FC<IProps> = ({ builder,paths }) => {
   const useCaseForm = adapterComponentUseCase(useCartForm,paths)
   const {paymentMetod,paymentOrder } = useCaseForm.data
   const { paymentReady } = useCaseForm.status
-  
+
   const formik = useFormik({
     initialValues,
     validationSchema: schema(orderType),
@@ -94,25 +94,24 @@ const CartFrom: FC<IProps> = ({ builder,paths }) => {
           },
           meta
         );
-        
+
       }
       */
-      
+
     },
   });
   const formWrapper = new FormBuilder(formik,useCaseForm);
-  
+
   // eslint-disable-next-line @typescript-eslint/no-empty-function
   const debounceClearHandler = debounce(() => {
-    dispatch(fetchDeleteCart()) 
+    dispatch(fetchDeleteCart())
   }, 400);
 
   useEffect(() => {
     selectAddress && formik.setFieldValue("address", selectAddress)
     orderError.status && dispatch(setErrors({errors:{}}))
-    
   },[])
-  
+
 
   return (
     <FormikProvider value={formik}>
@@ -121,14 +120,14 @@ const CartFrom: FC<IProps> = ({ builder,paths }) => {
           {
             formWrapper.getInitinal(builder)
           }
-          
           <textarea
             value={formik.values.comment}
             name="comment"
             onChange={formik.handleChange}
             className="form__textarea"
-            placeholder="Напишите сюда, если хотите добавить еще какую-то информацию о заказе..."
+            placeholder="Комментарии к заказу"
           ></textarea>
+          <div className="administrator">После заказа с вами свяжется администратор</div>
 
           {orderError.status === 500 && (
             <div className="server-error">
@@ -143,11 +142,9 @@ const CartFrom: FC<IProps> = ({ builder,paths }) => {
                   })
                   : <li>{orderError.error.errors}</li>
               }
-              
             </div>
           )}
-
-          <div className="row align-center form__create">
+          <div className="form__create">
             <div className="clear" onClick={debounceClearHandler}>
               <img
                 src={require("assets/i/clear_cart.svg").default}
@@ -165,7 +162,6 @@ const CartFrom: FC<IProps> = ({ builder,paths }) => {
           <CartFormContext.Provider value={useCaseForm}>
             <CartModals paths={paths} />
           </CartFormContext.Provider>
-          
         </div>
       </form>
     </FormikProvider>

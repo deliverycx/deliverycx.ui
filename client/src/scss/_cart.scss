@@ -1,12 +1,13 @@
 .cart__form {
     position: relative;
+    margin-top: 28px;
 }
 .cart {
     min-height: 100vh;
     display: flex;
     flex-direction: column;
     width: 375px;
-    
+
 
     &__header {
         align-items: center;
@@ -26,8 +27,8 @@
         }
     }
     &__choice {
-        padding: 6px;
-        border-radius: 15px;
+        padding: 8px;
+        border-radius: 50px;
         display: flex;
         justify-content: space-between;
         font-family: $bold;
@@ -41,7 +42,7 @@
             padding: 10px 0;
             text-align: center;
             color: $gray6;
-            border-radius: 15px;
+            border-radius: 50px;
             &.active {
                 background-color: $red;
                 color: #fff;
@@ -50,6 +51,8 @@
     }
     &__goods-list {
         margin-top: 30px;
+        padding-left: 20px;
+        padding-right: 20px;
     }
     &__item {
         display: flex;
@@ -139,13 +142,13 @@
         &-btn {
             padding: 25px 0;
             width: 100%;
-            margin-top: 30px;
+            //margin-top: 30px;
             border-radius: 15px;
             background-color: $red;
             color: $white;
             border: none;
             cursor: pointer;
-            margin-bottom: 30px;
+            //margin-bottom: 30px;
             font-size: 21px;
             font-family: $bold;
 
@@ -183,10 +186,11 @@
             }
             &-title {
                 color: $gray3;
+                font-family: $semibold;
                 font-size: 11px;
             }
             &-sum {
-                color: $gray6;
+                color: $green;
                 font-family: $bold;
                 font-size: 13px;
             }
@@ -224,7 +228,7 @@
         }
     }
     &__order-info {
-        margin: 16.5px 0;
+        margin-top: 20.5px;
         &__title {
             color: $gray6;
         }
@@ -251,23 +255,18 @@
     }
     &__memo {
         font-size: $fstitle;
-        margin-top: 30px;
         line-height: 120%;
         color: $gray6;
 
         &__banner {
-            color: $white;
-            background-color: $green;
-            margin-bottom: 30px;
-            padding: 9px 0;
-            text-align: center;
+            color: $gray6;
+            margin-bottom: 15px;
+            margin-top: 4.5px;
             border-radius: 8px;
             font-size: 12px;
-            line-height: 16px;
+            line-height: 14px;
             .price {
-                font-weight: bold;
                 font-size: 15px;
-                font-size: $bold;
             }
         }
         b {
@@ -276,17 +275,21 @@
             font-weight: 600;
         }
         .free-deliv {
-            font-weight: bold;
-            font-size: 15px;
-            font-size: $bold;
-            display: flex;
-            justify-content: center;
-            &:before {
-                content: "";
-                background-image: url("../assets/i/delivery.svg");
-                width: 26px;
-                height: 16px;
-                margin-right: 15px;
+            font-size: 12px;
+            line-height: 14px;
+            font-family: $regular;
+            color: $gray6;
+            .ok-icon {
+                display: inline-block;
+                height: 13.6px;
+                width: 17px;
+                background-image: url('../assets/i/hink/ok-icon.svg');
+                background-size: 100%;
+                background-repeat: no-repeat;
+                background-position: center;
+                justify-content: center;
+                align-items: center;
+                margin-right: 5px;
             }
         }
     }
@@ -299,6 +302,9 @@
             margin-left: auto;
             margin-right: auto;
             display: block;
+        }
+        textarea::placeholder {
+            color: #ABABAB;
         }
         &__table {
             margin-bottom: 22px;
@@ -635,8 +641,8 @@
     width: 100%;
     height: 60px;
     background-color: #EFEFEF;
-    margin-bottom: 30px;
-		margin-top: 30px;
+    margin-bottom: 20px;
+    margin-top: 20px;
     border-radius: 30px;
     display: flex;
     align-items: center;

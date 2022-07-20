@@ -19,25 +19,22 @@ const FormFieldWrapper: FC<IProps> = ({ placeholderIco, placeholderValue, childr
     });
     return (
         <div className={validCN}>
-            <div className="row">
+            <div className="row form__field-wrapper__address">
                 <div className="form__field-wrapper__placeholder">
                     <div className="form__field-wrapper__placeholder__ico">
                         <img src={placeholderIco} alt="" />
                     </div>
-                    <div className="form__field-wrapper__placeholder__title">{placeholderValue}</div>
                 </div>
-
                 {children}
             </div>
             {
-                error && 
+                error &&
                 <div className="form__field-wrapper__error">
                     {errorValue}
                 </div>
             }
-            
         </div>
-    )
+    );
 }
 
 export default FormFieldWrapper;

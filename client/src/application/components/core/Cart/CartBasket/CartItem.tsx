@@ -89,7 +89,6 @@ const CartItem: FC<IProps> = ({ product, errorSchema }) => {
                             changeCountHandler({
                                 id: product.id,
                                 type: "dec",
-
                             })
                         }
                     >
@@ -122,7 +121,7 @@ const CartItem: FC<IProps> = ({ product, errorSchema }) => {
                 <div className="cart__item__price">{product.price} ₽</div>
                 <button className="cart__item__remove" onClick={removeHandler}>
                     <img
-                        src={require("assets/i/remove.svg").default}
+                        src={require("assets/i/delete.svg").default}
                         alt="Удалить"
                     />
                 </button>
@@ -134,8 +133,6 @@ const CartItem: FC<IProps> = ({ product, errorSchema }) => {
                     }
                 </div>
             }
-
-
         </div>
     );
 };

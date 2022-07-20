@@ -18,6 +18,7 @@ const CartChoise: FC = () => {
     const { delivMetod } = adapterSelector.useSelectors(
         (selector) => selector.point
     );
+    console.log('delivMetod', delivMetod);
 
     const deliveryCN = cn("cart__choice__item", {
         active: activeChoice === CART_CHOICE.COURIER
@@ -25,13 +26,13 @@ const CartChoise: FC = () => {
     const pickupCN = cn("cart__choice__item", {
         active: activeChoice === CART_CHOICE.PICKUP
     }); //activeChoice === CART_CHOICE.PICKUP
-    const onspotCN = cn("cart__choice__item", { active: false }); // activeChoice === CART_CHOICE.ONSPOT
+    //const onspotCN = cn("cart__choice__item", { active: false }); // activeChoice === CART_CHOICE.ONSPOT
 
     useEffect(() => {
         if (delivMetod === CART_CHOICE.PICKUP) {
             dispatch(setOrderType(delivMetod))
         }
-       
+
         if (activeChoice === CART_CHOICE.COURIER) {
             history.push(ROUTE_APP.CART.CART_DELIVERY);
         } else if (activeChoice === CART_CHOICE.PICKUP) {
@@ -51,14 +52,16 @@ const CartChoise: FC = () => {
 
     return (
         <div className="cart__choice">
-            <div
-                className={deliveryCN}
-                onClick={() => {
-                    handlerChoice(CART_CHOICE.COURIER);
-                }}
-            >
-                Доставка
-            </div>
+            {delivMetod !== CART_CHOICE.PICKUP &&
+                <div
+                    className={deliveryCN}
+                    onClick={() => {
+                        handlerChoice(CART_CHOICE.COURIER);
+                    }}
+                >
+                    Доставка
+                </div>
+            }
             <div
                 className={pickupCN}
                 onClick={() => {
@@ -67,7 +70,6 @@ const CartChoise: FC = () => {
             >
                 Самовывоз
             </div>
-            <div className={onspotCN}>На месте</div>
         </div>
     );
 };
