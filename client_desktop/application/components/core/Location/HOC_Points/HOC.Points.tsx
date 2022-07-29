@@ -4,6 +4,7 @@ import { IPoint } from '@types';
 import cn from "classnames";
 import { useContext } from "react";
 import { LocationPointsContext } from "../LocationLayout";
+import { CART_CHOICE } from "application/contstans/cart.const";
 
 
 const Points = () => {
@@ -34,8 +35,13 @@ const Points = () => {
                     const CN = cn("welcome__city", { active: points.address === point.address }) //city.name === selectedCity?.name
                     return <li key={points.id} onClick={() => handlerPoint(points)} className={CN}>
                       {points.address}
-                      {points.delivMetod && <span className="onlypickup_small">только самовывоз</span>}
-                      {!points.delivMetod && <span className="onlypickup_small">самовывоз и доставка</span>}
+                      {	points.delivMetod === CART_CHOICE.PICKUP 
+													? <span className="onlypickup_small">только самовывоз</span> :
+												points.delivMetod === CART_CHOICE.NODELIVERY 
+													? <span className="onlypickup_small">онлайн заказ недоступен</span> :
+													<span className="onlypickup_small">самовывоз и доставка</span>
+											}
+                      
                     </li>
                   }
                 })

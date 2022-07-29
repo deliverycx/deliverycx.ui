@@ -13,6 +13,7 @@ import React from "react";
 import Modals from "application/components/common/Modals/Modals";
 import CartYmap from "../Presentation/CartYmap";
 import { workTimeHelp } from "application/helpers/workTime";
+import { CART_CHOICE } from "application/contstans/cart.const";
 
 
 type IProps = {
@@ -30,6 +31,7 @@ const CartFrom: FC<IProps> = ({ builder,paths }) => {
   const {
     city,
 		workTime,
+		delivMetod,
     selectAddress,
     orderError,
     loadingOrder,
@@ -116,6 +118,10 @@ const CartFrom: FC<IProps> = ({ builder,paths }) => {
 						? <button disabled className="order-btn-pointclosed">Хинкальная сейчас закрыта.<br/>
 								Оформить заказ вы сможете: {workTime}
 							</button>
+						: delivMetod === CART_CHOICE.NODELIVERY
+							? <button disabled className="order-btn-pointclosed">Онлайн заказ недоступен
+								
+							</button>	
 						: <button type="submit" className="cart__order-btn btn" disabled={loadingOrder || disabledData()}>
 		              Заказать
 		          </button>

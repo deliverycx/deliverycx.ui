@@ -2,6 +2,7 @@ import { useContext, useEffect } from "react"
 import { PointsContext } from "./Points"
 import cn from "classnames";
 import { workTimeHelp } from "application/helpers/workTime";
+import { CART_CHOICE } from "application/contstans/cart.const";
 
 /* eslint-disable @typescript-eslint/no-var-requires */
 const PopupPoint = () => {
@@ -12,7 +13,7 @@ const PopupPoint = () => {
   const address = addresses && addresses[statePoint.slideIndex]
   const selectAdressCN = cn("welcome__select-adress", { opened: statePoint.isOpen });
 
-	console.log(address);
+
   return (
     <>
       <button onClick={() => buttonClickHandler()} className={selectAdressCN}>
@@ -91,6 +92,15 @@ const PopupPoint = () => {
                          Сейчас вы можете ознакомиться с меню для будущих заказов и узнать об акциях и новинках. </div>
                  </div>
              }
+						{
+							address.delivMetod === CART_CHOICE.NODELIVERY &&
+							<div className="point-closed-container">
+									<div className="text-bold">Онлайн заказ недоступен</div>
+									<div className="text-secondary">Приносим извинения за неудобства.<br/>
+                         Сейчас вы можете ознакомиться с меню и узнать об акциях и новинках. </div>
+										
+							</div>
+						}
             <div
               className="btn welcome__select-adress__btn"
               onClick={() => selectPointHandler(address)}
