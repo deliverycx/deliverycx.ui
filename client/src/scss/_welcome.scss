@@ -29,6 +29,9 @@
     }
     &__content{
       text-align: center;
+      .choose {
+        margin-left: 20px;
+      }
     }
 
     &__ico-wrapper{
