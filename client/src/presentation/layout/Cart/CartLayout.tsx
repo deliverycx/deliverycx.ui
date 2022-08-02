@@ -1,9 +1,10 @@
 /* eslint-disable no-mixed-spaces-and-tabs */
+/* eslint-disable @typescript-eslint/no-var-requires */
 import CartChoise from "application/components/core/Cart/CartChoice";
 import CartList from "application/components/core/Cart/CartBasket/CartList";
 import CartTotal from "application/components/core/Cart/CartBasket/CartTotal";
 import CartHeader from "presentation/viewModel/viewCart/CartHeader";
-import { FC, ReactNode } from "react";
+import React, { FC, ReactNode } from "react";
 import CartDeliveryPrice from "application/components/core/Cart/CartBasket/CartDeliveryPrice";
 import { workTimeHelp } from "application/helpers/workTime";
 import Discounts from "application/components/core/Cart/CartBasket/HOC_Discount";
@@ -33,32 +34,38 @@ const CartLayout: FC<ICartLayout> = ({ children }) => {
                   <CartDeliveryPrice />
                   <CartTotal />
                   {workTimeHelp()
-                      ? <>
+                      ? <div className="point-closed">
                           <div className="point-closed-cart-container">
                               <div className="top-text">Хинкальная сейчас закрыта.<br />
-                                  Оформить заказ вы сможете: <span>{point.workTime}</span></div>
+                                  Оформить заказ можно: <span>{point.workTime}</span></div>
                               <div className="text-secondary">
-                                  Приносим извинения за неудобства. <br />
-                                  Сейчас вы можете ознакомиться с меню для будущих заказов и узнать об акциях и
-                                  новинках.
+                                  А пока вы можете ознакомится <br />
+                                  с нашим меню и почитать новости
                               </div>
                           </div>
-                          <button
-                              type="submit"
-                              className="order-btn-pointclosed"
-                              disabled={true}
-                          >
-                              Заказать
-                          </button>
-                      </>
+                          <div className="text-secondary-closed">После заказа с вами свяжется администратор</div>
+                          <div className="form__create">
+                              <div className="clear">
+                                  <img
+                                      src={require("assets/i/clear_cart.svg").default}
+                                      alt="Очистить корзину"
+                                  />
+                              </div>
+                              <button
+                                  type="submit"
+                                  className="cart__order-btn"
+                                  disabled={true}
+                              >
+                                  Заказать
+                              </button>
+                          </div>
+                      </div>
                       : point.delivMetod === CART_CHOICE.NODELIVERY ?
                           <>
                               <div className="point-closed-cart-container">
                                   <div className="top-text">Онлайн заказ недоступен</div>
-
                                   <div className="text-secondary">
                                       Приносим извинения за неудобства. <br />
-
                                   </div>
                               </div>
                               <button

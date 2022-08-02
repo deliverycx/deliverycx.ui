@@ -142,18 +142,17 @@
         &-btn {
             padding: 25px 0;
             width: 100%;
-            //margin-top: 30px;
-            border-radius: 15px;
             background-color: $red;
             color: $white;
-            border: none;
             cursor: pointer;
-            //margin-bottom: 30px;
             font-size: 21px;
             font-family: $bold;
-
+            border-radius: 90px;
+            border: 2px solid $red;
             &[disabled] {
-                filter: grayscale(1);
+                background-color: $white;
+                color: $grayC;
+                border: 2px solid #EFEFEF;
             }
         }
         &__sale {
@@ -197,8 +196,8 @@
         }
     }
     .point-closed-cart-container {
-        margin-top: 30px;
-				margin-bottom: 15px;
+        margin-top: 28px;
+        margin-bottom: 15px;
         border: 2px solid #CCCCCC;
         border-radius: 15px;
         display: flex;
@@ -224,8 +223,14 @@
             line-height: 14px;
             text-align: center;
             color: #ABABAB;
-            margin-top: 10px;
+            margin-top: 9px;
         }
+    }
+    .text-secondary-closed {
+        font-size: 12px;
+        line-height: 14px;
+        color: #ABABAB;
+        margin-top: 30px;
     }
     &__order-info {
         margin-top: 20.5px;
@@ -260,7 +265,7 @@
 
         &__banner {
             color: $gray6;
-            margin-top: 30px;
+            margin-top: 4.5px;
             border-radius: 8px;
             font-size: 12px;
             line-height: 14px;
@@ -414,6 +419,14 @@
         background-color: $grayEF;
         cursor: pointer;
         border-radius: 8px;
+    }
+    .point-closed {
+        .clear {
+            cursor: auto;
+        }
+        .cart__order-btn {
+            cursor: auto;
+        }
     }
 }
 .order-btn-pointclosed[disabled] {

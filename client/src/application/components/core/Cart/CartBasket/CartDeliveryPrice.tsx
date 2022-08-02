@@ -10,7 +10,7 @@ const CartDeliveryPrice: FC = ()=>{
         <div className="cart__order-info">
             <div className="cart__order__delivery-wrap">
                 <div className="cart__order__delivery-title">Доставка:</div>
-                <div className="cart__order__delivery-sum">{deliveryPrice} ₽</div>
+                <div className="cart__order__delivery-sum">+{deliveryPrice} ₽</div>
             </div>
         </div>
     )
