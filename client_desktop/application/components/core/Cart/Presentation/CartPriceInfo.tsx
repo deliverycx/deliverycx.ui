@@ -12,7 +12,7 @@ const CartPriceInfo = () => {
           orderType === CART_CHOICE.COURIER && (
             deltaPrice === 0
               ? <div className="cart__memo__banner free-deliv">Доставка <span className="cart-price-free">бесплатно</span></div>
-              : <div className="cart__memo__banner ">До <b>бесплатной доставки</b> закажите на сумму <b className="price">{deltaPrice} ₽</b></div>
+              : <div className="cart__memo__banner ">До бесплатной доставки закажите на сумму <b className="price">{deltaPrice} ₽</b></div>
           )
         }
         {
