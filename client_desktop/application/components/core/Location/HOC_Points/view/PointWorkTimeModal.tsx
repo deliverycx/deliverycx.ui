@@ -15,21 +15,17 @@ const PointWorkTimeModal = () => {
     return (
         <div className="notification_modal notification_work-time">
                 <div className="attention">
-                    Внимание!
+                    Привет!
                 </div>
                 <div className="attention-info">
-                    Выбранная хинкальная сейчас закрыта.<br/>
-                    Оформить заказ вы сможете: <span>{selectedPoint.workTime}</span>
+                    Наша хинкальная сейчас закрыта.<br/>
+                    Оформить заказ можно: <span>{selectedPoint.workTime}</span>
                 </div>
                 <div className="secondary-text">
-                    Приносим извинения за неудобства. Сейчас вы можете ознакомиться с меню для будущих
-                    заказов и узнать об акциях и новинках.
+                    А пока вы можете ознакомится с нашим меню<br/> и почитать новости
                 </div>
                 <div className="notification_worktime-buttons">
-                    <span onClick={() => {
-											handlerHeader('point')
-											setWorkOrg(false)
-										}} className="btn-secondary">Выбрать другую</span>
+                    {/* eslint-disable-next-line @next/next/no-html-link-for-pages */}
                     <a href="/menu?worktime=true" className="btn-success">Посмотреть меню</a>
                 </div>
         </div>

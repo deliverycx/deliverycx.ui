@@ -15,103 +15,105 @@ const PopupPoint = () => {
 
 
   return (
-    <>
-      <button onClick={() => buttonClickHandler()} className={selectAdressCN}>
-           Выберите заведение
-       </button>
-    {
-      statePoint.isOpen && address && (
-        <div className="welcome__select-adress opened">
-          <div className="container">
-            <div className="welcome__select-adress__header ">
-              <div onClick={() => SlidePointsHandler("prev")}>
-                <img
-                  src={require("assets/i/prev-btn.svg").default}
-                  alt="Предыдущее заведенеие"
-                />
-              </div>
-              <div className="welcome__select-adress__adress">
-                {address.address}
-              </div>
-              <div onClick={() => SlidePointsHandler("next")}>
-                <img
-                  src={require("assets/i/next-btn.svg").default}
-                  alt="Следующее заведенеие"
-                />
-              </div>
-            </div>
-            {/*<div className="welcome__select-adress__work-time">*/}
-            {/*   {address.workTime}*/}
-            {/*</div>*/}
-            <div className="welcome__select-adress__info">
-              <img
-                src={require("assets/i/clock.svg").default}
-                alt="Телефон заведения"
-              />
-              <span>{address.workTime}</span>
-            </div>
-            <div className="welcome__select-adress__info">
-              <img
-                src={require("assets/i/phone-green.svg").default}
-                alt="Телефон заведения"
-              />
-              <a href={`tel: ${address.phone}`}>
-                {address.phone}
-              </a>
-            </div>
-              {
-                  address.delivMetod === 'PICKUP' &&
-                  <div className="welcome__select-adress__info onlypickup">
-                      <img
-                          src={require("assets/i/bag-red.svg").default}
-                          alt="Только самовывоз"
-                      />
-                      <span>Только самовывоз</span>
-                  </div>
-              }
-              {
-                  !address.delivMetod &&
-                  <div className="welcome__select-adress__info onlypickup">
-                      <img
-                          src={require("assets/i/moto-red.svg").default}
-                          alt="Доставка и самовывоз"
-                      />
-                      <span>Доставка и самовывоз</span>
-                  </div>
-              }
+      <>
+          <button onClick={() => buttonClickHandler()} className={selectAdressCN}>
+              Выберите заведение
+          </button>
+          {
+              statePoint.isOpen && address && (
+                  <div className="welcome__select-adress opened">
+                      <div className="container">
+                          <div className="welcome__select-adress__header ">
+                              <div onClick={() => SlidePointsHandler("prev")}>
+                                  <img
+                                      src={require("assets/i/prev-btn.svg").default}
+                                      alt="Предыдущее заведенеие"
+                                  />
+                              </div>
+                              <div className="welcome__select-adress__adress">
+                                  {address.address}
+                              </div>
+                              <div onClick={() => SlidePointsHandler("next")}>
+                                  <img
+                                      src={require("assets/i/next-btn.svg").default}
+                                      alt="Следующее заведенеие"
+                                  />
+                              </div>
+                          </div>
+                          {/*<div className="welcome__select-adress__work-time">*/}
+                          {/*   {address.workTime}*/}
+                          {/*</div>*/}
+                          <div className="welcome__select-adress__info">
+                              <img
+                                  src={require("assets/i/clock.svg").default}
+                                  alt="Телефон заведения"
+                              />
+                              <span>{address.workTime}</span>
+                          </div>
+                          <div className="welcome__select-adress__info">
+                              <img
+                                  src={require("assets/i/phone-green.svg").default}
+                                  alt="Телефон заведения"
+                              />
+                              <a href={`tel: ${address.phone}`}>
+                                  {address.phone}
+                              </a>
+                          </div>
+                          {
+                              address.delivMetod === "PICKUP" &&
+                              <div className="welcome__select-adress__info onlypickup">
+                                  <img
+                                      src={require("assets/i/bag-red.svg").default}
+                                      alt="Только самовывоз"
+                                  />
+                                  <span>Только самовывоз</span>
+                              </div>
+                          }
+                          {
+                              !address.delivMetod &&
+                              <div className="welcome__select-adress__info onlypickup">
+                                  <img
+                                      src={require("assets/i/moto-red.svg").default}
+                                      alt="Доставка и самовывоз"
+                                  />
+                                  <span>Доставка и самовывоз</span>
+                              </div>
+                          }
 
-            {
-              (recvisites && Object.keys(recvisites).length !== 0) &&
-                <div className="recvisites" onClick={() => recvisitesHandler(true)}>Реквизиты компании</div>
-            }
+                          {
+                              (recvisites && Object.keys(recvisites).length !== 0) &&
+                              <div className="recvisites" onClick={() => recvisitesHandler(true)}>Реквизиты компании</div>
+                          }
+                          {workTimeHelp(address.workTime) &&
+                              <div className="point-closed-container">
+                                  <div className="text-bold">Оформить заказ нельзя.<br /> Хинкальная сейчас закрыта.</div>
+                                  <div className="text-secondary">Приносим извинения за неудобства.<br />
+                                      Сейчас вы можете ознакомиться с меню для будущих заказов и узнать об акциях и
+                                      новинках.
+                                  </div>
+                              </div>
+                          }
+                          {
+                              address.delivMetod === CART_CHOICE.NODELIVERY &&
+                              <div className="point-closed-container">
+                                  <div className="text-bold">Онлайн заказ недоступен</div>
+                                  <div className="text-secondary">Приносим извинения за неудобства.<br />
+                                      Сейчас вы можете ознакомиться с меню и узнать об акциях и новинках.
+                                  </div>
 
-             {workTimeHelp(address.workTime) &&
-                 <div className="point-closed-container">
-                     <div className="text-bold">Оформить заказ нельзя.<br/> Хинкальная сейчас закрыта.</div>
-                     <div className="text-secondary">Приносим извинения за неудобства.<br/>
-                         Сейчас вы можете ознакомиться с меню для будущих заказов и узнать об акциях и новинках. </div>
-                 </div>
-             }
-						{
-							address.delivMetod === CART_CHOICE.NODELIVERY &&
-							<div className="point-closed-container">
-									<div className="text-bold">Онлайн заказ недоступен</div>
-									<div className="text-secondary">Приносим извинения за неудобства.<br/>
-                         Сейчас вы можете ознакомиться с меню и узнать об акциях и новинках. </div>
-										
-							</div>
-						}
-            <div
-              className="btn welcome__select-adress__btn"
-              onClick={() => selectPointHandler(address)}
-            >
-              Выбрать
-            </div>
-          </div>
-        </div>
-      )
-    }
-    </>
+                              </div>
+                          }
+                          <div
+                              className="btn welcome__select-adress__btn"
+                              onClick={() => selectPointHandler(address)}
+                          >
+                              Выбрать
+                          </div>
+                      </div>
+                  </div>
+              )
+          }
+      </>
   )
 }
 export default PopupPoint

@@ -12,7 +12,6 @@ const HeadMap = ({ welcomeHeader }: Iprops) => {
   const useCasePoints = useContext(PointsContext)
   const { selectedCity,addresses} = useCasePoints.data
   const { nearPoint,} = useCasePoints.handlers
-  console.log('data', useCasePoints.data);
 
   return (
     <div className={welcomeHeader}>

@@ -18,7 +18,7 @@ const CartLayout: FC<ICartLayout> = ({ children }) => {
 	const point = adapterSelector.useSelectors(
     (selector) => selector.point
   );
-	
+
 
   return (
       <div className="cat_app" style={{ backgroundColor: "#fff" }}>
@@ -51,27 +51,26 @@ const CartLayout: FC<ICartLayout> = ({ children }) => {
                               Заказать
                           </button>
                       </>
-											: point.delivMetod === CART_CHOICE.NODELIVERY ?
-											<>
-														<div className="point-closed-cart-container">
-																<div className="top-text">Онлайн заказ недоступен</div>
-																		
-																<div className="text-secondary">
-																		Приносим извинения за неудобства. <br />
-																		
-																</div>
-														</div>
-														<button
-																type="submit"
-																className="order-btn-pointclosed"
-																disabled={true}
-														>
-																Заказать
-														</button>
-												</>
-                      : children
+                      : point.delivMetod === CART_CHOICE.NODELIVERY ?
+                          <>
+                              <div className="point-closed-cart-container">
+                                  <div className="top-text">Онлайн заказ недоступен</div>
+
+                                  <div className="text-secondary">
+                                      Приносим извинения за неудобства. <br />
+
+                                  </div>
+                              </div>
+                              <button
+                                  type="submit"
+                                  className="order-btn-pointclosed"
+                                  disabled={true}
+                              >
+                                  Заказать
+                              </button>
+                          </>
+                          : children
                   }
-									
               </div>
           </div>
       </div>

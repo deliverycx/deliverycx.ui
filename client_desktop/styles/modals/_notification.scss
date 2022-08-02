@@ -53,7 +53,7 @@
 		}
 
 		.attention {
-			font-family: Manrope, sans-serif;
+			font-family: manrope, sans-serif;
 			font-weight: 500;
 			color: #132A3E;
 			font-size: 26px;
@@ -62,8 +62,9 @@
 		.attention-info {
 			margin-top: 15px;
 			font-size: 21px;
-			font-family: sf-ui-light, sans-serif;
+			font-family: sf-ui, sans-serif;
 			font-weight: 500;
+			line-height: 25px;
 
 			span {
 				color: #8D191D;
@@ -71,13 +72,14 @@
 		}
 
 		.secondary-text {
-			margin-top: 30px;
+			margin-top: 20px;
 			color: #ABABAB;
 			font-size: 16px;
+			line-height: 19px;
 		}
 
 		.notification_worktime-buttons {
-			margin-top: 30px;
+			margin-top: 40px;
 			display: flex;
 			justify-content: space-between;
 		}
