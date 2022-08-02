@@ -86,10 +86,9 @@ const PopupPoint = () => {
                           }
                           {workTimeHelp(address.workTime) &&
                               <div className="point-closed-container">
-                                  <div className="text-bold">Оформить заказ нельзя.<br /> Хинкальная сейчас закрыта.</div>
-                                  <div className="text-secondary">Приносим извинения за неудобства.<br />
-                                      Сейчас вы можете ознакомиться с меню для будущих заказов и узнать об акциях и
-                                      новинках.
+                                  <div className="text-bold">Наша хинкальная пока закрыта.<br /> Оформить заказ нельзя.</div>
+                                  <div className="text-secondary">Сейчас вы можете ознакомится с нашим<br />
+                                       меню и почитать новости
                                   </div>
                               </div>
                           }
