@@ -113,7 +113,7 @@ export const FormWrapper = (formik: any,usecase:any): IWrapper => {
             onChange={formik.handleChange}
           />
           <Field
-            className="form__field-wrapper__input gray"
+            className="form__field-wrapper__input gray floor"
             name="floor"
             placeholder="этаж"
             value={formik.values.floor}

@@ -116,7 +116,7 @@ const CartFrom: FC<IProps> = ({ builder,paths }) => {
   return (
     <FormikProvider value={formik}>
       <form onSubmit={formik.handleSubmit}>
-        <div className="cart__form">
+        <div className="cart__form container">
           {
             formWrapper.getInitinal(builder)
           }

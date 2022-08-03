@@ -10,6 +10,7 @@ import { workTimeHelp } from "application/helpers/workTime";
 import Discounts from "application/components/core/Cart/CartBasket/HOC_Discount";
 import { adapterSelector } from "servises/redux/selectors/selectors";
 import { CART_CHOICE } from "application/contstans/cart.const";
+import DeliveryCost from "../../../application/components/core/Cart/CartBasket/DeliveryCost";
 
 type ICartLayout = {
     children:ReactNode
@@ -29,10 +30,11 @@ const CartLayout: FC<ICartLayout> = ({ children }) => {
                   <CartChoise />
               </div>
               <CartList />
-              <div className="container">
-                  <Discounts />
+              <div>
                   <CartDeliveryPrice />
                   <CartTotal />
+                  <Discounts />
+                  <DeliveryCost/>
                   {workTimeHelp()
                       ? <div className="point-closed">
                           <div className="point-closed-cart-container">

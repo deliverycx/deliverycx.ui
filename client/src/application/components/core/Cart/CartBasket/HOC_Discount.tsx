@@ -5,7 +5,6 @@ import { useCartDiscountDzone } from "domain/use-case/useCaseCart"
 import { memo } from "react"
 
 const Discounts = () =>{
-	/**/
 	const useCaseCartDiscount = adapterComponentUseCase(useCartDiscountDzone)
 	const {countDiscount,freeHi} = useCaseCartDiscount.data
 
@@ -17,7 +16,6 @@ const Discounts = () =>{
 		{
 			countDiscount !== 0 && (countDiscount < 12 && <SpecialOfferLeft count={countDiscount} />)
 		}
-		
 		</>
 	)
 }
