@@ -10,7 +10,7 @@ const DeliveryCost = () => {
             {
                 orderType === CART_CHOICE.COURIER && (
                     deltaPrice !== 0
-                        && <div className="cart__memo__banner ">
+                        && <div className="cart__memo__banner delivery">
                             <img src={require("assets/i/moto.svg").default} alt="стрелка" />
                             <div>До бесплатной доставки <br/> закажите на сумму: <b>{deltaPrice} ₽</b></div>
                         </div>

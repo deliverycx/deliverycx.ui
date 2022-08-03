@@ -17,10 +17,8 @@ type ICartLayout = {
 }
 
 const CartLayout: FC<ICartLayout> = ({ children }) => {
-	const point = adapterSelector.useSelectors(
-    (selector) => selector.point
-  );
-
+	const point = adapterSelector.useSelectors((selector) => selector.point);
+    const { orderType } = adapterSelector.useSelectors(selector => selector.cart);
 
   return (
       <div className="cat_app" style={{ backgroundColor: "#fff" }}>
@@ -31,7 +29,7 @@ const CartLayout: FC<ICartLayout> = ({ children }) => {
               </div>
               <CartList />
               <div>
-                  <CartDeliveryPrice />
+                  {orderType === CART_CHOICE.COURIER && <CartDeliveryPrice />}
                   <CartTotal />
                   <Discounts />
                   <DeliveryCost/>

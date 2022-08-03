@@ -14,7 +14,7 @@ const CartPickup = () => {
       <div className="cart__memo">
         {
           orderType === CART_CHOICE.PICKUP &&
-          <div className="cart__memo__banner">
+          <div className="cart__memo__banner pickup container">
               <div>Заказ можно получить по адресу:</div>
               <div className="city-info"><span className="mark"/> г. {city}, {address} </div>
           </div>
