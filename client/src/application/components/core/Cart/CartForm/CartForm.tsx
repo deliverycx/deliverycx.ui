@@ -125,7 +125,7 @@ const CartFrom: FC<IProps> = ({ builder,paths }) => {
             name="comment"
             onChange={formik.handleChange}
             className="form__textarea"
-            placeholder="Комментарии к заказу"
+            placeholder="Напишите сюда, если хотите добавить еще какую-то информацию о заказе..."
           ></textarea>
           <div className="administrator">После заказа с вами свяжется администратор</div>
 

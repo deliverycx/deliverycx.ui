@@ -415,8 +415,8 @@
             background-color: #EFEFEF !important;
             border: none;
             outline: none;
-            font-family: $bold;
-            width: 100%;
+            font-family: $regular;
+            width: 85%;
             padding: 5px 0;
 
             &::placeholder {
@@ -426,8 +426,6 @@
             }
             &:focus {
                 background-color: $grayEF;
-                padding-left: 5px;
-                border-radius: 5px;
             }
 
             &.gray {

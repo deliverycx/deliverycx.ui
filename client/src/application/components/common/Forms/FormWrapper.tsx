@@ -78,7 +78,7 @@ export const FormWrapper = (formik: any,usecase:any): IWrapper => {
       <div className="adress_fild">
         <div className="form__field-wrapper__title">Адрес доставки</div>
         <FormFieldWrapper
-          placeholderIco={require("assets/i/mark-red.svg").default}
+          placeholderIco={require("assets/i/cart/mark-dark.svg").default}
           placeholderValue="Где"
           isValid={!formik.values.address.length}
           error={!!formik.errors.address}
@@ -128,7 +128,7 @@ export const FormWrapper = (formik: any,usecase:any): IWrapper => {
           <>
             <div className="form__field-wrapper__title">Контакты</div>
             <FormFieldWrapper
-                placeholderIco={require("assets/i/profile-red.svg").default}
+                placeholderIco={require("assets/i/cart/person-dark.svg").default}
                 placeholderValue="Контакты"
                 isValid={
                     !formik.values.name.length || formik.errors.name
@@ -150,7 +150,7 @@ export const FormWrapper = (formik: any,usecase:any): IWrapper => {
     phone() {
       return(
       <FormFieldWrapper
-        placeholderIco={require("assets/i/phone-red.svg").default}
+        placeholderIco={require("assets/i/cart/phone-dark.svg").default}
         placeholderValue="Телефон"
         isValid={
           !formik.values.phone.length || formik.errors.phone
