@@ -495,11 +495,12 @@
 }
 
 .disclaimer {
+    position: absolute;
     color: #FF0000;
-    font-size: 11px;
-    margin-top: 5px;
+    bottom: 1px;
+    font-size: 10px;
     display: flex;
-    margin-left: 8%;
+    margin-left: 15%;
 }
 .mapsPopup {
     position: absolute;
@@ -578,8 +579,9 @@
         display: flex;
         justify-content: space-evenly;
         align-items: center;
-        border: 2px solid $red;
         outline: none;
+        border: none;
+        z-index: 99;
         box-shadow: 0px 7px 16px rgba(0, 0, 0, 0.04), 0px 2.6963px 5.0963px rgba(0, 0, 0, 0.0242963), 0px 0.57037px 1.3037px rgba(0, 0, 0, 0.0157037);
         svg {
             fill: #FFFFFF;
@@ -587,7 +589,6 @@
         &[disabled] {
             background-color: #EFEFEF;
             color: #CCCCCC;
-            border: 2px solid #CCCCCC;
             svg {
                 fill: #CCCCCC;
             }

@@ -69,10 +69,10 @@ const CartYmap = () => {
                                    onClick={() => onMapTyping().setInputMap(true)}>{stateReduceMap.valueMap}</div>
                             : <SuggestComponent dispatchMap={onMapTyping} stateReduceMap={stateReduceMap} />
                       }
+                        {
+                            stateReduceMap.disclaimer && <div className="disclaimer">Не точный адрес, введите дом</div>
+                        }
                     </div>
-                    {
-                        stateReduceMap.disclaimer && <div className="disclaimer">Не точный адрес, в ведите дом</div>
-                    }
                   </div>
                 </div>
                   <button
