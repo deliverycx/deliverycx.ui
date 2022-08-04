@@ -10,6 +10,14 @@
     margin-top: 38%;
     margin-left: 23%;
   }
+  .error-server-img {
+    background: url("../assets/img/errors/error500.svg") center center no-repeat;
+    height: 205px;
+    width: 203px;
+    display: block;
+    margin-top: 38%;
+    margin-left: 23%;
+  }
   h2 {
     font-family: sf-ui-bold, sans-serif;
     font-weight: 700;
@@ -17,6 +25,9 @@
     line-height: 110%;
     margin-top: 12%;
     text-align: center;
+    &.server {
+      margin-top: 0;
+    }
   }
   div {
     font-family: sf-ui-medium, sans-serif;
