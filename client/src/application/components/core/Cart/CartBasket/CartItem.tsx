@@ -5,8 +5,7 @@ import { IReqCart } from "@types";
 import { CartContext } from "application/components/core/Cart/CartBasket/CartList";
 import debounce from "lodash.debounce";
 import { useDispatch } from "react-redux";
-import { FC, useCallback, useContext, useEffect, useMemo, useState } from "react";
-import cn from "classnames";
+import { FC, useContext, useEffect, useMemo, useState } from "react";
 import { fetchChangeAmount, fetchRemoveCart } from "servises/redux/slice/cartSlice";
 import classNames from "classnames";
 

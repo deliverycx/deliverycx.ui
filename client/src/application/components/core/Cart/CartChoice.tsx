@@ -18,7 +18,6 @@ const CartChoise: FC = () => {
     const { delivMetod } = adapterSelector.useSelectors(
         (selector) => selector.point
     );
-    console.log('delivMetod', delivMetod);
 
     const deliveryCN = cn("cart__choice__item", {
         active: activeChoice === CART_CHOICE.COURIER

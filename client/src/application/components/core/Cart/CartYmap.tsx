@@ -75,7 +75,6 @@ const CartYmap = () => {
                     }
                   </div>
                 </div>
-                {/*<div className="mapsPopup">*/}
                   <button
                       disabled={stateReduceMap.cord && !stateReduceMap.cord.length && !stateReduceMap.disclaimer || stateReduceMap.disclaimer}
                       className="mapsPopup__button btn" onClick={hendleMapPopup}>
@@ -85,7 +84,6 @@ const CartYmap = () => {
                     </svg>
                     Заказать доставку
                   </button>
-                {/*</div>*/}
               </>
           }
         </Map>
