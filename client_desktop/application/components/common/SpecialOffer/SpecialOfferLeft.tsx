@@ -5,7 +5,7 @@ const SpecialOfferLeft = ({count}:any) => {
     <div className="special-offer-container">
       <div className="hink-number-left">
         <span className="hink-offer"/>
-        <span className="number">{count}</span>
+        <span className="number">{12 - count}</span>
       </div>
       <div className="hink-left-text">
         <div>хинкали осталось до ДЮЖИНЫ</div>

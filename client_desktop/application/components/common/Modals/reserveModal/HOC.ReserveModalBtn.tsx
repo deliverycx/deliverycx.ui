@@ -22,12 +22,14 @@ const ReserveModalBtnContainer = () => {
 
     return (
         <>
+
 						{
 							point && point.reservetable &&
 							<button className="reserve-btn" onClick={() => setIsModalOpen(true)}>
                 Забронировать стол
             	</button>
 						}
+
             
             {
                 isModalOpen &&

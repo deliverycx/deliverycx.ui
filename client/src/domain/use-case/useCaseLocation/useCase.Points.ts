@@ -36,6 +36,7 @@ export function usePoints() {
 
   const addresses =  org && org.filter((val:IPoint,index:number) => val.isHidden !== true)
 
+
   useEffect(() => {
     (addresses && !isFetching) && getRecvisites(addresses[statePoint.slideIndex].id)
   }, [statePoint.slideIndex])
