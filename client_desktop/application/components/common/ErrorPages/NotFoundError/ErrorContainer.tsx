@@ -7,7 +7,7 @@ const ErrorContainer = () => {
         <span className="error"></span>
         <div>Что-то пошло не так</div>
         <span>Помоги восстановить порядок</span>
-        <button className="error-btn">
+        <button className="error-btn" onClick={()=>window.location.reload()}>
           Не есть хинкали вилкой
         </button>
       </div>
