@@ -10,7 +10,8 @@
 	margin-top: 10px;
 }
 .back_shop{
-	font-family: sf-ui-m, sans-serif;
+	font-family: $sf;
+	font-weight: 500;
 	display: flex;
 	justify-content: center;
 	align-items: center;
@@ -29,7 +30,8 @@
 	}
 	&:hover {
 		border-color: #333333;
-		font-family: sf-ui-semibold, sans-serif;
+		font-family: $sf;
+		font-weight: 600;
 		a {
 			color: #333333;
 		}

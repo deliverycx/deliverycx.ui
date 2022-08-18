@@ -60,7 +60,7 @@
 	display: flex;
 	border-bottom: 2px solid #EFEFEF;
 	.cart_title{
-		font-family: Manrope, sans-serif;
+		font-family: $manrope;
 		font-weight: 600;
 		font-size: 26px;
 		color: #132A3E;
@@ -198,7 +198,7 @@
 	border: none;
 	cursor: pointer;
 	font-size: 17px;
-	font-family: sf-ui, sans-serif;
+	font-family: $sf;
 	background: #EFEFEF;
 	font-weight: 600;
 	line-height: 100%;
@@ -217,7 +217,7 @@
 	cursor: pointer;
 	font-weight: 500;
 	font-size: 21px;
-	font-family: Manrope, sans-serif;
+	font-family: $manrope;
 	&.cart-btn {
 		padding: 0;
 		height: 60px;
@@ -257,7 +257,7 @@
 			border-radius: 25px;
 		font-weight: 500;
 		font-size: 21px;
-		font-family: Manrope, sans-serif;
+		font-family: $manrope;
 			&.active {
 					background-color: #8d191d;
 					color: #fff;
@@ -357,14 +357,14 @@
 			align-items: center;
 		}
 		.number {
-			font-family: Manrope, sans-serif;
+			font-family: $manrope;
 			font-weight: 600;
 			font-size: 22px;
 			color: #666666;
 		}
 	}
 	.hink-left-text {
-		font-family: Manrope, sans-serif;
+		font-family: $manrope;
 		color: #666666;
 		font-size: 16px;
 		span {
