@@ -13,6 +13,18 @@ export const RTKCart = createApi({
       providesTags: ['Cart']
      
     }),
+		getDeliveryZones:builder.query<string,string>({
+      query: (organizationIds) => {
+        return ({
+          method: "POST",
+          url: `/cart/getDeliveryZone`,
+          body: {
+            organizationIds
+          }
+        })
+      },
+     
+    }),
     addToCart:builder.mutation<any,string>({
       query: (productId) => {
         return ({
@@ -30,6 +42,6 @@ export const RTKCart = createApi({
 })
 export const {
   useAddToCartMutation,
-  useGetCartAllQuery
-  
+  useGetCartAllQuery,
+	useGetDeliveryZonesQuery
 } = RTKCart

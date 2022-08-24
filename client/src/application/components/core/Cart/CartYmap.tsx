@@ -2,7 +2,7 @@
 import { IGeoCodeResponse } from "@types";
 import axios from "axios";
 import { useEffect, useMemo, useState } from "react";
-import { YMaps, Map, SearchControl, Placemark, YMapsApi, withYMaps } from "react-yandex-maps";
+import { YMaps, Map, SearchControl, Placemark, YMapsApi, withYMaps, Polygon } from "react-yandex-maps";
 import { useDispatch, useSelector } from 'react-redux';
 import { setAdress } from "servises/redux/slice/cartSlice";
 import { getGeoLocation } from "application/helpers/yandexapi";
@@ -25,8 +25,9 @@ const placeMarkOption = {
 const CartYmap = () => {
   const city = useSelector((state: RootState) => state.location.point.city);
   const usecaseCartMap = adapterComponentUseCase(useCartMap)
-  const { stateReduceMap,mapstate } = usecaseCartMap.data
-  const { onMapTyping,getGeoLoc,onMapClick,hendleMapPopup } = usecaseCartMap.handlers
+  const { stateReduceMap,mapstate,zones } = usecaseCartMap.data
+  const { onMapTyping,getGeoLoc,onMapClick,hendleMapPopup,hendleZone } = usecaseCartMap.handlers
+	const {isLoadingZone} = usecaseCartMap.status
 
   const SuggestComponent = useMemo(() => {
     return withYMaps(MapSuggestComponent, true, [
@@ -56,6 +57,13 @@ const CartYmap = () => {
             options={placeMarkOption}
             geometry={stateReduceMap.cord}
           />
+
+					{
+						(zones && !isLoadingZone && stateReduceMap.dispalyzone) &&
+						<Polygon options={{fillColor: '#6699ff',opacity:0.3}} geometry={[zones]}></Polygon>
+					}
+					
+
           {
             (city || stateReduceMap.valueMap) &&
               <>
@@ -75,6 +83,10 @@ const CartYmap = () => {
                     </div>
                   </div>
                 </div>
+									{
+										zones &&
+										<button className="mapsPopup__btnzone btn" onClick={() => hendleZone(stateReduceMap.dispalyzone)} >{stateReduceMap.dispalyzone ? 'Скрыть зону доставки' : 'Показать зону доставки' }</button>
+									}
                   <button
                       disabled={stateReduceMap.cord && !stateReduceMap.cord.length && !stateReduceMap.disclaimer || stateReduceMap.disclaimer}
                       className="mapsPopup__button btn" onClick={hendleMapPopup}>

@@ -594,6 +594,23 @@
             }
         }
     }
+		&__btnzone{
+			position: absolute;
+			bottom: 148px;
+			text-align: center;
+			color: #8D191D;
+			border: none;
+			font-size: 14px;
+			font-weight: 600;
+			z-index: 99;
+			cursor: pointer;
+			padding: 10px 0;
+			width: 100%;
+			left: 16px;
+			border-radius: 25px;
+			background-color: #fdc935;
+			
+		}
     .noactive {
         background-color: #fdc935;
         opacity: 0.3;

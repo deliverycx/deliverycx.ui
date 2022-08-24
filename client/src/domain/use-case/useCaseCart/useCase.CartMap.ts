@@ -15,6 +15,7 @@ import { useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom";
 import { adapterSelector } from "servises/redux/selectors/selectors";
 import { setAdress } from "servises/redux/slice/cartSlice";
+import { useGetDeliveryZonesQuery } from "servises/repository/RTK/RTKCart";
 
 export function useCartMap() {
     const dispatch = useDispatch();
@@ -26,11 +27,15 @@ export function useCartMap() {
     const { address } = adapterSelector.useSelectors(
         (selector) => selector.cart
     );
-    const { city } = adapterSelector.useSelectors((selector) => selector.point);
+    const { city,guid } = adapterSelector.useSelectors((selector) => selector.point);
     const [stateReduceMap, dispatchMap] = useReducer(
         CartMapReducer,
         initialStateCartMap
     );
+
+		const {data:zones,isLoading:isLoadingZone } = useGetDeliveryZonesQuery(guid)
+
+		
 
     useEffect(() => getGeoLoc(), [pointCords]);
     useEffect(() => {
@@ -150,14 +155,32 @@ export function useCartMap() {
         }
     };
 
+		/**
+     * @description конпка "заказать доставку"
+     */
+		const hendleZone = (zone:boolean) => {
+			dispatchMap({
+				type: ReducerActionTypePoints.hendleZone,
+				payload: !zone 
+		})
+	};
+
+	
+
+
     this.data({
         stateReduceMap,
-        mapstate
+        mapstate,
+				zones
     });
     this.handlers({
         onMapTyping,
         getGeoLoc,
         onMapClick,
-        hendleMapPopup
+        hendleMapPopup,
+				hendleZone
     });
+		this.status({
+			isLoadingZone
+		})
 }
