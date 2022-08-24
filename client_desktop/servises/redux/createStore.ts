@@ -12,6 +12,7 @@ import ShopSlice from './slice/shopSlice';
 import { RTKShop, SHOP_API_REDUCER_KEY } from 'servises/repository/RTK/RTKShop';
 import cartSlice, { fetchAllCart } from './slice/cartSlice';
 import bankCardSlice from './slice/bankCardSlice';
+import { RTKCart } from 'servises/repository/RTK/RTKCart';
 
 
 
@@ -49,6 +50,7 @@ const createRootReducer = combineReducers({
   [RTKLocation.reducerPath]: RTKLocation.reducer,
   [RTKCategories.reducerPath]:RTKCategories.reducer,
   [RTKShop.reducerPath]: RTKShop.reducer,
+	[RTKCart.reducerPath]:RTKCart.reducer,
   [locationSlice.name]: locationSlice.reducer,
   [ShopSlice.name]: ShopSlice.reducer,
   [cartSlice.name]: cartSlice.reducer,

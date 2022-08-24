@@ -162,8 +162,8 @@ export function useCartMap() {
 			dispatchMap({
 				type: ReducerActionTypePoints.hendleZone,
 				payload: !zone 
-		})
-	};
+			})
+		};
 
 	
 

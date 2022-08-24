@@ -136,6 +136,18 @@
 		}
 	}
 }
+
+.mapsPopup__btnzone{
+	display: block;
+	margin-top: 10px;
+	margin-left: 15px;
+	color: #132A3E;
+	cursor: pointer;
+	text-decoration: underline;
+	&:hover{
+		text-decoration: none;
+	}
+}
 .you_city{
 	margin-top: 25px;
 	color: #333333;

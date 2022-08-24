@@ -7,7 +7,8 @@ export const initialStateCartMap = {
     valueMap: "",
     disclaimer: false,
     MapLoading: true,
-    inputMap:true
+    inputMap:true,
+		dispalyzone:false
 };
 type typeinitialState = typeof initialStateCartMap;
 
@@ -15,6 +16,7 @@ export enum ReducerActionTypePoints {
     onMapClick,
     getGeoLoc,
     hendleMapPopup,
+		hendleZone,
     setStateMap,
     setExactCord,
     setDisclaimer,
@@ -79,6 +81,13 @@ export function CartMapReducer(
               inputMap: action.payload,
               
           };
+				case ReducerActionTypePoints.hendleZone:
+					
+						return {
+								...state,
+								dispalyzone: action.payload,
+								
+						};		
         default:
             return state;
     }
