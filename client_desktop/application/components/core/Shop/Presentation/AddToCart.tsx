@@ -9,9 +9,9 @@ import { adapterComponentUseCase } from "adapters/adapterComponents";
 import { useCaseShopAddToCard } from "domain/use-case/useCaseShop";
 import { imgRout } from "application/helpers/imgInit";
 import { checkPoint } from "application/helpers/checkPoint";
-import { fetchAddToCart } from "servises/redux/slice/cartSlice";
+import { fetchAddToCart } from "servises/redux/actions/actionThunk/actionThunkCart";
 
-interface IProps { 
+interface IProps {
     id: string,
     _class:string,
     groupImage: string
@@ -22,8 +22,8 @@ const AddToCart: FC<IProps> = ({ id, _class, groupImage, children }) => {
   const useCaseProductCard = adapterComponentUseCase(useCaseShopAddToCard,id)
   const dispatch = useDispatch();
   const {  } = useCaseProductCard.handlers
-  
-  
+
+
   const springRef = useRef<any>();
   let queryCartRef = useRef<any>();
 
@@ -43,12 +43,12 @@ const AddToCart: FC<IProps> = ({ id, _class, groupImage, children }) => {
         (queryCartRef.current.offsetParent.offsetTop - root.scrollTop) < queryCartRef.current.offsetTop
           ? queryCartRef.current.offsetTop
           : queryCartRef.current.offsetParent.offsetTop - root.scrollTop + 25
-      
+
 
         if (springRef.current && queryCartRef.current && root) {
           const cardRef = springRef.current.closest('.product_card')
 
-          
+
             animate({
                 x: _class === 'product-card__add'
                     ? queryCartRef.current.offsetLeft - springRef.current.offsetLeft - cardRef.offsetLeft + 70
@@ -67,11 +67,11 @@ const AddToCart: FC<IProps> = ({ id, _class, groupImage, children }) => {
         }else{
             console.log('fail')
         }
-        
+
     }catch(e){
         console.log(e)
     }
-    
+
     checkPoint() && dispatch(fetchAddToCart(id))
   }
 
@@ -80,15 +80,15 @@ const AddToCart: FC<IProps> = ({ id, _class, groupImage, children }) => {
   useEffect(()=>{
     queryCartRef.current = document.querySelector('.categories__item__cart') as HTMLElement;
   }, [])
-  
-  
-    
+
+
+
     return (
         <>
-        <div className="hot_box" ref={springRef}  onClick={debouncedChangeHandler}>  
+        <div className="hot_box" ref={springRef}  onClick={debouncedChangeHandler}>
           <animated.div className="hot" style={{...style, backgroundImage: `url(${imgRout(groupImage)})`}} />
             <button className={_class}></button>
-        </div>    
+        </div>
         </>
     )
 }

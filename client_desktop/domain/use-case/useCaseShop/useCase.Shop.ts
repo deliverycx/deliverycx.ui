@@ -6,7 +6,7 @@ import { useEffect } from 'react';
 import debounce from 'lodash.debounce';
 import { useDispatch } from 'react-redux';
 import { setProductItem } from "servises/redux/slice/shopSlice";
-import { fetchAddToCart } from "servises/redux/slice/cartSlice";
+import { fetchAddToCart } from "servises/redux/actions/actionThunk/actionThunkCart";
 import { checkPoint } from "application/helpers/checkPoint";
 
 export function useCaseShop(this: any,category:string) {
@@ -15,9 +15,9 @@ export function useCaseShop(this: any,category:string) {
     skip:id,
     refetchOnMountOrArgChange:true,
   })
-  
+
   useEffect(() => {
-    category && setId(false)  
+    category && setId(false)
   }, [category])
 
 
@@ -28,7 +28,7 @@ export function useCaseShop(this: any,category:string) {
     products
   })
   this.handlers({
-    
+
   })
   this.status({
     isFetching
@@ -38,33 +38,33 @@ export function useCaseShop(this: any,category:string) {
 export function useCaseShopItem(this: any, id: string) {
   const dispatch = useDispatch()
   const stoplists = adapterSelector.useSelectors(selector => selector.stoplist)
-  
+
   const cardRef = useRef<HTMLDivElement>(null);
   const [disableItem, setDisableItem] = useState(false)
-  
+
   const clickItemHandler = (e: any, id: string) => {
     if (disableItem) return
-    
-    
+
+
     if ((e.target as HTMLButtonElement).type !== 'submit' && checkPoint()) {
-      
+
         dispatch(setProductItem(id))
     }
   }
 
-  
+
 
   useEffect(() => {
     if (stoplists) {
       stoplists.stopList.forEach((item: TStopListItems) => {
-        
+
         item.productId === id && setDisableItem(true)
       })
     }
-    
+
   },[stoplists])
 
-  
+
 
 
   this.data({
@@ -75,7 +75,7 @@ export function useCaseShopItem(this: any, id: string) {
     clickItemHandler
   })
   this.status({
-    
+
   })
 }
 
@@ -83,7 +83,7 @@ export function useCaseShopItem(this: any, id: string) {
 export function useCaseSearchShop(this: any) {
   const organization = adapterSelector.createSelectors<IPoint>(selector => selector.point, val => val.id)
   const [search, { data: products, isUninitialized, isSuccess }] = useSearchProductsMutation()
-  
+
   const searchHandler = debounce((e: ChangeEvent<HTMLInputElement>) => {
     const value = e.target.value
     value && search({
@@ -91,7 +91,7 @@ export function useCaseSearchShop(this: any) {
       organizationId:organization
     })
   },500)
-  
+
 
   this.data({
     organization,
@@ -110,14 +110,14 @@ export function useCaseSearchShop(this: any) {
 export function useCaseShopAddToCard(this: any,id:string) {
   const dispatch = useDispatch();
   const AnimateHandle = () => {
-    
+
     checkPoint() && dispatch(fetchAddToCart(id))
   }
   const debouncedChangeHandler = debounce(AnimateHandle, 400)
 
 
   this.data({
-    
+
   })
   this.handlers({
     debouncedChangeHandler

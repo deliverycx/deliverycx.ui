@@ -66,27 +66,7 @@ export const fetchRefreshCart = createAsyncThunk(
       }
   }
 );
-export const fetchAddToCart = createAsyncThunk(
-  "cart/add",
-  async (id: string, { dispatch, getState,rejectWithValue }) => {
-      try {
-          const state = getState() as RootState
-          const request = await RequestCart.addToCart({ productId: id,...helperOrderType(getState) });
-          if (request.status == 200 && request.data) {
-              dispatch(addCart(request.data.item));
-              dispatch(
-                  setTotalPrice({
-                      totalPrice: request.data.totalPrice,
-                      deltaPrice: request.data.deltaPrice,
-                      deliveryPrice: request.data.deliveryPrice
-                  })
-              );
-          }
-      } catch (error: any) {
-          return rejectWithValue(error.response.data);
-      }
-  }
-);
+
 
 export const fetchChangeAmount = createAsyncThunk(
   "cart/amount",
@@ -191,7 +171,7 @@ export const fetchDiscountCart = createAsyncThunk(
 								})
 							);
               return request.data
-							
+
           }
       } catch (error: any) {
 					return rejectWithValue(error.response.data);
