@@ -3,7 +3,7 @@ import { actionThunkBuilder, thunk } from "../actionThunkBuilder";
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import { RootState } from "../../createStore";
 import { RequestCart } from "../../../repository/Axios/Request";
-import { addAllCart, addCart, refreshCart, setTotalPrice } from "../../slice/cartSlice";
+import { addAllCart, addCart, changeCart, refreshCart, setTotalPrice } from "../../slice/cartSlice";
 
 const helperOrderType = (getState: any) : {orderType:string,organization:string} => {
   const state = getState() as RootState
@@ -76,6 +76,33 @@ export const fetchRefreshCart = createAsyncThunk(
 
             if (request.status == 200 && request.data) {
                 dispatch(refreshCart(request.data.cart));
+                dispatch(
+                    setTotalPrice({
+                        totalPrice: request.data.totalPrice,
+                        deltaPrice: request.data.deltaPrice,
+                        deliveryPrice: request.data.deliveryPrice
+                    })
+                );
+            }
+        } catch (error: any) {
+            return rejectWithValue(error.response.data);
+        }
+    }
+);
+
+export const fetchChangeAmount = createAsyncThunk(
+    "cart/amount",
+    async (change: any, { dispatch, getState,rejectWithValue }) => {
+        try {
+            const state = getState() as RootState
+            const request = await RequestCart.changeAmount({...change,...helperOrderType(getState)});
+            if (request.status == 200) {
+                dispatch(
+                    changeCart({
+                        id: change.cartId,
+                        changes: request.data.item
+                    })
+                );
                 dispatch(
                     setTotalPrice({
                         totalPrice: request.data.totalPrice,
