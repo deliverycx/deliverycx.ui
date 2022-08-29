@@ -21,27 +21,6 @@ const helperOrderType = (getState: any) : {orderType:string,organization:string}
   return {orderType:state.cart.orderType,organization:state.location.point.guid}
 }
 
-export const fetchRemoveCart = createAsyncThunk(
-  "cart/removeOne",
-  async (cartId: string, { dispatch,getState, rejectWithValue }) => {
-      try {
-          const request = await RequestCart.removeCart({ cartId,...helperOrderType(getState) });
-          if (request.status == 200 && cartId === request.data.deletedId) {
-              dispatch(removeCart(cartId));
-              dispatch(
-                  setTotalPrice({
-                      totalPrice: request.data.totalPrice,
-                      deltaPrice: request.data.deltaPrice,
-                      deliveryPrice: request.data.deliveryPrice
-                  })
-              );
-          }
-      } catch (error: any) {
-          return rejectWithValue(error.response.data);
-      }
-  }
-);
-
 export const fetchDeleteCart = createAsyncThunk(
   "cart/deleteAll",
   async (_, { dispatch, rejectWithValue }) => {
