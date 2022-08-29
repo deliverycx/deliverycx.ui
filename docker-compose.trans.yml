@@ -3,7 +3,7 @@ version: "3.9"
 services:
     proxy:
         image: docker/proxy
-        build: ./proxy/dev
+        build: ./proxy/trans
         container_name: proxy
         volumes:
             - ./proxy/nginx:/etc/nginx/conf.d
