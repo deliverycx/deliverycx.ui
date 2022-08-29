@@ -187,3 +187,25 @@ export const fetchOrderCart = createAsyncThunk(
         }
     }
 );
+
+export const fetchDiscountCart = createAsyncThunk(
+    "cart/getDiscount",
+    async (_, { dispatch,getState, rejectWithValue }) => {
+        try {
+            const request = await RequestCart.DzoneDicountCart(helperOrderType(getState));
+            if (request.data && request.status === 200) {
+                dispatch(
+                    setTotalPrice({
+                        totalPrice: request.data.totalPrice - request.data.discountDozen,
+                        deltaPrice: request.data.deltaPrice,
+                        deliveryPrice: request.data.deliveryPrice
+                    })
+                );
+                return request.data
+
+            }
+        } catch (error: any) {
+            return rejectWithValue(error.response.data);
+        }
+    }
+);

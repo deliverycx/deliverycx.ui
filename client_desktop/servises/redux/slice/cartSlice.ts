@@ -1,13 +1,11 @@
 import {
-  createAsyncThunk,
   createEntityAdapter,
   createSlice
 } from "@reduxjs/toolkit";
 import { IReqCart } from "@types";
 import CartEntities from "domain/entities/CartEntities/Cart.entities";
-import { RequestCart } from "servises/repository/Axios/Request";
 import { RootState } from "../createStore";
-import { fetchOrderCart } from "../actions/actionThunk/actionThunkCart";
+import { fetchOrderCart, fetchDiscountCart } from "../actions/actionThunk/actionThunkCart";
 
 const cartAdapter = createEntityAdapter<IReqCart>({
   selectId: (product) => product.id
@@ -16,34 +14,6 @@ const cartAdapter = createEntityAdapter<IReqCart>({
 export const cartSelector = cartAdapter.getSelectors(
   (state: RootState) => state.cart
 );
-
-const helperOrderType = (getState: any) : {orderType:string,organization:string} => {
-  const state = getState() as RootState
-  return {orderType:state.cart.orderType,organization:state.location.point.guid}
-}
-
-export const fetchDiscountCart = createAsyncThunk(
-  "cart/getDiscount",
-  async (_, { dispatch,getState, rejectWithValue }) => {
-      try {
-          const request = await RequestCart.DzoneDicountCart(helperOrderType(getState));
-          if (request.data && request.status === 200) {
-							dispatch(
-								setTotalPrice({
-										totalPrice: request.data.totalPrice - request.data.discountDozen,
-										deltaPrice: request.data.deltaPrice,
-										deliveryPrice: request.data.deliveryPrice
-								})
-							);
-              return request.data
-
-          }
-      } catch (error: any) {
-					return rejectWithValue(error.response.data);
-      }
-  }
-);
-
 
 const cartSlice = createSlice({
   name: "cart",
