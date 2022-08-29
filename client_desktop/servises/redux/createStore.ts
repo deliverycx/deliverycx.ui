@@ -10,7 +10,7 @@ import locationSlice from './slice/locationSlice';
 import { CATEGORIES_API_REDUCER_KEY, RTKCategories } from 'servises/repository/RTK/RTKCategories';
 import ShopSlice from './slice/shopSlice';
 import { RTKShop, SHOP_API_REDUCER_KEY } from 'servises/repository/RTK/RTKShop';
-import cartSlice, { fetchAllCart } from './slice/cartSlice';
+import cartSlice  from './slice/cartSlice';
 import bankCardSlice from './slice/bankCardSlice';
 
 
@@ -31,7 +31,7 @@ const persistConfig = {
       (inboundState, key) => {
         return inboundState;
       },
-      (outboundState, key) => { 
+      (outboundState, key) => {
         return outboundState
       },
       {
@@ -61,7 +61,7 @@ const customMiddleware: Middleware<Record<string, unknown>, RootState> = store =
   if (isRejectedWithValue(action)) {
     console.log(action);
   }
-  
+
   const res = next(action);
   return res;
 };
@@ -81,7 +81,7 @@ const store = configureStore({
 
 const persistor = persistStore(store, undefined, async () => {
   await store.dispatch(fetchUser() as any)
-  //await store.dispatch(fetchAllCart() as any) 
+  //await store.dispatch(fetchAllCart() as any)
 });
 
 export { store, persistor }

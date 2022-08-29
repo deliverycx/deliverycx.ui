@@ -22,27 +22,6 @@ const helperOrderType = (getState: any) : {orderType:string,organization:string}
   return {orderType:state.cart.orderType,organization:state.location.point.guid}
 }
 
-export const fetchAllCart = createAsyncThunk(
-  "cart/getAll",
-  async (_, { dispatch, getState,rejectWithValue }) => {
-      try {
-          const request = await RequestCart.allCart(helperOrderType(getState));
-
-          if (request.status == 200 && request.data) {
-              dispatch(addAllCart(request.data.cart));
-              dispatch(
-                  setTotalPrice({
-                      totalPrice: request.data.totalPrice,
-                      deltaPrice: request.data.deltaPrice,
-                      deliveryPrice: request.data.deliveryPrice
-                  })
-              );
-          }
-      } catch (error: any) {
-          return rejectWithValue(error.response.data);
-      }
-  }
-);
 export const fetchRefreshCart = createAsyncThunk(
   "cart/refresh",
   async (_, { dispatch, getState,rejectWithValue }) => {

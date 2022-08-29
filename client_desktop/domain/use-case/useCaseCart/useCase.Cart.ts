@@ -1,21 +1,16 @@
 import { useDispatch, useSelector } from "react-redux";
-import { useCallback, useEffect, useMemo, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import {
     cartSelector,
-    fetchAllCart,
     fetchDeleteCart,
-		fetchDiscountCart,
-		setTotalPrice
 } from "servises/redux/slice/cartSlice";
+import { fetchAllCart } from "servises/redux/actions/actionThunk/actionThunkCart";
 import cn from "classnames";
-import { useOutside } from "application/hooks/useOutside";
 import { useDeepCompareEffect } from "application/hooks/useDeepCompareEffect";
-import { ROUTE_APP } from "application/contstans/route.const";
 import { RootState } from "servises/redux/createStore";
 import debounce from "lodash.debounce";
 import { checkPoint } from "application/helpers/checkPoint";
 import { adapterSelector } from "servises/redux/selectors/selectors";
-import { IReqCart } from "@types";
 import { validationHIdiscount } from "application/helpers/validationHIdiscount";
 
 export function useCartSmall(this: any) {
@@ -120,8 +115,8 @@ export function useCartDiscountDzone(this: any) {
 	const {totalPrice,deltaPrice} = adapterSelector.useSelectors((selector) => selector.cart);
 	const [countDiscount,setCountDiscount] = useState(0)
 	const [freeHi,setFreeHi] = useState(0)
-	
-	const {count,free} = validationHIdiscount(cartList) 
+
+	const {count,free} = validationHIdiscount(cartList)
 
 
 	useEffect(()=>{
@@ -138,6 +133,6 @@ export function useCartDiscountDzone(this: any) {
 		freeHi
 	});
 	this.handlers({
-			
+
 	});
 }

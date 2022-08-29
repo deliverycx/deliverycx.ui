@@ -2,7 +2,7 @@
 
 import { FormikHelpers } from "formik";
 import { store } from "servises/redux/createStore";
-import { fetchAllCart, fetchOrderCart } from "servises/redux/slice/cartSlice";
+import { fetchOrderCart } from "servises/redux/slice/cartSlice";
 
 
 const submitHandler = async <T>(values: any, meta: FormikHelpers<any>) => {
@@ -35,8 +35,8 @@ const submitHandler = async <T>(values: any, meta: FormikHelpers<any>) => {
             paymentMethod: values.payment_method,
             ...values.paymentOrderCard
         };
-       
-      
+
+
       const url = await store.dispatch(fetchOrderCart(val) as any);
       //'errors' in url.payload !== true
       if (url.payload && url.payload.redirectUrl) {
@@ -44,7 +44,7 @@ const submitHandler = async <T>(values: any, meta: FormikHelpers<any>) => {
           resolve(true);
           window.location.href = url.payload.redirectUrl;
         }
-        
+
       }
        /**/
     }).then(() => {

@@ -1,14 +1,14 @@
 import cn from "classnames";
 import { FC, useCallback, useEffect } from "react";
 import { useDispatch } from 'react-redux';
-import { fetchAllCart, setOrderType } from "servises/redux/slice/cartSlice";
+import { setOrderType } from "servises/redux/slice/cartSlice";
+import { fetchAllCart } from "servises/redux/actions/actionThunk/actionThunkCart";
 import { useSelector } from 'react-redux';
 import { RootState } from 'servises/redux/createStore';
 import { CART_CHOICE } from "application/contstans/cart.const";
-import { ROUTE_APP } from "application/contstans/route.const";
 import { adapterSelector } from "servises/redux/selectors/selectors";
 
-const CartChoise: FC = () => { 
+const CartChoise: FC = () => {
     const dispatch = useDispatch()
     const activeChoice = useSelector((state: RootState) => state.cart.orderType)
     const { delivMetod } = adapterSelector.useSelectors(
@@ -24,12 +24,12 @@ const CartChoise: FC = () => {
           dispatch(setOrderType(delivMetod))
       }
   }, [activeChoice]);
-    
+
     const handlerChoice = useCallback((choise:string) => {
       if (delivMetod !== CART_CHOICE.PICKUP) {
         dispatch(setOrderType(choise))
         dispatch(fetchAllCart())
-      }  
+      }
     },[activeChoice])
 
     return (
@@ -40,7 +40,7 @@ const CartChoise: FC = () => {
         <div className={pickupCN} onClick={() => {
           handlerChoice(CART_CHOICE.PICKUP)
         }}>Самовывоз</div>
-            
+
         </div>
     )
 }
