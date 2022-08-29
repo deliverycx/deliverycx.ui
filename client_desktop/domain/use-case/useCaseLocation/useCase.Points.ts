@@ -9,12 +9,13 @@ import {
 } from "application/reducers/PointsReducer";
 import { getGeoLocation } from "application/helpers/yandexapi";
 import RequestProfile from "servises/repository/Axios/Request/Request.Profile";
-import { setModal, setPoint } from "servises/redux/slice/locationSlice";
+import { setModal } from "servises/redux/slice/locationSlice";
 import { setProfileAction } from "servises/redux/slice/profileSlice";
 import { ROUTE_APP } from "application/contstans/route.const";
 import { adapterSelector } from "servises/redux/selectors/selectors";
 import { RootState } from 'servises/redux/createStore';
-import { accessOrder, fetchDeleteCart, fetchRefreshCart, setOrderType } from "servises/redux/slice/cartSlice";
+import { accessOrder, fetchDeleteCart, setOrderType } from "servises/redux/slice/cartSlice";
+import { fetchRefreshCart } from "servises/redux/actions/actionThunk/actionThunkCart";
 import { useRouter } from 'next/router'
 
 export function usePoints(this: any,{selectCity,handleSelectOrganitztion}:any) {
@@ -34,7 +35,7 @@ export function usePoints(this: any,{selectCity,handleSelectOrganitztion}:any) {
       dispatch(fetchDeleteCart());
       dispatch(accessOrder());
     }
-    
+
     RequestProfile.update({ organizationId: address.id });
     router.push(ROUTE_APP.MENU)
   }
@@ -45,7 +46,7 @@ export function usePoints(this: any,{selectCity,handleSelectOrganitztion}:any) {
 		selectCity.id && setCityId(selectCity.id)
 	},[selectCity.id])
 
-  
+
 
   this.data({
     addresses,
@@ -80,11 +81,11 @@ export function usePointsMaps(this: any,{selectCity,handlerGoToCity,handlerClose
 
   const addresses =  org && org.filter((val:IPoint,index:number) => val.isHidden !== true)
 
-     
+
   useEffect(() => {
-    (addresses && !isFetching) && getRecvisites(addresses[statePoint.slideIndex].id) 
-  }, [statePoint.slideIndex]) 
-  
+    (addresses && !isFetching) && getRecvisites(addresses[statePoint.slideIndex].id)
+  }, [statePoint.slideIndex])
+
     useEffect(() => {
         if (Object.keys(selectCity).length) {
           (addresses && !isFetching) && nearPoint(addresses);
@@ -151,7 +152,7 @@ export function usePointsMaps(this: any,{selectCity,handlerGoToCity,handlerClose
       } catch (error) {
         console.log(error)
       }
-        
+
     };
 
     const selectPointHandler = async (address: IPoint) => {
@@ -167,13 +168,13 @@ export function usePointsMaps(this: any,{selectCity,handlerGoToCity,handlerClose
             if(address.delivMetod){
 							dispatch(setOrderType(address.delivMetod))
 							dispatch(fetchRefreshCart())
-						} 
-            
+						}
+
             RequestProfile.update({ organizationId: address.id });
             handlerCloseMapModal()
 						router.push(ROUTE_APP.MENU)
         } catch (error) {
-            
+
         }
     };
 

@@ -4,10 +4,9 @@ import {
   createSlice
 } from "@reduxjs/toolkit";
 import { IReqCart } from "@types";
-import { AxiosError } from "axios";
 import CartEntities from "domain/entities/CartEntities/Cart.entities";
 import { RequestCart } from "servises/repository/Axios/Request";
-import { AppDispatch, RootState } from "../createStore";
+import { RootState } from "../createStore";
 
 const cartAdapter = createEntityAdapter<IReqCart>({
   selectId: (product) => product.id
@@ -21,31 +20,6 @@ const helperOrderType = (getState: any) : {orderType:string,organization:string}
   const state = getState() as RootState
   return {orderType:state.cart.orderType,organization:state.location.point.guid}
 }
-
-export const fetchRefreshCart = createAsyncThunk(
-  "cart/refresh",
-  async (_, { dispatch, getState,rejectWithValue }) => {
-      try {
-
-          const request = await RequestCart.allCart(helperOrderType(getState));
-
-
-          if (request.status == 200 && request.data) {
-              dispatch(refreshCart(request.data.cart));
-              dispatch(
-                  setTotalPrice({
-                      totalPrice: request.data.totalPrice,
-                      deltaPrice: request.data.deltaPrice,
-                      deliveryPrice: request.data.deliveryPrice
-                  })
-              );
-          }
-      } catch (error: any) {
-          return rejectWithValue(error.response.data);
-      }
-  }
-);
-
 
 export const fetchChangeAmount = createAsyncThunk(
   "cart/amount",
