@@ -1,9 +1,9 @@
 /* eslint-disable prefer-const */
-import { ROUTE_APP } from "application/contstans/route.const";
 import { useEffect, useRef, useState } from "react";
 import { useDispatch } from "react-redux";
 import { useRouter } from 'next/router'
-import { accessOrder, fetchDeleteCart } from "servises/redux/slice/cartSlice";
+import { accessOrder } from "servises/redux/slice/cartSlice";
+import { fetchDeleteCart } from "servises/redux/actions/actionThunk/actionThunkCart";
 import RequestOrder from "servises/repository/Axios/Request/Request.Order";
 
 export function useOrder(this: any) {
@@ -61,7 +61,7 @@ export function useOrder(this: any) {
     const handleBacktoShop = () => {
         dispatch(fetchDeleteCart());
         dispatch(accessOrder());
-       
+
     };
 
     this.data({

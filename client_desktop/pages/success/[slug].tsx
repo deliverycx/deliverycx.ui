@@ -2,7 +2,8 @@ import Ordering from "application/components/core/Order/Ordering";
 import { NextPage } from "next";
 import { useRouter } from 'next/router'
 import { useDispatch } from "react-redux";
-import { accessOrder, fetchDeleteCart } from "servises/redux/slice/cartSlice";
+import { accessOrder } from "servises/redux/slice/cartSlice";
+import { fetchDeleteCart } from "servises/redux/actions/actionThunk/actionThunkCart";
 
 const Success: NextPage = () => {
   const dispatch = useDispatch();
@@ -20,14 +21,14 @@ const Success: NextPage = () => {
   				<img className="header_logo" src="../images/logo-top.svg" alt="" />
   			</div>
   			<div className="header__center">
-          
+
   			</div>
   			<a onClick={handleBacktoShop} className="back_shop">
           Вернуться в меню
           </a>
       </div>
       <div className="cart_page-container cart_page-container--center">
-        
+
         <div className="cart_page__basked">
           <Ordering />
         </div>

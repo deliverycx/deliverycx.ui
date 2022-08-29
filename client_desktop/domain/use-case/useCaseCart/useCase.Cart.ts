@@ -1,10 +1,7 @@
 import { useDispatch, useSelector } from "react-redux";
 import { useCallback, useEffect, useState } from "react";
-import {
-    cartSelector,
-    fetchDeleteCart,
-} from "servises/redux/slice/cartSlice";
-import { fetchAllCart } from "servises/redux/actions/actionThunk/actionThunkCart";
+import { cartSelector } from "servises/redux/slice/cartSlice";
+import { fetchAllCart, fetchDeleteCart } from "servises/redux/actions/actionThunk/actionThunkCart";
 import cn from "classnames";
 import { useDeepCompareEffect } from "application/hooks/useDeepCompareEffect";
 import { RootState } from "servises/redux/createStore";

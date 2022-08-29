@@ -14,8 +14,8 @@ import { setProfileAction } from "servises/redux/slice/profileSlice";
 import { ROUTE_APP } from "application/contstans/route.const";
 import { adapterSelector } from "servises/redux/selectors/selectors";
 import { RootState } from 'servises/redux/createStore';
-import { accessOrder, fetchDeleteCart, setOrderType } from "servises/redux/slice/cartSlice";
-import { fetchRefreshCart } from "servises/redux/actions/actionThunk/actionThunkCart";
+import { accessOrder, setOrderType } from "servises/redux/slice/cartSlice";
+import { fetchRefreshCart, fetchDeleteCart } from "servises/redux/actions/actionThunk/actionThunkCart";
 import { useRouter } from 'next/router'
 
 export function usePoints(this: any,{selectCity,handleSelectOrganitztion}:any) {
