@@ -2,7 +2,7 @@
 
 import { FormikHelpers } from "formik";
 import { store } from "servises/redux/createStore";
-import { fetchOrderCart } from "servises/redux/slice/cartSlice";
+import { fetchOrderCart } from "servises/redux/actions/actionThunk/actionThunkCart";
 
 
 const submitHandler = async <T>(values: any, meta: FormikHelpers<any>) => {

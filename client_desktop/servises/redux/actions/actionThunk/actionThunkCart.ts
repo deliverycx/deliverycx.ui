@@ -9,7 +9,7 @@ import {
     changeCart,
     deleteCart,
     refreshCart,
-    removeCart,
+    removeCart, setErrors,
     setTotalPrice
 } from "../../slice/cartSlice";
 
@@ -162,6 +162,28 @@ export const fetchDeleteCart = createAsyncThunk(
             }
         } catch (error: any) {
             return rejectWithValue(error.response.data);
+        }
+    }
+);
+
+export const fetchOrderCart = createAsyncThunk(
+    "cart/order",
+    async (value: any, { dispatch, rejectWithValue }) => {
+        try {
+            const request = await RequestCart.OrderCheckCart(value);
+            if (request.data && request.status === 200) {
+                const order = await RequestCart.OrderCart(value);
+                return order.data
+            }
+        } catch (error: any) {
+            // Ошибка валидации по количеству
+            if (error.response.status === 422) {
+                let objToStr = JSON.stringify(error.response);
+                if (objToStr.includes('RabbitMq')) dispatch(setErrors('Что-то пошло не так...'))
+                else dispatch(setErrors(error.response.data));
+            } else {
+                return rejectWithValue(error.response.data);
+            }
         }
     }
 );

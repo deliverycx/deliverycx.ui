@@ -7,6 +7,7 @@ import { IReqCart } from "@types";
 import CartEntities from "domain/entities/CartEntities/Cart.entities";
 import { RequestCart } from "servises/repository/Axios/Request";
 import { RootState } from "../createStore";
+import { fetchOrderCart } from "../actions/actionThunk/actionThunkCart";
 
 const cartAdapter = createEntityAdapter<IReqCart>({
   selectId: (product) => product.id
@@ -20,28 +21,6 @@ const helperOrderType = (getState: any) : {orderType:string,organization:string}
   const state = getState() as RootState
   return {orderType:state.cart.orderType,organization:state.location.point.guid}
 }
-
-export const fetchOrderCart = createAsyncThunk(
-  "cart/order",
-  async (value: any, { dispatch, rejectWithValue }) => {
-      try {
-          const request = await RequestCart.OrderCheckCart(value);
-          if (request.data && request.status === 200) {
-              const order = await RequestCart.OrderCart(value);
-              return order.data
-          }
-      } catch (error: any) {
-          // Ошибка валидации по количеству
-          if (error.response.status === 422) {
-              let objToStr = JSON.stringify(error.response);
-              if (objToStr.includes('RabbitMq')) dispatch(setErrors('Что-то пошло не так...'))
-              else dispatch(setErrors(error.response.data));
-          } else {
-              return rejectWithValue(error.response.data);
-          }
-      }
-  }
-);
 
 export const fetchDiscountCart = createAsyncThunk(
   "cart/getDiscount",
