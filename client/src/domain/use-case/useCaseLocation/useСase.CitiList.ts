@@ -1,6 +1,6 @@
 import { ICity } from "@types";
 import { ROUTE_APP } from "application/contstans/route.const";
-import { useState } from "react";
+import { useCallback, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
 import { RootState } from "servises/redux/createStore";
@@ -20,18 +20,18 @@ export function useCitiList(){
     history.push(ROUTE_APP.POINT);
   }
     
-  return {
-    data: {
-      serchCiti,
-      cities,
-      selectedCity,
-    },
-    handlers: {
-      selectCiti,
-      setSerchCiti
-    },
-    status: {
-      isLoading
-    }
-  }
+
+
+	this.data({
+		serchCiti,
+		cities,
+    selectedCity
+	});
+	this.handlers({
+		selectCiti,
+		setSerchCiti,
+	});
+	this.status({
+		
+	});
 }

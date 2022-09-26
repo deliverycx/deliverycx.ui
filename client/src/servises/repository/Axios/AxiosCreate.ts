@@ -13,7 +13,11 @@ class AxiosCreate {
 
     private constructor(URL:string) {
         this.api = axios.create({
-            withCredentials: true,
+					withCredentials: true,
+					headers: {
+						'Access-Control-Allow-Origin' : '*',
+						'Access-Control-Allow-Methods':'GET,PUT,POST,DELETE,PATCH,OPTIONS',
+						},
             baseURL: URL
         });
 

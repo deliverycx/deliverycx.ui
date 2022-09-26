@@ -75,7 +75,7 @@ const customMiddleware: Middleware<Record<string, unknown>, RootState> = store =
 
 const middlewares = [routerMiddleware(history), customMiddleware];
 if (process.env.NODE_ENV !== 'production') {
-  middlewares.push(logger)
+  //middlewares.push(logger)
 }
 
 const store = configureStore({

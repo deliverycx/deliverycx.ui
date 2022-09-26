@@ -1,15 +1,17 @@
 /* eslint-disable @typescript-eslint/no-var-requires */
 import { ICity } from "@types";
+import { adapterComponentUseCase } from "adapters/adapterComponents";
+import axios from "axios";
 import cn from "classnames";
 import { useCitiList } from "domain/use-case/useCaseLocation";
 
 
 const CityList = () => {
-    const useCaseCitiList = useCitiList()
+    const useCaseCitiList = adapterComponentUseCase(useCitiList)
     const { cities,selectedCity } = useCaseCitiList.data
     const { selectCiti, setSerchCiti } = useCaseCitiList.handlers
     const { isLoading } = useCaseCitiList.status
-
+		
     return (
         <div className="container welcome__city-list">
             <div className="welcome__search">

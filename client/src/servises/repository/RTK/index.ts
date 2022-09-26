@@ -4,7 +4,8 @@ import { AuthFailAction } from 'servises/redux/slice/profileSlice';
 
 
 export const defFetchBaseQuery = fetchBaseQuery({
-  baseUrl: process.env.REACT_APP_API_URL, credentials: "include"
+  baseUrl: process.env.REACT_APP_API_URL as string, credentials: "include"
+	//baseUrl: process.env.REACT_APP_API_URL
 })
 
 export const baseQuery = fetchBaseQuery({
@@ -14,6 +15,7 @@ export const baseQuery = fetchBaseQuery({
       if (token) {
         headers.set('authorization', `Bearer ${token}`);
       }
+			headers.set('Content-Type', 'application/x-www-form-urlencoded');
       return headers;
   },
 });
