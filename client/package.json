@@ -62,11 +62,10 @@
     "start": "cross-env NODE_ENV=dev react-scripts start",
     "build": "cross-env NODE_ENV=prod react-scripts build",
     "test": "cross-env NODE_ENV=test react-scripts test",
-		"test1": "jest",
+    "test1": "jest",
     "eject": "react-scripts eject",
     "docs": "jsdoc -c jsdoc.conf.json"
   },
-	
   "eslintConfig": {
     "extends": [
       "react-app",
@@ -96,6 +95,7 @@
     "@types/react-slick": "^0.23.5",
     "@types/redux-logger": "^3.0.9",
     "@types/redux-thunk": "^2.1.0",
+    "cypress": "^10.8.0",
     "eslint": "^7.32.0",
     "eslint-plugin-react": "^7.27.0",
     "prettier": "2.4.1",

@@ -13,7 +13,7 @@ const CityList = () => {
     const { isLoading } = useCaseCitiList.status
 		
     return (
-        <div className="container welcome__city-list">
+        <div data-testid="list" className="container welcome__city-list">
             <div className="welcome__search">
                 <img src={require("assets/i/search-sm.svg").default} alt="Поиск города" />
                 <input type="text" className="welcome__search__input" placeholder="Поиск" onChange={(e) => setSerchCiti(e.target.value)} />
@@ -22,7 +22,7 @@ const CityList = () => {
                 !isLoading && cities && cities.map((city:ICity) => {
                     const CN = cn("welcome__city", { selected: city.name === selectedCity.name}) //city.name === selectedCity?.name
 										if(!city.isHidden){
-											return <div key={city.id} onClick={() => selectCiti(city)} className={CN}>
+											return <div key={city.id} data-testid="item" onClick={() => selectCiti(city)} className={CN}>
                         {city.name}
                     </div>
 										}

@@ -3,8 +3,9 @@ import { useEffect } from 'react';
 import SocketSingle from "servises/Socket/SocketClient";
 import { useDispatch } from 'react-redux';
 import { setStopList } from "servises/redux/slice/shopSlice";
-import { IStopList } from "@types";
+import { IStopList, thisWindow } from "@types";
 import { fetchRefreshCart } from "servises/redux/slice/cartSlice";
+import { store } from "servises/redux/createStore";
 
 
 
@@ -27,6 +28,13 @@ const App = (): JSX.Element => {
       <NestedRoute />
     </>
 	)
+}
+
+
+if (thisWindow.Cypress) {
+  console.log('CYPRESS WINDOW');
+
+  thisWindow.store = store;
 }
 
 export default App;

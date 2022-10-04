@@ -13,6 +13,7 @@ import { format } from 'date-fns'
 const history = createBrowserHistory()
 
 
+
 ReactDOM.render(
   <Provider store={store}>
     <PersistGate loading={null} persistor={persistor}>
@@ -23,4 +24,3 @@ ReactDOM.render(
   </Provider>,
 	document.getElementById('root')
 );
-

@@ -16,7 +16,7 @@ const HeadMap = ({ welcomeHeader }: Iprops) => {
   return (
     <div className={welcomeHeader}>
                 <div className="container row justify-between align-center">
-                    <div className="welcome__header__ico-wrapper" onClick={()=> history.goBack()}>
+                    <div data-cy="back" className="welcome__header__ico-wrapper" onClick={()=> history.goBack()}>
                         <img src={require("assets/i/back.svg").default} alt="Вернуться назад" />
                     </div>
 
