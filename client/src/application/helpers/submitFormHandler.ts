@@ -1,4 +1,3 @@
-/* eslint-disable no-mixed-spaces-and-tabs */
 /* eslint-disable no-async-promise-executor */
 
 import { FormikHelpers } from "formik";
@@ -38,7 +37,6 @@ const submitHandler = async <T>(values: any, meta: FormikHelpers<any>) => {
             paymentMethod: values.payment_method,
 						localhost:`${document.location.protocol}//${document.location.host}`,
             ...values.paymentOrderCard,
-						 
         };
 
       const url = await store.dispatch(fetchOrderCart(val) as any);
