@@ -13,5 +13,9 @@ export const CartFormMetods = {
       id: "CARD",
       value: "Картой в приложении"
     },
+		{
+      id: "BYCARD",
+      value: "Картой курьеру"
+    }
   ]
 }
