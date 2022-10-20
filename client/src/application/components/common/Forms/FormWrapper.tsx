@@ -7,6 +7,7 @@ import { ROUTE_APP } from 'application/contstans/route.const';
 import { ReactNode } from 'react';
 import FormSelect from "./FormSelect";
 import { IPayment } from "@types";
+import { CartFormMetods } from "application/components/core/Cart/CartForm/CartMetods";
 
 export interface IWrapper {
   paymentPopup(): ReactNode
@@ -22,10 +23,15 @@ export const FormWrapper = (formik: any,usecase:any): IWrapper => {
   const { selectPayment, choicePayment } = usecase.handlers
   return {
     paymentPopup() {
-
+			
+			const img = 
+				CartFormMetods.paymentsMetod[0].id === paymentMetod.id ? "cash.png" :
+				CartFormMetods.paymentsMetod[1].id === paymentMetod.id ? "card-red.svg" :
+				CartFormMetods.paymentsMetod[2].id === paymentMetod.id ? "paymaster.png" : "card-red.svg"
+			console.log(img);
       return (
         <FormFieldWrapper
-          placeholderIco={require("assets/i/card-red.svg").default}
+          placeholderIco={require(`assets/i/${img}`).default}
           placeholderValue="Оплата"
           addfild="addfild"
         >
@@ -43,6 +49,9 @@ export const FormWrapper = (formik: any,usecase:any): IWrapper => {
       )
     },
     payment(paymentsMetod) {
+			
+			
+
       return (
           <FormFieldWrapper
               placeholderIco={require("assets/i/card-red.svg").default}
