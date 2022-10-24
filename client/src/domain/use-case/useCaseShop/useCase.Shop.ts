@@ -5,10 +5,14 @@ import { ChangeEvent, useRef, useState } from 'react';
 import { useEffect } from 'react';
 import debounce from 'lodash.debounce';
 import { useHistory } from "react-router-dom";
+import { useDispatch } from 'react-redux';
+import { fetStopList } from "servises/redux/slice/shopSlice";
 
 export function useCaseShop() {
   const [id,setId] = useState(true)
+	const dispatch = useDispatch()
   const { id: category } = adapterSelector.useSelectors(selector => selector.category)
+	const {guid} = adapterSelector.useSelectors(selector => selector.point)
   const { data: products, isFetching } = useGetProductsQuery(category, {
     skip:id,
     refetchOnMountOrArgChange:true,
@@ -19,6 +23,10 @@ export function useCaseShop() {
   }, [category])
 
   
+	useEffect(() => {
+    !id && dispatch(fetStopList(guid))  
+  }, [id])
+
 
 
   this.data({
@@ -63,9 +71,8 @@ export function useCaseShopItem(id:string) {
 
   useEffect(() => {
     if (stoplists) {
-      stoplists.stopList.forEach((item: TStopListItems) => {
-        
-        item.productId === id && setDisableItem(true)
+      stoplists.forEach((item: TStopListItems) => {
+        item.product === id && setDisableItem(true)
       })
     }
     

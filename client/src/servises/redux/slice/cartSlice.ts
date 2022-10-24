@@ -172,6 +172,7 @@ export const fetchOrderCart = createAsyncThunk(
                 
                 dispatch(actionPaymentAccsess());
                 return order.data 
+								
             }
         } catch (error: any) {
             // Ошибка валидации по количеству

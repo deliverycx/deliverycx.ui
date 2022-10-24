@@ -17,6 +17,7 @@ import { ROUTE_APP } from "application/contstans/route.const";
 import { adapterSelector } from "servises/redux/selectors/selectors";
 import { fetchDeleteCart, fetchRefreshCart, setOrderType } from "servises/redux/slice/cartSlice";
 import _ from "lodash";
+import { fetStopList } from "servises/redux/slice/shopSlice";
 
 export function usePoints() {
   const history = useHistory();

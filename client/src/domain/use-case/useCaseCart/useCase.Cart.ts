@@ -1,7 +1,7 @@
 import { useHistory } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect, useState } from "react";
-import { cartSelector } from "servises/redux/slice/cartSlice";
+import { cartSelector, fetchRefreshCart } from "servises/redux/slice/cartSlice";
 import cn from "classnames";
 import { useOutside } from "application/hooks/useOutside";
 import { useDeepCompareEffect } from "application/hooks/useDeepCompareEffect";
@@ -9,6 +9,7 @@ import { ROUTE_APP } from "application/contstans/route.const";
 import { RootState } from "servises/redux/createStore";
 import { adapterSelector } from "servises/redux/selectors/selectors";
 import { validationHIdiscount } from "application/helpers/validationHIdiscount";
+import { fetStopList } from "servises/redux/slice/shopSlice";
 
 export function useAddCart(ref?: any) {
     const history = useHistory();
@@ -44,12 +45,19 @@ export function useAddCart(ref?: any) {
 export function useCartItems() {
     const history = useHistory();
     const cartList = useSelector(cartSelector.selectAll);
+		const dispatch = useDispatch()
     const orderError = useSelector((state: RootState) => state.cart.orderError);
+		const {guid} = adapterSelector.useSelectors(selector => selector.point)
+
     useEffect(() => {
         if (cartList.length === 0) {
             history.push(ROUTE_APP.SHOP.SHOP_MAIN);
-        }
-    }, [cartList]);
+        }else{
+					dispatch(fetStopList(guid))
+				}
+				
+    }, [cartList.length]);
+
 
     this.data({
         cartList,

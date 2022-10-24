@@ -11,9 +11,11 @@ import { fetchRefreshCart } from "servises/redux/slice/cartSlice";
 
 const App = (): JSX.Element => {
   const dispatch = useDispatch()
+	/*
   useEffect(() => {
-    SocketSingle.newsocket(process.env.REACT_APP_STOPLIST as string)
+    SocketSingle.newsocket('http://localhost:5000/iiko') //process.env.REACT_APP_STOPLIST as string
       .subscribers<IStopList>('stoplist_event', (data: IStopList | null, error: boolean) => {
+				console.log('solettt',data,error);
         if (!error) {
           dispatch(setStopList(data))
           dispatch(fetchRefreshCart())
@@ -21,6 +23,7 @@ const App = (): JSX.Element => {
       })
       
   },[])
+	*/
 
 	return (
     <>
