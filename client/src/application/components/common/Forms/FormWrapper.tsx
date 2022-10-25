@@ -28,7 +28,7 @@ export const FormWrapper = (formik: any,usecase:any): IWrapper => {
 				CartFormMetods.paymentsMetod[0].id === paymentMetod.id ? "cash.png" :
 				CartFormMetods.paymentsMetod[1].id === paymentMetod.id ? "card-red.svg" :
 				CartFormMetods.paymentsMetod[2].id === paymentMetod.id ? "paymaster.png" : "card-red.svg"
-			console.log(img);
+
       return (
         <FormFieldWrapper
           placeholderIco={require(`assets/i/${img}`).default}

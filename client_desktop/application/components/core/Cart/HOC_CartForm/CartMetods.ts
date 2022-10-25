@@ -10,6 +10,11 @@ export const CartFormMetods = {
       value: "Наличными курьеру",
       icon:"/images/icon/bank/nal.svg"
     },
+		{
+      id: "BYCARD",
+      value: "Картой курьеру",
+			icon:"/images/icon/bank/card.svg"
+    },
     {
       id: "CARD",
       value: "Картой в приложении",

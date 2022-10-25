@@ -21,6 +21,7 @@ export interface IWrapper {
 export const FormWrapper = (formik: any,usecase?:any): IWrapper => {
   const { stateForm,paths,paymentMetod } = usecase.data
   const { selectPayment, choicePayment,setShowMap } = usecase.handlers
+
   return {
     paymentPopup() {
 
@@ -70,15 +71,15 @@ export const FormWrapper = (formik: any,usecase?:any): IWrapper => {
 				</div>
       )
     },
-    payment(paymentsMetod) {
+    payment(paymentsMetods) {
       return (
           <FormFieldWrapper
               placeholderIco="images/i/card-red.svg"
               placeholderValue="Оплата"
           >
               <FormSelect
-                  options={paymentMetod}
-                  selected={stateForm.payment}
+                  options={paymentsMetods}
+                  selected={paymentMetod}
                   setter={(payment: IPayment) => selectPayment(payment)}
               />
           </FormFieldWrapper>

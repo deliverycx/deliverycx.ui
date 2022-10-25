@@ -47,6 +47,7 @@ export function useCartForm(this: any, paths:string) {
   
 
   this.data({
+		stateForm,
     city,
 		workTime,
 		delivMetod,

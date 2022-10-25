@@ -93,32 +93,74 @@
 	}
 }
 
+.payment_section{
+	position: relative;
+}
 .payment_list{
+	display: none;
+	position: absolute;
+	background: #FFFFFF;
+	border-radius: 15px;
+	top: 85px;
+	left: 0;
+	width: 97%;
+	padding: 5px 15px;
+	margin: 0 10px;
+	box-shadow: 0px 0px 31px rgba(0, 0, 0, 0.05), 0px 0px 18.1551px rgba(0, 0, 0, 0.037963), 0px 0px 9.87407px rgba(0, 0, 0, 0.0303704), 0px 0px 5.0375px rgba(0, 0, 0, 0.025), 0px 0px 2.52593px rgba(0, 0, 0, 0.0196296), 0px 0px 1.21991px rgba(0, 0, 0, 0.012037);
+	z-index: 3;
 	.payment_list-item{
 		height: 50px;
 		line-height: 50px;
-		padding-left: 15px;
+		cursor: pointer;
+		border-bottom: 1px solid #CCCCCC;
+		&:last-child{
+			border: none;
+		}
 	}
-	.payment_list-item--name{
-		display: flex;
-		img{
-			margin-right: 15px;
-			margin-left: 15px;
-		}
-		span{
-			font-size: 13px;
-			color: #333333;
-		}
+	.payment-item_box--name{
+		font-size: 15px;
+		color: #ABABAB;
+	}
+	.payment_ok{
+		display: none;
 	}
 	.payment_list-item.active{
-		background: #EFEFEF;
-		border-radius: 100px;
-		.payment_list-item--name span{
-			font-weight: 600;
+		.payment-item_box--name{
+			color: #333333;
+		}
+		.payment_ok{
+			display: block;
+		}
+		svg{
+			fill: #8D191D;
 		}
 	}
 
 }
+.payment_list.open{
+	display: block;
+}
+
+.payactive{
+	svg{
+		fill: #8D191D;
+	}
+}
+
+
+.payment-item_box{
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+.payment-item_box--name{
+	display: flex;
+	.form__field-wrapper__placeholder__ico{
+		margin-right: 15px;
+		margin-top: 3px;
+	}
+}
+
 .card_subscrub{
 	.custom-checkbox+label::before{
 		border: 1px solid #CCCCCC;
