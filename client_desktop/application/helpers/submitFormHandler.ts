@@ -33,6 +33,7 @@ const submitHandler = async <T>(values: any, meta: FormikHelpers<any>) => {
             phone: values.phone,
             comment: values.comment,
             paymentMethod: values.payment_method,
+						localhost:`${document.location.protocol}//${document.location.host}`,
             ...values.paymentOrderCard
         };
        
