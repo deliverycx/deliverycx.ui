@@ -1,4 +1,4 @@
-import { IBankCard, ICart, ICategory, ICity, IPoint, IProfile, IStopList } from "@types";
+import { IBankCard, ICart, ICategory, ICity, IPoint, IProfile, IStopList, TStopListItems } from "@types";
 import { AdapterSelector } from "adapters/adapterStore";
 import { IShopEntities } from "domain/entities/ShopEntities/Shop.entities";
 import { RootState } from "../createStore";
@@ -10,7 +10,7 @@ interface Iselectors {
   point: (state: RootState) => IPoint,
   city: (state: RootState) => ICity,
   shop: (state: RootState) => IShopEntities,
-  stoplist: (state: RootState) => IStopList,
+  stoplist: (state: RootState) => TStopListItems[],
   cart: (state: RootState) => ICart,
   bankcard:(state: RootState) => IBankCard
 }

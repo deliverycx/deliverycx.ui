@@ -8,6 +8,7 @@ import { AxiosError } from "axios";
 import CartEntities from "domain/entities/CartEntities/Cart.entities";
 import { RequestCart } from "servises/repository/Axios/Request";
 import { AppDispatch, RootState } from "../createStore";
+import { actionPaymentReady } from "./bankCardSlice";
 
 const cartAdapter = createEntityAdapter<IReqCart>({
   selectId: (product) => product.id
@@ -166,6 +167,7 @@ export const fetchOrderCart = createAsyncThunk(
           }
       } catch (error: any) {
           // Ошибка валидации по количеству
+					/*
           if (error.response.status === 422) {
               let objToStr = JSON.stringify(error.response);
               if (objToStr.includes('RabbitMq')) dispatch(setErrors('Что-то пошло не так...'))
@@ -173,6 +175,13 @@ export const fetchOrderCart = createAsyncThunk(
           } else {
               return rejectWithValue(error.response.data);
           }
+					*/
+					dispatch(actionPaymentReady(false));
+            if (error.response.status === 422) {
+                dispatch(setErrors(error.response.data));
+            } else {
+                return rejectWithValue(error.response.data);
+            }
       }
   }
 );

@@ -17,6 +17,7 @@ import { checkPoint } from "application/helpers/checkPoint";
 import { adapterSelector } from "servises/redux/selectors/selectors";
 import { IReqCart } from "@types";
 import { validationHIdiscount } from "application/helpers/validationHIdiscount";
+import { fetStopList } from "servises/redux/slice/shopSlice";
 
 export function useCartSmall(this: any) {
     const [showSmallCart, setShowSmallCart] = useState(false);
@@ -84,6 +85,7 @@ export function useCartItems(this: any, empty: any) {
     const dispatch = useDispatch();
     const cartList = useSelector(cartSelector.selectAll);
     const orderError = useSelector((state: RootState) => state.cart.orderError);
+		const {guid} = adapterSelector.useSelectors(selector => selector.point)
 
   useEffect(() => {
 
@@ -97,8 +99,10 @@ export function useCartItems(this: any, empty: any) {
     useEffect(() => {
       if (cartList.length === 0) {
           empty();
-      }
-    }, [cartList]);
+      }else{
+				dispatch(fetStopList(guid))
+			}
+    }, [cartList.length]);
 
     const debounceClearHandler = debounce(() => {
         dispatch(fetchDeleteCart());

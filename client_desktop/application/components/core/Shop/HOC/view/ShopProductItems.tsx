@@ -19,6 +19,7 @@ const ShopProductItem: FC<IProps> = ({ products }) => {
     const { cardRef,disableItem } = useCasePoints.data;
     const { clickItemHandler } = useCasePoints.handlers;
 
+		
     const CN = cn("shop_grid__item", { product__stoplist: disableItem})
 
     return (

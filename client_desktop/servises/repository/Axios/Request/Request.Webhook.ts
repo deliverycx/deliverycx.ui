@@ -9,5 +9,10 @@ class RequestWebhook extends ApiSuper {
   reverveTable(reservebody:IReverveTable) {
     return this.request(`/webhook/revervetable`)
   }
+
+	@methods('get')
+  stoplist(org:string) {
+    return this.request(`/stoplist/getStopList/?organizationId=${org}`)
+  }
 }
 export default new RequestWebhook()

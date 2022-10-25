@@ -28,9 +28,7 @@ const Success: NextPage = () => {
       </div>
       <div className="cart_page-container cart_page-container--center">
         
-        <div className="cart_page__basked">
-          <Ordering />
-        </div>
+			<Ordering />
       </div>
     </div>
   );

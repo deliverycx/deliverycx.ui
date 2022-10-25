@@ -17,7 +17,7 @@
 	border: 2px solid #ABABAB;
 	border-radius: 200px;
 	font-size: 13px;
-	width: 175px;
+	width: 180px;
 	height: 36px;
 	padding: 9px 31.5px;
 	color: #ABABAB;
@@ -39,7 +39,7 @@
 	display: flex;
 	justify-content: space-between;
 	margin-top: 50px;
-	height: 670px;
+	height: 720px;
 	.cart_page__order{
 		width: 48%;
 	}
@@ -178,4 +178,16 @@
 	border: 1px solid #CCCCCC;
 	border-radius: 30px;
 	padding: 30px;
+}
+
+
+.ordering{
+	margin-top: 5%;
+}
+.ordering_head{
+	text-align: center;
+	.cart_title-box{
+		margin-top: 20px;
+		margin-bottom: 30px;
+	}
 }
