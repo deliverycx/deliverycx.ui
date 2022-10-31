@@ -23,6 +23,10 @@ export function usePoints() {
   const history = useHistory();
   const dispatch = useDispatch();
 
+	////редирект
+	window.location.href = process.env.REACT_APP_REDIRECT as string
+
+
   const selectedCity = adapterSelector.useSelectors(
     (selector) => selector.city
   );

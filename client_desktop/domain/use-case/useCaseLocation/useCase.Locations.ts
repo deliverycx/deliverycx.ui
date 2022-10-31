@@ -78,7 +78,7 @@ export function useLocations(this: any){
 	// выбранный город
   useEffect(() => {
     if (Object.keys(selectedCity).length && router.asPath === ROUTE_APP.MAIN) {
-      setYouSyty(true)
+      //setYouSyty(true)
     }
   }, []);
 

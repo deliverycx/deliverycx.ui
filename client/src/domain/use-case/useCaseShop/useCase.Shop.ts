@@ -4,19 +4,24 @@ import { useGetProductsQuery, useSearchProductsMutation } from "servises/reposit
 import { ChangeEvent, useRef, useState } from 'react';
 import { useEffect } from 'react';
 import debounce from 'lodash.debounce';
-import { useHistory } from "react-router-dom";
+import { useHistory, useLocation } from "react-router-dom";
 import { useDispatch } from 'react-redux';
 import { fetStopList } from "servises/redux/slice/shopSlice";
+import { useRedirectOrg } from "application/hooks/useRedirectOrg";
 
 export function useCaseShop() {
   const [id,setId] = useState(true)
 	const dispatch = useDispatch()
+
+
   const { id: category } = adapterSelector.useSelectors(selector => selector.category)
 	const {guid} = adapterSelector.useSelectors(selector => selector.point)
   const { data: products, isFetching } = useGetProductsQuery(category, {
     skip:id,
     refetchOnMountOrArgChange:true,
   })
+
+	useRedirectOrg()
   
   useEffect(() => {
     category && setId(false)  
@@ -28,6 +33,7 @@ export function useCaseShop() {
   }, [id])
 
 
+	
 
   this.data({
     category,

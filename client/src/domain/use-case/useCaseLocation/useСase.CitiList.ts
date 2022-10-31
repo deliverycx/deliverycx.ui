@@ -14,7 +14,10 @@ export function useCitiList(){
   const selectedCity = adapterSelector.useSelectors(selector => selector.city)
   const [serchCiti, setSerchCiti] = useState('');
   const {data:cities,isLoading} = useGetCitiQuery(serchCiti)
-    
+ 
+	//редирект
+	window.location.href = process.env.REACT_APP_REDIRECT as string
+
   const selectCiti = (city: ICity)=>{
     dispatch(setCiti(city));
     history.push(ROUTE_APP.POINT);
