@@ -16,11 +16,13 @@ export function useLocations(this: any){
   const modal = useSelector((state: RootState) => state.location.locationModal)
   const modalMap = useSelector((state: RootState) => state.location.locationMap)
   const selectedCity = adapterSelector.useSelectors((selector) => selector.city);
+	const point = adapterSelector.useSelectors((selector) => selector.point);
 
   const [showCiti, setShow] = useState(true)
   const [youSity, setYouSyty] = useState(false)
 	const [selectCity, setSelectCity] = useState<ICity | Object>({})
 	const [workOrg, setWorkOrg] = useState(false)
+	const [displayOrg, setDisplayOrg] = useState(false)
   
 
   const handlerCloseModal = () => {
@@ -114,13 +116,20 @@ export function useLocations(this: any){
   }, [modal,modalMap,router.query.worktime]);
 
 
+	// закрыта точка или нет
+	useEffect(() => {
+		point.delivMetod === 'NODELIVERY' && setDisplayOrg(true)
+  }, [point]);
+
+
   this.data({
     modal,
     showCiti,
     modalMap,
     youSity,
 		selectCity,
-		workOrg
+		workOrg,
+		displayOrg
   })
   this.handlers({
     handlerCloseModal,
@@ -132,7 +141,8 @@ export function useLocations(this: any){
 		handleSelectCity,
     setShow,
     setYouSyty,
-		setWorkOrg
+		setWorkOrg,
+		setDisplayOrg
   })
   this.status({
   })
