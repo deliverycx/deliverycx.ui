@@ -8,9 +8,11 @@ import { useDispatch } from 'react-redux';
 import { setProductItem } from "servises/redux/slice/shopSlice";
 import { fetchAddToCart } from "servises/redux/slice/cartSlice";
 import { checkPoint } from "application/helpers/checkPoint";
+import { Redirects } from "application/helpers/redirectTo";
 
 export function useCaseShop(this: any,category:string) {
   const [id,setId] = useState(true)
+	const point = adapterSelector.useSelectors(selector => selector.point)
   const { data: products, isFetching } = useGetProductsQuery(category, {
     skip:id,
     refetchOnMountOrArgChange:true,
@@ -18,6 +20,7 @@ export function useCaseShop(this: any,category:string) {
   
   useEffect(() => {
     category && setId(false)  
+		Redirects(point.guid)
   }, [category])
 
 
