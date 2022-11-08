@@ -8,7 +8,7 @@ export const workTimeHelp = (work?:string) =>{
 	if(workTime || work){
 		const mok2 = "10:00-12:00"
 		const mok = workTime || work
-		const [min,max] = mok ? mok2.split('-') : mok2.split('-')
+		const [min,max] = mok ? mok.split('-') : workTime.split('-')
 		const time = format(new Date(), "HH:mm")
 
 		if(min >= time){
