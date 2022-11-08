@@ -2,14 +2,15 @@ import { IReverveTable, IReverveTableValue } from "@types";
 import schemaBuild, { shemaReserve } from "application/helpers/validationSchema";
 import { ReserveReducer,initialStateReserve,ReducerActionTypePoints } from "application/reducers/ReserveReducer";
 import { useFormik } from "formik";
-import React, { FC, useReducer, useState } from "react";
+import React, { FC, useEffect, useReducer, useState } from "react";
 import { adapterSelector } from 'servises/redux/selectors/selectors';
 import { RequestWebhook } from "servises/repository/Axios/Request";
 import { compareAsc, format } from 'date-fns'
+import { workTimeCheck } from "application/helpers/workTime";
 
 export function useReserveModal(this: any) {
-	const point = adapterSelector.useSelectors(selector => selector.point)
-    const workTimeArr = point.workTime.split('-').map(el => el.split(':'));
+		const point = adapterSelector.useSelectors(selector => selector.point)
+    
     // возможность бронирования на неделю
     const maxDate = new Date();
     maxDate.setDate(maxDate.getDate() + 6);
@@ -19,6 +20,12 @@ export function useReserveModal(this: any) {
     ReserveReducer,
     initialStateReserve
   );
+
+	const workTimeArr = workTimeCheck(point.workTime).split('-').map((el:any) => el.split(':'));
+
+
+
+
 
     const initialValues: IReverveTableValue = {
         fullname: "",
@@ -73,6 +80,14 @@ export function useReserveModal(this: any) {
     onSubmit: submitHandler
   });
 
+	useEffect(()=>{
+		const day = stateReserve.dateValue.getDay() === 0 ? 6 : stateReserve.dateValue.getDay() - 1	
+		const work = point.workTime[day].split('-').map((el:any) => el.split(':'));
+		
+		formik.setFieldValue("endTime", new Date(new Date().setHours(+work[1][0], +work[1][1])))
+	},[stateReserve.dateValue])
+
+	
 
     this.data({
         formik,

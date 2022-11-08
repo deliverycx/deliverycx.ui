@@ -6,9 +6,9 @@ export const workTimeHelp = (work?:string) =>{
 	const storage = store.getState();
 	const  {workTime} = storage.location.point
 	if(workTime || work){
-		//const mok = "10:00-12:00"
+		const mok2 = "10:00-12:00"
 		const mok = workTime || work
-		const [min,max] = mok ? mok.split('-') : workTime.split('-')
+		const [min,max] = mok ? mok2.split('-') : mok2.split('-')
 		const time = format(new Date(), "HH:mm")
 
 		if(min >= time){
@@ -20,4 +20,13 @@ export const workTimeHelp = (work?:string) =>{
 		}
 	}
 	return false
+}
+
+export const workTimeCheck = (work:any) => {
+	const date = new Date().getDay()
+	if(date === 0){
+		return work[6]
+	}else{
+		return work[date - 1]
+	}
 }

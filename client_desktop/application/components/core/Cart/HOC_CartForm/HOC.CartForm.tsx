@@ -12,7 +12,7 @@ import { FormBuilder } from "application/components/common/Forms";
 import React from "react";
 import Modals from "application/components/common/Modals/Modals";
 import CartYmap from "../Presentation/CartYmap";
-import { workTimeHelp } from "application/helpers/workTime";
+import { workTimeCheck, workTimeHelp } from "application/helpers/workTime";
 import { CART_CHOICE } from "application/contstans/cart.const";
 
 
@@ -116,7 +116,7 @@ const CartFrom: FC<IProps> = ({ builder,paths }) => {
 					{
 						workTimeHelp()
 						? <button disabled className="order-btn-pointclosed">Хинкальная сейчас закрыта.<br/>
-								Оформить заказ вы сможете: {workTime}
+								Оформить заказ вы сможете: {workTimeCheck(workTime)}
 							</button>
 						: delivMetod === CART_CHOICE.NODELIVERY
 							? <button disabled className="order-btn-pointclosed">Онлайн заказ недоступен

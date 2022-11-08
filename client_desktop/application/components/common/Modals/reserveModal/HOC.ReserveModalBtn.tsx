@@ -20,7 +20,7 @@ const ReserveModalBtnContainer = () => {
         onCloseSuccessHandler()
     }
 
-		console.log('point',point);
+
 
     return (
         <>

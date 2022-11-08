@@ -1,4 +1,5 @@
 import { adapterComponentUseCase } from "adapters/adapterComponents";
+import { workTimeCheck } from "application/helpers/workTime";
 import { useCitiList, useHeaderLocations, useYouCiti } from "domain/use-case/useCaseLocation";
 import { useContext } from "react";
 import { adapterSelector } from "servises/redux/selectors/selectors";
@@ -12,6 +13,7 @@ const PointWorkTimeModal = () => {
 		const useCaseLocationPoints = useContext(LocationPointsContext);
   	const {setWorkOrg } = useCaseLocationPoints.handlers;
 
+		
     return (
         <div className="notification_modal notification_work-time">
                 <div className="attention">
@@ -19,7 +21,7 @@ const PointWorkTimeModal = () => {
                 </div>
                 <div className="attention-info">
                     Наша хинкальная сейчас закрыта.<br/>
-                    Оформить заказ можно: <span>{selectedPoint.workTime}</span>
+                    Оформить заказ можно: <span>{workTimeCheck(selectedPoint.workTime)}</span>
                 </div>
                 <div className="secondary-text">
                     А пока вы можете ознакомится с нашим меню<br/> и почитать новости
@@ -32,3 +34,5 @@ const PointWorkTimeModal = () => {
     );
 };
 export default PointWorkTimeModal;
+
+

@@ -2,6 +2,7 @@ import { useContext, useEffect } from "react"
 
 import cn from "classnames";
 import { PointsContext } from "../HOC.PointsMap";
+import PointWorkTime from "./PointWorkTime";
 
 
 const PopupPoint = () => {
@@ -34,13 +35,7 @@ const PopupPoint = () => {
                </div>
             </div>
 
-              <div className="welcome__select-adress__info phone">
-              <img
-                  src="/images/i/clock.svg"
-                  alt="Телефон заведения"
-               />
-               {address.workTime}
-            </div>
+						<PointWorkTime worktime={address.workTime} />
 
             <div className="welcome__select-adress__info street">
                <img
