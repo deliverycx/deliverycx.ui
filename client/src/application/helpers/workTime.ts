@@ -2,14 +2,14 @@ import { compareAsc, format } from 'date-fns'
 import { store } from "servises/redux/createStore";
 
 
-export const workTimeHelp = (work?:string) =>{
+export const workTimeHelp = (work?:any) =>{
 	const storage = store.getState();
 	const  {workTime} = storage.location.point
 	if(workTime || work){
 		const mok2 = "10:00-12:00"
 		const mok = workTime || work
 		console.log('mokkkkk',mok,workTime);
-		const [min,max] = mok ? mok.split('-') : workTime.split('-')
+		const [min,max] = mok ? workTimeCheck(mok).split('-') : workTimeCheck(workTime).split('-')
 		const time = format(new Date(), "HH:mm")
 
 		if(min >= time){
