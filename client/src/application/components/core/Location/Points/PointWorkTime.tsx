@@ -33,7 +33,7 @@ const PointWorkTime:FC<{worktime:string[]} > = ({worktime}) => {
 					src={require("assets/i/timework.svg").default}
 					alt="Телефон заведения"
 				/>
-				<span>{worktime[activeDate]}</span>
+				<span>{worktime[0]}</span>
 				<div className={CN}></div>
 				
 			</div>
