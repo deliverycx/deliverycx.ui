@@ -7,6 +7,7 @@ export const workTimeHelp = () =>{
 	const  {workTime} = storage.location.point
 	if(workTime){
 		const mok = "10:00-12:00"
+		console.log('wwwww',workTime);
 		const [min,max] = workTimeCheck(workTime).split('-')
 		const time = format(new Date(), "HH:mm")
 
