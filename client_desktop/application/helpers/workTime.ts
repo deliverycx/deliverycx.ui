@@ -8,7 +8,7 @@ export const workTimeHelp = () =>{
 	if(workTime){
 		const mok = "10:00-12:00"
 		console.log('wwwww',workTime);
-		const [min,max] = mok.split('-')
+		const [min,max] = workTimeCheck(workTime).split('-')
 		const time = format(new Date(), "HH:mm")
 
 		if(min >= time){
