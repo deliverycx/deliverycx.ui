@@ -1,6 +1,7 @@
 import { IPoint } from "@types"
 import { FC, useEffect, useState } from "react"
 import cn from "classnames";
+import { checkEmtpyWork, checkWorkIsArray, workTimeCheck } from "application/helpers/workTime";
 
 /* eslint-disable @typescript-eslint/no-var-requires */
 const PointWorkTime:FC<{worktime:string[]} > = ({worktime}) => {
@@ -26,6 +27,9 @@ const PointWorkTime:FC<{worktime:string[]} > = ({worktime}) => {
 		}
 	},[date,worktime])
 
+	const checktype = !!(typeof checkWorkIsArray(worktime) === 'string')
+	console.log('wwww',checktype);
+
 	return (
 		<div className="welcome_worktime">
 			<div className="welcome__select-adress__info worktime-time" onClick={()=> setSelect(prev => !prev)}>
@@ -33,12 +37,16 @@ const PointWorkTime:FC<{worktime:string[]} > = ({worktime}) => {
 					src={require("assets/i/timework.svg").default}
 					alt="Телефон заведения"
 				/>
-				<span>{worktime[activeDate]}</span>
-				<div className={CN}></div>
+				<span>{workTimeCheck(worktime)}</span>
+				{
+					!checktype &&
+					<div className={CN}></div>
+				}
+				
 				
 			</div>
 			{
-				select &&
+				select && !checktype &&
 				<div className="welcome_timebox">
 					<div className="welcome_timebox_item"><span className="welcome_timebox_item--title">График работы:</span></div>	
 					{
