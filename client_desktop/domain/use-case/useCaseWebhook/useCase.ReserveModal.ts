@@ -21,6 +21,7 @@ export function useReserveModal(this: any) {
     initialStateReserve
   );
 
+	console.log('table',point.workTime);
 	const workTimeArr = workTimeCheck(point.workTime).split('-').map((el:any) => el.split(':'));
 
 
@@ -80,13 +81,14 @@ export function useReserveModal(this: any) {
     onSubmit: submitHandler
   });
 
+	/*
 	useEffect(()=>{
 		const day = stateReserve.dateValue.getDay() === 0 ? 6 : stateReserve.dateValue.getDay() - 1	
 		const work = point.workTime[day].split('-').map((el:any) => el.split(':'));
 		
 		formik.setFieldValue("endTime", new Date(new Date().setHours(+work[1][0], +work[1][1])))
 	},[stateReserve.dateValue])
-
+	*/
 	
 
     this.data({
