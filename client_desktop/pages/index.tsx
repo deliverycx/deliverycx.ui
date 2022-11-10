@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 /* eslint-disable @next/next/no-sync-scripts */
 /* eslint-disable react/no-unknown-property */
 import Footer from "application/components/common/Footer/Footer";
@@ -18,7 +19,7 @@ const Home: NextPage = () => {
         <>
 						<Head>
 							<script src='/met.js'/>
-							<noscript><img src="https://vk.com/rtrg?p=VK-RTRG-1591066-9fa2W" style="position:fixed; left:-999px;" alt=""/></noscript>
+							<noscript><img src="https://vk.com/rtrg?p=VK-RTRG-1591066-9fa2W" className="metrika" alt=""/></noscript>
 						</Head>
             <LocationLayout />
             <div className="container">
