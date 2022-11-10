@@ -6,7 +6,7 @@ import React, { FC, useEffect, useReducer, useState } from "react";
 import { adapterSelector } from 'servises/redux/selectors/selectors';
 import { RequestWebhook } from "servises/repository/Axios/Request";
 import { compareAsc, format } from 'date-fns'
-import { workTimeCheck } from "application/helpers/workTime";
+import { checkEmtpyWork, checkWorkIsArray, workTimeCheck } from "application/helpers/workTime";
 
 export function useReserveModal(this: any) {
 		const point = adapterSelector.useSelectors(selector => selector.point)
@@ -84,7 +84,10 @@ export function useReserveModal(this: any) {
 
 	useEffect(()=>{
 		const day = stateReserve.dateValue.getDay() === 0 ? 6 : stateReserve.dateValue.getDay() - 1	
-		const work = point.workTime[day].split('-').map((el:any) => el.split(':'));
+		const checktype = !!(typeof checkWorkIsArray(point.workTime) === 'string')
+		const worktype = checktype ? point.workTime : point.workTime[day]
+		
+		const work =  checkEmtpyWork(point.workTime,day).split('-').map((el:any) => el.split(':'));
 		
 		formik.setFieldValue("endTime", new Date(new Date().setHours(+work[1][0], +work[1][1])))
 	},[stateReserve.dateValue])
