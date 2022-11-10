@@ -251,7 +251,7 @@
 	.welcome_timebox_item{
 		display: flex;
 		justify-content: space-between;
-		margin-top: 6px;
+		margin-top: 7px;
 		color: #ABABAB;
 		font-size: 12px;
 	}
@@ -270,7 +270,7 @@
 }
 .timearrow{
 	position: absolute;
-	background: url("/assets/img/arrowtime.png");
+	background: url("/assets/img/arrowtime.svg");
 	right: 15px;
 	width: 14px;
 	height: 9px;
