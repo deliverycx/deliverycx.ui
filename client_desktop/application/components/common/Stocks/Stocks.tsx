@@ -16,7 +16,7 @@ const Stocks = () => {
 
 	const getStocks = async () =>{
 		try {
-			const {data}:any = await RequestAdmin.bannersList(point.guid)
+			const {data}:any = await RequestAdmin.bannersList('fe470000-906b-0025-00f6-08d8de6557e1') //fe470000-906b-0025-00f6-08d8de6557e1 //point.guid 
 			const ban = data.reduce((acc:any,val:any,index:number) =>{
 				
 				val.groopbanner.map((ban:any) =>{
