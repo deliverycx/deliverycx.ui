@@ -20,6 +20,8 @@ const Home: NextPage = () => {
 						<Head>
 							<script src='/met.js'/>
 							<noscript><img src="https://vk.com/rtrg?p=VK-RTRG-1591066-9fa2W" className="metrika" alt=""/></noscript>
+							<script src='/yan.js'/>
+							<noscript><div><img src="https://mc.yandex.ru/watch/91135511" className="metrika" /></div></noscript>
 						</Head>
             <LocationLayout />
             <div className="container">
