@@ -56,7 +56,7 @@ const PopupPoint = () => {
                               </a>
                           </div>
                           {
-                              address.delivMetod === "PICKUP" &&
+                              address.delivMetod === CART_CHOICE.PICKUP &&
                               <div className="welcome__select-adress__info onlypickup">
                                   <img
                                       src={require("assets/i/bag-red.svg").default}
@@ -65,6 +65,17 @@ const PopupPoint = () => {
                                   <span>Только самовывоз</span>
                               </div>
                           }
+													{
+														
+														address.delivMetod === CART_CHOICE.OPEN &&
+                              <div className="welcome__select-adress__info onlyopen">
+                                  <img
+                                      src={require("assets/i/cloce.svg").default}
+                                      alt="Скоро открытие"
+                                  />
+                                  <span>Скоро открытие</span>
+                              </div>
+													}
                           {
                               !address.delivMetod &&
                               <div className="welcome__select-adress__info onlypickup">
@@ -98,12 +109,13 @@ const PopupPoint = () => {
 
                               </div>
                           }
-                          <div
+                          <button
                               className="btn welcome__select-adress__btn"
+															disabled={address.delivMetod === CART_CHOICE.OPEN && true}
                               onClick={() => selectPointHandler(address)}
                           >
                               Выбрать
-                          </div>
+                          </button>
                       </div>
                   </div>
               )

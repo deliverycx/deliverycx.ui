@@ -341,7 +341,10 @@
 	}
 }
 
-
+.disablepoint{
+	color: #ABABAB !important;
+	cursor: no-drop;
+}
 .welcome__select-adress{
 	position: absolute;
 	left: 15px;
