@@ -3,15 +3,18 @@ import ReactDOM from "react-dom";
 
 type IProps = {
   onClose?:any
+	noscrole?:boolean
   children:ReactNode
 }
 
-const Modals:FC<IProps> = ({onClose,children}) => {
+const Modals:FC<IProps> = ({onClose,noscrole = false,children}) => {
 
   const [isBrowser, setIsBrowser] = useState<boolean>(false);
 
   useEffect(() => {
-    document.body.className = "no-scroll";
+		if(!noscrole){
+			document.body.className = "no-scroll";
+		}
     setIsBrowser(true);
     return () => {
       document.body.className = "";
