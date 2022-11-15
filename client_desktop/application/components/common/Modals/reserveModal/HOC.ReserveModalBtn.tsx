@@ -1,12 +1,17 @@
-import React, { useState } from "react";
+import React, { FC, useState } from "react";
 import Modals from "../Modals";
 import ReserveModal from "./ReserveModal";
 import SuccessReserveModal from "./SuccessReserveModal";
 import { adapterComponentUseCase } from "../../../../../adapters/adapterComponents";
 import { useReserveModal } from "../../../../../domain/use-case/useCaseWebhook";
 
-const ReserveModalBtnContainer = () => {
-    const [isModalOpen, setIsModalOpen] = useState(false)
+type IProps = {
+	isModalOpen:boolean
+	setIsModalOpen:any
+}
+
+const ReserveModalBtnContainer:FC<IProps> = ({isModalOpen,setIsModalOpen}) => {
+
     const useCaseReserve = adapterComponentUseCase(useReserveModal)
     const {formik,point,ReducerActionTypePoints,stateReserve, onCloseSuccessHandler} = useCaseReserve.data
     const {dispatchReserve} = useCaseReserve.handlers
@@ -24,14 +29,6 @@ const ReserveModalBtnContainer = () => {
 
     return (
         <>
-
-						{
-							point && point.reservetable &&
-							<button className="reserve-btn" onClick={() => setIsModalOpen(true)}>
-                Забронировать стол
-            	</button>
-						}
-
             
             {
                 isModalOpen &&
