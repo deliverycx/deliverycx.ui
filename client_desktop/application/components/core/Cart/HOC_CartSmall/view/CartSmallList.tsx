@@ -23,7 +23,7 @@ const CartSmallList = ({onClose}:any) => {
 				? <button disabled className="order-btn-pointclosed">Хинкальная сейчас закрыта.<br/>
 						Оформить заказ вы сможете: {workTimeCheck(points.workTime)}
 					</button>
-				: points.delivMetod === CART_CHOICE.NODELIVERY ?
+				: points.delivMetod === CART_CHOICE.NODELIVERY || points.delivMetod === CART_CHOICE.OPEN ?
 					<button disabled className="order-btn-pointclosed">Онлайн заказ недоступен</button>
 						// eslint-disable-next-line @next/next/no-html-link-for-pages
 				: <a className="cart__order-btn btn cart-btn" href="/checkout">Оформить заказ </a>

@@ -45,7 +45,7 @@ const PopupPoint = () => {
                           {/*   {address.workTime}*/}
                           {/*</div>*/}
                           
-													<PointWorkTime worktime={address.workTime} />
+													<PointWorkTime worktime={address.workTime} adress={address.address} />
                           <div className="welcome__select-adress__info">
                               <img
                                   src={require("assets/i/phone-green.svg").default}
@@ -111,7 +111,6 @@ const PopupPoint = () => {
                           }
                           <button
                               className="btn welcome__select-adress__btn"
-															disabled={address.delivMetod === CART_CHOICE.OPEN && true}
                               onClick={() => selectPointHandler(address)}
                           >
                               Выбрать
