@@ -99,7 +99,7 @@ const CartFrom: FC<IProps> = ({ builder,paths }) => {
           }
           {
             showMap &&
-            <Modals onClose={() => setShowMap(false)}>
+            <Modals onClose={() => setShowMap(false)} noscrole={true}>
               <CartYmap close={() => setShowMap(false)} />
             </Modals>
           }

@@ -4,16 +4,21 @@ import { setMapModal, setModal } from "servises/redux/slice/locationSlice";
 import HeaderLocation from "./HeaderLocation";
 import Link from 'next/link'
 import { checkPoint } from "application/helpers/checkPoint";
-import { useCallback } from "react";
+import { useCallback, useState } from "react";
 import { useRouter } from 'next/router'
 import { ROUTE_APP } from 'application/contstans/route.const';
 import { RootState } from "../../../../servises/redux/createStore";
 import cn from "classnames";
 import ReserveModalBtnContainer from "../Modals/reserveModal/HOC.ReserveModalBtn";
+import { adapterSelector } from "servises/redux/selectors/selectors";
 
 /* eslint-disable react/no-unknown-property */
 const Header = () => {
     const mapShowModal = useSelector((state: RootState) => state.location.locationMap);
+		const point = adapterSelector.useSelectors(selector => selector.point)
+		const [isModalOpen, setIsModalOpen] = useState(false)
+
+		
     const mapColorCN = cn("header_menu_link", {hinkRedColor: mapShowModal});
     const menuLinkColor = window.location.href.includes('menu');
     const menuLinkWithColorCN = cn("header_menu_link", {hinkRedColor: menuLinkColor});
@@ -54,6 +59,16 @@ const Header = () => {
 											checkPoint(false) &&
 											<>
 												<HeaderLocation />
+												{
+													point && point.reservetable &&
+													<button className="reserve-btn" onClick={() => setIsModalOpen(true)}>
+						                Забронировать стол
+						            	</button>
+												}
+												{
+													isModalOpen &&
+													<ReserveModalBtnContainer isModalOpen={isModalOpen} setIsModalOpen={setIsModalOpen}/>
+												}
 												
 											</>
 										}
