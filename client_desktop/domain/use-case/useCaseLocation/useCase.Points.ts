@@ -16,6 +16,7 @@ import { adapterSelector } from "servises/redux/selectors/selectors";
 import { RootState } from 'servises/redux/createStore';
 import { accessOrder, fetchDeleteCart, fetchRefreshCart, setOrderType } from "servises/redux/slice/cartSlice";
 import { useRouter } from 'next/router'
+import { CART_CHOICE } from "application/contstans/cart.const";
 
 export function usePoints(this: any,{selectCity,handleSelectOrganitztion}:any) {
   const dispatch = useDispatch();

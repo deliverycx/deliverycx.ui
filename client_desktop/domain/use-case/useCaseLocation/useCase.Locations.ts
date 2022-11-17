@@ -9,6 +9,7 @@ import RequestLocation from "servises/repository/Axios/Request/Request.Location"
 import { RequestAdmin } from "servises/repository/Axios/RequestAdmin";
 import { ICity, ISocial,IPoint } from "@types";
 import { workTimeHelp } from "application/helpers/workTime";
+import { CART_CHOICE } from "application/contstans/cart.const";
 
 export function useLocations(this: any){
   const dispatch = useDispatch()
@@ -16,11 +17,13 @@ export function useLocations(this: any){
   const modal = useSelector((state: RootState) => state.location.locationModal)
   const modalMap = useSelector((state: RootState) => state.location.locationMap)
   const selectedCity = adapterSelector.useSelectors((selector) => selector.city);
+	const point = adapterSelector.useSelectors((selector) => selector.point);
 
   const [showCiti, setShow] = useState(true)
   const [youSity, setYouSyty] = useState(false)
 	const [selectCity, setSelectCity] = useState<ICity | Object>({})
 	const [workOrg, setWorkOrg] = useState(false)
+	const [displayOrg, setDisplayOrg] = useState(false)
   
 
   const handlerCloseModal = () => {
@@ -114,13 +117,20 @@ export function useLocations(this: any){
   }, [modal,modalMap,router.query.worktime]);
 
 
+	// закрыта точка или нет
+	useEffect(() => {
+		point.delivMetod === CART_CHOICE.NODELIVERY || point.delivMetod === CART_CHOICE.OPEN  && setDisplayOrg(true)
+  }, [point]);
+
+
   this.data({
     modal,
     showCiti,
     modalMap,
     youSity,
 		selectCity,
-		workOrg
+		workOrg,
+		displayOrg
   })
   this.handlers({
     handlerCloseModal,
@@ -132,7 +142,8 @@ export function useLocations(this: any){
 		handleSelectCity,
     setShow,
     setYouSyty,
-		setWorkOrg
+		setWorkOrg,
+		setDisplayOrg
   })
   this.status({
   })

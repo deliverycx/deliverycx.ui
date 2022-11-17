@@ -2,6 +2,8 @@ import { useContext, useEffect } from "react"
 
 import cn from "classnames";
 import { PointsContext } from "../HOC.PointsMap";
+import PointWorkTime from "./PointWorkTime";
+import { CART_CHOICE } from "application/contstans/cart.const";
 
 
 const PopupPoint = () => {
@@ -34,13 +36,7 @@ const PopupPoint = () => {
                </div>
             </div>
 
-              <div className="welcome__select-adress__info phone">
-              <img
-                  src="/images/i/clock.svg"
-                  alt="Телефон заведения"
-               />
-               {address.workTime}
-            </div>
+						<PointWorkTime worktime={address.workTime} adress={address.address} />
 
             <div className="welcome__select-adress__info street">
                <img
@@ -58,8 +54,15 @@ const PopupPoint = () => {
                   {address.phone}
                </a>
             </div>
-           {address.delivMetod && <div className="deliv-method">Только самовывоз</div>}
-           {!address.delivMetod && <div className="deliv-method">Самовывоз и доставка</div>}
+    
+					 {	address.delivMetod === CART_CHOICE.PICKUP 
+													? <div className="deliv-method">только самовывоз</div> :
+													address.delivMetod === CART_CHOICE.NODELIVERY 
+													? <div className="deliv-method">онлайн заказ недоступен</div> :
+													address.delivMetod === CART_CHOICE.OPEN 
+													? <div className="deliv-method">скоро открытие</div> :	
+													<div className="deliv-method">самовывоз и доставка</div>
+											}
             {
               (recvisites && Object.keys(recvisites).length !== 0) && <div className="recvisites" onClick={()=>recvisitesHandler(true)}>Реквизиты компании</div>
             }

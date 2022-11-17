@@ -27,7 +27,7 @@ const ReserveModalRows = ({reserveProps}:any) => {
 		if(Formate(new Date()) === Formate(stateReserve.dateValue)){
 			return new Date()
 		}else{
-			return formik.initialValues.startTime
+			return formik.values.startTime
 		}
 	}
 
@@ -148,7 +148,7 @@ const ReserveModalRows = ({reserveProps}:any) => {
 																			
                                       onChange={(newValue) => {
                                           
-																					const value = formik.initialValues.endTime < newValue ? formik.initialValues.endTime : newValue
+																					const value = formik.values.endTime < newValue ? formik.values.endTime : newValue
 																					formik.setFieldValue("time", value);
                                           dispatchReserve({
                                               type: ReducerActionTypePoints.setTime,
@@ -170,7 +170,7 @@ const ReserveModalRows = ({reserveProps}:any) => {
                                           </>;
                                       }}
                                       minTime={mitTime()}
-                                      maxTime={formik.initialValues.endTime}
+                                      maxTime={formik.values.endTime}
                                   />
                               </FormFieldWrapper>
                           </div>

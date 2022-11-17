@@ -1,6 +1,6 @@
 import CartList from "../../HOC_Basket/view/CartList"
 import CartTotal from "../../HOC_Basket/view/CartTotal"
-import { workTimeHelp } from "application/helpers/workTime";
+import { workTimeCheck, workTimeHelp } from "application/helpers/workTime";
 import { adapterSelector } from "servises/redux/selectors/selectors";
 import { CART_CHOICE } from "application/contstans/cart.const";
 
@@ -21,9 +21,9 @@ const CartSmallList = ({onClose}:any) => {
 			{
 				workTimeHelp()
 				? <button disabled className="order-btn-pointclosed">Хинкальная сейчас закрыта.<br/>
-						Оформить заказ вы сможете: {points.workTime}
+						Оформить заказ вы сможете: {workTimeCheck(points.workTime)}
 					</button>
-				: points.delivMetod === CART_CHOICE.NODELIVERY ?
+				: points.delivMetod === CART_CHOICE.NODELIVERY || points.delivMetod === CART_CHOICE.OPEN ?
 					<button disabled className="order-btn-pointclosed">Онлайн заказ недоступен</button>
 						// eslint-disable-next-line @next/next/no-html-link-for-pages
 				: <a className="cart__order-btn btn cart-btn" href="/checkout">Оформить заказ </a>

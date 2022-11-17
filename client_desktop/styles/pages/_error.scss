@@ -35,7 +35,8 @@
       display: block;
       width: 277px;
       height: 56px;
-      font-family: sf-ui-m, sans-serif;
+      font-family: $sf;
+      font-weight: 500;
       font-size: 17px;
       background: #8D191D;
       border-radius: 65px;
@@ -100,7 +101,7 @@
         height: 56px;
         outline: none;
         border: none;
-        font-family: sf-ui-medium, sans-serif;
+        font-family: $sf;
 
         &:hover {
           color: #333333;

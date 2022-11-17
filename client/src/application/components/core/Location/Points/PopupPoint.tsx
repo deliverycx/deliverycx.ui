@@ -3,6 +3,7 @@ import { PointsContext } from "./Points"
 import cn from "classnames";
 import { workTimeHelp } from "application/helpers/workTime";
 import { CART_CHOICE } from "application/contstans/cart.const";
+import PointWorkTime from "./PointWorkTime";
 
 /* eslint-disable @typescript-eslint/no-var-requires */
 const PopupPoint = () => {
@@ -43,13 +44,8 @@ const PopupPoint = () => {
                           {/*<div className="welcome__select-adress__work-time">*/}
                           {/*   {address.workTime}*/}
                           {/*</div>*/}
-                          <div className="welcome__select-adress__info">
-                              <img
-                                  src={require("assets/i/clock.svg").default}
-                                  alt="Телефон заведения"
-                              />
-                              <span>{address.workTime}</span>
-                          </div>
+                          
+													<PointWorkTime worktime={address.workTime} adress={address.address} />
                           <div className="welcome__select-adress__info">
                               <img
                                   src={require("assets/i/phone-green.svg").default}
@@ -60,7 +56,7 @@ const PopupPoint = () => {
                               </a>
                           </div>
                           {
-                              address.delivMetod === "PICKUP" &&
+                              address.delivMetod === CART_CHOICE.PICKUP &&
                               <div className="welcome__select-adress__info onlypickup">
                                   <img
                                       src={require("assets/i/bag-red.svg").default}
@@ -69,6 +65,17 @@ const PopupPoint = () => {
                                   <span>Только самовывоз</span>
                               </div>
                           }
+													{
+														
+														address.delivMetod === CART_CHOICE.OPEN &&
+                              <div className="welcome__select-adress__info onlyopen">
+                                  <img
+                                      src={require("assets/i/cloce.svg").default}
+                                      alt="Скоро открытие"
+                                  />
+                                  <span>Скоро открытие</span>
+                              </div>
+													}
                           {
                               !address.delivMetod &&
                               <div className="welcome__select-adress__info onlypickup">
@@ -102,12 +109,12 @@ const PopupPoint = () => {
 
                               </div>
                           }
-                          <div
+                          <button
                               className="btn welcome__select-adress__btn"
                               onClick={() => selectPointHandler(address)}
                           >
                               Выбрать
-                          </div>
+                          </button>
                       </div>
                   </div>
               )

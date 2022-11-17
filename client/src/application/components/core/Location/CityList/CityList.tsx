@@ -10,6 +10,10 @@ const CityList = () => {
     const { selectCiti, setSerchCiti } = useCaseCitiList.handlers
     const { isLoading } = useCaseCitiList.status
 
+		let sortedCities;
+
+		if (cities) sortedCities = cities.slice().sort((a: { name: string; }, b: { name: string; }) => a.name > b.name ? 1 : -1);
+
     return (
         <div className="container welcome__city-list">
             <div className="welcome__search">
@@ -17,7 +21,7 @@ const CityList = () => {
                 <input type="text" className="welcome__search__input" placeholder="Поиск" onChange={(e) => setSerchCiti(e.target.value)} />
             </div>
             {
-                !isLoading && cities && cities.map((city:ICity) => {
+                !isLoading && sortedCities && sortedCities.slice().sort().map((city:ICity) => {
                     const CN = cn("welcome__city", { selected: city.name === selectedCity.name}) //city.name === selectedCity?.name
 										if(!city.isHidden){
 											return <div key={city.id} onClick={() => selectCiti(city)} className={CN}>

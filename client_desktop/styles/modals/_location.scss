@@ -98,7 +98,7 @@
 		}
 		input::placeholder {
 			color: #666666;
-			font-family: sf-ui, sans-serif;
+			font-family: $sf;
 			font-weight: 500;
 			font-size: 15px;
 		}
@@ -247,7 +247,7 @@
 			cursor: pointer;
 			font-weight: 500;
 			margin-right: 20px;
-			font-family: sf-ui, sans-serif;
+			font-family: $sf;
 		}
 		li:hover {
 			color: #8D191D;
@@ -332,7 +332,7 @@
 			font-size: 15px;
 			font-weight: 500;
 			text-align: center;
-			font-family: Manrope, sans-serif;
+			font-family: $manrope;
 			transition: all 0.3s;
 			&:hover{
 				background: #FDCB3D;
@@ -353,7 +353,10 @@
 	}
 }
 
-
+.disablepoint{
+	color: #ABABAB !important;
+	cursor: no-drop;
+}
 .welcome__select-adress{
 	position: absolute;
 	left: 15px;
@@ -432,7 +435,7 @@
 		position: relative;
 		font-weight: 500;
 			a{
-					font-family: sf-ui, sans-serif;
+					font-family: $sf;
 					color:#333;
 			}
 			img{
@@ -487,6 +490,52 @@
 	}
 }
 
+.welcome_worktime{
+	position: relative;
+}
+.welcome_timebox{
+	background-color: #fff;
+	position: absolute;
+	left: 0;
+	top: 55px;
+	z-index: 99;
+	width: 100%;
+	padding:15px 20px;
+	border-radius: 15px;
+	box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.25);
+	.welcome_timebox_item{
+		display: flex;
+		justify-content: space-between;
+		margin-top: 8px;
+		color: #ABABAB;
+		font-size: 12px;
+	}
+	.welcome_timebox_item.active{
+		color: #333333;
+	}
+	.welcome_timebox_item--title{
+		color: #ABABAB;
+		font-weight: 500;
+		font-size: 13px;
+		margin-bottom: 5px;
+	}
+	
+}
+.worktime-time{
+	cursor: pointer;
+}
+.timearrow{
+	position: absolute;
+	background: url("/images/icon/arrowtime.svg");
+	right: 15px;
+	width: 14px;
+	height: 9px;
+	top: 20px;
+}
+.timearrow_open{
+	transform: rotate(-180deg);
+	transition: all 0.3s;
+}
 .onlypickup_small{
 	font-size: 12px;
 	padding-left: 15px;

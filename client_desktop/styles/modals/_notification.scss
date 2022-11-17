@@ -53,8 +53,8 @@
 		}
 
 		.attention {
-			font-family: manrope, sans-serif;
-			font-weight: 500;
+			font-family: $manrope;
+			font-weight: 700;
 			color: #132A3E;
 			font-size: 26px;
 		}
@@ -62,10 +62,10 @@
 		.attention-info {
 			margin-top: 15px;
 			font-size: 21px;
-			font-family: sf-ui, sans-serif;
+			font-family: $sf;
 			font-weight: 500;
 			line-height: 25px;
-
+			font-weight: 400;
 			span {
 				color: #8D191D;
 			}

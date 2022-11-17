@@ -32,13 +32,15 @@ const Points = () => {
           {
               !isLoading && addresses && addresses.map((points: IPoint) => {
                   if (!points.isHidden) {
-                    const CN = cn("welcome__city", { active: points.address === point.address }) //city.name === selectedCity?.name
+                    const CN = cn("welcome__city", { active: points.address === point.address, disablepoint:points.delivMetod === CART_CHOICE.OPEN }) //city.name === selectedCity?.name
                     return <li key={points.id} onClick={() => handlerPoint(points)} className={CN}>
                       {points.address}
                       {	points.delivMetod === CART_CHOICE.PICKUP 
 													? <span className="onlypickup_small">только самовывоз</span> :
 												points.delivMetod === CART_CHOICE.NODELIVERY 
 													? <span className="onlypickup_small">онлайн заказ недоступен</span> :
+												points.delivMetod === CART_CHOICE.OPEN 
+													? <span className="onlypickup_small">скоро открытие</span> :	
 													<span className="onlypickup_small">самовывоз и доставка</span>
 											}
                       

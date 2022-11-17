@@ -6,7 +6,7 @@ import CartTotal from "application/components/core/Cart/CartBasket/CartTotal";
 import CartHeader from "presentation/viewModel/viewCart/CartHeader";
 import React, { FC, ReactNode } from "react";
 import CartDeliveryPrice from "application/components/core/Cart/CartBasket/CartDeliveryPrice";
-import { workTimeHelp } from "application/helpers/workTime";
+import { workTimeCheck, workTimeHelp } from "application/helpers/workTime";
 import Discounts from "application/components/core/Cart/CartBasket/HOC_Discount";
 import { adapterSelector } from "servises/redux/selectors/selectors";
 import { CART_CHOICE } from "application/contstans/cart.const";
@@ -33,11 +33,11 @@ const CartLayout: FC<ICartLayout> = ({ children }) => {
                   <CartTotal />
                   <Discounts />
                   <DeliveryCost/>
-                  {workTimeHelp()
+                  {workTimeHelp(point.workTime)
                       ? <div className="point-closed">
                           <div className="point-closed-cart-container">
                               <div className="top-text">Хинкальная сейчас закрыта.<br />
-                                  Оформить заказ можно: <span>{point.workTime}</span></div>
+                                  Оформить заказ можно: <span>{workTimeCheck(point.workTime) }</span></div>
                               <div className="text-secondary">
                                   А пока вы можете ознакомится <br />
                                   с нашим меню и почитать новости
@@ -61,6 +61,22 @@ const CartLayout: FC<ICartLayout> = ({ children }) => {
                           </div>
                       </div>
                       : point.delivMetod === CART_CHOICE.NODELIVERY ?
+                          <>
+                              <div className="point-closed-cart-container">
+                                  <div className="top-text">Онлайн заказ недоступен</div>
+                                  <div className="text-secondary">
+                                      Приносим извинения за неудобства. <br />
+                                  </div>
+                              </div>
+                              <button
+                                  type="submit"
+                                  className="order-btn-pointclosed"
+                                  disabled={true}
+                              >
+                                  Заказать
+                              </button>
+                          </>
+													: point.delivMetod === CART_CHOICE.OPEN ?
                           <>
                               <div className="point-closed-cart-container">
                                   <div className="top-text">Онлайн заказ недоступен</div>
