@@ -24,7 +24,7 @@ export function usePoints() {
   const dispatch = useDispatch();
 
 	////редирект
-	window.location.href = process.env.REACT_APP_REDIRECT as string
+	//window.location.href = process.env.REACT_APP_REDIRECT as string
 
 
   const selectedCity = adapterSelector.useSelectors(
@@ -40,7 +40,7 @@ export function usePoints() {
   );
 
   const addresses =  org && org.filter((val:IPoint,index:number) => val.isHidden !== true)
-
+	console.log(addresses);
 
   useEffect(() => {
     (addresses && !isFetching) && getRecvisites(addresses[statePoint.slideIndex].id)

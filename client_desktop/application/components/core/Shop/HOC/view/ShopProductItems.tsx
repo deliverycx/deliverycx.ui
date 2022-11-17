@@ -19,7 +19,6 @@ const ShopProductItem: FC<IProps> = ({ products }) => {
     const { cardRef,disableItem } = useCasePoints.data;
     const { clickItemHandler } = useCasePoints.handlers;
 
-		
     const CN = cn("shop_grid__item", { product__stoplist: disableItem})
 
     return (
@@ -37,7 +36,16 @@ const ShopProductItem: FC<IProps> = ({ products }) => {
             </div>
             <div className="shop_grid__item-option">
                     <div>
-                        <div className="measure">{measureUnit === "порц" ? `${convertWeight(weight)} г` : "1 шт"}</div>
+                        <div className="measure">
+
+												{
+													measureUnit === "порц"
+													 ? `${convertWeight(weight)} г`:
+													 measureUnit === "мл"  ? weight + 'мл' 
+													 
+													 : "1 шт"
+												}
+												</div>
                         <div className="price">{price} ₽</div>
                     </div>
                     {!disableItem && <AddToCart id={id} _class={"add-to-cart"} groupImage={categoryImage} />}

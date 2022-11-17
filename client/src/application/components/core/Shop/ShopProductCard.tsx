@@ -34,9 +34,14 @@ const ShopProductCard: FC<IProps> = ({ productId, setgrop }) => {
                 {/* <button className="add-favorite"></button> */}
                 <div className="product-card__price">
                     <div className="product-card__measure">
-                        {
-                            product.measureUnit === "порц" ? `${convertWeight(product.weight)} г` : "1 шт"
-                        }
+                        
+												{
+													product.measureUnit === "порц"
+													? `${convertWeight(product.weight)} г`:
+													product.measureUnit === "мл"  ? product.weight + 'мл'
+													
+													: "1 шт"
+												}
                     </div>
                     <span className="select-red">{product.price} ₽</span>
                 </div>
