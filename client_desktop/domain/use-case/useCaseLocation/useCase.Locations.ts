@@ -119,7 +119,7 @@ export function useLocations(this: any){
 
 	// закрыта точка или нет
 	useEffect(() => {
-		point.delivMetod === CART_CHOICE.NODELIVERY || point.delivMetod === CART_CHOICE.OPEN  && setDisplayOrg(true)
+		point.delivMetod === CART_CHOICE.NODELIVERY && setDisplayOrg(true)
   }, [point]);
 
 

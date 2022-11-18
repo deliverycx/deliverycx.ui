@@ -38,7 +38,7 @@ const Points = () => {
                       {	points.delivMetod === CART_CHOICE.PICKUP 
 													? <span className="onlypickup_small">только самовывоз</span> :
 												points.delivMetod === CART_CHOICE.NODELIVERY 
-													? <span className="onlypickup_small">онлайн заказ недоступен</span> :
+													? <span className="onlypickup_small"> </span> :
 												points.delivMetod === CART_CHOICE.OPEN 
 													? <span className="onlypickup_small">скоро открытие</span> :	
 													<span className="onlypickup_small">самовывоз и доставка</span>

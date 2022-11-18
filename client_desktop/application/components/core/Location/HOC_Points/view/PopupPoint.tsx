@@ -58,7 +58,7 @@ const PopupPoint = () => {
 					 {	address.delivMetod === CART_CHOICE.PICKUP 
 													? <div className="deliv-method">только самовывоз</div> :
 													address.delivMetod === CART_CHOICE.NODELIVERY 
-													? <div className="deliv-method">онлайн заказ недоступен</div> :
+													? <div className="deliv-method">  </div> :
 													address.delivMetod === CART_CHOICE.OPEN 
 													? <div className="deliv-method">скоро открытие</div> :	
 													<div className="deliv-method">самовывоз и доставка</div>
