@@ -64,10 +64,12 @@ export function useCaseShopItem(id:string) {
 
   useEffect(() => {
     if (stoplists) {
+			/*
       stoplists.stopList.forEach((item: TStopListItems) => {
 
         item.productId === id && setDisableItem(true)
       })
+			*/
     }
 
   },[stoplists])
