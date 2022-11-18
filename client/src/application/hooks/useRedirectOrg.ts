@@ -29,10 +29,10 @@ export const useRedirectOrg = () =>{
 				}
 				
 			}else{
-				window.location.href = process.env.REACT_APP_REDIRECT as string
+				//window.location.href = process.env.REACT_APP_REDIRECT as string
 			}
 		} catch (error) {
-			window.location.href = process.env.REACT_APP_REDIRECT as string
+			//window.location.href = process.env.REACT_APP_REDIRECT as string
 		}
 	}
 	
