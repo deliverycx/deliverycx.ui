@@ -458,8 +458,16 @@
 		border-radius: 100px;
 		font-size: 17px;
 		font-weight: 700;
-		margin-top: 25px;
+		color: #fff;
 		transition: background-color 0.3s ease-in-out;
+		border: none;
+		&:disabled{
+			background: none;
+			border: 1px solid #CCCCCC;
+			color: #CCCCCC;
+			box-shadow: none;
+			cursor: no-drop;
+		}
 	}
 	&__btn:hover {
 		background-color: #FDCB3D;

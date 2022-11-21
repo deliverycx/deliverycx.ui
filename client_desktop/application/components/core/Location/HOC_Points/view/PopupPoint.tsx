@@ -58,7 +58,7 @@ const PopupPoint = () => {
 					 {	address.delivMetod === CART_CHOICE.PICKUP 
 													? <div className="deliv-method">только самовывоз</div> :
 													address.delivMetod === CART_CHOICE.NODELIVERY 
-													? <div className="deliv-method">онлайн заказ недоступен</div> :
+													? <div className="deliv-method">  </div> :
 													address.delivMetod === CART_CHOICE.OPEN 
 													? <div className="deliv-method">скоро открытие</div> :	
 													<div className="deliv-method">самовывоз и доставка</div>
@@ -66,12 +66,13 @@ const PopupPoint = () => {
             {
               (recvisites && Object.keys(recvisites).length !== 0) && <div className="recvisites" onClick={()=>recvisitesHandler(true)}>Реквизиты компании</div>
             }
-            <div
+            <button
                className="btn welcome__select-adress__btn"
                onClick={() => selectPointHandler(address)}
+							 disabled={address.delivMetod === CART_CHOICE.OPEN && true}
             >
                Выбрать
-            </div>
+            </button>
          </div>
       </div>
       )
