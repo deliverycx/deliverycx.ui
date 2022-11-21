@@ -23,11 +23,12 @@ const ShopProductItem: FC<IProps> = ({ products }) => {
 
     return (
         <div ref={cardRef} className={CN}  data-id={id} onClick={(e)=> clickItemHandler(e,id)}>
-            <div className="shop_grid__item__img-wrap">
-                <img src={imgRout(image)} alt={name} />
-                {
+						{
                     disableItem && <div className="stoplist_title">Упс... <br/> закончилось</div>
                 }
+            <div className="shop_grid__item__img-wrap">
+                <img src={imgRout(image)} alt={name} />
+                
             </div>
             <div className="shop_grid__item__content">
                 <div className="shop_grid__item-title">

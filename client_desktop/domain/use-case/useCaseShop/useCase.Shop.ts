@@ -5,7 +5,7 @@ import { ChangeEvent, useRef, useState } from 'react';
 import { useEffect } from 'react';
 import debounce from 'lodash.debounce';
 import { useDispatch } from 'react-redux';
-import { setProductItem } from "servises/redux/slice/shopSlice";
+import { fetStopList, setProductItem } from "servises/redux/slice/shopSlice";
 import { fetchAddToCart } from "servises/redux/slice/cartSlice";
 import { checkPoint } from "application/helpers/checkPoint";
 import { Redirects } from "application/helpers/redirectTo";
@@ -13,6 +13,7 @@ import { Redirects } from "application/helpers/redirectTo";
 export function useCaseShop(this: any,category:string) {
   const [id,setId] = useState(true)
 	const point = adapterSelector.useSelectors(selector => selector.point)
+	const dispatch = useDispatch()
   const { data: products, isFetching } = useGetProductsQuery(category, {
     skip:id,
     refetchOnMountOrArgChange:true,
@@ -24,6 +25,9 @@ export function useCaseShop(this: any,category:string) {
   }, [category])
 
 
+	useEffect(() => {
+    !id && dispatch(fetStopList(point.guid))  
+  }, [id])
 
 
   this.data({
@@ -38,7 +42,7 @@ export function useCaseShop(this: any,category:string) {
   })
 }
 
-export function useCaseShopItem(this: any, id: string) {
+export function useCaseShopItem(this: any,  itemid: {id:string,isFav:boolean}) {
   const dispatch = useDispatch()
   const stoplists = adapterSelector.useSelectors(selector => selector.stoplist)
   
@@ -58,8 +62,11 @@ export function useCaseShopItem(this: any, id: string) {
   
 
   useEffect(() => {
-    
-    
+		if(stoplists){
+			stoplists.forEach((item: TStopListItems) => {
+				item.product === itemid.id && setDisableItem(true)
+			})
+		}
   },[stoplists])
 
   
