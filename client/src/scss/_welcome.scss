@@ -215,13 +215,7 @@
       font-family: $bold;
       margin-top: 20px;
 			color: #fff;
-			&:disabled{
-				background: none;
-				border: 1px solid #CCCCCC;
-				color: #CCCCCC;
-				box-shadow: none;
-				cursor: no-drop;
-			}
+			
     }
 
     &__counter{
