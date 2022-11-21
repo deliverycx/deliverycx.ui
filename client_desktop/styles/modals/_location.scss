@@ -448,6 +448,7 @@
 		font-weight: 700;
 		color: #fff;
 		transition: background-color 0.3s ease-in-out;
+		border: none;
 		&:disabled{
 			background: none;
 			border: 1px solid #CCCCCC;
