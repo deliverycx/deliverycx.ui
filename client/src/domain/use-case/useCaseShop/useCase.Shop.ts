@@ -6,10 +6,13 @@ import { useEffect } from 'react';
 import debounce from 'lodash.debounce';
 import { useHistory } from "react-router-dom";
 import { Redirects } from "application/helpers/redirectTo";
+import { useDispatch } from "react-redux";
+import { fetStopList } from "servises/redux/slice/shopSlice";
 
 export function useCaseShop() {
   const [id,setId] = useState(true)
   const category = adapterSelector.useSelectors(selector => selector.category)
+	const dispatch = useDispatch()
 	const point = adapterSelector.useSelectors(selector => selector.point)
   const { data: products, isFetching } = useGetProductsQuery(category?.id, {
     skip:id,
@@ -18,8 +21,13 @@ export function useCaseShop() {
 
   useEffect(() => {
     category?.id && setId(false)
-		Redirects(point.guid)
+		//Redirects(point.guid)
   }, [category?.id])
+
+
+	useEffect(() => {
+    !id && dispatch(fetStopList(point.guid))  
+  }, [id])
 
 
   this.data({
@@ -64,12 +72,9 @@ export function useCaseShopItem(id:string) {
 
   useEffect(() => {
     if (stoplists) {
-			/*
-      stoplists.stopList.forEach((item: TStopListItems) => {
-
-        item.productId === id && setDisableItem(true)
+			stoplists.forEach((item: TStopListItems) => {
+        item.product === id && setDisableItem(true)
       })
-			*/
     }
 
   },[stoplists])
