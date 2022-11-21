@@ -215,7 +215,13 @@
       font-family: $bold;
       margin-top: 20px;
 			color: #fff;
-			
+			&:disabled{
+				background: none;
+				border: 1px solid #CCCCCC;
+				color: #CCCCCC;
+				box-shadow: none;
+				cursor: no-drop;
+			}
     }
 
     &__counter{
@@ -244,12 +250,7 @@
   }
 }
 
-.nodelivebtn{
-	background: none !important;
-	border: 1px solid #CCCCCC !important;
-	color: #CCCCCC !important;
-	box-shadow: none;
-}
+
 .stausopen{
 	.welcome__select-adress__adress{
 		color: #ABABAB !important;
