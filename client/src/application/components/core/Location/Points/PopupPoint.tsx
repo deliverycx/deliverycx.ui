@@ -113,11 +113,17 @@ const PopupPoint = () => {
                           }
 													{
 														
+														address.delivMetod === CART_CHOICE.OPEN &&
+														<div className="point-closed-container">
+																<div className="text-bold">Онлайн заказ недоступен</div>
+																<div className="text-secondary">Приносим извинения за неудобства.</div>
+
+														</div>
 													}
                           <button
                               className={nodeliveCN}
                               onClick={() => selectPointHandler(address)}
-															disabled={address.delivMetod === CART_CHOICE.OPEN && true}
+															disabled={address.delivMetod === CART_CHOICE.OPEN || address.delivMetod === CART_CHOICE.NOWORK && true}
                           >
                               Выбрать
                           </button>

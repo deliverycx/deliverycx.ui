@@ -28,7 +28,7 @@ export function usePoints(this: any,{selectCity,handleSelectOrganitztion}:any) {
 
 
   const handlerPoint = (address: IPoint)=>{
-		if(address.delivMetod === CART_CHOICE.OPEN) return
+		if(address.delivMetod === CART_CHOICE.OPEN || address.delivMetod === CART_CHOICE.NOWORK) return
 		handleSelectOrganitztion(address)
     //dispatch(setPoint(address));
     dispatch(setModal(false))

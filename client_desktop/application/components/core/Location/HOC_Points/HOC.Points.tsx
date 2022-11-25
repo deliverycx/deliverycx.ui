@@ -41,6 +41,8 @@ const Points = () => {
 													? <span className="onlypickup_small"> </span> :
 												points.delivMetod === CART_CHOICE.OPEN 
 													? <span className="onlypickup_small">скоро открытие</span> :	
+												points.delivMetod === CART_CHOICE.NOWORK
+													?  <span className="onlypickup_small">онлайн заказ недоступен</span> :	
 													<span className="onlypickup_small">самовывоз и доставка</span>
 											}
                       
