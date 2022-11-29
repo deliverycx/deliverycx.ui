@@ -113,9 +113,9 @@ const PopupPoint = () => {
                           }
 													{
 														
-														address.delivMetod === CART_CHOICE.OPEN &&
+														address.delivMetod === CART_CHOICE.OPEN || address.delivMetod === CART_CHOICE.NOWORK &&
 														<div className="point-closed-container">
-																<div className="text-bold">Онлайн заказ недоступен</div>
+																<div className="text-bold">Онлайн-заказ в данной хинкальной недоступен</div>
 																<div className="text-secondary">Приносим извинения за неудобства.</div>
 
 														</div>

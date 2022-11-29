@@ -62,7 +62,7 @@ const PopupPoint = () => {
 													address.delivMetod === CART_CHOICE.OPEN 
 													? <div className="deliv-method">скоро открытие</div> :	
 													address.delivMetod === CART_CHOICE.NOWORK
-													? <div className="deliv-method">онлайн заказ недоступен</div> : 
+													? <div className="deliv-method">онлайн-заказ недоступен</div> : 
 													<div className="deliv-method">самовывоз и доставка</div>
 											}
             {
