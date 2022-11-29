@@ -36,7 +36,7 @@ const Stocks = () => {
 
 
 	useEffect(()=>{
-		getStocks()
+		point.guid && getStocks()
 	},[point.guid])
 
     const settings = {

@@ -38,7 +38,7 @@ const NewsItems = () => {
 	}
 
 		useEffect(()=>{
-			getStocks()
+			point.guid && getStocks()
 		},[point.guid])
 
 	return (
