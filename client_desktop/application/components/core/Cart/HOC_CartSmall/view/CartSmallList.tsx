@@ -19,7 +19,7 @@ const CartSmallList = ({onClose}:any) => {
 			<CartTotal />
 			{/* eslint-disable-next-line @next/next/no-html-link-for-pages */}
 			{
-				workTimeHelp()
+				workTimeHelp() && (points.delivMetod !== CART_CHOICE.NODELIVERY || points.delivMetod === CART_CHOICE.OPEN)
 				? <button disabled className="order-btn-pointclosed">Хинкальная сейчас закрыта.<br/>
 						Оформить заказ вы сможете: {workTimeCheck(points.workTime)}
 					</button>

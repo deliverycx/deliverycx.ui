@@ -108,7 +108,7 @@ export function useLocations(this: any){
 	useEffect(() => {
 		const worktime = router.query.worktime as string
 
-    if(!modal && !modalMap){
+    if(!modal && !modalMap && (point.delivMetod !== CART_CHOICE.NODELIVERY || point.delivMetod === CART_CHOICE.OPEN)){
 			setWorkOrg(workTimeHelp)
 		}
 		if(worktime){
