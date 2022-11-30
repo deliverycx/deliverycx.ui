@@ -114,12 +114,12 @@ const CartFrom: FC<IProps> = ({ builder,paths }) => {
         </div>
         <div className="cart__order-btnbox">
 					{
-						workTimeHelp()
+						workTimeHelp()  && (delivMetod !== CART_CHOICE.NODELIVERY || delivMetod === CART_CHOICE.OPEN)
 						? <button disabled className="order-btn-pointclosed">Хинкальная сейчас закрыта.<br/>
 								Оформить заказ вы сможете: {workTimeCheck(workTime)}
 							</button>
-						: delivMetod === CART_CHOICE.NODELIVERY
-							? <button disabled className="order-btn-pointclosed">Онлайн заказ недоступен
+						: delivMetod === CART_CHOICE.NODELIVERY || delivMetod === CART_CHOICE.OPEN
+							? <button disabled className="order-btn-pointclosed">Оформление онлайн-заказа недоступно
 								
 							</button>	
 						: <button type="submit" className="cart__order-btn btn" disabled={loadingOrder || disabledData()}>

@@ -19,12 +19,12 @@ const CartSmallList = ({onClose}:any) => {
 			<CartTotal />
 			{/* eslint-disable-next-line @next/next/no-html-link-for-pages */}
 			{
-				workTimeHelp()
+				workTimeHelp() && (points.delivMetod !== CART_CHOICE.NODELIVERY || points.delivMetod === CART_CHOICE.OPEN)
 				? <button disabled className="order-btn-pointclosed">Хинкальная сейчас закрыта.<br/>
 						Оформить заказ вы сможете: {workTimeCheck(points.workTime)}
 					</button>
-				: points.delivMetod === CART_CHOICE.NODELIVERY ?
-					<button disabled className="order-btn-pointclosed">Онлайн заказ недоступен</button>
+				: points.delivMetod === CART_CHOICE.NODELIVERY || points.delivMetod === CART_CHOICE.OPEN ?
+					<button disabled className="order-btn-pointclosed">Оформление онлайн-заказа недоступно</button>
 						// eslint-disable-next-line @next/next/no-html-link-for-pages
 				: <a className="cart__order-btn btn cart-btn" href="/checkout">Оформить заказ </a>
 			}

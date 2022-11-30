@@ -7,10 +7,10 @@ const PointDisplay:FC<{setter:any}> = ({setter}) =>{
 									Привет!
 							</div>
 							<div className="attention-info">
-									Оформление онлайн заказа в данной <br /> хинкальной недоступно.
+										Хинкальная только открылась и готовится <br /> к подключению онлайн-заказов 
 							</div>
 							<div className="secondary-text">
-									Вы можете ознакомится с нашим меню<br/> и почитать новости
+									Сейчас вы можете ознакомиться с нашим меню, просмотреть новости и узнать об актуальных акциях
 							</div>
 							<div className="notification_worktime-buttons">
 									{/* eslint-disable-next-line @next/next/no-html-link-for-pages */}

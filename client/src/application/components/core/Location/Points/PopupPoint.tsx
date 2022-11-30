@@ -13,7 +13,9 @@ const PopupPoint = () => {
 
   const address = addresses && addresses[statePoint.slideIndex]
   const selectAdressCN = cn("welcome__select-adress", { opened: statePoint.isOpen });
-
+	
+	const statusopenCN = address && cn("welcome__select-adress opened", { stausopen: address.delivMetod === CART_CHOICE.OPEN });
+	const nodeliveCN = address && cn("btn welcome__select-adress__btn", { nodelivebtn: address.delivMetod === CART_CHOICE.NODELIVERY });
 
   return (
       <>
@@ -22,7 +24,8 @@ const PopupPoint = () => {
           </button>
           {
               statePoint.isOpen && address && (
-                  <div className="welcome__select-adress opened">
+								
+                  <div className={statusopenCN}>
                       <div className="container">
                           <div className="welcome__select-adress__header ">
                               <div onClick={() => SlidePointsHandler("prev")}>
@@ -45,7 +48,7 @@ const PopupPoint = () => {
                           {/*   {address.workTime}*/}
                           {/*</div>*/}
                           
-													<PointWorkTime worktime={address.workTime} />
+													<PointWorkTime worktime={address.workTime} adress={address.address} />
                           <div className="welcome__select-adress__info">
                               <img
                                   src={require("assets/i/phone-green.svg").default}
@@ -91,7 +94,9 @@ const PopupPoint = () => {
                               (recvisites && Object.keys(recvisites).length !== 0) &&
                               <div className="recvisites" onClick={() => recvisitesHandler(true)}>Реквизиты компании</div>
                           }
-                          {workTimeHelp(address.workTime) &&
+                          {workTimeHelp(address.workTime) 
+													&& address.delivMetod !== CART_CHOICE.OPEN || address.delivMetod !== CART_CHOICE.NOWORK  ||  address.delivMetod !== CART_CHOICE.NODELIVERY
+													&&
                               <div className="point-closed-container">
                                   <div className="text-bold">Наша хинкальная пока закрыта.<br /> Оформить заказ нельзя.</div>
                                   <div className="text-secondary">Сейчас вы можете ознакомится с нашим<br />
@@ -102,17 +107,25 @@ const PopupPoint = () => {
                           {
                               address.delivMetod === CART_CHOICE.NODELIVERY &&
                               <div className="point-closed-container">
-                                  <div className="text-bold">Онлайн заказ недоступен</div>
-                                  <div className="text-secondary">Приносим извинения за неудобства.<br />
-                                      Сейчас вы можете ознакомиться с меню и узнать об акциях и новинках.
+                                  <div className="text-bold">Хинкальная только открылась и готовится<br /> к подключению онлайн-заказов </div>
+                                  <div className="text-secondary">Сейчас вы можете ознакомиться с нашим меню,<br /> просмотреть новости и узнать об актуальных акциях
                                   </div>
 
                               </div>
                           }
+													{
+														
+														address.delivMetod === CART_CHOICE.OPEN || address.delivMetod === CART_CHOICE.NOWORK &&
+														<div className="point-closed-container">
+																<div className="text-bold">Онлайн-заказ в данной хинкальной недоступен</div>
+																<div className="text-secondary">Приносим извинения за неудобства.</div>
+
+														</div>
+													}
                           <button
-                              className="btn welcome__select-adress__btn"
-															disabled={address.delivMetod === CART_CHOICE.OPEN && true}
+                              className={nodeliveCN}
                               onClick={() => selectPointHandler(address)}
+															disabled={address.delivMetod === CART_CHOICE.OPEN || address.delivMetod === CART_CHOICE.NOWORK && true}
                           >
                               Выбрать
                           </button>

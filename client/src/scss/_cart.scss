@@ -198,6 +198,8 @@
     .point-closed-cart-container {
         margin-top: 28px;
         margin-bottom: 15px;
+				margin-left: 10px;
+				margin-right: 25px;
         border: 2px solid #CCCCCC;
         border-radius: 15px;
         display: flex;
@@ -462,19 +464,21 @@
     }
 }
 .order-btn-pointclosed[disabled] {
-	width: 100%;
-	border-radius: 65px;
-	height: 50px;
+	width: 90%;
+	background: #EFEFEF;
+	border-radius: 90px;
+	height: 70px;
 	padding: 10px 0;
 	text-align: center;
 	color:  #ABABAB;
 	border: none;
 	cursor: pointer;
 	font-weight: 500;
-	font-size: 17px;
-	font-family: sf-ui, sans-serif;
-	background: #EFEFEF;
+	font-size: 21px;
+	font-family: $bold;
 	margin-bottom: 30px;
+	margin-left: 10px;
+	
 }
 .order-container{
 	min-height: 100% !important;

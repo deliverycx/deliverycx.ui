@@ -33,7 +33,7 @@ const CartLayout: FC<ICartLayout> = ({ children }) => {
                   <CartTotal />
                   <Discounts />
                   <DeliveryCost/>
-                  {workTimeHelp(point.workTime)
+                  {workTimeHelp(point.workTime) && (point.delivMetod !== CART_CHOICE.NODELIVERY || point.delivMetod === CART_CHOICE.OPEN)
                       ? <div className="point-closed">
                           <div className="point-closed-cart-container">
                               <div className="top-text">Хинкальная сейчас закрыта.<br />
@@ -61,6 +61,22 @@ const CartLayout: FC<ICartLayout> = ({ children }) => {
                           </div>
                       </div>
                       : point.delivMetod === CART_CHOICE.NODELIVERY ?
+                          <>
+                              <div className="point-closed-cart-container">
+                                  <div className="top-text">Хинкальная только открылась <br /> и готовится  к подключению онлайн-заказов</div>
+                                  <div className="text-secondary">
+																		Сейчас вы можете ознакомиться с нашим меню,<br /> просмотреть новости и узнать об актуальных акциях 
+                                  </div>
+                              </div>
+                              <button
+                                  type="submit"
+                                  className="order-btn-pointclosed"
+                                  disabled={true}
+                              >
+                                  Заказать
+                              </button>
+                          </>
+													: point.delivMetod === CART_CHOICE.OPEN ?
                           <>
                               <div className="point-closed-cart-container">
                                   <div className="top-text">Онлайн заказ недоступен</div>

@@ -79,7 +79,7 @@ const Header = () => {
                         Меню
                     </a>
                     <a className="header_menu_link" href="http://starikkhinkalich.ru/" target="_blank" rel="noreferrer" >
-                        Новинки и акции
+										Новости и акции
                     </a>
                     <a className={mapColorCN} onClick={()=> handleClickMap()}>
                         Старик Хинкалыч на карте

@@ -9,6 +9,7 @@ import RequestLocation from "servises/repository/Axios/Request/Request.Location"
 import { RequestAdmin } from "servises/repository/Axios/RequestAdmin";
 import { ICity, ISocial,IPoint } from "@types";
 import { workTimeHelp } from "application/helpers/workTime";
+import { CART_CHOICE } from "application/contstans/cart.const";
 
 export function useLocations(this: any){
   const dispatch = useDispatch()
@@ -107,7 +108,7 @@ export function useLocations(this: any){
 	useEffect(() => {
 		const worktime = router.query.worktime as string
 
-    if(!modal && !modalMap){
+    if(!modal && !modalMap && (point.delivMetod !== CART_CHOICE.NODELIVERY || point.delivMetod === CART_CHOICE.OPEN)){
 			setWorkOrg(workTimeHelp)
 		}
 		if(worktime){
@@ -118,7 +119,7 @@ export function useLocations(this: any){
 
 	// закрыта точка или нет
 	useEffect(() => {
-		point.delivMetod === 'NODELIVERY' && setDisplayOrg(true)
+		point.delivMetod === CART_CHOICE.NODELIVERY && setDisplayOrg(true)
   }, [point]);
 
 

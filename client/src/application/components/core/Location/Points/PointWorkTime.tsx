@@ -4,7 +4,7 @@ import cn from "classnames";
 import { checkEmtpyWork, checkWorkIsArray, workTimeCheck } from "application/helpers/workTime";
 
 /* eslint-disable @typescript-eslint/no-var-requires */
-const PointWorkTime:FC<{worktime:string[]} > = ({worktime}) => {
+const PointWorkTime:FC<{worktime:string[],adress:string} > = ({worktime,adress}) => {
 	const [select,setSelect] = useState(false)
 	const [activeDate,setActiveDate] = useState<number>(0)
 
@@ -27,8 +27,11 @@ const PointWorkTime:FC<{worktime:string[]} > = ({worktime}) => {
 		}
 	},[date,worktime])
 
+	useEffect(()=>{
+		setSelect(false)
+	},[adress])
+
 	const checktype = !!(typeof checkWorkIsArray(worktime) === 'string')
-	console.log('wwww',checktype);
 
 	return (
 		<div className="welcome_worktime">
