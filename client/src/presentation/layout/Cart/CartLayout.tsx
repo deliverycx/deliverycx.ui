@@ -33,7 +33,7 @@ const CartLayout: FC<ICartLayout> = ({ children }) => {
                   <CartTotal />
                   <Discounts />
                   <DeliveryCost/>
-                  {workTimeHelp(point.workTime)
+                  {workTimeHelp(point.workTime) && (point.delivMetod !== CART_CHOICE.NODELIVERY || point.delivMetod === CART_CHOICE.OPEN)
                       ? <div className="point-closed">
                           <div className="point-closed-cart-container">
                               <div className="top-text">Хинкальная сейчас закрыта.<br />

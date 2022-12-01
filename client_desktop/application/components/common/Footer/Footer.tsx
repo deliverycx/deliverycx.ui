@@ -21,7 +21,8 @@ const Footer = () => {
 					<div className="footer_box second-block">
 						<FooterLocation />
 					</div>
-					<SubscribeForm/>
+					<div className="footer_grid-form"></div>
+					
   			</div>
   			<div className="foot">
   				<div className="foot-item">

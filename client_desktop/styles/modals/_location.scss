@@ -467,6 +467,10 @@
 			color: #CCCCCC;
 			box-shadow: none;
 			cursor: no-drop;
+			&:hover{
+				background: none;
+				color: #CCCCCC;
+			}
 		}
 	}
 	&__btn:hover {

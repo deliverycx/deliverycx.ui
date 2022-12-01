@@ -18,9 +18,9 @@ const NewsItems = () => {
 		rows: 1,
 	};
 
-	const getStocks = async () =>{
+	const getStocks = async (guid:string) =>{
 		try {
-			const {data}:any = await RequestAdmin.bannersList(point.guid)
+			const {data}:any = await RequestAdmin.bannersList(guid)
 			const ban = data.reduce((acc:any,val:any,index:number) =>{
 				
 				val.groopbanner.map((ban:any) =>{
@@ -37,9 +37,13 @@ const NewsItems = () => {
 		}
 	}
 
-		useEffect(()=>{
-			getStocks()
-		},[point.guid])
+	useEffect(()=>{
+		if(point.guid){
+			getStocks(point.guid)
+		}else{
+			getStocks(process.env.NEXT_PUBLIC_DEFAULT_ORG as string)
+		}
+	},[point.guid])
 
 	return (
 		<>

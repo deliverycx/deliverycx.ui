@@ -14,7 +14,7 @@ const SlideBar = () => {
         <div className={CN1} onClick={() => setSwtch(false)}>
           Компания <a>«Cтарик Хинкалыч»</a>
         </div>
-        <div className={CN2} onClick={() => setSwtch(true)}>Новости</div>
+        <div className={CN2} onClick={() => setSwtch(true)}>Новости и акции</div>
       </section>
       <section className="slidebars">
         <SlideBarNews isVisible={swtch} />

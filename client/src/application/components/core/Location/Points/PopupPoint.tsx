@@ -94,7 +94,9 @@ const PopupPoint = () => {
                               (recvisites && Object.keys(recvisites).length !== 0) &&
                               <div className="recvisites" onClick={() => recvisitesHandler(true)}>Реквизиты компании</div>
                           }
-                          {workTimeHelp(address.workTime) &&
+                          {workTimeHelp(address.workTime) 
+													&& address.delivMetod !== CART_CHOICE.OPEN || address.delivMetod !== CART_CHOICE.NOWORK  ||  address.delivMetod !== CART_CHOICE.NODELIVERY
+													&&
                               <div className="point-closed-container">
                                   <div className="text-bold">Наша хинкальная пока закрыта.<br /> Оформить заказ нельзя.</div>
                                   <div className="text-secondary">Сейчас вы можете ознакомится с нашим<br />
@@ -113,11 +115,17 @@ const PopupPoint = () => {
                           }
 													{
 														
+														address.delivMetod === CART_CHOICE.OPEN || address.delivMetod === CART_CHOICE.NOWORK &&
+														<div className="point-closed-container">
+																<div className="text-bold">Онлайн-заказ в данной хинкальной недоступен</div>
+																<div className="text-secondary">Приносим извинения за неудобства.</div>
+
+														</div>
 													}
                           <button
                               className={nodeliveCN}
                               onClick={() => selectPointHandler(address)}
-															disabled={address.delivMetod === CART_CHOICE.OPEN && true}
+															disabled={address.delivMetod === CART_CHOICE.OPEN || address.delivMetod === CART_CHOICE.NOWORK && true}
                           >
                               Выбрать
                           </button>
