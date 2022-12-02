@@ -8,6 +8,8 @@ import { CART_CHOICE } from "application/contstans/cart.const";
 import { useHistory } from "react-router-dom";
 import { ROUTE_APP } from "application/contstans/route.const";
 import { adapterSelector } from "servises/redux/selectors/selectors";
+import { actionSelectPayment } from "servises/redux/slice/bankCardSlice";
+import { CartFormMetods } from "./CartForm/CartMetods";
 
 const CartChoise: FC = () => {
     const dispatch = useDispatch();
@@ -25,7 +27,9 @@ const CartChoise: FC = () => {
     const pickupCN = cn("cart__choice__item", {
         active: activeChoice === CART_CHOICE.PICKUP
     }); //activeChoice === CART_CHOICE.PICKUP
-    //const onspotCN = cn("cart__choice__item", { active: false }); // activeChoice === CART_CHOICE.ONSPOT
+    const onspotCN = cn("cart__choice__item", { 
+			active: activeChoice === CART_CHOICE.ONSPOT
+		}); // activeChoice === CART_CHOICE.ONSPOT
 
     useEffect(() => {
         if (delivMetod === CART_CHOICE.PICKUP) {
@@ -33,10 +37,14 @@ const CartChoise: FC = () => {
         }
 
         if (activeChoice === CART_CHOICE.COURIER) {
+						dispatch(actionSelectPayment(CartFormMetods.paymentsMetod[0]))
             history.push(ROUTE_APP.CART.CART_DELIVERY);
         } else if (activeChoice === CART_CHOICE.PICKUP) {
             history.push(ROUTE_APP.CART.CART_PICKUP);
-        }
+        } else if (activeChoice === CART_CHOICE.ONSPOT) {
+					dispatch(actionSelectPayment(CartFormMetods.paymentsMetodONSPOT[0]))
+					history.push(ROUTE_APP.CART.CART_ONSPOT);
+			}
     }, [activeChoice]);
 
     const handlerChoice = useCallback(
@@ -68,6 +76,14 @@ const CartChoise: FC = () => {
                 }}
             >
                 Самовывоз
+            </div>
+						<div
+                className={onspotCN}
+                onClick={() => {
+                    handlerChoice(CART_CHOICE.ONSPOT);
+                }}
+            >
+                За столом
             </div>
         </div>
     );

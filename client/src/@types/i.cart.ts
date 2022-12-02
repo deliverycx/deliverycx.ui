@@ -9,6 +9,10 @@ export interface ICart {
     deltaPrice: number;
     orderType:string;
 		loadingDiscount:boolean;
+		orderTable:{
+			id:string
+			numb:number
+		}
 }
 
 export interface ICheckout {

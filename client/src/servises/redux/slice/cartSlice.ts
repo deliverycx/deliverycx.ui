@@ -197,6 +197,9 @@ const cartSlice = createSlice({
         refreshCart: cartAdapter.setAll,
         removeCart: cartAdapter.removeOne,
         deleteCart: cartAdapter.removeAll,
+				setOrderTable:(state, action) =>{
+					state.orderTable = action.payload
+				},
         setAdress: (state, action) => {
             state.address = action.payload;
         },
@@ -248,6 +251,7 @@ export const {
     setErrors,
     accessOrder,
     setOrderType,
-		setENErrors
+		setENErrors,
+		setOrderTable
 } = cartSlice.actions;
 export default cartSlice;

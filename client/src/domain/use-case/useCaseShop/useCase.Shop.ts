@@ -8,6 +8,7 @@ import { useHistory } from "react-router-dom";
 import { Redirects } from "application/helpers/redirectTo";
 import { useDispatch } from "react-redux";
 import { fetStopList } from "servises/redux/slice/shopSlice";
+import { useRedirectOrg } from "application/hooks/useRedirectOrgTable";
 
 export function useCaseShop() {
   const [id,setId] = useState(true)
@@ -18,6 +19,8 @@ export function useCaseShop() {
     skip:id,
     refetchOnMountOrArgChange:true,
   })
+
+	useRedirectOrg()
 
   useEffect(() => {
     category?.id && setId(false)
