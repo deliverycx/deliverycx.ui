@@ -726,6 +726,68 @@
     padding: 0 25px 30px 25px;
 }
 
+.onspot_box{
+	display: flex;
+	justify-content: space-between;
+	margin-top: 30px;
+	padding: 0 20px;
+}
+.onspot_box__adress{
+	width: 75%;
+}
+.onspot_box__select{
+	width: 20%;
+	cursor: pointer;
+	position: relative;
+}
+.onspot_box_label{
+	color: #666666;
+	font-size: 13px;
+	line-height: 120%;
+	margin-bottom: 7px;
+	font-family: sf-ui-medium, sans-serif;
+}
+.onspot_select_def {
+  width: 100%;
+  padding: 11px 0;
+  background-color: #EFEFEF;
+  margin-bottom: 10px;
+  color: #333333;
+  font-family: "sf-ui-regular";
+  font-size: 15px;
+  border-radius: 100px;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.onspot_select{
+	background-color: #fff;
+	position: absolute;
+	left: 0;
+	top: 65px;
+	z-index: 99;
+	width: 100%;
+	padding:15px 20px;
+	border-radius: 15px;
+	box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.25);
+	.onspot_select_item{
+		margin-top: 7px;
+		color: #ABABAB;
+		font-size: 14px;
+		text-align: center;
+	}
+	.onspot_select_item.active{
+		color: #333333;
+	}
+	.onspot_select_item--title{
+		color: #333333;
+		font-weight: 500;
+		margin-bottom: 5px;
+	}
+	
+}
+
 .special-offer-container {
     width: 100%;
     height: 60px;

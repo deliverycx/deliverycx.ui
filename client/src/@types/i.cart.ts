@@ -12,6 +12,7 @@ export interface ICart {
 		orderTable:{
 			id:string
 			numb:number
+			section:string
 		}
 }
 
