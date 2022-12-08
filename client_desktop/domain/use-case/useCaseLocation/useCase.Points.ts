@@ -38,7 +38,7 @@ export function usePoints(this: any,{selectCity,handleSelectOrganitztion}:any) {
     }
     
     RequestProfile.update({ organizationId: address.id });
-    router.push(ROUTE_APP.MENU)
+    router.push(`${ROUTE_APP.MENU}/?organization=${address.guid}`)
   }
 
 	console.log(cityid);
