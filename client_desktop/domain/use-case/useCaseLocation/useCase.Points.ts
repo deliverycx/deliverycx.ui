@@ -173,7 +173,7 @@ export function usePointsMaps(this: any,{selectCity,handlerGoToCity,handlerClose
             
             RequestProfile.update({ organizationId: address.id });
             handlerCloseMapModal()
-						router.push(ROUTE_APP.MENU)
+						router.push(`${ROUTE_APP.MENU}/?organization=${address.guid}`)
         } catch (error) {
             
         }
