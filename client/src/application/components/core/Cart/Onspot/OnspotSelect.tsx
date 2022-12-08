@@ -32,6 +32,8 @@ const OnspotSelect = () =>{
 					}))
 				}
 				
+			}else{
+				dispatch(setOrderTable(null))
 			}
 		} catch (error) {
 			console.log(error);
