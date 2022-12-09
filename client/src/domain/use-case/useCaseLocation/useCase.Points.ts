@@ -134,7 +134,7 @@ export function usePoints() {
 							dispatch(setOrderType(address.delivMetod))
 							dispatch(fetchRefreshCart())
 						} 
-            history.push(`${ROUTE_APP.SHOP.SHOP_MAIN}/?organization=${address.guid}` );
+            history.push(`${ROUTE_APP.SHOP.SHOP_MAIN}/?address=${address.city + ',' + address.address}` );
             RequestProfile.update({ organizationId: address.id });
         } catch (error) {
             history.goBack();
