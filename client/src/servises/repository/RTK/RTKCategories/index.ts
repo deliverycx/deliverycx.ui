@@ -16,7 +16,7 @@ export const RTKCategories = createApi({
   reducerPath: CATEGORIES_API_REDUCER_KEY,
   baseQuery: defFetchBaseQuery,
   endpoints: (builder) => ({
-    getCategori: builder.query<any,string>({
+    getCategori: builder.query<ICategory[] | any,string>({
       query: (organizationid) => {
         return ({
           method: "GET",
