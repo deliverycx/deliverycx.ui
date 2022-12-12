@@ -25,7 +25,6 @@
     "dotenv": "^14.2.0",
     "formik": "^2.2.9",
     "history": "^4.10.1",
-    "html-react-parser": "^3.0.4",
     "infinite-react-carousel": "^1.2.11",
     "lodash": "^4.17.21",
     "lodash.debounce": "^4.0.8",
