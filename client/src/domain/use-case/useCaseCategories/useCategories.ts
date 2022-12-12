@@ -30,7 +30,7 @@ export function useCategories() {
     localStorage.removeItem('prod')
   }, [categories])
 
-
+   
   useEffect(() => {
     let time: null | ReturnType<typeof setTimeout> = null
     if (Object.keys(category).length && categories) {

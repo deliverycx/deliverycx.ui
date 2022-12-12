@@ -38,7 +38,7 @@ export function usePoints(this: any,{selectCity,handleSelectOrganitztion}:any) {
     }
     
     RequestProfile.update({ organizationId: address.id });
-    router.push(ROUTE_APP.MENU)
+    router.push(`${ROUTE_APP.MENU}/?address=${address.city + ',' + address.address}`)
   }
 
 	console.log(cityid);
@@ -173,7 +173,7 @@ export function usePointsMaps(this: any,{selectCity,handlerGoToCity,handlerClose
             
             RequestProfile.update({ organizationId: address.id });
             handlerCloseMapModal()
-						router.push(ROUTE_APP.MENU)
+						router.push(`${ROUTE_APP.MENU}`)
         } catch (error) {
             
         }
