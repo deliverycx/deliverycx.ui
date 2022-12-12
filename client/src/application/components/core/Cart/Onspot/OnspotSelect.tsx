@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-var-requires */
 import { useState } from 'react';
 import { RequestCart } from 'servises/repository/Axios/Request';
 import { adapterSelector } from 'servises/redux/selectors/selectors';
@@ -50,9 +51,20 @@ const OnspotSelect = () =>{
 	return (
 		<div className="onspot_box">
 			<div className="onspot_box__adress">
-				<div className="onspot_box_label">хинкальная адрес</div>
-				<div className="onspot_select_def">турецкая 25</div>
+				<div className="onspot_box_label">Адрес хинкальной:</div>
+				<div className="row form__field-wrapper__address">
+                <div className="form__field-wrapper__placeholder">
+                    <div className="form__field-wrapper__placeholder__ico">
+                        <img src={require("assets/i/cart/mark-dark.svg").default} alt="" />
+                    </div>
+                </div>
+								<div className="adress_fild__address">
+									{point.address}
+								</div>
+                
+            </div>
 			</div>
+			
 			{
 				cart.orderTable &&
 				<div className="onspot_box__select">

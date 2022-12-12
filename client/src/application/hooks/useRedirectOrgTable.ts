@@ -1,4 +1,4 @@
-import { ROUTE_APP } from "application/contstans/route.const";
+import { QUERY_APP, ROUTE_APP } from "application/contstans/route.const";
 import { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { useHistory, useLocation } from "react-router-dom";
@@ -13,9 +13,9 @@ export const useRedirectOrg = () =>{
 	
 	//http://localhost:3000/shop?organuzation=11663d0f-51a6-419d-8814-d3cb180eeab4&table={%22id%22:%22123%22,%22numb%22:2}&delivMetod=ONSPOT
 	const query = new URLSearchParams(loc.search);
-	const organuzation = query.get('organuzation')
-	const table = query.get('table')
-	const delivMetod = query.get('delivMetod')
+	const organuzation = query.get(QUERY_APP.ORGANIZATION)
+	const table = query.get(QUERY_APP.ONSPOT_TABLE)
+	const delivMetod = query.get(QUERY_APP.DELIVERY_METOD)
 
 	useEffect(()=>{
 		organuzation && caseQuery()

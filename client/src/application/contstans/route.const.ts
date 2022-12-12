@@ -18,3 +18,10 @@ export const ROUTE_APP = {
     ABOUT:'/about'
   }
 }
+
+
+export const QUERY_APP = {
+	ORGANIZATION:"organuzation",
+	ONSPOT_TABLE:"table",
+	DELIVERY_METOD:"delivMetod"
+}

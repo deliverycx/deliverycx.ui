@@ -8,3 +8,4 @@ export const MODAL_QUERY = {
     delivery:"delivery"
   }
 }
+
