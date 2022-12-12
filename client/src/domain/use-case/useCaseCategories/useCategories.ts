@@ -34,7 +34,7 @@ export function useCategories() {
   useEffect(() => {
     let time: null | ReturnType<typeof setTimeout> = null
     if (Object.keys(category).length && categories) {
-      const catIndex = categories.findIndex((cat:any) => cat.id === category.id)
+      const catIndex = categories.findIndex((cat) => cat.id === category.id)
       dispatch(setCategories(categories[catIndex]))
       time = setTimeout(() => {
         setCurrentSlide(catIndex);
