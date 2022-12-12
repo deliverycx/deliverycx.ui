@@ -2,7 +2,7 @@ FROM node:16-alpine as builder
 WORKDIR '/app'
 COPY package.json .
 RUN npm install --force
-RUN yarn add html-react-parser
+RUN npm install html-react-parser
 COPY . .
 RUN npm run build
 
