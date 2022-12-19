@@ -1,5 +1,5 @@
 import { createApi } from "@reduxjs/toolkit/query/react";
-import { ICity, IPoint } from "@types";
+import { ICity, IPoint, IPointStatus } from "@types";
 import { defFetchBaseQuery } from "..";
 
 export const LOCATION_API_REDUCER_KEY = "RTK_Location";
@@ -20,6 +20,14 @@ export const RTKLocation = createApi({
                 url: `organization/all?cityId=${cityId}`
             })
         }),
+				getPointStatus:builder.mutation<IPointStatus, string>({
+					query: (organization) => {
+							return {
+									method: "get",
+									url: `/organization/organizationstatus?organization=${organization}`
+							};
+					}
+				}),
         getRecvisites: builder.mutation<IPoint[], string>({
           query: (cityId) => ({
               method: "get",
@@ -28,4 +36,4 @@ export const RTKLocation = createApi({
       })
     })
 });
-export const { useGetCitiQuery, useGetPointsQuery,useGetRecvisitesMutation } = RTKLocation;
+export const { useGetCitiQuery, useGetPointsQuery,useGetRecvisitesMutation, useGetPointStatusMutation } = RTKLocation;

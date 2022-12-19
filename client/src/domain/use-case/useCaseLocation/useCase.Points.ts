@@ -2,7 +2,7 @@ import { useEffect, useReducer } from "react";
 import { useDispatch } from "react-redux";
 
 import { useHistory } from "react-router-dom";
-import { useGetPointsQuery, useGetRecvisitesMutation } from "servises/repository/RTK/RTKLocation";
+import { useGetPointsQuery, useGetPointStatusMutation, useGetRecvisitesMutation } from "servises/repository/RTK/RTKLocation";
 import { IPoint } from "@types";
 import {
     initialStatePoints,
@@ -33,22 +33,29 @@ export function usePoints() {
   const { id } = adapterSelector.useSelectors((selector) => selector.point);
   const { data: org, isFetching } = useGetPointsQuery(selectedCity.id);
   const [getRecvisites, { data: recvisites }] = useGetRecvisitesMutation()
+	const [getOrgstatus,{data:orgstatus}] = useGetPointStatusMutation()
 
   const [statePoint, dispatchPoint] = useReducer(
     PointsReducer,
     initialStatePoints
   );
 
+
   const addresses =  org && org.filter((val:IPoint,index:number) => val.isHidden !== true)
-	console.log(addresses);
 
   useEffect(() => {
-    (addresses && !isFetching) && getRecvisites(addresses[statePoint.slideIndex].id)
-  }, [statePoint.slideIndex])
+    if(addresses && !isFetching){
+			getRecvisites(addresses[statePoint.slideIndex].id)
+			getOrgstatus(addresses[statePoint.slideIndex].guid)
+			
+		}
+  }, [statePoint.slideIndex,org])
 
     useEffect(() => {
         if (Object.keys(selectedCity).length) {
-          (addresses && !isFetching) && nearPoint(addresses);
+          if(addresses && !isFetching) {
+						nearPoint(addresses); 
+					}
         } else {
             history.goBack();
         }

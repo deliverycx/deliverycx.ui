@@ -4,6 +4,7 @@ import cn from "classnames";
 import { workTimeHelp } from "application/helpers/workTime";
 import { CART_CHOICE } from "application/contstans/cart.const";
 import PointWorkTime from "./PointWorkTime";
+import PointStatus from "./PointStatus";
 
 /* eslint-disable @typescript-eslint/no-var-requires */
 const PopupPoint = () => {
@@ -58,16 +59,7 @@ const PopupPoint = () => {
                                   {address.phone}
                               </a>
                           </div>
-                          {
-                              address.delivMetod === CART_CHOICE.PICKUP &&
-                              <div className="welcome__select-adress__info onlypickup">
-                                  <img
-                                      src={require("assets/i/bag-red.svg").default}
-                                      alt="Только самовывоз"
-                                  />
-                                  <span>Только самовывоз</span>
-                              </div>
-                          }
+                          
 													{
 														
 														address.delivMetod === CART_CHOICE.OPEN &&
@@ -79,21 +71,15 @@ const PopupPoint = () => {
                                   <span>Скоро открытие</span>
                               </div>
 													}
-                          {
-                              !address.delivMetod &&
-                              <div className="welcome__select-adress__info onlypickup">
-                                  <img
-                                      src={require("assets/i/moto-red.svg").default}
-                                      alt="Доставка и самовывоз"
-                                  />
-                                  <span>Доставка и самовывоз</span>
-                              </div>
-                          }
+                          
 
                           {
                               (recvisites && Object.keys(recvisites).length !== 0) &&
                               <div className="recvisites" onClick={() => recvisitesHandler(true)}>Реквизиты компании</div>
                           }
+
+													<PointStatus />
+
                           {workTimeHelp(address.workTime) 
 													&& address.delivMetod !== CART_CHOICE.OPEN || address.delivMetod !== CART_CHOICE.NOWORK  ||  address.delivMetod !== CART_CHOICE.NODELIVERY
 													&&
