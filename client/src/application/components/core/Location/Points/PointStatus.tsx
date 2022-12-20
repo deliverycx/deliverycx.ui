@@ -1,60 +1,82 @@
 /* eslint-disable @typescript-eslint/no-var-requires */
-import { DELIVERY_METODS } from 'application/contstans/const.orgstatus';
-import React from 'react';
+import { IPoint } from '@types';
+import { DELIVERY_METODS, ORG_STATUS } from 'application/contstans/const.orgstatus';
+import { workTimeHelp } from 'application/helpers/workTime';
+import { useOrganizationStatus } from 'application/hooks/useOrganizationStatus';
+import React, { FC } from 'react';
 import { adapterSelector } from 'servises/redux/selectors/selectors';
 
-const PointStatus = () => {
-	const pointstatus = adapterSelector.useSelectors(selector => selector.pointstatus)
+type IProp = {
+	point: IPoint
+}
 
-	const statuses = [
-		{
-			name:"Только самовывоз",
-			exect: (pointstatus.deliveryMetod.includes(DELIVERY_METODS.PICKUP) && pointstatus.deliveryMetod.length === 1),
-			content:(
-				<div className="welcome__select-adress__info onlypickup">
-					<img
-						src={require("assets/i/bag-red.svg").default}
-						alt="Только самовывоз"
-					/>
-					<span>Только самовывоз</span>
-				</div>
-			)
-		},
-		{
-			name:'доставка',
-			exect: (pointstatus.deliveryMetod.includes(DELIVERY_METODS.COURIER) && pointstatus.deliveryMetod.includes(DELIVERY_METODS.PICKUP)),
-			content:(
-				<div className="welcome__select-adress__info onlypickup">
-					<img
-						src={require("assets/i/moto-red.svg").default}
-						alt="Доставка и самовывоз"
-					/>
-					<span>Доставка и самовывоз</span>
-				</div>
-			)
-		}
-	]
+const PointStatus: FC<IProp> = ({ point }) => {
+	const [statusTSX, switchMetod] = useOrganizationStatus()
 
-	const switchMetod = () =>{
-		const wrappers = statuses.filter((val:typeof statuses[0]) =>{
-			console.log('exee',val.exect);
-			return val.exect
-		})
-		
-		const w = wrappers.map((wrapp:typeof statuses[0],index:number) => {
-      return React.createElement(React.Fragment, {key: index}, wrapp.content)
-    })
-		return React.createElement(React.Fragment, null, w)
-	}
+	statusTSX.OnliPICKUP((
+		<div className="welcome__select-adress__info onlypickup">
+			<img
+				src={require("assets/i/bag-red.svg").default}
+				alt="Только самовывоз"
+			/>
+			<span>Только самовывоз</span>
+		</div>
+	))
 
-	
+	statusTSX.Delivery((
+		<div className="welcome__select-adress__info onlypickup">
+			<img
+				src={require("assets/i/moto-red.svg").default}
+				alt="Доставка и самовывоз"
+			/>
+			<span>Доставка и самовывоз</span>
+		</div>
+	))
+
+	statusTSX.OpenPoint((
+		<div className="welcome__select-adress__info onlyopen">
+			<img
+				src={require("assets/i/cloce.svg").default}
+				alt="Скоро открытие"
+			/>
+			<span>Скоро открытие</span>
+		</div>
+	))
+	statusTSX.NoDeliveryPoint((
+		<div className="point-closed-container">
+			<div className="text-bold">Хинкальная только открылась и готовится<br /> к подключению онлайн-заказов </div>
+			<div className="text-secondary">Сейчас вы можете ознакомиться с нашим меню,<br /> просмотреть новости и узнать об актуальных акциях
+			</div>
+
+		</div>
+	))
+	statusTSX.NoWorkPoint((
+		<div className="point-closed-container">
+			<div className="text-bold">Онлайн-заказ в данной хинкальной недоступен</div>
+			<div className="text-secondary">Приносим извинения за неудобства.</div>
+
+		</div>
+	))
+
+
+
 	return (
 		<>
-		{
-			switchMetod()
-		}
-		
-			
+			{
+				switchMetod()
+			}
+			{workTimeHelp(point.workTime)
+				&& statusTSX.pointstatus.organizationStatus === ORG_STATUS.WORK
+				&&
+				<div className="point-closed-container">
+					<div className="text-bold">Наша хинкальная пока закрыта.<br /> Оформить заказ нельзя.</div>
+					<div className="text-secondary">Сейчас вы можете ознакомится с нашим<br />
+						меню и почитать новости
+					</div>
+				</div>
+			}
+
+
 		</>
 	)
 }

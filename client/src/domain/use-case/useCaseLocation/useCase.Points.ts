@@ -18,6 +18,7 @@ import { adapterSelector } from "servises/redux/selectors/selectors";
 import { fetchDeleteCart, fetchRefreshCart, setOrderType } from "servises/redux/slice/cartSlice";
 import _ from "lodash";
 import { fetStopList } from "servises/redux/slice/shopSlice";
+import { ORG_STATUS } from "application/contstans/const.orgstatus";
 
 export function usePoints() {
   const history = useHistory();
@@ -31,6 +32,8 @@ export function usePoints() {
     (selector) => selector.city
   );
   const { id } = adapterSelector.useSelectors((selector) => selector.point);
+	const pointstatus = adapterSelector.useSelectors(selector => selector.pointstatus)
+
   const { data: org, isFetching } = useGetPointsQuery(selectedCity.id);
   const [getRecvisites, { data: recvisites }] = useGetRecvisitesMutation()
 	const [getOrgstatus,{data:orgstatus}] = useGetPointStatusMutation()
@@ -41,7 +44,9 @@ export function usePoints() {
   );
 
 
-  const addresses =  org && org.filter((val:IPoint,index:number) => val.isHidden !== true)
+	const addresses =  org && org.filter((val:IPoint,index:number) => val.isHidden !== true)
+
+
 
   useEffect(() => {
     if(addresses && !isFetching){

@@ -11,6 +11,7 @@ import Discounts from "application/components/core/Cart/CartBasket/HOC_Discount"
 import { adapterSelector } from "servises/redux/selectors/selectors";
 import { CART_CHOICE } from "application/contstans/cart.const";
 import DeliveryCost from "../../../application/components/core/Cart/CartBasket/DeliveryCost";
+import { ORG_STATUS } from "application/contstans/const.orgstatus";
 
 type ICartLayout = {
     children:ReactNode
@@ -18,7 +19,8 @@ type ICartLayout = {
 
 const CartLayout: FC<ICartLayout> = ({ children }) => {
 	const point = adapterSelector.useSelectors((selector) => selector.point);
-    const { orderType } = adapterSelector.useSelectors(selector => selector.cart);
+	const pointstatus = adapterSelector.useSelectors(selector => selector.pointstatus)
+  const { orderType } = adapterSelector.useSelectors(selector => selector.cart);
 
   return (
       <div className="cat_app" style={{ backgroundColor: "#fff" }}>
@@ -33,7 +35,7 @@ const CartLayout: FC<ICartLayout> = ({ children }) => {
                   <CartTotal />
                   <Discounts />
                   <DeliveryCost/>
-                  {workTimeHelp(point.workTime) && (point.delivMetod !== CART_CHOICE.NODELIVERY || point.delivMetod === CART_CHOICE.OPEN)
+                  {workTimeHelp(point.workTime) && pointstatus.organizationStatus === ORG_STATUS.WORK
                       ? <div className="point-closed">
                           <div className="point-closed-cart-container">
                               <div className="top-text">Хинкальная сейчас закрыта.<br />
@@ -60,8 +62,9 @@ const CartLayout: FC<ICartLayout> = ({ children }) => {
                               </button>
                           </div>
                       </div>
-                      : point.delivMetod === CART_CHOICE.NODELIVERY ?
+                      : pointstatus.organizationStatus === ORG_STATUS.NODELIVERY ?
                           <>
+													<div className="point-closed">
                               <div className="point-closed-cart-container">
                                   <div className="top-text">Хинкальная только открылась <br /> и готовится  к подключению онлайн-заказов</div>
                                   <div className="text-secondary">
@@ -75,23 +78,9 @@ const CartLayout: FC<ICartLayout> = ({ children }) => {
                               >
                                   Заказать
                               </button>
+														</div>	
                           </>
-													: point.delivMetod === CART_CHOICE.OPEN ?
-                          <>
-                              <div className="point-closed-cart-container">
-                                  <div className="top-text">Онлайн заказ недоступен</div>
-                                  <div className="text-secondary">
-                                      Приносим извинения за неудобства. <br />
-                                  </div>
-                              </div>
-                              <button
-                                  type="submit"
-                                  className="order-btn-pointclosed"
-                                  disabled={true}
-                              >
-                                  Заказать
-                              </button>
-                          </>
+												
                           : children
                   }
               </div>

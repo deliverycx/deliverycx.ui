@@ -36,7 +36,7 @@ export const checkEmtpyWork = (work:string[],index:number) =>{
 export const checkWorkIsArray = (work:any) =>{
 	if(typeof work == 'string') return ""
 	const result = work.filter((val:string) => val !== "")
-	console.log('result fil',result);
+	//console.log('result fil',result);
 	if(result.length === 0){
 		return null
 	}else if(result.length === 1){
@@ -50,7 +50,7 @@ export const checkWorkIsArray = (work:any) =>{
 export const workTimeCheck = (work:any):any => {
 	const date = new Date().getDay()
 
-	console.log('wokcheck',work);
+	//console.log('wokcheck',work);
 
 	if(!work || work.length === 0){
 		console.log('время сломано');
