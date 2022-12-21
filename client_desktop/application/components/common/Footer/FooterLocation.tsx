@@ -22,7 +22,7 @@ const FooterLocation = () => {
               </a>
           }
           {
-            social &&
+            social && social.social &&
               <a href={social.social.vk} target="_blank" rel="noreferrer">
                   <svg width="30" height="30" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
                       <path className="tg" fillRule="evenodd" clipRule="evenodd"

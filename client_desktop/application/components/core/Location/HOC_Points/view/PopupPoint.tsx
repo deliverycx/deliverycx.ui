@@ -4,12 +4,17 @@ import cn from "classnames";
 import { PointsContext } from "../HOC.PointsMap";
 import PointWorkTime from "./PointWorkTime";
 import { CART_CHOICE } from "application/contstans/cart.const";
+import PopupPointStatus from "./PopupPointStatus";
+import { adapterSelector } from "servises/redux/selectors/selectors";
+import { ORG_STATUS } from "application/contstans/const.orgstatus";
+import PointStatus from "./PointStatus";
 
 
 const PopupPoint = () => {
   const useCasePoints = useContext(PointsContext)
   const { addresses, statePoint, recvisites,selectCity } = useCasePoints.data
   const { selectPointHandler, buttonClickHandler, SlidePointsHandler, recvisitesHandler } = useCasePoints.handlers
+	const pointstatus = adapterSelector.useSelectors(selector => selector.pointstatus)
 
   const address = addresses && addresses[statePoint.slideIndex]
   const selectAdressCN = cn("welcome__select-adress", { opened: statePoint.isOpen });
@@ -54,27 +59,13 @@ const PopupPoint = () => {
                   {address.phone}
                </a>
             </div>
-    
-					 {	address.delivMetod === CART_CHOICE.PICKUP 
-													? <div className="deliv-method">только самовывоз</div> :
-													address.delivMetod === CART_CHOICE.NODELIVERY 
-													? <div className="deliv-method">  </div> :
-													address.delivMetod === CART_CHOICE.OPEN 
-													? <div className="deliv-method">скоро открытие</div> :	
-													address.delivMetod === CART_CHOICE.NOWORK
-													? <div className="deliv-method">онлайн-заказ недоступен</div> : 
-													<div className="deliv-method">самовывоз и доставка</div>
-											}
-            {
+						{
               (recvisites && Object.keys(recvisites).length !== 0) && <div className="recvisites" onClick={()=>recvisitesHandler(true)}>Реквизиты компании</div>
             }
-            <button
-               className="btn welcome__select-adress__btn"
-               onClick={() => selectPointHandler(address)}
-							 disabled={address.delivMetod === CART_CHOICE.OPEN || address.delivMetod === CART_CHOICE.NOWORK && true}
-            >
-               Выбрать
-            </button>
+						<PopupPointStatus organization={address} handler={selectPointHandler} />
+
+            
+           
          </div>
       </div>
       )

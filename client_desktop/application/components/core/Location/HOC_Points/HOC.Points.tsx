@@ -5,6 +5,7 @@ import cn from "classnames";
 import { useContext } from "react";
 import { LocationPointsContext } from "../LocationLayout";
 import { CART_CHOICE } from "application/contstans/cart.const";
+import PointStatus from "./view/PointStatus";
 
 
 const Points = () => {
@@ -32,21 +33,8 @@ const Points = () => {
           {
               !isLoading && addresses && addresses.map((points: IPoint) => {
                   if (!points.isHidden) {
-                    const CN = cn("welcome__city", { active: points.address === point.address, disablepoint:points.delivMetod === CART_CHOICE.OPEN }) //city.name === selectedCity?.name
-                    return <li key={points.id} onClick={() => handlerPoint(points)} className={CN}>
-                      {points.address}
-                      {	points.delivMetod === CART_CHOICE.PICKUP 
-													? <span className="onlypickup_small">только самовывоз</span> :
-												points.delivMetod === CART_CHOICE.NODELIVERY 
-													? <span className="onlypickup_small"> </span> :
-												points.delivMetod === CART_CHOICE.OPEN 
-													? <span className="onlypickup_small">скоро открытие</span> :	
-												points.delivMetod === CART_CHOICE.NOWORK
-													?  <span className="onlypickup_small">онлайн-заказ недоступен</span> :	
-													<span className="onlypickup_small">самовывоз и доставка</span>
-											}
-                      
-                    </li>
+                    
+                    return <PointStatus key={points.id} handler={handlerPoint} selectpoint={point} organization={points} />
                   }
                 })
             }

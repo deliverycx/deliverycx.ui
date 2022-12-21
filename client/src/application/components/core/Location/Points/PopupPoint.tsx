@@ -18,8 +18,8 @@ const PopupPoint = () => {
   const address = addresses && addresses[statePoint.slideIndex]
   const selectAdressCN = cn("welcome__select-adress", { opened: statePoint.isOpen });
 	
-	const statusopenCN = address && cn("welcome__select-adress opened", { stausopen: pointstatus.organizationStatus === ORG_STATUS.OPEN });
-	const nodeliveCN = address && cn("btn welcome__select-adress__btn", { nodelivebtn: pointstatus.organizationStatus === ORG_STATUS.NODELIVERY });
+	const statusopenCN = pointstatus && cn("welcome__select-adress opened", { stausopen: pointstatus.organizationStatus === ORG_STATUS.OPEN });
+	const nodeliveCN = pointstatus && cn("btn welcome__select-adress__btn", { nodelivebtn: pointstatus.organizationStatus === ORG_STATUS.NODELIVERY });
 
   return (
       <>

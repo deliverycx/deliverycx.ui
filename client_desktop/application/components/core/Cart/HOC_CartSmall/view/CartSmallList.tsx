@@ -3,9 +3,11 @@ import CartTotal from "../../HOC_Basket/view/CartTotal"
 import { workTimeCheck, workTimeHelp } from "application/helpers/workTime";
 import { adapterSelector } from "servises/redux/selectors/selectors";
 import { CART_CHOICE } from "application/contstans/cart.const";
+import { ORG_STATUS } from 'application/contstans/const.orgstatus';
 
 const CartSmallList = ({onClose}:any) => {
 	const points = adapterSelector.useSelectors((selector) => selector.point);
+	const pointstatus = adapterSelector.useSelectors((selector) => selector.pointstatus);
 
   return (
     <div className="cart_modals">
@@ -19,11 +21,11 @@ const CartSmallList = ({onClose}:any) => {
 			<CartTotal />
 			{/* eslint-disable-next-line @next/next/no-html-link-for-pages */}
 			{
-				workTimeHelp() && (points.delivMetod !== CART_CHOICE.NODELIVERY || points.delivMetod === CART_CHOICE.OPEN)
+				workTimeHelp() && pointstatus.organizationStatus === ORG_STATUS.WORK
 				? <button disabled className="order-btn-pointclosed">Хинкальная сейчас закрыта.<br/>
 						Оформить заказ вы сможете: {workTimeCheck(points.workTime)}
 					</button>
-				: points.delivMetod === CART_CHOICE.NODELIVERY || points.delivMetod === CART_CHOICE.OPEN ?
+				: pointstatus.organizationStatus === ORG_STATUS.NODELIVERY ?
 					<button disabled className="order-btn-pointclosed">Оформление онлайн-заказа недоступно</button>
 						// eslint-disable-next-line @next/next/no-html-link-for-pages
 				: <a className="cart__order-btn btn cart-btn" href="/checkout">Оформить заказ </a>
