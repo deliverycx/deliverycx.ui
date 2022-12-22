@@ -33,6 +33,16 @@ const PointStatus: FC<IProp> = ({ point }) => {
 		</div>
 	))
 
+	statusTSX.DeliveryAllMetod((
+		<div className="welcome__select-adress__info onlypickup">
+			<img
+				src={require("assets/i/moto-red.svg").default}
+				alt="Доставка и самовывоз"
+			/>
+			<span>Доставка, самовывоз, за столом</span>
+		</div>
+	))
+
 	statusTSX.OpenPoint((
 		<div className="welcome__select-adress__info onlyopen">
 			<img

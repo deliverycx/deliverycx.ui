@@ -4,7 +4,7 @@ import { workTimeHelp } from "application/helpers/workTime"
 import React, { ReactNode } from "react"
 import { adapterSelector } from "servises/redux/selectors/selectors"
 
-class StatusTSX {
+export class StatusTSX {
 	public readonly pointstatus:IPointStatus
 	public statuses:any[] = []
 	constructor(pointstatus:IPointStatus){
@@ -17,10 +17,11 @@ class StatusTSX {
 			exect: exect,
 			content:content
 		})
+		return exect
 	}
 
-	OnliPICKUP(tsx:ReactNode){
-		this.init(
+	OnliPICKUP(tsx?:ReactNode){
+		return this.init(
 			"Только самовывоз",
 			(this.pointstatus.deliveryMetod.includes(DELIVERY_METODS.PICKUP) && 
 			this.pointstatus.deliveryMetod.length === 1) &&
@@ -32,12 +33,13 @@ class StatusTSX {
 			tsx
 		)
 	}
-	Delivery(tsx:ReactNode){
-		this.init(
+	Delivery(tsx?:ReactNode){
+		return this.init(
 			'доставка и самовывоз',
 			(
 				this.pointstatus.deliveryMetod.includes(DELIVERY_METODS.COURIER) && 
-				this.pointstatus.deliveryMetod.includes(DELIVERY_METODS.PICKUP)
+				this.pointstatus.deliveryMetod.includes(DELIVERY_METODS.PICKUP) &&
+				this.pointstatus.deliveryMetod.length === 2
 			) &&
 			(
 				this.pointstatus.organizationStatus !== ORG_STATUS.OPEN && 
@@ -47,22 +49,38 @@ class StatusTSX {
 			tsx
 		)
 	}
-	OpenPoint(tsx:ReactNode){
-		this.init(
+	DeliveryAllMetod(tsx?:ReactNode){
+		return this.init(
+			'доставка и самовывоз и за столом',
+			(
+				this.pointstatus.deliveryMetod.includes(DELIVERY_METODS.COURIER) && 
+				this.pointstatus.deliveryMetod.includes(DELIVERY_METODS.PICKUP) &&
+				this.pointstatus.deliveryMetod.includes(DELIVERY_METODS.ONSPOT)
+			) &&
+			(
+				this.pointstatus.organizationStatus !== ORG_STATUS.OPEN && 
+				this.pointstatus.organizationStatus !== ORG_STATUS.NODELIVERY &&
+				this.pointstatus.organizationStatus !== ORG_STATUS.NOWORK
+			),
+			tsx
+		)
+	}
+	OpenPoint(tsx?:ReactNode){
+		return this.init(
 			'Открытие',
 			this.pointstatus.organizationStatus === ORG_STATUS.OPEN,
 			tsx
 		)
 	}
-	NoDeliveryPoint(tsx:ReactNode){
-		this.init(
+	NoDeliveryPoint(tsx?:ReactNode){
+		return this.init(
 			'нет заказа',
 			this.pointstatus.organizationStatus === ORG_STATUS.NODELIVERY,
 			tsx
 		)
 	}
-	NoWorkPoint(tsx:ReactNode){
-		this.init(
+	NoWorkPoint(tsx?:ReactNode){
+		return this.init(
 			'точка не работает',
 			this.pointstatus.organizationStatus === ORG_STATUS.NOWORK,
 			tsx

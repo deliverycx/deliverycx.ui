@@ -1,3 +1,4 @@
+/* eslint-disable no-mixed-spaces-and-tabs */
 import { useHistory } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect, useState } from "react";
@@ -10,18 +11,35 @@ import { RootState } from "servises/redux/createStore";
 import { adapterSelector } from "servises/redux/selectors/selectors";
 import { validationHIdiscount } from "application/helpers/validationHIdiscount";
 import { fetStopList } from "servises/redux/slice/shopSlice";
+import { CartFormMetods } from "application/components/core/Cart/CartForm/CartMetods";
+import { CART_CHOICE } from "application/contstans/cart.const";
+import { actionSelectPayment } from "servises/redux/slice/bankCardSlice";
 
 export function useAddCart(ref?: any) {
     const history = useHistory();
+		const dispatch = useDispatch()
     const cartList = useSelector(cartSelector.selectAll);
+		const activeChoice = useSelector((state: RootState) => state.cart.orderType);
     const [isPopupEmpty, setIsPopupEmpty] = useState(false);
     const [itemsCount, setItemsCount] = useState(0);
     const emptyCN = cn("link-to-cart", { open: isPopupEmpty });
 
     const linkHandler = () => {
-        itemsCount
-            ? history.push(ROUTE_APP.CART.CART_DELIVERY)
-            : setIsPopupEmpty(true);
+        if(itemsCount){
+					if (activeChoice === CART_CHOICE.COURIER) {
+							dispatch(actionSelectPayment(CartFormMetods.paymentsMetod[0]))
+	            history.push(ROUTE_APP.CART.CART_DELIVERY);
+		        } else if (activeChoice === CART_CHOICE.PICKUP) {
+		            history.push(ROUTE_APP.CART.CART_PICKUP);
+		        } else if (activeChoice === CART_CHOICE.ONSPOT) {
+							dispatch(actionSelectPayment(CartFormMetods.paymentsMetodONSPOT[0]))
+							history.push(ROUTE_APP.CART.CART_ONSPOT);
+						}else{
+							history.push(ROUTE_APP.CART.CART_DELIVERY);
+						}
+				}else{
+					setIsPopupEmpty(true);
+				}
     };
     useOutside(ref, () => setIsPopupEmpty(false), isPopupEmpty);
     useDeepCompareEffect(() => {

@@ -18,7 +18,7 @@ import { adapterSelector } from "servises/redux/selectors/selectors";
 import { fetchDeleteCart, fetchRefreshCart, setOrderType } from "servises/redux/slice/cartSlice";
 import _ from "lodash";
 import { fetStopList } from "servises/redux/slice/shopSlice";
-import { ORG_STATUS } from "application/contstans/const.orgstatus";
+import { DELIVERY_METODS, ORG_STATUS } from "application/contstans/const.orgstatus";
 
 export function usePoints() {
   const history = useHistory();
@@ -144,15 +144,14 @@ export function usePoints() {
       })
       */
 
-            dispatch(setProfileAction(regData));
+            //dispatch(setProfileAction(regData));
             dispatch(setPoint(address));
-            address.id !== id && dispatch(fetchDeleteCart());
-						if(address.delivMetod){
-							dispatch(setOrderType(address.delivMetod))
+						if(address.id !== id){
+							dispatch(setOrderType(DELIVERY_METODS.COURIER))
 							dispatch(fetchRefreshCart())
 						} 
             history.push(`${ROUTE_APP.SHOP.SHOP_MAIN}/?address=${address.city + ',' + address.address}` );
-            RequestProfile.update({ organizationId: address.id });
+            //RequestProfile.update({ organizationId: address.id });
         } catch (error) {
             history.goBack();
         }
