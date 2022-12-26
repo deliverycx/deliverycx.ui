@@ -14,6 +14,11 @@ export const workTimeHelp = (work?:any) =>{
 		const [min,max] = workTimeCheck(work) ? workTimeCheck(work).split('-') : mok2
 		const time = format(new Date(), "HH:mm")
 
+		
+		if(min === "00:00" && max === "00:00"){
+			return true
+		}
+
 		if(min >= time){
 			return true
 		}else if(max <= time){
@@ -36,7 +41,6 @@ export const checkEmtpyWork = (work:string[],index:number) =>{
 export const checkWorkIsArray = (work:any) =>{
 	if(typeof work == 'string') return ""
 	const result = work.filter((val:string) => val !== "")
-	console.log('result fil',result);
 	if(result.length === 0){
 		return null
 	}else if(result.length === 1){
@@ -51,6 +55,8 @@ export const workTimeCheck = (work:any):any => {
 	const date = new Date().getDay()
 
 	console.log('wokcheck',work);
+
+
 
 	if(!work || work.length === 0){
 		console.log('время сломано');

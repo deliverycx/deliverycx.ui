@@ -37,7 +37,7 @@ const CartLayout: FC<ICartLayout> = ({ children }) => {
                       ? <div className="point-closed">
                           <div className="point-closed-cart-container">
                               <div className="top-text">Хинкальная сейчас закрыта.<br />
-                                  Оформить заказ можно: <span>{workTimeCheck(point.workTime) }</span></div>
+                                  Оформить заказ можно: <span>{workTimeCheck(point.workTime) === "00:00-00:00" ? "" : workTimeCheck(point.workTime) }</span></div>
                               <div className="text-secondary">
                                   А пока вы можете ознакомится <br />
                                   с нашим меню и почитать новости

@@ -40,7 +40,7 @@ const PointWorkTime:FC<{worktime:string[],adress:string} > = ({worktime,adress})
 					src={require("assets/i/timework.svg").default}
 					alt="Телефон заведения"
 				/>
-				<span>{workTimeCheck(worktime)}</span>
+				<span>{workTimeCheck(worktime) === "00:00-00:00" ? "Закрыта" : workTimeCheck(worktime)}</span>
 				{
 					!checktype &&
 					<div className={CN}></div>
