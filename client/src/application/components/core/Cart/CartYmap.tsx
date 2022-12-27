@@ -13,6 +13,8 @@ import { ROUTE_APP } from "application/contstans/route.const";
 import { useHistory } from "react-router-dom";
 import { adapterComponentUseCase } from 'adapters/adapterComponents';
 import { useCartMap } from "domain/use-case/useCaseCart";
+import { useGetStreetCityQuery } from "servises/repository/RTK/RTKLocation";
+import { adapterSelector } from "servises/redux/selectors/selectors";
 
 
 const placeMarkOption = {
@@ -24,10 +26,13 @@ const placeMarkOption = {
 
 const CartYmap = () => {
   const city = useSelector((state: RootState) => state.location.point.city);
+	
+	
   const usecaseCartMap = adapterComponentUseCase(useCartMap)
   const { stateReduceMap,mapstate,zones } = usecaseCartMap.data
   const { onMapTyping,getGeoLoc,onMapClick,hendleMapPopup,hendleZone } = usecaseCartMap.handlers
-	const {isLoadingZone} = usecaseCartMap.status
+	const {isLoadingZone,isLoadingStreet} = usecaseCartMap.status
+	
 
   const SuggestComponent = useMemo(() => {
     return withYMaps(MapSuggestComponent, true, [
@@ -78,7 +83,7 @@ const CartYmap = () => {
                             : <SuggestComponent dispatchMap={onMapTyping} stateReduceMap={stateReduceMap} />
                       }
                         {
-                            stateReduceMap.disclaimer && <div className="disclaimer">Не точный адрес, введите дом</div>
+                            stateReduceMap.disclaimer && <div className="disclaimer">Не точный адрес</div>
                         }
                     </div>
                   </div>
