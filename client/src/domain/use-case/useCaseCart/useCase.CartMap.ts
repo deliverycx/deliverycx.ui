@@ -160,11 +160,7 @@ export function useCartMap() {
 					
 
 					if(!isLoadingStreet && ikkostreet){
-						const findstreet = ikkostreet.some(element => {
-							console.log(element.name,element.isDeleted)
-							//console.log(element.name === street && element);
-							return element.name === street && !element.isDeleted
-						});
+						const findstreet = ikkostreet.some(element => element.name === street && !element.isDeleted);
 						if(findstreet){
 							dispatch(setAdress(stateReduceMap.valueMap));
               history.push(ROUTE_APP.CART.CART_DELIVERY);

@@ -20,7 +20,7 @@ const CartYmap = ({close}:any) => {
   const usecaseCartMap = adapterComponentUseCase(useCartMap,close)
   const { stateReduceMap, mapstate,zones } = usecaseCartMap.data
   const { onMapTyping,getGeoLoc,onMapClick,hendleMapPopup,hendleZone } = usecaseCartMap.handlers
-	const {isLoadingZone} = usecaseCartMap.status
+	const {isLoadingZone,isLoadingStreet} = usecaseCartMap.status
 
   const CN = cn("search_city delivery-map", { error_map: stateReduceMap.disclaimer })
 
@@ -74,11 +74,11 @@ const CartYmap = ({close}:any) => {
                 </div>
                 {
                   (city || stateReduceMap.valueMap) &&
-                    <button disabled={!stateReduceMap.valueMap} className="mapsPopup__button btn" onClick={hendleMapPopup}>Я здесь</button>
+                    <button disabled={!stateReduceMap.valueMap && !stateReduceMap.disclaimer} className="mapsPopup__button btn" onClick={hendleMapPopup}>Я здесь</button>
                 }
               </div>
               {
-                stateReduceMap.disclaimer && <div className="disclaimer">Не точный адрес, в ведите дом</div>
+                stateReduceMap.disclaimer && <div className="disclaimer">Не точный адрес</div>
               }
 							{
 										zones &&
