@@ -31,7 +31,8 @@ const persistConfig = {
     profileSlice.name,
     ShopSlice.name,
     cartSlice.name,
-    bankCardSlice.name
+    bankCardSlice.name,
+		locationSlice.name
   ],
   transforms: [
     createTransform(
@@ -43,7 +44,7 @@ const persistConfig = {
       },
       {
         whitelist: [
-          locationSlice.name
+          
         ]
       }
     )
