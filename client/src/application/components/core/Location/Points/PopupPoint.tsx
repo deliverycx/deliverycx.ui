@@ -95,7 +95,7 @@ const PopupPoint = () => {
                               (recvisites && Object.keys(recvisites).length !== 0) &&
                               <div className="recvisites" onClick={() => recvisitesHandler(true)}>Реквизиты компании</div>
                           }
-                          {workTimeHelp(address.workTime) 
+                          {workTimeHelp(address.workTime,address.guid) 
 													
 													&&
                               <div className="point-closed-container">
