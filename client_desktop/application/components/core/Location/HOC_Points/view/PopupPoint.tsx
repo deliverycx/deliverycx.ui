@@ -36,7 +36,7 @@ const PopupPoint = () => {
                </div>
             </div>
 
-						<PointWorkTime worktime={address.workTime} adress={address.address} />
+						<PointWorkTime worktime={address.workTime} adress={address} />
 
             <div className="welcome__select-adress__info street">
                <img
