@@ -24,11 +24,11 @@ const ng = [
 		id:"fe470000-906b-0025-00f6-08d8de6557e1",
 		data:[
 			{
-				d:new Date(2022,11,27),
+				d:new Date(2022,11,28),
 				time:"00:00-00:00"
 			},
 			{
-				d:new Date(2022,11,28),
+				d:new Date(2022,11,29),
 				time:"11:00-15:00"
 			},
 			
@@ -48,16 +48,16 @@ const ng = [
 		]
 	}
 ]
-const ngFN = (org:any) =>{
+export const ngFN = (org:any) =>{
 	let time:any
 
 	
 	ng.forEach((val:any) =>{
-		console.log(val.id,org);
+		//console.log(val.id,org);
 		if(val.id == org){
 			
 			val.data.forEach((value:any) =>{
-				console.log(formatDate(trueDate),formatDate(value.d));
+				//console.log(formatDate(trueDate),formatDate(value.d));
 				//console.log(trueDate,value.d);
 				if(formatDate(trueDate) === formatDate(value.d)){
 					//console.log(value.time);
@@ -66,7 +66,7 @@ const ngFN = (org:any) =>{
 			})
 		}
 	})
-	console.log('time',time );
+	//console.log('time',time );
 	return time
 }
 
@@ -74,15 +74,17 @@ export const workTimeHelp = (work?:any,org?:any) =>{
 	const storage = store.getState();
 	const  {workTime} = storage.location.point
 
-	const q = org && ngFN(org)
-	console.log('время сейчас',q);
+	const NGtime = org && ngFN(org)
+	
+	
 	if(workTime || work){
 		const mok2 = "10:00-21:00"
 		/*
 		const mok = workTime || work
-		const [min,max] = mok ? mok2.split('-') : mok2.split('-')
+		const [min,max] = NGtime ?  mok ? mok2.split('-') : mok2.split('-')
 		*/
-		const [min,max] = workTimeCheck(work) ? workTimeCheck(work).split('-') : mok2
+
+		const [min,max] = NGtime ? NGtime.split('-') : workTimeCheck(work).split('-')   //workTimeCheck(work) ? workTimeCheck(work).split('-') : mok2
 		const time = format(new Date(), "HH:mm")
 
 		
@@ -122,11 +124,15 @@ export const checkWorkIsArray = (work:any) =>{
 }
 
 
-export const workTimeCheck = (work:any):any => {
+export const workTimeCheck = (work:any,org?:any):any => {
 	const date = new Date().getDay()
 
 	//console.log('wokcheck',work);
+	const NGtime = org && ngFN(org)
 
+	if(NGtime){
+		return NGtime
+	}
 
 
 	if(!work || work.length === 0){
