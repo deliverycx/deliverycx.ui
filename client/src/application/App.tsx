@@ -10,7 +10,7 @@ import { fetchRefreshCart } from "servises/redux/slice/cartSlice";
 
 
 const App = (): JSX.Element => {
-	/*
+	/**/
   const dispatch = useDispatch()
   useEffect(() => {
     SocketSingle.newsocket(process.env.REACT_APP_STOPLIST as string)
@@ -22,7 +22,7 @@ const App = (): JSX.Element => {
       })
       
   },[])
-	*/
+	
 
 	
 
