@@ -1,12 +1,4 @@
 import NestedRoute from "./routes/NestedRoute";
-import { useEffect } from 'react';
-import SocketSingle from "servises/Socket/SocketClient";
-import { useDispatch } from 'react-redux';
-import { setStopList } from "servises/redux/slice/shopSlice";
-import { IStopList } from "@types";
-import { fetchRefreshCart } from "servises/redux/slice/cartSlice";
-import { useHistory } from "react-router-dom";
-
 
 
 
@@ -24,6 +16,9 @@ const App = (): JSX.Element => {
       
   },[])
 	*/
+
+
+
 
 	return (
     <>
