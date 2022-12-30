@@ -17,6 +17,7 @@ const PopupPoint = () => {
 	const statusopenCN = address && cn("welcome__select-adress opened", { stausopen: address.delivMetod === CART_CHOICE.OPEN });
 	const nodeliveCN = address && cn("btn welcome__select-adress__btn", { nodelivebtn: address.delivMetod === CART_CHOICE.NODELIVERY });
 
+	
   return (
       <>
           <button onClick={() => buttonClickHandler()} className={selectAdressCN}>
@@ -48,7 +49,7 @@ const PopupPoint = () => {
                           {/*   {address.workTime}*/}
                           {/*</div>*/}
                           
-													<PointWorkTime worktime={address.workTime} adress={address.address} />
+													<PointWorkTime worktime={address.workTime} adress={address} />
                           <div className="welcome__select-adress__info">
                               <img
                                   src={require("assets/i/phone-green.svg").default}
@@ -94,8 +95,8 @@ const PopupPoint = () => {
                               (recvisites && Object.keys(recvisites).length !== 0) &&
                               <div className="recvisites" onClick={() => recvisitesHandler(true)}>Реквизиты компании</div>
                           }
-                          {workTimeHelp(address.workTime) 
-													&& address.delivMetod !== CART_CHOICE.OPEN || address.delivMetod !== CART_CHOICE.NOWORK  ||  address.delivMetod !== CART_CHOICE.NODELIVERY
+                          {workTimeHelp(address.workTime,address.guid) 
+													
 													&&
                               <div className="point-closed-container">
                                   <div className="text-bold">Наша хинкальная пока закрыта.<br /> Оформить заказ нельзя.</div>
@@ -104,8 +105,10 @@ const PopupPoint = () => {
                                   </div>
                               </div>
                           }
+
+													
                           {
-                              address.delivMetod === CART_CHOICE.NODELIVERY &&
+                              address.delivMetod === CART_CHOICE.NODELIVERY && !workTimeHelp(address.workTime) &&
                               <div className="point-closed-container">
                                   <div className="text-bold">Хинкальная только открылась и готовится<br /> к подключению онлайн-заказов </div>
                                   <div className="text-secondary">Сейчас вы можете ознакомиться с нашим меню,<br /> просмотреть новости и узнать об актуальных акциях
@@ -115,7 +118,7 @@ const PopupPoint = () => {
                           }
 													{
 														
-														address.delivMetod === CART_CHOICE.OPEN || address.delivMetod === CART_CHOICE.NOWORK &&
+														address.delivMetod === CART_CHOICE.OPEN || address.delivMetod === CART_CHOICE.NOWORK && ! workTimeHelp(address.workTime) &&
 														<div className="point-closed-container">
 																<div className="text-bold">Онлайн-заказ в данной хинкальной недоступен</div>
 																<div className="text-secondary">Приносим извинения за неудобства.</div>

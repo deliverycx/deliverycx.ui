@@ -4,7 +4,7 @@ import cn from "classnames";
 import { checkEmtpyWork, checkWorkIsArray, workTimeCheck } from "application/helpers/workTime";
 
 /* eslint-disable @typescript-eslint/no-var-requires */
-const PointWorkTime:FC<{worktime:string[],adress:string} > = ({worktime,adress}) => {
+const PointWorkTime:FC<{worktime:string[],adress:IPoint} > = ({worktime,adress}) => {
 	const [select,setSelect] = useState(false)
 	const [activeDate,setActiveDate] = useState<number>(0)
 
@@ -29,10 +29,11 @@ const PointWorkTime:FC<{worktime:string[],adress:string} > = ({worktime,adress})
 
 	useEffect(()=>{
 		setSelect(false)
-	},[adress])
+	},[adress.address])
 
-	const checktype = !!(typeof checkWorkIsArray(worktime) === 'string')
+	const checktype = false //!!(typeof checkWorkIsArray(worktime) === 'string')
 
+console.log(workTimeCheck(worktime,adress.guid));
 	return (
 		<div className="welcome_worktime">
 			<div className="welcome__select-adress__info worktime-time" onClick={()=> setSelect(prev => !prev)}>
@@ -40,16 +41,18 @@ const PointWorkTime:FC<{worktime:string[],adress:string} > = ({worktime,adress})
 					src={require("assets/i/timework.svg").default}
 					alt="Телефон заведения"
 				/>
-				<span>{workTimeCheck(worktime)}</span>
+				<span>{workTimeCheck(worktime,adress.guid) === "00:00-00:00" ? "Закрыта" : workTimeCheck(worktime,adress.guid)}</span>
 				{
+					/*
 					!checktype &&
 					<div className={CN}></div>
+					*/
 				}
 				
 				
 			</div>
 			{
-				select && !checktype &&
+				false /*select */ && !checktype &&
 				<div className="welcome_timebox">
 					<div className="welcome_timebox_item"><span className="welcome_timebox_item--title">График работы:</span></div>	
 					{

@@ -33,11 +33,11 @@ const CartLayout: FC<ICartLayout> = ({ children }) => {
                   <CartTotal />
                   <Discounts />
                   <DeliveryCost/>
-                  {workTimeHelp(point.workTime) && (point.delivMetod !== CART_CHOICE.NODELIVERY || point.delivMetod === CART_CHOICE.OPEN)
+                  {workTimeHelp(point.workTime,point.guid) && (point.delivMetod !== CART_CHOICE.NODELIVERY || point.delivMetod === CART_CHOICE.OPEN)
                       ? <div className="point-closed">
                           <div className="point-closed-cart-container">
                               <div className="top-text">Хинкальная сейчас закрыта.<br />
-                                  Оформить заказ можно: <span>{workTimeCheck(point.workTime) }</span></div>
+                                  <span>{workTimeCheck(point.workTime,point.guid) === "00:00-00:00" ? "" : `Оформить заказ можно: ${workTimeCheck(point.workTime,point.guid)}`  }</span></div>
                               <div className="text-secondary">
                                   А пока вы можете ознакомится <br />
                                   с нашим меню и почитать новости
