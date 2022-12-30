@@ -2,8 +2,14 @@
   "compilerOptions": {
     "experimentalDecorators": true,
     "emitDecoratorMetadata": true,
-		"strictNullChecks": false,
-		"strictFunctionTypes": false,
+
+		"alwaysStrict": false,
+    "noImplicitAny": false,
+    "strictNullChecks": false,
+    "strictPropertyInitialization": false,
+    "strictFunctionTypes": false,
+    "noImplicitThis": false,
+    "strictBindCallApply": false,
     "baseUrl": "src",
     "target": "es5",
     "lib": [
