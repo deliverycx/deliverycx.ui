@@ -33,9 +33,9 @@ export const FormWrapper = (formik: any,usecase:any): IWrapper => {
         <FormFieldWrapper
           placeholderIco={require(`assets/i/${img}`).default}
           placeholderValue="Оплата"
-          addfild="addfild"
+          addfild="payfild"
         >
-          <div className="adress_fild__address" onClick={choicePayment}>{paymentMetod.value}</div>
+          <div className="adress_fild__address payment-fild" onClick={choicePayment}>{paymentMetod.value} <span className="ok-icon-red"></span></div>
           {
             //CartFormMetods.paymentsMetod[1].id === stateForm.payment.id
             false &&

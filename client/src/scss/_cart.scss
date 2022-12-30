@@ -1,6 +1,6 @@
 .cart__form {
     position: relative;
-    margin-top: 30px;
+    margin-top: 20px;
 }
 .cart {
     min-height: 100vh;
@@ -872,6 +872,33 @@
             align-items: center;
         }
     }
+}
+
+.payment-fild{
+	width: 100%;
+}
+
+.ok-icon-red {
+	display: inline-block;
+	float: right;
+	margin-right: 20px;
+	height: 12px;
+	width: 15px;
+	background-image: url('../assets/img/ok-icon_red.png');
+	background-size: 100%;
+	background-repeat: no-repeat;
+	background-position: center;
+	justify-content: center;
+	align-items: center;
+}
+.ok-icon-red-momr{
+	margin-right: 0 !important;
+}
+.payfild{
+	margin-bottom: 20px;
+}
+.adress_fild{
+	margin-bottom: 10px;
 }
 
 @keyframes show {

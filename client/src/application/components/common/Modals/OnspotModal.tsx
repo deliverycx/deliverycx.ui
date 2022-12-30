@@ -48,23 +48,26 @@ const OnspotModal = () =>{
 		{
 			modal &&
 			<div className="onspot_modal">
+				<div className="onspot_modal_section">
 				<img
 	      	src={require("assets/img/logo-choose-city.svg").default}
 	        alt="Доставка и самовывоз"
 	      />
+				
 				<img
 	      	src={require("assets/img/onspotmodal.svg").default}
 					className="onspot_modal_img"
 	        alt="Доставка и самовывоз"
 	      />
 				<div className="onspot_modal__content">
-					<div className="onspot_modal__content-title">Гамарджоба!</div>
+					<h2 className="onspot_modal__content-title">Гамарджоба!</h2>
 					<div className="onspot_modal__content-text">
-						Рады, что вы выбрали наш новый способ заказа за столиком!
+						Рады, что вы выбрали наш новый <br /> способ заказа за столиком!
 					</div>
 					<div className="onspot_modal__content-text">
-						Это тестовый период, поэтому если возникнут сложности сообщите пожалуйста официанту или в нашу поддержку! 
+						Это тестовый период, поэтому если возникнут <br /> сложности сообщите пожалуйста официанту или <br /> в  нашу поддержку! 
 					</div>
+				</div>
 				</div>
 				<button className="onspot_modal__button" onClick={()=> handlerModal()}>Продолжить</button>
 			</div>
