@@ -2,6 +2,8 @@
   "compilerOptions": {
     "experimentalDecorators": true,
     "emitDecoratorMetadata": true,
+		"strictNullChecks": false,
+		"strictFunctionTypes": false,
     "baseUrl": "src",
     "target": "es5",
     "lib": [
