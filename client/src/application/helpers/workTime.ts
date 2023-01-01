@@ -28,7 +28,7 @@ const ng = [
 				time:"11:00-18:00"
 			},
 			{
-				d:new Date(2023,1,1),
+				d:new Date(2023,0,1),
 				time:"13:00-23:00"
 			},
 			
@@ -42,7 +42,7 @@ const ng = [
 				time:"10:00-17:00"
 			},
 			{
-				d:new Date(2023,1,1),
+				d:new Date(2023,0,1),
 				time:"15:00-23:00"
 			},
 			
@@ -56,7 +56,7 @@ const ng = [
 				time:"00:00-00:00"
 			},
 			{
-				d:new Date(2023,1,1),
+				d:new Date(2023,0,1),
 				time:"13:00-21:00"
 			},
 			
@@ -70,7 +70,7 @@ const ng = [
 				time:"00:00-00:00"
 			},
 			{
-				d:new Date(2023,1,1),
+				d:new Date(2023,0,1),
 				time:"00:00-00:00"
 			},
 			
@@ -84,7 +84,7 @@ const ng = [
 				time:"00:00-00:00"
 			},
 			{
-				d:new Date(2023,1,1),
+				d:new Date(2023,0,1),
 				time:"00:00-00:00"
 			},
 			
@@ -98,7 +98,7 @@ const ng = [
 				time:"10:00-19:00"
 			},
 			{
-				d:new Date(2023,1,1),
+				d:new Date(2023,0,1),
 				time:"12:00-22:00"
 			},
 			
@@ -112,7 +112,7 @@ const ng = [
 				time:"10:00-17:00"
 			},
 			{
-				d:new Date(2023,1,1),
+				d:new Date(2023,0,1),
 				time:"12:00-22:00"
 			},
 			
@@ -126,7 +126,7 @@ const ng = [
 				time:"10:00-18:00"
 			},
 			{
-				d:new Date(2023,1,1),
+				d:new Date(2023,0,1),
 				time:"12:00-22:00"
 			},
 			
@@ -140,7 +140,7 @@ const ng = [
 				time:"10:00-18:00"
 			},
 			{
-				d:new Date(2023,1,1),
+				d:new Date(2023,0,1),
 				time:"00:00-00:00"
 			},
 			
@@ -154,11 +154,11 @@ const ng = [
 				time:"10:00-18:00"
 			},
 			{
-				d:new Date(2023,1,1),
+				d:new Date(2023,0,1),
 				time:"00:00-00:00"
 			},
 			{
-				d:new Date(2023,1,2),
+				d:new Date(2023,0,2),
 				time:"13:00-22:00"
 			},
 		]
@@ -171,7 +171,7 @@ const ng = [
 				time:"00:00-00:00"
 			},
 			{
-				d:new Date(2023,1,1),
+				d:new Date(2023,0,1),
 				time:"00:00-00:00"
 			}
 		]
@@ -184,7 +184,7 @@ const ng = [
 				time:"00:00-00:00"
 			},
 			{
-				d:new Date(2023,1,1),
+				d:new Date(2023,0,1),
 				time:"00:00-00:00"
 			}
 		]
@@ -197,7 +197,7 @@ const ng = [
 				time:"10:00-18:00"
 			},
 			{
-				d:new Date(2023,1,1),
+				d:new Date(2023,0,1),
 				time:"14:00-22:00"
 			}
 		]
@@ -210,7 +210,7 @@ const ng = [
 				time:"00:00-00:00"
 			},
 			{
-				d:new Date(2023,1,1),
+				d:new Date(2023,0,1),
 				time:"00:00-00:00"
 			}
 		]
@@ -223,31 +223,31 @@ const ng = [
 				time:"00:00-00:00"
 			},
 			{
-				d:new Date(2023,1,1),
+				d:new Date(2023,0,1),
 				time:"15:00-23:00"
 			},
 			{
-				d:new Date(2023,1,2),
+				d:new Date(2023,0,2),
 				time:"11:00-23:00"
 			},
 			{
-				d:new Date(2023,1,3),
+				d:new Date(2023,0,3),
 				time:"11:00-23:00"
 			},
 			{
-				d:new Date(2023,1,4),
+				d:new Date(2023,0,4),
 				time:"11:00-23:00"
 			},
 			{
-				d:new Date(2023,1,5),
+				d:new Date(2023,0,5),
 				time:"11:00-23:00"
 			},
 			{
-				d:new Date(2023,1,6),
+				d:new Date(2023,0,6),
 				time:"11:00-23:00"
 			},
 			{
-				d:new Date(2023,1,7),
+				d:new Date(2023,0,7),
 				time:"11:00-23:00"
 			},
 		]
@@ -260,7 +260,7 @@ const ng = [
 				time:"10:00-15:00"
 			},
 			{
-				d:new Date(2023,1,1),
+				d:new Date(2023,0,1),
 				time:"15:00-22:00"
 			}
 		]
@@ -269,15 +269,15 @@ const ng = [
 		id:"03650000-6bec-ac1f-3dba-08dae3f9e1b7",
 		data:[
 			{
-				d:new Date(2023,1,6),
+				d:new Date(2023,0,6),
 				time:"10:00-22:00"
 			},
 			{
-				d:new Date(2023,1,7),
+				d:new Date(2023,0,7),
 				time:"10:00-22:00"
 			},
 			{
-				d:new Date(2023,1,8),
+				d:new Date(2023,0,8),
 				time:"10:00-22:00"
 			}
 		]
@@ -290,31 +290,31 @@ const ng = [
 				time:"00:00-00:00"
 			},
 			{
-				d:new Date(2023,1,1),
+				d:new Date(2023,0,1),
 				time:"00:00-00:00"
 			},
 			{
-				d:new Date(2023,1,2),
+				d:new Date(2023,0,2),
 				time:"11:00-23:00"
 			},
 			{
-				d:new Date(2023,1,3),
+				d:new Date(2023,0,3),
 				time:"11:00-23:00"
 			},
 			{
-				d:new Date(2023,1,4),
+				d:new Date(2023,0,4),
 				time:"11:00-23:00"
 			},
 			{
-				d:new Date(2023,1,5),
+				d:new Date(2023,0,5),
 				time:"11:00-23:00"
 			},
 			{
-				d:new Date(2023,1,6),
+				d:new Date(2023,0,6),
 				time:"11:00-23:00"
 			},
 			{
-				d:new Date(2023,1,7),
+				d:new Date(2023,0,7),
 				time:"11:00-23:00"
 			},
 		]
@@ -327,7 +327,7 @@ const ng = [
 				time:"10:00-18:00"
 			},
 			{
-				d:new Date(2023,1,1),
+				d:new Date(2023,0,1),
 				time:"17:00-22:00"
 			},
 			
@@ -341,7 +341,7 @@ const ng = [
 				time:"10:00-18:00"
 			},
 			{
-				d:new Date(2023,1,1),
+				d:new Date(2023,0,1),
 				time:"17:00-22:00"
 			},
 			
@@ -355,7 +355,7 @@ const ng = [
 				time:"00:00-00:00"
 			},
 			{
-				d:new Date(2023,1,1),
+				d:new Date(2023,0,1),
 				time:"00:00-00:00"
 			},
 			
@@ -369,35 +369,35 @@ const ng = [
 				time:"10:00-19:00"
 			},
 			{
-				d:new Date(2023,1,1),
+				d:new Date(2023,0,1),
 				time:"13:00-23:00"
 			},
 			{
-				d:new Date(2023,1,2),
+				d:new Date(2023,0,2),
 				time:"10:00-23:00"
 			},
 			{
-				d:new Date(2023,1,3),
+				d:new Date(2023,0,3),
 				time:"10:00-23:00"
 			},
 			{
-				d:new Date(2023,1,4),
+				d:new Date(2023,0,4),
 				time:"10:00-23:00"
 			},
 			{
-				d:new Date(2023,1,5),
+				d:new Date(2023,0,5),
 				time:"10:00-23:00"
 			},
 			{
-				d:new Date(2023,1,6),
+				d:new Date(2023,0,6),
 				time:"10:00-23:00"
 			},
 			{
-				d:new Date(2023,1,7),
+				d:new Date(2023,0,7),
 				time:"10:00-23:00"
 			},
 			{
-				d:new Date(2023,1,8),
+				d:new Date(2023,0,8),
 				time:"10:00-23:00"
 			},
 			
@@ -411,31 +411,31 @@ const ng = [
 				time:"10:00-19:00"
 			},
 			{
-				d:new Date(2023,1,1),
+				d:new Date(2023,0,1),
 				time:"13:00-23:00"
 			},
 			{
-				d:new Date(2023,1,2),
+				d:new Date(2023,0,2),
 				time:"11:00-23:00"
 			},
 			{
-				d:new Date(2023,1,3),
+				d:new Date(2023,0,3),
 				time:"11:00-23:00"
 			},
 			{
-				d:new Date(2023,1,4),
+				d:new Date(2023,0,4),
 				time:"11:00-23:00"
 			},
 			{
-				d:new Date(2023,1,5),
+				d:new Date(2023,0,5),
 				time:"11:00-23:00"
 			},
 			{
-				d:new Date(2023,1,6),
+				d:new Date(2023,0,6),
 				time:"11:00-23:00"
 			},
 			{
-				d:new Date(2023,1,7),
+				d:new Date(2023,0,7),
 				time:"11:00-23:00"
 			},
 			
@@ -450,7 +450,7 @@ const ng = [
 				time:"10:00-18:00"
 			},
 			{
-				d:new Date(2023,1,1),
+				d:new Date(2023,0,1),
 				time:"12:00-22:00"
 			},
 			
@@ -464,7 +464,7 @@ const ng = [
 				time:"10:00-18:00"
 			},
 			{
-				d:new Date(2023,1,1),
+				d:new Date(2023,0,1),
 				time:"12:00-23:00"
 			},
 			
@@ -478,7 +478,7 @@ const ng = [
 				time:"10:00-17:00"
 			},
 			{
-				d:new Date(2023,1,1),
+				d:new Date(2023,0,1),
 				time:"12:00-22:00"
 			},
 			
@@ -492,7 +492,7 @@ const ng = [
 				time:"10:00-20:00"
 			},
 			{
-				d:new Date(2023,1,1),
+				d:new Date(2023,0,1),
 				time:"12:00-20:00"
 			},
 			
@@ -506,7 +506,7 @@ const ng = [
 				time:"10:00-17:00"
 			},
 			{
-				d:new Date(2023,1,1),
+				d:new Date(2023,0,1),
 				time:"12:00-22:00"
 			},
 			
@@ -520,7 +520,7 @@ const ng = [
 				time:"10:00-21:00"
 			},
 			{
-				d:new Date(2023,1,1),
+				d:new Date(2023,0,1),
 				time:"12:00-21:00"
 			},
 			
@@ -535,7 +535,7 @@ const ng = [
 				time:"10:00-21:00"
 			},
 			{
-				d:new Date(2023,1,1),
+				d:new Date(2023,0,1),
 				time:"12:00-21:00"
 			},
 			
@@ -549,7 +549,7 @@ const ng = [
 				time:"10:00-18:00"
 			},
 			{
-				d:new Date(2023,1,1),
+				d:new Date(2023,0,1),
 				time:"12:00-22:00"
 			},
 			
@@ -563,7 +563,7 @@ const ng = [
 				time:"10:00-17:00"
 			},
 			{
-				d:new Date(2023,1,1),
+				d:new Date(2023,0,1),
 				time:"12:00-22:00"
 			},
 			
@@ -577,7 +577,7 @@ const ng = [
 				time:"00:00-00:00"
 			},
 			{
-				d:new Date(2023,1,1),
+				d:new Date(2023,0,1),
 				time:"17:00-22:00"
 			},
 			
@@ -591,7 +591,7 @@ const ng = [
 				time:"10:00-21:00"
 			},
 			{
-				d:new Date(2023,1,1),
+				d:new Date(2023,0,1),
 				time:"00:00-00:00"
 			},
 			
@@ -605,7 +605,7 @@ const ng = [
 				time:"11:00-18:00"
 			},
 			{
-				d:new Date(2023,1,1),
+				d:new Date(2023,0,1),
 				time:"00:00-00:00"
 			},
 			
@@ -619,7 +619,7 @@ const ng = [
 				time:"00:00-00:00"
 			},
 			{
-				d:new Date(2023,1,1),
+				d:new Date(2023,0,1),
 				time:"00:00-00:00"
 			},
 			
@@ -633,7 +633,7 @@ const ng = [
 				time:"10:00-17:00"
 			},
 			{
-				d:new Date(2023,1,1),
+				d:new Date(2023,0,1),
 				time:"12:00-22:00"
 			},
 			
@@ -647,7 +647,7 @@ const ng = [
 				time:"00:00-00:00"
 			},
 			{
-				d:new Date(2023,1,1),
+				d:new Date(2023,0,1),
 				time:"00:00-00:00"
 			},
 			
@@ -661,7 +661,7 @@ const ng = [
 				time:"00:00-00:00"
 			},
 			{
-				d:new Date(2023,1,1),
+				d:new Date(2023,0,1),
 				time:"00:00-00:00"
 			},
 			
@@ -675,7 +675,7 @@ const ng = [
 				time:"10:00-18:00"
 			},
 			{
-				d:new Date(2023,1,1),
+				d:new Date(2023,0,1),
 				time:"00:00-00:00"
 			},
 			
@@ -689,11 +689,11 @@ const ng = [
 				time:"00:00-00:00"
 			},
 			{
-				d:new Date(2023,1,1),
+				d:new Date(2023,0,1),
 				time:"00:00-00:00"
 			},
 			{
-				d:new Date(2023,1,2),
+				d:new Date(2023,0,2),
 				time:"12:00-23:00"
 			}
 			
@@ -707,11 +707,11 @@ const ng = [
 				time:"00:00-00:00"
 			},
 			{
-				d:new Date(2023,1,1),
+				d:new Date(2023,0,1),
 				time:"00:00-00:00"
 			},
 			{
-				d:new Date(2023,1,2),
+				d:new Date(2023,0,2),
 				time:"12:00-23:00"
 			}
 			
@@ -725,11 +725,11 @@ const ng = [
 				time:"00:00-00:00"
 			},
 			{
-				d:new Date(2023,1,1),
+				d:new Date(2023,0,1),
 				time:"00:00-00:00"
 			},
 			{
-				d:new Date(2023,1,2),
+				d:new Date(2023,0,2),
 				time:"10:00-22:00"
 			}
 			
@@ -743,7 +743,7 @@ const ng = [
 				time:"10:00-20:00"
 			},
 			{
-				d:new Date(2023,1,1),
+				d:new Date(2023,0,1),
 				time:"12:00-22:00"
 			}
 			
@@ -757,7 +757,7 @@ const ng = [
 				time:"10:00-17:00"
 			},
 			{
-				d:new Date(2023,1,1),
+				d:new Date(2023,0,1),
 				time:"14:00-22:00"
 			}
 			
@@ -771,7 +771,7 @@ const ng = [
 				time:"09:00-20:00"
 			},
 			{
-				d:new Date(2023,1,1),
+				d:new Date(2023,0,1),
 				time:"12:00-22:00"
 			}
 			
@@ -785,11 +785,11 @@ const ng = [
 				time:"10:00-20:00"
 			},
 			{
-				d:new Date(2023,1,1),
+				d:new Date(2023,0,1),
 				time:"00:00-00:00"
 			},
 			{
-				d:new Date(2023,1,2),
+				d:new Date(2023,0,2),
 				time:"14:00-22:00"
 			}
 		]
@@ -802,7 +802,7 @@ const ng = [
 				time:"09:00-20:00"
 			},
 			{
-				d:new Date(2023,1,1),
+				d:new Date(2023,0,1),
 				time:"12:00-22:00"
 			}
 			
@@ -816,11 +816,11 @@ const ng = [
 				time:"10:00-20:00"
 			},
 			{
-				d:new Date(2023,1,1),
+				d:new Date(2023,0,1),
 				time:"12:00-21:00"
 			},
 			{
-				d:new Date(2023,1,6),
+				d:new Date(2023,0,6),
 				time:"10:00-18:00"
 			}
 			
@@ -834,7 +834,7 @@ const ng = [
 				time:"09:00-20:00"
 			},
 			{
-				d:new Date(2023,1,1),
+				d:new Date(2023,0,1),
 				time:"12:00-22:00"
 			}
 			
@@ -848,31 +848,31 @@ const ng = [
 				time:"00:00-00:00"
 			},
 			{
-				d:new Date(2023,1,1),
+				d:new Date(2023,0,1),
 				time:"00:00-00:00"
 			},
 			{
-				d:new Date(2023,1,2),
+				d:new Date(2023,0,2),
 				time:"10:00-22:00"
 			},
 			{
-				d:new Date(2023,1,3),
+				d:new Date(2023,0,3),
 				time:"10:00-22:00"
 			},
 			{
-				d:new Date(2023,1,4),
+				d:new Date(2023,0,4),
 				time:"10:00-22:00"
 			},
 			{
-				d:new Date(2023,1,5),
+				d:new Date(2023,0,5),
 				time:"10:00-22:00"
 			},
 			{
-				d:new Date(2023,1,6),
+				d:new Date(2023,0,6),
 				time:"10:00-22:00"
 			},
 			{
-				d:new Date(2023,1,7),
+				d:new Date(2023,0,7),
 				time:"10:00-22:00"
 			},
 			
@@ -886,7 +886,7 @@ const ng = [
 				time:"10:00-18:00"
 			},
 			{
-				d:new Date(2023,1,1),
+				d:new Date(2023,0,1),
 				time:"14:00-22:00"
 			}
 			
@@ -900,31 +900,31 @@ const ng = [
 				time:"00:00-00:00"
 			},
 			{
-				d:new Date(2023,1,1),
+				d:new Date(2023,0,1),
 				time:"00:00-00:00"
 			},
 			{
-				d:new Date(2023,1,2),
+				d:new Date(2023,0,2),
 				time:"10:00-22:00"
 			},
 			{
-				d:new Date(2023,1,3),
+				d:new Date(2023,0,3),
 				time:"10:00-22:00"
 			},
 			{
-				d:new Date(2023,1,4),
+				d:new Date(2023,0,4),
 				time:"10:00-22:00"
 			},
 			{
-				d:new Date(2023,1,5),
+				d:new Date(2023,0,5),
 				time:"10:00-22:00"
 			},
 			{
-				d:new Date(2023,1,6),
+				d:new Date(2023,0,6),
 				time:"10:00-22:00"
 			},
 			{
-				d:new Date(2023,1,7),
+				d:new Date(2023,0,7),
 				time:"10:00-22:00"
 			},
 			
@@ -938,7 +938,7 @@ const ng = [
 				time:"10:00-18:00"
 			},
 			{
-				d:new Date(2023,1,1),
+				d:new Date(2023,0,1),
 				time:"14:00-21:30"
 			}
 			
@@ -952,7 +952,7 @@ const ng = [
 				time:"10:00-20:00"
 			},
 			{
-				d:new Date(2023,1,1),
+				d:new Date(2023,0,1),
 				time:"12:00-22:00"
 			}
 			
@@ -966,7 +966,7 @@ const ng = [
 				time:"10:00-17:00"
 			},
 			{
-				d:new Date(2023,1,1),
+				d:new Date(2023,0,1),
 				time:"12:00-22:00"
 			}
 			
@@ -980,7 +980,7 @@ const ng = [
 				time:"10:00-19:00"
 			},
 			{
-				d:new Date(2023,1,1),
+				d:new Date(2023,0,1),
 				time:"14:00-22:00"
 			}
 			
@@ -994,7 +994,7 @@ const ng = [
 				time:"00:00-00:00"
 			},
 			{
-				d:new Date(2023,1,1),
+				d:new Date(2023,0,1),
 				time:"00:00-00:00"
 			}
 			
@@ -1008,7 +1008,7 @@ const ng = [
 				time:"11:00-18:00"
 			},
 			{
-				d:new Date(2023,1,1),
+				d:new Date(2023,0,1),
 				time:"00:00-00:00"
 			}
 			
@@ -1022,35 +1022,35 @@ const ng = [
 				time:"10:00-16:00"
 			},
 			{
-				d:new Date(2023,1,1),
+				d:new Date(2023,0,1),
 				time:"13:00-23:00"
 			},
 			{
-				d:new Date(2023,1,2),
+				d:new Date(2023,0,2),
 				time:"10:00-23:00"
 			},
 			{
-				d:new Date(2023,1,3),
+				d:new Date(2023,0,3),
 				time:"10:00-23:00"
 			},
 			{
-				d:new Date(2023,1,4),
+				d:new Date(2023,0,4),
 				time:"10:00-23:00"
 			},
 			{
-				d:new Date(2023,1,5),
+				d:new Date(2023,0,5),
 				time:"10:00-23:00"
 			},
 			{
-				d:new Date(2023,1,6),
+				d:new Date(2023,0,6),
 				time:"10:00-23:00"
 			},
 			{
-				d:new Date(2023,1,7),
+				d:new Date(2023,0,7),
 				time:"10:00-23:00"
 			},
 			{
-				d:new Date(2023,1,8),
+				d:new Date(2023,0,8),
 				time:"10:00-23:00"
 			},
 		]
@@ -1063,35 +1063,35 @@ const ng = [
 				time:"10:00-19:00"
 			},
 			{
-				d:new Date(2023,1,1),
+				d:new Date(2023,0,1),
 				time:"12:00-23:00"
 			},
 			{
-				d:new Date(2023,1,2),
+				d:new Date(2023,0,2),
 				time:"10:00-23:00"
 			},
 			{
-				d:new Date(2023,1,3),
+				d:new Date(2023,0,3),
 				time:"10:00-23:00"
 			},
 			{
-				d:new Date(2023,1,4),
+				d:new Date(2023,0,4),
 				time:"10:00-23:00"
 			},
 			{
-				d:new Date(2023,1,5),
+				d:new Date(2023,0,5),
 				time:"10:00-23:00"
 			},
 			{
-				d:new Date(2023,1,6),
+				d:new Date(2023,0,6),
 				time:"10:00-23:00"
 			},
 			{
-				d:new Date(2023,1,7),
+				d:new Date(2023,0,7),
 				time:"10:00-23:00"
 			},
 			{
-				d:new Date(2023,1,8),
+				d:new Date(2023,0,8),
 				time:"10:00-23:00"
 			},
 		]
@@ -1108,6 +1108,7 @@ export const ngFN = (org:any) =>{
 		if(val.id == org){
 			
 			val.data.forEach((value:any) =>{
+				
 				//console.log(formatDate(trueDate),formatDate(value.d));
 				//console.log(trueDate,value.d);
 				if(formatDate(trueDate) === formatDate(value.d)){
