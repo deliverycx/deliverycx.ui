@@ -917,6 +917,9 @@
     .popupToBottCart {
         width: 375px;
     }
+		.popupFixCart {
+			bottom: 0;
+	}
 }
 @media screen and (max-width: 360px) {
     .cart__order-btn {
