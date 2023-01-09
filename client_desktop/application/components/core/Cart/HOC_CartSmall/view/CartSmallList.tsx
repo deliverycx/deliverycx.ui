@@ -21,7 +21,7 @@ const CartSmallList = ({onClose}:any) => {
 			{
 				workTimeHelp() && (points.delivMetod !== CART_CHOICE.NODELIVERY || points.delivMetod === CART_CHOICE.OPEN)
 				? <button disabled className="order-btn-pointclosed">Хинкальная сейчас закрыта.<br/>
-					
+					Оформить заказ вы сможете: {workTimeCheck(points.workTime)}
 					</button>
 				: points.delivMetod === CART_CHOICE.NODELIVERY || points.delivMetod === CART_CHOICE.OPEN ?
 					<button disabled className="order-btn-pointclosed">Оформление онлайн-заказа недоступно</button>

@@ -1,7 +1,7 @@
 import { compareAsc, format } from 'date-fns'
 import { store } from "servises/redux/createStore";
 
-
+/*
 const trueDate = new Date()
 function formatDate(date:any) {
 
@@ -1118,18 +1118,17 @@ export const ngFN = (org:any) =>{
 	//console.log('time',time );
 	return time
 }
-
+*/
 
 export const workTimeHelp = (org?:any) =>{
 	const storage = store.getState();
 	const  {workTime,guid} = storage.location.point
 
-	const NGtime = org ? ngFN(org) : ngFN(guid)
+	//const NGtime = org ? ngFN(org) : ngFN(guid)
 	if(workTime){
 		const mok = "10:00-12:00"
-		const [min,max] = NGtime ? NGtime.split('-') : workTimeCheck(workTime).split('-') //workTimeCheck(workTime) ? workTimeCheck(workTime).split('-') : mok
+		const [min,max] = workTimeCheck(workTime) ? workTimeCheck(workTime).split('-') : mok //NGtime ? NGtime.split('-') : workTimeCheck(workTime).split('-')
 		const time = format(new Date(), "HH:mm")
-		console.log('workTime',workTime);
 
 		if(min >= time){
 			return true
@@ -1168,11 +1167,13 @@ export const checkWorkIsArray = (work:any) =>{
 export const workTimeCheck = (work:any,org?:any):any => {
 	const date = new Date().getDay()
 
+	/*
 	const NGtime = org && ngFN(org)
 
 	if(NGtime){
 		return NGtime
 	}
+	*/
 
 	if(!work || work.length === 0){
 		console.log('время сломано');

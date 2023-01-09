@@ -3,7 +3,7 @@
 import { compareAsc, format } from 'date-fns'
 import { store } from "servises/redux/createStore";
 
-
+/*
 const trueDate = new Date()
 function formatDate(date:any) {
 
@@ -1121,12 +1121,14 @@ export const ngFN = (org:any) =>{
 	//console.log('time',time );
 	return time
 }
+*/
+
 
 export const workTimeHelp = (work?:any,org?:any) =>{
 	const storage = store.getState();
 	const  {workTime} = storage.location.point
 
-	const NGtime = org && ngFN(org)
+	//const NGtime = org && ngFN(org)
 	
 	
 	if(workTime || work){
@@ -1136,7 +1138,7 @@ export const workTimeHelp = (work?:any,org?:any) =>{
 		const [min,max] = NGtime ?  mok ? mok2.split('-') : mok2.split('-')
 		*/
 
-		const [min,max] = NGtime ? NGtime.split('-') : workTimeCheck(work).split('-')   //workTimeCheck(work) ? workTimeCheck(work).split('-') : mok2
+		const [min,max] = workTimeCheck(work) ? workTimeCheck(work).split('-') : mok2 // NGtime ? NGtime.split('-') : workTimeCheck(work).split('-')   //workTimeCheck(work) ? workTimeCheck(work).split('-') : mok2
 		const time = format(new Date(), "HH:mm")
 
 		
@@ -1180,11 +1182,13 @@ export const workTimeCheck = (work:any,org?:any):any => {
 	const date = new Date().getDay()
 
 	//console.log('wokcheck',work);
+	/*
 	const NGtime = org && ngFN(org)
 
 	if(NGtime){
 		return NGtime
 	}
+	*/
 
 
 	if(!work || work.length === 0){
