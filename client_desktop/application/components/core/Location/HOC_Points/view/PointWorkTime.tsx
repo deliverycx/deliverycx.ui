@@ -44,15 +44,14 @@ const PointWorkTime:FC<{worktime:string[],adress:IPoint} > = ({worktime,adress})
 				/>
 				<span>{workTimeCheck(worktime,adress.guid) === "00:00-00:00" ? "Закрыта" : workTimeCheck(worktime,adress.guid)}</span>
 				{
-					/*
 					!checktype &&
 					<div className={CN}></div>
-					*/
+					
 				}
 				
 			</div>
 			{
-				 false && !checktype &&
+				 select && !checktype &&
 				<div className="welcome_timebox">
 					<div className="welcome_timebox_item"><span className="welcome_timebox_item--title">График работы:</span></div>	
 					{

@@ -31,7 +31,7 @@ const PointWorkTime:FC<{worktime:string[],adress:IPoint} > = ({worktime,adress})
 		setSelect(false)
 	},[adress.address])
 
-	const checktype = false //!!(typeof checkWorkIsArray(worktime) === 'string')
+	const checktype = !!(typeof checkWorkIsArray(worktime) === 'string')
 
 console.log(workTimeCheck(worktime,adress.guid));
 	return (
@@ -43,16 +43,15 @@ console.log(workTimeCheck(worktime,adress.guid));
 				/>
 				<span>{workTimeCheck(worktime,adress.guid) === "00:00-00:00" ? "Закрыта" : workTimeCheck(worktime,adress.guid)}</span>
 				{
-					/*
 					!checktype &&
 					<div className={CN}></div>
-					*/
+					
 				}
 				
 				
 			</div>
 			{
-				false /*select */ && !checktype &&
+				select && !checktype &&
 				<div className="welcome_timebox">
 					<div className="welcome_timebox_item"><span className="welcome_timebox_item--title">График работы:</span></div>	
 					{

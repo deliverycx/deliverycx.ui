@@ -21,12 +21,8 @@ const PointWorkTimeModal = () => {
                 </div>
                 <div className="attention-info">
                     Наша хинкальная сейчас закрыта.<br/>
-										{
-											/*
-											Оформить заказ можно: <span>{workTimeCheck(selectedPoint.workTime) === "00:00-00:00" ? "" : workTimeCheck(selectedPoint.workTime)}</span>
+										Оформить заказ можно: <span>{workTimeCheck(selectedPoint.workTime)}</span>
                 
-											*/
-										}
                     </div>
                 <div className="secondary-text">
                     А пока вы можете ознакомится с нашим меню<br/> и почитать новости
