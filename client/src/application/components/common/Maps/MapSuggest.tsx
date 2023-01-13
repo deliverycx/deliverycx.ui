@@ -5,13 +5,17 @@ import { MouseEventHandler, useCallback, useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { withYMaps } from "react-yandex-maps";
 import { RootState } from "servises/redux/createStore";
+import { adapterSelector } from "servises/redux/selectors/selectors";
 import { setAdress } from "servises/redux/slice/cartSlice";
+import { useGetStreetCityQuery } from "servises/repository/RTK/RTKLocation";
+
 
 declare var ymaps: any;
 
 const MapSuggestComponent = ({dispatchMap,stateReduceMap}: any) => {
   const dispatch = useDispatch()
   const name = useSelector((state: RootState) => state.location.point.city);
+
 
 
   const geoCode = (request: string, set: boolean) => {
@@ -25,10 +29,12 @@ const MapSuggestComponent = ({dispatchMap,stateReduceMap}: any) => {
 
         if (validAdress === 'exact') {
 
+
           dispatchMap().setExactCord(cords)
           axios.get<IGeoCodeResponse>(
             `https://geocode-maps.yandex.ru/1.x/?geocode=${cords.reverse()}&format=json&apikey=164ee8b6-9e22-4e21-84ed-a0778bdf0f37`
           ).then(({ data }) => {
+
               dispatchMap().setValueMap(data.response.GeoObjectCollection.featureMember[0].GeoObject.name)
               //dispatch(setAdress(data.response.GeoObjectCollection.featureMember[0].GeoObject.name))
           })

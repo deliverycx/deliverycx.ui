@@ -30,12 +30,14 @@ export const FormWrapper = (formik: any,usecase:any): IWrapper => {
 				CartFormMetods.paymentsMetod[2].id === paymentMetod.id ? "paymaster.png" : "card-red.svg"
 
       return (
+				<div className="adress_fild">
+					<div className="form__field-wrapper__title">Способ оплаты</div>
         <FormFieldWrapper
           placeholderIco={require(`assets/i/${img}`).default}
           placeholderValue="Оплата"
-          addfild="addfild"
+          addfild="payfild"
         >
-          <div className="adress_fild__address" onClick={choicePayment}>{paymentMetod.value}</div>
+          <div className="adress_fild__address payment-fild" onClick={choicePayment}>{paymentMetod.value} <span className="ok-icon-red"></span></div>
           {
             //CartFormMetods.paymentsMetod[1].id === stateForm.payment.id
             false &&
@@ -46,6 +48,7 @@ export const FormWrapper = (formik: any,usecase:any): IWrapper => {
           }
 
         </FormFieldWrapper>
+				</div>
       )
     },
     payment(paymentsMetod) {

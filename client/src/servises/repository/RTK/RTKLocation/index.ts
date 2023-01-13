@@ -33,7 +33,16 @@ export const RTKLocation = createApi({
               method: "get",
               url: `organization/recvisites?organizationId=${cityId}`
           })
-      })
+      }),
+				getStreetCity: builder.query<any[], any>({
+				query: (body) => ({
+						method: "post",
+						url: `/webhook/getstreet`,
+						body:body
+				})
+			})
     })
 });
-export const { useGetCitiQuery, useGetPointsQuery,useGetRecvisitesMutation, useGetPointStatusMutation } = RTKLocation;
+
+export const { useGetCitiQuery, useGetPointsQuery,useGetRecvisitesMutation, useGetStreetCityQuery,useGetPointStatusMutation } = RTKLocation;
+

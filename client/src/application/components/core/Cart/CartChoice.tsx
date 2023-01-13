@@ -28,7 +28,11 @@ const CartChoise: FC = () => {
         (selector) => selector.point
     );
 		const { orderTable } = adapterSelector.useSelectors((selector) => selector.cart);
+
 		const pointstatus = adapterSelector.useSelectors(selector => selector.pointstatus)
+
+		const { paymentMetod } = adapterSelector.useSelectors((selector) => selector.bankcard);
+
 
     const deliveryCN = cn("cart__choice__item", {
         active: activeChoice === CART_CHOICE.COURIER
@@ -46,7 +50,7 @@ const CartChoise: FC = () => {
         }
 
         if (activeChoice === CART_CHOICE.COURIER) {
-						dispatch(actionSelectPayment(CartFormMetods.paymentsMetod[0]))
+						//dispatch(actionSelectPayment(CartFormMetods.paymentsMetod[0]))
             history.push(ROUTE_APP.CART.CART_DELIVERY);
         } else if (activeChoice === CART_CHOICE.PICKUP) {
             history.push(ROUTE_APP.CART.CART_PICKUP);

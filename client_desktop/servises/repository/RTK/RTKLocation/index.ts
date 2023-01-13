@@ -28,12 +28,25 @@ export const RTKLocation = createApi({
 							};
 					}
 				}),
+				getStreetCity: builder.query<any[], any>({
+					query: (body) => ({
+							method: "post",
+							url: `/webhook/getstreet`,
+							body:body
+					})
+				}),
+
         getRecvisites: builder.mutation<IPoint[], string>({
           query: (cityId) => ({
               method: "get",
               url: `organization/recvisites?organizationId=${cityId}`
           })
+					
       })
+			
     })
 });
-export const { useGetCitiQuery, useGetPointsQuery,useGetRecvisitesMutation, useGetPointStatusMutation } = RTKLocation;
+
+
+export const { useGetCitiQuery, useGetPointsQuery,useGetRecvisitesMutation, useGetStreetCityQuery,useGetPointStatusMutation } = RTKLocation;
+

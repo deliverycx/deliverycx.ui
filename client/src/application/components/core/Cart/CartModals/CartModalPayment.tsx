@@ -45,6 +45,11 @@ const CartModalPayment = () => {
 
                   </div>
                   <div className="popupFixCart_box_item__text">{val.value}</div>
+									{
+										val.id === paymentMetod.id  &&
+										<span className="ok-icon-red ok-icon-red-momr"></span>
+									}
+									
                 </li>
 										)
 									})

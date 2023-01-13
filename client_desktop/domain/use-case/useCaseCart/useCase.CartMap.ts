@@ -15,6 +15,7 @@ import { useDispatch } from "react-redux";
 import { adapterSelector } from "servises/redux/selectors/selectors";
 import { setAdress } from "servises/redux/slice/cartSlice";
 import { useGetDeliveryZonesQuery } from "servises/repository/RTK/RTKCart";
+import { useGetStreetCityQuery } from "servises/repository/RTK/RTKLocation";
 
 export function useCartMap(this: any,close:any) {
     const dispatch = useDispatch();
@@ -30,6 +31,11 @@ export function useCartMap(this: any,close:any) {
         CartMapReducer,
         initialStateCartMap
     );
+
+		const point = adapterSelector.useSelectors(selector => selector.point)
+		const {data:ikkostreet,isLoading:isLoadingStreet} = useGetStreetCityQuery({
+			organizationId:point.guid,
+		})
 
     useEffect(() => getGeoLoc(), [pointCords]);
     useEffect(() => {
@@ -145,9 +151,25 @@ export function useCartMap(this: any,close:any) {
             (stateReduceMap.valueMap || address) &&
             !stateReduceMap.disclaimer
         ) {
-            dispatch(setAdress(stateReduceMap.valueMap));
-            onMapTyping().setValueMap("");
-            close()
+
+					const street = stateReduceMap.valueMap.split(",")[0]
+					
+
+					if(!isLoadingStreet && ikkostreet){
+						const findstreet = ikkostreet.some(element => element.name === street && !element.isDeleted);
+						if(findstreet){
+							dispatch(setAdress(stateReduceMap.valueMap));
+	            onMapTyping().setValueMap("");
+	            close()
+						}else{
+							dispatchMap({
+								type: ReducerActionTypePoints.setDisclaimer,
+								payload: true
+							})
+						}
+					}
+
+            
         }
     };
 
@@ -174,6 +196,7 @@ export function useCartMap(this: any,close:any) {
 				hendleZone
     });
 		this.status({
-			isLoadingZone
+			isLoadingZone,
+			isLoadingStreet
 		})
 }
