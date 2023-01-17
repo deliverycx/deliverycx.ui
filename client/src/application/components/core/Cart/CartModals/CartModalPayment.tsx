@@ -16,6 +16,7 @@ const CartModalPayment = () => {
   const { paymentMetod } = useCaseForm.data
   const { selectPayment } = useCaseForm.handlers
 	const {orderType} = adapterSelector.useSelectors(selector => selector.cart)
+	const pointstatus = adapterSelector.useSelectors(selector => selector.pointstatus)
 
   const paymentMetods = orderType === CART_CHOICE.ONSPOT ? CartFormMetods.paymentsMetodONSPOT : CartFormMetods.paymentsMetod
 
@@ -35,23 +36,26 @@ const CartModalPayment = () => {
               <ul className="popupFixCart_box__list">
 								{
 									paymentMetods.map((val:any)=>{
-										return (
-											<li key={val.id} className={activeIcons(val.id)} onClick={()=> selectPayment(val)}>
-                  <div className="popupFixCart_box_item__icon">
-                  {
-										parse(val.icon)
+										if(pointstatus.paymentMetod.includes(val.id)) {
+											return (
+												<li key={val.id} className={activeIcons(val.id)} onClick={()=> selectPayment(val)}>
+												<div className="popupFixCart_box_item__icon">
+												{
+													parse(val.icon)
+													
+												}
+			
+												</div>
+												<div className="popupFixCart_box_item__text">{val.value}</div>
+												{
+													val.id === paymentMetod.id  &&
+													<span className="ok-icon-red ok-icon-red-momr"></span>
+												}
+												
+											</li>
+													)
+										}
 										
-									}
-
-                  </div>
-                  <div className="popupFixCart_box_item__text">{val.value}</div>
-									{
-										val.id === paymentMetod.id  &&
-										<span className="ok-icon-red ok-icon-red-momr"></span>
-									}
-									
-                </li>
-										)
 									})
 								}
 								

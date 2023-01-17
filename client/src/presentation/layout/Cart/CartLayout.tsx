@@ -12,6 +12,8 @@ import { adapterSelector } from "servises/redux/selectors/selectors";
 import { CART_CHOICE } from "application/contstans/cart.const";
 import DeliveryCost from "../../../application/components/core/Cart/CartBasket/DeliveryCost";
 import { ORG_STATUS } from "application/contstans/const.orgstatus";
+import { useGetPointStatusMutation } from "servises/repository/RTK/RTKLocation";
+import { useEffect } from 'react';
 
 type ICartLayout = {
     children:ReactNode
@@ -21,6 +23,11 @@ const CartLayout: FC<ICartLayout> = ({ children }) => {
 	const point = adapterSelector.useSelectors((selector) => selector.point);
 	const pointstatus = adapterSelector.useSelectors(selector => selector.pointstatus)
   const { orderType } = adapterSelector.useSelectors(selector => selector.cart);
+	const [getOrgstatus,{data:orgstatus}] = useGetPointStatusMutation()
+
+	useEffect(()=>{
+		getOrgstatus(point.guid)
+	},[point.guid])
 
   return (
       <div className="cat_app" style={{ backgroundColor: "#fff" }}>
