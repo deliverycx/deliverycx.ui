@@ -14,6 +14,8 @@ import DeliveryCost from "../../../application/components/core/Cart/CartBasket/D
 import { ORG_STATUS } from "application/contstans/const.orgstatus";
 import { useGetPointStatusMutation } from "servises/repository/RTK/RTKLocation";
 import { useEffect } from 'react';
+import { useHistory } from "react-router-dom";
+import { ROUTE_APP } from "application/contstans/route.const";
 
 type ICartLayout = {
     children:ReactNode
@@ -24,6 +26,11 @@ const CartLayout: FC<ICartLayout> = ({ children }) => {
 	const pointstatus = adapterSelector.useSelectors(selector => selector.pointstatus)
   const { orderType } = adapterSelector.useSelectors(selector => selector.cart);
 	const [getOrgstatus,{data:orgstatus}] = useGetPointStatusMutation()
+	const history = useHistory();
+
+	if(!pointstatus){
+		history.push(ROUTE_APP.MAIN)
+	}
 
 	useEffect(()=>{
 		getOrgstatus(point.guid)

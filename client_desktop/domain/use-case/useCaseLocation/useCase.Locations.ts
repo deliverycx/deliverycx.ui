@@ -109,19 +109,24 @@ export function useLocations(this: any){
 	// время работы организации
 	useEffect(() => {
 		const worktime = router.query.worktime as string
-
-    if(!modal && !modalMap && pointstatus.organizationStatus === ORG_STATUS.WORK){
+		if(pointstatus){
+			if(!modal && !modalMap && pointstatus.organizationStatus === ORG_STATUS.WORK){
 			setWorkOrg(workTimeHelp)
+			}
+			if(worktime){
+				setWorkOrg(false)
+			}
 		}
-		if(worktime){
-			setWorkOrg(false)
-		}
-  }, [modal,modalMap,router.query.worktime]);
+    
+  }, [modal,modalMap,router.query.worktime,pointstatus]);
 
 
 	// закрыта точка или нет
 	useEffect(() => {
-		pointstatus.organizationStatus === ORG_STATUS.NODELIVERY && setDisplayOrg(true)
+		if(pointstatus){
+			pointstatus.organizationStatus === ORG_STATUS.NODELIVERY && setDisplayOrg(true)
+		}
+		
   }, [pointstatus]);
 
 

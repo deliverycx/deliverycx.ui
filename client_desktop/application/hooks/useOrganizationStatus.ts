@@ -1,7 +1,9 @@
 import { IPointStatus } from "@types"
 import { DELIVERY_METODS, ORG_STATUS } from "application/contstans/const.orgstatus"
+import { ROUTE_APP } from "application/contstans/route.const"
 import { workTimeHelp } from "application/helpers/workTime"
-import React, { ReactNode } from "react"
+import router from "next/router"
+import React, { ReactNode, useEffect } from "react"
 import { adapterSelector } from "servises/redux/selectors/selectors"
 
 export class StatusTSX {
@@ -77,6 +79,7 @@ export const useOrganizationStatus = ():[StatusTSX,any] =>{
 
 	const tsx  = new StatusTSX(pointstatus)
 
+	
 
 	const switchMetod = () =>{
 		const wrappers = tsx.statuses.filter((val:typeof tsx.statuses[0]) =>{

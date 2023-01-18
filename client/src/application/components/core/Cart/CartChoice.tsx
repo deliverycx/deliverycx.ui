@@ -108,8 +108,12 @@ const CartChoise: FC = () => {
 				*/
 
 		const activeChoice = useSelector((state: RootState) => state.cart.orderType);
+		const pointstatus = adapterSelector.useSelectors(selector => selector.pointstatus)
 		const [tsx,switchMetod] = useOrganizationStatus()
 
+		if(!pointstatus){
+			history.push(ROUTE_APP.MAIN)
+		}
 	
 		useEffect(() => {
 			if(tsx.OnliPICKUP()){

@@ -6,9 +6,20 @@ import { FormBuilderCart } from "./HOC_CartForm/CartFormBuilder"
 import { CartFormMetods } from "./HOC_CartForm/CartMetods"
 import CartFrom from "./HOC_CartForm/HOC.CartForm"
 import CartChoise from "./Presentation/CartChoice"
+import { useGetPointStatusMutation } from "servises/repository/RTK/RTKLocation"
+import { useEffect } from "react"
+import { adapterSelector } from "servises/redux/selectors/selectors"
 
 const CheckOutLayout = () => {
   const activeChoice = useSelector((state:RootState) => state.cart.orderType)
+	const point = adapterSelector.useSelectors((selector) => selector.point);
+	const [getOrgstatus,{data:orgstatus}] = useGetPointStatusMutation()
+
+	useEffect(()=>{
+		getOrgstatus(point.guid)
+	},[point.guid])
+
+	
 
   return (
     <>
