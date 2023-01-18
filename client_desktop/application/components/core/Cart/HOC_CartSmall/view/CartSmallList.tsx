@@ -23,7 +23,7 @@ const CartSmallList = ({onClose}:any) => {
 			{
 				workTimeHelp() && pointstatus.organizationStatus === ORG_STATUS.WORK
 				? <button disabled className="order-btn-pointclosed">Хинкальная сейчас закрыта.<br/>
-						Оформить заказ вы сможете: {workTimeCheck(points.workTime)}
+					Оформить заказ вы сможете: {workTimeCheck(points.workTime)}
 					</button>
 				: pointstatus.organizationStatus === ORG_STATUS.NODELIVERY ?
 					<button disabled className="order-btn-pointclosed">Оформление онлайн-заказа недоступно</button>

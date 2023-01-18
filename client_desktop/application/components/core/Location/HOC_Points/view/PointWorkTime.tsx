@@ -1,8 +1,10 @@
 import { FC, useState, useEffect } from "react"
 import cn from "classnames";
 import { checkWorkIsArray, workTimeCheck } from "application/helpers/workTime";
+import { IPoint } from "@types";
 
-const PointWorkTime:FC<{worktime:string[],adress:string} > = ({worktime,adress}) => {
+
+const PointWorkTime:FC<{worktime:string[],adress:IPoint} > = ({worktime,adress}) => {
 	const [select,setSelect] = useState(false)
 	const [activeDate,setActiveDate] = useState<number>(0)
 
@@ -28,7 +30,7 @@ const PointWorkTime:FC<{worktime:string[],adress:string} > = ({worktime,adress})
 
 	useEffect(()=>{
 		setSelect(false)
-	},[adress])
+	},[adress.address])
 
 	const checktype = !!(typeof checkWorkIsArray(worktime) === 'string')
 
@@ -40,15 +42,16 @@ const PointWorkTime:FC<{worktime:string[],adress:string} > = ({worktime,adress})
 					src="/images/icon/timework.svg"
 					alt="Телефон заведения"
 				/>
-				<span>{workTimeCheck(worktime)}</span>
+				<span>{workTimeCheck(worktime,adress.guid) === "00:00-00:00" ? "Закрыта" : workTimeCheck(worktime,adress.guid)}</span>
 				{
 					!checktype &&
 					<div className={CN}></div>
+					
 				}
 				
 			</div>
 			{
-				select && !checktype &&
+				 select && !checktype &&
 				<div className="welcome_timebox">
 					<div className="welcome_timebox_item"><span className="welcome_timebox_item--title">График работы:</span></div>	
 					{
