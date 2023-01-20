@@ -78,14 +78,6 @@ const Stocks = () => {
         dotsClass:'stocks__points'
       };
 
-
-			const q = (e:any) =>{
-				
-				setStories(baners[storiesindex].stories)
-				//setStoriesIndex(prev => prev + 1)
-			}
-
-			console.log('qqqqqq',storiesindex);
 			
 
 			
@@ -106,7 +98,7 @@ const Stocks = () => {
 							<div className="stories">
 								<div className="stories_box">
 									<img className="stories_box-close" onClick={()=> handlerStories(null,0)} src={require("assets/i/smal_close.png").default} />
-									<Stories  width="100%" height="100%" onAllStoriesEnd={q} onStoriesStart={()=> setStoriesIndex(prev => prev + 1)} stories={mapStory} />
+									<Stories  width="100%" height="100%" onAllStoriesEnd={()=> handlerStories(null,0)} stories={mapStory} />
 								</div>
 							</div>
 						}
