@@ -43,7 +43,6 @@ const CartLayout: FC<ICartLayout> = ({ children }) => {
 			root.className = ""
 		}
 
-		console.log(root);
    
     return () => {
       root.className = ""

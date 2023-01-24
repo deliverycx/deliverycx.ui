@@ -18,6 +18,8 @@ const useBarPayment = () :any =>{
 		return item.productTags.includes("bar")
 	})
 
+	console.log(arr);
+
 	useEffect(()=>{
 		if(arr.length !== 0 && paymetod.paymentMetod.id === PAYMENT_METODS.CARD){
 				setPopup(true)
