@@ -45,6 +45,13 @@ const protectedRoutes: IRoute[] = [
     component: lazy(() => import('application/components/core/Order/Ordering')),
     
   },
+
+	{
+    exact: false,
+    path: ROUTE_APP.DUALPAYMENT,
+    component: lazy(() => import('application/components/core/Order/DyalPayment')),
+    
+  },
   
 ]
 

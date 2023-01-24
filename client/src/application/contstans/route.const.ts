@@ -14,6 +14,7 @@ export const ROUTE_APP = {
     CART_ORDER: '/cart/order'
   },
   ORDER: '/success',
+	DUALPAYMENT: '/dualpayment',
   PAGES: {
     ABOUT:'/about'
   }

@@ -903,6 +903,108 @@
 	margin-bottom: 10px;
 }
 
+.dualpay__popup{
+	position: fixed;
+	min-height: 86vh;
+	max-height: 86vh;
+	width: 100%;
+	max-width: 375px;
+	background-color: #fff;
+	z-index: 9999;
+	display: flex;
+	padding: 0 30px;
+	height: 100%;
+	justify-content: center;
+	flex-direction: column;
+	text-align: center;
+
+	img{
+		margin: 0 30px;
+		margin-bottom: 30px;
+	}
+
+	.dualpay__popup-text{
+		font-size: 21px;
+		font-weight: 700;
+		margin-bottom: 30px;
+	}
+
+	.dualpay__popup-deck{
+		font-size: 13px;
+		font-weight: 500;
+		margin-bottom: 30px;
+	}
+
+	.dualpay__popup-btn {
+		display: inline-block;
+		padding: 25px 0;
+		width: 250px;
+		margin: 0 auto;
+		background-color: #8D191D;
+		color: #FFFFFF;
+		cursor: pointer;
+		font-size: 21px;
+		font-family: "sf-ui-bold";
+		border-radius: 90px;
+		border: 2px solid #8D191D;
+	}
+}
+
+.dyalpay_page{
+	display: flex;
+	justify-content: center;
+	flex-direction: column;
+	width: 100%;
+	min-height: 86vh;
+	max-height: 86vh;
+	padding: 0 40px;
+	text-align: center;
+	.dyalpay_page-text{
+		font-size: 21px;
+		font-weight: 700;
+		margin-bottom: 30px;
+	}
+
+	.dyalpay_page-deck{
+		font-size: 13px;
+		font-weight: 500;
+		margin-bottom: 30px;
+		.price{
+			color: #558950;
+		}
+	}
+
+	.dyalpay_page-btn {
+		display: inline-block;
+		padding: 25px 0;
+		width: 250px;
+		margin: 0 auto;
+		background-color: #8D191D;
+		color: #FFFFFF;
+		cursor: pointer;
+		font-size: 21px;
+		font-family: "sf-ui-bold";
+		border-radius: 90px;
+		border: 2px solid #8D191D;
+	}
+
+	.dyalpay_page-back{
+		display: inline-block;
+		padding: 25px 0;
+		width: 250px;
+
+		margin: 0 auto;
+		margin-top: 20px;
+		background-color: #fff;
+		color: #ABABAB;
+		cursor: pointer;
+		font-size: 21px;
+		font-family: "sf-ui-bold";
+		border-radius: 90px;
+		border: none;
+	}
+}
+
 @keyframes show {
     from {
         opacity: 0;
@@ -921,7 +1023,10 @@
     }
 		.popupFixCart {
 			bottom: 0;
-	}
+		}
+		.dualpay__popup,.dyalpay_page{
+			max-height: 100vh;
+		}
 }
 @media screen and (max-width: 360px) {
     .cart__order-btn {

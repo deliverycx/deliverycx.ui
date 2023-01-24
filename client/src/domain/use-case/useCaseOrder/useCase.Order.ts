@@ -12,14 +12,14 @@ export function useOrder() {
     const location = useLocation();
     const history = useHistory();
     const dispatch = useDispatch();
-    const url = location.pathname.split("/")[2];
+    const hash = location.pathname.split("/")[2];
     const ref = useRef<NodeJS.Timeout>();
 
-    const presentOrder = async (url: string, tik = 0) => {
+    const presentOrder = async (hashNumb: string, tik = 0) => {
         try {
             let tik = 0;
             ref.current = setInterval(async () => {
-                const { data } = await RequestOrder.OrderNumber(url);
+                const { data } = await RequestOrder.OrderNumber(hashNumb);
                 new Promise((res, rej) => {
                     if (data && data.number) {
                         clearInterval(ref.current as any);
@@ -49,16 +49,18 @@ export function useOrder() {
         }
     };
 
+
+
     useEffect(() => {
-        if (location.pathname.split("/")[1] === "success" && url) {
-            presentOrder(url);
+        if ((location.pathname.split("/")[1] === "success" || location.pathname.split("/")[1] === "dualpayment") && hash) {
+            presentOrder(hash);
         } else {
             history.push(ROUTE_APP.SHOP.SHOP_MAIN);
         }
         () => {
             clearInterval(ref.current as any);
         };      
-    }, [url]);
+    }, [hash]);
 
     const handleBacktoShop = () => {
         dispatch(fetchDeleteCart());
@@ -67,7 +69,8 @@ export function useOrder() {
     };
 
     this.data({
-        orderNumber
+        orderNumber,
+				hash
     });
     this.handlers({
         handleBacktoShop
@@ -76,3 +79,41 @@ export function useOrder() {
         orderLoad
     });
 }
+
+export function useOrderDualPayment({orderNumber,hash}:any) {
+	const history = useHistory();
+
+	const getAdminOrder = async () =>{
+		try {
+			const {data} = await RequestOrder.dualPayment(hash)
+			console.log(data);
+		} catch (error) {
+			console.log(error);
+		}
+	}
+
+	useEffect(()=>{
+		orderNumber && getAdminOrder()
+	},[orderNumber])
+
+	const handlerBackToOrder = () =>{
+		history.push(ROUTE_APP.ORDER + '/' + hash)	
+	}
+
+	const handlerPayBar = () =>{
+		window.location.href = "https://paymaster.ru/cpay/398880c9026d438c99f06a0e9293f8c7"
+	}
+
+	this.data({
+		
+	});
+	this.handlers({
+		handlerBackToOrder,
+		handlerPayBar
+	});
+	this.status({
+		
+	});
+}
+
+

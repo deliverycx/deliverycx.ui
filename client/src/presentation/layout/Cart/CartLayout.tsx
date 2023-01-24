@@ -16,6 +16,7 @@ import { useGetPointStatusMutation } from "servises/repository/RTK/RTKLocation";
 import { useEffect } from 'react';
 import { useHistory } from "react-router-dom";
 import { ROUTE_APP } from "application/contstans/route.const";
+import useBarPayment from "application/hooks/useBarPayment";
 
 type ICartLayout = {
     children:ReactNode
@@ -28,9 +29,26 @@ const CartLayout: FC<ICartLayout> = ({ children }) => {
 	const [getOrgstatus,{data:orgstatus}] = useGetPointStatusMutation()
 	const history = useHistory();
 
+	const [popup,setPopup] = useBarPayment()
+
 	if(!pointstatus){
 		history.push(ROUTE_APP.MAIN)
 	}
+
+	useEffect(() => {
+		const root:any = document.getElementById('root')
+		if(root && popup){
+			root.className = "no-scroll"
+		}else{
+			root.className = ""
+		}
+
+		console.log(root);
+   
+    return () => {
+      root.className = ""
+    }
+  }, [popup]);
 
 	useEffect(()=>{
 		getOrgstatus(point.guid)
@@ -38,6 +56,15 @@ const CartLayout: FC<ICartLayout> = ({ children }) => {
 
   return (
       <div className="cat_app" style={{ backgroundColor: "#fff" }}>
+					{
+						popup &&
+						<div className="dualpay__popup">
+							<img src={require("assets/img/dualpay.svg").default} />
+							<div className="dualpay__popup-text">Генацвале, у нас раздельный учет чеков по кухне и бару</div>
+							<div className="dualpay__popup-deck">Предупреждаем, что будет 2 оплаты: <br /> за блюда и за напитки</div>
+							<button type="submit" onClick={()=> setPopup(false)} className="dualpay__popup-btn">Принято</button>
+						</div>
+					}
           <div className="cart">
               <CartHeader />
               <div className="container">
