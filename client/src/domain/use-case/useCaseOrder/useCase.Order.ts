@@ -101,7 +101,7 @@ export function useOrderDualPayment({orderNumber,hash}:any) {
 	}
 
 	const handlerPayBar = () =>{
-		window.location.href = "https://paymaster.ru/cpay/398880c9026d438c99f06a0e9293f8c7"
+		window.location.href = "https://paymaster.ru/cpay/c3b229b6f1bc45fab75eed03f0041c3f"
 	}
 
 	this.data({
