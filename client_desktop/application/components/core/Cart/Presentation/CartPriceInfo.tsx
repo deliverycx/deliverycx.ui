@@ -19,7 +19,7 @@ const CartPriceInfo = () => {
           orderType === CART_CHOICE.PICKUP &&
           <div className="cart__memo__banner">Заказ можно получить по адресу,<br /> <b className="price"> г. {city}, {address} </b></div>
         }
-        После заказа с вами свяжется администратор
+        Условия доставки в отдалённые районы могут отличаться
       </div>
   )
 }
