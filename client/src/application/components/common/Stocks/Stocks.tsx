@@ -97,7 +97,7 @@ const Stocks = () => {
 							mapStory &&
 							<div className="stories">
 								<div className="stories_box">
-									<img className="stories_box-close" onClick={()=> handlerStories(null,0)} src={require("assets/i/smal_close.png").default} />
+									<img className="stories_box-close" onClick={()=> handlerStories(null,0)} src={require("assets/img/closestories.svg").default} />
 									<Stories  width="100%" height="100%" onAllStoriesEnd={()=> handlerStories(null,0)} stories={mapStory} />
 								</div>
 							</div>
