@@ -19,6 +19,7 @@ import { FormBuilder } from "application/components/common/Forms";
 import CartModals from "../CartModals/CartModals";
 import React from "react";
 import { CartFormMetods } from "./CartMetods";
+import { DELIVERY_METODS } from "application/contstans/const.orgstatus";
 
 
 type IProps = {
@@ -121,14 +122,13 @@ const CartFrom: FC<IProps> = ({ builder,paths }) => {
           {
             formWrapper.getInitinal(builder)
           }
-          <textarea
-            value={formik.values.comment}
-            name="comment"
-            onChange={formik.handleChange}
-            className="form__textarea"
-            placeholder="Напишите сюда, если хотите добавить еще какую-то информацию о заказе..."
-          ></textarea>
-          <div className="administrator">После заказа с вами свяжется администратор</div>
+          
+					{
+						orderType === DELIVERY_METODS.ONSPOT 
+							? <div className="administrator">После заказа к вам подойдет официант</div>
+							: <div className="administrator">После заказа с вами свяжется администратор</div>
+					}
+          
 
           {orderError.status === 500 && (
             <div className="server-error">

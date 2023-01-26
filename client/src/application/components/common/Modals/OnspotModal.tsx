@@ -48,11 +48,13 @@ const OnspotModal = () =>{
 		{
 			modal &&
 			<div className="onspot_modal">
-				<div className="onspot_modal_section">
 				<img
-	      	src={require("assets/img/logo-choose-city.svg").default}
+					className="onspot_modal-logo"
+	      	src={require("assets/img/logocx-medium.svg").default}
 	        alt="Доставка и самовывоз"
 	      />
+				<div className="onspot_modal_section">
+				
 				
 				<img
 	      	src={require("assets/img/onspotmodal.svg").default}
@@ -62,14 +64,15 @@ const OnspotModal = () =>{
 				<div className="onspot_modal__content">
 					<h2 className="onspot_modal__content-title">Гамарджоба!</h2>
 					<div className="onspot_modal__content-text">
-						Рады, что вы выбрали наш новый <br /> способ заказа за столиком!
+						Спасибо, что выбрали онлайн-заказ за столиком! Этот тестовый период, поэтому если возникнут сложности сообщите официанту или в нашу поддержку. 
 					</div>
 					<div className="onspot_modal__content-text">
-						Это тестовый период, поэтому если возникнут <br /> сложности сообщите пожалуйста официанту или <br /> в  нашу поддержку! 
+							Приятных покупок!
 					</div>
 				</div>
+				<button className="onspot_modal__button" onClick={()=> handlerModal()}>Поехали</button>
 				</div>
-				<button className="onspot_modal__button" onClick={()=> handlerModal()}>Продолжить</button>
+				
 			</div>
 		}
 		

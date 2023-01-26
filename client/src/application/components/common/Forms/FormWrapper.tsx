@@ -16,6 +16,7 @@ export interface IWrapper {
   name(): ReactNode
   phone(): ReactNode
   deliv(): ReactNode
+	comment(): ReactNode
 }
 export const FormWrapper = (formik: any,usecase:any): IWrapper => {
   const history = useHistory()
@@ -187,6 +188,17 @@ export const FormWrapper = (formik: any,usecase:any): IWrapper => {
         </FormFieldWrapper>
       )
     },
+		comment(){
+			return(
+				<textarea
+            value={formik.values.comment}
+            name="comment"
+            onChange={formik.handleChange}
+            className="form__textarea"
+            placeholder="Напишите сюда, если хотите добавить еще какую-то информацию о заказе..."
+          ></textarea>
+			)
+		}
   };
 };
 
