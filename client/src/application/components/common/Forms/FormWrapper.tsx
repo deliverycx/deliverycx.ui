@@ -39,14 +39,6 @@ export const FormWrapper = (formik: any,usecase:any): IWrapper => {
           addfild="payfild"
         >
           <div className="adress_fild__address payment-fild" onClick={choicePayment}>{paymentMetod.value} <span className="ok-icon-red"></span></div>
-          {
-            //CartFormMetods.paymentsMetod[1].id === stateForm.payment.id
-            false &&
-            <div className="addnew_cart" onClick={() => history.push(paths + '/card') }>
-              <img src={require("assets/i/credit_card.png").default} />
-              <span>Добавить новую карту</span>
-            </div>
-          }
 
         </FormFieldWrapper>
 				</div>

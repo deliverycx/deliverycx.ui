@@ -6,11 +6,8 @@ import { adapterSelector } from 'servises/redux/selectors/selectors';
 import { PAYMENT_METODS } from "application/contstans/const.orgstatus";
 
 
-const useBarPayment = () :any =>{
+const useBarPayment = (paymentMetod:string) :any =>{
 	const cartList = useSelector(cartSelector.selectAll);
-	const paymetod = adapterSelector.useSelectors(selector => selector.bankcard)
-	const [popup,setPopup] = useState(false)
-	//console.log('cart',cartList);
 
 	
 
@@ -18,16 +15,8 @@ const useBarPayment = () :any =>{
 		return item.productTags.includes("bar")
 	})
 
-	console.log(arr);
+	
 
-	useEffect(()=>{
-		if(arr.length !== 0 && paymetod.paymentMetod.id === PAYMENT_METODS.CARD){
-				setPopup(true)
-			}else{
-				setPopup(false)
-			}
-	},[paymetod.paymentMetod])
-
-	return [popup,setPopup]
+	
 }
 export default useBarPayment
