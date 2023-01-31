@@ -127,7 +127,7 @@ const CartFrom: FC<IProps> = ({ builder,paths }) => {
             className="form__textarea"
             placeholder="Напишите сюда, если хотите добавить еще какую-то информацию о заказе..."
           ></textarea>
-          <div className="administrator">После заказа с вами свяжется администратор</div>
+          <div className="administrator">Условия доставки в отдалённые районы могут отличаться</div>
 
           {orderError.status === 500 && (
             <div className="server-error">
