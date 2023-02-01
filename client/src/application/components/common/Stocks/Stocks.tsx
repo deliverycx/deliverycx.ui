@@ -49,10 +49,10 @@ const Stocks = () => {
 			setStoriesIndex(index)
 			if(story){
 				setStories(story)
-				q.classList.toggle("no-scroll")
+				q.classList.add("no-scroll")
 			}else{
 				setStories(null)
-				q.classList.toggle("no-scroll")
+				q.classList.remove("no-scroll")
 			} 
 			
 		} 
