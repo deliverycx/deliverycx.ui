@@ -74,11 +74,20 @@ export function useLocations(this: any){
     
 	// 
   useEffect(() => {
+		const queryOrg = router.query.organuzation as string
     if (Object.keys(selectedCity).length) {
       setSelectCity(selectedCity)
 			//setShow(false)
     }
-  }, [selectedCity]);
+		const tik = setTimeout(()=>{
+			if(!Object.keys(selectedCity).length && !queryOrg){
+				console.log('города нема');
+			}
+		},1000)
+		return () =>{
+			clearTimeout(tik)
+		}
+  }, [selectedCity,router.query]);
 
 	// выбранный город
   useEffect(() => {

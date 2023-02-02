@@ -7,7 +7,7 @@ const HeaderLocation = () => {
     const {handlerHeader } = useCaseLocationHeader.handlers;
 
 		const rend = () =>{
-			//window.location.href = process.env.NEXT_PUBLIC_REDIRECT as string
+			window.location.href = process.env.NEXT_PUBLIC_REDIRECT as string
 		}
 
     return (
@@ -19,15 +19,9 @@ const HeaderLocation = () => {
             <span onClick={() => handlerHeader('point')}>{selectedPoint.address}</span>
 							 */
 						}
-						<span onClick={() => handlerHeader('city')} className="header_adress-info-active">{selectedPoint.city}</span>
-            <span onClick={() => handlerHeader('point')}>{selectedPoint.address}</span>
-						{
-							/**
-							 * <span onClick={() => rend()} className="header_adress-info-active">{selectedPoint.city}</span>
+						<span onClick={() => rend()} className="header_adress-info-active">{selectedPoint.city}</span>
             <span onClick={() => rend()}>{selectedPoint.address}</span>
-							 * 
-							 */
-						}
+						
             
 
 

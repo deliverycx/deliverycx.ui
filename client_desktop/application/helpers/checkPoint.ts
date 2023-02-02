@@ -7,7 +7,9 @@ export const checkPoint = (modal = true) => {
   const selectedPoint = storage.location.point
   
   if ((Object.keys(selectedCity).length === 0) || (Object.keys(selectedPoint).length === 0 )) {
+		
     modal && store.dispatch(setModal(true));
+		
     return false
   } else {
     return true

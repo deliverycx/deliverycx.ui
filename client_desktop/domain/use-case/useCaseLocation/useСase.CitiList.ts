@@ -18,7 +18,6 @@ export function useCitiList(this: any,show:any){
     show(false)
   }
 
-	
 
   this.data({
     serchCiti,
