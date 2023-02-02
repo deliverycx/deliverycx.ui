@@ -25,7 +25,7 @@ export function usePoints() {
   const dispatch = useDispatch();
 
 	////редирект
-	//window.location.href = process.env.REACT_APP_REDIRECT as string
+	window.location.href = process.env.REACT_APP_REDIRECT as string
 
 
   const selectedCity = adapterSelector.useSelectors(
