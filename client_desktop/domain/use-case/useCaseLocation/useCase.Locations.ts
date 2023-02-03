@@ -11,6 +11,7 @@ import { ICity, ISocial,IPoint } from "@types";
 import { workTimeHelp } from "application/helpers/workTime";
 import { CART_CHOICE } from "application/contstans/cart.const";
 import { ORG_STATUS } from 'application/contstans/const.orgstatus';
+import { useGetPointStatusMutation } from "servises/repository/RTK/RTKLocation";
 
 export function useLocations(this: any){
   const dispatch = useDispatch()
@@ -20,6 +21,7 @@ export function useLocations(this: any){
   const selectedCity = adapterSelector.useSelectors((selector) => selector.city);
 	const point = adapterSelector.useSelectors((selector) => selector.point);
 	const pointstatus = adapterSelector.useSelectors(selector => selector.pointstatus)
+	const [getOrgstatus,{data:orgstatus}] = useGetPointStatusMutation()
 
   const [showCiti, setShow] = useState(true)
   const [youSity, setYouSyty] = useState(false)
@@ -66,6 +68,7 @@ export function useLocations(this: any){
 			if(res.status === 200){
 				dispatch(setCiti(res.data));
 				dispatch(setPoint(data));
+				getOrgstatus(org)
 				router.push(ROUTE_APP.MENU)
 			}
 			

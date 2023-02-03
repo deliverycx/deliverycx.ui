@@ -5,6 +5,7 @@ import { useHistory, useLocation } from "react-router-dom";
 import { fetchDeleteCart, fetchRefreshCart, setOrderTable, setOrderType } from "servises/redux/slice/cartSlice";
 import { setCiti, setPoint } from "servises/redux/slice/locationSlice";
 import RequestLocation from "servises/repository/Axios/Request/Request.Location";
+import { useGetPointStatusMutation } from "servises/repository/RTK/RTKLocation";
 import { router } from "yandex-maps";
 
 export const useRedirectOrg = () =>{
@@ -16,6 +17,7 @@ export const useRedirectOrg = () =>{
 	const organuzation = query.get(QUERY_APP.ORGANIZATION)
 	const table = query.get(QUERY_APP.ONSPOT_TABLE)
 	const delivMetod = query.get(QUERY_APP.DELIVERY_METOD)
+	const [getOrgstatus,{data:orgstatus}] = useGetPointStatusMutation()
 
 	useEffect(()=>{
 		organuzation && caseQuery()
@@ -46,6 +48,7 @@ export const useRedirectOrg = () =>{
 					dispatch(setCiti(res.data));
 					dispatch(setPoint(data));
 					dispatch(fetchDeleteCart())
+					getOrgstatus(org)
 				}
 				
 			}else{
