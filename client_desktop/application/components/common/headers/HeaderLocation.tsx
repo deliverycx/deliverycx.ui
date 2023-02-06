@@ -7,7 +7,7 @@ const HeaderLocation = () => {
     const {handlerHeader } = useCaseLocationHeader.handlers;
 
 		const rend = () =>{
-			window.location.href = process.env.NEXT_PUBLIC_REDIRECT as string
+			window.location.href = `${process.env.NEXT_PUBLIC_REDIRECT as string}/?location=city`
 		}
 
     return (
