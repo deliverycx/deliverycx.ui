@@ -19,6 +19,7 @@ import { useRouter } from 'next/router'
 import { CART_CHOICE } from "application/contstans/cart.const";
 import RequestLocation from "servises/repository/Axios/Request/Request.Location";
 import { ORG_STATUS } from "application/contstans/const.orgstatus";
+import { Redirects } from "application/helpers/redirectTo";
 
 export function usePoints(this: any,{selectCity,handleSelectOrganitztion}:any) {
   const dispatch = useDispatch();
@@ -180,6 +181,7 @@ export function usePointsMaps(this: any,{selectCity,handlerGoToCity,handlerClose
             
             RequestProfile.update({ organizationId: address.id });
             handlerCloseMapModal()
+						Redirects(address.guid)
 						router.push(`${ROUTE_APP.MENU}`)
         } catch (error) {
             
