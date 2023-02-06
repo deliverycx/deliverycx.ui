@@ -20,7 +20,7 @@ export function useCaseShop(this: any,category:string) {
   
   useEffect(() => {
     category && setId(false)  
-		Redirects(point.guid)
+
   }, [category])
 
 

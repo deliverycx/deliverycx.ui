@@ -17,6 +17,7 @@ import { RootState } from 'servises/redux/createStore';
 import { accessOrder, fetchDeleteCart, fetchRefreshCart, setOrderType } from "servises/redux/slice/cartSlice";
 import { useRouter } from 'next/router'
 import { CART_CHOICE } from "application/contstans/cart.const";
+import { Redirects } from "application/helpers/redirectTo";
 
 export function usePoints(this: any,{selectCity,handleSelectOrganitztion}:any) {
   const dispatch = useDispatch();
@@ -38,6 +39,7 @@ export function usePoints(this: any,{selectCity,handleSelectOrganitztion}:any) {
     }
     
     RequestProfile.update({ organizationId: address.id });
+		Redirects(address.guid)
     router.push(`${ROUTE_APP.MENU}/?address=${address.city + ',' + address.address}`)
   }
 
@@ -172,6 +174,7 @@ export function usePointsMaps(this: any,{selectCity,handlerGoToCity,handlerClose
 						} 
             
             RequestProfile.update({ organizationId: address.id });
+						Redirects(address.guid)
             handlerCloseMapModal()
 						router.push(`${ROUTE_APP.MENU}`)
         } catch (error) {
