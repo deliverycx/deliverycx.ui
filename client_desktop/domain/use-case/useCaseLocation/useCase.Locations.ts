@@ -88,6 +88,7 @@ export function useLocations(this: any){
 	// переключение на точки и город
 	useEffect(() => {
 		const loc = router.query.location
+		console.log(router.query);
     if (Object.keys(selectedCity).length && loc) {
       if(loc === 'point'){
 				setShow(false)
@@ -95,6 +96,11 @@ export function useLocations(this: any){
 				setShow(true)
 			}
     }
+
+		if(loc === 'city' || loc === 'point'){
+			handlerModal(true)
+		}
+
   }, [router.query.location]);
 
 
