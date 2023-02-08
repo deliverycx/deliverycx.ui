@@ -156,7 +156,7 @@ export function useCartMap(this: any,close:any) {
 					
 
 					if(!isLoadingStreet && ikkostreet){
-						const findstreet = ikkostreet.some(element => element.name === street && !element.isDeleted);
+						const findstreet = ikkostreet.some(element => element.name === street);
 						if(findstreet){
 							dispatch(setAdress(stateReduceMap.valueMap));
 	            onMapTyping().setValueMap("");
