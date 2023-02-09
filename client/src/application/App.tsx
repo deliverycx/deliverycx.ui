@@ -30,10 +30,10 @@ const App = (): JSX.Element => {
   },[])
 	*/
 	useEffect(() =>{
-		history.push(ROUTE_APP.ERROR)
+		//history.push(ROUTE_APP.ERROR)
 		//window.location.href = ROUTE_APP.ERROR as string
-	})
-
+	},[])
+	//window.location.href = ROUTE_APP.ERROR as string
 	
 
 	return (
