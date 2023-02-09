@@ -5,9 +5,11 @@ import { Provider } from 'react-redux';
 import { PersistGate } from 'redux-persist/integration/react';
 import { useEffect, useMemo } from 'react';
 import debounce from 'lodash.debounce';
+import { useRouter } from 'next/router';
 
 
 function MyApp({ Component, pageProps }: AppProps) {
+	const router = useRouter()
 
   const handleWindowResize = useMemo(() => debounce(() => {
     if (window.innerWidth < 1024) {
@@ -16,8 +18,10 @@ function MyApp({ Component, pageProps }: AppProps) {
   }, 200), [])
 
   useEffect(() => {
+		
     handleWindowResize()
     window.addEventListener('resize', handleWindowResize);
+		router.push('/404')
     return () => window.removeEventListener('resize', handleWindowResize);
   }, [])
 
