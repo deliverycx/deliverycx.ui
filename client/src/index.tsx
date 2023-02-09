@@ -11,7 +11,7 @@ import { ROUTE_APP } from "application/contstans/route.const";
 
 const history = createBrowserHistory()
 
-history.push(ROUTE_APP.ERROR)
+//history.push(ROUTE_APP.ERROR)
 ReactDOM.render(
     <Provider store={store}>
         <PersistGate loading={<LoaderScreen />} persistor={persistor}>

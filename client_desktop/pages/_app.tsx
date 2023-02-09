@@ -21,7 +21,7 @@ function MyApp({ Component, pageProps }: AppProps) {
 		
     handleWindowResize()
     window.addEventListener('resize', handleWindowResize);
-		router.push('/404')
+		//router.push('/404')
     return () => window.removeEventListener('resize', handleWindowResize);
   }, [])
 
