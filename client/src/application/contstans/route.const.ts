@@ -1,5 +1,6 @@
 export const ROUTE_APP = {
   MAIN: "/",
+	ERROR:"/error",
   CITILIST: "/cities",
   POINT: "/point",
   SHOP: {

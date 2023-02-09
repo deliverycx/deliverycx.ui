@@ -1,6 +1,7 @@
 .error-container {
   height: 100vh;
   width: 100%;
+	padding: 0 20px;
   background-color: $white;
   .error-img {
     background: url("../assets/img/errors/error404.svg") center center no-repeat;
@@ -30,7 +31,7 @@
     }
   }
   div {
-    font-family: sf-ui-medium, sans-serif;
+    
     font-size: 13px;
     line-height: 120%;
     margin-top: 8px;
