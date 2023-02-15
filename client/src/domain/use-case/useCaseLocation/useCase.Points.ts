@@ -25,7 +25,9 @@ export function usePoints() {
   const dispatch = useDispatch();
 
 	////редирект
-	window.location.href = process.env.REACT_APP_REDIRECT as string
+	if(process.env.NODE_ENV === 'production'){
+		window.location.href = process.env.REACT_APP_REDIRECT as string
+	}
 
 
   const selectedCity = adapterSelector.useSelectors(

@@ -16,7 +16,10 @@ export function useCitiList(){
   const {data:cities,isLoading} = useGetCitiQuery(serchCiti)
  
 	//редирект
-	window.location.href = process.env.REACT_APP_REDIRECT as string
+	if(process.env.NODE_ENV === 'production'){
+		window.location.href = process.env.REACT_APP_REDIRECT as string
+	}
+	
 
   const selectCiti = (city: ICity)=>{
     dispatch(setCiti(city));
