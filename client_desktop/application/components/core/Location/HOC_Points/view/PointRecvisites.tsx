@@ -23,6 +23,8 @@ const PointRecvisites = () => {
 								<h3 className="recvisites_box-title">ООО «Хинкалыч»</h3>
                 <div className="recvisites_box-ur">Юридический адрес:</div>
                 <div className="recvisites_box-content">
+										<span>295011, Республика Крым, </span>
+										<span>г. Симферополь, ул. Севастопольская, д. 30</span>
                     <span>ОГРН 1169102054450</span>
                     <span>ИНН 9102204024</span>
                 </div>
