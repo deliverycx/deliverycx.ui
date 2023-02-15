@@ -92,7 +92,7 @@ const PopupPoint = () => {
                           }
 
                           {
-                              (recvisites && Object.keys(recvisites).length !== 0) &&
+                              (address.guid === 'fe470000-906b-0025-00f6-08d8de6557e1') && //(recvisites && Object.keys(recvisites).length !== 0) &&
                               <div className="recvisites" onClick={() => recvisitesHandler(true)}>Реквизиты компании</div>
                           }
                           {workTimeHelp(address.workTime,address.guid) 

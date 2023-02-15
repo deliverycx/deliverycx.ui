@@ -66,8 +66,9 @@ const PopupPoint = () => {
 													<div className="deliv-method">самовывоз и доставка</div>
 											}
             {
-              (recvisites && Object.keys(recvisites).length !== 0) && <div className="recvisites" onClick={()=>recvisitesHandler(true)}>Реквизиты компании</div>
+              (address.guid === 'fe470000-906b-0025-00f6-08d8de6557e1') && <div className="recvisites" onClick={()=>recvisitesHandler(true)}>Реквизиты компании</div>
             }
+						
             <button
                className="btn welcome__select-adress__btn"
                onClick={() => selectPointHandler(address)}
