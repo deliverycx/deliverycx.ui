@@ -82,30 +82,47 @@ export function useOrder() {
 
 export function useOrderDualPayment({orderNumber,hash}:any) {
 	const history = useHistory();
+	const [orderInfo,setOrderInfo] = useState<any>()
 
 	const getAdminOrder = async () =>{
 		try {
 			const {data} = await RequestOrder.dualPayment(hash)
-			console.log(data);
+			setOrderInfo(data)
 		} catch (error) {
 			console.log(error);
 		}
 	}
 
+	
+
 	useEffect(()=>{
 		orderNumber && getAdminOrder()
-	},[orderNumber])
+	},[orderNumber,hash])
 
 	const handlerBackToOrder = () =>{
 		history.push(ROUTE_APP.ORDER + '/' + hash)	
 	}
 
-	const handlerPayBar = () =>{
-		window.location.href = "https://paymaster.ru/cpay/c3b229b6f1bc45fab75eed03f0041c3f"
+	const handlerPayBar = async () =>{
+		try {
+			const {data} = await RequestOrder.dualPaymentCreate({
+				hash,
+				localhost:`${document.location.protocol}//${document.location.host}`
+			})
+			if (data.redirectUrl) {
+        if (typeof data.redirectUrl === 'string') {
+          window.location.href = data.redirectUrl;
+        }
+        
+      }
+		} catch (error) {
+			console.log(error);
+		}
+		//window.location.href = "https://paymaster.ru/cpay/c3b229b6f1bc45fab75eed03f0041c3f"
 	}
 
 	this.data({
-		
+		orderInfo
 	});
 	this.handlers({
 		handlerBackToOrder,

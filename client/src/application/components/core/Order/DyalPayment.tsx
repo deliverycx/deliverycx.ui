@@ -8,8 +8,10 @@ const DyalPayment = () =>{
   const {orderLoad} = useCaseOrder.status
 
 	const useCaseDyalPay = adapterComponentUseCase(useOrderDualPayment,{orderNumber,hash})
+	const {orderInfo} = useCaseDyalPay.data
 	const {handlerBackToOrder,handlerPayBar} = useCaseDyalPay.handlers
 
+	
 	return(
 		<div className="cart order-container">
       
@@ -23,11 +25,11 @@ const DyalPayment = () =>{
         }
 
 				{
-					orderNumber &&
+					(orderNumber && orderInfo) &&
 					<div className="dyalpay_page">
 							<div className="dyalpay_page-text">Первая оплата успешно прошла!</div>
 							<div className="dyalpay_page-deck">Можете продолжить расчет по бару онлайн или оплатить при получении заказа наличными</div>
-							<div className="dyalpay_page-deck">Оставшаяся сумма:  <span className="price">130 ₽</span>  </div>
+							<div className="dyalpay_page-deck">Оставшаяся сумма:  <span className="price">{orderInfo.dyalPayment.BarPaymentAmount}</span>  </div>
 							<button type="submit"  className="dyalpay_page-btn" onClick={handlerPayBar}>Онлайн</button>
 							<button type="submit"  className="dyalpay_page-back" onClick={handlerBackToOrder}>Наличными</button>
 					</div>
