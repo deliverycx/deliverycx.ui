@@ -15,7 +15,7 @@ import { useCallback, useEffect, useMemo, useReducer } from "react";
 import { useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom";
 import { adapterSelector } from "servises/redux/selectors/selectors";
-import { setAdress } from "servises/redux/slice/cartSlice";
+import { setAdress, setKladrId } from "servises/redux/slice/cartSlice";
 import RequestWebhook from "servises/repository/Axios/Request/Request.Webhook";
 import { useGetDeliveryZonesQuery } from "servises/repository/RTK/RTKCart";
 import { useGetStreetCityQuery } from "servises/repository/RTK/RTKLocation";
@@ -30,7 +30,7 @@ export function useCartMap() {
     const { address } = adapterSelector.useSelectors(
         (selector) => selector.cart
     );
-    const { city,guid } = adapterSelector.useSelectors((selector) => selector.point);
+    const { city,guid,address:pointadress } = adapterSelector.useSelectors((selector) => selector.point);
     const [stateReduceMap, dispatchMap] = useReducer(
         CartMapReducer,
         initialStateCartMap
@@ -157,32 +157,23 @@ export function useCartMap() {
             !stateReduceMap.disclaimer
         ) {
 
-					
-					
-					//const kladrid = await daData(`${city}, ${stateReduceMap.valueMap}` )
-
+					const kladrid = await daData(`${city}, ${stateReduceMap.valueMap}` )
+					console.log(kladrid);
 					if(!isLoadingStreet && ikkostreet){
-						const findstreet = true //ikkostreet.some(element => element.classifierId === kladrid && !element.isDeleted);
+						const findstreet = ikkostreet.some(element => element.classifierId === kladrid && !element.isDeleted);
 						
 						if(findstreet){
-							
-							dispatch(setAdress(stateReduceMap.valueMap));
-              history.push(ROUTE_APP.CART.CART_DELIVERY);
-              onMapTyping().setValueMap("");
+							dispatch(setKladrId(kladrid)) 
 						}else{
-							dispatchMap({
-								type: ReducerActionTypePoints.setDisclaimer,
-								payload: true
-							})
+							const pointKladrId = await daData(`${city}, ${pointadress}` )
+							dispatch(setKladrId(pointKladrId)) 
 						}
+						dispatch(setAdress(stateReduceMap.valueMap));
+						history.push(ROUTE_APP.CART.CART_DELIVERY);
+						onMapTyping().setValueMap("");
 					}
 						
-           try {
-						const res = await RequestWebhook.getStreetDaData('Каверина 4')
-						console.log(res);
-					 } catch (error) {
-							console.log(error);
-					 } 
+            
         }
     };
 
@@ -199,31 +190,23 @@ export function useCartMap() {
 
 		const daData = async (queryStreet:string) =>{
 					try {
-						const remote_url = 'https://cleaner.dadata.ru/api/v1/clean/address';
+						const remote_url = 'https://suggestions.dadata.ru/suggestions/api/4_1/rs/suggest/address';
 						const body = {
-						    'query' : [queryStreet],
-								
+						    'query' : queryStreet,
+								'count' : 1
 						};
 						const token = '4d575df5b58e315429934796a55711d488a8fdec';
 						const secret = "1894ee2d296d0ebc7b52704972a965c5dc54a860";
 						const config = {
-						    headers: {
-									'Authorization': 'Token ' + token,
-									"X-Secret": secret,
-									"Access-Control-Allow-Origin": "*",
-"Access-Control-Allow-Credentials": true
-								}
+						    headers: {'Authorization': 'Token ' + token}
 								
 						};
+						
 						const {data} = await axios.post(remote_url, body, config)
-						console.log(data.suggestions,queryStreet);
 						return data.suggestions[0].data.street_kladr_id
 					} catch (error) {
 						console.log('ошибка в кладр');
-						dispatchMap({
-							type: ReducerActionTypePoints.setDisclaimer,
-							payload: true
-						})
+						//daData('Симферополь Турецкая 25')
 					}
 		}
 
