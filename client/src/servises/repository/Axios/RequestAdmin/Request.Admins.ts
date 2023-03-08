@@ -8,5 +8,10 @@ class RequestAdmin extends ApiAdminSuper {
   bannersList(org:string) {
     return this.request(`/display/all?organization=${org}`)
   }
+
+	@methods('post')
+  getBu(idorg:{idorganization: string}) {
+    return this.request(`/organization/getorgbu`)
+  }
 }
 export default new RequestAdmin()

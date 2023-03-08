@@ -48,7 +48,7 @@ const CartYmap = ({close}:any) => {
         <div className="modals_title">Укажите <span>адрес доставки</span></div>
         <YMaps
           enterprise
-          query={{ apikey: "164ee8b6-9e22-4e21-84ed-a0778bdf0f37" }}
+          query={{ apikey: "e45f9cf9-d514-40a5-adb9-02524aaef83f" }}
         >
           <Map className="welcome__map delivery-map" width="100" height="100" modules={["geocode"]} onClick={onMapClick}
                state={mapstate} defaultState={
