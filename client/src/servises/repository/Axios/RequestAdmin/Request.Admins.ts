@@ -11,7 +11,7 @@ class RequestAdmin extends ApiAdminSuper {
 
 	@methods('post')
   getBu(idorg:{idorganization: string}) {
-    return this.request(`/organization/getorgbu`)
+    return this.request<any>(`/organization/getorgbu`)
   }
 }
 export default new RequestAdmin()

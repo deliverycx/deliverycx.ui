@@ -13,5 +13,9 @@ class RequestAdmin extends ApiAdminSuper {
   social(query:string) {
     return this.request<ISocial>(`/organization/socialbu?idorganization=${query}`)
   }
+	@methods('post')
+  getBu(idorg:{idorganization: string}) {
+    return this.request<any>(`/organization/getorgbu`)
+  }
 }
 export default new RequestAdmin()
