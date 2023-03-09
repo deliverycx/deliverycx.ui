@@ -9,11 +9,7 @@ const HeaderLocation = () => {
 		const point = adapterSelector.useSelectors(selector => selector.point)
 
 		const rend = (querty:string) =>{
-			if(point.isHidden){
-				window.location.href = `${process.env.NEXT_PUBLIC_REDIRECT as string}/?location=${querty}`
-			}else{
-				handlerHeader(querty)
-			}
+			window.location.href = `${process.env.NEXT_PUBLIC_REDIRECT as string}/?location=${querty}`
 			
 		}
 

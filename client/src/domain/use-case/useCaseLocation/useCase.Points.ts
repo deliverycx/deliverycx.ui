@@ -34,7 +34,7 @@ export function usePoints() {
 	const pointstatus = adapterSelector.useSelectors(selector => selector.pointstatus)
 
 	////редирект
-	if(process.env.NODE_ENV === 'production' && isHidden){
+	if(process.env.NODE_ENV === 'production'){
 		window.location.href = process.env.REACT_APP_REDIRECT as string
 	}
 	
