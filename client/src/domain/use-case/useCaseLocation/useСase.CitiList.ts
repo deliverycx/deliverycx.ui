@@ -12,11 +12,12 @@ export function useCitiList(){
   const history = useHistory();
   const dispatch = useDispatch()
   const selectedCity = adapterSelector.useSelectors(selector => selector.city)
+	const { id,isHidden } = adapterSelector.useSelectors((selector) => selector.point);
   const [serchCiti, setSerchCiti] = useState('');
   const {data:cities,isLoading} = useGetCitiQuery(serchCiti)
  
 	//редирект
-	if(process.env.NODE_ENV === 'production'){
+	if(process.env.NODE_ENV === 'production' && isHidden){
 		window.location.href = process.env.REACT_APP_REDIRECT as string
 	}
 	

@@ -11,6 +11,8 @@ const HeaderLocation = () => {
 		const rend = (querty:string) =>{
 			if(point.isHidden){
 				window.location.href = `${process.env.NEXT_PUBLIC_REDIRECT as string}/?location=${querty}`
+			}else{
+				handlerHeader(querty)
 			}
 			
 		}
