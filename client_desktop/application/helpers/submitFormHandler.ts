@@ -27,12 +27,14 @@ const submitHandler = async <T>(values: any, meta: FormikHelpers<any>) => {
                 flat: values.flat,
                 intercom: values.intercom,
                 entrance: values.entrance,
-                floor: values.floor
+                floor: values.floor,
+								kladrid:storage.cart.kladrid
             },
             orderType: values.orderType,
             phone: values.phone,
             comment: values.comment,
             paymentMethod: values.payment_method,
+						localhost:`${document.location.protocol}//${document.location.host}`,
             ...values.paymentOrderCard
         };
        

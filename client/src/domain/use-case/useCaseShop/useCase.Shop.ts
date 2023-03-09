@@ -1,32 +1,44 @@
-import { ICategory, IPoint, IStopList, TStopListItems } from "@types"
+import { IPoint, TStopListItems } from "@types"
 import { adapterSelector } from "servises/redux/selectors/selectors"
 import { useGetProductsQuery, useSearchProductsMutation } from "servises/repository/RTK/RTKShop"
 import { ChangeEvent, useRef, useState } from 'react';
 import { useEffect } from 'react';
 import debounce from 'lodash.debounce';
 import { useHistory } from "react-router-dom";
+import { Redirects } from "application/helpers/redirectTo";
+import { useDispatch } from "react-redux";
+import { fetStopList } from "servises/redux/slice/shopSlice";
+import { useRedirectOrg } from "application/hooks/useRedirectOrgTable";
 
 export function useCaseShop() {
   const [id,setId] = useState(true)
-  const { id: category } = adapterSelector.useSelectors(selector => selector.category)
-  const { data: products, isFetching } = useGetProductsQuery(category, {
+  const category = adapterSelector.useSelectors(selector => selector.category)
+	const dispatch = useDispatch()
+	const point = adapterSelector.useSelectors(selector => selector.point)
+  const { data: products, isFetching } = useGetProductsQuery(category?.id, {
     skip:id,
     refetchOnMountOrArgChange:true,
   })
-  
-  useEffect(() => {
-    category && setId(false)  
-  }, [category])
 
-  
+	useRedirectOrg()
+
+  useEffect(() => {
+    category?.id && setId(false)
+		//Redirects(point.guid)
+  }, [category?.id])
+
+
+	useEffect(() => {
+    !id && dispatch(fetStopList(point.guid))  
+  }, [id])
 
 
   this.data({
-    category,
+    category: category?.id,
     products
   })
   this.handlers({
-    
+
   })
   this.status({
     isFetching
@@ -38,13 +50,13 @@ export function useCaseShopItem(id:string) {
   const history = useHistory();
   const cardRef = useRef<HTMLDivElement>(null);
   const [disableItem, setDisableItem] = useState(false)
-  
+
   const clickItemHandler = (e: any, id: string) => {
       if(disableItem) return
-      
+
       if ((e.target as HTMLButtonElement).type !== 'submit') {
           history.push(`/shop/product/${id}`)
-          
+
           localStorage.setItem("prod", cardRef.current?.dataset.id as string)
       }
   }
@@ -58,20 +70,19 @@ export function useCaseShopItem(id:string) {
       })
           //.then(() => localStorage.removeItem('prod'))
           //.catch(() => localStorage.removeItem('prod'))
-      
+
   }, [])
 
   useEffect(() => {
     if (stoplists) {
-      stoplists.stopList.forEach((item: TStopListItems) => {
-        
-        item.productId === id && setDisableItem(true)
+			stoplists.forEach((item: TStopListItems) => {
+        item.product === id && setDisableItem(true)
       })
     }
-    
+
   },[stoplists])
 
-  
+
 
 
   this.data({
@@ -82,7 +93,7 @@ export function useCaseShopItem(id:string) {
     clickItemHandler
   })
   this.status({
-    
+
   })
 }
 
@@ -90,7 +101,7 @@ export function useCaseShopItem(id:string) {
 export function useCaseSearchShop() {
   const organization = adapterSelector.createSelectors<IPoint>(selector => selector.point, val => val.id)
   const [search, { data: products, isUninitialized, isSuccess }] = useSearchProductsMutation()
-  
+
   const searchHandler = debounce((e: ChangeEvent<HTMLInputElement>) => {
     const value = e.target.value
     value && search({
@@ -98,7 +109,7 @@ export function useCaseSearchShop() {
       organizationId:organization
     })
   },500)
-  
+
 
   this.data({
     organization,

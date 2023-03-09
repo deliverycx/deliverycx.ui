@@ -5,11 +5,12 @@ export class FormBuilderCart {
     static delivery(metods: ICartFormMetods) {
         return (builder: any): IWrapper[] => {
             return [
-                //builder.paymentPopup(),
+                builder.paymentPopup(),
                 //builder.payment(metods.paymentsMetod),
                 builder.adress(),
                 builder.name(),
-                builder.phone()
+                builder.phone(),
+								builder.comment()
             ];
         };
     }
@@ -20,8 +21,20 @@ export class FormBuilderCart {
                 //builder.payment(metods.paymentsMetod),
                 //builder.adress(),
                 builder.name(),
-                builder.phone()
+                builder.phone(),
+								builder.comment()
             ];
         };
     }
+		static onspot(metods: ICartFormMetods) {
+			return (builder: any): IWrapper[] => {
+					return [
+							builder.paymentPopup(),
+							//builder.payment(metods.paymentsMetod),
+							//builder.adress(),
+							builder.name(),
+							builder.phone()
+					];
+			};
+		}
 }

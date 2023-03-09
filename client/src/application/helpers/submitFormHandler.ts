@@ -25,17 +25,21 @@ const submitHandler = async <T>(values: any, meta: FormikHelpers<any>) => {
             address: {
                 city: storage.location.point.city,
                 street: prepareAddress.street || "",
-                home: prepareAddress.home || 1,
+                home: prepareAddress.home || "",
                 flat: values.flat,
                 intercom: values.intercom,
                 entrance: values.entrance,
-                floor: values.floor
+                floor: values.floor,
+								kladrid:storage.cart.kladrid
             },
+						
             orderType: values.orderType,
             phone: values.phone,
             comment: values.comment,
             paymentMethod: values.payment_method,
-            ...values.paymentOrderCard
+						localhost:`${document.location.protocol}//${document.location.host}`,
+						orderTable:storage.cart.orderTable,
+            ...values.paymentOrderCard,
         };
 
       const url = await store.dispatch(fetchOrderCart(val) as any);

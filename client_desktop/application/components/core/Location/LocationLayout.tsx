@@ -7,6 +7,8 @@ import CityList from "./HOC_City/HOC.CityList"
 import NotificatCity from "./HOC_City/view/NotificatCity"
 import Points from "./HOC_Points/HOC.Points"
 import PointsMap from "./HOC_Points/HOC.PointsMap"
+import PointDisplay from "./HOC_Points/view/PointDisplay"
+import PointWorkTimeModal from "./HOC_Points/view/PointWorkTimeModal"
 
 export const LocationPointsContext = React.createContext<TadapterCaseCallback>({
   data: {},
@@ -15,39 +17,49 @@ export const LocationPointsContext = React.createContext<TadapterCaseCallback>({
 });
 const LocationLayout = () => {
   const useCaseLocation = adapterComponentUseCase(useLocations)
-  const { modal,showCiti,modalMap,youSity } = useCaseLocation.data
-  const {handlerCloseModal,handlerCloseMapModal,setYouSyty} = useCaseLocation.handlers
+  const { modal,showCiti,modalMap,youSity,workOrg,displayOrg } = useCaseLocation.data
+  const {handlerCloseModal,handlerCloseMapModal,setYouSyty,setDisplayOrg} = useCaseLocation.handlers
 
   return (
-    <>
-      <LocationPointsContext.Provider value={useCaseLocation}>
-      {
-        modal &&
-        <Modals onClose={handlerCloseModal}>
-            {
+		<>
+		<LocationPointsContext.Provider value={useCaseLocation}>
+		{
+         modal &&
+				 <Modals>
+					{
               showCiti
-                ? <CityList />
-                : <Points />
-            }
-            
-        </Modals>
-
-      }
-      {
+                ? <Modals><CityList /></Modals>
+                : <Modals><Points /></Modals>
+          }
+				 </Modals>
+     }
+		 {
         modalMap &&
         <Modals onClose={handlerCloseMapModal}>
           <PointsMap />
         </Modals>
-          
+
       }
-      {
+			{
         youSity &&
         <Modals>
           <NotificatCity />
         </Modals>
       }
-      </LocationPointsContext.Provider>
-    </>
+			{
+				workOrg &&
+				<Modals>
+          <PointWorkTimeModal />
+        </Modals>
+			}
+			{
+				displayOrg &&
+				<Modals onClose={() => setDisplayOrg(false)}>
+          <PointDisplay setter={setDisplayOrg} />
+        </Modals>
+			}
+		</LocationPointsContext.Provider>
+		</>
   )
 }
 export default LocationLayout

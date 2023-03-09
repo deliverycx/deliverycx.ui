@@ -50,7 +50,7 @@ const valid ={
   name: yup
       .string()
       .matches(/\D/g, {
-        message: "Только строки"
+        message: "Введите текст"
       })
       .required('Поле обязательно для заполнения'),
   address: yup
@@ -60,7 +60,7 @@ const valid ={
       .string()
       .trim()
       .matches(/^(\+7)(\s(\d){3}){2}(\s(\d){2}){2}/, {
-          message: "Не верный формат телефона"
+          message: "Неверный формат телефона"
       })
     .required('Поле обязательно для заполнения'),
 }

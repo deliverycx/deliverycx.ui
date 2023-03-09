@@ -29,5 +29,6 @@ export interface IStopList{
 }
 export type TStopListItems = {
     balance: number,
-    productId:string
+    productId:string,
+		product:string
 }

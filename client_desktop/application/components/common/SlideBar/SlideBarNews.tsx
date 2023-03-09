@@ -1,12 +1,12 @@
-import Slider from "react-slick";
-import NewsItem from "../News/NewsItem";
+import NewsItems from "../News/NewsItem";
+import cn from "classnames";
 
-const SlideBarNews = () => {
-	
+const SlideBarNews = ({isVisible}:{isVisible: boolean}) => {
+	const CN = cn("stocks about-comp_grind_news", { isVisible: isVisible})
 
 	return (
-		<div className="stocks about-comp_grind_news">
-			<NewsItem />
+		<div className={CN}>
+			<NewsItems />
 		</div>
 	);
 };

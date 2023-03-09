@@ -10,11 +10,19 @@
 	box-shadow: 0px 31px 60px rgba(0, 0, 0, 0.05), 0px 11.9407px 19.1111px rgba(0, 0, 0, 0.0303704), 0px 2.52593px 4.88889px rgba(0, 0, 0, 0.0196296);
 	border-radius: 30px;
 	background: #FFFFFF;
+	&.delivery-map {
+		top: 10%
+	}
 	.location_city-container{
 		position: relative;
 		padding: 50px;
 		&.point-map {
-			padding: 52px 45px 45px
+			padding: 52px 45px 45px;
+		}
+		&.delivery-map {
+			padding: 48px;
+			border-bottom-left-radius: 15px;
+			border-top-right-radius: 15px;
 		}
 	}
 	.tomap{
@@ -31,6 +39,7 @@
 		background-position: bottom;
 		background-size: 3px 1px;
 		background-repeat: repeat-x;
+		transition: all .3s linear;
 		&::before{
 			content: "";
 			display: inline-block;
@@ -42,6 +51,7 @@
 		&:hover{
 			border: none;
 			color: #333333;
+			background-image: none;
 		}
 	}
 	.tomap_point-map {
@@ -58,6 +68,9 @@
 		background-position: bottom;
 		background-size: 3px 1px;
 		background-repeat: repeat-x;
+		&:hover {
+			background-image: none;
+		}
 	}
 	.search_city{
 		border: 1px solid #CCCCCC;
@@ -71,17 +84,21 @@
 		&.city-list {
 			width: 100%;
 		}
+		&.delivery-map {
+			padding-left: 22px;
+			padding-right: 20px;
+		}
 		input{
 			border: none;
 			color: #333333;
 			font-size: 15px;
-			height: 48px;
+			height: 46px;
 			line-height: 48px;
 			width: 100%;
 		}
 		input::placeholder {
 			color: #666666;
-			font-family: sf-ui, sans-serif;
+			font-family: $sf;
 			font-weight: 500;
 			font-size: 15px;
 		}
@@ -119,6 +136,18 @@
 		}
 	}
 }
+
+.mapsPopup__btnzone{
+	display: block;
+	margin-top: 10px;
+	margin-left: 15px;
+	color: #132A3E;
+	cursor: pointer;
+	text-decoration: underline;
+	&:hover{
+		text-decoration: none;
+	}
+}
 .you_city{
 	margin-top: 25px;
 	color: #333333;
@@ -150,8 +179,9 @@
 		background-size: 4px 1px;
 		background-repeat: repeat-x;
 		cursor: pointer;
+		transition: all .3s linear;
 		&:hover{
-			border: none;
+			background-image: none;
 		}
 	}
 }
@@ -162,6 +192,10 @@
 	padding: 10px 0;
 	&.city-list {
 		margin-top: 17px;
+	}
+	&.choose-hink {
+		padding: 20px 0;
+		margin-top: 20px;
 	}
 
 	.points-title{
@@ -197,6 +231,11 @@
 				padding-left: 16px;
 			}
 		}
+		&.choose-hink {
+			li {
+				padding: 16px;
+			}
+		}
 
 		li{
 			padding-top: 16px;
@@ -208,7 +247,7 @@
 			cursor: pointer;
 			font-weight: 500;
 			margin-right: 20px;
-			font-family: sf-ui, sans-serif;
+			font-family: $sf;
 		}
 		li:hover {
 			color: #8D191D;
@@ -235,8 +274,11 @@
 	height: 550px;
 	margin-bottom: 20%;
 	&.point-map {
-		max-width: 79%;
-		height: 590px;
+		max-width: 1290px;
+		height: 606px;
+	}
+	&.delivery-map {
+		max-width: 80%;
 	}
 }
 .welcome__map{
@@ -246,12 +288,16 @@
 	border-radius: 30px;
 	overflow: hidden;
 	&.delivery-map {
-		border-radius: 0;
-		margin-top: 33.5px;
+		border-radius: 15px;
+		margin-top: 30px;
+		height: 501px;
+		//width: 790px;
+		[class*=ymaps] {
+			border-radius: 15px;
+		}
 	}
 	&.point-map {
-		height: 433px;
-		margin-bottom: 10px;
+		height: 460px;
 		margin-top: 20px
 	}
 	.welcome{
@@ -275,18 +321,26 @@
 			line-height: 48px;
 		}
 		.mapsPopup__button{
-			width: 25%;
-			height: 50px;
+			width: 22%;
+			height: 48px;
 			line-height: 50px;
 			color: #fff;
+			border: none;
 			background-color: #8d191d;
 			cursor: pointer;
-			border-radius: 25px;
+			border-radius: 100px;
 			font-size: 15px;
 			font-weight: 500;
 			text-align: center;
+			font-family: $manrope;
+			transition: all 0.3s;
 			&:hover{
-				opacity: 0.9;
+				background: #FDCB3D;
+				color: #333333;
+			}
+			&[disabled] {
+				background-color: #EFEFEF;
+				color: #CCCCCC;
 			}
 		}
 	}
@@ -299,7 +353,10 @@
 	}
 }
 
-
+.disablepoint{
+	color: #ABABAB !important;
+	cursor: no-drop;
+}
 .welcome__select-adress{
 	position: absolute;
 	left: 15px;
@@ -311,7 +368,6 @@
 	color: #fff;
 	font-size: 19px;
 	border-radius: 30px;
-	box-shadow: -1.45153px -30.966px 60px rgba(0, 0, 0, 0.25), -0.559108px -11.9276px 19.1111px rgba(0, 0, 0, 0.151852), -0.118273px -2.52316px 4.88889px rgba(0, 0, 0, 0.0981481);;
 	transition: bottom 0.6s cubic-bezier(0, -0.02, 0.54, 1.18);
 	height: 403px;
 
@@ -379,7 +435,7 @@
 		position: relative;
 		font-weight: 500;
 			a{
-					font-family: sf-ui, sans-serif;
+					font-family: $sf;
 					color:#333;
 			}
 			img{
@@ -402,8 +458,20 @@
 		border-radius: 100px;
 		font-size: 17px;
 		font-weight: 700;
-		margin-top: 25px;
+		color: #fff;
 		transition: background-color 0.3s ease-in-out;
+		border: none;
+		&:disabled{
+			background: none;
+			border: 1px solid #CCCCCC;
+			color: #CCCCCC;
+			box-shadow: none;
+			cursor: no-drop;
+			&:hover{
+				background: none;
+				color: #CCCCCC;
+			}
+		}
 	}
 	&__btn:hover {
 		background-color: #FDCB3D;
@@ -434,6 +502,52 @@
 	}
 }
 
+.welcome_worktime{
+	position: relative;
+}
+.welcome_timebox{
+	background-color: #fff;
+	position: absolute;
+	left: 0;
+	top: 55px;
+	z-index: 99;
+	width: 100%;
+	padding:15px 20px;
+	border-radius: 15px;
+	box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.25);
+	.welcome_timebox_item{
+		display: flex;
+		justify-content: space-between;
+		margin-top: 8px;
+		color: #ABABAB;
+		font-size: 12px;
+	}
+	.welcome_timebox_item.active{
+		color: #333333;
+	}
+	.welcome_timebox_item--title{
+		color: #ABABAB;
+		font-weight: 500;
+		font-size: 13px;
+		margin-bottom: 5px;
+	}
+	
+}
+.worktime-time{
+	cursor: pointer;
+}
+.timearrow{
+	position: absolute;
+	background: url("/images/icon/arrowtime.svg");
+	right: 15px;
+	width: 14px;
+	height: 9px;
+	top: 20px;
+}
+.timearrow_open{
+	transform: rotate(-180deg);
+	transition: all 0.3s;
+}
 .onlypickup_small{
 	font-size: 12px;
 	padding-left: 15px;

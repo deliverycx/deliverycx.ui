@@ -2,12 +2,19 @@ import { useContext, useEffect } from "react"
 
 import cn from "classnames";
 import { PointsContext } from "../HOC.PointsMap";
+import PointWorkTime from "./PointWorkTime";
+import { CART_CHOICE } from "application/contstans/cart.const";
+import PopupPointStatus from "./PopupPointStatus";
+import { adapterSelector } from "servises/redux/selectors/selectors";
+import { ORG_STATUS } from "application/contstans/const.orgstatus";
+import PointStatus from "./PointStatus";
 
 
 const PopupPoint = () => {
   const useCasePoints = useContext(PointsContext)
-  const { addresses, statePoint, recvisites,selectedCity } = useCasePoints.data
+  const { addresses, statePoint, recvisites,selectCity } = useCasePoints.data
   const { selectPointHandler, buttonClickHandler, SlidePointsHandler, recvisitesHandler } = useCasePoints.handlers
+	const pointstatus = adapterSelector.useSelectors(selector => selector.pointstatus)
 
   const address = addresses && addresses[statePoint.slideIndex]
   const selectAdressCN = cn("welcome__select-adress", { opened: statePoint.isOpen });
@@ -25,7 +32,7 @@ const PopupPoint = () => {
                </div>
 
                 <div className="welcome__select-adress__adress popup-point">
-                  <div className="welcome__select-adress__city">г. {selectedCity.name}</div>
+                  <div className="welcome__select-adress__city">г. {selectCity.name}</div>
                </div>
                <div className="next" onClick={() => SlidePointsHandler("next")}>
                  <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -34,13 +41,7 @@ const PopupPoint = () => {
                </div>
             </div>
 
-              <div className="welcome__select-adress__info phone">
-              <img
-                  src="/images/i/clock.svg"
-                  alt="Телефон заведения"
-               />
-               {address.workTime}
-            </div>
+						<PointWorkTime worktime={address.workTime} adress={address} />
 
             <div className="welcome__select-adress__info street">
                <img
@@ -58,17 +59,13 @@ const PopupPoint = () => {
                   {address.phone}
                </a>
             </div>
-           {address.delivMetod && <div className="deliv-method">Только самовывоз</div>}
-           {!address.delivMetod && <div className="deliv-method">Самовывоз и доставка</div>}
-            {
+						{
               (recvisites && Object.keys(recvisites).length !== 0) && <div className="recvisites" onClick={()=>recvisitesHandler(true)}>Реквизиты компании</div>
             }
-            <div
-               className="btn welcome__select-adress__btn"
-               onClick={() => selectPointHandler(address)}
-            >
-               Выбрать
-            </div>
+						<PopupPointStatus organization={address} handler={selectPointHandler} />
+
+            
+           
          </div>
       </div>
       )

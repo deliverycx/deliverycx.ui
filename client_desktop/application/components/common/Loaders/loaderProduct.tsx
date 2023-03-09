@@ -12,15 +12,20 @@ const divStyle = {
 
 const LoaderProduct = () => {
     return (
-        <div className="loader_box" style={divStyle}>
+			<div className="loader_box" style={divStyle}>
+        {
+
             <Oval
-  ariaLabel="loading-indicator"
-  height={50}
-  width={50}
-  strokeWidth={3}
-  color="#8D191D"
-  secondaryColor="#8C8C8C"
-/>
+						  ariaLabel="loading-indicator"
+						  height={50}
+						  width={50}
+						  strokeWidth={3}
+						  color="#8D191D"
+						  secondaryColor="#8C8C8C"
+						/>
+
+					
+				}
         </div>)
 }
 

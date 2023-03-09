@@ -4,16 +4,21 @@ import { setMapModal, setModal } from "servises/redux/slice/locationSlice";
 import HeaderLocation from "./HeaderLocation";
 import Link from 'next/link'
 import { checkPoint } from "application/helpers/checkPoint";
-import { useCallback } from "react";
+import { useCallback, useState } from "react";
 import { useRouter } from 'next/router'
 import { ROUTE_APP } from 'application/contstans/route.const';
 import { RootState } from "../../../../servises/redux/createStore";
 import cn from "classnames";
 import ReserveModalBtnContainer from "../Modals/reserveModal/HOC.ReserveModalBtn";
+import { adapterSelector } from "servises/redux/selectors/selectors";
 
 /* eslint-disable react/no-unknown-property */
 const Header = () => {
     const mapShowModal = useSelector((state: RootState) => state.location.locationMap);
+		const point = adapterSelector.useSelectors(selector => selector.point)
+		const [isModalOpen, setIsModalOpen] = useState(false)
+
+		
     const mapColorCN = cn("header_menu_link", {hinkRedColor: mapShowModal});
     const menuLinkColor = window.location.href.includes('menu');
     const menuLinkWithColorCN = cn("header_menu_link", {hinkRedColor: menuLinkColor});
@@ -28,6 +33,21 @@ const Header = () => {
       dispatch(setModal(true))
     }
   },[router.asPath])
+
+
+	const handleClickMap = () =>{
+		if (checkPoint(false)){
+			dispatch(setMapModal(true))
+		}else{
+			dispatch(setModal(true))
+		}
+		
+	}
+
+	const rend = () =>{
+		window.location.href = process.env.NEXT_PUBLIC_REDIRECT as string
+		
+	}
 
     return (
         <div className="header">
@@ -44,7 +64,17 @@ const Header = () => {
 											checkPoint(false) &&
 											<>
 												<HeaderLocation />
-												<ReserveModalBtnContainer/>
+												{
+													point && point.reservetable &&
+													<button className="reserve-btn" onClick={() => setIsModalOpen(true)}>
+						                Забронировать стол
+						            	</button>
+												}
+												{
+													isModalOpen &&
+													<ReserveModalBtnContainer isModalOpen={isModalOpen} setIsModalOpen={setIsModalOpen}/>
+												}
+												
 											</>
 										}
 
@@ -54,9 +84,9 @@ const Header = () => {
                         Меню
                     </a>
                     <a className="header_menu_link" href="http://starikkhinkalich.ru/" target="_blank" rel="noreferrer" >
-                        Новинки и акции
+										Новости и акции
                     </a>
-                    <a className={mapColorCN} onClick={()=> dispatch(setMapModal(true))}>
+                    <a className={mapColorCN} onClick={()=> rend()}>
                         Старик Хинкалыч на карте
                     </a>
                     <a className="header_menu_link" href={'https://франшиза.хинкалыч.рф/'} target={'_blank'} rel="noreferrer">

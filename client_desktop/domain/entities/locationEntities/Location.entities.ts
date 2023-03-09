@@ -1,9 +1,10 @@
-import { ICity, IPoint } from "@types"
+import { ICity, IPoint, IPointStatus } from "@types"
 import Entities from "../Entities"
 
 export interface ILocationEntities{
   city: ICity
   point: IPoint,
+	pointstatus:IPointStatus,
   locationModal:boolean
   locationMap:boolean
 }
@@ -14,6 +15,7 @@ export interface ILocationEntities{
 class LocationEntities extends Entities<ILocationEntities>{
   protected city = {}
   protected point = {}
+	protected pointstatus = null
   protected locationModal = false
   protected locationMap = false
   constructor() {
@@ -21,6 +23,7 @@ class LocationEntities extends Entities<ILocationEntities>{
     this.entities = {
       city: this.city,
       point: this.point,
+			pointstatus:this.pointstatus,
       locationModal: this.locationModal,
       locationMap:this.locationMap
     }

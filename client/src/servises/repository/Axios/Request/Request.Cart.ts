@@ -78,5 +78,10 @@ class RequestCart extends ApiSuper {
     OrderCart(body: any) {
         return this.request<ReqCart.orderCreate>("/order/create");
     }
+
+		@methods("get")
+    orgTables(query: any) {
+        return this.request<any>(`/cart/organizationtables?id=${query}`);
+    }
 }
 export default new RequestCart();

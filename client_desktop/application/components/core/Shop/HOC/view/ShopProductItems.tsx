@@ -23,11 +23,12 @@ const ShopProductItem: FC<IProps> = ({ products }) => {
 
     return (
         <div ref={cardRef} className={CN}  data-id={id} onClick={(e)=> clickItemHandler(e,id)}>
-            <div className="shop_grid__item__img-wrap">
-                <img src={imgRout(image)} alt={name} />
-                {
+						{
                     disableItem && <div className="stoplist_title">Упс... <br/> закончилось</div>
                 }
+            <div className="shop_grid__item__img-wrap">
+                <img src={imgRout(image)} alt={name} />
+                
             </div>
             <div className="shop_grid__item__content">
                 <div className="shop_grid__item-title">
@@ -36,7 +37,16 @@ const ShopProductItem: FC<IProps> = ({ products }) => {
             </div>
             <div className="shop_grid__item-option">
                     <div>
-                        <div className="measure">{measureUnit === "порц" ? `${convertWeight(weight)} г` : "1 шт"}</div>
+                        <div className="measure">
+
+												{
+													measureUnit === "порц"
+													 ? `${convertWeight(weight)} г`:
+													 measureUnit === "мл"  ? weight + 'мл' 
+													 
+													 : "1 шт"
+												}
+												</div>
                         <div className="price">{price} ₽</div>
                     </div>
                     {!disableItem && <AddToCart id={id} _class={"add-to-cart"} groupImage={categoryImage} />}

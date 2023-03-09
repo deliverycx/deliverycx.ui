@@ -1,20 +1,13 @@
 import NestedRoute from "./routes/NestedRoute";
-import { useEffect } from 'react';
-import SocketSingle from "servises/Socket/SocketClient";
-import { useDispatch } from 'react-redux';
-import { setStopList } from "servises/redux/slice/shopSlice";
-import { IStopList, thisWindow } from "@types";
-import { fetchRefreshCart } from "servises/redux/slice/cartSlice";
-import { store } from "servises/redux/createStore";
-
 
 
 
 const App = (): JSX.Element => {
-  const dispatch = useDispatch()
+	/*
   useEffect(() => {
-    SocketSingle.newsocket(process.env.REACT_APP_STOPLIST as string)
+    SocketSingle.newsocket('http://localhost:5000/iiko') //process.env.REACT_APP_STOPLIST as string
       .subscribers<IStopList>('stoplist_event', (data: IStopList | null, error: boolean) => {
+				console.log('solettt',data,error);
         if (!error) {
           dispatch(setStopList(data))
           dispatch(fetchRefreshCart())
@@ -22,19 +15,16 @@ const App = (): JSX.Element => {
       })
       
   },[])
+	*/
+
+
+
 
 	return (
     <>
       <NestedRoute />
     </>
 	)
-}
-
-
-if (thisWindow.Cypress) {
-  console.log('CYPRESS WINDOW');
-
-  thisWindow.store = store;
 }
 
 export default App;

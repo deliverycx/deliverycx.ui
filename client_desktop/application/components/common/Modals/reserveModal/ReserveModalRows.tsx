@@ -14,6 +14,24 @@ const ReserveModalRows = ({reserveProps}:any) => {
     const {formik,point,ReducerActionTypePoints,stateReserve,dispatchReserve} = reserveProps
     const now = Date.now();
 
+    const isDisabled = () => {
+      return !stateReserve.timeValue || !formik.values.fullname || !formik.values.phone || !stateReserve.dateValue;
+    }
+
+
+	const mitTime = () =>{
+		function Formate<T extends number | Date>(date:T) {
+			return format(date, "yyyy-MM-dd")
+		}
+
+		if(Formate(new Date()) === Formate(stateReserve.dateValue)){
+			return new Date()
+		}else{
+			return formik.values.startTime
+		}
+	}
+
+
   return (
       <FormikProvider value={formik}>
           <form onSubmit={formik.handleSubmit}>
@@ -102,10 +120,10 @@ const ReserveModalRows = ({reserveProps}:any) => {
                                   value={stateReserve.dateValue}
                                   onChange={(newValue) => {
                                       if (newValue) {
-                                          formik.setFieldValue("date", format(newValue, "yyyy-MM-dd"));
+                                          formik.setFieldValue("date", newValue);
                                           dispatchReserve({
                                               type: ReducerActionTypePoints.setDate,
-                                              payload: format(newValue, "yyyy-MM-dd")
+                                              payload: newValue //format(newValue, "yyyy-MM-dd")
                                           });
                                       }
                                   }}
@@ -127,11 +145,14 @@ const ReserveModalRows = ({reserveProps}:any) => {
                                   <MobileTimePicker
                                       label="Время"
                                       value={stateReserve.timeValue}
-                                      onChange={(newValue, value) => {
-                                          formik.setFieldValue("time", newValue);
+																			
+                                      onChange={(newValue) => {
+                                          
+																					const value = formik.values.endTime < newValue ? formik.values.endTime : newValue
+																					formik.setFieldValue("time", value);
                                           dispatchReserve({
                                               type: ReducerActionTypePoints.setTime,
-                                              payload: newValue
+                                              payload: value
                                           });
                                       }}
                                       renderInput={(params) => {
@@ -148,8 +169,8 @@ const ReserveModalRows = ({reserveProps}:any) => {
                                               />
                                           </>;
                                       }}
-                                      minTime={now > formik.initialValues.startTime ? new Date() : formik.initialValues.startTime}
-                                      maxTime={formik.initialValues.endTime}
+                                      minTime={mitTime()}
+                                      maxTime={formik.values.endTime}
                                   />
                               </FormFieldWrapper>
                           </div>
@@ -159,6 +180,7 @@ const ReserveModalRows = ({reserveProps}:any) => {
               <button
                   type="submit"
                   className="cart__order-btn btn reserve-btn"
+                  disabled={isDisabled()}
               >
                   Забронировать
               </button>

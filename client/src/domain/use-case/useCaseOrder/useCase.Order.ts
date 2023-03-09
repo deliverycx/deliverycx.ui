@@ -12,14 +12,14 @@ export function useOrder() {
     const location = useLocation();
     const history = useHistory();
     const dispatch = useDispatch();
-    const url = location.pathname.split("/")[2];
+    const hash = location.pathname.split("/")[2];
     const ref = useRef<NodeJS.Timeout>();
 
-    const presentOrder = async (url: string, tik = 0) => {
+    const presentOrder = async (hashNumb: string, tik = 0) => {
         try {
             let tik = 0;
             ref.current = setInterval(async () => {
-                const { data } = await RequestOrder.OrderNumber(url);
+                const { data } = await RequestOrder.OrderNumber(hashNumb);
                 new Promise((res, rej) => {
                     if (data && data.number) {
                         clearInterval(ref.current as any);
@@ -49,16 +49,18 @@ export function useOrder() {
         }
     };
 
+
+
     useEffect(() => {
-        if (location.pathname.split("/")[1] === "success" && url) {
-            presentOrder(url);
+        if ((location.pathname.split("/")[1] === "success" || location.pathname.split("/")[1] === "dualpayment") && hash) {
+            presentOrder(hash);
         } else {
             history.push(ROUTE_APP.SHOP.SHOP_MAIN);
         }
         () => {
             clearInterval(ref.current as any);
         };      
-    }, [url]);
+    }, [hash]);
 
     const handleBacktoShop = () => {
         dispatch(fetchDeleteCart());
@@ -67,7 +69,8 @@ export function useOrder() {
     };
 
     this.data({
-        orderNumber
+        orderNumber,
+				hash
     });
     this.handlers({
         handleBacktoShop
@@ -76,3 +79,58 @@ export function useOrder() {
         orderLoad
     });
 }
+
+export function useOrderDualPayment({orderNumber,hash}:any) {
+	const history = useHistory();
+	const [orderInfo,setOrderInfo] = useState<any>()
+
+	const getAdminOrder = async () =>{
+		try {
+			const {data} = await RequestOrder.dualPayment(hash)
+			setOrderInfo(data)
+		} catch (error) {
+			console.log(error);
+		}
+	}
+
+	
+
+	useEffect(()=>{
+		orderNumber && getAdminOrder()
+	},[orderNumber,hash])
+
+	const handlerBackToOrder = () =>{
+		history.push(ROUTE_APP.ORDER + '/' + hash)	
+	}
+
+	const handlerPayBar = async () =>{
+		try {
+			const {data} = await RequestOrder.dualPaymentCreate({
+				hash,
+				localhost:`${document.location.protocol}//${document.location.host}`
+			})
+			if (data.redirectUrl) {
+        if (typeof data.redirectUrl === 'string') {
+          window.location.href = data.redirectUrl;
+        }
+        
+      }
+		} catch (error) {
+			console.log(error);
+		}
+		//window.location.href = "https://paymaster.ru/cpay/c3b229b6f1bc45fab75eed03f0041c3f"
+	}
+
+	this.data({
+		orderInfo
+	});
+	this.handlers({
+		handlerBackToOrder,
+		handlerPayBar
+	});
+	this.status({
+		
+	});
+}
+
+

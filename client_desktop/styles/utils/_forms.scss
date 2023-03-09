@@ -64,7 +64,7 @@
 	line-height: 50px;
 	padding:0 15px;
 	&.cart {
-		font-family: 'Manrope', sans-serif;
+		font-family: $manrope;
 		font-weight: 500;
 		font-size: 15px;
 		color: #ABABAB;
@@ -76,7 +76,7 @@
 }
 .fild-lable{
 	font-size: 15px;
-	font-family: Manrope, sans-serif;
+	font-family: $manrope;
 	font-weight: 400;
 	color: #333333;
 	margin-bottom: 15px;

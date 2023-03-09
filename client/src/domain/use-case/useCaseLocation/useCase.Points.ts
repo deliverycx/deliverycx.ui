@@ -2,7 +2,7 @@ import { useEffect, useReducer } from "react";
 import { useDispatch } from "react-redux";
 
 import { useHistory } from "react-router-dom";
-import { useGetPointsQuery, useGetRecvisitesMutation } from "servises/repository/RTK/RTKLocation";
+import { useGetPointsQuery, useGetPointStatusMutation, useGetRecvisitesMutation } from "servises/repository/RTK/RTKLocation";
 import { IPoint } from "@types";
 import {
     initialStatePoints,
@@ -15,34 +15,56 @@ import { setPoint } from "servises/redux/slice/locationSlice";
 import { setProfileAction } from "servises/redux/slice/profileSlice";
 import { ROUTE_APP } from "application/contstans/route.const";
 import { adapterSelector } from "servises/redux/selectors/selectors";
-import { fetchDeleteCart } from "servises/redux/slice/cartSlice";
+import { fetchDeleteCart, fetchRefreshCart, setOrderType } from "servises/redux/slice/cartSlice";
 import _ from "lodash";
+import { fetStopList } from "servises/redux/slice/shopSlice";
+import { DELIVERY_METODS, ORG_STATUS } from "application/contstans/const.orgstatus";
 
 export function usePoints() {
   const history = useHistory();
   const dispatch = useDispatch();
 
+	
+
+
   const selectedCity = adapterSelector.useSelectors(
     (selector) => selector.city
   );
-  const { id } = adapterSelector.useSelectors((selector) => selector.point);
+  const { id,isHidden } = adapterSelector.useSelectors((selector) => selector.point);
+	const pointstatus = adapterSelector.useSelectors(selector => selector.pointstatus)
+
+	////редирект
+	if(process.env.NODE_ENV === 'production'){
+		window.location.href = process.env.REACT_APP_REDIRECT as string
+	}
+	
   const { data: org, isFetching } = useGetPointsQuery(selectedCity.id);
   const [getRecvisites, { data: recvisites }] = useGetRecvisitesMutation()
+	const [getOrgstatus,{data:orgstatus}] = useGetPointStatusMutation()
 
   const [statePoint, dispatchPoint] = useReducer(
     PointsReducer,
     initialStatePoints
   );
 
-  const addresses =  org && org.filter((val:IPoint,index:number) => val.isHidden !== true)
-  
+
+	const addresses =  org && org.filter((val:IPoint,index:number) => val.isHidden !== true)
+
+
+
   useEffect(() => {
-    (addresses && !isFetching) && getRecvisites(addresses[statePoint.slideIndex].id) 
-  }, [statePoint.slideIndex]) 
-  
+    if(addresses && !isFetching){
+			getRecvisites(addresses[statePoint.slideIndex].id)
+			getOrgstatus(addresses[statePoint.slideIndex].guid)
+			
+		}
+  }, [statePoint.slideIndex,org])
+
     useEffect(() => {
         if (Object.keys(selectedCity).length) {
-          (addresses && !isFetching) && nearPoint(addresses);
+          if(addresses && !isFetching) {
+						nearPoint(addresses); 
+					}
         } else {
             history.goBack();
         }
@@ -100,10 +122,9 @@ export function usePoints() {
             }, -1);
 						*/
 						const randomindex = Math.floor(Math.random() * data.length)
-						console.log(_.shuffle(_.range(0,data.length)).slice(0,20))
-					
-					
-						console.log('random',randomindex)
+						//console.log(_.shuffle(_.range(0,data.length)).slice(0,20))
+
+
             dispatchPoint({
                 type: ReducerActionTypePoints.slidePoint,
                 payload: randomindex
@@ -112,7 +133,6 @@ export function usePoints() {
       } catch (error) {
         console.log(error)
       }
-      
     };
 
     const selectPointHandler = async (address: IPoint) => {
@@ -122,17 +142,20 @@ export function usePoints() {
       if (regData.isNew) {
         localStorage.setItem("authToken", regData.access!);
       }
-      
+
       const { data } = await RequestProfile.update({
         organization: address._id,
       })
       */
 
-            dispatch(setProfileAction(regData));
+            //dispatch(setProfileAction(regData));
             dispatch(setPoint(address));
-            address.id !== id && dispatch(fetchDeleteCart());
-            history.push(ROUTE_APP.SHOP.SHOP_MAIN);
-            RequestProfile.update({ organizationId: address.id });
+						if(address.id !== id){
+							dispatch(setOrderType(DELIVERY_METODS.COURIER))
+							dispatch(fetchRefreshCart())
+						} 
+            history.push(`${ROUTE_APP.SHOP.SHOP_MAIN}/?address=${address.city + ',' + address.address}` );
+            //RequestProfile.update({ organizationId: address.id });
         } catch (error) {
             history.goBack();
         }

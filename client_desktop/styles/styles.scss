@@ -59,6 +59,7 @@
 @import './pages/main';
 @import './pages/cart';
 @import './pages/news';
+@import "./pages/error";
 
 .q{
 	position: fixed;
@@ -74,4 +75,8 @@
 	margin-top: 500px;
 	height: 500px;
 	margin-bottom: 1200px;
+}
+.metrika{
+	position:fixed;
+	left:-999px;
 }

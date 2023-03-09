@@ -3,11 +3,18 @@ import { IProduct } from "@types";
 export interface ICart {
     totalPrice: number;
     address: string;
+		kladrid:string
     orderError: ICheckoutError;
     orderNumber: ICheckout;
     deliveryPrice: number;
     deltaPrice: number;
-    orderType:string
+    orderType:string;
+		loadingDiscount:boolean;
+		orderTable:{
+			id:string
+			numb:number
+			section:string
+		}
 }
 
 export interface ICheckout {
@@ -42,4 +49,5 @@ export interface IReqCart {
     productId: string;
     amount: number;
     price: number;
+		oneprice:number;
 }

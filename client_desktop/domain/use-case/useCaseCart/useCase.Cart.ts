@@ -1,9 +1,11 @@
 import { useDispatch, useSelector } from "react-redux";
-import { useCallback, useEffect, useState } from "react";
+import { useCallback, useEffect, useMemo, useState } from "react";
 import {
     cartSelector,
     fetchAllCart,
-    fetchDeleteCart
+    fetchDeleteCart,
+		fetchDiscountCart,
+		setTotalPrice
 } from "servises/redux/slice/cartSlice";
 import cn from "classnames";
 import { useOutside } from "application/hooks/useOutside";
@@ -13,6 +15,9 @@ import { RootState } from "servises/redux/createStore";
 import debounce from "lodash.debounce";
 import { checkPoint } from "application/helpers/checkPoint";
 import { adapterSelector } from "servises/redux/selectors/selectors";
+import { IReqCart } from "@types";
+import { validationHIdiscount } from "application/helpers/validationHIdiscount";
+import { fetStopList } from "servises/redux/slice/shopSlice";
 
 export function useCartSmall(this: any) {
     const [showSmallCart, setShowSmallCart] = useState(false);
@@ -80,6 +85,7 @@ export function useCartItems(this: any, empty: any) {
     const dispatch = useDispatch();
     const cartList = useSelector(cartSelector.selectAll);
     const orderError = useSelector((state: RootState) => state.cart.orderError);
+		const {guid} = adapterSelector.useSelectors(selector => selector.point)
 
   useEffect(() => {
 
@@ -93,8 +99,10 @@ export function useCartItems(this: any, empty: any) {
     useEffect(() => {
       if (cartList.length === 0) {
           empty();
-      }
-    }, [cartList]);
+      }else{
+				dispatch(fetStopList(guid))
+			}
+    }, [cartList.length]);
 
     const debounceClearHandler = debounce(() => {
         dispatch(fetchDeleteCart());
@@ -107,4 +115,33 @@ export function useCartItems(this: any, empty: any) {
     this.handlers({
         debounceClearHandler
     });
+}
+
+
+export function useCartDiscountDzone(this: any) {
+	const dispatch = useDispatch()
+	const cartList = useSelector(cartSelector.selectAll);
+	const {totalPrice,deltaPrice} = adapterSelector.useSelectors((selector) => selector.cart);
+	const [countDiscount,setCountDiscount] = useState(0)
+	const [freeHi,setFreeHi] = useState(0)
+	
+	const {count,free} = validationHIdiscount(cartList) 
+
+
+	useEffect(()=>{
+		if(count !== 0){
+			setCountDiscount(count)
+			setFreeHi(free)
+		}
+	},[count])
+
+
+
+	this.data({
+		countDiscount,
+		freeHi
+	});
+	this.handlers({
+			
+	});
 }

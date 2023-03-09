@@ -5,13 +5,15 @@ import { FC } from "react"
 import { Route } from "react-router-dom"
 import CartYmap from "../CartYmap"
 import CartModalPayment from "./CartModalPayment"
+import CartNotificateDyalPay from "./CartNotificateDyalPay"
 
 type IProps = {
   paths:string
 }
 const CartModals: FC<IProps> = ({ paths }) => {
   const popups = {
-    [MODAL_QUERY.popup.payment]:CartModalPayment
+    [MODAL_QUERY.popup.payment]:CartModalPayment,
+		[MODAL_QUERY.popup.notificationPay]:CartNotificateDyalPay
   }
 
   return (

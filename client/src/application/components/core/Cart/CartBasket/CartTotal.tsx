@@ -1,9 +1,10 @@
-import { adapterSelector } from 'servises/redux/selectors/selectors';
+import { adapterSelector } from "servises/redux/selectors/selectors";
 
 const CartTotal = () => {
-  const {totalPrice} = adapterSelector.useSelectors(selector => selector.cart)
-  return (
-    <div className="cart__order-info"> 
+    const { totalPrice } = adapterSelector.useSelectors(selector => selector.cart);
+
+    return (
+        <div className="container">
             {
                 /*
                 <div className="cart__order__sale-wrap">
@@ -13,7 +14,7 @@ const CartTotal = () => {
 
                     <div className="cart__order__sale">0 ₽</div>
                 </div>
-                
+
                 */
             }
             <div className="cart__order__total-wrap">
@@ -21,6 +22,6 @@ const CartTotal = () => {
                 <div className="cart__order__total-sum">{totalPrice} ₽</div>
             </div>
         </div>
-  )
-}
-export default CartTotal
+    );
+};
+export default CartTotal;

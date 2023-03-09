@@ -19,9 +19,10 @@ export const cartSelector = cartAdapter.getSelectors(
     (state: RootState) => state.cart
 );
 
-const helperOrderType = (getState: any) : {orderType:string} => {
+const helperOrderType = (getState: any) : {orderType:string,organization:string} => {
     const state = getState() as RootState
-    return {orderType:state.cart.orderType}
+		console.log('orderrr ---',state.cart.orderType);
+    return {orderType:state.cart.orderType,organization:state.location.point.guid}
 }
 
 export const fetchAllCart = createAsyncThunk(
@@ -147,6 +148,7 @@ export const fetchDeleteCart = createAsyncThunk(
             const request = await RequestCart.deleteCart();
             if (request.status == 200) {
                 dispatch(deleteCart());
+								//dispatch(setOrderType("COURIER"))
                 dispatch(
                     setTotalPrice({
                         totalPrice: 0,
@@ -170,6 +172,7 @@ export const fetchOrderCart = createAsyncThunk(
                 
                 dispatch(actionPaymentAccsess());
                 return order.data 
+								
             }
         } catch (error: any) {
             // Ошибка валидации по количеству
@@ -194,9 +197,16 @@ const cartSlice = createSlice({
         refreshCart: cartAdapter.setAll,
         removeCart: cartAdapter.removeOne,
         deleteCart: cartAdapter.removeAll,
+				setOrderTable:(state, action) =>{
+					state.orderTable = action.payload
+				},
         setAdress: (state, action) => {
             state.address = action.payload;
         },
+				setKladrId: (state, action) => {
+					state.kladrid = action.payload;
+			},
+
         setTotalPrice: (state, action) => {
             state.totalPrice = action.payload.totalPrice;
             state.deltaPrice = action.payload.deltaPrice;
@@ -205,6 +215,9 @@ const cartSlice = createSlice({
         setErrors: (state, action) => {
             state.orderError = action.payload.errors;
         },
+				setENErrors: (state, action) => {
+					state.orderError = action.payload;
+			},
         setOrderType:(state, action) => {
             state.orderType = action.payload;
         },
@@ -238,9 +251,12 @@ export const {
     removeCart,
     deleteCart,
     setAdress,
+		setKladrId,
     setTotalPrice,
     setErrors,
     accessOrder,
-    setOrderType
+    setOrderType,
+		setENErrors,
+		setOrderTable
 } = cartSlice.actions;
 export default cartSlice;

@@ -1,7 +1,7 @@
 /* eslint-disable react/display-name */
 import { IRoute } from "@types";
 import { FC, Suspense, useCallback, useState } from "react";
-import { BrowserRouter, Link, Redirect, Route, Switch,useLocation } from "react-router-dom";
+import { BrowserRouter, Link, Redirect, Route, Switch,useHistory,useLocation } from "react-router-dom";
 import { adapterSelector } from "servises/redux/selectors/selectors";
 import protectedRoutes from "./protectedRoute";
 import publicRoutes from "./publicRoute";
@@ -11,6 +11,7 @@ import { useEffect } from 'react';
 const NestedRoute = () => {
   const {isAuth} = adapterSelector.useSelectors(selector => selector.profile)
   const renderRoute = useCallback((route) => (data: any) => {
+		
     if (route.layout) {
       return (
         <route.layout>

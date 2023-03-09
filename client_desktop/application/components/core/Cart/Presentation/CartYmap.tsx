@@ -1,11 +1,12 @@
 import { useMemo } from "react";
-import { YMaps, Map, Placemark, withYMaps } from "react-yandex-maps";
+import { YMaps, Map, Placemark, withYMaps, Polygon } from "react-yandex-maps";
 import { useSelector } from 'react-redux';
 import { RootState } from "servises/redux/createStore";
 import MapSuggestComponent from "application/components/common/Maps/MapSuggest";
 import { adapterComponentUseCase } from 'adapters/adapterComponents';
 import { useCartMap } from "domain/use-case/useCaseCart";
 import cn from "classnames";
+import abstract from './../../../../../domain/entities/Entities';
 
 const placeMarkOption = {
   iconLayout: 'default#image',
@@ -17,10 +18,11 @@ const placeMarkOption = {
 const CartYmap = ({close}:any) => {
   const city = useSelector((state: RootState) => state.location.point.city);
   const usecaseCartMap = adapterComponentUseCase(useCartMap,close)
-  const { stateReduceMap,mapstate } = usecaseCartMap.data
-  const { onMapTyping,getGeoLoc,onMapClick,hendleMapPopup } = usecaseCartMap.handlers
+  const { stateReduceMap, mapstate,zones } = usecaseCartMap.data
+  const { onMapTyping,getGeoLoc,onMapClick,hendleMapPopup,hendleZone } = usecaseCartMap.handlers
+	const {isLoadingZone,isLoadingStreet} = usecaseCartMap.status
 
-  const CN = cn("search_city", { error_map: stateReduceMap.disclaimer })
+  const CN = cn("search_city delivery-map", { error_map: stateReduceMap.disclaimer })
 
   const SuggestComponent = useMemo(() => {
     return withYMaps(MapSuggestComponent, true, [
@@ -34,14 +36,21 @@ const CartYmap = ({close}:any) => {
     <div className="location_city location_Maps addres_map delivery-map">
       <div className="location_city-container delivery-map">
         <div className="close" onClick={close}>
-          <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M1 1L12.9991 13M13 1L1.0009 13" stroke="" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+          <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <g clipPath="url(#clip0_329_8395)">
+              <path d="M0 0L11.9991 12M12 0L0.00090279 12" stroke="#ABABAB" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+            </g>
+            <defs>
+              <clipPath id="clip0_329_8395">
+                <rect width="12" height="12" fill="white"/>
+              </clipPath>
+            </defs>
           </svg>
         </div>
         <div className="modals_title">Укажите <span>адрес доставки</span></div>
         <YMaps
           enterprise
-          query={{ apikey: "164ee8b6-9e22-4e21-84ed-a0778bdf0f37" }}
+          query={{ apikey: "e45f9cf9-d514-40a5-adb9-02524aaef83f" }}
         >
           <Map className="welcome__map delivery-map" width="100" height="100" modules={["geocode"]} onClick={onMapClick}
                state={mapstate} defaultState={
@@ -62,17 +71,25 @@ const CartYmap = ({close}:any) => {
                              onClick={() => onMapTyping().setInputMap(true)}>{stateReduceMap.valueMap}</div>
                       : <SuggestComponent dispatchMap={onMapTyping} stateReduceMap={stateReduceMap} />
                   }
-                  <button></button>
                 </div>
                 {
                   (city || stateReduceMap.valueMap) &&
-                    <div className="mapsPopup__button btn" onClick={hendleMapPopup}>Я здесь</div>
+                    <button disabled={!stateReduceMap.valueMap && !stateReduceMap.disclaimer} className="mapsPopup__button btn" onClick={hendleMapPopup}>Я здесь</button>
                 }
               </div>
               {
-                stateReduceMap.disclaimer && <div className="disclaimer">Не точный адрес, в ведите дом</div>
+                stateReduceMap.disclaimer && <div className="disclaimer">Не точный адрес</div>
               }
+							{
+										zones &&
+										<a className="mapsPopup__btnzone" onClick={() => hendleZone(stateReduceMap.dispalyzone)} >{stateReduceMap.dispalyzone ? 'Скрыть зону доставки' : 'Показать зону доставки' }</a>
+							}
             </div>
+
+						{
+						(zones && !isLoadingZone && stateReduceMap.dispalyzone) &&
+							<Polygon options={{fillColor: '#6699ff',opacity:0.3}} geometry={[zones]}></Polygon>
+						}
             <Placemark
               options={placeMarkOption}
               geometry={stateReduceMap.cord}

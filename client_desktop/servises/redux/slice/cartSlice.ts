@@ -8,6 +8,7 @@ import { AxiosError } from "axios";
 import CartEntities from "domain/entities/CartEntities/Cart.entities";
 import { RequestCart } from "servises/repository/Axios/Request";
 import { AppDispatch, RootState } from "../createStore";
+import { actionPaymentReady } from "./bankCardSlice";
 
 const cartAdapter = createEntityAdapter<IReqCart>({
   selectId: (product) => product.id
@@ -17,9 +18,9 @@ export const cartSelector = cartAdapter.getSelectors(
   (state: RootState) => state.cart
 );
 
-const helperOrderType = (getState: any) : {orderType:string} => {
+const helperOrderType = (getState: any) : {orderType:string,organization:string} => {
   const state = getState() as RootState
-  return {orderType:state.cart.orderType}
+  return {orderType:state.cart.orderType,organization:state.location.point.guid}
 }
 
 export const fetchAllCart = createAsyncThunk(
@@ -166,6 +167,7 @@ export const fetchOrderCart = createAsyncThunk(
           }
       } catch (error: any) {
           // Ошибка валидации по количеству
+					/*
           if (error.response.status === 422) {
               let objToStr = JSON.stringify(error.response);
               if (objToStr.includes('RabbitMq')) dispatch(setErrors('Что-то пошло не так...'))
@@ -173,9 +175,39 @@ export const fetchOrderCart = createAsyncThunk(
           } else {
               return rejectWithValue(error.response.data);
           }
+					*/
+					dispatch(actionPaymentReady(false));
+            if (error.response.status === 422) {
+                dispatch(setErrors(error.response.data));
+            } else {
+                return rejectWithValue(error.response.data);
+            }
       }
   }
 );
+
+export const fetchDiscountCart = createAsyncThunk(
+  "cart/getDiscount",
+  async (_, { dispatch,getState, rejectWithValue }) => {
+      try {
+          const request = await RequestCart.DzoneDicountCart(helperOrderType(getState));
+          if (request.data && request.status === 200) {
+							dispatch(
+								setTotalPrice({
+										totalPrice: request.data.totalPrice - request.data.discountDozen,
+										deltaPrice: request.data.deltaPrice,
+										deliveryPrice: request.data.deliveryPrice
+								})
+							);
+              return request.data
+							
+          }
+      } catch (error: any) {
+					return rejectWithValue(error.response.data);
+      }
+  }
+);
+
 
 const cartSlice = createSlice({
   name: "cart",
@@ -190,6 +222,9 @@ const cartSlice = createSlice({
       setAdress: (state, action) => {
           state.address = action.payload;
       },
+			setKladrId: (state, action) => {
+				state.kladrid = action.payload;
+		},
       setTotalPrice: (state, action) => {
           state.totalPrice = action.payload.totalPrice;
           state.deltaPrice = action.payload.deltaPrice;
@@ -221,6 +256,18 @@ const cartSlice = createSlice({
           };
           state.loadingOrder = false;
       });
+			builder.addCase(fetchDiscountCart.pending, (state) => {
+				state.loadingDiscount = true;
+				state.loadingOrder = true;
+			})
+			builder.addCase(fetchDiscountCart.fulfilled, (state) => {
+				state.loadingDiscount = false;
+				state.loadingOrder = false;
+			})
+			builder.addCase(fetchDiscountCart.rejected, (state) => {
+				state.loadingDiscount = false;
+				state.loadingOrder = false;
+			})
   }
 });
 export const {
@@ -231,6 +278,7 @@ export const {
   removeCart,
   deleteCart,
   setAdress,
+	setKladrId,
   setTotalPrice,
   setErrors,
   accessOrder,

@@ -14,4 +14,12 @@ export interface IPoint {
   workTime: string;
   delivMetod: string | null;
   isHidden: boolean;
+	reservetable:boolean
+}
+export type IPointStatus = {
+	_id:string,
+	organization:string,
+	deliveryMetod:string[]
+	organizationStatus:string
+	paymentMetod:string[]
 }

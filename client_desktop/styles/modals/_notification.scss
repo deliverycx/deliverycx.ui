@@ -10,9 +10,84 @@
 	border-radius: 15px;
 	background: #FFFFFF;
 	border: 1px solid rgba(0, 0, 0, 0.1);
-	.notification_modal-container{
+
+	&.notification_work-time {
+		padding: 50px;
+		width: 630px;
+
+		.btn-success {
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			background-color: #8d191d;
+			cursor: pointer;
+			border-radius: 100px;
+			font-size: 17px;
+			text-align: center;
+			color: #fff;
+			font-weight: 500;
+			transition: all .3s ease-in-out;
+			width: 250px;
+			height: 56px;
+
+			&:hover {
+				color: #333333;
+				background-color: #FDCB3D;
+			}
+		}
+
+		.btn-secondary {
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			background-color: #EFEFEF;
+			cursor: pointer;
+			border-radius: 100px;
+			font-size: 17px;
+			text-align: center;
+			color: #666666;
+			font-weight: 500;
+			transition: all .3s ease-in-out;
+			width: 250px;
+			height: 56px;
+		}
+
+		.attention {
+			font-family: $manrope;
+			font-weight: 700;
+			color: #132A3E;
+			font-size: 26px;
+		}
+
+		.attention-info {
+			margin-top: 15px;
+			font-size: 21px;
+			font-family: $sf;
+			font-weight: 500;
+			line-height: 25px;
+			font-weight: 400;
+			span {
+				color: #8D191D;
+			}
+		}
+
+		.secondary-text {
+			margin-top: 20px;
+			color: #ABABAB;
+			font-size: 16px;
+			line-height: 19px;
+		}
+
+		.notification_worktime-buttons {
+			margin-top: 40px;
+			display: flex;
+			justify-content: space-between;
+		}
+	}
+
+	.notification_modal-container {
 		position: relative;
-		padding:5%;
+		padding: 5%;
 		height: 116px;
 	}
 }

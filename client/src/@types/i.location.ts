@@ -14,3 +14,11 @@ export interface IPoint {
   delivMetod: string | null
   isHidden:boolean
 }
+
+export type IPointStatus = {
+	_id:string,
+	organization:string,
+	deliveryMetod:string[]
+	organizationStatus:string
+	paymentMetod:string[]
+}

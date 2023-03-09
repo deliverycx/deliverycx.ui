@@ -7,3 +7,5 @@ build:
 	docker-compose -f docker-compose.dev.yml up -d --build 	
 test:
 	docker-compose -f docker-compose.test.yml up -d --build	
+trans:
+	docker-compose -f docker-compose.trans.yml up -d --build	

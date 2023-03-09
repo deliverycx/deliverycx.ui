@@ -30,6 +30,10 @@ namespace ReqCart {
     export type orderCreate = {
       redirectUrl: string;
     };
+
+		export type discount = {
+      discountDozen: number;
+    } & Responses;
 }
 // передаем
 export namespace ResCart {
@@ -69,6 +73,12 @@ class RequestCart extends ApiSuper {
     deleteCart() {
         return this.request<[]>("/cart/deleteAll");
     }
+		@methods("post")
+    DzoneDicountCart(body: any) {
+        return this.request<ReqCart.discount>("/cart/getDiscount");
+    }
+
+
     @methods("post")
     OrderCheckCart(body: any) {
         return this.request<ReqCart.orderCreate>("/order/check");
@@ -77,5 +87,7 @@ class RequestCart extends ApiSuper {
     OrderCart(body: any) {
         return this.request<ReqCart.orderCreate>("/order/create");
     }
+
+	
 }
 export default new RequestCart();

@@ -16,22 +16,21 @@ const Stocks = () => {
 
 		const getStocks = async () =>{
 			try {
-				const result1:any = await RequestAdmin.bannersList(point.guid)
+				const {data}:any = await RequestAdmin.bannersList(point.guid)
+				const ban = data.reduce((acc:any,val:any,index:number) =>{
+					
+					val.groopbanner.map((ban:any) =>{
+						
+						acc = acc.concat(ban.banners)
+					})
+					acc = acc.concat(val.banners)
+					return acc
+				},[])
+				setBaners(ban)
 				
-				if(result1.data.length !== 0){
-					setBaners(result1.data)
-				}else{
-					const result = await RequestAdmin.bannersList('all')
-					if(result.data){
-						setBaners(result.data)
-					}else{
-						setBaners(null)
-					}
-				}
 			} catch (error) {
 				console.log(error);
 			}
-			
 		}
 
 
@@ -58,7 +57,7 @@ const Stocks = () => {
 									{
 											baners &&
 											baners.sort((a:any,b:any) => (a.order - b.order)).map((val:any)=>{	
-												return <a key={val._id} className="stocks__item"  href={val.url}><StockItem  content={imgRoutDef(val.mobimages[0])} /></a>
+												return <a key={val._id} className="stocks__item"><StockItem  content={imgRoutDef(val.mobimages[0])} /></a>
 											})
 											
 									}

@@ -12,6 +12,10 @@ import { FormBuilder } from "application/components/common/Forms";
 import React from "react";
 import Modals from "application/components/common/Modals/Modals";
 import CartYmap from "../Presentation/CartYmap";
+import { workTimeCheck, workTimeHelp } from "application/helpers/workTime";
+import { CART_CHOICE } from "application/contstans/cart.const";
+import { adapterSelector } from "servises/redux/selectors/selectors";
+import { ORG_STATUS } from 'application/contstans/const.orgstatus';
 
 
 type IProps = {
@@ -24,10 +28,12 @@ export const CartFormContext = React.createContext<TadapterCaseCallback>({
   status:{}
 });
 const CartFrom: FC<IProps> = ({ builder,paths }) => {
-
+	const pointstatus = adapterSelector.useSelectors((selector) => selector.pointstatus);
   const useCaseForm = adapterComponentUseCase(useCartForm,paths)
   const {
     city,
+		workTime,
+		delivMetod,
     selectAddress,
     orderError,
     loadingOrder,
@@ -78,6 +84,14 @@ const CartFrom: FC<IProps> = ({ builder,paths }) => {
     selectAddress && formik.setFieldValue("address", selectAddress)
   },[selectAddress])
 
+  const disabledData = ()=> {
+    if(useCaseForm.data.orderType === 'COURIER') {
+      return !formik.values.name || !formik.values.address || !formik.values.phone;
+    } else if(useCaseForm.data.orderType === 'PICKUP') {
+      return !formik.values.name || !formik.values.phone;
+    }
+  }
+
   return (
     <FormikProvider value={formik}>
       <form onSubmit={formik.handleSubmit}>
@@ -87,11 +101,10 @@ const CartFrom: FC<IProps> = ({ builder,paths }) => {
           }
           {
             showMap &&
-            <Modals onClose={() => setShowMap(false)}>
+            <Modals onClose={() => setShowMap(false)} noscrole={true}>
               <CartYmap close={() => setShowMap(false)} />
             </Modals>
           }
-
           <textarea
             value={formik.values.comment}
             name="comment"
@@ -99,17 +112,23 @@ const CartFrom: FC<IProps> = ({ builder,paths }) => {
             className="form__textarea cart"
             placeholder="Комментарии к заказу"
           ></textarea>
-
           <div className="row align-center form__create"></div>
         </div>
         <div className="cart__order-btnbox">
-          <button
-              type="submit"
-              className="cart__order-btn btn"
-              disabled={loadingOrder}
-            >
-              Заказать
-          </button>
+					{
+						workTimeHelp()  && pointstatus.organizationStatus === ORG_STATUS.WORK
+						? <button disabled className="order-btn-pointclosed">Хинкальная сейчас закрыта.<br/>
+								Оформить заказ вы сможете: {workTimeCheck(workTime)}
+							</button>
+						: pointstatus.organizationStatus === ORG_STATUS.NODELIVERY
+							? <button disabled className="order-btn-pointclosed">Оформление онлайн-заказа недоступно
+								
+							</button>	
+						: <button type="submit" className="cart__order-btn btn" disabled={loadingOrder || disabledData()}>
+		              Заказать
+		          </button>
+					}
+          
           {orderError.status === 500 && (
             <div className="server-error">
               Что-то пошло не так
@@ -123,11 +142,9 @@ const CartFrom: FC<IProps> = ({ builder,paths }) => {
                   })
                   : <li>{orderError.error.errors}</li>
               }
-
             </div>
           )}
         </div>
-
       </form>
     </FormikProvider>
   );

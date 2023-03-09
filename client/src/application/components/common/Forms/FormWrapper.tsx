@@ -16,6 +16,7 @@ export interface IWrapper {
   name(): ReactNode
   phone(): ReactNode
   deliv(): ReactNode
+	comment(): ReactNode
 }
 export const FormWrapper = (formik: any,usecase:any): IWrapper => {
   const history = useHistory()
@@ -23,27 +24,30 @@ export const FormWrapper = (formik: any,usecase:any): IWrapper => {
   const { selectPayment, choicePayment } = usecase.handlers
   return {
     paymentPopup() {
+			
+			const img = 
+				CartFormMetods.paymentsMetod[0].id === paymentMetod.id ? "cash.png" :
+				CartFormMetods.paymentsMetod[1].id === paymentMetod.id ? "card-red.svg" :
+				CartFormMetods.paymentsMetod[2].id === paymentMetod.id ? "paymaster.png" : "card-red.svg"
 
       return (
+				<div className="adress_fild">
+					<div className="form__field-wrapper__title">Способ оплаты</div>
         <FormFieldWrapper
-          placeholderIco={require("assets/i/card-red.svg").default}
+          placeholderIco={require(`assets/i/${img}`).default}
           placeholderValue="Оплата"
-          addfild="addfild"
+          addfild="payfild"
         >
-          <div className="adress_fild__address" onClick={choicePayment}>{paymentMetod.value}</div>
-          {
-            //CartFormMetods.paymentsMetod[1].id === stateForm.payment.id
-            false &&
-            <div className="addnew_cart" onClick={() => history.push(paths + '/card') }>
-              <img src={require("assets/i/credit_card.png").default} />
-              <span>Добавить новую карту</span>
-            </div>
-          }
+          <div className="adress_fild__address payment-fild" onClick={choicePayment}>{paymentMetod.value} <span className="ok-icon-red"></span></div>
 
         </FormFieldWrapper>
+				</div>
       )
     },
     payment(paymentsMetod) {
+			
+			
+
       return (
           <FormFieldWrapper
               placeholderIco={require("assets/i/card-red.svg").default}
@@ -77,8 +81,9 @@ export const FormWrapper = (formik: any,usecase:any): IWrapper => {
     adress() {
       return(
       <div className="adress_fild">
+        <div className="form__field-wrapper__title">Адрес доставки</div>
         <FormFieldWrapper
-          placeholderIco={require("assets/i/mark-red.svg").default}
+          placeholderIco={require("assets/i/cart/mark-dark.svg").default}
           placeholderValue="Где"
           isValid={!formik.values.address.length}
           error={!!formik.errors.address}
@@ -90,32 +95,32 @@ export const FormWrapper = (formik: any,usecase:any): IWrapper => {
               : "Выберете адрес"}
           </div>
         </FormFieldWrapper>
-        <div className="row justify-around from__box-adress">
+        <div className="row justify-between from__box-adress">
           <Field
             className="form__field-wrapper__input gray"
             name="flat"
-            placeholder="Кв./Офис"
+            placeholder="кв / офис"
             value={formik.values.flat}
             onChange={formik.handleChange}
           />
           <Field
             className="form__field-wrapper__input gray"
             name="intercom"
-            placeholder="Домофон"
+            placeholder="домофон"
             value={formik.values.intercom}
             onChange={formik.handleChange}
           />
           <Field
             className="form__field-wrapper__input gray"
             name="entrance"
-            placeholder="Подъезд"
+            placeholder="подъезд"
             value={formik.values.entrance}
             onChange={formik.handleChange}
           />
           <Field
-            className="form__field-wrapper__input gray"
+            className="form__field-wrapper__input gray floor"
             name="floor"
-            placeholder="Этаж"
+            placeholder="этаж"
             value={formik.values.floor}
             onChange={formik.handleChange}
           />
@@ -125,29 +130,32 @@ export const FormWrapper = (formik: any,usecase:any): IWrapper => {
     },
     name() {
       return(
-      <FormFieldWrapper
-        placeholderIco={require("assets/i/profile-red.svg").default}
-        placeholderValue="Контакты"
-        isValid={
-          !formik.values.name.length || formik.errors.name
-        }
-        error={!!(formik.errors.name && formik.touched.name)}
-        errorValue={formik.errors.name}
-      >
-        <Field
-          className="form__field-wrapper__input"
-          name="name"
-          placeholder="Ваше имя"
-          value={formik.values.name}
-          onChange={formik.handleChange}
-        />
-        </FormFieldWrapper>
+          <>
+            <div className="form__field-wrapper__title">Контакты</div>
+            <FormFieldWrapper
+                placeholderIco={require("assets/i/cart/person-dark.svg").default}
+                placeholderValue="Контакты"
+                isValid={
+                    !formik.values.name.length || formik.errors.name
+                }
+                error={!!(formik.errors.name && formik.touched.name)}
+                errorValue={formik.errors.name}
+            >
+              <Field
+                  className="form__field-wrapper__input"
+                  name="name"
+                  placeholder="Ваше имя"
+                  value={formik.values.name}
+                  onChange={formik.handleChange}
+              />
+            </FormFieldWrapper>
+          </>
       )
     },
     phone() {
       return(
       <FormFieldWrapper
-        placeholderIco={require("assets/i/phone-red.svg").default}
+        placeholderIco={require("assets/i/cart/phone-dark.svg").default}
         placeholderValue="Телефон"
         isValid={
           !formik.values.phone.length || formik.errors.phone
@@ -163,7 +171,7 @@ export const FormWrapper = (formik: any,usecase:any): IWrapper => {
               mask="+7 999 999 99 99"
               maskPlaceholder={null}
               className="form__field-wrapper__input"
-              placeholder="Ваш телефон"
+              placeholder="+7"
               value={formik.values.phone}
               onChange={formik.handleChange}
             />
@@ -172,6 +180,17 @@ export const FormWrapper = (formik: any,usecase:any): IWrapper => {
         </FormFieldWrapper>
       )
     },
+		comment(){
+			return(
+				<textarea
+            value={formik.values.comment}
+            name="comment"
+            onChange={formik.handleChange}
+            className="form__textarea"
+            placeholder="Напишите сюда, если хотите добавить еще какую-то информацию о заказе..."
+          ></textarea>
+			)
+		}
   };
 };
 

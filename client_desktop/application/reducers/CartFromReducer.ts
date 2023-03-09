@@ -11,6 +11,7 @@ export const initialStateCartForm = {
       month: 0
     }
   },
+	payment:CartFormMetods.paymentsMetod[0],
   paymentReady:true
 };
 type typeinitialState = typeof initialStateCartForm

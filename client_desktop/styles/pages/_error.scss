@@ -1,0 +1,176 @@
+.error-container {
+  margin-top: 104px;
+  width: 100%;
+  display: flex;
+  &.server {
+    justify-content: space-between;
+    margin-top: 15%;
+  }
+
+  .error-info-block {
+    font-family: $manrope, sans-serif;
+    font-style: normal;
+    font-weight: 700;
+    div {
+      margin-top: 58px;
+      font-size: 45px;
+      color: #333333;
+      &.server {
+        margin-top: 35px;
+        font-size: 40px;
+        margin-bottom: 12px;
+      }
+    }
+    span {
+      font-family: $manrope, sans-serif;
+      font-weight: 500;
+      font-size: 20px;
+      line-height: 27px;
+      &.server {
+        margin-top: 12px;
+      }
+    }
+    .error-btn {
+      margin-top: 35px;
+      display: block;
+      width: 277px;
+      height: 56px;
+      font-family: $sf;
+      font-weight: 500;
+      font-size: 17px;
+      background: #8D191D;
+      border-radius: 65px;
+      text-align: center;
+      color: #fff;
+      border: none;
+      transition: all 0.3s;
+      cursor: pointer;
+      &.cart-btn {
+        padding: 0;
+        height: 60px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 17px;
+      }
+      &:hover{
+        background: #FDCB3D;
+        color: #333333;
+      }
+      &[disabled] {
+        background-color: #EFEFEF;
+        color: #CCCCCC;
+      }
+    }
+    .buttons {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      .support-btn {
+        font-size: 17px;
+        line-height: 100%;
+        color: #ABABAB;
+        background-color: #EFEFEF;
+        border: none;
+        outline: none;
+        border-radius: 65px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        cursor: pointer;
+        text-align: center;
+        font-weight: 500;
+        transition: all .3s ease-in-out;
+        width: 275px;
+        height: 56px;
+      }
+
+      .reload-page-btn {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: #8d191d;
+        cursor: pointer;
+        border-radius: 100px;
+        font-size: 17px;
+        text-align: center;
+        color: #fff;
+        font-weight: 500;
+        transition: all .3s ease-in-out;
+        width: 275px;
+        height: 56px;
+        outline: none;
+        border: none;
+        font-family: $sf;
+
+        &:hover {
+          color: #333333;
+          background-color: #FDCB3D;
+        }
+      }
+    }
+  }
+
+  .error {
+    display: inline-block;
+    height: 275px;
+    width: 635px;
+    background-image: url('/images/error/404.svg');
+    background-size: 100%;
+    background-repeat: no-repeat;
+    background-position: center;
+    transition: visibility 0s ease-in-out, opacity 0.1s linear;
+    justify-content: center;
+    align-items: center;
+    -webkit-transition: visibility 0s ease-in-out, opacity 0.1s linear;
+    -moz-transition: visibility 0s ease-in-out, opacity 0.1s linear;
+    -o-transition: visibility 0s ease-in-out, opacity 0.1s linear;
+  }
+  .error-500 {
+    display: inline-block;
+    height: 151px;
+    width: 280px;
+    background-image: url('/images/error/500.svg');
+    background-size: 100%;
+    background-repeat: no-repeat;
+    background-position: center;
+    transition: visibility 0s ease-in-out, opacity 0.1s linear;
+    justify-content: center;
+    align-items: center;
+    -webkit-transition: visibility 0s ease-in-out, opacity 0.1s linear;
+    -moz-transition: visibility 0s ease-in-out, opacity 0.1s linear;
+    -o-transition: visibility 0s ease-in-out, opacity 0.1s linear;
+  }
+  .fork-hink {
+    display: inline-block;
+    margin-top: -21px;
+    margin-left: -15px;
+    height: 633px;
+    width: 671px;
+    background-image: url('/images/error/fork.svg');
+    background-size: 100%;
+    background-repeat: no-repeat;
+    background-position: center;
+    transition: visibility 0s ease-in-out, opacity 0.1s linear;
+    justify-content: center;
+    align-items: center;
+    -webkit-transition: visibility 0s ease-in-out, opacity 0.1s linear;
+    -moz-transition: visibility 0s ease-in-out, opacity 0.1s linear;
+    -o-transition: visibility 0s ease-in-out, opacity 0.1s linear;
+  }
+  .hink-500 {
+    display: inline-block;
+    height: 391px;
+    width: 503px;
+    background-image: url('/images/error/hink-500.svg');
+    background-size: 100%;
+    background-repeat: no-repeat;
+    background-position: center;
+    transition: visibility 0s ease-in-out, opacity 0.1s linear;
+    justify-content: center;
+    align-items: center;
+    -webkit-transition: visibility 0s ease-in-out, opacity 0.1s linear;
+    -moz-transition: visibility 0s ease-in-out, opacity 0.1s linear;
+    -o-transition: visibility 0s ease-in-out, opacity 0.1s linear;
+  }
+}

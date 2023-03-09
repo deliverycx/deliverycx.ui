@@ -6,7 +6,7 @@ import { RequestAdmin } from "servises/repository/Axios/RequestAdmin";
 import LoaderProduct from "../Loaders/loaderProduct";
 
 
-const NewsItem = () => {
+const NewsItems = () => {
 	const [baners,setBaners] = useState<any | null>(null)
 	const point = adapterSelector.useSelectors((selector) => selector.point);
 
@@ -18,28 +18,32 @@ const NewsItem = () => {
 		rows: 1,
 	};
 
-	const getStocks = async () =>{
-			try {
-				const result1:any = await RequestAdmin.bannersList(point.guid)
-				if(result1.data.length !== 0){
-					setBaners(result1.data)
-				}else{
-					const result = await RequestAdmin.bannersList('all')
-					if(result.data){
-						setBaners(result.data)
-					}else{
-						setBaners(null)
-					}
-				}
-			} catch (error) {
-				console.log(error);
-			}
-
+	const getStocks = async (guid:string) =>{
+		try {
+			const {data}:any = await RequestAdmin.bannersList(guid)
+			const ban = data.reduce((acc:any,val:any,index:number) =>{
+				
+				val.groopbanner.map((ban:any) =>{
+					
+					acc = acc.concat(ban.banners)
+				})
+				acc = acc.concat(val.banners)
+				return acc
+			},[])
+			setBaners(ban)
+			
+		} catch (error) {
+			console.log(error);
 		}
+	}
 
-		useEffect(()=>{
-			getStocks()
-		},[point.guid])
+	useEffect(()=>{
+		if(point.guid){
+			getStocks(point.guid)
+		}else{
+			getStocks(process.env.NEXT_PUBLIC_DEFAULT_ORG as string)
+		}
+	},[point.guid])
 
 	return (
 		<>
@@ -51,7 +55,7 @@ const NewsItem = () => {
 								return (
 									<div key={val._id} className="coruselus">
 										<div className="about-comp_grind-item">
-											<a href={val}><img className="about-comp_grind-item--img"
+											<a href={val.url} target="_blank" rel="noreferrer"><img className="about-comp_grind-item--img"
 																						 src={imgRoutDef(val.
 																							smallimages[0])} /></a>
 										</div>
@@ -66,4 +70,4 @@ const NewsItem = () => {
 	);
 }
 
-export default NewsItem;
+export default NewsItems;

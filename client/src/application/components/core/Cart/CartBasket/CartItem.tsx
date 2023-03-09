@@ -5,8 +5,7 @@ import { IReqCart } from "@types";
 import { CartContext } from "application/components/core/Cart/CartBasket/CartList";
 import debounce from "lodash.debounce";
 import { useDispatch } from "react-redux";
-import { FC, useCallback, useContext, useEffect, useMemo, useState } from "react";
-import cn from "classnames";
+import { FC, useContext, useEffect, useMemo, useState } from "react";
 import { fetchChangeAmount, fetchRemoveCart } from "servises/redux/slice/cartSlice";
 import classNames from "classnames";
 
@@ -22,7 +21,7 @@ const CartItem: FC<IProps> = ({ product, errorSchema }) => {
   const [error, setError] = useState<null | string>(null);
 
   const debouncedChangeHandler = useMemo(() => debounce(({ id, count }: any) =>
-    dispatch(fetchChangeAmount({ amount:count,cartId:id,orderType: "PICKUP" })), 200), [product.amount]) 
+    dispatch(fetchChangeAmount({ amount:count,cartId:id,orderType: "PICKUP" })), 200), [product.amount])
   const removeHandler = ()=>{
       dispatch(fetchRemoveCart(product.id));
   }
@@ -33,7 +32,7 @@ const CartItem: FC<IProps> = ({ product, errorSchema }) => {
   })
 
   useEffect(() => () => debouncedChangeHandler.cancel(), [product.amount]);
-  
+
   useEffect(() => {
     if (product.productTags) {
       const tag = product.productTags.find(el => el !== "HIDDEN"); //?.match(/[a-z]{2,}/i)![0]
@@ -42,7 +41,7 @@ const CartItem: FC<IProps> = ({ product, errorSchema }) => {
           setError(errorSchema?.HI?.message);
       }
     }
-    
+
   }, [errorSchema])
 
   const changeCountHandler = ({ id, type, code}: any) => {
@@ -50,30 +49,30 @@ const CartItem: FC<IProps> = ({ product, errorSchema }) => {
          switch (type) {
              case 'inc':
               setChangeCount(prev => {
-                   let count =  prev + 1 
-                   debouncedChangeHandler({ id, count})  
+                   let count =  prev + 1
+                   debouncedChangeHandler({ id, count})
                    return count
                  });
                   break;
              case 'dec':
                  if (!(changeCount <= 1)) {
                   setChangeCount(prev => {
-                          let count =  prev - 1 
-                          debouncedChangeHandler({ id, count })  
+                          let count =  prev - 1
+                          debouncedChangeHandler({ id, count })
                           return count
                      });
-                 }  
+                 }
                   break;
               default : setChangeCount(product.amount)
-        } 
+        }
         setError(null)
       }
   }
 
     return (
         <div className={CN}>
-            
             <div className="cart__item__img-wrap">
+                {/*`http://localhost:6500/${product.productImage}`*/}
                 <img src={product.productImage} alt={product.productName} />
             </div>
             <div className="cart__item__middle">
@@ -89,7 +88,6 @@ const CartItem: FC<IProps> = ({ product, errorSchema }) => {
                             changeCountHandler({
                                 id: product.id,
                                 type: "dec",
-                                
                             })
                         }
                     >
@@ -105,7 +103,7 @@ const CartItem: FC<IProps> = ({ product, errorSchema }) => {
                             changeCountHandler({
                                 id: product.id,
                                 type: "inc",
-                                
+
                             })
                         }
                     >
@@ -122,20 +120,18 @@ const CartItem: FC<IProps> = ({ product, errorSchema }) => {
                 <div className="cart__item__price">{product.price} ₽</div>
                 <button className="cart__item__remove" onClick={removeHandler}>
                     <img
-                        src={require("assets/i/remove.svg").default}
+                        src={require("assets/i/delete.svg").default}
                         alt="Удалить"
                     />
                 </button>
             </div>
-            {error && 
+            {error &&
                 <div className="cart__item__validate">
                     {
                         error
                     }
                 </div>
             }
-            
-            
         </div>
     );
 };

@@ -2,6 +2,8 @@
   "devDependencies": {
     "@types/uuid": "^8.3.3",
     "cloc": "^2.9.0",
-    "cypress": "^10.8.0"
+    "cypress": "^10.8.0",
+		"html-react-parser": "^3.0.4"
   }
+
 }

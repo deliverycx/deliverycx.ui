@@ -12,13 +12,13 @@ const CartPickup = () => {
   return (
     <>
       <div className="cart__memo">
-        
         {
           orderType === CART_CHOICE.PICKUP &&
-          <div className="cart__memo__banner">Заказ можно получить по адресу,<br /> <b className="price"> г. {city}, {address} </b></div>
+          <div className="cart__memo__banner pickup container">
+              <div>Заказ можно получить по адресу:</div>
+              <div className="city-info"><span className="mark"/> г. {city}, {address} </div>
+          </div>
         }
-       
-        После заказа с вами свяжется администратор
       </div>
       <CartFrom builder={FormBuilderCart.pickup(CartFormMetods)} paths={ROUTE_APP.CART.CART_DELIVERY} />
     </>

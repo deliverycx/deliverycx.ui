@@ -35,7 +35,7 @@ const Ordering: FC = (): JSX.Element => {
             <div className="checkout__order">№ {orderNumber}</div>
             <p className="checkout__dash">
             Ваш заказ оформлен. <br />
-            С вами свяжется администратор.</p>
+            </p>
           </div>
           
         }

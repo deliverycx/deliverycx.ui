@@ -7,27 +7,22 @@ import { LocationPointsContext } from "../LocationLayout";
 
 const CityList = () => {
   const useCaseLocationPoints = useContext(LocationPointsContext);
-  const { handlerCloseModal,setShow } = useCaseLocationPoints.handlers;
+	const {selectCity} = useCaseLocationPoints.data
+  const { handlerCloseModal,setShow,handleSelectCity } = useCaseLocationPoints.handlers;
+
   const useCaseCitiList = adapterComponentUseCase(useCitiList,setShow)
-  const { cities,selectedCity } = useCaseCitiList.data
-  const { selectCiti, setSerchCiti, hadleCitySerch } = useCaseCitiList.handlers
+  const { cities } = useCaseCitiList.data
+  const { setSerchCiti, hadleCitySerch } = useCaseCitiList.handlers
   const { isLoading } = useCaseCitiList.status
+	let sortedCities;
+	
+
+	if (cities) sortedCities = cities.slice().sort((a: { name: string; }, b: { name: string; }) => a.name > b.name ? 1 : -1);
 
   return (
 		<div className="location_city">
 			<div className="location_city-container">
-				<div className="close" onClick={handlerCloseModal}>
-					<svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
-						<g clipPath="url(#clip0_329_8395)">
-							<path d="M0 0L11.9991 12M12 0L0.00090279 12" stroke="#ABABAB" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-						</g>
-						<defs>
-							<clipPath id="clip0_329_8395">
-								<rect width="12" height="12" fill="white"/>
-							</clipPath>
-						</defs>
-					</svg>
-				</div>
+				
 				<div className="modals-top_box">
 					<div className="modals_title city-list">Выберите <span>город</span></div>
 				</div>
@@ -38,10 +33,11 @@ const CityList = () => {
 				<div className="you_city__points city-list">
 					<ul className="points-list city-list">
 						{
-							!isLoading && cities && cities.map((city: ICity) => {
-								const CN = cn("welcome__city", { active: city.name === selectedCity.name }); //city.name === selectedCity?.name
+							!isLoading && sortedCities && sortedCities.slice().sort().map((city: ICity) => {
+								const CN = cn("welcome__city", { active: city.id === selectCity.id }); //city.name === selectedCity?.name
+								console.log(city.id == selectCity.id);
 								if (!city.isHidden) {
-									return <li key={city.id} onClick={() => selectCiti(city)} className={CN}>{city.name}</li>;
+									return <li key={city.id} onClick={() => handleSelectCity(city)} className={CN}>{city.name}</li>;
 								}
 							})
 						}

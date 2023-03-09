@@ -1,7 +1,7 @@
 import { useEffect, useReducer, useRef, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useGetPointsQuery, useGetRecvisitesMutation } from "servises/repository/RTK/RTKLocation";
-import { IPoint } from "@types";
+import { useGetPointStatusMutation, useGetPointsQuery, useGetRecvisitesMutation } from "servises/repository/RTK/RTKLocation";
+import { IPoint, IPointStatus } from "@types";
 import {
     initialStatePoints,
     PointsReducer,
@@ -14,20 +14,28 @@ import { setProfileAction } from "servises/redux/slice/profileSlice";
 import { ROUTE_APP } from "application/contstans/route.const";
 import { adapterSelector } from "servises/redux/selectors/selectors";
 import { RootState } from 'servises/redux/createStore';
-import { accessOrder, fetchDeleteCart } from "servises/redux/slice/cartSlice";
+import { accessOrder, fetchDeleteCart, fetchRefreshCart, setOrderType } from "servises/redux/slice/cartSlice";
 import { useRouter } from 'next/router'
+import { CART_CHOICE } from "application/contstans/cart.const";
+import RequestLocation from "servises/repository/Axios/Request/Request.Location";
+import { ORG_STATUS } from "application/contstans/const.orgstatus";
+import { Redirects } from "application/helpers/redirectTo";
 
-export function usePoints(this: any) {
+export function usePoints(this: any,{selectCity,handleSelectOrganitztion}:any) {
   const dispatch = useDispatch();
   const router = useRouter()
 	const [cityid,setCityId] = useState('')
   const {city,point} =  useSelector((state:RootState) => state.location)
   const { id } = adapterSelector.useSelectors((selector) => selector.point);
   const { data: addresses, isFetching } = useGetPointsQuery(cityid);
+	const [getOrgstatus,{data:orgstatus}] = useGetPointStatusMutation()
 
 
-  const handlerPoint = (address: IPoint)=>{
-    dispatch(setPoint(address));
+  const handlerPoint = (address: IPoint, status:IPointStatus)=>{
+		if(status.organizationStatus === ORG_STATUS.OPEN || status.organizationStatus === ORG_STATUS.NOWORK) return
+		handleSelectOrganitztion(address)
+		getOrgstatus(address.guid)
+    //dispatch(setPoint(address));
     dispatch(setModal(false))
     if (address.id !== point.id) {
       dispatch(fetchDeleteCart());
@@ -35,12 +43,15 @@ export function usePoints(this: any) {
     }
     
     RequestProfile.update({ organizationId: address.id });
-    router.push(ROUTE_APP.MAIN)
+    router.push(`${ROUTE_APP.MENU}/?address=${address.city + ',' + address.address}`)
   }
 
+	
+
+
 	useEffect(()=>{
-		city.id && setCityId(city.id)
-	},[city.id])
+		selectCity.id && setCityId(selectCity.id)
+	},[selectCity.id])
 
   
 
@@ -57,15 +68,19 @@ export function usePoints(this: any) {
   })
 }
 
-export function usePointsMaps(this: any,{handlerGoToCity,handlerCloseMapModal}:any) {
+export function usePointsMaps(this: any,{selectCity,handlerGoToCity,handlerCloseMapModal,handleSelectOrganitztion}:any) {
   const dispatch = useDispatch();
   const refMap = useRef<any>()
+	const router = useRouter()
+	/*
   const selectedCity = adapterSelector.useSelectors(
     (selector) => selector.city
   );
+	*/
   const { id } = adapterSelector.useSelectors((selector) => selector.point);
-  const { data: org, isFetching } = useGetPointsQuery(selectedCity.id);
+  const { data: org, isFetching } = useGetPointsQuery(selectCity.id);
   const [getRecvisites, { data: recvisites }] = useGetRecvisitesMutation()
+	const [getOrgstatus,{data:orgstatus}] = useGetPointStatusMutation()
 
   const [statePoint, dispatchPoint] = useReducer(
     PointsReducer,
@@ -76,11 +91,14 @@ export function usePointsMaps(this: any,{handlerGoToCity,handlerCloseMapModal}:a
 
      
   useEffect(() => {
-    (addresses && !isFetching) && getRecvisites(addresses[statePoint.slideIndex].id) 
-  }, [statePoint.slideIndex]) 
+    if(addresses && !isFetching){
+			getRecvisites(addresses[statePoint.slideIndex].id)
+			
+		}
+  }, [statePoint.slideIndex,org]) 
   
     useEffect(() => {
-        if (Object.keys(selectedCity).length) {
+        if (Object.keys(selectCity).length) {
           (addresses && !isFetching) && nearPoint(addresses);
           refMap.current.scrollIntoView({behavior: "smooth", block: "end", inline: "nearest"});
         } else {
@@ -148,20 +166,23 @@ export function usePointsMaps(this: any,{handlerGoToCity,handlerCloseMapModal}:a
         
     };
 
-    const selectPointHandler = async (address: IPoint) => {
+    const selectPointHandler = async (address: IPoint, status:IPointStatus) => {
+				if(status.organizationStatus === ORG_STATUS.OPEN || status.organizationStatus === ORG_STATUS.NOWORK) return
         try {
             const { data: regData } = await RequestProfile.register();
-						console.log(address);
             dispatch(setProfileAction(regData));
-            dispatch(setPoint(address));
+						handleSelectOrganitztion(address)
+						getOrgstatus(address.guid)
+            //dispatch(setPoint(address));
             if (address.id !== id) {
               dispatch(fetchDeleteCart());
               dispatch(accessOrder());
             }
             
-            
             RequestProfile.update({ organizationId: address.id });
             handlerCloseMapModal()
+						Redirects(address.guid)
+						router.push(`${ROUTE_APP.MENU}`)
         } catch (error) {
             
         }
@@ -175,7 +196,7 @@ export function usePointsMaps(this: any,{handlerGoToCity,handlerCloseMapModal}:a
     }
 
     this.data({
-        selectedCity,
+				selectCity,
         addresses,
         statePoint,
         recvisites,

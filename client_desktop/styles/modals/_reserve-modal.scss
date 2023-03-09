@@ -15,18 +15,16 @@
   }
 
   .reserve-container {
-    padding: 5%;
+    padding: 45px;
     position: relative;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     height: 100%;
-    margin-left: 25px;
 
     .rows-container {
       height: 80%;
       overflow: hidden;
-      width: 93%;
     }
 
     .modals_title {
@@ -38,7 +36,7 @@
 
     .close {
       position: absolute;
-      right: 25px;
+      right: 16px;
       top: 25px;
       cursor: pointer;
       width: 32px;
@@ -187,7 +185,7 @@
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    height: 100%;
+    height: 570px;
 
     .close-btn {
       background-image: url("/images/reserve/close.svg");
@@ -221,7 +219,7 @@
       margin-top: 20px;
 
       .sent {
-        font-family: Manrope, sans-serif;
+        font-family: $manrope;
         font-size: 26px;
         font-weight: 400;
         text-align: center;
@@ -231,7 +229,7 @@
         }
       }
       .admin {
-        font-family: Manrope, sans-serif;
+        font-family: $manrope;
         font-size: 15px;
         font-weight: 400;
         text-align: center;
@@ -254,6 +252,5 @@
 }
 
 .cart__order-btn.btn.reserve-btn {
-  width: 93%;
   margin-top: 15px;
 }
