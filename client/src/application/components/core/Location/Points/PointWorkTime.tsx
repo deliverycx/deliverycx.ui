@@ -33,7 +33,7 @@ const PointWorkTime:FC<{worktime:string[],adress:IPoint} > = ({worktime,adress})
 
 	const checktype = !!(typeof checkWorkIsArray(worktime) === 'string')
 
-console.log(workTimeCheck(worktime,adress.guid));
+
 	return (
 		<div className="welcome_worktime">
 			<div className="welcome__select-adress__info worktime-time" onClick={()=> setSelect(prev => !prev)}>
@@ -41,7 +41,7 @@ console.log(workTimeCheck(worktime,adress.guid));
 					src={require("assets/i/timework.svg").default}
 					alt="Телефон заведения"
 				/>
-				<span>{workTimeCheck(worktime,adress.guid) === "00:00-00:00" ? "Закрыта" : workTimeCheck(worktime,adress.guid)}</span>
+				<span>{workTimeCheck(worktime) === "00:00-00:00" ? "Закрыта" : workTimeCheck(worktime)}</span>
 				{
 					!checktype &&
 					<div className={CN}></div>
