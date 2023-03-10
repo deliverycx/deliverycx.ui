@@ -1,3 +1,4 @@
+/* eslint-disable no-mixed-spaces-and-tabs */
 /* eslint-disable @typescript-eslint/no-var-requires */
 /* eslint-disable @typescript-eslint/ban-types */
 import { IInitialValues, ISubmitData } from "@types";
@@ -60,6 +61,7 @@ const CartFrom: FC<IProps> = ({ builder,paths }) => {
   ];
 
   const [times, setTimes] = useState<object>(timesArray[0]);
+	const [cxofer, setCXOfer] = useState<boolean>(true);
   const useCaseForm = adapterComponentUseCase(useCartForm,paths)
   const {paymentMetod,paymentOrder } = useCaseForm.data
   const { paymentReady } = useCaseForm.status
@@ -129,6 +131,11 @@ const CartFrom: FC<IProps> = ({ builder,paths }) => {
           ></textarea>
           <div className="administrator">Условия доставки в отдалённые районы могут отличаться</div>
 
+					<div className="box_checkbox">
+					<input className="styled-checkbox" id="styled-checkbox-1" type="checkbox" value="value1" />
+    			<label htmlFor="styled-checkbox-1" onClick={()=> setCXOfer(prev => !prev)} ><span>Я согласен на <a href={require("assets/i/cx.pdf").default} download="">обработку персональных данных</a></span></label>
+					</div>
+					
           {orderError.status === 500 && (
             <div className="server-error">
               Что-то пошло не так
@@ -154,7 +161,7 @@ const CartFrom: FC<IProps> = ({ builder,paths }) => {
             <button
               type="submit"
               className="cart__order-btn btn"
-              disabled={loadingOrder}
+              disabled={loadingOrder || cxofer}
             >
               Заказать
             </button>
