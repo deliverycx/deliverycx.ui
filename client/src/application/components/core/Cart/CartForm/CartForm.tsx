@@ -1,3 +1,4 @@
+/* eslint-disable no-mixed-spaces-and-tabs */
 /* eslint-disable @typescript-eslint/no-var-requires */
 /* eslint-disable @typescript-eslint/ban-types */
 import { IInitialValues, ISubmitData } from "@types";
@@ -61,6 +62,7 @@ const CartFrom: FC<IProps> = ({ builder,paths }) => {
   ];
 
   const [times, setTimes] = useState<object>(timesArray[0]);
+	const [cxofer, setCXOfer] = useState<boolean>(true);
   const useCaseForm = adapterComponentUseCase(useCartForm,paths)
   const {paymentMetod,paymentOrder } = useCaseForm.data
   const { paymentReady } = useCaseForm.status
@@ -113,8 +115,6 @@ const CartFrom: FC<IProps> = ({ builder,paths }) => {
     orderError.status && dispatch(setErrors({errors:{}}))
   },[])
 
-
-
   return (
     <FormikProvider value={formik}>
       <form onSubmit={formik.handleSubmit}>
@@ -122,6 +122,11 @@ const CartFrom: FC<IProps> = ({ builder,paths }) => {
           {
             formWrapper.getInitinal(builder)
           }
+
+					<div className="box_checkbox">
+					<input className="styled-checkbox" id="styled-checkbox-1" type="checkbox" value="value1" />
+    			<label htmlFor="styled-checkbox-1" onClick={()=> setCXOfer(prev => !prev)} ><span>Я согласен на <a href={require("assets/i/cx.pdf").default} download="">обработку персональных данных</a></span></label>
+					</div>
           
 					{
 						orderType === DELIVERY_METODS.ONSPOT 
@@ -145,6 +150,7 @@ const CartFrom: FC<IProps> = ({ builder,paths }) => {
               }
             </div>
           )}
+					
           <div className="form__create">
             <div className="clear" onClick={debounceClearHandler}>
               <img
@@ -155,7 +161,7 @@ const CartFrom: FC<IProps> = ({ builder,paths }) => {
             <button
               type="submit"
               className="cart__order-btn btn"
-              disabled={loadingOrder}
+              disabled={loadingOrder || cxofer}
             >
               Заказать
             </button>
