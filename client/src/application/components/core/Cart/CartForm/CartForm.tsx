@@ -163,7 +163,7 @@ const CartFrom: FC<IProps> = ({ builder,paths }) => {
             <button
               type="submit"
               className="cart__order-btn btn"
-              disabled={loadingOrder || !cxofer}
+              disabled={loadingOrder || cxofer}
             >
               Заказать
             </button>
