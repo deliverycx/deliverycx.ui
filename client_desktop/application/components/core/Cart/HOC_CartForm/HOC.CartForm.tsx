@@ -132,7 +132,7 @@ const CartFrom: FC<IProps> = ({ builder,paths }) => {
 							? <button disabled className="order-btn-pointclosed">Оформление онлайн-заказа недоступно
 								
 							</button>	
-						: <button type="submit" className="cart__order-btn btn" disabled={loadingOrder || disabledData() || cxofer}>
+						: <button type="submit" className="cart__order-btn btn" disabled={loadingOrder || disabledData() || !cxofer}>
 		              Заказать
 		          </button>
 					}
