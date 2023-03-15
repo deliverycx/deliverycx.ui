@@ -47,7 +47,7 @@ const Stocks = () => {
 		const handlerStories = (story:string[] | null,index:number) => {
 			const q = document.querySelector(".shop__box") as any
 			setStoriesIndex(index)
-			if(story){
+			if(story?.length !== 0){
 				setStories(story)
 				q.classList.toggle("no-scroll")
 			}else{
