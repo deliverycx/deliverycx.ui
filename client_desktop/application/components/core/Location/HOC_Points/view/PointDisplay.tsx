@@ -4,10 +4,11 @@ const PointDisplay:FC<{setter:any}> = ({setter}) =>{
 	return (
 			<div className="notification_modal notification_work-time">
 							<div className="attention">
-									Привет!
+							Ой! Дальнейший заказ невозможен.
 							</div>
 							<div className="attention-info">
-										Хинкальная только открылась и готовится <br /> к подключению онлайн-заказов 
+							В данный момент заведение не принимает онлайн-заказ.<br />
+С удовольствием примем его немного позднее!
 							</div>
 							<div className="secondary-text">
 									Сейчас вы можете ознакомиться с нашим меню, просмотреть новости и узнать об актуальных акциях
