@@ -68,6 +68,13 @@ const CartItem: FC<IProps> = ({ product, errorSchema }) => {
         setError(null)
       }
   }
+	const changeInputHandler = (id:string,count:number) =>{
+		if(count > 0){
+			setChangeCount(count)
+			debouncedChangeHandler({ id, count})
+		}
+		
+	}
 
     return (
         <div className={CN}>
@@ -96,7 +103,7 @@ const CartItem: FC<IProps> = ({ product, errorSchema }) => {
                             alt="минус"
                         />
                     </div>
-                    <div className="cart__item__count">{changeCount}</div>
+										<input type="text" className="cart__item__count" onChange={e => changeInputHandler(product.id,Number(e.target.value))} value={changeCount} />
                     <div
                         className="cart__item__increment"
                         onClick={(e) =>

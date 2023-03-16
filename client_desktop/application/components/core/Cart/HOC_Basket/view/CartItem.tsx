@@ -70,6 +70,13 @@ const CartItem: FC<IProps> = ({ product, errorSchema }) => {
         setError(null)
       }
   }
+	const changeInputHandler = (id:string,count:number) =>{
+		if(count > 0){
+			setChangeCount(count)
+			debouncedChangeHandler({ id, count})
+		}
+		
+	}
 
     return (
         <div className={CN}>
@@ -104,7 +111,9 @@ const CartItem: FC<IProps> = ({ product, errorSchema }) => {
                 >
                     <img src="/images/icon/minus.svg" alt="минус" />
                   </div>
-									<div className="count-option__count">{changeCount}</div>
+									
+									<input type="text" className="count-option__count" onChange={e => changeInputHandler(product.id,Number(e.target.value))} value={changeCount} />
+                    
                   <div className="count-option__increment"
                     onClick={(e) =>
                       changeCountHandler({

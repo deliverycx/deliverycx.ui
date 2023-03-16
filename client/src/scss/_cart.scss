@@ -93,7 +93,16 @@
             font-family: $bold;
         }
         &__count {
+						width: 16px;
+						
+						background: none;
+						border: none;
             font-size: $fsstocktitle;
+						&:focus{
+							border: none;
+							background: none;
+							outline: none;
+						}
         }
         &__increment,
         &__decriment {
