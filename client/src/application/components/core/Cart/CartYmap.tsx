@@ -47,7 +47,7 @@ const CartYmap = () => {
     <div className="address-select-map">
       <YMaps
         enterprise
-        query={{ apikey: "d52d6907-6e6e-4850-a49f-f77df081ee23" }}
+        query={{ apikey: "e45f9cf9-d514-40a5-adb9-02524aaef83f" }}
       >
         <Map className="address-select-map map" modules={["geocode"]} onClick={onMapClick}
              state={mapstate} defaultState={

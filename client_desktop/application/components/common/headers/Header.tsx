@@ -46,6 +46,7 @@ const Header = () => {
 
 	const rend = () =>{
 		window.location.href = process.env.NEXT_PUBLIC_REDIRECT as string
+		
 	}
 
     return (

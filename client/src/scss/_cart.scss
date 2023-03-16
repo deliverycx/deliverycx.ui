@@ -1022,6 +1022,74 @@
 	}
 }
 
+
+.box_checkbox{
+	margin-top: 25px;
+}
+.styled-checkbox {
+  position: absolute; // take it out of document flow
+  opacity: 0; // hide it
+
+  & + label {
+    position: relative;
+    cursor: pointer;
+		font-size: 12px;
+		line-height: 30px;
+		color: #333333;
+		span{
+			position: relative;
+			top: 10px;
+			margin-top: 10px;
+		}
+		a{
+			font-weight: 600;
+			color: #333333;
+			&:hover{
+				text-decoration: none;
+			}
+		}
+  }
+
+  // Box.
+  & + label:before {
+    content: '';
+    margin-right: 10px;
+    display: inline-block;
+    vertical-align: text-top;
+    width: 30px;
+    height: 30px;
+    background: white;
+		border: 2px solid #CCCCCC;
+		border-radius: 8px;
+  }
+
+  
+  
+  // Box focus
+  &:focus + label:before {
+    border: 2px solid #CCCCCC;
+  }
+
+  // Box checked
+  &:checked + label:before {
+    background: #fff;
+  }
+  
+
+
+  // Checkmark. Could be replaced with an image
+  &:checked + label:after {
+    content: '';
+    position: absolute;
+    left: 10px;
+    top: 10px;
+    background: white;
+    width: 15px;
+    height: 12px;
+    background: url("../assets/img/ok-icon.png");
+  }
+}
+
 @keyframes show {
     from {
         opacity: 0;

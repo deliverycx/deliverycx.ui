@@ -24,18 +24,20 @@ export function usePoints() {
   const history = useHistory();
   const dispatch = useDispatch();
 
-	////редирект
-	if(process.env.NODE_ENV === 'production'){
-		//window.location.href = process.env.REACT_APP_REDIRECT as string
-	}
+	
 
 
   const selectedCity = adapterSelector.useSelectors(
     (selector) => selector.city
   );
-  const { id } = adapterSelector.useSelectors((selector) => selector.point);
+  const { id,isHidden } = adapterSelector.useSelectors((selector) => selector.point);
 	const pointstatus = adapterSelector.useSelectors(selector => selector.pointstatus)
 
+	////редирект
+	if(process.env.NODE_ENV === 'production'){
+		window.location.href = process.env.REACT_APP_REDIRECT as string
+	}
+	
   const { data: org, isFetching } = useGetPointsQuery(selectedCity.id);
   const [getRecvisites, { data: recvisites }] = useGetRecvisitesMutation()
 	const [getOrgstatus,{data:orgstatus}] = useGetPointStatusMutation()

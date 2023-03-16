@@ -29,5 +29,10 @@ class RequestWebhook extends ApiSuper {
   getStreetCity(body:Res.getstreet) {
     return this.request(`/webhook/getstreet`)
   }
+
+	@methods('get')
+  getStreetDaData(street:string) {
+    return this.request(`/webhook/daData/${street}`)
+  }
 }
 export default new RequestWebhook()

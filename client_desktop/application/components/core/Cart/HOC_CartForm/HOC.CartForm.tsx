@@ -2,7 +2,7 @@ import { ISubmitData } from "@types";
 import submitHandler from "application/helpers/submitFormHandler";
 import schema from "application/helpers/validationSchema";
 import { useFormik, FormikProvider } from "formik";
-import { FC } from "react";
+import { FC, useState } from "react";
 import { useEffect } from 'react';
 
 import { adapterComponentUseCase, TadapterCaseCallback } from 'adapters/adapterComponents';
@@ -28,6 +28,7 @@ export const CartFormContext = React.createContext<TadapterCaseCallback>({
   status:{}
 });
 const CartFrom: FC<IProps> = ({ builder,paths }) => {
+	const [cxofer, setCXOfer] = useState<boolean>(true);
 	const pointstatus = adapterSelector.useSelectors((selector) => selector.pointstatus);
   const useCaseForm = adapterComponentUseCase(useCartForm,paths)
   const {
@@ -114,6 +115,13 @@ const CartFrom: FC<IProps> = ({ builder,paths }) => {
           ></textarea>
           <div className="row align-center form__create"></div>
         </div>
+
+				<div className="box_checkbox">
+					<input className="styled-checkbox" id="styled-checkbox-1" type="checkbox" value="value1" />
+    			<label htmlFor="styled-checkbox-1" onClick={()=> setCXOfer(prev => !prev)} ><span>Я согласен на <a href="/images/cx.pdf" download="">обработку персональных данных</a></span></label>
+					</div>	
+
+
         <div className="cart__order-btnbox">
 					{
 						workTimeHelp()  && pointstatus.organizationStatus === ORG_STATUS.WORK
@@ -124,7 +132,7 @@ const CartFrom: FC<IProps> = ({ builder,paths }) => {
 							? <button disabled className="order-btn-pointclosed">Оформление онлайн-заказа недоступно
 								
 							</button>	
-						: <button type="submit" className="cart__order-btn btn" disabled={loadingOrder || disabledData()}>
+						: <button type="submit" className="cart__order-btn btn" disabled={loadingOrder || disabledData() || cxofer}>
 		              Заказать
 		          </button>
 					}

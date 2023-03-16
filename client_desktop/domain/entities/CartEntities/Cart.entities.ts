@@ -9,6 +9,7 @@ export type ICartEntities = ICart
 class CartEntities extends Entities<ICartEntities>{
   protected totalPrice = 0
   protected address = ''
+	protected kladrid = ''
   protected orderError = {}
   protected orderNumber = null
   protected deltaPrice = 0
@@ -20,6 +21,7 @@ class CartEntities extends Entities<ICartEntities>{
     this.entities = {
       totalPrice: this.totalPrice,
       address: this.address,
+			kladrid:this.kladrid,
       orderError: this.orderError,
       orderNumber: this.orderNumber,
       deltaPrice: this.deltaPrice,

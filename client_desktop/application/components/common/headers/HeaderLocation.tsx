@@ -1,13 +1,16 @@
 import { adapterComponentUseCase } from "adapters/adapterComponents";
 import { useHeaderLocations } from "domain/use-case/useCaseLocation";
+import { adapterSelector } from "servises/redux/selectors/selectors";
 
 const HeaderLocation = () => {
     const useCaseLocationHeader = adapterComponentUseCase(useHeaderLocations);
     const { selectedPoint } = useCaseLocationHeader.data;
     const {handlerHeader } = useCaseLocationHeader.handlers;
+		const point = adapterSelector.useSelectors(selector => selector.point)
 
 		const rend = (querty:string) =>{
 			window.location.href = `${process.env.NEXT_PUBLIC_REDIRECT as string}/?location=${querty}`
+			
 		}
 
     return (
