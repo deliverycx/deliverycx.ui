@@ -6,6 +6,7 @@ export default class MyDocument extends Document {
       <Html lang="en">
         <Head>
             <link rel="shortcut icon" href="/favicon.svg" type="image/x-icon"/>
+						<meta name="yandex-verification" content="46bb2570dfd8760a" />
         </Head>
         <script async src="https://api-maps.yandex.ru/2.1/?lang=ru_RU&apikey=e45f9cf9-d514-40a5-adb9-02524aaef83f"></script>
         <body>
