@@ -135,6 +135,14 @@
 	.count-option__count{
 		font-size: 15px;
 		color: #333333;
+		width: 22px;
+		background: none;
+		border: none;
+		&:focus{
+			border: none;
+			background: none;
+			outline: none;
+		}
 	}
 	.count-option__disable {
 			cursor: no-drop;
