@@ -5,6 +5,14 @@ export default class MyDocument extends Document {
     return (
       <Html lang="en">
         <Head>
+						<title>
+							«Старик Хинкалыч» - крупнейшая сеть хинкальных в России
+		        </title>
+						<meta
+		          name="description"
+		          content="Выбирайте ближайший адрес и попробуйте хинкали от 35 рублей, румяные хачапури и другие блюда грузинской кухни!"
+		          key="desc"
+		        />
             <link rel="shortcut icon" href="/favicon.svg" type="image/x-icon"/>
 						<meta name="yandex-verification" content="46bb2570dfd8760a" />
         </Head>
