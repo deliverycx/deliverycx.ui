@@ -63,7 +63,8 @@ export function useCaseShopItem(this: any,  itemid: {id:string,isFav:boolean,pro
   useEffect(() => {
 		if(stoplists){
 			stoplists.forEach((item: TStopListItems) => {
-				item.product === itemid.productId && setDisableItem(true)
+				
+				item.productId === itemid.productId && setDisableItem(true)
 			})
 		}
   },[stoplists])
