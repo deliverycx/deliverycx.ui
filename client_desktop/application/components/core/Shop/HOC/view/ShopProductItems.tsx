@@ -13,9 +13,9 @@ type IProps = {
 }
 
 const ShopProductItem: FC<IProps> = ({ products }) => {
-    const { id, name, price, categoryImage, measureUnit, weight, description, image, isFav } = products
+    const { id, name,productId, price, categoryImage, measureUnit, weight, description, image, isFav } = products
 
-    const useCasePoints = adapterComponentUseCase(useCaseShopItem,{id,isFav});
+    const useCasePoints = adapterComponentUseCase(useCaseShopItem,{id,isFav,productId});
     const { cardRef,disableItem } = useCasePoints.data;
     const { clickItemHandler } = useCasePoints.handlers;
 

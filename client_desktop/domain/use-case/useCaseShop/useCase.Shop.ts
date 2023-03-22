@@ -41,7 +41,7 @@ export function useCaseShop(this: any,category:string) {
   })
 }
 
-export function useCaseShopItem(this: any,  itemid: {id:string,isFav:boolean}) {
+export function useCaseShopItem(this: any,  itemid: {id:string,isFav:boolean,productId:string}) {
   const dispatch = useDispatch()
   const stoplists = adapterSelector.useSelectors(selector => selector.stoplist)
   
@@ -63,7 +63,7 @@ export function useCaseShopItem(this: any,  itemid: {id:string,isFav:boolean}) {
   useEffect(() => {
 		if(stoplists){
 			stoplists.forEach((item: TStopListItems) => {
-				item.product === itemid.id && setDisableItem(true)
+				item.product === itemid.productId && setDisableItem(true)
 			})
 		}
   },[stoplists])
