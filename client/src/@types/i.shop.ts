@@ -6,6 +6,7 @@ export interface ICategory {
 export interface IProduct<C = ICategory> {
     id: string;
     name: string;
+		productId:string
     description: string;
     additionalInfo: string;
     price: number;

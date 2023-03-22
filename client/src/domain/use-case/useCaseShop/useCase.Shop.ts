@@ -45,11 +45,13 @@ export function useCaseShop() {
   })
 }
 
-export function useCaseShopItem(id:string) {
+export function useCaseShopItem({id,productId}:any) {
   const stoplists = adapterSelector.useSelectors(selector => selector.stoplist)
   const history = useHistory();
   const cardRef = useRef<HTMLDivElement>(null);
   const [disableItem, setDisableItem] = useState(false)
+
+	
 
   const clickItemHandler = (e: any, id: string) => {
       if(disableItem) return
@@ -72,11 +74,13 @@ export function useCaseShopItem(id:string) {
           //.catch(() => localStorage.removeItem('prod'))
 
   }, [])
+	
 
   useEffect(() => {
     if (stoplists) {
 			stoplists.forEach((item: TStopListItems) => {
-        item.product === id && setDisableItem(true)
+				
+        item.productId === productId && setDisableItem(true)
       })
     }
 
