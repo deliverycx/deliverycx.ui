@@ -5,7 +5,6 @@ import axios from "axios";
 import { useEffect, useMemo, useState } from "react";
 import { YMaps, Map, SearchControl, Placemark, YMapsApi, withYMaps, Polygon } from "react-yandex-maps";
 import { useDispatch, useSelector } from 'react-redux';
-import { setAdress } from "servises/redux/slice/cartSlice";
 import { getGeoLocation } from "application/helpers/yandexapi";
 import { RootState } from "servises/redux/createStore";
 import MapSuggestComponent from "application/components/common/Maps/MapSuggest";

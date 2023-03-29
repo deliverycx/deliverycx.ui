@@ -1,5 +1,6 @@
+/* eslint-disable @typescript-eslint/no-empty-interface */
 /* eslint-disable @typescript-eslint/no-unused-vars */
-import { ICart } from "@types"
+import { ICart, IInitialValues, IOrderPrice } from "@types"
 import { CartFormMetods } from "application/components/core/Cart/CartForm/CartMetods"
 import Entities from "../Entities"
 
@@ -9,24 +10,34 @@ export type ICartEntities = ICart
  * @method init полиморф, может не принимать аргументов или любой аргумент и изменяет entities
  */
 class CartEntities extends Entities<ICartEntities>{
-  protected totalPrice = 0
-  protected address = ''
-	protected kladrid = ''
+	protected orderInfo = {
+		address:'',
+		kladrid:'',
+		comment: "",
+		flat: "",
+		intercom: "",
+		entrance: "",
+		floor: "",
+		name: "",
+		phone: ""
+	}
+	protected orderPrice = {
+		totalPrice: 0,
+		deltaPrice: 0,
+		deliveryPrice:	0
+	}
   protected orderError = {}
   protected orderNumber = null
-  protected deltaPrice = 0
   protected loadingOrder = false
   protected orderType = "COURIER"
 	protected orderTable = null
   constructor() {
     super()
     this.entities = {
-      totalPrice: this.totalPrice,
-      address: this.address,
-			kladrid:this.kladrid,
+      orderPrice: this.orderPrice,
+      orderInfo:this.orderInfo,
       orderError: this.orderError,
       orderNumber: this.orderNumber,
-      deltaPrice: this.deltaPrice,
       loadingOrder: this.loadingOrder,
       orderType: this.orderType,
 			orderTable:this.orderTable

@@ -15,7 +15,7 @@ import { useCallback, useEffect, useMemo, useReducer } from "react";
 import { useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom";
 import { adapterSelector } from "servises/redux/selectors/selectors";
-import { setAdress, setKladrId } from "servises/redux/slice/cartSlice";
+import { setOrderInfo } from "servises/redux/slice/cartSlice";
 import RequestWebhook from "servises/repository/Axios/Request/Request.Webhook";
 import { useGetDeliveryZonesQuery } from "servises/repository/RTK/RTKCart";
 import { useGetStreetCityQuery } from "servises/repository/RTK/RTKLocation";
@@ -27,7 +27,7 @@ export function useCartMap() {
         (selector) => selector.point,
         (val) => val.cords
     );
-    const { address } = adapterSelector.useSelectors(
+    const { orderInfo  } = adapterSelector.useSelectors(
         (selector) => selector.cart
     );
     const { city,guid,address:pointadress } = adapterSelector.useSelectors((selector) => selector.point);
@@ -46,13 +46,13 @@ export function useCartMap() {
 
     useEffect(() => getGeoLoc(), [pointCords]);
     useEffect(() => {
-        if (address) {
+        if (orderInfo.address) {
             dispatchMap({
                 type: ReducerActionTypePoints.setValueMap,
-                payload: address
+                payload: orderInfo.address
             });
         }
-    }, [address]);
+    }, [orderInfo.address]);
 
     const mapstate = useMemo(() => {
         return { center: stateReduceMap.stateMap, zoom: 17 };
@@ -153,22 +153,22 @@ export function useCartMap() {
      */
     const hendleMapPopup = async () => {
         if (
-            (stateReduceMap.valueMap || address) &&
+            (stateReduceMap.valueMap || orderInfo.address) &&
             !stateReduceMap.disclaimer
         ) {
 
 					const kladrid = await daData(`${city}, ${stateReduceMap.valueMap}` )
-					console.log(kladrid);
+					
 					if(!isLoadingStreet && ikkostreet){
 						const findstreet = ikkostreet.some(element => element.classifierId === kladrid && !element.isDeleted);
 						
 						if(findstreet){
-							dispatch(setKladrId(kladrid)) 
+							dispatch(setOrderInfo({kladrid:kladrid})) 
 						}else{
 							const pointKladrId = await daData(`${city}, ${pointadress}` )
-							dispatch(setKladrId(pointKladrId)) 
+							dispatch(setOrderInfo({kladrid:pointKladrId})) 
 						}
-						dispatch(setAdress(stateReduceMap.valueMap));
+						dispatch(setOrderInfo({address:stateReduceMap.valueMap}));
 						history.push(ROUTE_APP.CART.CART_DELIVERY);
 						onMapTyping().setValueMap("");
 					}

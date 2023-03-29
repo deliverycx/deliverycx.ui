@@ -88,7 +88,6 @@ export function useCartItems() {
 export function useCartDiscountDzone(this: any) {
 	const dispatch = useDispatch()
 	const cartList = useSelector(cartSelector.selectAll);
-	const {totalPrice,deltaPrice} = adapterSelector.useSelectors((selector) => selector.cart);
 	const [countDiscount,setCountDiscount] = useState(0)
 	const [freeHi,setFreeHi] = useState(0)
 	

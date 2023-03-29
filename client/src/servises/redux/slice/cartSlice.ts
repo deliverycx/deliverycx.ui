@@ -10,6 +10,7 @@ import { RequestCart } from "servises/repository/Axios/Request";
 import { RTKCart } from "servises/repository/RTK/RTKCart";
 import { AppDispatch, RootState } from "../createStore";
 import { actionPaymentAccsess, actionPaymentReady } from "./bankCardSlice";
+import { DefaultinitialValues } from "application/components/core/Cart/CartForm/CartForm";
 
 const cartAdapter = createEntityAdapter<IReqCart>({
     selectId: (product) => product.id
@@ -21,7 +22,6 @@ export const cartSelector = cartAdapter.getSelectors(
 
 const helperOrderType = (getState: any) : {orderType:string,organization:string} => {
     const state = getState() as RootState
-		console.log('orderrr ---',state.cart.orderType);
     return {orderType:state.cart.orderType,organization:state.location.point.guid}
 }
 
@@ -152,7 +152,8 @@ export const fetchDeleteCart = createAsyncThunk(
                 dispatch(
                     setTotalPrice({
                         totalPrice: 0,
-                        deltaPrice: 0
+                        deltaPrice: 0,
+												deliveryPrice:0
                     })
                 );
             }
@@ -161,6 +162,30 @@ export const fetchDeleteCart = createAsyncThunk(
         }
     }
 );
+export const fetchDectroyCart = createAsyncThunk(
+	"cart/deleteAll",
+	async (_, { dispatch, rejectWithValue }) => {
+			try {
+					const request = await RequestCart.deleteCart();
+					if (request.status == 200) {
+							dispatch(deleteCart());
+							dispatch(setOrderInfo(DefaultinitialValues))
+							dispatch(
+									setTotalPrice({
+											totalPrice: 0,
+											deltaPrice: 0,
+											deliveryPrice:0
+									})
+							);
+							setOrderInfo
+					}
+			} catch (error: any) {
+					return rejectWithValue(error.response.data);
+			}
+	}
+);
+
+
 export const fetchOrderCart = createAsyncThunk(
     "cart/order",
     async (value: any, { dispatch, rejectWithValue }) => {
@@ -200,17 +225,13 @@ const cartSlice = createSlice({
 				setOrderTable:(state, action) =>{
 					state.orderTable = action.payload
 				},
-        setAdress: (state, action) => {
-            state.address = action.payload;
-        },
-				setKladrId: (state, action) => {
-					state.kladrid = action.payload;
-			},
+        
+				setOrderInfo: (state, action) => {
+					state.orderInfo = {...state.orderInfo,...action.payload};
+				},
 
         setTotalPrice: (state, action) => {
-            state.totalPrice = action.payload.totalPrice;
-            state.deltaPrice = action.payload.deltaPrice;
-            state.deliveryPrice = action.payload.deliveryPrice;
+            state.orderPrice = action.payload;
         },
         setErrors: (state, action) => {
             state.orderError = action.payload.errors;
@@ -250,13 +271,13 @@ export const {
     refreshCart,
     removeCart,
     deleteCart,
-    setAdress,
-		setKladrId,
+   
     setTotalPrice,
     setErrors,
     accessOrder,
     setOrderType,
 		setENErrors,
-		setOrderTable
+		setOrderTable,
+		setOrderInfo
 } = cartSlice.actions;
 export default cartSlice;

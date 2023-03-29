@@ -21,7 +21,20 @@ import CartModals from "../CartModals/CartModals";
 import React from "react";
 import { CartFormMetods } from "./CartMetods";
 import { DELIVERY_METODS } from "application/contstans/const.orgstatus";
+import { useOrderCheck } from "domain/use-case/useCaseOrder/useCase.OrderCheck";
 
+/**/
+export const DefaultinitialValues: IInitialValues = {
+	comment: "",
+	address: "",
+	flat: "",
+	intercom: "",
+	entrance: "",
+	floor: "",
+	name: "",
+	phone: "",
+	kladrid: ""
+};
 
 type IProps = {
   builder: any
@@ -39,67 +52,38 @@ const CartFrom: FC<IProps> = ({ builder,paths }) => {
     (state: RootState) => state.profile
   );
   const { city } = useSelector((state: RootState) => state.location.point);
-  const {address:selectAddress,orderError,orderNumber,loadingOrder,orderType} = useSelector((state: RootState) => state.cart);
+  const {orderInfo,orderError,orderNumber,loadingOrder,orderType} = useSelector((state: RootState) => state.cart);
   const errors:any = []
-  const initialValues: IInitialValues = {
-    comment: "",
-    address: "",
-    flat: "",
-    intercom: "",
-    entrance: "",
-    floor: "",
-    name: isVerify ? user.name : "",
-    phone: isVerify ? user.phone : "",
-    notCall: false,
-  };
+ 
   //mocki array
 
-  const timesArray: object[] = [
-    {
-      id: "1",
-      value: "По готовности",
-    },
-  ];
 
-  const [times, setTimes] = useState<object>(timesArray[0]);
 	const [cxofer, setCXOfer] = useState<boolean>(true);
   const useCaseForm = adapterComponentUseCase(useCartForm,paths)
   const {paymentMetod,paymentOrder } = useCaseForm.data
   const { paymentReady } = useCaseForm.status
 
+	const useCaseOrderCheck = adapterComponentUseCase(useOrderCheck)
+	const {handlerSubmitOrder} =	useCaseOrderCheck.handlers
+
+	const initialValues: IInitialValues = orderInfo
   const formik = useFormik({
     initialValues,
     validationSchema: schema(orderType),
     onSubmit: (values, meta) => {
+			handlerSubmitOrder(values)
+			/*
       submitHandler<ISubmitData>(
         {
           ...values,
           payment_method: paymentMetod.id,
           paymentOrderCard:paymentOrder,
-          times,
           city: city.name,
           orderType
         },
         meta
       );
-      /*
-      if (!paymentReady && paymentMetod.id === CartFormMetods.paymentsMetod[1].id) {
-        history.push(paths + '/card')
-      } else {
-        submitHandler<ISubmitData>(
-          {
-            ...values,
-            payment_method: paymentMetod.id,
-            paymentOrderCard:paymentOrder,
-            times,
-            city: city.name,
-            orderType
-          },
-          meta
-        );
-
-      }
-      */
+			*/	
 
     },
   });
@@ -111,11 +95,10 @@ const CartFrom: FC<IProps> = ({ builder,paths }) => {
   }, 400);
 
   useEffect(() => {
-    selectAddress && formik.setFieldValue("address", selectAddress)
     orderError.status && dispatch(setErrors({errors:{}}))
+		
   },[])
 
-	console.log(cxofer);
 
   return (
     <FormikProvider value={formik}>

@@ -7,7 +7,7 @@ import { adapterSelector } from './../../../../../servises/redux/selectors/selec
 import { CART_CHOICE } from "application/contstans/cart.const";
 
 const CartPickup = () => {
-  const { deltaPrice, orderType } = adapterSelector.useSelectors(selector => selector.cart)
+  const { orderType } = adapterSelector.useSelectors(selector => selector.cart)
   const { city, address } = adapterSelector.useSelectors(selector => selector.point)
   return (
     <>

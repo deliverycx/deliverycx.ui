@@ -14,7 +14,7 @@ export const fetStopList = createAsyncThunk(
 	"shop/stoplist",
 	async (orgid:any, { dispatch, getState,rejectWithValue }) => {
 			try {
-					console.log('mob stoplist',orgid);
+					
 					const request = await RequestWebhook.stoplist(orgid);	
 					if (request.status == 200 && request.data) {
 							dispatch(setStopList(request.data));
