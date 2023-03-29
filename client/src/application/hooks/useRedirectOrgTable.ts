@@ -11,6 +11,7 @@ import { router } from "yandex-maps";
 export const useRedirectOrg = () =>{
 	const dispatch = useDispatch()
 	const loc = useLocation()
+	const history = useHistory();
 	
 	//http://localhost:3000/shop?organuzation=11663d0f-51a6-419d-8814-d3cb180eeab4&table={%22id%22:%22123%22,%22numb%22:2}&delivMetod=ONSPOT
 	const query = new URLSearchParams(loc.search);
@@ -39,7 +40,7 @@ export const useRedirectOrg = () =>{
 	const byOrg = async (org:string) =>{
 		
 		try {
-			console.log(org);
+			
 			const {data}:any = await RequestLocation.geBuOrg(org)
 			
 			if(data){
@@ -49,6 +50,7 @@ export const useRedirectOrg = () =>{
 					dispatch(setPoint(data));
 					dispatch(fetchDeleteCart())
 					getOrgstatus(org)
+					history.push(ROUTE_APP.SHOP.SHOP_MAIN)
 				}
 				
 			}else{
