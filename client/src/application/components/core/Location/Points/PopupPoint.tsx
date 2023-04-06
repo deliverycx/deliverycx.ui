@@ -110,7 +110,8 @@ const PopupPoint = () => {
                           {
                               address.delivMetod === CART_CHOICE.NODELIVERY && !workTimeHelp(address.workTime) &&
                               <div className="point-closed-container">
-                                  <div className="text-bold">Хинкальная только открылась и готовится<br /> к подключению онлайн-заказов </div>
+                                  <div className="text-bold">В данный момент заведение не принимает онлайн-заказ. <br />
+С удовольствием примем его немного позднее! </div>
                                   <div className="text-secondary">Сейчас вы можете ознакомиться с нашим меню,<br /> просмотреть новости и узнать об актуальных акциях
                                   </div>
 
