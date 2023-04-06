@@ -177,7 +177,7 @@ export const fetchDectroyCart = createAsyncThunk(
 											deliveryPrice:0
 									})
 							);
-							setOrderInfo
+							
 					}
 			} catch (error: any) {
 					return rejectWithValue(error.response.data);
@@ -193,10 +193,10 @@ export const fetchOrderCart = createAsyncThunk(
         
             const request = await RequestCart.OrderCheckCart(value);
             if (request.data && request.status === 200) {
-                const order = await RequestCart.OrderCart(value);
+                //const order = await RequestCart.OrderCart(value);
                 
-                dispatch(actionPaymentAccsess());
-                return order.data 
+                //dispatch(actionPaymentAccsess());
+                return request.data 
 								
             }
         } catch (error: any) {

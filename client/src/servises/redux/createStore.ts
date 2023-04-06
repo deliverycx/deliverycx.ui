@@ -30,8 +30,6 @@ const persistConfig = {
     CART_API_REDUCER_KEY,
     profileSlice.name,
     ShopSlice.name,
-    cartSlice.name,
-    bankCardSlice.name
   ],
   transforms: [
     createTransform(
@@ -43,7 +41,9 @@ const persistConfig = {
       },
       {
         whitelist: [
-          locationSlice.name
+          locationSlice.name,
+					cartSlice.name,
+					bankCardSlice.name
         ]
       }
     )

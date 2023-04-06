@@ -9,6 +9,16 @@ type IOrderUrl = {
 
 
 class RequestOrder extends ApiSuper {
+	@methods("post")
+  OrderCreate(body:any) {
+      return this.request<IOrderUrl>(`/order/createOrderMicro`);
+  }
+
+	@methods("post")
+  OrderCreatePayment(body:any) {
+      return this.request<IOrderUrl>(`/order/createPaymentOrder`);
+  }
+
   @methods("get")
   OrderNumber(hash:string) {
       return this.request<IOrderNumber>(`/order/number/${hash}`);
