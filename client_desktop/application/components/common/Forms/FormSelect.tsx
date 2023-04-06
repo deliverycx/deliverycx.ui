@@ -4,6 +4,7 @@ import cn from "classnames";
 import { IPayment } from "@types";
 import FormFieldWrapper from "./FormFieldWrapper";
 import { CartFormMetods } from "application/components/core/Cart/HOC_CartForm/CartMetods";
+import { adapterSelector } from "servises/redux/selectors/selectors";
 
 type IProps ={
   options: IPayment[],
@@ -12,6 +13,7 @@ type IProps ={
 }
 const FormSelect:FC<IProps> = ({ options, selected, setter }) => {
   const [isOpen, setIsOpen] = useState<boolean>(false);
+	const pointstatus = adapterSelector.useSelectors(selector => selector.pointstatus)
     const ref = useRef() as RefObject<HTMLDivElement> | null;
 
     const dynamycCN = (value: string)=>cn(value, {open: isOpen});
@@ -66,6 +68,7 @@ const FormSelect:FC<IProps> = ({ options, selected, setter }) => {
             
                 {
                     options.map((option:IPayment) => {
+											if(pointstatus.paymentMetod.includes(option.id)) {
                         const CN = cn("payment_list-item", {active: selected.id === option.id})
 
                         return <div key={option.id} className={CN} onClick={() => valueClickHandler(option)}>
@@ -82,7 +85,9 @@ const FormSelect:FC<IProps> = ({ options, selected, setter }) => {
 													</div>
 
 													</div>
-                    })
+											}  
+									})
+										
                 }
 							</div>	
 

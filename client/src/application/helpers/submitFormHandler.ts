@@ -18,7 +18,7 @@ const submitHandler = async <T>(values: any, meta: FormikHelpers<any>) => {
             values.address &&
             values.address.match(/(?<street>.*?),\s?(?<home>.*)/).groups;
 
-						if(prepareAddress.home.length > 10){
+						if(prepareAddress.home && prepareAddress.home.length > 10){
 							
 							store.dispatch(setENErrors({
 								status:500,
