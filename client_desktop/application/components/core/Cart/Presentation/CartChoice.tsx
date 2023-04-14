@@ -7,12 +7,13 @@ import { RootState } from 'servises/redux/createStore';
 import { CART_CHOICE } from "application/contstans/cart.const";
 import { ROUTE_APP } from "application/contstans/route.const";
 import { adapterSelector } from "servises/redux/selectors/selectors";
-import { DELIVERY_METODS } from "application/contstans/const.orgstatus";
+import { DELIVERY_METODS, DILIVERY_TIME_STATUS } from "application/contstans/const.orgstatus";
 import { useOrganizationStatus } from "application/hooks/useOrganizationStatus";
 import { actionSelectPayment } from "servises/redux/slice/bankCardSlice";
 import { RequestCart } from "servises/repository/Axios/Request";
 import { CartFormMetods } from "../HOC_CartForm/CartMetods";
 import { useRouter } from "next/router";
+import { delivertyTime } from "application/helpers/workTime";
 
 const CartChoise: FC = () => { 
 	
@@ -33,10 +34,13 @@ const CartChoise: FC = () => {
 		console.log(tsx);	
 	
 		useEffect(() => {
-      if (tsx.OnliPICKUP()) {
+			
+			const time = delivertyTime()
+			console.log((time && time.status === DILIVERY_TIME_STATUS.ONLIPICKUP));
+      if (tsx.OnliPICKUP() || (time && time.status === DILIVERY_TIME_STATUS.ONLIPICKUP)) {
           dispatch(setOrderType(CART_CHOICE.PICKUP))
       }
-  }, [tsx.pointstatus.deliveryMetod]);
+  }, [tsx.pointstatus.deliveryMetod,activeChoice]);
 	
 		const handlerChangeDelivMetod = useCallback((choise:string) => {
       dispatch(setOrderType(choise))

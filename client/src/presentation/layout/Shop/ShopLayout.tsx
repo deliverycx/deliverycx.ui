@@ -8,6 +8,7 @@ import ShopProduct from "application/components/core/Shop/ShopProduct";
 import ShopLinkToCart from "application/components/core/Shop/ShopLinkToCart";
 import { useState } from "react";
 import OnspotModal from "application/components/common/Modals/OnspotModal";
+import OnliPICKUPModal from "application/components/common/Modals/OnliPICKUPModal";
 
 const Shop = () => {
     const [isSearch, setSearch] = useState(false)
@@ -34,6 +35,7 @@ const Shop = () => {
                   </div>
                   <ShopLinkToCart />
 									<OnspotModal />
+									<OnliPICKUPModal />
                 </animated.div>
                 :
                 <animated.div style={style}>

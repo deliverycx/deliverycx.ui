@@ -929,51 +929,54 @@
 	top: 15px;
 	margin-left: -20px;
 
+	
 	img{
 		margin: 0 30px;
 		margin-bottom: 30px;
 	}
+}
 
-	.dualpay__popup-text{
-		font-size: 21px;
-		font-weight: 700;
-		margin-bottom: 30px;
-	}
 
-	.dualpay__popup-deck{
-		font-size: 13px;
-		font-weight: 500;
-		margin-bottom: 30px;
-	}
+.dualpay__popup-text{
+	font-size: 21px;
+	font-weight: 700;
+	margin-bottom: 15px;
+}
 
-	.dualpay__popup-btn {
-		display: inline-block;
-		padding: 25px 0;
-		width: 250px;
-		margin: 0 auto;
-		background-color: #8D191D;
-		color: #FFFFFF;
-		cursor: pointer;
-		font-size: 21px;
-		font-family: "sf-ui-bold";
-		border-radius: 90px;
-		border: 2px solid #8D191D;
-	}
-	.dualpay__popup-back{
-		display: inline-block;
-		padding: 25px 0;
-		width: 250px;
+.dualpay__popup-deck{
+	font-size: 13px;
+	font-weight: 500;
+	margin-bottom: 15px;
+}
 
-		margin: 0 auto;
-		margin-bottom: 20px;
-		background-color: #ccc;
-		color: #fff;
-		cursor: pointer;
-		font-size: 21px;
-		font-family: "sf-ui-bold";
-		border-radius: 90px;
-		border: none;
-	}
+.dualpay__popup-btn {
+	display: inline-block;
+	padding: 20px 0;
+	width: 250px;
+	margin: 0 auto;
+	background-color: #8D191D;
+	color: #FFFFFF;
+	cursor: pointer;
+	font-size: 21px;
+	font-family: "sf-ui-bold";
+	border-radius: 90px;
+	margin-bottom: 15px;
+	border: 2px solid #8D191D;
+}
+.dualpay__popup-back{
+	display: inline-block;
+	padding: 20px 0;
+	width: 250px;
+	
+	margin: 0 auto;
+	margin-bottom: 15px;
+	background-color: #ccc;
+	color: #fff;
+	cursor: pointer;
+	font-size: 21px;
+	font-family: "sf-ui-bold";
+	border-radius: 90px;
+	border: none;
 }
 
 .dyalpay_page{
