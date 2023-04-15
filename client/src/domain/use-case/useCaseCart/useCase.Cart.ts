@@ -22,13 +22,16 @@ export function useAddCart(ref?: any) {
 		const dispatch = useDispatch()
     const cartList = useSelector(cartSelector.selectAll);
 		const activeChoice = useSelector((state: RootState) => state.cart.orderType);
+		const {point} = useSelector((state: RootState) => state.location);
     const [isPopupEmpty, setIsPopupEmpty] = useState(false);
     const [itemsCount, setItemsCount] = useState(0);
     const emptyCN = cn("link-to-cart", { open: isPopupEmpty });
 		const time = delivertyTime()
 
     const linkHandler = () => {
-				if(time && time.status === DILIVERY_TIME_STATUS.NODELIVERY && !workTimeHelp()){
+				
+				if(time && time.status === DILIVERY_TIME_STATUS.NODELIVERY && !workTimeHelp(point.workTime)){
+					console.log('timeee');
 					setIsPopupEmpty(true);
 					return
 				}
