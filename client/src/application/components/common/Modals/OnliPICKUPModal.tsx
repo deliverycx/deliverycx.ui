@@ -5,13 +5,14 @@ import { DELIVERY_METODS, DILIVERY_TIME_STATUS } from "application/contstans/con
 import { delivertyTime } from "application/helpers/workTime"
 import { useEffect, useState } from "react"
 import { useDispatch } from "react-redux";
-import { useHistory } from "react-router-dom";
+import { useHistory, useLocation } from "react-router-dom";
 import { setPointStatusDeliveryMetods } from "servises/redux/slice/locationSlice";
 
 /* eslint-disable no-mixed-spaces-and-tabs */
 const OnliPICKUPModal = () =>{
 	const [modal,setModal] = useState(true)
 	const history = useHistory()
+	const loc = useLocation()
 	const dispatch = useDispatch()
 
 	const classroot = (swap:boolean) =>{
@@ -35,7 +36,7 @@ const OnliPICKUPModal = () =>{
 			setModal(false)
 			classroot(false)
 		}
-	},[])
+	},[loc.pathname])
 
 	const handlerModal = () =>{
 		setModal(false)
