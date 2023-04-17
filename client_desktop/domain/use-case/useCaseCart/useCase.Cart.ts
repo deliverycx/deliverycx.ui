@@ -106,9 +106,9 @@ export function useCartItems(this: any, empty: any) {
       if (cartList.length === 0) {
           empty();
       }else{
-				dispatch(fetStopList(guid))
+				guid &&	dispatch(fetStopList(guid))
 			}
-    }, [cartList.length]);
+    }, [cartList.length,guid]);
 
     const debounceClearHandler = debounce(() => {
         dispatch(fetchDeleteCart());

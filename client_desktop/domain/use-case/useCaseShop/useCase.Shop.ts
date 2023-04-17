@@ -25,8 +25,10 @@ export function useCaseShop(this: any,category:string) {
 
 
 	useEffect(() => {
-    !id && dispatch(fetStopList(point.guid))  
-  }, [id])
+		if(!id && point.guid){
+			dispatch(fetStopList(point.guid))  
+		}
+  }, [id,point.guid])
 
 
   this.data({
