@@ -4,6 +4,7 @@ export interface ICart {
     totalPrice: number;
     address: string;
 		kladrid:string
+		cordAddress:[number,number]
     orderError: ICheckoutError;
     orderNumber: ICheckout;
     deliveryPrice: number;

@@ -64,6 +64,7 @@ const CartFrom: FC<IProps> = ({ builder,paths }) => {
   const [times, setTimes] = useState<object>(timesArray[0]);
 	const [cxofer, setCXOfer] = useState<boolean>(true);
   const useCaseForm = adapterComponentUseCase(useCartForm,paths)
+	console.log(useCaseForm);
   const {paymentMetod,paymentOrder } = useCaseForm.data
   const { paymentReady } = useCaseForm.status
 

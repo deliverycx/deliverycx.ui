@@ -203,9 +203,12 @@ const cartSlice = createSlice({
         setAdress: (state, action) => {
             state.address = action.payload;
         },
+				setCordAdress: (state, action) => {
+					state.cordAddress = action.payload;
+				},
 				setKladrId: (state, action) => {
 					state.kladrid = action.payload;
-			},
+				},
 
         setTotalPrice: (state, action) => {
             state.totalPrice = action.payload.totalPrice;
@@ -251,6 +254,7 @@ export const {
     removeCart,
     deleteCart,
     setAdress,
+		setCordAdress,
 		setKladrId,
     setTotalPrice,
     setErrors,

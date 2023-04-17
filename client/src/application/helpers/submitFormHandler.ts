@@ -42,7 +42,8 @@ const submitHandler = async <T>(values: any, meta: FormikHelpers<any>) => {
                 intercom: values.intercom,
                 entrance: values.entrance,
                 floor: values.floor,
-								kladrid:storage.cart.kladrid
+								kladrid:storage.cart.kladrid,
+								cordAdress:storage.cart.cordAddress
             },
 						
             orderType: values.orderType,

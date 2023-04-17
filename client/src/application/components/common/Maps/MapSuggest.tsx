@@ -6,7 +6,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { withYMaps } from "react-yandex-maps";
 import { RootState } from "servises/redux/createStore";
 import { adapterSelector } from "servises/redux/selectors/selectors";
-import { setAdress } from "servises/redux/slice/cartSlice";
+import { setAdress, setCordAdress } from "servises/redux/slice/cartSlice";
 import { useGetStreetCityQuery } from "servises/repository/RTK/RTKLocation";
 
 
@@ -26,6 +26,7 @@ const MapSuggestComponent = ({dispatchMap,stateReduceMap}: any) => {
         const cords = [...getObj.geometry._coordinates]
 
         dispatchMap().setStateMap(cords)
+				dispatch(setCordAdress(cords))
 
         if (validAdress === 'exact') {
 
