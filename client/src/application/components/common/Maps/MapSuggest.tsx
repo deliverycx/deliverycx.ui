@@ -26,7 +26,6 @@ const MapSuggestComponent = ({dispatchMap,stateReduceMap}: any) => {
         const cords = [...getObj.geometry._coordinates]
 
         dispatchMap().setStateMap(cords)
-				dispatch(setCordAdress(cords))
 
         if (validAdress === 'exact') {
 
