@@ -30,14 +30,14 @@ export function useCaseShop() {
 
 
 	useEffect(() => {
-		if(!id && point.guid){
+		if(!id){
 			dispatch(fetStopList(point.guid))
 			const q = delivertyTime()
 			console.log(q);
 			
 		}
 		
-  }, [id,point.guid])
+  }, [id])
 
 
   this.data({
