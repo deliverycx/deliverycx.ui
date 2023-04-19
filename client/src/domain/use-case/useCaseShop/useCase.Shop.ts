@@ -25,7 +25,7 @@ export function useCaseShop() {
 
   useEffect(() => {
     category?.id && setId(false)
-		//Redirects(point.guid)
+		Redirects(point.guid)
   }, [category?.id])
 
 
