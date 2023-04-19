@@ -35,7 +35,7 @@ export function usePoints() {
 
 	////редирект
 	if(process.env.NODE_ENV === 'production'){
-		window.location.href = process.env.REACT_APP_REDIRECT as string
+		//window.location.href = process.env.REACT_APP_REDIRECT as string
 	}
 	
   const { data: org, isFetching } = useGetPointsQuery(selectedCity.id);
