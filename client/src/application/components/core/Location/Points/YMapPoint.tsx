@@ -110,7 +110,7 @@ const YMapPoint = () => {
                                             onClick={() => placemarkClickHandler(address,index)}
                                             key={index}
                                             options={placeMarkOption}
-                                            geometry={[address.cords[0], address.cords[1]]}
+                                            geometry={[address.cords[1], address.cords[0]]}
                                         />
                                     );
                                 })
