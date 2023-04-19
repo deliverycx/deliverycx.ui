@@ -17,6 +17,9 @@ import { checkPoint } from "application/helpers/checkPoint";
 import { adapterSelector } from "servises/redux/selectors/selectors";
 import { IReqCart } from "@types";
 import { validationHIdiscount } from "application/helpers/validationHIdiscount";
+import { fetStopList } from "servises/redux/slice/shopSlice";
+import { delivertyTime, workTimeHelp } from "application/helpers/workTime";
+import { DILIVERY_TIME_STATUS } from "application/contstans/const.orgstatus";
 
 export function useCartSmall(this: any) {
     const [showSmallCart, setShowSmallCart] = useState(false);
@@ -36,8 +39,12 @@ export function useCartSmallButton(this: any) {
     const [itemsCount, setItemsCount] = useState(0);
     const emptyCN = cn("header_cart", { incart: itemsCount, categoriesCartVisible: isCategoriesCartVisible });
     const selectedCity = adapterSelector.useSelectors((selector) => selector.city);
+		const time = delivertyTime()
 
     const linkHandler = (modal: any) => {
+				if((time && time.status === DILIVERY_TIME_STATUS.NODELIVERY) && !workTimeHelp()){
+					return
+				}
         itemsCount > 0 && checkPoint() && modal(true);
     };
 
@@ -84,6 +91,7 @@ export function useCartItems(this: any, empty: any) {
     const dispatch = useDispatch();
     const cartList = useSelector(cartSelector.selectAll);
     const orderError = useSelector((state: RootState) => state.cart.orderError);
+		const {guid} = adapterSelector.useSelectors(selector => selector.point)
 
   useEffect(() => {
 
@@ -97,8 +105,10 @@ export function useCartItems(this: any, empty: any) {
     useEffect(() => {
       if (cartList.length === 0) {
           empty();
-      }
-    }, [cartList]);
+      }else{
+				guid &&	dispatch(fetStopList(guid))
+			}
+    }, [cartList.length,guid]);
 
     const debounceClearHandler = debounce(() => {
         dispatch(fetchDeleteCart());

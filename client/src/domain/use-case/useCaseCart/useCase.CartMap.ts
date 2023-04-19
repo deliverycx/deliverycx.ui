@@ -1,3 +1,4 @@
+/* eslint-disable no-mixed-spaces-and-tabs */
 import { IGeoCodeResponse } from "@types";
 import { ROUTE_APP } from "application/contstans/route.const";
 import {
@@ -14,7 +15,10 @@ import { useCallback, useEffect, useMemo, useReducer } from "react";
 import { useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom";
 import { adapterSelector } from "servises/redux/selectors/selectors";
-import { setAdress } from "servises/redux/slice/cartSlice";
+import { setAdress, setCordAdress, setKladrId } from "servises/redux/slice/cartSlice";
+import RequestWebhook from "servises/repository/Axios/Request/Request.Webhook";
+import { useGetDeliveryZonesQuery } from "servises/repository/RTK/RTKCart";
+import { useGetStreetCityQuery } from "servises/repository/RTK/RTKLocation";
 
 export function useCartMap() {
     const dispatch = useDispatch();
@@ -26,11 +30,19 @@ export function useCartMap() {
     const { address } = adapterSelector.useSelectors(
         (selector) => selector.cart
     );
-    const { city } = adapterSelector.useSelectors((selector) => selector.point);
+    const { city,guid,address:pointadress } = adapterSelector.useSelectors((selector) => selector.point);
     const [stateReduceMap, dispatchMap] = useReducer(
         CartMapReducer,
         initialStateCartMap
     );
+
+		const {data:zones,isLoading:isLoadingZone } = useGetDeliveryZonesQuery(guid)
+
+		const point = adapterSelector.useSelectors(selector => selector.point)
+		const {data:ikkostreet,isLoading:isLoadingStreet} = useGetStreetCityQuery({
+			organizationId:point.guid,
+		})
+
 
     useEffect(() => getGeoLoc(), [pointCords]);
     useEffect(() => {
@@ -68,6 +80,7 @@ export function useCartMap() {
      */
     const onMapClick = (e: any) => {
         const cords = e.get("coords");
+			
 
         dispatchMap({
             type: ReducerActionTypePoints.onMapClick,
@@ -75,6 +88,9 @@ export function useCartMap() {
                 cord: cords
             }
         });
+
+				
+
         axios
             .get<IGeoCodeResponse>(
                 `https://geocode-maps.yandex.ru/1.x/?geocode=${cords.reverse()}&format=json&apikey=e45f9cf9-d514-40a5-adb9-02524aaef83f`
@@ -136,28 +152,88 @@ export function useCartMap() {
                 })
         };
     };
+
+		
     /**
      * @description конпка "заказать доставку"
      */
-    const hendleMapPopup = () => {
+    const hendleMapPopup = async () => {
         if (
             (stateReduceMap.valueMap || address) &&
             !stateReduceMap.disclaimer
         ) {
-            dispatch(setAdress(stateReduceMap.valueMap));
-            history.push(ROUTE_APP.CART.CART_DELIVERY);
-            onMapTyping().setValueMap("");
+
+					const kladrid = await daData(`${city}, ${stateReduceMap.valueMap}` )
+					
+					if(!isLoadingStreet && ikkostreet){
+						const findstreet = ikkostreet.some(element => element.classifierId === kladrid && !element.isDeleted);
+						
+						if(findstreet){
+							dispatch(setKladrId(kladrid)) 
+						}else{
+							const pointKladrId = await daData(`${city}, ${pointadress}` )
+							dispatch(setKladrId(pointKladrId)) 
+						}
+						dispatch(setCordAdress(stateReduceMap.stateMap))
+						dispatch(setAdress(stateReduceMap.valueMap));
+						history.push(ROUTE_APP.CART.CART_DELIVERY);
+						onMapTyping().setValueMap("");
+					}
+						
+            
         }
     };
 
+		/**
+     * @description конпка 
+     */
+		const hendleZone = (zone:boolean) => {
+			dispatchMap({
+				type: ReducerActionTypePoints.hendleZone,
+				payload: !zone 
+			})
+		};
+
+
+		const daData = async (queryStreet:string) =>{
+					try {
+						const remote_url = 'https://suggestions.dadata.ru/suggestions/api/4_1/rs/suggest/address';
+						const body = {
+						    'query' : queryStreet,
+								'count' : 1
+						};
+						const token = '4d575df5b58e315429934796a55711d488a8fdec';
+						const secret = "1894ee2d296d0ebc7b52704972a965c5dc54a860";
+						const config = {
+						    headers: {'Authorization': 'Token ' + token}
+								
+						};
+						
+						const {data} = await axios.post(remote_url, body, config)
+						return data.suggestions[0].data.street_kladr_id
+					} catch (error) {
+						console.log('ошибка в кладр');
+						//daData('Симферополь Турецкая 25')
+					}
+		}
+
+	
+
+
     this.data({
         stateReduceMap,
-        mapstate
+        mapstate,
+				zones
     });
     this.handlers({
         onMapTyping,
         getGeoLoc,
         onMapClick,
-        hendleMapPopup
+        hendleMapPopup,
+				hendleZone
     });
+		this.status({
+			isLoadingZone,
+			isLoadingStreet
+		})
 }

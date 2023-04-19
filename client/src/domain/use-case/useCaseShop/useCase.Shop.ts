@@ -6,20 +6,38 @@ import { useEffect } from 'react';
 import debounce from 'lodash.debounce';
 import { useHistory } from "react-router-dom";
 import { Redirects } from "application/helpers/redirectTo";
+import { useDispatch } from "react-redux";
+import { fetStopList } from "servises/redux/slice/shopSlice";
+import { useRedirectOrg } from "application/hooks/useRedirectOrgTable";
+import { delivertyTime } from "application/helpers/workTime";
 
 export function useCaseShop() {
   const [id,setId] = useState(true)
   const category = adapterSelector.useSelectors(selector => selector.category)
+	const dispatch = useDispatch()
 	const point = adapterSelector.useSelectors(selector => selector.point)
   const { data: products, isFetching } = useGetProductsQuery(category?.id, {
     skip:id,
     refetchOnMountOrArgChange:true,
   })
 
+	useRedirectOrg()
+
   useEffect(() => {
     category?.id && setId(false)
 		Redirects(point.guid)
   }, [category?.id])
+
+
+	useEffect(() => {
+		if(!id){
+			dispatch(fetStopList(point.guid))
+			const q = delivertyTime()
+			console.log(q);
+			
+		}
+		
+  }, [id])
 
 
   this.data({
@@ -34,11 +52,13 @@ export function useCaseShop() {
   })
 }
 
-export function useCaseShopItem(id:string) {
+export function useCaseShopItem({id,productId}:any) {
   const stoplists = adapterSelector.useSelectors(selector => selector.stoplist)
   const history = useHistory();
   const cardRef = useRef<HTMLDivElement>(null);
   const [disableItem, setDisableItem] = useState(false)
+
+	
 
   const clickItemHandler = (e: any, id: string) => {
       if(disableItem) return
@@ -61,12 +81,13 @@ export function useCaseShopItem(id:string) {
           //.catch(() => localStorage.removeItem('prod'))
 
   }, [])
+	
 
   useEffect(() => {
     if (stoplists) {
-      stoplists.stopList.forEach((item: TStopListItems) => {
-
-        item.productId === id && setDisableItem(true)
+			stoplists.forEach((item: TStopListItems) => {
+				
+        item.productId === productId && setDisableItem(true)
       })
     }
 

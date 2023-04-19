@@ -76,6 +76,12 @@ const schemaBuild = (type:string) => {
         phone: valid.phone
       })
       break;
+		case 'ONSPOT':
+      return yup.object().shape({
+        name: valid.name,
+        phone: valid.phone
+      })
+      break;	
     default:
       return yup.object().shape({
         address:valid.address,

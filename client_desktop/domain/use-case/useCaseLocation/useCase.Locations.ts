@@ -10,6 +10,8 @@ import { RequestAdmin } from "servises/repository/Axios/RequestAdmin";
 import { ICity, ISocial,IPoint } from "@types";
 import { workTimeHelp } from "application/helpers/workTime";
 import { CART_CHOICE } from "application/contstans/cart.const";
+import { ORG_STATUS } from 'application/contstans/const.orgstatus';
+import { useGetPointStatusMutation } from "servises/repository/RTK/RTKLocation";
 
 export function useLocations(this: any){
   const dispatch = useDispatch()
@@ -18,6 +20,8 @@ export function useLocations(this: any){
   const modalMap = useSelector((state: RootState) => state.location.locationMap)
   const selectedCity = adapterSelector.useSelectors((selector) => selector.city);
 	const point = adapterSelector.useSelectors((selector) => selector.point);
+	const pointstatus = adapterSelector.useSelectors(selector => selector.pointstatus)
+	const [getOrgstatus,{data:orgstatus}] = useGetPointStatusMutation()
 
   const [showCiti, setShow] = useState(true)
   const [youSity, setYouSyty] = useState(false)
@@ -64,6 +68,7 @@ export function useLocations(this: any){
 			if(res.status === 200){
 				dispatch(setCiti(res.data));
 				dispatch(setPoint(data));
+				getOrgstatus(org)
 				router.push(ROUTE_APP.MENU)
 			}
 			
@@ -72,16 +77,25 @@ export function useLocations(this: any){
     
 	// 
   useEffect(() => {
+		const queryOrg = router.query.organuzation as string
     if (Object.keys(selectedCity).length) {
       setSelectCity(selectedCity)
 			//setShow(false)
     }
-  }, [selectedCity]);
+		const tik = setTimeout(()=>{
+			if(!Object.keys(selectedCity).length && !queryOrg){
+				console.log('города нема');
+			}
+		},1000)
+		return () =>{
+			clearTimeout(tik)
+		}
+  }, [selectedCity,router.query]);
 
 	// выбранный город
   useEffect(() => {
     if (Object.keys(selectedCity).length && router.asPath === ROUTE_APP.MAIN) {
-      setYouSyty(true)
+      //setYouSyty(true)
     }
   }, []);
 
@@ -113,20 +127,25 @@ export function useLocations(this: any){
 	// время работы организации
 	useEffect(() => {
 		const worktime = router.query.worktime as string
-
-    if(!modal && !modalMap && (point.delivMetod !== CART_CHOICE.NODELIVERY || point.delivMetod === CART_CHOICE.OPEN)){
+		if(pointstatus){
+			if(!modal && !modalMap && pointstatus.organizationStatus === ORG_STATUS.WORK){
 			setWorkOrg(workTimeHelp)
+			}
+			if(worktime){
+				setWorkOrg(false)
+			}
 		}
-		if(worktime){
-			setWorkOrg(false)
-		}
-  }, [modal,modalMap,router.query.worktime]);
+    
+  }, [modal,modalMap,router.query.worktime,pointstatus]);
 
 
 	// закрыта точка или нет
 	useEffect(() => {
-		point.delivMetod === CART_CHOICE.NODELIVERY && setDisplayOrg(true)
-  }, [point]);
+		if(pointstatus){
+			pointstatus.organizationStatus === ORG_STATUS.NODELIVERY && setDisplayOrg(true)
+		}
+		
+  }, [pointstatus]);
 
 
   this.data({

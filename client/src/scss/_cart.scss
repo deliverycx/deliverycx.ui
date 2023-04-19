@@ -1,6 +1,6 @@
 .cart__form {
     position: relative;
-    margin-top: 30px;
+    margin-top: 20px;
 }
 .cart {
     min-height: 100vh;
@@ -93,7 +93,16 @@
             font-family: $bold;
         }
         &__count {
+						width: 16px;
+						
+						background: none;
+						border: none;
             font-size: $fsstocktitle;
+						&:focus{
+							border: none;
+							background: none;
+							outline: none;
+						}
         }
         &__increment,
         &__decriment {
@@ -198,8 +207,7 @@
     .point-closed-cart-container {
         margin-top: 28px;
         margin-bottom: 15px;
-				margin-left: 10px;
-				margin-right: 25px;
+				
         border: 2px solid #CCCCCC;
         border-radius: 15px;
         display: flex;
@@ -455,6 +463,8 @@
         margin-right: 20px;
     }
     .point-closed {
+			padding-left: 10px;
+			padding-right: 25px;
         .clear {
             cursor: auto;
         }
@@ -478,6 +488,7 @@
 	font-family: $bold;
 	margin-bottom: 30px;
 	margin-left: 10px;
+	cursor: no-drop;
 	
 }
 .order-container{
@@ -598,6 +609,23 @@
             }
         }
     }
+		&__btnzone{
+			position: absolute;
+			bottom: 148px;
+			text-align: center;
+			color: #8D191D;
+			border: none;
+			font-size: 14px;
+			font-weight: 600;
+			z-index: 99;
+			cursor: pointer;
+			padding: 10px 0;
+			width: 100%;
+			left: 16px;
+			border-radius: 25px;
+			background-color: #fdc935;
+			
+		}
     .noactive {
         background-color: #fdc935;
         opacity: 0.3;
@@ -709,6 +737,68 @@
     padding: 0 25px 30px 25px;
 }
 
+.onspot_box{
+	display: flex;
+	justify-content: space-between;
+	margin-top: 30px;
+	padding: 0 20px;
+}
+.onspot_box__adress{
+	width: 75%;
+}
+.onspot_box__select{
+	width: 20%;
+	cursor: pointer;
+	position: relative;
+}
+.onspot_box_label{
+	color: #666666;
+	font-size: 13px;
+	line-height: 120%;
+	margin-bottom: 7px;
+	font-family: sf-ui-medium, sans-serif;
+}
+.onspot_select_def {
+  width: 100%;
+  padding: 11px 0;
+  background-color: #EFEFEF;
+  margin-bottom: 10px;
+  color: #333333;
+  font-family: "sf-ui-regular";
+  font-size: 15px;
+  border-radius: 100px;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.onspot_select{
+	background-color: #fff;
+	position: absolute;
+	left: 0;
+	top: 65px;
+	z-index: 99;
+	width: 100%;
+	padding:15px 20px;
+	border-radius: 15px;
+	box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.25);
+	.onspot_select_item{
+		margin-top: 7px;
+		color: #ABABAB;
+		font-size: 14px;
+		text-align: center;
+	}
+	.onspot_select_item.active{
+		color: #333333;
+	}
+	.onspot_select_item--title{
+		color: #333333;
+		font-weight: 500;
+		margin-bottom: 5px;
+	}
+	
+}
+
 .special-offer-container {
     width: 100%;
     height: 60px;
@@ -795,7 +885,157 @@
     }
 }
 
-box_checkbox{
+.payment-fild{
+	width: 100%;
+}
+
+.ok-icon-red {
+	display: inline-block;
+	float: right;
+	margin-right: 20px;
+	height: 12px;
+	width: 15px;
+	background-image: url('../assets/img/ok-icon_red.png');
+	background-size: 100%;
+	background-repeat: no-repeat;
+	background-position: center;
+	justify-content: center;
+	align-items: center;
+}
+.ok-icon-red-momr{
+	margin-right: 0 !important;
+}
+.payfild{
+	margin-bottom: 20px;
+}
+.adress_fild{
+	margin-bottom: 10px;
+}
+
+.dualpay__popup{
+	position: fixed;
+	min-height: 86vh;
+	max-height: 86vh;
+	width: 100%;
+	max-width: 375px;
+	background-color: #fff;
+	z-index: 9999;
+	display: flex;
+	padding: 0 30px;
+	height: 100%;
+	justify-content: center;
+	flex-direction: column;
+	text-align: center;
+	top: 15px;
+	margin-left: -20px;
+
+	
+	img{
+		margin: 0 30px;
+		margin-bottom: 30px;
+	}
+}
+
+
+.dualpay__popup-text{
+	font-size: 21px;
+	font-weight: 700;
+	margin-bottom: 15px;
+}
+
+.dualpay__popup-deck{
+	font-size: 13px;
+	font-weight: 500;
+	margin-bottom: 15px;
+}
+
+.dualpay__popup-btn {
+	display: inline-block;
+	padding: 20px 0;
+	width: 250px;
+	margin: 0 auto;
+	background-color: #8D191D;
+	color: #FFFFFF;
+	cursor: pointer;
+	font-size: 21px;
+	font-family: "sf-ui-bold";
+	border-radius: 90px;
+	margin-bottom: 15px;
+	border: 2px solid #8D191D;
+}
+.dualpay__popup-back{
+	display: inline-block;
+	padding: 20px 0;
+	width: 250px;
+	
+	margin: 0 auto;
+	margin-bottom: 15px;
+	background-color: #ccc;
+	color: #fff;
+	cursor: pointer;
+	font-size: 21px;
+	font-family: "sf-ui-bold";
+	border-radius: 90px;
+	border: none;
+}
+
+.dyalpay_page{
+	display: flex;
+	justify-content: center;
+	flex-direction: column;
+	width: 100%;
+	min-height: 86vh;
+	max-height: 86vh;
+	padding: 0 40px;
+	text-align: center;
+	.dyalpay_page-text{
+		font-size: 21px;
+		font-weight: 700;
+		margin-bottom: 30px;
+	}
+
+	.dyalpay_page-deck{
+		font-size: 13px;
+		font-weight: 500;
+		margin-bottom: 30px;
+		.price{
+			color: #558950;
+		}
+	}
+
+	.dyalpay_page-btn {
+		display: inline-block;
+		padding: 25px 0;
+		width: 250px;
+		margin: 0 auto;
+		background-color: #8D191D;
+		color: #FFFFFF;
+		cursor: pointer;
+		font-size: 21px;
+		font-family: "sf-ui-bold";
+		border-radius: 90px;
+		border: 2px solid #8D191D;
+	}
+
+	.dyalpay_page-back{
+		display: inline-block;
+		padding: 25px 0;
+		width: 250px;
+
+		margin: 0 auto;
+		margin-top: 20px;
+		background-color: #fff;
+		color: #ABABAB;
+		cursor: pointer;
+		font-size: 21px;
+		font-family: "sf-ui-bold";
+		border-radius: 90px;
+		border: none;
+	}
+}
+
+
+.box_checkbox{
 	margin-top: 25px;
 }
 .styled-checkbox {
@@ -835,8 +1075,8 @@ box_checkbox{
 		border-radius: 8px;
   }
 
-
-
+  
+  
   // Box focus
   &:focus + label:before {
     border: 2px solid #CCCCCC;
@@ -846,7 +1086,7 @@ box_checkbox{
   &:checked + label:before {
     background: #fff;
   }
-
+  
 
 
   // Checkmark. Could be replaced with an image
@@ -878,6 +1118,13 @@ box_checkbox{
     .popupToBottCart {
         width: 375px;
     }
+		.popupFixCart {
+			bottom: 0;
+		}
+		.dualpay__popup,.dyalpay_page{
+			top: 0;
+			max-height: 100vh;
+		}
 }
 @media screen and (max-width: 360px) {
     .cart__order-btn {

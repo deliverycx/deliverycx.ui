@@ -391,6 +391,8 @@
 		}
 	}
 }
+
+
 .box_checkbox{
 	padding-bottom: 15px;
 	margin-bottom: 25px;
@@ -433,8 +435,8 @@
 		border-radius: 8px;
   }
 
-
-
+  
+  
   // Box focus
   &:focus + label:before {
     border: 2px solid #CCCCCC;
@@ -444,7 +446,7 @@
   &:checked + label:before {
     background: #fff;
   }
-
+  
 
 
   // Checkmark. Could be replaced with an image

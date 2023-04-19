@@ -6,6 +6,7 @@ export interface ICategory {
 export interface IProduct<C = ICategory> {
     id: string;
     name: string;
+		productId:string;
     description: string;
     additionalInfo: string;
     price: number;
@@ -29,5 +30,6 @@ export interface IStopList{
 }
 export type TStopListItems = {
     balance: number,
-    productId:string
+    productId:string,
+		product:string
 }

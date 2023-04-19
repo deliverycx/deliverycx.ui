@@ -1,11 +1,12 @@
 import { useMemo } from "react";
-import { YMaps, Map, Placemark, withYMaps } from "react-yandex-maps";
+import { YMaps, Map, Placemark, withYMaps, Polygon } from "react-yandex-maps";
 import { useSelector } from 'react-redux';
 import { RootState } from "servises/redux/createStore";
 import MapSuggestComponent from "application/components/common/Maps/MapSuggest";
 import { adapterComponentUseCase } from 'adapters/adapterComponents';
 import { useCartMap } from "domain/use-case/useCaseCart";
 import cn from "classnames";
+import abstract from './../../../../../domain/entities/Entities';
 
 const placeMarkOption = {
   iconLayout: 'default#image',
@@ -17,8 +18,9 @@ const placeMarkOption = {
 const CartYmap = ({close}:any) => {
   const city = useSelector((state: RootState) => state.location.point.city);
   const usecaseCartMap = adapterComponentUseCase(useCartMap,close)
-  const { stateReduceMap, mapstate } = usecaseCartMap.data
-  const { onMapTyping,getGeoLoc,onMapClick,hendleMapPopup } = usecaseCartMap.handlers
+  const { stateReduceMap, mapstate,zones } = usecaseCartMap.data
+  const { onMapTyping,getGeoLoc,onMapClick,hendleMapPopup,hendleZone } = usecaseCartMap.handlers
+	const {isLoadingZone,isLoadingStreet} = usecaseCartMap.status
 
   const CN = cn("search_city delivery-map", { error_map: stateReduceMap.disclaimer })
 
@@ -72,13 +74,22 @@ const CartYmap = ({close}:any) => {
                 </div>
                 {
                   (city || stateReduceMap.valueMap) &&
-                    <button disabled={!stateReduceMap.valueMap} className="mapsPopup__button btn" onClick={hendleMapPopup}>Я здесь</button>
+                    <button disabled={!stateReduceMap.valueMap && !stateReduceMap.disclaimer} className="mapsPopup__button btn" onClick={hendleMapPopup}>Я здесь</button>
                 }
               </div>
               {
-                stateReduceMap.disclaimer && <div className="disclaimer">Не точный адрес, в ведите дом</div>
+                stateReduceMap.disclaimer && <div className="disclaimer">Не точный адрес</div>
               }
+							{
+										zones &&
+										<a className="mapsPopup__btnzone" onClick={() => hendleZone(stateReduceMap.dispalyzone)} >{stateReduceMap.dispalyzone ? 'Скрыть зону доставки' : 'Показать зону доставки' }</a>
+							}
             </div>
+
+						{
+						(zones && !isLoadingZone && stateReduceMap.dispalyzone) &&
+							<Polygon options={{fillColor: '#6699ff',opacity:0.3}} geometry={[zones]}></Polygon>
+						}
             <Placemark
               options={placeMarkOption}
               geometry={stateReduceMap.cord}

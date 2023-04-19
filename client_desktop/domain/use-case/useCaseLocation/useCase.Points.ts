@@ -1,7 +1,7 @@
 import { useEffect, useReducer, useRef, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useGetPointsQuery, useGetRecvisitesMutation } from "servises/repository/RTK/RTKLocation";
-import { IPoint } from "@types";
+import { useGetPointStatusMutation, useGetPointsQuery, useGetRecvisitesMutation } from "servises/repository/RTK/RTKLocation";
+import { IPoint, IPointStatus } from "@types";
 import {
     initialStatePoints,
     PointsReducer,
@@ -17,6 +17,8 @@ import { RootState } from 'servises/redux/createStore';
 import { accessOrder, fetchDeleteCart, fetchRefreshCart, setOrderType } from "servises/redux/slice/cartSlice";
 import { useRouter } from 'next/router'
 import { CART_CHOICE } from "application/contstans/cart.const";
+import RequestLocation from "servises/repository/Axios/Request/Request.Location";
+import { ORG_STATUS } from "application/contstans/const.orgstatus";
 import { Redirects } from "application/helpers/redirectTo";
 
 export function usePoints(this: any,{selectCity,handleSelectOrganitztion}:any) {
@@ -26,11 +28,13 @@ export function usePoints(this: any,{selectCity,handleSelectOrganitztion}:any) {
   const {city,point} =  useSelector((state:RootState) => state.location)
   const { id } = adapterSelector.useSelectors((selector) => selector.point);
   const { data: addresses, isFetching } = useGetPointsQuery(cityid);
+	const [getOrgstatus,{data:orgstatus}] = useGetPointStatusMutation()
 
 
-  const handlerPoint = (address: IPoint)=>{
-		if(address.delivMetod === CART_CHOICE.OPEN || address.delivMetod === CART_CHOICE.NOWORK) return
+  const handlerPoint = (address: IPoint, status:IPointStatus)=>{
+		if(status.organizationStatus === ORG_STATUS.OPEN || status.organizationStatus === ORG_STATUS.NOWORK) return
 		handleSelectOrganitztion(address)
+		getOrgstatus(address.guid)
     //dispatch(setPoint(address));
     dispatch(setModal(false))
     if (address.id !== point.id) {
@@ -39,11 +43,11 @@ export function usePoints(this: any,{selectCity,handleSelectOrganitztion}:any) {
     }
     
     RequestProfile.update({ organizationId: address.id });
-		Redirects(address.guid)
     router.push(`${ROUTE_APP.MENU}/?address=${address.city + ',' + address.address}`)
   }
 
-	console.log(cityid);
+	
+
 
 	useEffect(()=>{
 		selectCity.id && setCityId(selectCity.id)
@@ -76,6 +80,7 @@ export function usePointsMaps(this: any,{selectCity,handlerGoToCity,handlerClose
   const { id } = adapterSelector.useSelectors((selector) => selector.point);
   const { data: org, isFetching } = useGetPointsQuery(selectCity.id);
   const [getRecvisites, { data: recvisites }] = useGetRecvisitesMutation()
+	const [getOrgstatus,{data:orgstatus}] = useGetPointStatusMutation()
 
   const [statePoint, dispatchPoint] = useReducer(
     PointsReducer,
@@ -86,8 +91,11 @@ export function usePointsMaps(this: any,{selectCity,handlerGoToCity,handlerClose
 
      
   useEffect(() => {
-    (addresses && !isFetching) && getRecvisites(addresses[statePoint.slideIndex].id) 
-  }, [statePoint.slideIndex]) 
+    if(addresses && !isFetching){
+			getRecvisites(addresses[statePoint.slideIndex].id)
+			
+		}
+  }, [statePoint.slideIndex,org]) 
   
     useEffect(() => {
         if (Object.keys(selectCity).length) {
@@ -158,24 +166,22 @@ export function usePointsMaps(this: any,{selectCity,handlerGoToCity,handlerClose
         
     };
 
-    const selectPointHandler = async (address: IPoint) => {
+    const selectPointHandler = async (address: IPoint, status:IPointStatus) => {
+				if(status.organizationStatus === ORG_STATUS.OPEN || status.organizationStatus === ORG_STATUS.NOWORK) return
         try {
             const { data: regData } = await RequestProfile.register();
             dispatch(setProfileAction(regData));
 						handleSelectOrganitztion(address)
+						getOrgstatus(address.guid)
             //dispatch(setPoint(address));
             if (address.id !== id) {
               dispatch(fetchDeleteCart());
               dispatch(accessOrder());
             }
-            if(address.delivMetod){
-							dispatch(setOrderType(address.delivMetod))
-							dispatch(fetchRefreshCart())
-						} 
             
             RequestProfile.update({ organizationId: address.id });
-						Redirects(address.guid)
             handlerCloseMapModal()
+						Redirects(address.guid)
 						router.push(`${ROUTE_APP.MENU}`)
         } catch (error) {
             

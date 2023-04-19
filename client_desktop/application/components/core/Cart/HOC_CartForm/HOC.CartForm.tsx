@@ -14,6 +14,8 @@ import Modals from "application/components/common/Modals/Modals";
 import CartYmap from "../Presentation/CartYmap";
 import { workTimeCheck, workTimeHelp } from "application/helpers/workTime";
 import { CART_CHOICE } from "application/contstans/cart.const";
+import { adapterSelector } from "servises/redux/selectors/selectors";
+import { ORG_STATUS } from 'application/contstans/const.orgstatus';
 
 
 type IProps = {
@@ -26,8 +28,8 @@ export const CartFormContext = React.createContext<TadapterCaseCallback>({
   status:{}
 });
 const CartFrom: FC<IProps> = ({ builder,paths }) => {
-
 	const [cxofer, setCXOfer] = useState<boolean>(true);
+	const pointstatus = adapterSelector.useSelectors((selector) => selector.pointstatus);
   const useCaseForm = adapterComponentUseCase(useCartForm,paths)
   const {
     city,
@@ -113,17 +115,20 @@ const CartFrom: FC<IProps> = ({ builder,paths }) => {
           ></textarea>
           <div className="row align-center form__create"></div>
         </div>
+
 				<div className="box_checkbox">
 					<input className="styled-checkbox" id="styled-checkbox-1" type="checkbox" value="value1" />
     			<label htmlFor="styled-checkbox-1" onClick={()=> setCXOfer(prev => !prev)} ><span>Я согласен на <a href="/images/cx.pdf" download="">обработку персональных данных</a></span></label>
 					</div>	
+
+
         <div className="cart__order-btnbox">
 					{
-						workTimeHelp()  && (delivMetod !== CART_CHOICE.NODELIVERY || delivMetod === CART_CHOICE.OPEN)
+						workTimeHelp()  && pointstatus.organizationStatus === ORG_STATUS.WORK
 						? <button disabled className="order-btn-pointclosed">Хинкальная сейчас закрыта.<br/>
 								Оформить заказ вы сможете: {workTimeCheck(workTime)}
 							</button>
-						: delivMetod === CART_CHOICE.NODELIVERY || delivMetod === CART_CHOICE.OPEN
+						: pointstatus.organizationStatus === ORG_STATUS.NODELIVERY
 							? <button disabled className="order-btn-pointclosed">Оформление онлайн-заказа недоступно
 								
 							</button>	

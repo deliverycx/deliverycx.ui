@@ -4,7 +4,7 @@ const PointDisplay:FC<{setter:any}> = ({setter}) =>{
 	return (
 			<div className="notification_modal notification_work-time">
 							<div className="attention">
-							Ой! Дальнейший заказ невозможен.
+								Ой! Дальнейший заказ невозможен.
 							</div>
 							<div className="attention-info">
 							В данный момент заведение не принимает онлайн-заказ.<br />

@@ -3,6 +3,7 @@ import { IProduct } from "@types";
 export interface ICart {
     totalPrice: number;
     address: string;
+		kladrid:string
     orderError: ICheckoutError;
     orderNumber: ICheckout;
     deliveryPrice: number;

@@ -1,3 +1,4 @@
+import { DILIVERY_TIME_STATUS } from 'application/contstans/const.orgstatus';
 import { compareAsc, format } from 'date-fns'
 import { store } from "servises/redux/createStore";
 
@@ -1190,4 +1191,41 @@ export const workTimeCheck = (work:any,org?:any):any => {
 		return work
 	}
 	
+}
+
+
+
+export const delivertyTime = () =>{
+	const storage = store.getState();
+	const  {workTime} = storage.location.point
+
+	if(storage.location.pointstatus){
+		const  {deliveryTime} = storage.location.pointstatus
+
+		const onliPickUPTime = new Date();
+		const noDeliveryTime = new Date();
+
+		if(workTimeCheck(workTime) && deliveryTime){
+			const [min,max] = workTimeCheck(workTime).split('-')
+			
+			const timepickup = format(onliPickUPTime.setMinutes(onliPickUPTime.getMinutes() + deliveryTime), "HH:mm")
+			const nodelivery = format(noDeliveryTime.setMinutes(noDeliveryTime.getMinutes() + 30), "HH:mm")
+
+			console.log(timepickup,nodelivery,max);
+
+			if(nodelivery > max){
+				return {
+					status:DILIVERY_TIME_STATUS.NODELIVERY
+				}
+			}
+
+			if(timepickup > max){
+				return {
+					status:DILIVERY_TIME_STATUS.ONLIPICKUP
+				}
+			}
+		}
+		
+	}
+	return false
 }

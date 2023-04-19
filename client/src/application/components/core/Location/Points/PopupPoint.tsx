@@ -4,9 +4,13 @@ import cn from "classnames";
 import { workTimeHelp } from "application/helpers/workTime";
 import { CART_CHOICE } from "application/contstans/cart.const";
 import PointWorkTime from "./PointWorkTime";
+import PointStatus from "./PointStatus";
+import { adapterSelector } from "servises/redux/selectors/selectors";
+import { ORG_STATUS } from "application/contstans/const.orgstatus";
 
 /* eslint-disable @typescript-eslint/no-var-requires */
 const PopupPoint = () => {
+	const pointstatus = adapterSelector.useSelectors(selector => selector.pointstatus)
   const useCasePoints = useContext(PointsContext)
   const { addresses, statePoint, recvisites } = useCasePoints.data
   const { selectPointHandler, buttonClickHandler, SlidePointsHandler, recvisitesHandler } = useCasePoints.handlers
@@ -14,10 +18,9 @@ const PopupPoint = () => {
   const address = addresses && addresses[statePoint.slideIndex]
   const selectAdressCN = cn("welcome__select-adress", { opened: statePoint.isOpen });
 	
-	const statusopenCN = address && cn("welcome__select-adress opened", { stausopen: address.delivMetod === CART_CHOICE.OPEN });
-	const nodeliveCN = address && cn("btn welcome__select-adress__btn", { nodelivebtn: address.delivMetod === CART_CHOICE.NODELIVERY });
+	const statusopenCN = pointstatus && cn("welcome__select-adress opened", { stausopen: pointstatus.organizationStatus === ORG_STATUS.OPEN });
+	const nodeliveCN = pointstatus && cn("btn welcome__select-adress__btn", { nodelivebtn: pointstatus.organizationStatus === ORG_STATUS.NODELIVERY });
 
-	
   return (
       <>
           <button onClick={() => buttonClickHandler()} className={selectAdressCN}>
@@ -49,7 +52,7 @@ const PopupPoint = () => {
                           {/*   {address.workTime}*/}
                           {/*</div>*/}
                           
-													<PointWorkTime worktime={address.workTime} adress={address} />
+													<PointWorkTime worktime={address.workTime} adress={address.address} />
                           <div className="welcome__select-adress__info">
                               <img
                                   src={require("assets/i/phone-green.svg").default}
@@ -59,77 +62,20 @@ const PopupPoint = () => {
                                   {address.phone}
                               </a>
                           </div>
-                          {
-                              address.delivMetod === CART_CHOICE.PICKUP &&
-                              <div className="welcome__select-adress__info onlypickup">
-                                  <img
-                                      src={require("assets/i/bag-red.svg").default}
-                                      alt="Только самовывоз"
-                                  />
-                                  <span>Только самовывоз</span>
-                              </div>
-                          }
-													{
-														
-														address.delivMetod === CART_CHOICE.OPEN &&
-                              <div className="welcome__select-adress__info onlyopen">
-                                  <img
-                                      src={require("assets/i/cloce.svg").default}
-                                      alt="Скоро открытие"
-                                  />
-                                  <span>Скоро открытие</span>
-                              </div>
-													}
-                          {
-                              !address.delivMetod &&
-                              <div className="welcome__select-adress__info onlypickup">
-                                  <img
-                                      src={require("assets/i/moto-red.svg").default}
-                                      alt="Доставка и самовывоз"
-                                  />
-                                  <span>Доставка и самовывоз</span>
-                              </div>
-                          }
+                          
+										
 
                           {
-                              (address.guid === 'fe470000-906b-0025-00f6-08d8de6557e1') && //(recvisites && Object.keys(recvisites).length !== 0) &&
+                              (recvisites && Object.keys(recvisites).length !== 0) &&
                               <div className="recvisites" onClick={() => recvisitesHandler(true)}>Реквизиты компании</div>
                           }
-                          {workTimeHelp(address.workTime,address.guid) 
-													
-													&&
-                              <div className="point-closed-container">
-                                  <div className="text-bold">Наша хинкальная пока закрыта.<br /> Оформить заказ нельзя.</div>
-                                  <div className="text-secondary">Сейчас вы можете ознакомится с нашим<br />
-                                       меню и почитать новости
-                                  </div>
-                              </div>
-                          }
 
-													
-                          {
-                              address.delivMetod === CART_CHOICE.NODELIVERY && !workTimeHelp(address.workTime) &&
-                              <div className="point-closed-container">
-                                  <div className="text-bold">В данный момент заведение не принимает онлайн-заказ. <br />
-С удовольствием примем его немного позднее! </div>
-                                  <div className="text-secondary">Сейчас вы можете ознакомиться с нашим меню,<br /> просмотреть новости и узнать об актуальных акциях
-                                  </div>
+													<PointStatus point={address} />
 
-                              </div>
-                          }
-													{
-														
-														address.delivMetod === CART_CHOICE.OPEN || address.delivMetod === CART_CHOICE.NOWORK && ! workTimeHelp(address.workTime) &&
-														<div className="point-closed-container">
-																<div className="text-bold">Онлайн-заказ в данной хинкальной недоступен</div>
-																<div className="text-secondary">Приносим извинения за неудобства.</div>
-
-														</div>
-													}
                           <button
                               className={nodeliveCN}
                               onClick={() => selectPointHandler(address)}
-															disabled={address.delivMetod === CART_CHOICE.OPEN || address.delivMetod === CART_CHOICE.NOWORK && true}
+															disabled={pointstatus.organizationStatus === ORG_STATUS.OPEN || pointstatus.organizationStatus === ORG_STATUS.NOWORK && true}
                           >
                               Выбрать
                           </button>

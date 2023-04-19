@@ -1,4 +1,5 @@
 import { ApiSuper, methods, token } from "../AxiosApi";
+import { IPointStatus } from '@types';
 
 namespace Req{
   export type  Favorites = {
@@ -27,6 +28,10 @@ class RequestLocation extends ApiSuper {
 	@methods('get')
   geBuOrg(orgid:string) {
     return this.request(`/organization/buguid?organizationId=${orgid}`)
+  }
+	@methods('get')
+  geStatusOrgAll(organization:string) {
+    return this.request<IPointStatus>(`/organization/organizationstatus?organization=${organization}`)
   }
 }
 export default new RequestLocation()

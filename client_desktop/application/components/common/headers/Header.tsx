@@ -44,6 +44,11 @@ const Header = () => {
 		
 	}
 
+	const rend = () =>{
+		window.location.href = process.env.NEXT_PUBLIC_REDIRECT as string
+		
+	}
+
     return (
         <div className="header">
             <div className="header__left">
@@ -81,7 +86,7 @@ const Header = () => {
                     <a className="header_menu_link" href="http://starikkhinkalich.ru/" target="_blank" rel="noreferrer" >
 										Новости и акции
                     </a>
-                    <a className={mapColorCN} onClick={()=> handleClickMap()}>
+                    <a className={mapColorCN} onClick={()=> rend()}>
                         Старик Хинкалыч на карте
                     </a>
                     <a className="header_menu_link" href={'https://франшиза.хинкалыч.рф/'} target={'_blank'} rel="noreferrer">

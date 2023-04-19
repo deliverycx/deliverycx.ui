@@ -6,7 +6,7 @@ export class FormBuilderCart {
         return (builder: any): IWrapper[] => {
             return [
                 //builder.paymentPopup(),
-                //builder.payment(metods.paymentsMetod),
+                builder.payment(metods.paymentsMetod),
                 builder.adress(),
                 builder.name(),
                 builder.phone(),

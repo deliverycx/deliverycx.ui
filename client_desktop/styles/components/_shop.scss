@@ -123,6 +123,28 @@
 	align-items: center;
 }
 
+.product__stoplist{
+	position: relative;
+	.stoplist_title{
+			position: absolute;
+			top: 0;
+			left: 0;
+			text-align: center;
+			font-size: 12px;
+			font-weight: 600;
+			height: 100%;
+			width: 100%;
+			padding-top: 35%;
+			background-color: #FFFFFF;
+			opacity: 0.6;
+			z-index: 5;
+			border-radius: 30px;
+	}
+	.product__item__img-wrap img{
+			opacity: 0.6;
+	}
+}
+
 .product-card__add:hover{
 	@include bgImage('/images/icon/add_to-big.svg')
 }

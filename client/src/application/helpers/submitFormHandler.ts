@@ -2,7 +2,7 @@
 
 import { FormikHelpers } from "formik";
 import { store } from "servises/redux/createStore";
-import { fetchAllCart, fetchOrderCart } from "servises/redux/slice/cartSlice";
+import { fetchAllCart, fetchOrderCart, setENErrors, setErrors } from "servises/redux/slice/cartSlice";
 import { useHistory } from "react-router-dom";
 import { format } from 'date-fns'
 
@@ -14,10 +14,22 @@ const submitHandler = async <T>(values: any, meta: FormikHelpers<any>) => {
         //await store.dispatch(checkOut({...values,promocode,cart_choice,totalPrice}));
 
         // Разделение адреса на улицу и дом
-        const prepareAddress: { street: string; home: number } =
+        const prepareAddress: { street: string; home: string } =
             values.address &&
             values.address.match(/(?<street>.*?),\s?(?<home>.*)/).groups;
 
+						if(prepareAddress.home && prepareAddress.home.length > 10){
+							
+							store.dispatch(setENErrors({
+								status:500,
+								error:{
+									errors:"Номер дома слишком длинный"
+								}
+								
+							}))
+							return
+						}
+						
         const val = {
             organization: storage.location.point.id,
             name: values.name,
@@ -29,14 +41,20 @@ const submitHandler = async <T>(values: any, meta: FormikHelpers<any>) => {
                 flat: values.flat,
                 intercom: values.intercom,
                 entrance: values.entrance,
-                floor: values.floor
+                floor: values.floor,
+								kladrid:storage.cart.kladrid,
+								cordAdress:storage.cart.cordAddress
             },
+						
             orderType: values.orderType,
             phone: values.phone,
             comment: values.comment,
             paymentMethod: values.payment_method,
-            ...values.paymentOrderCard
+						localhost:`${document.location.protocol}//${document.location.host}`,
+						orderTable:storage.cart.orderTable,
+            ...values.paymentOrderCard,
         };
+
 
       const url = await store.dispatch(fetchOrderCart(val) as any);
       //'errors' in url.payload !== true
@@ -47,7 +65,7 @@ const submitHandler = async <T>(values: any, meta: FormikHelpers<any>) => {
         }
         
       }
-      /* */
+       
     }).then(() => {
         meta.setSubmitting(false);
     });

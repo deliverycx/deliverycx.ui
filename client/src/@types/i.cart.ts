@@ -3,12 +3,19 @@ import { IProduct } from "@types";
 export interface ICart {
     totalPrice: number;
     address: string;
+		kladrid:string
+		cordAddress:[number,number]
     orderError: ICheckoutError;
     orderNumber: ICheckout;
     deliveryPrice: number;
     deltaPrice: number;
     orderType:string;
 		loadingDiscount:boolean;
+		orderTable:{
+			id:string
+			numb:number
+			section:string
+		}
 }
 
 export interface ICheckout {

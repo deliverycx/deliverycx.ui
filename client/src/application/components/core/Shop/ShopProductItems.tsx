@@ -13,9 +13,9 @@ type IProps = {
 }
 
 const ShopProductItem: FC<IProps> = ({ products }) => {
-    const { id, name, price, categoryImage, measureUnit, weight, description, image, isFav } = products
-    
-    const useCasePoints = adapterComponentUseCase(useCaseShopItem,id);
+    const { id, productId ,name, price, categoryImage, measureUnit, weight, description, image, isFav } = products
+
+    const useCasePoints = adapterComponentUseCase(useCaseShopItem,{id,productId});
     const { cardRef,disableItem } = useCasePoints.data;
     const { clickItemHandler } = useCasePoints.handlers;
     
@@ -46,7 +46,16 @@ const ShopProductItem: FC<IProps> = ({ products }) => {
 
                 <div className="row product__item__options justify-between">
                     <div>
-                        <div className="product__item__measure">{measureUnit === "порц" ? `${convertWeight(weight)} г` : "1 шт"}</div>
+                        <div className="product__item__measure">
+												
+												{
+													measureUnit === "порц"
+													? `${convertWeight(weight)} г`:
+													measureUnit === "мл"  ? weight + 'мл'
+													
+													: "1 шт"
+												}
+												</div>
                         <div className="product__item__price">{price} ₽</div>
                     </div>
                    

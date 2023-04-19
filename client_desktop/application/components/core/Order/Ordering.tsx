@@ -30,15 +30,14 @@ const Ordering: FC = (): JSX.Element => {
         }
         {
           orderNumber &&
-          <div className="cart_head">
+          <div className="ordering_head">
+						<img src="/images/i/okorder.png" />
             <div className="cart_title-box">
-              <h2 className="cart_title">№ {orderNumber}</h2>
+              <h2 className="cart_title">Спасибо за заказ!</h2>
             </div>
-            <div className="cart_list">
-              <p className="checkout__dash">
-              <div className="checkout__dash-succ"> <span>Ваш заказ</span>  оформлен. </div><br />
-              С вами свяжется администратор.</p>
-              </div>
+						
+            <div className="checkout__dash-succ"> <span>Ваш заказ</span>  оформлен. </div><br />
+						<div>С вами свяжется администратор.</div>
             
           </div>
           

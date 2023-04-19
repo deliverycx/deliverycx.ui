@@ -172,6 +172,7 @@ export const fetchOrderCart = createAsyncThunk(
                 
                 dispatch(actionPaymentAccsess());
                 return order.data 
+								
             }
         } catch (error: any) {
             // Ошибка валидации по количеству
@@ -196,9 +197,19 @@ const cartSlice = createSlice({
         refreshCart: cartAdapter.setAll,
         removeCart: cartAdapter.removeOne,
         deleteCart: cartAdapter.removeAll,
+				setOrderTable:(state, action) =>{
+					state.orderTable = action.payload
+				},
         setAdress: (state, action) => {
             state.address = action.payload;
         },
+				setCordAdress: (state, action) => {
+					state.cordAddress = action.payload;
+				},
+				setKladrId: (state, action) => {
+					state.kladrid = action.payload;
+				},
+
         setTotalPrice: (state, action) => {
             state.totalPrice = action.payload.totalPrice;
             state.deltaPrice = action.payload.deltaPrice;
@@ -243,10 +254,13 @@ export const {
     removeCart,
     deleteCart,
     setAdress,
+		setCordAdress,
+		setKladrId,
     setTotalPrice,
     setErrors,
     accessOrder,
     setOrderType,
-		setENErrors
+		setENErrors,
+		setOrderTable
 } = cartSlice.actions;
 export default cartSlice;

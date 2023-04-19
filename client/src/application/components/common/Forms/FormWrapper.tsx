@@ -7,6 +7,7 @@ import { ROUTE_APP } from 'application/contstans/route.const';
 import { ReactNode } from 'react';
 import FormSelect from "./FormSelect";
 import { IPayment } from "@types";
+import { CartFormMetods } from "application/components/core/Cart/CartForm/CartMetods";
 
 export interface IWrapper {
   paymentPopup(): ReactNode
@@ -15,6 +16,7 @@ export interface IWrapper {
   name(): ReactNode
   phone(): ReactNode
   deliv(): ReactNode
+	comment(): ReactNode
 }
 export const FormWrapper = (formik: any,usecase:any): IWrapper => {
   const history = useHistory()
@@ -22,27 +24,30 @@ export const FormWrapper = (formik: any,usecase:any): IWrapper => {
   const { selectPayment, choicePayment } = usecase.handlers
   return {
     paymentPopup() {
+			
+			const img = 
+				CartFormMetods.paymentsMetod[0].id === paymentMetod.id ? "cash.png" :
+				CartFormMetods.paymentsMetod[1].id === paymentMetod.id ? "card-red.svg" :
+				CartFormMetods.paymentsMetod[2].id === paymentMetod.id ? "paymaster.png" : "card-red.svg"
 
       return (
+				<div className="adress_fild">
+					<div className="form__field-wrapper__title">Способ оплаты</div>
         <FormFieldWrapper
-          placeholderIco={require("assets/i/card-red.svg").default}
+          placeholderIco={require(`assets/i/${img}`).default}
           placeholderValue="Оплата"
-          addfild="addfild"
+          addfild="payfild"
         >
-          <div className="adress_fild__address" onClick={choicePayment}>{paymentMetod.value}</div>
-          {
-            //CartFormMetods.paymentsMetod[1].id === stateForm.payment.id
-            false &&
-            <div className="addnew_cart" onClick={() => history.push(paths + '/card') }>
-              <img src={require("assets/i/credit_card.png").default} />
-              <span>Добавить новую карту</span>
-            </div>
-          }
+          <div className="adress_fild__address payment-fild" onClick={choicePayment}>{paymentMetod.value} <span className="ok-icon-red"></span></div>
 
         </FormFieldWrapper>
+				</div>
       )
     },
     payment(paymentsMetod) {
+			
+			
+
       return (
           <FormFieldWrapper
               placeholderIco={require("assets/i/card-red.svg").default}
@@ -175,6 +180,17 @@ export const FormWrapper = (formik: any,usecase:any): IWrapper => {
         </FormFieldWrapper>
       )
     },
+		comment(){
+			return(
+				<textarea
+            value={formik.values.comment}
+            name="comment"
+            onChange={formik.handleChange}
+            className="form__textarea"
+            placeholder="Напишите сюда, если хотите добавить еще какую-то информацию о заказе..."
+          ></textarea>
+			)
+		}
   };
 };
 
