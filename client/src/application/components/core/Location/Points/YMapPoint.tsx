@@ -94,11 +94,11 @@ const YMapPoint = () => {
                             width="100"
                             height="100vh"
                             defaultState={{
-                                center: addresses[0] ? [addresses[statePoint.slideIndex].cords[0], addresses[statePoint.slideIndex].cords[1]] : [0.0, 0.0],
+                                center: addresses[0] ? [addresses[statePoint.slideIndex].cords[1], addresses[statePoint.slideIndex].cords[0]] : [0.0, 0.0],
                                 zoom: 13
                             }}
                             state={{
-                                center: addresses[0] ? [addresses[statePoint.slideIndex].cords[0], addresses[statePoint.slideIndex].cords[1]] : [0.0, 0.0],
+                                center: addresses[0] ? [addresses[statePoint.slideIndex].cords[1], addresses[statePoint.slideIndex].cords[0]] : [0.0, 0.0],
                                 zoom: 13,
 
                             }}
