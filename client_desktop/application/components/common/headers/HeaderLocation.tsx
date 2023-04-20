@@ -7,7 +7,7 @@ const HeaderLocation = () => {
     const {handlerHeader } = useCaseLocationHeader.handlers;
 
 		const h = (q:any) => {
-			window.location.href = 'https://десктоп.хинкалыч.рф'
+			window.location.href = 'https://хинкалыч.рф'
 		
 		}
 
