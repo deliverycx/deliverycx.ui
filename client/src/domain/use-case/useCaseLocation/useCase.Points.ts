@@ -1,3 +1,4 @@
+/* eslint-disable no-mixed-spaces-and-tabs */
 import { useEffect, useReducer } from "react";
 import { useDispatch } from "react-redux";
 
@@ -19,6 +20,7 @@ import { fetchDeleteCart, fetchRefreshCart, setOrderType } from "servises/redux/
 import _ from "lodash";
 import { fetStopList } from "servises/redux/slice/shopSlice";
 import { DELIVERY_METODS, ORG_STATUS } from "application/contstans/const.orgstatus";
+import { Redirects } from "application/helpers/redirectTo";
 
 export function usePoints() {
   const history = useHistory();
@@ -138,15 +140,7 @@ export function usePoints() {
     const selectPointHandler = async (address: IPoint) => {
         try {
             const { data: regData } = await RequestProfile.register();
-            /*
-      if (regData.isNew) {
-        localStorage.setItem("authToken", regData.access!);
-      }
-
-      const { data } = await RequestProfile.update({
-        organization: address._id,
-      })
-      */
+						 await Redirects(address.id)
 
             //dispatch(setProfileAction(regData));
             dispatch(setPoint(address));
