@@ -86,7 +86,7 @@ const Header = () => {
                     <a className="header_menu_link" href="http://starikkhinkalich.ru/" target="_blank" rel="noreferrer" >
 										Новости и акции
                     </a>
-                    <a className={mapColorCN} onClick={()=> rend()}>
+                    <a className={mapColorCN} onClick={()=> handleClickMap()}>
                         Старик Хинкалыч на карте
                     </a>
                     <a className="header_menu_link" href={'https://франшиза.хинкалыч.рф/'} target={'_blank'} rel="noreferrer">
