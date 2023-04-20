@@ -139,7 +139,7 @@ export function usePoints() {
 
     const selectPointHandler = async (address: IPoint) => {
         try {
-						await Redirects(address.id)
+						await Redirects(address)
             const { data: regData } = await RequestProfile.register();
 						 
 

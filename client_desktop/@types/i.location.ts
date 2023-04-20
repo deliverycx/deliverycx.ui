@@ -15,6 +15,8 @@ export interface IPoint {
   delivMetod: string | null;
   isHidden: boolean;
 	reservetable:boolean
+	redirect:string
+	redirectON:boolean
 }
 export type IPointStatus = {
 	_id:string,

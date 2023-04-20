@@ -32,7 +32,7 @@ export function usePoints(this: any,{selectCity,handleSelectOrganitztion}:any) {
 
 
   const handlerPoint = (address: IPoint, status:IPointStatus)=>{
-		Redirects(address.guid)
+		Redirects(address)
 		if(status.organizationStatus === ORG_STATUS.OPEN || status.organizationStatus === ORG_STATUS.NOWORK) return
 		handleSelectOrganitztion(address)
 		getOrgstatus(address.guid)
@@ -171,7 +171,7 @@ export function usePointsMaps(this: any,{selectCity,handlerGoToCity,handlerClose
 				if(status.organizationStatus === ORG_STATUS.OPEN || status.organizationStatus === ORG_STATUS.NOWORK) return
         try {
             const { data: regData } = await RequestProfile.register();
-						Redirects(address.guid)
+						Redirects(address)
             dispatch(setProfileAction(regData));
 						handleSelectOrganitztion(address)
 						getOrgstatus(address.guid)
