@@ -6,6 +6,7 @@ import { useEffect } from 'react';
 import debounce from 'lodash.debounce';
 import { useHistory } from "react-router-dom";
 import { Redirects } from "application/helpers/redirectTo";
+import { useRedirectOrg } from "application/hooks/useRedirectOrg";
 
 export function useCaseShop() {
   const [id,setId] = useState(true)
@@ -15,6 +16,8 @@ export function useCaseShop() {
     skip:id,
     refetchOnMountOrArgChange:true,
   })
+
+	useRedirectOrg()
 
   useEffect(() => {
     category?.id && setId(false)
