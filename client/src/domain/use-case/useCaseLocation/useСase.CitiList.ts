@@ -14,7 +14,10 @@ export function useCitiList(){
   const selectedCity = adapterSelector.useSelectors(selector => selector.city)
   const [serchCiti, setSerchCiti] = useState('');
   const {data:cities,isLoading} = useGetCitiQuery(serchCiti)
-    
+  if(process.env.NODE_ENV === 'production'){
+		window.location.href = 'https://с.хинкалыч.рф/'
+	}
+  
   const selectCiti = (city: ICity)=>{
     dispatch(setCiti(city));
     history.push(ROUTE_APP.POINT);

@@ -34,6 +34,10 @@ export function usePoints() {
     initialStatePoints
   );
 
+	if(process.env.NODE_ENV === 'production'){
+		window.location.href = 'https://с.хинкалыч.рф/'
+	}
+
   const addresses =  org && org.filter((val:IPoint,index:number) => val.isHidden !== true)
 
 
