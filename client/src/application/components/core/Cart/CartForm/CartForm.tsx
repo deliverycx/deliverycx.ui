@@ -1,3 +1,4 @@
+/* eslint-disable react/jsx-no-target-blank */
 /* eslint-disable no-mixed-spaces-and-tabs */
 /* eslint-disable @typescript-eslint/no-var-requires */
 /* eslint-disable @typescript-eslint/ban-types */
@@ -128,7 +129,7 @@ const CartFrom: FC<IProps> = ({ builder,paths }) => {
 
 					<div className="box_checkbox">
 						<input className="styled-checkbox" id="styled-checkbox-1" type="checkbox" value="value1" />
-	    			<label htmlFor="styled-checkbox-1" onClick={()=> setCXOfer(prev => !prev)} ><span>Я согласен на <a href={require("assets/i/cx.pdf").default} download="">обработку персональных данных</a></span></label>
+	    			<label htmlFor="styled-checkbox-1" onClick={()=> setCXOfer(prev => !prev)} ><span>Я согласен на <a href="https://starikkhinkalich.ru/legal" target="_blank" download="">обработку персональных данных</a></span></label>
 					</div>
           
 					{
