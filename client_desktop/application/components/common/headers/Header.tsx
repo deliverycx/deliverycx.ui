@@ -1,3 +1,4 @@
+/* eslint-disable react/jsx-no-duplicate-props */
 import CartSmall from "application/components/core/Cart/HOC_CartSmall/HOC.CartSmall";
 import { useDispatch, useSelector } from "react-redux";
 import { setMapModal, setModal } from "servises/redux/slice/locationSlice";
@@ -11,6 +12,8 @@ import { RootState } from "../../../../servises/redux/createStore";
 import cn from "classnames";
 import ReserveModalBtnContainer from "../Modals/reserveModal/HOC.ReserveModalBtn";
 import { adapterSelector } from "servises/redux/selectors/selectors";
+import Modals from "../Modals/Modals";
+import CounterHiModal from "../Modals/CounterHiModal";
 
 /* eslint-disable react/no-unknown-property */
 const Header = () => {
@@ -65,14 +68,17 @@ const Header = () => {
 											<>
 												<HeaderLocation />
 												{
-													point && point.reservetable &&
+													
 													<button className="reserve-btn" onClick={() => setIsModalOpen(true)}>
-						                Забронировать стол
+						                Счетчик хинкали
 						            	</button>
 												}
 												{
 													isModalOpen &&
-													<ReserveModalBtnContainer isModalOpen={isModalOpen} setIsModalOpen={setIsModalOpen}/>
+													<Modals onClose={() => setIsModalOpen(false)}>
+														<CounterHiModal isModalOpen={isModalOpen} setIsModalOpen={() => setIsModalOpen(false)}/>
+													</Modals>
+													
 												}
 												
 											</>

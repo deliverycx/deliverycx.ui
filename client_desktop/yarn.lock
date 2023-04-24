@@ -728,6 +728,11 @@
   "resolved" "https://registry.npmjs.org/@popperjs/core/-/core-2.11.5.tgz"
   "version" "2.11.5"
 
+"@pqina/flip@^1.7.7":
+  "integrity" "sha512-PP2EPEm/iDflBSKHlJkTny5tM+tbaZwrtCDUhHyO8snpjwIivh3NgPzho03lJKFEKK4+KtIhWkUQraw3f1W6CA=="
+  "resolved" "https://registry.npmjs.org/@pqina/flip/-/flip-1.7.7.tgz"
+  "version" "1.7.7"
+
 "@react-spring/animated@~9.4.0":
   "integrity" "sha512-Dzum5Ho8e+LIAegAqRyoQFakD2IVH3ZQ2nsFXJorAFq3Xjv6IVPz/+TNxb/wSvnsMludfoF+ZIf319FSFmgD5w=="
   "resolved" "https://registry.npmjs.org/@react-spring/animated/-/animated-9.4.2.tgz"
