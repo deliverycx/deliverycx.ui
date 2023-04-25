@@ -22,6 +22,9 @@ const Home: NextPage = () => {
 							<noscript><img src="https://vk.com/rtrg?p=VK-RTRG-1591066-9fa2W" className="metrika" alt=""/></noscript>
 							<script src='/yan.js'/>
 							<noscript><div><img src="https://mc.yandex.ru/watch/91135511" className="metrika" /></div></noscript>
+							<title>«Старик Хинкалыч» - крупнейшая сеть хинкальных в России</title>
+							<meta name="description" content="Выбирайте ближайший адрес и попробуйте хинкали от 35 рублей, румяные хачапури и другие блюда грузинской кухни!" />
+							<meta name="keywords" content="старик хинкалыч, хинкалыч сайт меню, хинкали доставка, заказать хинкали" />
 						</Head>
             <LocationLayout />
             <div className="container">

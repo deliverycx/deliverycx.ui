@@ -68,10 +68,11 @@ const Header = () => {
 											<>
 												<HeaderLocation />
 												{
-													
+													/*
 													<button className="reserve-btn" onClick={() => setIsModalOpen(true)}>
 						                Счетчик хинкали
 						            	</button>
+													*/
 												}
 												{
 													isModalOpen &&
