@@ -41,7 +41,7 @@ const CounterHiModal:FC<IProps> = () =>{
 			
 		} 
 
-		const num1 = 100825;
+		const num1 = 965048;
 		const num2 = 0;
 		const {delay1,delay2} = getDelay(num1,num2,2)
 		setCounter('span1',num1, delay1)
