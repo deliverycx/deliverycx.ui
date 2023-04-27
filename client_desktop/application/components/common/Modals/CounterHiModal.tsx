@@ -21,6 +21,7 @@ const CounterHiModal:FC<IProps> = () =>{
 		}
 		function setCounter(el:any,toNumber:any,delay:any,counter=0) {
 			for(let i = 0; i < toNumber; i++) {
+				//clearTimeout(timer)
 				timer = setTimeout(() => {
 					 counter++ 
 					 const zeroLength = 12;
@@ -29,18 +30,20 @@ const CounterHiModal:FC<IProps> = () =>{
 					setCount(newcount)
 					if(toNumber === counter){
 						setTik(true)
-						clearTimeout(timer)
+						
 					}
 					console.log(timer);
 				},1)
+
+				
 				
 			}
 			
 		} 
 
-		const num1 = 825;
+		const num1 = 100825;
 		const num2 = 0;
-		const {delay1,delay2} = getDelay(num1,num2,20)
+		const {delay1,delay2} = getDelay(num1,num2,2)
 		setCounter('span1',num1, delay1)
 		setCounter('span2',num2, delay2)
 
