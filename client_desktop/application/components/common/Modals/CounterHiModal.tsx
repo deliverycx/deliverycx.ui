@@ -3,6 +3,9 @@ import Flip from "./CountTik";
 import React from "react";
 import "@pqina/flip/dist/flip.min.css";
 import CountTik from "./CountTik";
+import { RequestWebhook } from "servises/repository/Axios/Request";
+import { format } from "date-fns";
+import LoaderProduct from "../Loaders/loaderProduct";
 
 type IProps = {
 	isModalOpen:boolean
@@ -12,7 +15,9 @@ type IProps = {
 const CounterHiModal:FC<IProps> = () =>{
 	const [count, setCount] = useState<any>('000000000000');
 	const [tik, setTik] = useState<boolean>(false);
+	const [load, setLoad] = useState<boolean>(false);
 
+	/**/
 	useEffect(()=>{
 		let timer:any
 		function getDelay(num1:any,num2:any,delay:any) {
@@ -20,8 +25,10 @@ const CounterHiModal:FC<IProps> = () =>{
 			return {delay2: setDelay, delay1:delay}
 		}
 		function setCounter(el:any,toNumber:any,delay:any,counter=0) {
+			/*
 			for(let i = 0; i < toNumber; i++) {
 				//clearTimeout(timer)
+				
 				timer = setTimeout(() => {
 					 counter++ 
 					 const zeroLength = 12;
@@ -34,40 +41,64 @@ const CounterHiModal:FC<IProps> = () =>{
 					}
 					console.log(timer);
 				},1)
+				
+				
+				
+			}*/
 
-				
-				
-			}
+		
+					
 			
 		} 
 
 		const num1 = 965048;
 		const num2 = 0;
 		const {delay1,delay2} = getDelay(num1,num2,2)
-		setCounter('span1',num1, delay1)
-		setCounter('span2',num2, delay2)
-
+		//setCounter('span1',num1, delay1)
+		//setCounter('span2',num2, delay2)
+		getFlip()
 		return () =>{
 			clearTimeout(timer)
 		}
 	},[])
 
 
+
+
 	/*	*/
 	useEffect(()=>{
+		/*
 		let timer:any
-		if(tik){
-			setTimeout(()=>{
-				const zeroLength = 12;
-				const c = parseInt(count)
-				const newcount = String(c + 1).padStart(zeroLength, '0')
-				setCount(newcount)
-			},5000)
-		}
+		setTimeout(()=>{
+			const zeroLength = 12;
+			const c = parseInt(count)
+			const newcount = String(c + 1).padStart(zeroLength, '0')
+			setCount(newcount)
+		},5000)
 		return () =>{
 			clearTimeout(timer)
 		}
-	},[tik,count])
+		*/
+
+
+	},[load])
+
+
+	console.log("load",count);
+
+	const getFlip =  async () =>{
+		setLoad(true)
+		const time = format(new Date(), "yyy-LL-dd")
+		const {data} = await RequestWebhook.flip(time)
+		if(data){
+			setLoad(false)
+			const zeroLength = 12;
+			const c = parseInt(count)
+			const newcount = String(data).padStart(zeroLength, '0')
+			setCount(newcount)
+		}
+		console.log('data',data); 
+	}
 
 	
 	return(
@@ -85,9 +116,13 @@ const CounterHiModal:FC<IProps> = () =>{
 									</defs>
 								</svg>
 							</div>
-							<section>
+							<section className="counter-tik_box">
 								<h3 className="counter-tik_title">Съедено хинкали</h3>
-								<CountTik value={count} />
+								{
+									load ? <LoaderProduct /> : <CountTik value={count} />
+								}
+								
+								
 							</section>
 							
 
