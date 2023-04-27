@@ -2,36 +2,71 @@ import { FC, useEffect, useState } from "react"
 import Flip from "./CountTik";
 import React from "react";
 import "@pqina/flip/dist/flip.min.css";
+import CountTik from "./CountTik";
 
 type IProps = {
 	isModalOpen:boolean
 	setIsModalOpen:any
+
 }
 const CounterHiModal:FC<IProps> = () =>{
-	const [count, setCount] = useState(5);
-	
+	const [count, setCount] = useState<any>('000000000000');
+	const [tik, setTik] = useState<boolean>(false);
+
+	useEffect(()=>{
+		let timer:any
+		function getDelay(num1:any,num2:any,delay:any) {
+			const setDelay =  (((num1)*delay) / (num2) );
+			return {delay2: setDelay, delay1:delay}
+		}
+		function setCounter(el:any,toNumber:any,delay:any,counter=0) {
+			for(let i = 0; i < toNumber; i++) {
+				timer = setTimeout(() => {
+					 counter++ 
+					 const zeroLength = 12;
+					const c = parseInt(count)
+					const newcount = String(c + counter).padStart(zeroLength, '0')
+					setCount(newcount)
+					if(toNumber === counter){
+						setTik(true)
+						clearTimeout(timer)
+					}
+					console.log(timer);
+				},1)
+				
+			}
+			
+		} 
+
+		const num1 = 825;
+		const num2 = 0;
+		const {delay1,delay2} = getDelay(num1,num2,20)
+		setCounter('span1',num1, delay1)
+		setCounter('span2',num2, delay2)
+
+		return () =>{
+			clearTimeout(timer)
+		}
+	},[])
+
+
 	/*	*/
-	const tickRef = React.createRef<any>();
-	let tickInstance:any = null
+	useEffect(()=>{
+		let timer:any
+		if(tik){
+			setTimeout(()=>{
+				const zeroLength = 12;
+				const c = parseInt(count)
+				const newcount = String(c + 1).padStart(zeroLength, '0')
+				setCount(newcount)
+			},5000)
+		}
+		return () =>{
+			clearTimeout(timer)
+		}
+	},[tik,count])
 
-	useEffect(() => {
-    let Tick:any = null;
-		
-    (async () => {
-      Tick = (await import('@pqina/flip')).default;
-      tickInstance = Tick.DOM.create(tickRef.current, {
-        value: 13,
-      });
-    })();
-
-    return () => {
-      if (tickInstance) {
-        Tick.DOM.destroy(tickRef.current);
-      }
-    };
-  }, [count]);
-
-
+	
 	return(
 		<div className="product_card">
 						<div className="product_card-container">
@@ -47,14 +82,12 @@ const CounterHiModal:FC<IProps> = () =>{
 									</defs>
 								</svg>
 							</div>
-							<div style={{ margin: "3em" }}>
-							<div className="tick">
-				        <div ref={tickRef} data-repeat="true" aria-hidden="true">
-				          <span data-view="flip">Tick</span>
-				        </div>
-				      </div>
-				      </div>
-							<button onClick={e => setCount(count + 1)}>Increase</button>
+							<section>
+								<h3 className="counter-tik_title">Съедено хинкали</h3>
+								<CountTik value={count} />
+							</section>
+							
+
 						</div>
 					</div>
 	)
