@@ -15,9 +15,9 @@ class RequestWebhook extends ApiSuper {
     return this.request(`/stoplist/getStopList/?organizationId=${org}`)
   }
 
-	@methods('get')
-  flip(time:string,id:string) {
-    return this.request(`/webhook/flipcount?time=${time}&orgid=${id}`)
+	@methods('post')
+  flip(body:any) {
+    return this.request(`/webhook/flipcount`)
   }
 }
 export default new RequestWebhook()

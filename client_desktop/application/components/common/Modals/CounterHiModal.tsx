@@ -14,7 +14,7 @@ type IProps = {
 
 }
 const CounterHiModal:FC<IProps> = ({setIsModalOpen}) =>{
-	const {phone} = adapterSelector.useSelectors(selector => selector.point)
+	const {phone,address,city} = adapterSelector.useSelectors(selector => selector.point)
 	const [count, setCount] = useState<any>('000000000000');
 	const [tik, setTik] = useState<boolean>(false);
 	const [load, setLoad] = useState<boolean>(false);
@@ -22,43 +22,55 @@ const CounterHiModal:FC<IProps> = ({setIsModalOpen}) =>{
 	/**/
 	useEffect(()=>{
 		let timer:any
-		function getDelay(num1:any,num2:any,delay:any) {
-			const setDelay =  (((num1)*delay) / (num2) );
-			return {delay2: setDelay, delay1:delay}
-		}
-		function setCounter(el:any,toNumber:any,delay:any,counter=0) {
-			/*
-			for(let i = 0; i < toNumber; i++) {
-				//clearTimeout(timer)
-				
-				timer = setTimeout(() => {
-					 counter++ 
-					 const zeroLength = 12;
-					const c = parseInt(count)
-					const newcount = String(c + counter).padStart(zeroLength, '0')
-					setCount(newcount)
-					if(toNumber === counter){
-						setTik(true)
+		(async () => {
+			const numbFlip = await getFlip()
+			
+			function getDelay(num1:any,num2:any,delay:any) {
+				const setDelay =  (((num1)*delay) / (num2) );
+				return {delay2: setDelay, delay1:delay}
+			}
+			function setCounter(el:any,toNumber:any,delay:any,counter=(Number(numbFlip) - 1000)) {
+				console.log('for',toNumber);
+				for(let i = (toNumber - 1000); i < toNumber; i++) {
+					//clearTimeout(timer)
+					
+					timer = setTimeout(() => {
+						 counter++ 
+						 const zeroLength = 12;
+						const c = parseInt(count)
+						const newcount = String(c + counter).padStart(zeroLength, '0')
+						setCount(newcount)
+						if(toNumber === counter){
+							setTik(true)
+							
+						}
 						
-					}
-					console.log(timer);
-				},1)
+					},1)
+					
+					
+					
+				}/**/
+
+			
+						
 				
-				
-				
-			}*/
+			} 
+
+			if(numbFlip){
+				const num1 = Number(numbFlip) ;
+				const num2 = Number(numbFlip) - 10;
+				const {delay1,delay2} = getDelay(num1,num2,2)
+				setCounter('span1',num1, delay1)
+				//setCounter('span2',num2, delay2)
+			}
+      
+    })();
+
 
 		
-					
-			
-		} 
 
-		const num1 = 965048;
-		const num2 = 0;
-		const {delay1,delay2} = getDelay(num1,num2,2)
-		//setCounter('span1',num1, delay1)
-		//setCounter('span2',num2, delay2)
-		getFlip()
+		
+		
 		return () =>{
 			clearTimeout(timer)
 		}
@@ -91,7 +103,9 @@ const CounterHiModal:FC<IProps> = ({setIsModalOpen}) =>{
 	const getFlip =  async () =>{
 		setLoad(true)
 		const time = format(new Date(), "yyy-LL-dd")
-		const {data} = await RequestWebhook.flip(time,phone)
+		const {data} = await RequestWebhook.flip({
+			time,phone
+		})
 		if(data){
 			setLoad(false)
 			const zeroLength = 12;
@@ -99,12 +113,12 @@ const CounterHiModal:FC<IProps> = ({setIsModalOpen}) =>{
 			const newcount = String(data).padStart(zeroLength, '0')
 			setCount(newcount)
 		}
-		console.log('data',data); 
+		return data 
 	}
 
 	
 	return(
-		<div className="product_card">
+		<div className="product_card flipmodal">
 						<div className="product_card-container">
 							<div className="close" onClick={() => setIsModalOpen(false)}>
 								<svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -120,6 +134,7 @@ const CounterHiModal:FC<IProps> = ({setIsModalOpen}) =>{
 							</div>
 							<section className="counter-tik_box">
 								<h3 className="counter-tik_title">Съедено хинкали</h3>
+								<h3 className="counter-tik_point">{city},{address}</h3>
 								{
 									load ? <LoaderProduct /> : <CountTik value={count} />
 								}
