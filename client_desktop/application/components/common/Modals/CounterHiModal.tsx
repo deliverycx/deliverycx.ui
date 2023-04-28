@@ -6,13 +6,15 @@ import CountTik from "./CountTik";
 import { RequestWebhook } from "servises/repository/Axios/Request";
 import { format } from "date-fns";
 import LoaderProduct from "../Loaders/loaderProduct";
+import { adapterSelector } from 'servises/redux/selectors/selectors';
 
 type IProps = {
 	isModalOpen:boolean
 	setIsModalOpen:any
 
 }
-const CounterHiModal:FC<IProps> = () =>{
+const CounterHiModal:FC<IProps> = ({setIsModalOpen}) =>{
+	const {phone} = adapterSelector.useSelectors(selector => selector.point)
 	const [count, setCount] = useState<any>('000000000000');
 	const [tik, setTik] = useState<boolean>(false);
 	const [load, setLoad] = useState<boolean>(false);
@@ -89,7 +91,7 @@ const CounterHiModal:FC<IProps> = () =>{
 	const getFlip =  async () =>{
 		setLoad(true)
 		const time = format(new Date(), "yyy-LL-dd")
-		const {data} = await RequestWebhook.flip(time)
+		const {data} = await RequestWebhook.flip(time,phone)
 		if(data){
 			setLoad(false)
 			const zeroLength = 12;
@@ -104,7 +106,7 @@ const CounterHiModal:FC<IProps> = () =>{
 	return(
 		<div className="product_card">
 						<div className="product_card-container">
-							<div className="close" >
+							<div className="close" onClick={() => setIsModalOpen(false)}>
 								<svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
 									<g clipPath="url(#clip0_329_8395)">
 										<path d="M0 0L11.9991 12M12 0L0.00090279 12" stroke="#ABABAB" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
