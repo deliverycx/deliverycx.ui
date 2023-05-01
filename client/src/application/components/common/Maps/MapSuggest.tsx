@@ -32,7 +32,7 @@ const MapSuggestComponent = ({dispatchMap,stateReduceMap}: any) => {
 
           dispatchMap().setExactCord(cords)
           axios.get<IGeoCodeResponse>(
-            `https://geocode-maps.yandex.ru/1.x/?geocode=${cords.reverse()}&format=json&apikey=e45f9cf9-d514-40a5-adb9-02524aaef83f`
+            `https://geocode-maps.yandex.ru/1.x/?geocode=${cords.reverse()}&format=json&apikey=473431c9-b8f6-45d6-a166-243a0152c68b`
           ).then(({ data }) => {
 
               dispatchMap().setValueMap(data.response.GeoObjectCollection.featureMember[0].GeoObject.name)

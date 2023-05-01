@@ -19,7 +19,7 @@ export default class MyDocument extends Document {
 						<span className="metrika">424242</span>
             <link rel="shortcut icon" href="/favicon.svg" type="image/x-icon"/>
         </Head>
-        <script async src="https://api-maps.yandex.ru/2.1/?lang=ru_RU&apikey=e45f9cf9-d514-40a5-adb9-02524aaef83f"></script>
+        <script async src="https://api-maps.yandex.ru/2.1/?lang=ru_RU&apikey=473431c9-b8f6-45d6-a166-243a0152c68b"></script>
         <body>
           <Main />
           <NextScript />
