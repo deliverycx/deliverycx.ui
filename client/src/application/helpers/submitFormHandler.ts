@@ -14,6 +14,7 @@ const submitHandler = async <T>(values: any, meta: FormikHelpers<any>) => {
         //await store.dispatch(checkOut({...values,promocode,cart_choice,totalPrice}));
 
         // Разделение адреса на улицу и дом
+				/*
         const prepareAddress: { street: string; home: string } =
             values.address &&
             values.address.match(/(?<street>.*?),\s?(?<home>.*)/).groups;
@@ -29,15 +30,29 @@ const submitHandler = async <T>(values: any, meta: FormikHelpers<any>) => {
 							}))
 							return
 						}
+				*/
+				
+				if(values.house && values.house.length > 10){
+							
+					store.dispatch(setENErrors({
+						status:500,
+						error:{
+							errors:"Номер дома слишком длинный"
+						}
 						
+					}))
+					return
+				}
+
+
         const val = {
             organization: storage.location.point.id,
             name: values.name,
             date:`${format(new Date(), 'yyyy-MM-dd')} ${new Date().toLocaleTimeString()}`,
             address: {
                 city: storage.location.point.city,
-                street: prepareAddress.street || "",
-                home: prepareAddress.home || "",
+                street: values.address || "",
+                home: values.house || "",
                 flat: values.flat,
                 intercom: values.intercom,
                 entrance: values.entrance,
