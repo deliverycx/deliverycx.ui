@@ -753,6 +753,7 @@
 }
 .onspot_box__select-full{
 	width: 100% !important; 
+	z-index: 99;
 	.onspot_select_def{
 		display: block !important;
 		text-align: left;

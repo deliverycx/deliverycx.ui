@@ -25,7 +25,7 @@ export const FormWrapper = (formik: any,usecase:any): IWrapper => {
   const { stateForm,paths,paymentMetod } = usecase.data
   const { selectPayment, choicePayment } = usecase.handlers
 
-	console.log(formik);
+
   return {
     paymentPopup() {
 			

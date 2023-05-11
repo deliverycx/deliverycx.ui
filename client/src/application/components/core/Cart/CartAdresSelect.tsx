@@ -1,22 +1,23 @@
 import { adapterSelector } from "servises/redux/selectors/selectors"
 import { useGetStreetCityQuery } from "servises/repository/RTK/RTKLocation"
-import { FC, useEffect, useState } from 'react';
+import { FC, useEffect, useState, useRef } from 'react';
 import { IIkkoStreet } from "@types";
 import LoaderProduct from "application/components/common/Loaders/loaderProduct";
 import { useDispatch } from "react-redux";
 import { setKladrId, setAdress } from "servises/redux/slice/cartSlice";
 
 type IProps = {
-	formik:any
+	formik: any
 }
 
-const CartAdresSelect:FC<IProps> = ({formik}) => {
+const CartAdresSelect: FC<IProps> = ({ formik }) => {
 	const dispatch = useDispatch();
 	const { address } = adapterSelector.useSelectors((selector) => selector.cart);
 	const [streets, setStreets] = useState<IIkkoStreet[] | null>(null)
-	const [serchInp, setSerchInp] = useState<string | null>(null)
-	const [inputAdress, setInputAdress] = useState<boolean>(false)
-	const [inputHouse, setInputHouse] = useState<boolean>(false)
+	const [serchInp, setSerchInp] = useState<string>('')
+
+
+	const inputRef = useRef<any>();
 
 	const point = adapterSelector.useSelectors(selector => selector.point)
 	const { data: ikkostreet, isLoading: isLoadingStreet } = useGetStreetCityQuery({
@@ -39,18 +40,23 @@ const CartAdresSelect:FC<IProps> = ({formik}) => {
 
 	}
 
-	const handlerСhooseAdress = (adress:IIkkoStreet) =>{
+	const handlerСhooseAdress = (adress: IIkkoStreet) => {
 		setStreets(null)
-		setSerchInp(null)
-		setInputAdress(false)
+		setSerchInp('')
+		inputRef.current = adress.name
 		dispatch(setKladrId(adress.classifierId))
 		dispatch(setAdress(adress.name));
 		formik.setFieldValue("address", adress.name)
 	}
 
-	const handlerChangeHouse = (value:string) =>{
+	const handlerChangeHouse = (value: string) => {
 		formik.setFieldValue("house", value)
 
+	}
+
+	const halderSerchInp = (value:string) =>{
+		setSerchInp(value)
+		inputRef.current = null
 	}
 
 
@@ -63,24 +69,19 @@ const CartAdresSelect:FC<IProps> = ({formik}) => {
 	}, [ikkostreet, isLoadingStreet, serchInp])
 
 
-
 	return (
 		<div className="onspot_box__select onspot_box__select-full">
 			<div className="onspot_box_dual">
 				<div className="onspot_select_def" >
-					{
-						!inputAdress 
-						? <span className="choseadress" onClick={() => setInputAdress(true)}>{formik.values.address}</span>
-						: <input type="text" placeholder="Улица" defaultValue={formik.values.address} onChange={e => setSerchInp(e.target.value)} />
-					}
-					
-					
+					<input type="text" placeholder="Улица" name="address" onChange={e => halderSerchInp(e.target.value)} value={inputRef.current || serchInp} />
+
+
 				</div>
 				<div className="onspot_select_def def_house" >
-					<input type="text" placeholder="Дом" defaultValue={formik.values.house} onChange={e => handlerChangeHouse(e.target.value)} />
+					<input type="text" placeholder="Дом" name="house" defaultValue={formik.values.house} onChange={e => handlerChangeHouse(e.target.value)} />
 				</div>
 			</div>
-			
+
 			{
 				serchInp && isLoadingStreet &&
 				<div className="onspot_select">
@@ -93,7 +94,7 @@ const CartAdresSelect:FC<IProps> = ({formik}) => {
 				<div className="onspot_select">
 					{
 						streets && streets.map((val: IIkkoStreet) => {
-							return <div key={val.id} className="onspot_select_item" onClick={()=> handlerСhooseAdress(val)} >{val.name}</div>
+							return <div key={val.id} className="onspot_select_item" onClick={() => handlerСhooseAdress(val)} >{val.name}</div>
 						})
 					}
 
