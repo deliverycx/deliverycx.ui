@@ -45,6 +45,7 @@ const CartFrom: FC<IProps> = ({ builder,paths }) => {
   const initialValues: IInitialValues = {
     comment: "",
     address: "",
+		house:"",
     flat: "",
     intercom: "",
     entrance: "",
@@ -65,7 +66,7 @@ const CartFrom: FC<IProps> = ({ builder,paths }) => {
   const [times, setTimes] = useState<object>(timesArray[0]);
 	const [cxofer, setCXOfer] = useState<boolean>(true);
   const useCaseForm = adapterComponentUseCase(useCartForm,paths)
-	console.log(useCaseForm);
+
   const {paymentMetod,paymentOrder } = useCaseForm.data
   const { paymentReady } = useCaseForm.status
 
@@ -117,7 +118,7 @@ const CartFrom: FC<IProps> = ({ builder,paths }) => {
     orderError.status && dispatch(setErrors({errors:{}}))
   },[])
 
-	console.log(cxofer);
+
 
   return (
     <FormikProvider value={formik}>

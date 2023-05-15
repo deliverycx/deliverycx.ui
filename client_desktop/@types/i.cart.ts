@@ -24,6 +24,7 @@ export interface IInitialValues {
     name: string;
     phone: string;
     address: string;
+		house:string;
     flat: string;
     intercom: string;
     entrance: string;
