@@ -1,3 +1,4 @@
+/* eslint-disable no-mixed-spaces-and-tabs */
 import { useEffect, useReducer } from "react";
 import { useDispatch } from "react-redux";
 
@@ -19,6 +20,7 @@ import { fetchDectroyCart, fetchDeleteCart, fetchRefreshCart, setOrderType } fro
 import _ from "lodash";
 import { fetStopList } from "servises/redux/slice/shopSlice";
 import { DELIVERY_METODS, ORG_STATUS } from "application/contstans/const.orgstatus";
+import { Redirects } from "application/helpers/redirectTo";
 
 export function usePoints() {
   const history = useHistory();
@@ -35,7 +37,7 @@ export function usePoints() {
 
 	////редирект
 	if(process.env.NODE_ENV === 'production'){
-		window.location.href = process.env.REACT_APP_REDIRECT as string
+		//window.location.href = process.env.REACT_APP_REDIRECT as string
 	}
 	
   const { data: org, isFetching } = useGetPointsQuery(selectedCity.id);
@@ -137,16 +139,9 @@ export function usePoints() {
 
     const selectPointHandler = async (address: IPoint) => {
         try {
+						await Redirects(address)
             const { data: regData } = await RequestProfile.register();
-            /*
-      if (regData.isNew) {
-        localStorage.setItem("authToken", regData.access!);
-      }
-
-      const { data } = await RequestProfile.update({
-        organization: address._id,
-      })
-      */
+						 
 
             //dispatch(setProfileAction(regData));
             dispatch(setPoint(address));

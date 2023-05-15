@@ -1,3 +1,4 @@
+/* eslint-disable react/jsx-no-target-blank */
 /* eslint-disable no-mixed-spaces-and-tabs */
 /* eslint-disable @typescript-eslint/no-var-requires */
 /* eslint-disable @typescript-eslint/ban-types */
@@ -33,7 +34,8 @@ export const DefaultinitialValues: IInitialValues = {
 	floor: "",
 	name: "",
 	phone: "",
-	kladrid: ""
+	kladrid: "",
+	house: ""
 };
 
 type IProps = {
@@ -54,12 +56,27 @@ const CartFrom: FC<IProps> = ({ builder,paths }) => {
   const { city } = useSelector((state: RootState) => state.location.point);
   const {orderInfo,orderError,orderNumber,loadingOrder,orderType} = useSelector((state: RootState) => state.cart);
   const errors:any = []
- 
+
+	/*
+  const initialValues: IInitialValues = {
+    comment: "",
+    address: "",
+		house:"",
+    flat: "",
+    intercom: "",
+    entrance: "",
+    floor: "",
+    name: isVerify ? user.name : "",
+    phone: isVerify ? user.phone : "",
+    notCall: false,
+  };
   //mocki array
+	*/
 
 
 	const [cxofer, setCXOfer] = useState<boolean>(true);
   const useCaseForm = adapterComponentUseCase(useCartForm,paths)
+
   const {paymentMetod,paymentOrder } = useCaseForm.data
   const { paymentReady } = useCaseForm.status
 
@@ -100,6 +117,7 @@ const CartFrom: FC<IProps> = ({ builder,paths }) => {
   },[])
 
 
+
   return (
     <FormikProvider value={formik}>
       <form onSubmit={formik.handleSubmit}>
@@ -110,7 +128,7 @@ const CartFrom: FC<IProps> = ({ builder,paths }) => {
 
 					<div className="box_checkbox">
 						<input className="styled-checkbox" id="styled-checkbox-1" type="checkbox" value="value1" />
-	    			<label htmlFor="styled-checkbox-1" onClick={()=> setCXOfer(prev => !prev)} ><span>Я согласен на <a href={require("assets/i/cx.pdf").default} download="">обработку персональных данных</a></span></label>
+	    			<label htmlFor="styled-checkbox-1" onClick={()=> setCXOfer(prev => !prev)} ><span>Я согласен на <a href="https://starikkhinkalich.ru/legal" target="_blank" download="">обработку персональных данных</a></span></label>
 					</div>
           
 					{

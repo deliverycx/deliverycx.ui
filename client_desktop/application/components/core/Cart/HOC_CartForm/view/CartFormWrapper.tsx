@@ -1,3 +1,4 @@
+/* eslint-disable react/jsx-no-comment-textnodes */
 
 import { Field } from "formik";
 import FormFieldWrapper from "../../../../common/Forms/FormFieldWrapper";
@@ -8,12 +9,14 @@ import FormSelect from "../../../../common/Forms/FormSelect";
 import { IPayment } from "@types";
 import { ICartFormMetods } from "../CartMetods";
 import cn from "classnames";
+import CartAdresSelect from "./CartAdresSelect";
 
 export interface IWrapper {
   paymentPopup(): ReactNode
   payment(metods:any):ReactNode
   paymentRadio(paymentsMetod:any): ReactNode
   adress(): ReactNode
+	selectdeliv(): ReactNode
   name(): ReactNode
   phone(): ReactNode
   deliv(): ReactNode
@@ -85,6 +88,23 @@ export const FormWrapper = (formik: any,usecase?:any): IWrapper => {
           </FormFieldWrapper>
       );
     },
+		selectdeliv(){
+			return(
+				<div className="adress_fild">
+					<div className="form__field-wrapper__title">Адрес доставки</div>
+				<FormFieldWrapper
+          placeholderIco="images/i/mark-red.svg"
+         
+          isValid={!formik.values.address.length || !formik.values.house.length}
+          error={!!formik.errors.address || !!formik.errors.house}
+          errorValue={formik.errors.address || formik.errors.house}
+        >
+					
+					<CartAdresSelect formik={formik} />
+				</FormFieldWrapper>
+				</div>
+			)
+		},
     deliv() {
       return (
         <FormFieldWrapper
@@ -106,7 +126,9 @@ export const FormWrapper = (formik: any,usecase?:any): IWrapper => {
 
       return(
       <div className="adress_fild cart">
-        <FormFieldWrapper
+				{
+					/**
+					 * <FormFieldWrapper
           placeholderIco="images/i/mark-red.svg"
           placeholderValue="Адрес доставки"
           isValid={!formik.values.address.length}
@@ -119,6 +141,10 @@ export const FormWrapper = (formik: any,usecase?:any): IWrapper => {
               : "Выберете адрес"}
           </div>
         </FormFieldWrapper>
+					 */
+				}
+       
+				
         <div className="row justify-around from__box-adress">
           <Field
             className="form__field-wrapper__input gray"

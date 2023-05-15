@@ -53,7 +53,10 @@ const schemaBuild = (type:string) => {
           .required('Поле обязательно для заполнения'),
       address: yup
           .string()
-          .required('Поле обязательно для заполнения'),
+          .required('Все поля обезательны для заполнения'),
+			house: yup
+          .string()
+          .required('Все поля обезательны для заполнения'),		
       phone: yup
           .string()
           .trim()
@@ -66,6 +69,7 @@ const schemaBuild = (type:string) => {
     case 'COURIER':
       return yup.object().shape({
         address:valid.address,
+				house:valid.house,
         name: valid.name,
         phone: valid.phone
       })

@@ -1,11 +1,13 @@
+/* eslint-disable no-irregular-whitespace */
 import { FC, memo, useRef } from "react";
 import { adapterComponentUseCase } from "adapters/adapterComponents";
 import { useAddCart } from "domain/use-case/useCaseCart";
+import { DILIVERY_TIME_STATUS } from "application/contstans/const.orgstatus";
 
 const ShopLinkToCart: FC = () => {
     const ref = useRef<HTMLDivElement | null>(null);
     const useCaseCart = adapterComponentUseCase(useAddCart,ref)
-    const { itemsCount, emptyCN } = useCaseCart.data
+    const { itemsCount, emptyCN, time } = useCaseCart.data
     const {linkHandler} = useCaseCart.handlers
 
     return (
@@ -31,6 +33,20 @@ const ShopLinkToCart: FC = () => {
                 только что хинкали сварили.
               </p>
             </div>
+
+						{
+							time && time.status === DILIVERY_TIME_STATUS.NODELIVERY &&
+							<div className="link-to-cart__empty">
+              <h1>
+							Привет!<br />
+							Заказ уже <br />
+							недоступен.
+              </h1>
+              <p>
+							Хинкальная скоро закроется.
+              </p>
+            </div>
+						}
           </div>
         </div>
       </div>

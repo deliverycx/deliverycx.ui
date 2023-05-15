@@ -16,6 +16,7 @@ import { useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom";
 import { adapterSelector } from "servises/redux/selectors/selectors";
 import { setOrderInfo } from "servises/redux/slice/cartSlice";
+import { setAdress, setCordAdress, setKladrId } from "servises/redux/slice/cartSlice";
 import RequestWebhook from "servises/repository/Axios/Request/Request.Webhook";
 import { useGetDeliveryZonesQuery } from "servises/repository/RTK/RTKCart";
 import { useGetStreetCityQuery } from "servises/repository/RTK/RTKLocation";
@@ -80,6 +81,7 @@ export function useCartMap() {
      */
     const onMapClick = (e: any) => {
         const cords = e.get("coords");
+			
 
         dispatchMap({
             type: ReducerActionTypePoints.onMapClick,
@@ -87,9 +89,12 @@ export function useCartMap() {
                 cord: cords
             }
         });
+
+				
+
         axios
             .get<IGeoCodeResponse>(
-                `https://geocode-maps.yandex.ru/1.x/?geocode=${cords.reverse()}&format=json&apikey=e45f9cf9-d514-40a5-adb9-02524aaef83f`
+                `https://geocode-maps.yandex.ru/1.x/?geocode=${cords.reverse()}&format=json&apikey=473431c9-b8f6-45d6-a166-243a0152c68b`
             )
             .then(({ data }) => {
                 geoCodeValidAdress(
@@ -148,6 +153,8 @@ export function useCartMap() {
                 })
         };
     };
+
+		
     /**
      * @description конпка "заказать доставку"
      */
@@ -169,6 +176,8 @@ export function useCartMap() {
 							dispatch(setOrderInfo({kladrid:pointKladrId})) 
 						}
 						dispatch(setOrderInfo({address:stateReduceMap.valueMap}));
+						dispatch(setCordAdress(stateReduceMap.stateMap))
+						dispatch(setAdress(stateReduceMap.valueMap));
 						history.push(ROUTE_APP.CART.CART_DELIVERY);
 						onMapTyping().setValueMap("");
 					}
@@ -178,7 +187,7 @@ export function useCartMap() {
     };
 
 		/**
-     * @description конпка "заказать доставку"
+     * @description конпка 
      */
 		const hendleZone = (zone:boolean) => {
 			dispatchMap({

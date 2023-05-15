@@ -9,6 +9,7 @@ import { Redirects } from "application/helpers/redirectTo";
 import { useDispatch } from "react-redux";
 import { fetStopList } from "servises/redux/slice/shopSlice";
 import { useRedirectOrg } from "application/hooks/useRedirectOrgTable";
+import { delivertyTime } from "application/helpers/workTime";
 
 export function useCaseShop() {
   const [id,setId] = useState(true)
@@ -29,7 +30,13 @@ export function useCaseShop() {
 
 
 	useEffect(() => {
-    !id && dispatch(fetStopList(point.guid))  
+		if(!id){
+			dispatch(fetStopList(point.guid))
+			const q = delivertyTime()
+			console.log(q);
+			
+		}
+		
   }, [id])
 
 

@@ -13,6 +13,9 @@ const locationSlice = createSlice({
     },
     setPoint(state:ILocationEntities,action){
       state.point = action.payload
+    },
+		setPointStatusDeliveryMetods(state:ILocationEntities,action){
+      state.pointstatus.deliveryMetod = action.payload
     }
   },
 	extraReducers: (builder) => {
@@ -23,5 +26,5 @@ const locationSlice = createSlice({
       
   },
 })
-export const {setCiti,setPoint} = locationSlice.actions
+export const {setCiti,setPoint,setPointStatusDeliveryMetods} = locationSlice.actions
 export default locationSlice

@@ -8,7 +8,7 @@ export const validationHIdiscount = (cart:IReqCart[]) =>{
 		const tagIndex = cartEl.productTags
                     ? cartEl.productTags.findIndex((el) => el.match(regex))
                     : -1;
-		console.log(cartEl.amount);
+
 
 		if (cartEl.productTags && tagIndex !== -1) {
 

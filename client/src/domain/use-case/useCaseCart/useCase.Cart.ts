@@ -14,17 +14,27 @@ import { fetStopList } from "servises/redux/slice/shopSlice";
 import { CartFormMetods } from "application/components/core/Cart/CartForm/CartMetods";
 import { CART_CHOICE } from "application/contstans/cart.const";
 import { actionSelectPayment } from "servises/redux/slice/bankCardSlice";
+import { delivertyTime, workTimeHelp } from "application/helpers/workTime";
+import { DILIVERY_TIME_STATUS } from "application/contstans/const.orgstatus";
 
 export function useAddCart(ref?: any) {
     const history = useHistory();
 		const dispatch = useDispatch()
     const cartList = useSelector(cartSelector.selectAll);
 		const activeChoice = useSelector((state: RootState) => state.cart.orderType);
+		const {point} = useSelector((state: RootState) => state.location);
     const [isPopupEmpty, setIsPopupEmpty] = useState(false);
     const [itemsCount, setItemsCount] = useState(0);
     const emptyCN = cn("link-to-cart", { open: isPopupEmpty });
+		const time = delivertyTime()
 
     const linkHandler = () => {
+				
+				if(time && time.status === DILIVERY_TIME_STATUS.NODELIVERY && !workTimeHelp(point.workTime)){
+					console.log('timeee');
+					setIsPopupEmpty(true);
+					return
+				}
         if(itemsCount){
 					if (activeChoice === CART_CHOICE.COURIER) {
 							dispatch(actionSelectPayment(CartFormMetods.paymentsMetod[0]))
@@ -52,7 +62,8 @@ export function useAddCart(ref?: any) {
 
     this.data({
         itemsCount,
-        emptyCN
+        emptyCN,
+				time
     });
     this.handlers({
         linkHandler

@@ -26,6 +26,10 @@ class CartEntities extends Entities<ICartEntities>{
 		deltaPrice: 0,
 		deliveryPrice:	0
 	}
+  protected totalPrice = 0
+  protected address = ''
+	protected cordAddress = []
+	protected kladrid = ''
   protected orderError = {}
   protected orderNumber = null
   protected loadingOrder = false
@@ -36,6 +40,10 @@ class CartEntities extends Entities<ICartEntities>{
     this.entities = {
       orderPrice: this.orderPrice,
       orderInfo:this.orderInfo,
+      totalPrice: this.totalPrice,
+      address: this.address,
+			cordAddress:this.cordAddress,
+			kladrid:this.kladrid,
       orderError: this.orderError,
       orderNumber: this.orderNumber,
       loadingOrder: this.loadingOrder,

@@ -36,6 +36,7 @@ export function useCartForm(this: any, paths:string) {
   const initialValues: IInitialValues = {
     comment: "",
     address: "",
+		house:"",
     flat: "",
     intercom: "",
     entrance: "",

@@ -8,6 +8,7 @@ import { ReactNode } from 'react';
 import FormSelect from "./FormSelect";
 import { IPayment } from "@types";
 import { CartFormMetods } from "application/components/core/Cart/CartForm/CartMetods";
+import CartAdresSelect from "application/components/core/Cart/CartAdresSelect";
 
 export interface IWrapper {
   paymentPopup(): ReactNode
@@ -16,12 +17,15 @@ export interface IWrapper {
   name(): ReactNode
   phone(): ReactNode
   deliv(): ReactNode
+	selectdeliv(): ReactNode
 	comment(): ReactNode
 }
 export const FormWrapper = (formik: any,usecase:any): IWrapper => {
   const history = useHistory()
   const { stateForm,paths,paymentMetod } = usecase.data
   const { selectPayment, choicePayment } = usecase.handlers
+
+
   return {
     paymentPopup() {
 			
@@ -78,9 +82,28 @@ export const FormWrapper = (formik: any,usecase:any): IWrapper => {
         </FormFieldWrapper>
       )
     },
+		selectdeliv(){
+			return(
+				<div className="adress_fild">
+					<div className="form__field-wrapper__title">Адрес доставки</div>
+				<FormFieldWrapper
+          placeholderIco={require("assets/i/cart/mark-dark.svg").default}
+          placeholderValue="Где"
+          isValid={!formik.values.address.length || !formik.values.house.length}
+          error={!!formik.errors.address || !!formik.errors.house}
+          errorValue={formik.errors.address || formik.errors.house}
+        >
+					
+					<CartAdresSelect formik={formik} />
+				</FormFieldWrapper>
+				</div>
+			)
+		},
     adress() {
       return(
       <div className="adress_fild">
+				{
+					/*
         <div className="form__field-wrapper__title">Адрес доставки</div>
         <FormFieldWrapper
           placeholderIco={require("assets/i/cart/mark-dark.svg").default}
@@ -89,12 +112,17 @@ export const FormWrapper = (formik: any,usecase:any): IWrapper => {
           error={!!formik.errors.address}
           errorValue={formik.errors.address}
         >
+					
+
+					
           <div className="adress_fild__address" onClick={() => history.push(ROUTE_APP.CART.CART_MAP)}>
             {formik.values.address.length
               ? formik.values.address
               : "Выберете адрес"}
           </div>
         </FormFieldWrapper>
+				*/
+				}
         <div className="row justify-between from__box-adress">
           <Field
             className="form__field-wrapper__input gray"
