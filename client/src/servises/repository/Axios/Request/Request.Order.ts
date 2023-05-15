@@ -25,6 +25,11 @@ class RequestOrder extends ApiSuper {
   }
 
 	@methods("get")
+  getOrder(hash:string) {
+      return this.request<any>(`/order/getorder/${hash}`);
+  }
+
+	@methods("get")
   dualPayment(hash:string) {
       return this.request<IOrderNumber>(`/webhook/dualPayment/${hash}`);
   }

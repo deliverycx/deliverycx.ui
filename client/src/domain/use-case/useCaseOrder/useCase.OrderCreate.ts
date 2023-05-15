@@ -1,7 +1,7 @@
 import { createSelector } from "@reduxjs/toolkit";
 import { ROUTE_APP } from "application/contstans/route.const";
 
-import { useEffect } from 'react';
+import { useEffect, useState, useCallback, useRef } from 'react';
 import { useHistory, useLocation } from "react-router-dom";
 import { adapterSelector } from "servises/redux/selectors/selectors";
 import { RootState } from 'servises/redux/createStore';
@@ -12,6 +12,8 @@ import { ICart } from '@types';
 import { IBankCard } from '@types';
 import RequestOrder from "servises/repository/Axios/Request/Request.Order";
 import { PAYMENT_METODS } from "application/contstans/const.orgstatus";
+import { useDispatch } from "react-redux";
+import { fetchDeleteCart, accessOrder } from "servises/redux/slice/cartSlice";
 
 
 class CreateOrder{
@@ -77,7 +79,7 @@ class CreateOrder{
 		}
 
 		this.orderStates = result
-		console.log(this.orderState);
+		//console.log(this.orderState);
 	}
 }
 
@@ -86,7 +88,10 @@ export function useOrderCreate() {
 	const history = useHistory()
 	const location = useLocation();
 	const hash = location.pathname.split("/")[2];
-
+	const [orderNumber,setOrderNumber] = useState<null | number>(null)
+	const [orderLoad, setOrderLoad] = useState(true);
+	const dispatch = useDispatch();
+	const ref = useRef<NodeJS.Timeout>();
 
 	const selectLocationPoint = adapterSelector.useSelectors(selector => selector.point)
 	const selectCart = adapterSelector.useSelectors(selector => selector.cart)
@@ -104,32 +109,82 @@ export function useOrderCreate() {
 		return createOrder.orderStates
 	}
 
+
+
+	const presentOrder = async (hashNumb: string, tik = 0) => {
+		try {
+				let tik = 0;
+					ref.current = setInterval(async () => {
+							const { data } = await RequestOrder.getOrder(hashNumb);
+							new Promise((res, rej) => {
+									if (data && data.orderNumber) {
+											clearInterval(ref.current as any);
+											res(data.orderNumber);
+									} else {
+											++tik;
+											rej();
+									}
+							})
+									.then((number) => {
+											setOrderNumber(number as number);
+											setOrderLoad(false);
+									})
+									.catch(() => {
+											setOrderNumber(null);
+											if (tik > 3) {
+													clearInterval(ref.current as any);
+													setOrderLoad(false);
+											} else {
+													setOrderLoad(true);
+											}
+									});
+					}, 5000);
+			} catch (error) {
+					setOrderNumber(null);
+					clearInterval(ref.current as any);
+			}
+	};
+
 	
 
 
-	const OrderSubmit = async (orderBody:any) =>{
+	const OrderSubmit =  async (orderBody:any) =>{
 		
 		try {
-			if(selectCardBank.paymentMetod.id === PAYMENT_METODS.CARD){
-				const {data} = await RequestOrder.OrderCreatePayment(orderBody)
-				console.log(data);
+			const {data} = await RequestOrder.getOrder(hash)
+			
+
+			if(!data){
+				if(selectCardBank.paymentMetod.id === PAYMENT_METODS.CARD){
+					await RequestOrder.OrderCreatePayment(orderBody)
+				}else{
+					await RequestOrder.OrderCreate(orderBody)
+				} 
 			}else{
-				const result = await RequestOrder.OrderCreate(orderBody)
-			} 
+				setOrderNumber(data.orderNumber)
+			}
 			
 		} catch (error) {
 			console.log(error);
+			setOrderNumber(null)
 		}
 		
 	}
+
+
+
 
 	useEffect(() => {
 		if ((location.pathname.split("/")[1] === "ordercreate") && hash) {
 			const body = createOrderFabric()
 			OrderSubmit(body)
+			presentOrder(hash);
 		} else {
 				history.push(ROUTE_APP.SHOP.SHOP_MAIN);
-		}     
+		}  
+		() => {
+			clearInterval(ref.current as any);
+		};   
 	}, [hash]);
 
 	
@@ -139,13 +194,24 @@ export function useOrderCreate() {
 		history.push(ROUTE_APP.CART.CART_DELIVERY)
 	}
 
-	this.data({
+	const handleBacktoShop = () => {
+		dispatch(fetchDeleteCart());
+		dispatch(accessOrder());
+		history.push(ROUTE_APP.SHOP.SHOP_MAIN);
+	};
 
+
+
+
+	this.data({
+		orderNumber,
+		hash
 	});
 	this.handlers({
-		handleBacktoCart
+		handleBacktoCart,
+		handleBacktoShop
 	});
 	this.status({
-			
+		orderLoad
 	});
 }
