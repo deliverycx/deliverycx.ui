@@ -12,6 +12,7 @@ export type ICartEntities = ICart
 class CartEntities extends Entities<ICartEntities>{
 	protected orderInfo = {
 		address:'',
+		house:"",
 		kladrid:'',
 		comment: "",
 		flat: "",
@@ -41,9 +42,7 @@ class CartEntities extends Entities<ICartEntities>{
       orderPrice: this.orderPrice,
       orderInfo:this.orderInfo,
       totalPrice: this.totalPrice,
-      address: this.address,
 			cordAddress:this.cordAddress,
-			kladrid:this.kladrid,
       orderError: this.orderError,
       orderNumber: this.orderNumber,
       loadingOrder: this.loadingOrder,

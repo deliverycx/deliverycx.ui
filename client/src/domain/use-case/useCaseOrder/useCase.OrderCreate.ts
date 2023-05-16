@@ -37,15 +37,17 @@ class CreateOrder{
 	prepareAddress(){
 		const orderinfo:any = this.selectCart.orderInfo
 
+		/*
 		const adress = 
 		(orderinfo.address && typeof orderinfo.address === 'string') &&
 		orderinfo.address.match(/(?<street>.*?),\s?(?<home>.*)/).groups;
+		*/
 	
 		const result = {
 			address: {
 				city: this.selectLocationPoint.city,
-				street: adress.street || "",
-				home: adress.home || "",
+				street: orderinfo.address || "",
+				home: orderinfo.house || "",
 				flat: orderinfo.flat,
 				intercom: orderinfo.intercom,
 				entrance: orderinfo.entrance,

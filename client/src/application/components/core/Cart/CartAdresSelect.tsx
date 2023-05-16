@@ -4,7 +4,7 @@ import { FC, useEffect, useState, useRef } from 'react';
 import { IIkkoStreet } from "@types";
 import LoaderProduct from "application/components/common/Loaders/loaderProduct";
 import { useDispatch } from "react-redux";
-import { setKladrId, setAdress } from "servises/redux/slice/cartSlice";
+import { setKladrId, setAdress, setOrderInfo } from "servises/redux/slice/cartSlice";
 
 type IProps = {
 	formik: any
@@ -12,7 +12,7 @@ type IProps = {
 
 const CartAdresSelect: FC<IProps> = ({ formik }) => {
 	const dispatch = useDispatch();
-	const { address } = adapterSelector.useSelectors((selector) => selector.cart);
+	const { orderInfo } = adapterSelector.useSelectors((selector) => selector.cart);
 	const [streets, setStreets] = useState<IIkkoStreet[] | null>(null)
 	const [serchInp, setSerchInp] = useState<string>('')
 
@@ -44,14 +44,26 @@ const CartAdresSelect: FC<IProps> = ({ formik }) => {
 		setStreets(null)
 		setSerchInp('')
 		inputRef.current = adress.name
-		dispatch(setKladrId(adress.classifierId))
-		dispatch(setAdress(adress.name));
+		//dispatch(setKladrId(adress.classifierId))
+		//dispatch(setAdress(adress.name));
+		/*
+		dispatch(setOrderInfo({
+			address:adress.name,
+			kladrid:adress.classifierId
+		}))
+		*/
 		formik.setFieldValue("address", adress.name)
+		formik.setFieldValue("kladrid",adress.classifierId)
+
 	}
 
 	const handlerChangeHouse = (value: string) => {
 		formik.setFieldValue("house", value)
-
+		/*
+		dispatch(setOrderInfo({
+			house:value,
+		}))
+		*/
 	}
 
 	const halderSerchInp = (value:string) =>{
@@ -64,16 +76,18 @@ const CartAdresSelect: FC<IProps> = ({ formik }) => {
 		if (!isLoadingStreet) {
 			(ikkostreet && serchInp) && searchHandle(serchInp, ikkostreet)
 		}
+
 		//console.log(isLoadingStreet,ikkostreet,serchInp);
 
 	}, [ikkostreet, isLoadingStreet, serchInp])
+
 
 
 	return (
 		<div className="onspot_box__select onspot_box__select-full">
 			<div className="onspot_box_dual">
 				<div className="onspot_select_def" >
-					<input type="text" placeholder="Улица" name="address" onChange={e => halderSerchInp(e.target.value)} value={inputRef.current || serchInp} />
+					<input type="text" placeholder="Улица" name="address" onChange={e => halderSerchInp(e.target.value)} value={inputRef.current || serchInp || formik.values.address} />
 
 
 				</div>

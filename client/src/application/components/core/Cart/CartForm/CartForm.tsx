@@ -23,6 +23,7 @@ import React from "react";
 import { CartFormMetods } from "./CartMetods";
 import { DELIVERY_METODS } from "application/contstans/const.orgstatus";
 import { useOrderCheck } from "domain/use-case/useCaseOrder/useCase.OrderCheck";
+import { adapterSelector } from './../../../../../../../client_desktop/servises/redux/selectors/selectors';
 
 /**/
 export const DefaultinitialValues: IInitialValues = {
@@ -83,11 +84,13 @@ const CartFrom: FC<IProps> = ({ builder,paths }) => {
 	const useCaseOrderCheck = adapterComponentUseCase(useOrderCheck)
 	const {handlerSubmitOrder} =	useCaseOrderCheck.handlers
 
+
 	const initialValues: IInitialValues = orderInfo
   const formik = useFormik({
     initialValues,
     validationSchema: schema(orderType),
     onSubmit: (values, meta) => {
+			console.log('qqq',values);
 			handlerSubmitOrder(values)
 			/*
       submitHandler<ISubmitData>(
