@@ -56,7 +56,7 @@ export function usePoints() {
 
   useEffect(() => {
     if(addresses && !isFetching){
-			getRecvisites(addresses[statePoint.slideIndex].id)
+			getRecvisites(addresses[statePoint.slideIndex].guid)
 			getOrgstatus(addresses[statePoint.slideIndex].guid)
 			
 		}
