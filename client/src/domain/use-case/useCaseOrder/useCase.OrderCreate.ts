@@ -13,7 +13,7 @@ import { IBankCard } from '@types';
 import RequestOrder from "servises/repository/Axios/Request/Request.Order";
 import { PAYMENT_METODS } from "application/contstans/const.orgstatus";
 import { useDispatch } from "react-redux";
-import { fetchDeleteCart, accessOrder } from "servises/redux/slice/cartSlice";
+import { fetchDeleteCart, accessOrder, fetchDectroyCart } from "servises/redux/slice/cartSlice";
 
 
 class CreateOrder{
@@ -198,6 +198,7 @@ export function useOrderCreate() {
 
 	const handleBacktoShop = () => {
 		dispatch(fetchDeleteCart());
+		dispatch(fetchDectroyCart())
 		dispatch(accessOrder());
 		history.push(ROUTE_APP.SHOP.SHOP_MAIN);
 	};
