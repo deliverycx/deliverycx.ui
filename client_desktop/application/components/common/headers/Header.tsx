@@ -130,6 +130,7 @@ const Header = () => {
 												}
 												{
 													/**/
+													point.reservetable &&
 													<button className="reserve-btn" onClick={() => setReserveModalOpen(true)}>
 						                Заказать Столик
 						            	</button>
