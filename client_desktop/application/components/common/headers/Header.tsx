@@ -21,6 +21,7 @@ const Header = () => {
     const mapShowModal = useSelector((state: RootState) => state.location.locationMap);
 		const point = adapterSelector.useSelectors(selector => selector.point)
 		const [isModalOpen, setIsModalOpen] = useState(false)
+		const [ReserveModalOpen, setReserveModalOpen] = useState(false)
 
 		
     const mapColorCN = cn("header_menu_link", {hinkRedColor: mapShowModal});
@@ -124,6 +125,20 @@ const Header = () => {
 													isModalOpen &&
 													<Modals onClose={() => setIsModalOpen(false)}>
 														<CounterHiModal  isModalOpen={isModalOpen} setIsModalOpen={() => setIsModalOpen(false)}/>
+													</Modals>
+													
+												}
+												{
+													/**/
+													<button className="reserve-btn" onClick={() => setReserveModalOpen(true)}>
+						                Заказать Столик
+						            	</button>
+													
+												}
+												{
+													ReserveModalOpen &&
+													<Modals onClose={() => setIsModalOpen(false)}>
+														<ReserveModalBtnContainer  isModalOpen={ReserveModalOpen} setIsModalOpen={() => setReserveModalOpen(false)}/>
 													</Modals>
 													
 												}
