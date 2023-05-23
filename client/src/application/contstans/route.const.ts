@@ -16,7 +16,8 @@ export const ROUTE_APP = {
   ORDER: '/success',
 	DUALPAYMENT: '/dualpayment',
   PAGES: {
-    ABOUT:'/about'
+    ABOUT:'/about',
+		GUESTVIP:'/guestvip'
   }
 }
 
