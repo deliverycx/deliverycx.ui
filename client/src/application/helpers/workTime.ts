@@ -31,7 +31,7 @@ export const workTimeHelp = (work?:any) =>{
 	return false
 }
 
-export const checkEmtpyWork = (work:string[],index:number) =>{
+export const checkEmtpyWork = (work:string | string[],index:number) =>{
 	if(!work[index]){
 		return checkWorkIsArray(work)
 	}else{

@@ -37,7 +37,7 @@ const Menu: FC<IProps> = ({isActive, setter})=>{
                         54654
                     </div> */}
                     <div className="header__menu__link__list">
-                        {/* <a href="#" className="header__menu__link profile">Профиль</a> */}
+                        <a href={ROUTE_APP.SHOP.SHOP_RESERVE} className="header__menu__link order-history">Забронировать стол</a>
                         {/* <a href="#" className="header__menu__link qrcode">Номер столика</a> */}
                         <Link to="/" className="header__menu__link mark">Выбор заведения</Link>
                         {/* <a href="#" className="header__menu__link order-history">История заказов</a> */}

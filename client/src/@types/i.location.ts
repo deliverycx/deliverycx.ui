@@ -10,7 +10,7 @@ export interface IPoint {
   cords:	number[]
   phone:	string
 	guid:string
-  workTime: string
+  workTime: string | string []
   delivMetod: string | null
   isHidden:boolean
 	redirect:string
