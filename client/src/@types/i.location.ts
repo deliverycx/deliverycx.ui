@@ -4,6 +4,7 @@ export interface ICity {
 	isHidden:boolean
 }
 export interface IPoint {
+	reservetable: boolean
   id:	string
   address:	string
   city:	string
