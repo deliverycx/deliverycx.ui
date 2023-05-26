@@ -131,7 +131,7 @@ const Header = () => {
 												}
 												{
 													/**/
-													point.reservetable && workTimeHelp() &&
+													point.reservetable && !workTimeHelp() &&
 													<button className="reserve-btn" onClick={() => setReserveModalOpen(true)}>
 						                Заказать Столик
 						            	</button>
