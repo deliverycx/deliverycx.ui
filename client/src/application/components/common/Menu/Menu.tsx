@@ -6,6 +6,7 @@ import { Link } from "react-router-dom";
 import { isEqual } from "lodash";
 import { ROUTE_APP } from 'application/contstans/route.const';
 import { adapterSelector } from "servises/redux/selectors/selectors";
+import { workTimeHelp } from "application/helpers/workTime";
 
 interface IProps{
     isActive: boolean,
@@ -40,7 +41,7 @@ const Menu: FC<IProps> = ({isActive, setter})=>{
                     </div> */}
                     <div className="header__menu__link__list">
 												{
-													point.reservetable &&
+													point.reservetable && !workTimeHelp() &&
 													<a href={ROUTE_APP.SHOP.SHOP_RESERVE} className="header__menu__link order-history">Забронировать стол</a>
 												}
                         

@@ -15,6 +15,7 @@ import { adapterSelector } from "servises/redux/selectors/selectors";
 import Modals from "../Modals/Modals";
 import CounterHiModal from "../Modals/CounterHiModal";
 import { useEffect } from 'react';
+import { workTimeHelp } from "application/helpers/workTime";
 
 /* eslint-disable react/no-unknown-property */
 const Header = () => {
@@ -130,7 +131,7 @@ const Header = () => {
 												}
 												{
 													/**/
-													point.reservetable &&
+													point.reservetable && workTimeHelp() &&
 													<button className="reserve-btn" onClick={() => setReserveModalOpen(true)}>
 						                Заказать Столик
 						            	</button>
