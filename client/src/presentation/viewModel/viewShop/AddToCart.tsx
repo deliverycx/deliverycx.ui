@@ -6,16 +6,18 @@ import { useSpring, animated, config } from 'react-spring'
 import { useAddToCartMutation } from "servises/repository/RTK/RTKCart";
 import { RequestCart } from "servises/repository/Axios/Request";
 import { fetchAddToCart } from "servises/redux/slice/cartSlice";
+import { IProduct } from '@types';
 
 interface IProps { 
-    id: string,
+		product: IProduct,
     _class:string,
     groupImage?: string
 }
 
-const AddToCart: FC<IProps> = ({ id,_class, groupImage }) => {
+const AddToCart: FC<IProps> = ({ product,_class, groupImage }) => {
     const dispatch = useDispatch();
     const [addCart,{data,isLoading}] = useAddToCartMutation()
+
     
     const springRef = useRef<any>();
     let queryCartRef = useRef<any>();
@@ -48,7 +50,8 @@ const AddToCart: FC<IProps> = ({ id,_class, groupImage }) => {
         }catch(e){
             console.log(e)
         }
-        dispatch(fetchAddToCart(id))
+				console.log(product);
+        dispatch(fetchAddToCart(product))
         
         //addCart(id)
     }

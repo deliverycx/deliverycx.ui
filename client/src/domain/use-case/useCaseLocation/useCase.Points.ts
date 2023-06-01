@@ -18,7 +18,7 @@ import { ROUTE_APP } from "application/contstans/route.const";
 import { adapterSelector } from "servises/redux/selectors/selectors";
 import { fetchDeleteCart, fetchRefreshCart, setOrderType } from "servises/redux/slice/cartSlice";
 import _ from "lodash";
-import { fetStopList } from "servises/redux/slice/shopSlice";
+import { fetStopList, setRefreshShop } from "servises/redux/slice/shopSlice";
 import { DELIVERY_METODS, ORG_STATUS } from "application/contstans/const.orgstatus";
 import { Redirects } from "application/helpers/redirectTo";
 
@@ -148,6 +148,7 @@ export function usePoints() {
 						if(address.id !== id){
 							dispatch(setOrderType(DELIVERY_METODS.COURIER))
 							dispatch(fetchRefreshCart())
+							dispatch(setRefreshShop())
 						} 
             history.push(`${ROUTE_APP.SHOP.SHOP_MAIN}/?address=${address.city + ',' + address.address}` );
             //RequestProfile.update({ organizationId: address.id });

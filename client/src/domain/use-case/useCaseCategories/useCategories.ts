@@ -16,12 +16,12 @@ export const staticCategories = {
   name: "Избранное",
 }
 
-export function useCategories() {
+export function useCategories(categories:ICategory[]) {
   const dispatch = useDispatch();
   const [currentSlide, setCurrentSlide] = useState<number>(0) 
   const {id} = adapterSelector.useSelectors<IPoint>(selector => selector.point)
   const category = adapterSelector.useSelectors<ICategory>(selector => selector.category)
-  const { data: categories, isFetching } = useGetCategoriQuery(id)
+  //const { data: categories, isFetching } = useGetCategoriQuery(id)
   
   const handleSliderClick = useCallback((index: number,slider?:any) => {
     slider.current?.slickGoTo(index);
@@ -33,17 +33,21 @@ export function useCategories() {
    
   useEffect(() => {
     let time: null | ReturnType<typeof setTimeout> = null
-    if (Object.keys(category).length && categories) {
+    if (category) {
       const catIndex = categories.findIndex((cat) => cat.id === category.id)
-      dispatch(setCategories(categories[catIndex]))
+			
+      //categories && dispatch(setCategories(categories[catIndex]))
       time = setTimeout(() => {
+				
         setCurrentSlide(catIndex);
       },0)
     }
+
+
     return () => {
       typeof time === 'number' && clearTimeout(time)
     }
-  }, [])
+  }, [categories])
   
  
   
@@ -56,6 +60,6 @@ export function useCategories() {
     handleSliderClick
   })
   this.status({
-    isFetching
+    
   })
 }

@@ -2,6 +2,8 @@ export interface ICategory {
     image: string;
     id: string;
     name: string;
+		description:string
+		order:number
 }
 export interface IProduct<C = ICategory> {
     id: string;
@@ -15,6 +17,7 @@ export interface IProduct<C = ICategory> {
     image: string;
     categoryImage: string;
     isFav: boolean;
+		category:string
 }
 export interface IFavorites {
     list: string[];
