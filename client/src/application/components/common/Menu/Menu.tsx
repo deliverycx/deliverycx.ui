@@ -41,7 +41,7 @@ const Menu: FC<IProps> = ({isActive, setter})=>{
                     </div> */}
                     <div className="header__menu__link__list">
 												{
-													point.reservetable && !workTimeHelp() &&
+													point.reservetable && workTimeHelp() &&
 													<a href={ROUTE_APP.SHOP.SHOP_RESERVE} className="header__menu__link order-history">Забронировать стол</a>
 												}
                         
