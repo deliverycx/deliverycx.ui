@@ -41,7 +41,7 @@ console.log(point.reservetable,workTimeHelp(point.workTime));
                     </div> */}
                     <div className="header__menu__link__list">
 												{
-													point.reservetable && workTimeHelp(point.workTime) &&
+													point.reservetable && !workTimeHelp(point.workTime) &&
 													<a href={ROUTE_APP.SHOP.SHOP_RESERVE} className="header__menu__link order-history">Забронировать стол</a>
 												}
                         
