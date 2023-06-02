@@ -16,7 +16,7 @@ interface IProps{
 const Menu: FC<IProps> = ({isActive, setter})=>{
 	const point = adapterSelector.useSelectors(selector => selector.point)
     const menuCN = cn("header__menu", {active: isActive});
-
+console.log(point.reservetable,workTimeHelp(point.workTime));
     return (
         <div className={menuCN}>
 
@@ -41,7 +41,7 @@ const Menu: FC<IProps> = ({isActive, setter})=>{
                     </div> */}
                     <div className="header__menu__link__list">
 												{
-													point.reservetable && workTimeHelp() &&
+													point.reservetable && workTimeHelp(point.workTime) &&
 													<a href={ROUTE_APP.SHOP.SHOP_RESERVE} className="header__menu__link order-history">Забронировать стол</a>
 												}
                         
