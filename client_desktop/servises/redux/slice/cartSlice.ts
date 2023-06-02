@@ -3,7 +3,7 @@ import {
   createEntityAdapter,
   createSlice
 } from "@reduxjs/toolkit";
-import { IReqCart } from "@types";
+import { IProduct, IReqCart } from "@types";
 import { AxiosError } from "axios";
 import CartEntities from "domain/entities/CartEntities/Cart.entities";
 import { RequestCart } from "servises/repository/Axios/Request";
@@ -69,10 +69,10 @@ export const fetchRefreshCart = createAsyncThunk(
 );
 export const fetchAddToCart = createAsyncThunk(
   "cart/add",
-  async (id: string, { dispatch, getState,rejectWithValue }) => {
+  async (product: IProduct, { dispatch, getState,rejectWithValue }) => {
       try {
           const state = getState() as RootState
-          const request = await RequestCart.addToCart({ productId: id,...helperOrderType(getState) });
+          const request = await RequestCart.addToCart({ product,...helperOrderType(getState) });
           if (request.status == 200 && request.data) {
               dispatch(addCart(request.data.item));
               dispatch(
