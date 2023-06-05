@@ -29,7 +29,7 @@ const persistConfig = {
     CATEGORIES_API_REDUCER_KEY,
     CART_API_REDUCER_KEY,
     profileSlice.name,
-    ShopSlice.name,
+		ShopSlice.name,
     cartSlice.name,
     bankCardSlice.name
   ],
@@ -43,7 +43,8 @@ const persistConfig = {
       },
       {
         whitelist: [
-          locationSlice.name
+          locationSlice.name,
+
         ]
       }
     )

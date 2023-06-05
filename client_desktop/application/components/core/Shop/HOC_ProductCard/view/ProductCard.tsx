@@ -30,7 +30,7 @@ const ProductCard:FC<IProps> = ({product,onClose}) => {
     			</div>
     			<div className="product_card__item__img-wrap">
     				<div>
-    					<img src={imgRout(product.image)} alt=""/>
+    					<img src={product.image} alt=""/>
     				</div>
     			</div>
 
@@ -92,7 +92,7 @@ const ProductCard:FC<IProps> = ({product,onClose}) => {
       						<div className="count-option__increment"><img src="/images/icon/plus.svg" alt="плюс"/></div>
       					</div>
               }
-              <AddToCart id={product.id} groupImage={product.categoryImage} _class={"product-card__add"}/>
+              <AddToCart products={product} groupImage={product.categoryImage} _class={"product-card__add"}/>
     				</div>
     			</div>
     		</div>

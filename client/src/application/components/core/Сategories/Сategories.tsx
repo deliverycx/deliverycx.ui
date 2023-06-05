@@ -1,7 +1,7 @@
 import Slider from "infinite-react-carousel";
 import cn from "classnames";
 /* eslint-disable @typescript-eslint/no-var-requires */
-import { useEffect, useRef } from 'react';
+import { FC, memo, useEffect, useRef } from 'react';
 import { ICategory } from "@types";
 import { adapterComponentUseCase } from "adapters/adapterComponents";
 import { useCategories } from "domain/use-case/useCaseCategories";
@@ -10,19 +10,21 @@ import { setCategories } from "servises/redux/slice/shopSlice";
 import { RTKShop } from "servises/repository/RTK/RTKShop";
 import LoaderProduct from "application/components/common/Loaders/loaderProduct";
 
+type IProps = {
+	nomenclatureCategories:ICategory[]
+}
 
-const Categories = () => {
+const Categories:FC<IProps> = ({nomenclatureCategories}) => {
   const slider = useRef<typeof Slider>(null);
 
-  const useCasePoints = adapterComponentUseCase(useCategories)
+  const useCasePoints = adapterComponentUseCase(useCategories,nomenclatureCategories)
   const {categories,currentSlide,category } = useCasePoints.data
   const {handleSliderClick} = useCasePoints.handlers
-  const { isFetching } = useCasePoints.status
   
     
     
   
-  return !isFetching && categories ? (
+  return  (
     <Slider
       className="categories"
       initialSlide={currentSlide}
@@ -56,6 +58,6 @@ const Categories = () => {
           })
       }
     </Slider>        
-  ) : <LoaderProduct />
+  )
 }
-export default Categories
+export default memo(Categories) 

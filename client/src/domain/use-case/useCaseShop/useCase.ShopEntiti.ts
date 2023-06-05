@@ -11,8 +11,10 @@ export class useCaseShopEntiti implements IuseCaseShopEntiti{
   get getReduserAction() {
     return {
       ['setCategories']: ShopEntitiesMetod.setCategories, 
-      ['setStopList']: ShopEntitiesMetod.setStopList
-      
+      ['setStopList']: ShopEntitiesMetod.setStopList,
+			['setFavorites']:ShopEntitiesMetod.setFavorites,
+      ['setProductCard']:ShopEntitiesMetod.setProductCard,
+			['setRefreshShop']:ShopEntitiesMetod.setRefreshShop
     }
   }
 }

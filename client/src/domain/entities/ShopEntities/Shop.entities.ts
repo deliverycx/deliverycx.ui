@@ -1,10 +1,12 @@
-import { ICategory, ICity, IFavorites, IPoint, IStopList, TStopListItems } from "@types"
+import { ICategory, ICity, IFavorites, IPoint, IProduct, IStopList, TStopListItems } from "@types"
 import Entities from "../Entities"
 
 export interface IShopEntities{
   isSearch: boolean
   category: ICategory
-  favorites: IFavorites,
+	products:IProduct[]
+	productCard:IProduct
+  favorites: IProduct[],
   stoplist:TStopListItems[]
 }
 /**
@@ -13,14 +15,18 @@ export interface IShopEntities{
  */
 class ShopEntities extends Entities<IShopEntities>{
   protected isSearch = false
-  protected category = {}
-  protected favorites = {}
+  protected category = null
+	protected productCard = null
+	protected products = null
+  protected favorites = []
   protected stoplist = null
   constructor() {
     super()
     this.entities = {
       isSearch: this.isSearch,
       category: this.category,
+			productCard:this.productCard,
+			products:this.products,
       favorites: this.favorites,
       stoplist:this.stoplist
     }

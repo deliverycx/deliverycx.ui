@@ -4,6 +4,7 @@ import ShopProductCard from "application/components/core/Shop/ShopProductCard"
 import HeaderBack from "presentation/viewModel/viewHead/HeaderBack"
 import { FC, useState } from "react"
 import { RouteComponentProps } from "react-router";
+import { adapterSelector } from "servises/redux/selectors/selectors";
 
 interface IMatchProps {
   id: string
@@ -11,19 +12,18 @@ interface IMatchProps {
 type RouteProps = RouteComponentProps<IMatchProps>;
 
 const ShopCardLayout:FC<RouteProps> = ({ match }) => {
-  const [group, setGroup] = useState<string>()
-  const productId = match.params.id;
+  const {productCard,category} = adapterSelector.useSelectors(selector => selector.shop)
 
   return (
     <div className="product-card">
             <HeaderBack backgroundColor="#fff">
                 <div className="product-card__category">
                     <div className="category-image-wrap">
-                        <img src={group} />
+                        <img src={category.image} />
                     </div>
                 </div>
             </HeaderBack>    
-            <ShopProductCard productId={productId} setgrop={setGroup} />
+            <ShopProductCard product={productCard} />
             <ShopLinkToCart />
     </div>
   )

@@ -4,6 +4,7 @@ export const ROUTE_APP = {
   POINT: "/point",
   SHOP: {
     SHOP_MAIN: "/shop",
+		SHOP_SERCH: "/shop/serch",
     SHOP_PRODUCT: "/shop/product/:id",
 		SHOP_RESERVE: "/shop/reservetable"
   },
