@@ -3,14 +3,13 @@ import {
     createEntityAdapter,
     createSlice
 } from "@reduxjs/toolkit";
-import { IReqCart } from "@types";
+import { IProduct, IReqCart } from "@types";
 import { AxiosError } from "axios";
 import CartEntities from "domain/entities/CartEntities/Cart.entities";
 import { RequestCart } from "servises/repository/Axios/Request";
 import { RTKCart } from "servises/repository/RTK/RTKCart";
 import { AppDispatch, RootState } from "../createStore";
 import { actionPaymentAccsess, actionPaymentReady } from "./bankCardSlice";
-import { DefaultinitialValues } from "application/components/core/Cart/CartForm/CartForm";
 
 const cartAdapter = createEntityAdapter<IReqCart>({
     selectId: (product) => product.id
@@ -22,6 +21,7 @@ export const cartSelector = cartAdapter.getSelectors(
 
 const helperOrderType = (getState: any) : {orderType:string,organization:string} => {
     const state = getState() as RootState
+
     return {orderType:state.cart.orderType,organization:state.location.point.guid}
 }
 
@@ -72,10 +72,10 @@ export const fetchRefreshCart = createAsyncThunk(
 );
 export const fetchAddToCart = createAsyncThunk(
     "cart/add",
-    async (id: string, { dispatch, getState,rejectWithValue }) => {
+    async (product: IProduct, { dispatch, getState,rejectWithValue }) => {
         try {
             const state = getState() as RootState
-            const request = await RequestCart.addToCart({ productId: id,...helperOrderType(getState) });
+            const request = await RequestCart.addToCart({product,...helperOrderType(getState) });
             if (request.status == 200 && request.data) {
                 dispatch(addCart(request.data.item));
                 dispatch(
@@ -152,8 +152,7 @@ export const fetchDeleteCart = createAsyncThunk(
                 dispatch(
                     setTotalPrice({
                         totalPrice: 0,
-                        deltaPrice: 0,
-												deliveryPrice:0
+                        deltaPrice: 0
                     })
                 );
             }
@@ -162,30 +161,6 @@ export const fetchDeleteCart = createAsyncThunk(
         }
     }
 );
-export const fetchDectroyCart = createAsyncThunk(
-	"cart/deleteAll",
-	async (_, { dispatch, rejectWithValue }) => {
-			try {
-					const request = await RequestCart.deleteCart();
-					if (request.status == 200) {
-							dispatch(deleteCart());
-							dispatch(setOrderInfo(DefaultinitialValues))
-							dispatch(
-									setTotalPrice({
-											totalPrice: 0,
-											deltaPrice: 0,
-											deliveryPrice:0
-									})
-							);
-							
-					}
-			} catch (error: any) {
-					return rejectWithValue(error.response.data);
-			}
-	}
-);
-
-
 export const fetchOrderCart = createAsyncThunk(
     "cart/order",
     async (value: any, { dispatch, rejectWithValue }) => {
@@ -193,10 +168,10 @@ export const fetchOrderCart = createAsyncThunk(
         
             const request = await RequestCart.OrderCheckCart(value);
             if (request.data && request.status === 200) {
-                //const order = await RequestCart.OrderCart(value);
+                const order = await RequestCart.OrderCart(value);
                 
-                //dispatch(actionPaymentAccsess());
-                return request.data 
+                dispatch(actionPaymentAccsess());
+                return order.data 
 								
             }
         } catch (error: any) {
@@ -225,9 +200,6 @@ const cartSlice = createSlice({
 				setOrderTable:(state, action) =>{
 					state.orderTable = action.payload
 				},
-				setOrderInfo: (state, action) => {
-					state.orderInfo = {...state.orderInfo,...action.payload};
-				},
         setAdress: (state, action) => {
             state.address = action.payload;
         },
@@ -236,11 +208,12 @@ const cartSlice = createSlice({
 				},
 				setKladrId: (state, action) => {
 					state.kladrid = action.payload;
-
 				},
 
         setTotalPrice: (state, action) => {
-            state.orderPrice = action.payload;
+            state.totalPrice = action.payload.totalPrice;
+            state.deltaPrice = action.payload.deltaPrice;
+            state.deliveryPrice = action.payload.deliveryPrice;
         },
         setErrors: (state, action) => {
             state.orderError = action.payload.errors;
@@ -288,7 +261,6 @@ export const {
     accessOrder,
     setOrderType,
 		setENErrors,
-		setOrderTable,
-		setOrderInfo
+		setOrderTable
 } = cartSlice.actions;
 export default cartSlice;

@@ -1,25 +1,37 @@
-import { IPoint, TStopListItems } from "@types"
+import { IPoint, IProduct, TStopListItems } from "@types"
 import { adapterSelector } from "servises/redux/selectors/selectors"
-import { useGetProductsQuery, useSearchProductsMutation } from "servises/repository/RTK/RTKShop"
+import { useGetFavoritesQuery, useGetProductsQuery, useSearchProductsMutation } from "servises/repository/RTK/RTKShop"
 import { ChangeEvent, useRef, useState } from 'react';
 import { useEffect } from 'react';
 import debounce from 'lodash.debounce';
 import { useHistory } from "react-router-dom";
 import { Redirects } from "application/helpers/redirectTo";
 import { useDispatch } from "react-redux";
-import { fetStopList } from "servises/redux/slice/shopSlice";
+import { fetStopList, setProductCard } from "servises/redux/slice/shopSlice";
 import { useRedirectOrg } from "application/hooks/useRedirectOrgTable";
 import { delivertyTime } from "application/helpers/workTime";
 
-export function useCaseShop() {
+export function useCaseShop(products:IProduct[]) {
   const [id,setId] = useState(true)
   const category = adapterSelector.useSelectors(selector => selector.category)
 	const dispatch = useDispatch()
 	const point = adapterSelector.useSelectors(selector => selector.point)
+	/*
   const { data: products, isFetching } = useGetProductsQuery(category?.id, {
     skip:id,
     refetchOnMountOrArgChange:true,
   })
+	*/
+
+	
+
+	
+
+	products = products.filter((product:IProduct) =>{
+		//product.isFav = true
+		return product.category === category.id
+	})
+
 
 	useRedirectOrg()
 
@@ -48,22 +60,24 @@ export function useCaseShop() {
 
   })
   this.status({
-    isFetching
+    
   })
 }
 
-export function useCaseShopItem({id,productId}:any) {
+export function useCaseShopItem(prodid:string) {
   const stoplists = adapterSelector.useSelectors(selector => selector.stoplist)
   const history = useHistory();
+	const dispatch = useDispatch()
   const cardRef = useRef<HTMLDivElement>(null);
   const [disableItem, setDisableItem] = useState(false)
 
 	
 
-  const clickItemHandler = (e: any, id: string) => {
+  const clickItemHandler = (e: any, id: string,products:IProduct) => {
       if(disableItem) return
 
       if ((e.target as HTMLButtonElement).type !== 'submit') {
+					dispatch(setProductCard(products))
           history.push(`/shop/product/${id}`)
 
           localStorage.setItem("prod", cardRef.current?.dataset.id as string)
@@ -86,8 +100,7 @@ export function useCaseShopItem({id,productId}:any) {
   useEffect(() => {
     if (stoplists) {
 			stoplists.forEach((item: TStopListItems) => {
-				
-        item.productId === productId && setDisableItem(true)
+        item.productId === prodid && setDisableItem(true)
       })
     }
 
@@ -109,18 +122,30 @@ export function useCaseShopItem({id,productId}:any) {
 }
 
 
-export function useCaseSearchShop() {
+export function useCaseSearchShop(nomenclatureProducts:IProduct[]) {
   const organization = adapterSelector.createSelectors<IPoint>(selector => selector.point, val => val.id)
-  const [search, { data: products, isUninitialized, isSuccess }] = useSearchProductsMutation()
+	const [products,setProducts] = useState<IProduct[] |null>(null)
+  //const [search, { data: products, isUninitialized, isSuccess }] = useSearchProductsMutation()
 
-  const searchHandler = debounce((e: ChangeEvent<HTMLInputElement>) => {
+  const searchHandler = (e: ChangeEvent<HTMLInputElement>) => {
     const value = e.target.value
-    value && search({
-      searchString: value,
-      organizationId:organization
-    })
-  },500)
+		
+		if(!value){
+			setProducts(null)
+		}
 
+		const table:any = {};
+		const findProducts = nomenclatureProducts.filter(element => {
+			if(!table[element.id] && (table[element.id] = 1)){
+				return element.name.toUpperCase().indexOf(value.toUpperCase()) > -1
+			}
+		})
+		setProducts(findProducts)
+
+  }
+
+	
+	
 
   this.data({
     organization,
@@ -130,7 +155,6 @@ export function useCaseSearchShop() {
     searchHandler
   })
   this.status({
-    isSuccess,
-    isUninitialized
+
   })
 }

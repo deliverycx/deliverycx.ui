@@ -4,13 +4,14 @@ export interface ICity {
 	isHidden:boolean
 }
 export interface IPoint {
+	reservetable: boolean
   id:	string
   address:	string
   city:	string
   cords:	number[]
   phone:	string
 	guid:string
-  workTime: string
+  workTime: string | string []
   delivMetod: string | null
   isHidden:boolean
 	redirect:string

@@ -33,6 +33,14 @@ export const RTKShop = createApi({
                 };
             }
         }),
+				getNomenclature: builder.query<{categoryes:ICategory[] | null,products:IProduct[] | null},string>({
+					query: (organization) => {
+							return {
+									method: "get",
+									url: `product/nomenclature?organization=${organization}`
+							};
+					}
+			}),
         searchProducts: builder.mutation<IProduct[], any>({
             query: ({ organizationId, searchString }) => {
                 return {
@@ -46,5 +54,6 @@ export const RTKShop = createApi({
 export const {
     useGetProductsQuery,
     useGetProductCartQuery,
-    useSearchProductsMutation
+    useSearchProductsMutation,
+		useGetNomenclatureQuery
 } = RTKShop;

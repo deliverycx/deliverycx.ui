@@ -22,12 +22,12 @@ const ShopProductItem: FC<IProps> = ({ products }) => {
     const CN = cn("shop_grid__item", { product__stoplist: disableItem})
 
     return (
-        <div ref={cardRef} className={CN}  data-id={id} onClick={(e)=> clickItemHandler(e,id)}>
+        <div ref={cardRef} className={CN}  data-id={id} onClick={(e)=> clickItemHandler(e,products)}>
 						{
                     disableItem && <div className="stoplist_title">Упс... <br/> закончилось</div>
                 }
             <div className="shop_grid__item__img-wrap">
-                <img src={imgRout(image)} alt={name} />
+                <img src={image} alt={name} />
                 
             </div>
             <div className="shop_grid__item__content">
@@ -49,7 +49,7 @@ const ShopProductItem: FC<IProps> = ({ products }) => {
 												</div>
                         <div className="price">{price} ₽</div>
                     </div>
-                    {!disableItem && <AddToCart id={id} _class={"add-to-cart"} groupImage={categoryImage} />}
+                    {!disableItem && <AddToCart products={products} _class={"add-to-cart"} groupImage={categoryImage} />}
               </div>
         </div>
     )

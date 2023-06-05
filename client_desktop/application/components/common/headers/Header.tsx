@@ -15,12 +15,14 @@ import { adapterSelector } from "servises/redux/selectors/selectors";
 import Modals from "../Modals/Modals";
 import CounterHiModal from "../Modals/CounterHiModal";
 import { useEffect } from 'react';
+import { workTimeHelp } from "application/helpers/workTime";
 
 /* eslint-disable react/no-unknown-property */
 const Header = () => {
     const mapShowModal = useSelector((state: RootState) => state.location.locationMap);
 		const point = adapterSelector.useSelectors(selector => selector.point)
 		const [isModalOpen, setIsModalOpen] = useState(false)
+		const [ReserveModalOpen, setReserveModalOpen] = useState(false)
 
 		
     const mapColorCN = cn("header_menu_link", {hinkRedColor: mapShowModal});
@@ -124,6 +126,21 @@ const Header = () => {
 													isModalOpen &&
 													<Modals onClose={() => setIsModalOpen(false)}>
 														<CounterHiModal  isModalOpen={isModalOpen} setIsModalOpen={() => setIsModalOpen(false)}/>
+													</Modals>
+													
+												}
+												{
+													/**/
+													point.reservetable && !workTimeHelp() &&
+													<button className="reserve-btn" onClick={() => setReserveModalOpen(true)}>
+						                Заказать Столик
+						            	</button>
+													
+												}
+												{
+													ReserveModalOpen &&
+													<Modals onClose={() => setIsModalOpen(false)}>
+														<ReserveModalBtnContainer  isModalOpen={ReserveModalOpen} setIsModalOpen={() => setReserveModalOpen(false)}/>
 													</Modals>
 													
 												}

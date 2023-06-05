@@ -10,16 +10,17 @@ import { useCaseShopAddToCard } from "domain/use-case/useCaseShop";
 import { imgRout } from "application/helpers/imgInit";
 import { checkPoint } from "application/helpers/checkPoint";
 import { fetchAddToCart } from "servises/redux/slice/cartSlice";
+import { IProduct } from '@types';
 
 interface IProps { 
-    id: string,
+		products: IProduct,
     _class:string,
     groupImage: string
     children?:ReactNode
 }
 
-const AddToCart: FC<IProps> = ({ id, _class, groupImage, children }) => {
-  const useCaseProductCard = adapterComponentUseCase(useCaseShopAddToCard,id)
+const AddToCart: FC<IProps> = ({ products, _class, groupImage, children }) => {
+  const useCaseProductCard = adapterComponentUseCase(useCaseShopAddToCard,products)
   const dispatch = useDispatch();
   const {  } = useCaseProductCard.handlers
   
@@ -72,7 +73,7 @@ const AddToCart: FC<IProps> = ({ id, _class, groupImage, children }) => {
         console.log(e)
     }
     
-    checkPoint() && dispatch(fetchAddToCart(id))
+    checkPoint() && dispatch(fetchAddToCart(products))
   }
 
   const debouncedChangeHandler = debounce(AnimateHandle, 400)

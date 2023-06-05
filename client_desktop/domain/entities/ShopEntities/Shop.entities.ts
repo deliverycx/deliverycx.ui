@@ -1,4 +1,4 @@
-import { ICategory, ICity, IFavorites, IPoint, IStopList, TStopListItems } from "@types"
+import { ICategory, ICity, IFavorites, IPoint, IProduct, IStopList, TStopListItems } from "@types"
 import Entities from "../Entities"
 
 export interface IShopEntities{
@@ -6,7 +6,7 @@ export interface IShopEntities{
   category: ICategory
   favorites: IFavorites,
   stoplist: TStopListItems[],
-  productid:string
+  productid:IProduct
   
 }
 /**

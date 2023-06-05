@@ -8,24 +8,25 @@ import { FC, useEffect} from "react"
 
 
 
+type IProps = {
+	nomenclatureProducts:IProduct[]
+}
 
-const ShopProduct = () => {
-  const useCasePoints = adapterComponentUseCase(useCaseShop)
+const ShopProduct:FC<IProps> = ({nomenclatureProducts}) => {
+  const useCasePoints = adapterComponentUseCase(useCaseShop,nomenclatureProducts)
   const { category,products } = useCasePoints.data
-  const { isFetching } = useCasePoints.status
-  
+
   return (
       <div className="product__list">
             {
 
-                !isFetching && products ? (
                   products.length
                         ? products.map((item: IProduct) => {
-                          return <ShopProductItems key={item.id} products={item}/>
+                          return  <ShopProductItems key={item.id} products={item}/>
                         })
-                        : category === 'favorite' ? <FavoriteEmpty /> : "Эта категория пуста :("
+                        : category === 'favorite' ? <FavoriteEmpty products={nomenclatureProducts} /> : "Эта категория пуста :("
 
-                ) : <LoaderProduct />
+              
             }
         </div>
   )

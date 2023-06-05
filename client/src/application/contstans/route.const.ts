@@ -4,7 +4,9 @@ export const ROUTE_APP = {
   POINT: "/point",
   SHOP: {
     SHOP_MAIN: "/shop",
-    SHOP_PRODUCT: "/shop/product/:id"
+		SHOP_SERCH: "/shop/serch",
+    SHOP_PRODUCT: "/shop/product/:id",
+		SHOP_RESERVE: "/shop/reservetable"
   },
   CART: {
     CART_DELIVERY: "/cart/delivery",
@@ -17,7 +19,8 @@ export const ROUTE_APP = {
 	ORDER_CREATE:'/ordercreate',
 	DUALPAYMENT: '/dualpayment',
   PAGES: {
-    ABOUT:'/about'
+    ABOUT:'/about',
+		GUESTVIP:'/guestvip'
   }
 }
 

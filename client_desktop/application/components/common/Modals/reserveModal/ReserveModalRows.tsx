@@ -51,7 +51,7 @@ const ReserveModalRows = ({reserveProps}:any) => {
                           <Field
                               className="form__field-wrapper__input"
                               name="fullname"
-                              placeholder="Ваше имя"
+                              placeholder="Имя"
                               value={formik.values.fullname}
                               onChange={formik.handleChange}
                           />
@@ -71,7 +71,7 @@ const ReserveModalRows = ({reserveProps}:any) => {
                                       mask="+7 999 999 99 99"
                                       maskPlaceholder={null}
                                       className="form__field-wrapper__input"
-                                      placeholder="Ваш телефон"
+                                      placeholder="Телефон"
                                       value={formik.values.phone}
                                       onChange={formik.handleChange}
                                   />

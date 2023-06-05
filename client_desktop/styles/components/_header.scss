@@ -10,7 +10,7 @@
 		}
 	}
 	.header__center{
-		width: 60%;
+		width: 70%;
 		padding-top: 15px;
 		.header__center__location {
 			display: flex;
@@ -19,10 +19,11 @@
 				position: relative;
 				top: -5px;
 				color: #666666;
+				margin-right: 10px;
 				font-size: 13px;
 				font-family: $sf;
 				font-weight: 500;
-				width: 175px;
+				width: 155px;
 				height: 36px;
 				border-radius: 20px;
 				border-width: 1px;

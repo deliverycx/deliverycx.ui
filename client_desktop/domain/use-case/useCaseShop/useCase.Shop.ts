@@ -1,4 +1,4 @@
-import { ICategory, IPoint, IStopList, TStopListItems } from "@types"
+import { ICategory, IPoint, IProduct, IStopList, TStopListItems } from "@types"
 import { adapterSelector } from "servises/redux/selectors/selectors"
 import { useGetProductsQuery, useSearchProductsMutation } from "servises/repository/RTK/RTKShop"
 import { ChangeEvent, useRef, useState } from 'react';
@@ -10,18 +10,26 @@ import { fetchAddToCart } from "servises/redux/slice/cartSlice";
 import { checkPoint } from "application/helpers/checkPoint";
 import { Redirects } from "application/helpers/redirectTo";
 
-export function useCaseShop(this: any,category:string) {
+export function useCaseShop(this: any,{category,products}:any) {
   const [id,setId] = useState(true)
 	const point = adapterSelector.useSelectors(selector => selector.point)
 	const dispatch = useDispatch()
+	/*
   const { data: products, isFetching } = useGetProductsQuery(category, {
     skip:id,
     refetchOnMountOrArgChange:true,
   })
+	*/
   
   useEffect(() => {
     category && setId(false)  
   }, [category])
+
+
+	products = products.filter((product:IProduct) =>{
+		//product.isFav = true
+		return product.category === category
+	})
 
 
 	useEffect(() => {
@@ -39,7 +47,7 @@ export function useCaseShop(this: any,category:string) {
     
   })
   this.status({
-    isFetching
+
   })
 }
 
@@ -114,11 +122,11 @@ export function useCaseSearchShop(this: any) {
 }
 
 
-export function useCaseShopAddToCard(this: any,id:string) {
+export function useCaseShopAddToCard(this: any,products:IProduct) {
   const dispatch = useDispatch();
   const AnimateHandle = () => {
     
-    checkPoint() && dispatch(fetchAddToCart(id))
+    checkPoint() && dispatch(fetchAddToCart(products))
   }
   const debouncedChangeHandler = debounce(AnimateHandle, 400)
 

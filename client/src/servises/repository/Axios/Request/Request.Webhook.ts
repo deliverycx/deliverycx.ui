@@ -1,4 +1,5 @@
 /* eslint-disable @typescript-eslint/no-namespace */
+import * as Types from "@types";
 import { ApiSuper, methods, token } from "../AxiosApi";
 
 namespace Req{
@@ -33,6 +34,10 @@ class RequestWebhook extends ApiSuper {
 	@methods('get')
   getStreetDaData(street:string) {
     return this.request(`/webhook/daData/${street}`)
+  }
+	@methods('post')
+  reverveTable(reservebody:Types.IReverveTable) {
+    return this.request(`/webhook/revervetable`)
   }
 }
 export default new RequestWebhook()

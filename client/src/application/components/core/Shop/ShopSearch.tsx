@@ -5,16 +5,18 @@ import LoaderProduct from "application/components/common/Loaders/loaderProduct";
 import { useCaseSearchShop } from "domain/use-case/useCaseShop";
 import { FC } from "react";
 import ShopProductItem from "./ShopProductItems";
+import ShopProduct from "./ShopProduct";
 
 type IProps = {
     close:any
+		nomenclatureProducts:IProduct[]
 }
 
-const ShopSearch:FC<IProps> = ({close}) => {
-    const useCasePoints = adapterComponentUseCase(useCaseSearchShop);
+const ShopSearch:FC<IProps> = ({close,nomenclatureProducts}) => {
+    const useCasePoints = adapterComponentUseCase(useCaseSearchShop,nomenclatureProducts);
     const { products } = useCasePoints.data;
     const { searchHandler } = useCasePoints.handlers;
-    const { isSuccess,isUninitialized } = useCasePoints.status;
+
     return (
         <div className="header__search-window">
             <div className="header__search-field">
@@ -38,15 +40,12 @@ const ShopSearch:FC<IProps> = ({close}) => {
             <div className="header__search-list">
                 <div className="container">
                     <div className="product__list">
-                        {(isSuccess && products) && (
-                            products.length
-                            ? products.map((item:IProduct) => <ShopProductItem key={item.id} products={item}/>)
-                            : ""
-                           
-                        )}
                         {
-                          !isUninitialized &&  <LoaderProduct />
+													products && products.length !==0 &&  products.map((item:IProduct) => <ShopProductItem key={item.productId} products={item}/>)
+                   
                         }
+											
+                        
                     </div>
                 </div>
             </div>
