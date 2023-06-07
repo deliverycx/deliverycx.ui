@@ -55,7 +55,7 @@ const Categories:FC<IProps> = ({pages,nomenclatureCategories}) => {
           {
           categories &&
             categories.map((category: ICategory, i: number) => {
-              if (category.name !== 'Избранное') {
+              if (category.name !== 'Избранное' && category.description !== 'HIDDEN') {
                 const CN = cn("categories__item", { active: currentSlide === i });
 								if(pages !== 'main'){
 									return (

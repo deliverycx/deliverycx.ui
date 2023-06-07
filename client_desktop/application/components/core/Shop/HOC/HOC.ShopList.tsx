@@ -23,7 +23,7 @@ const ShopList:FC<IProps> = ({nomenclatureCategories,nomenclatureProducts}) => {
       {
         categories ?
         categories.map((category: ICategory, i: number) => {
-          if (category.name !== 'Избранное') {
+          if (category.name !== 'Избранное' && category.description !== 'HIDDEN') {
             return (
               <Element key={i} name={category.id}>
                 <div className="title">{category.name}</div>
