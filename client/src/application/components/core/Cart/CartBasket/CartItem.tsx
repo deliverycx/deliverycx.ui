@@ -72,6 +72,9 @@ const CartItem: FC<IProps> = ({ product, errorSchema }) => {
 		if(count > 0){
 			setChangeCount(count)
 			debouncedChangeHandler({ id, count})
+		}else{
+			setChangeCount(1)
+			debouncedChangeHandler({ id, count:1})
 		}
 		
 	}
