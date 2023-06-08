@@ -14,7 +14,7 @@ type IProps = {
 
 const ShopProductItem: FC<IProps> = ({ products }) => {
     const { id, productId ,name, price, categoryImage, measureUnit, weight, description, image, isFav } = products
-
+		console.log(products);
 
     const useCasePoints = adapterComponentUseCase(useCaseShopItem,productId);
     const { cardRef,disableItem } = useCasePoints.data;
@@ -52,7 +52,7 @@ const ShopProductItem: FC<IProps> = ({ products }) => {
 												{
 													measureUnit === "порц"
 													? `${convertWeight(weight)} г`:
-													measureUnit === "мл"  ? weight + 'мл'
+													measureUnit === "л"  ? weight + ' мл'
 													
 													: "1 шт"
 												}

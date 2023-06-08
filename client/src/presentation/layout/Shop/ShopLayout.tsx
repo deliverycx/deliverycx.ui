@@ -12,6 +12,7 @@ import OnliPICKUPModal from "application/components/common/Modals/OnliPICKUPModa
 import { adapterSelector } from "servises/redux/selectors/selectors";
 import { useGetNomenclatureQuery } from "servises/repository/RTK/RTKShop";
 import LoaderProduct from "application/components/common/Loaders/loaderProduct";
+import { useOrganizationStatus } from "application/hooks/useOrganizationStatus";
 
 const Shop = () => {
 	const [isSearch, setSearch] = useState(false)
@@ -23,6 +24,7 @@ const Shop = () => {
 
 	const point = adapterSelector.useSelectors(selector => selector.point)
 	const [id, setId] = useState(true)
+	const [statusTSX, switchMetod] = useOrganizationStatus()
 
 	const { data: nomenclatures, isFetching } = useGetNomenclatureQuery(point.guid, {
 		skip: id,
@@ -35,7 +37,7 @@ const Shop = () => {
 		point.guid && setId(false)
 	}, [point])
 
-
+	console.log('status',statusTSX.NoDeliveryPoint());
 
 	return transitions((style, item) => (
 		<>
@@ -57,7 +59,11 @@ const Shop = () => {
 							nomenclatures.products && <ShopProduct nomenclatureProducts={nomenclatures.products} /> : <LoaderProduct />
 						}
 					</div>
-					<ShopLinkToCart />
+					{
+						!statusTSX.NoDeliveryPoint() &&
+						<ShopLinkToCart />
+					}
+					
 					<OnspotModal />
 					<OnliPICKUPModal />
 				</animated.div>
