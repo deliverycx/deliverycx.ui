@@ -10,6 +10,7 @@ import { RequestCart } from "servises/repository/Axios/Request";
 import { RTKCart } from "servises/repository/RTK/RTKCart";
 import { AppDispatch, RootState } from "../createStore";
 import { actionPaymentAccsess, actionPaymentReady } from "./bankCardSlice";
+import { DefaultinitialValues } from "application/components/core/Cart/CartForm/CartForm";
 
 const cartAdapter = createEntityAdapter<IReqCart>({
     selectId: (product) => product.id
@@ -161,6 +162,29 @@ export const fetchDeleteCart = createAsyncThunk(
         }
     }
 );
+
+export const fetchDectroyCart = createAsyncThunk(
+	"cart/deleteAll",
+	async (_, { dispatch, rejectWithValue }) => {
+			try {
+					const request = await RequestCart.deleteCart();
+					if (request.status == 200) {
+							dispatch(deleteCart());
+							dispatch(setOrderInfo(DefaultinitialValues))
+							dispatch(
+									setTotalPrice({
+											totalPrice: 0,
+											deltaPrice: 0,
+											deliveryPrice:0
+									})
+							);
+							
+					}
+			} catch (error: any) {
+					return rejectWithValue(error.response.data);
+			}
+	}
+);
 export const fetchOrderCart = createAsyncThunk(
     "cart/order",
     async (value: any, { dispatch, rejectWithValue }) => {
@@ -168,10 +192,10 @@ export const fetchOrderCart = createAsyncThunk(
         
             const request = await RequestCart.OrderCheckCart(value);
             if (request.data && request.status === 200) {
-                const order = await RequestCart.OrderCart(value);
+							const order = await RequestCart.OrderCart(value);
                 
                 dispatch(actionPaymentAccsess());
-                return order.data 
+                return request.data 
 								
             }
         } catch (error: any) {
@@ -209,11 +233,12 @@ const cartSlice = createSlice({
 				setKladrId: (state, action) => {
 					state.kladrid = action.payload;
 				},
+				setOrderInfo: (state, action) => {
+					state.orderInfo = {...state.orderInfo,...action.payload};
+				},
 
         setTotalPrice: (state, action) => {
-            state.totalPrice = action.payload.totalPrice;
-            state.deltaPrice = action.payload.deltaPrice;
-            state.deliveryPrice = action.payload.deliveryPrice;
+					state.orderPrice = action.payload;
         },
         setErrors: (state, action) => {
             state.orderError = action.payload.errors;
@@ -254,6 +279,7 @@ export const {
     removeCart,
     deleteCart,
     setAdress,
+		setOrderInfo,
 		setCordAdress,
 		setKladrId,
     setTotalPrice,
