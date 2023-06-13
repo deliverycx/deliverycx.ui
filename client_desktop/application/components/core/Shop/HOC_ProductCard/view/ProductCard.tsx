@@ -77,7 +77,7 @@ const ProductCard:FC<IProps> = ({product,onClose}) => {
                 {
                   product.measureUnit === "порц"
 									 ? `${convertWeight(product.weight)} г`:
-									 product.measureUnit === "л"  ? product.weight + 'мл' 
+									 product.measureUnit === "л"  ? product.weight + 'л' 
 									 
 									 : "1 шт"
                 }
