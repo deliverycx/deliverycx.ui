@@ -1,5 +1,5 @@
 /* eslint-disable react/jsx-no-target-blank */
-import { ISubmitData } from "@types";
+import { IInitialValues, ISubmitData } from "@types";
 import submitHandler from "application/helpers/submitFormHandler";
 import schema from "application/helpers/validationSchema";
 import { useFormik, FormikProvider } from "formik";
@@ -17,8 +17,20 @@ import { workTimeCheck, workTimeHelp } from "application/helpers/workTime";
 import { CART_CHOICE } from "application/contstans/cart.const";
 import { adapterSelector } from "servises/redux/selectors/selectors";
 import { ORG_STATUS } from 'application/contstans/const.orgstatus';
+import { useOrderCheck } from "domain/use-case/useCaseOrder/useCase.OrderCheck";
 
-
+export const DefaultinitialValues: IInitialValues = {
+	comment: "",
+	address: "",
+	flat: "",
+	intercom: "",
+	entrance: "",
+	floor: "",
+	name: "",
+	phone: "",
+	kladrid: "",
+	house: ""
+};
 type IProps = {
   builder: any
   paths:string
@@ -46,37 +58,14 @@ const CartFrom: FC<IProps> = ({ builder,paths }) => {
   } = useCaseForm.data
   const {setShowMap} = useCaseForm.handlers
 
+	const useCaseOrderCheck = adapterComponentUseCase(useOrderCheck)
+	const {handlerSubmitOrder} =	useCaseOrderCheck.handlers
+
   const formik = useFormik({
     initialValues,
     validationSchema: schema(orderType),
     onSubmit: (values, meta) => {
-      submitHandler<ISubmitData>(
-        {
-          ...values,
-          payment_method: paymentMetod.id,
-          city: city.name,
-          orderType
-        },
-        meta
-      );
-      /*
-      if (!paymentReady && paymentMetod.id === CartFormMetods.paymentsMetod[1].id) {
-        history.push(paths + '/card')
-      } else {
-        submitHandler<ISubmitData>(
-          {
-            ...values,
-            payment_method: paymentMetod.id,
-            paymentOrderCard:paymentOrder,
-            times,
-            city: city.name,
-            orderType
-          },
-          meta
-        );
-
-      }
-      */
+      handlerSubmitOrder(values)
 
     },
   });

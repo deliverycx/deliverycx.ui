@@ -7,6 +7,18 @@ export type ICartEntities = ICart
  * @method init полиморф, может не принимать аргументов или любой аргумент и изменяет entities
  */
 class CartEntities extends Entities<ICartEntities>{
+	protected orderInfo = {
+		address:'',
+		house:"",
+		kladrid:'',
+		comment: "",
+		flat: "",
+		intercom: "",
+		entrance: "",
+		floor: "",
+		name: "",
+		phone: ""
+	}
   protected totalPrice = 0
   protected address = ''
 	protected kladrid = ''
@@ -22,6 +34,7 @@ class CartEntities extends Entities<ICartEntities>{
       totalPrice: this.totalPrice,
       address: this.address,
 			kladrid:this.kladrid,
+			orderInfo:this.orderInfo,
       orderError: this.orderError,
       orderNumber: this.orderNumber,
       deltaPrice: this.deltaPrice,

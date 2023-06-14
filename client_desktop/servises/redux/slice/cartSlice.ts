@@ -9,6 +9,7 @@ import CartEntities from "domain/entities/CartEntities/Cart.entities";
 import { RequestCart } from "servises/repository/Axios/Request";
 import { AppDispatch, RootState } from "../createStore";
 import { actionPaymentReady } from "./bankCardSlice";
+import { DefaultinitialValues } from "application/components/core/Cart/HOC_CartForm/HOC.CartForm";
 
 const cartAdapter = createEntityAdapter<IReqCart>({
   selectId: (product) => product.id
@@ -185,6 +186,28 @@ export const fetchOrderCart = createAsyncThunk(
       }
   }
 );
+export const fetchDectroyCart = createAsyncThunk(
+	"cart/deleteAll",
+	async (_, { dispatch, rejectWithValue }) => {
+			try {
+					const request = await RequestCart.deleteCart();
+					if (request.status == 200) {
+							dispatch(deleteCart());
+							dispatch(setOrderInfo(DefaultinitialValues))
+							dispatch(
+									setTotalPrice({
+											totalPrice: 0,
+											deltaPrice: 0,
+											deliveryPrice:0
+									})
+							);
+							
+					}
+			} catch (error: any) {
+					return rejectWithValue(error.response.data);
+			}
+	}
+);
 
 export const fetchDiscountCart = createAsyncThunk(
   "cart/getDiscount",
@@ -230,9 +253,15 @@ const cartSlice = createSlice({
           state.deltaPrice = action.payload.deltaPrice;
           state.deliveryPrice = action.payload.deliveryPrice;
       },
+			setOrderInfo: (state, action) => {
+				state.orderInfo = {...state.orderInfo,...action.payload};
+			},
       setErrors: (state, action) => {
           state.orderError = action.payload.errors;
       },
+			setENErrors: (state, action) => {
+				state.orderError = action.payload;
+			},
       setOrderType:(state, action) => {
           state.orderType = action.payload;
       },
@@ -281,6 +310,8 @@ export const {
 	setKladrId,
   setTotalPrice,
   setErrors,
+	setENErrors,
+	setOrderInfo,
   accessOrder,
   setOrderType
 } = cartSlice.actions;

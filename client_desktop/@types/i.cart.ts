@@ -1,6 +1,7 @@
 import { IProduct } from "@types";
 
 export interface ICart {
+		orderInfo:IInitialValues
     totalPrice: number;
     address: string;
 		kladrid:string
@@ -20,16 +21,16 @@ export interface ICheckoutError {
     status: number;
 }
 export interface IInitialValues {
-    comment: string;
-    name: string;
-    phone: string;
-    address: string;
+		comment: string;
+		name: string;
+		phone: string;
+		address: string;
 		house:string;
-    flat: string;
-    intercom: string;
-    entrance: string;
-    floor: string;
-    notCall: boolean;
+		flat: string;
+		intercom: string;
+		entrance: string;
+		floor: string;
+		kladrid:string
 }
 export interface ISubmitData extends IInitialValues {
     payment: any;
