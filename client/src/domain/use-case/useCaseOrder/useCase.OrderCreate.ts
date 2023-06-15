@@ -133,7 +133,7 @@ export function useOrderCreate() {
 									})
 									.catch(() => {
 											setOrderNumber(null);
-											if (tik > 3) {
+											if (tik > 5) {
 													clearInterval(ref.current as any);
 													setOrderLoad(false);
 											} else {
