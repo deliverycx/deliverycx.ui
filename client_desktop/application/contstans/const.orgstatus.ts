@@ -13,7 +13,7 @@ export const ORG_STATUS = {
 export const PAYMENT_METODS = {
 	CASH:"CASH",
 	BYCARD:"BYCARD",
-	CARD:"PAY"
+	CARD:"CARD"
 }
 
 export const DILIVERY_TIME_STATUS = {

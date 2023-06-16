@@ -155,13 +155,20 @@ export function useOrderCreate() {
 		try {
 			const {data} = await RequestOrder.getOrder(hash)
 			
-
 			if(!data){
-				if(selectCardBank.paymentMetod.id === PAYMENT_METODS.CARD){
-					await RequestOrder.OrderCreatePayment(orderBody)
+				if(orderBody.paymentMethod === PAYMENT_METODS.CARD){
+					
+					const {data} = await RequestOrder.OrderCreatePayment(orderBody)
+					if (data && data.redirectUrl) {
+						if (typeof data.redirectUrl === 'string') {
+							window.location.href = data.redirectUrl;
+						}
+						
+					}
 				}else{
 					await RequestOrder.OrderCreate(orderBody)
 				} 
+				
 			}else{
 				setOrderNumber(data.orderNumber)
 			}

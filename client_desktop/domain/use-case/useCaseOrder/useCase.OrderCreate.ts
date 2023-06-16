@@ -158,7 +158,13 @@ export function useOrderCreate(this: any) {
 
 			if(!data){
 				if(selectCardBank.paymentMetod.id === PAYMENT_METODS.CARD){
-					await RequestOrder.OrderCreatePayment(orderBody)
+					const {data} = await RequestOrder.OrderCreatePayment(orderBody)
+					if (data && data.redirectUrl) {
+						if (typeof data.redirectUrl === 'string') {
+							window.location.href = data.redirectUrl;
+						}
+						
+					}
 				}else{
 					await RequestOrder.OrderCreate(orderBody)
 				} 
