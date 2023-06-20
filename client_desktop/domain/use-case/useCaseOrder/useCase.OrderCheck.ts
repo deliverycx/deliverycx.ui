@@ -19,22 +19,19 @@ export function useOrderCheck(this:any) {
 	const handlerSubmitOrder = async (value:IInitialValues) =>{
 		try {
 			dispatch(setOrderInfo(value))
-			const request = await RequestCart.OrderCheckCart({
-				organizationid:guid,
-				address:value
-			})
-			if(request.status === 201 && typeof request.data === 'string'){
-				router.push(ROUTE_APP.ORDER_CREATE + '/' + request.data)
+			const request =  await dispatch(fetchOrderCart({
+				organizationid: guid,
+				address: value
+			}) as any);
+			
+			if (request.payload && request.payload.data) {
+        if (typeof request.payload.data === 'string') {
+          router.push(ROUTE_APP.ORDER_CREATE + '/' + request.payload.data)
+        }
 			}
 		} catch (error) {
 			console.log(error);
-			dispatch(setENErrors({
-				status:500,
-				error:{
-					errors:"Ошибка"
-				}
-				
-			}))
+			
 		}
 
 	}

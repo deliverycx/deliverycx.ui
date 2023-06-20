@@ -190,14 +190,9 @@ export const fetchOrderCart = createAsyncThunk(
     async (value: any, { dispatch, rejectWithValue }) => {
       try {
         
-            const request = await RequestCart.OrderCheckCart(value);
-            if (request.data && request.status === 200) {
-							const order = await RequestCart.OrderCart(value);
-                
-                dispatch(actionPaymentAccsess());
-                return request.data 
-								
-            }
+            const request:any = await RequestCart.OrderCheckCart(value);
+						return request
+            
         } catch (error: any) {
             // Ошибка валидации по количеству
             dispatch(actionPaymentReady(false));

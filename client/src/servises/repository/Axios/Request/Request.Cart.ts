@@ -73,7 +73,7 @@ class RequestCart extends ApiSuper {
     }
     @methods("post")
     OrderCheckCart(body: any) {
-        return this.request<ReqCart.orderCreate>("/order/check");
+        return this.request<any>("/order/check");
     }
     @methods("post")
     OrderCart(body: any) {

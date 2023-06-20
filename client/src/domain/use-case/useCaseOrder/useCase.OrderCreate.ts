@@ -92,6 +92,7 @@ export function useOrderCreate() {
 	const hash = location.pathname.split("/")[2];
 	const [orderNumber,setOrderNumber] = useState<null | number>(null)
 	const [orderLoad, setOrderLoad] = useState(true);
+	const [orderHash,setorderHash] = useState<string | null>(null)
 	const dispatch = useDispatch();
 	const ref = useRef<NodeJS.Timeout>();
 
@@ -185,9 +186,7 @@ export function useOrderCreate() {
 
 	useEffect(() => {
 		if ((location.pathname.split("/")[1] === "ordercreate") && hash) {
-			const body = createOrderFabric()
-			OrderSubmit(body)
-			presentOrder(hash);
+			getOrderHashRedis(hash)
 		} else {
 				history.push(ROUTE_APP.SHOP.SHOP_MAIN);
 		}  
@@ -197,10 +196,29 @@ export function useOrderCreate() {
 	}, [hash]);
 
 	
-	
+	useEffect(() => {
+		if(orderHash && hash === orderHash){
+			const body = createOrderFabric()
+			OrderSubmit(body)
+			presentOrder(hash)
+		}
+		
+	}, [orderHash]);
+		
 
 	const handleBacktoCart = () =>{
 		history.push(ROUTE_APP.CART.CART_DELIVERY)
+	}
+
+	const getOrderHashRedis = async (orderhash:string) =>{
+		try {
+			const {data} = await RequestOrder.getOrderHashRedis(orderhash)
+			if(data){
+				setorderHash(data)
+			}
+		} catch (error) {
+			console.log(error);
+		}
 	}
 
 	const handleBacktoShop = () => {

@@ -3,6 +3,9 @@ import { ApiSuper, methods } from "../AxiosApi";
 type IOrderNumber = {
   number:number
 }
+type IOrderHash = {
+  number:string
+}
 type IOrderUrl = {
   redirectUrl:string
 }
@@ -22,6 +25,11 @@ class RequestOrder extends ApiSuper {
   @methods("get")
   OrderNumber(hash:string) {
       return this.request<IOrderNumber>(`/order/number/${hash}`);
+  }
+
+	@methods("get")
+  getOrderHashRedis(hash:string) {
+      return this.request<string>(`/order/gethash/${hash}`);
   }
 
 	@methods("get")
