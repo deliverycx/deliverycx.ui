@@ -207,7 +207,7 @@ export function useOrderCreate() {
 		
 
 	const handleBacktoCart = () =>{
-		history.push(ROUTE_APP.CART.CART_DELIVERY)
+		history.push(ROUTE_APP.SHOP.SHOP_MAIN)
 	}
 
 	const getOrderHashRedis = async (orderhash:string) =>{

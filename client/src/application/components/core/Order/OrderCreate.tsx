@@ -41,7 +41,7 @@ const OrderCreate = () =>{
             <div className="checkout">
               <div className="checkout__title">Ошибка при заказе</div>
               <p className="checkout__dash">С вами свяжется администратор</p>
-							<button type="submit"  className="checkout__backcart" onClick={handleBacktoCart}>Вернуться в корзину</button>
+							<button type="submit"  className="checkout__backcart" onClick={handleBacktoCart}>Вернуться в меню</button>
             </div>
         }
 		</div>

@@ -199,7 +199,7 @@ export function useOrderCreate(this: any) {
 	
 
 	const handleBacktoCart = () =>{
-		router.push(ROUTE_APP.CART.CART_DELIVERY)
+		router.push(ROUTE_APP.SHOP.SHOP_MAIN)
 	}
 
 	const handleBacktoShop = () => {
