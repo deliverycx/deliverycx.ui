@@ -65,9 +65,10 @@ const Success: NextPage = () => {
             <div className="cart_title-box">
               <h2 className="cart_title">Ошибка при заказе</h2>
             </div>  
-              <div className="cart_list">
+              <div className="cart_list orderload">
                 <div className="checkout__dash">С вами свяжется администратор</div>
 								<br />
+								<button className="cart__order-btn btn cart-btn" onClick={handleBacktoCart}>Повторить заказ</button>
               </div>
            </div>   
             

@@ -61,14 +61,19 @@ export function useOrder(this: any) {
     const handleBacktoShop = () => {
         dispatch(fetchDeleteCart());
         dispatch(accessOrder());
-       
+				router.push(ROUTE_APP.MENU)
     };
+
+		const handleBacktoCart = () =>{
+			router.push(ROUTE_APP.MENU)
+		}
 
     this.data({
         orderNumber
     });
     this.handlers({
-        handleBacktoShop
+        handleBacktoShop,
+				handleBacktoCart
     });
     this.status({
         orderLoad

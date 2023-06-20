@@ -199,14 +199,14 @@ export function useOrderCreate(this: any) {
 	
 
 	const handleBacktoCart = () =>{
-		router.push(ROUTE_APP.SHOP.SHOP_MAIN)
+		router.push(ROUTE_APP.MENU)
 	}
 
 	const handleBacktoShop = () => {
 		dispatch(fetchDeleteCart());
 		dispatch(fetchDectroyCart())
 		dispatch(accessOrder());
-		router.push(ROUTE_APP.SHOP.SHOP_MAIN);
+		router.push(ROUTE_APP.MENU);
 	};
 
 
