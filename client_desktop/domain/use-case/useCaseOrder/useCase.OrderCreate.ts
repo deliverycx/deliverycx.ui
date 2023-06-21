@@ -68,7 +68,7 @@ class CreateOrder{
       comment: this.selectCart.orderInfo.comment,
 			localhost:`${document.location.protocol}//${document.location.host}`,
 			hash:hashCode,
-			orderAmount:this.selectCart.deltaPrice
+			orderAmount:this.selectCart.totalPrice
 		}
 		
 		this.orderStates = result
