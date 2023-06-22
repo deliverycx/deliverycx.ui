@@ -12,6 +12,7 @@ import OnliPICKUPModal from "application/components/common/Modals/OnliPICKUPModa
 import { adapterSelector } from "servises/redux/selectors/selectors";
 import { useGetNomenclatureQuery } from "servises/repository/RTK/RTKShop";
 import LoaderProduct from "application/components/common/Loaders/loaderProduct";
+import { useRedirectOrg } from "application/hooks/useRedirectOrgTable";
 
 const Shop = () => {
 	const [isSearch, setSearch] = useState(false)
@@ -28,6 +29,8 @@ const Shop = () => {
 		skip: id,
 		refetchOnMountOrArgChange: true,
 	})
+
+	useRedirectOrg()
 
 
 	useEffect(() => {

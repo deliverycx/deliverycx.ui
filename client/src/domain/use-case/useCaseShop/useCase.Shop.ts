@@ -23,7 +23,6 @@ export function useCaseShop(products:IProduct[]) {
   })
 	*/
 
-	
 
 	
 
@@ -33,7 +32,7 @@ export function useCaseShop(products:IProduct[]) {
 	})
 
 
-	useRedirectOrg()
+	
 
   useEffect(() => {
     category?.id && setId(false)

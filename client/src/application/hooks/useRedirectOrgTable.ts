@@ -21,6 +21,7 @@ export const useRedirectOrg = () =>{
 	const [getOrgstatus,{data:orgstatus}] = useGetPointStatusMutation()
 
 	useEffect(()=>{
+		
 		organuzation && caseQuery()
 	},[organuzation])
 
