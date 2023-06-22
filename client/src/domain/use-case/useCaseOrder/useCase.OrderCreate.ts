@@ -11,9 +11,10 @@ import { format } from 'date-fns'
 import { ICart } from '@types';
 import { IBankCard } from '@types';
 import RequestOrder from "servises/repository/Axios/Request/Request.Order";
-import { PAYMENT_METODS } from "application/contstans/const.orgstatus";
+import { DELIVERY_METODS, PAYMENT_METODS } from "application/contstans/const.orgstatus";
 import { useDispatch } from "react-redux";
-import { fetchDeleteCart, accessOrder, fetchDectroyCart } from "servises/redux/slice/cartSlice";
+import { fetchDeleteCart, accessOrder, fetchDectroyCart, setOrderTable } from "servises/redux/slice/cartSlice";
+import axios from 'axios';
 
 
 class CreateOrder{
@@ -204,7 +205,34 @@ export function useOrderCreate() {
 		}
 		
 	}, [orderHash]);
+
+	//sms
+	useEffect(() => {
+		if(selectCart.orderTable){
+			if((selectCart.orderType === DELIVERY_METODS.ONSPOT) && (selectCart.orderTable.section === 'fake') && orderNumber){
+				handlerSMSOrder()
+			}
+		}
 		
+		
+		
+	}, [orderNumber]);
+		
+
+	const handlerSMSOrder =  async () =>{
+		const bodySMS = {
+			textsms:`Ваш предзаказ принят! Его номер - ${orderNumber}`,
+			phone:selectCart.orderInfo.phone
+		}
+		
+		const {data} = await axios.get('https://cxcrimea@yandex.ru:zx4dUbwFtA319jZ3P90q7L2dyjtzD70M@gate.smsaero.ru/v2/auth')
+		if(data && data.success){
+			const smsresult = await axios.get(`https://cxcrimea@yandex.ru:zx4dUbwFtA319jZ3P90q7L2dyjtzD70M@gate.smsaero.ru/v2/sms/send?number=${bodySMS.phone}&text=${bodySMS.textsms}&sign=Khinkalich`)
+			console.log('sms');
+			dispatch(setOrderTable(null))
+		}
+		
+	}
 
 	const handleBacktoCart = () =>{
 		history.push(ROUTE_APP.SHOP.SHOP_MAIN)

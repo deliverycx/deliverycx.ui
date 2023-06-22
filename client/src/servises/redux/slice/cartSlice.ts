@@ -178,6 +178,7 @@ export const fetchDectroyCart = createAsyncThunk(
 											deliveryPrice:0
 									})
 							);
+							dispatch(setOrderTable(null))
 							
 					}
 			} catch (error: any) {
