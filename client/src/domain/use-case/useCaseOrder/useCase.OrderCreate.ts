@@ -220,7 +220,7 @@ export function useOrderCreate() {
 
 	const handlerSMSOrder =  async () =>{
 		const bodySMS = {
-			textsms:`Ваш предзаказ принят! Его номер - 123 Пожалуйста, ожидайте.`,
+			textsms:`Ваш предзаказ принят! Его номер - ${orderNumber} Пожалуйста, ожидайте.`,
 			phone:selectCart.orderInfo.phone
 		}
 		
