@@ -208,34 +208,34 @@ export function useOrderCreate() {
 
 	//sms
 	useEffect(() => {
-		/*
+		/**/
 		if(selectCart.orderTable){
 			if((selectCart.orderType === DELIVERY_METODS.ONSPOT) && (selectCart.orderTable.section === 'fake') && orderNumber){
 				handlerSMSOrder()
 			}
 		}
-	
-		if(selectCart.orderTable && orderNumber){
-			if(selectCart.orderType === DELIVERY_METODS.ONSPOT){
-				
-			}
-		}	*/
-		orderNumber && handlerSMSOrder()
 		
 	}, [orderNumber]);
 		
 
 	const handlerSMSOrder =  async () =>{
 		const bodySMS = {
-			textsms:`Ваш предзаказ принят! Его номер - ${orderNumber} Пожалуйста, ожидайте.`,
+			textsms:`Ваш предзаказ принят! Его номер - 123 Пожалуйста, ожидайте.`,
 			phone:selectCart.orderInfo.phone
 		}
 		
-		const {data} = await axios.get('https://cxcrimea@yandex.ru:zx4dUbwFtA319jZ3P90q7L2dyjtzD70M@gate.smsaero.ru/v2/auth')
-		if(data && data.success){
-			const smsresult = await axios.get(`https://cxcrimea@yandex.ru:zx4dUbwFtA319jZ3P90q7L2dyjtzD70M@gate.smsaero.ru/v2/sms/send?number=${bodySMS.phone}&text=${bodySMS.textsms}&sign=Khinkalich`)
-			console.log('sms');
-			dispatch(setOrderTable(null))
+
+		try {
+			const {data} = await RequestOrder.smstable({
+				textsms:bodySMS.textsms,
+				phone:bodySMS.phone
+			})
+			if(data){
+				dispatch(setOrderTable(null))
+			}
+			
+		} catch (error) {
+			console.log(error);
 		}
 		
 	}

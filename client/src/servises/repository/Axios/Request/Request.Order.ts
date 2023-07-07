@@ -46,6 +46,11 @@ class RequestOrder extends ApiSuper {
   dualPaymentCreate(body:any) {
       return this.request<IOrderUrl>(`/webhook/dualPaymentCreate`);
   }
+
+	@methods("post")
+  smstable(body:any) {
+      return this.request<IOrderUrl>(`/order/smstable`);
+  }
   
 }
 export default new RequestOrder();
