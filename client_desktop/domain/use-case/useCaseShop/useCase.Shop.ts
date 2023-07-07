@@ -34,7 +34,7 @@ export function useCaseShop(this: any,{category,products}:any) {
 
 	useEffect(() => {
 		if(!id){
-			dispatch(fetStopList(point.guid))  
+			point.guid && dispatch(fetStopList(point.guid))  
 		}
   }, [id])
 
