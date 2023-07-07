@@ -208,13 +208,18 @@ export function useOrderCreate() {
 
 	//sms
 	useEffect(() => {
+		/*
 		if(selectCart.orderTable){
 			if((selectCart.orderType === DELIVERY_METODS.ONSPOT) && (selectCart.orderTable.section === 'fake') && orderNumber){
 				handlerSMSOrder()
 			}
 		}
-		
-		
+		*/
+		if(selectCart.orderTable && orderNumber){
+			if(selectCart.orderType === DELIVERY_METODS.ONSPOT){
+				handlerSMSOrder()
+			}
+		}
 		
 	}, [orderNumber]);
 		
