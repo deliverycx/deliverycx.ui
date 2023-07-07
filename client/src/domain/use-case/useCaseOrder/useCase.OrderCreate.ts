@@ -230,13 +230,12 @@ export function useOrderCreate() {
 				textsms:bodySMS.textsms,
 				phone:bodySMS.phone
 			})
-			if(data){
-				dispatch(setOrderTable(null))
-			}
+			
 			
 		} catch (error) {
 			console.log(error);
 		}
+		dispatch(setOrderTable(null))
 		
 	}
 
