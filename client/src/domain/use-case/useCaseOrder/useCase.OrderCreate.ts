@@ -214,12 +214,13 @@ export function useOrderCreate() {
 				handlerSMSOrder()
 			}
 		}
-		*/
+	
 		if(selectCart.orderTable && orderNumber){
 			if(selectCart.orderType === DELIVERY_METODS.ONSPOT){
-				handlerSMSOrder()
+				
 			}
-		}
+		}	*/
+		orderNumber && handlerSMSOrder()
 		
 	}, [orderNumber]);
 		
