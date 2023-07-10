@@ -21,6 +21,7 @@ import _ from "lodash";
 import { fetStopList, setRefreshShop } from "servises/redux/slice/shopSlice";
 import { DELIVERY_METODS, ORG_STATUS } from "application/contstans/const.orgstatus";
 import { Redirects } from "application/helpers/redirectTo";
+import { useOrganizationStatus } from "application/hooks/useOrganizationStatus";
 
 export function usePoints() {
   const history = useHistory();
@@ -43,6 +44,8 @@ export function usePoints() {
   const { data: org, isFetching } = useGetPointsQuery(selectedCity.id);
   const [getRecvisites, { data: recvisites }] = useGetRecvisitesMutation()
 	const [getOrgstatus,{data:orgstatus}] = useGetPointStatusMutation()
+	const [tsx,switchMetod] = useOrganizationStatus()
+
 
   const [statePoint, dispatchPoint] = useReducer(
     PointsReducer,
@@ -150,6 +153,9 @@ export function usePoints() {
 							dispatch(fetchRefreshCart())
 							dispatch(setRefreshShop())
 						} 
+						if(tsx.PickupOnSPOT()){
+							dispatch(setOrderType(DELIVERY_METODS.PICKUP))
+						}
             history.push(`${ROUTE_APP.SHOP.SHOP_MAIN}/?address=${address.city + ',' + address.address}` );
             //RequestProfile.update({ organizationId: address.id });
         } catch (error) {

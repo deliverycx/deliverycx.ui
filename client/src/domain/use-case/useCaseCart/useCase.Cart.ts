@@ -2,7 +2,7 @@
 import { useHistory } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect, useState } from "react";
-import { cartSelector, fetchRefreshCart } from "servises/redux/slice/cartSlice";
+import { cartSelector, fetchRefreshCart, setOrderType } from "servises/redux/slice/cartSlice";
 import cn from "classnames";
 import { useOutside } from "application/hooks/useOutside";
 import { useDeepCompareEffect } from "application/hooks/useDeepCompareEffect";
@@ -15,7 +15,8 @@ import { CartFormMetods } from "application/components/core/Cart/CartForm/CartMe
 import { CART_CHOICE } from "application/contstans/cart.const";
 import { actionSelectPayment } from "servises/redux/slice/bankCardSlice";
 import { delivertyTime, workTimeHelp } from "application/helpers/workTime";
-import { DILIVERY_TIME_STATUS } from "application/contstans/const.orgstatus";
+import { DELIVERY_METODS, DILIVERY_TIME_STATUS } from "application/contstans/const.orgstatus";
+import { useOrganizationStatus } from "application/hooks/useOrganizationStatus";
 
 export function useAddCart(ref?: any) {
     const history = useHistory();
@@ -27,6 +28,7 @@ export function useAddCart(ref?: any) {
     const [itemsCount, setItemsCount] = useState(0);
     const emptyCN = cn("link-to-cart", { open: isPopupEmpty });
 		const time = delivertyTime()
+		const [tsx,switchMetod] = useOrganizationStatus()
 
     const linkHandler = () => {
 				
@@ -45,8 +47,15 @@ export function useAddCart(ref?: any) {
 							dispatch(actionSelectPayment(CartFormMetods.paymentsMetodONSPOT[0]))
 							history.push(ROUTE_APP.CART.CART_ONSPOT);
 						}else{
-							history.push(ROUTE_APP.CART.CART_DELIVERY);
+							if(tsx.PickupOnSPOT()){
+								history.push(ROUTE_APP.CART.CART_PICKUP);
+							}else{
+								history.push(ROUTE_APP.CART.CART_DELIVERY);
+							}
+							
 						}
+
+						
 				}else{
 					setIsPopupEmpty(true);
 				}
