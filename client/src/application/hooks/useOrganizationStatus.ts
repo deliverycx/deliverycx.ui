@@ -65,6 +65,22 @@ export class StatusTSX {
 			tsx
 		)
 	}
+	PickupOnSPOT(tsx?:ReactNode){
+		return this.init(
+			'самовывоз и за столом',
+			(
+				this.pointstatus.deliveryMetod.includes(DELIVERY_METODS.PICKUP) &&
+				this.pointstatus.deliveryMetod.includes(DELIVERY_METODS.ONSPOT) &&
+				this.pointstatus.deliveryMetod.length === 2
+			) &&
+			(
+				this.pointstatus.organizationStatus !== ORG_STATUS.OPEN && 
+				this.pointstatus.organizationStatus !== ORG_STATUS.NODELIVERY &&
+				this.pointstatus.organizationStatus !== ORG_STATUS.NOWORK
+			),
+			tsx
+		)
+	}
 	OpenPoint(tsx?:ReactNode){
 		return this.init(
 			'Открытие',

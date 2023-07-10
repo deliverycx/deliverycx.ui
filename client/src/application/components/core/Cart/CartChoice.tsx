@@ -31,7 +31,11 @@ const CartChoise: FC = () => {
 	
 		useEffect(() => {
 			const time = delivertyTime()
-			if(tsx.OnliPICKUP() || (time && time.status === DILIVERY_TIME_STATUS.ONLIPICKUP)){
+			if(
+					tsx.OnliPICKUP() || 
+					tsx.PickupOnSPOT() ||
+					(time && time.status === DILIVERY_TIME_STATUS.ONLIPICKUP)
+				){
 				dispatch(setOrderType(DELIVERY_METODS.PICKUP))
 				history.push(ROUTE_APP.CART.CART_PICKUP,DELIVERY_METODS.PICKUP);
 			}
@@ -100,6 +104,12 @@ const CartChoise: FC = () => {
 		tsx.OnliPICKUP((
 			<div className="cart__choice">
             <div className={CN(DELIVERY_METODS.PICKUP)} onClick={() => {handlerChangeDelivMetod(ROUTE_APP.CART.CART_PICKUP,DELIVERY_METODS.PICKUP)}}>Самовывоз</div>
+        </div>
+		))
+		tsx.PickupOnSPOT((
+			<div className="cart__choice">
+            <div className={CN(DELIVERY_METODS.PICKUP)} onClick={() => {handlerChangeDelivMetod(ROUTE_APP.CART.CART_PICKUP,DELIVERY_METODS.PICKUP)}}>Самовывоз</div>
+						<div className={CN(DELIVERY_METODS.ONSPOT)} onClick={() => {handlerChangeDelivMetod(ROUTE_APP.CART.CART_ONSPOT,DELIVERY_METODS.ONSPOT)}}>За столом</div>
         </div>
 		))
 
