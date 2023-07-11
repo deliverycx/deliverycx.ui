@@ -47,11 +47,7 @@ export function useAddCart(ref?: any) {
 							dispatch(actionSelectPayment(CartFormMetods.paymentsMetodONSPOT[0]))
 							history.push(ROUTE_APP.CART.CART_ONSPOT);
 						}else{
-							if(tsx.PickupOnSPOT()){
-								history.push(ROUTE_APP.CART.CART_PICKUP);
-							}else{
-								history.push(ROUTE_APP.CART.CART_DELIVERY);
-							}
+							history.push(ROUTE_APP.CART.CART_DELIVERY);
 							
 						}
 

@@ -33,7 +33,6 @@ const CartChoise: FC = () => {
 			const time = delivertyTime()
 			if(
 					tsx.OnliPICKUP() || 
-					tsx.PickupOnSPOT() ||
 					(time && time.status === DILIVERY_TIME_STATUS.ONLIPICKUP)
 				){
 				dispatch(setOrderType(DELIVERY_METODS.PICKUP))
