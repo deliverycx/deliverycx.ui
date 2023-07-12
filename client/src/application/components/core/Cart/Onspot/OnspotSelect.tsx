@@ -28,7 +28,7 @@ const OnspotSelect = () => {
 			if (data && data.length !== 0) {
 				if (data.length > 1) {
 					data.forEach((section: any) => {
-						if (section.name === "С собой" && cart.orderTable.section === section.idsection) { //"С собой (СС)"
+						if (section.name === "С Собой" && cart.orderTable.section === section.idsection) { //"С собой (СС)"
 							console.log(section.tables);
 							dispatch(setOrderTable({
 								section: 'fake',
