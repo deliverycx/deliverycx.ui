@@ -23,7 +23,7 @@ const CityList = () => {
             {
                 !isLoading && sortedCities && sortedCities.slice().sort().map((city:ICity) => {
                     const CN = cn("welcome__city", { selected: city.name === selectedCity.name}) //city.name === selectedCity?.name
-										if(!city.isHidden){
+										if(city && !city.isHidden){
 											return <div key={city.id} onClick={() => selectCiti(city)} className={CN}>
                         {city.name}
                     </div>
