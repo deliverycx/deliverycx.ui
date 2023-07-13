@@ -10,18 +10,24 @@ import Dno from './Dno';
 import { myTimer } from './mob';
 import { observer } from 'mobx-react-lite';
 import { myName } from './mobtwo';
-import NewApp from './NewApp';
+
+import "reflect-metadata";
+import React from 'react';
+import HOCCity from './components/core/City/HOC.City';
+
+
 
 
 export const ThemeContext: any = createContext({});
 const App = (): JSX.Element => {
-	const names = myName
+	
+
+	
 
 	return (
 		<>
-			<Hoce />
-			
-			<NewApp />
+			<HOCCity />
+
 		</>
 	
 	)

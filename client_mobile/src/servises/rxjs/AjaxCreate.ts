@@ -1,0 +1,26 @@
+import { AjaxResponse, ajax } from 'rxjs/ajax';
+import { IAjaxparams } from './AjaxApi';
+
+class AjaxCreate {
+	static _instanse: null | AjaxCreate = null;
+	private URL: string = process.env.REACT_APP_API_URL as string;
+
+	apiAjax<T>(params:any,url:string):ReturnType<typeof ajax>  {
+		console.log('paramss',`${this.URL}/${url}`);
+		return ajax({
+			url: `${this.URL}/${url}`,
+			method: params.method,
+			headers: {
+				'Content-Type': 'application/json',
+				'rxjs-custom-header': 'Rxjs'
+			},
+			
+		})
+	}
+
+	static getInstance() {
+		return new AjaxCreate()
+	}
+}
+
+export default AjaxCreate;

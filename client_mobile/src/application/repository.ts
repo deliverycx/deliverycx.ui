@@ -1,10 +1,11 @@
 import { ApiSuper, methods } from "servises/Axios/AxiosApi"
+import { AjaxApiSuper } from "servises/rxjs/AjaxApi"
 
 
 
 
 
-class RequestLocation extends ApiSuper {
+class RequestLocation extends AjaxApiSuper {
  
   @methods('get')
   getAll(city:string) {
