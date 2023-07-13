@@ -62,9 +62,10 @@ const OnspotModal = () =>{
 	        alt="Доставка и самовывоз"
 	      />
 				<div className="onspot_modal__content">
-					<h2 className="onspot_modal__content-title">Гамарджоба!</h2>
+					<h2 className="onspot_modal__content-title">Гамарджоба, дорогой друг!</h2>
 					<div className="onspot_modal__content-text">
-						Спасибо, что выбрали онлайн-заказ за столиком! Этот тестовый период, поэтому если возникнут сложности сообщите официанту или в нашу поддержку. 
+					Оформи предзаказ онлайн! 
+Добавляй в корзину любимые блюда &gt; Получай номер заказа &gt; Дождись, когда тебя пригласят за свободный столик
 					</div>
 					<div className="onspot_modal__content-text">
 							Приятных покупок!
