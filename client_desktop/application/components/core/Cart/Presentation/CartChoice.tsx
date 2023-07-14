@@ -37,7 +37,10 @@ const CartChoise: FC = () => {
 			
 			const time = delivertyTime()
 			console.log((time && time.status === DILIVERY_TIME_STATUS.ONLIPICKUP));
-      if (tsx.OnliPICKUP() || (time && time.status === DILIVERY_TIME_STATUS.ONLIPICKUP)) {
+      if (
+				tsx.OnliPICKUP() || 
+				tsx.PickupOnSPOT() ||
+				(time && time.status === DILIVERY_TIME_STATUS.ONLIPICKUP)) {
           dispatch(setOrderType(CART_CHOICE.PICKUP))
       }
   }, [tsx.pointstatus.deliveryMetod,activeChoice]);
@@ -56,6 +59,11 @@ const CartChoise: FC = () => {
         </div>
 		))
 		tsx.OnliPICKUP((
+			<div className="cart__choice">
+            <div className={CN(DELIVERY_METODS.PICKUP)} onClick={() => {handlerChangeDelivMetod(DELIVERY_METODS.PICKUP)}}>Самовывоз</div>
+        </div>
+		))
+		tsx.PickupOnSPOT((
 			<div className="cart__choice">
             <div className={CN(DELIVERY_METODS.PICKUP)} onClick={() => {handlerChangeDelivMetod(DELIVERY_METODS.PICKUP)}}>Самовывоз</div>
         </div>

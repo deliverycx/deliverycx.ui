@@ -42,6 +42,7 @@ const PointStatus: FC<IProps> = ({ organization,selectpoint,handler }) => {
 				(
 					tsx.OnliPICKUP('только самовывоз') ? <span className="onlypickup_small">только самовывоз</span> :
 					tsx.Delivery('самовывоз и доставка') ? <span className="onlypickup_small">самовывоз и доставка</span> : 
+					tsx.PickupOnSPOT('самовывоз') ? <span className="onlypickup_small">самовывоз</span> :
 					tsx.OpenPoint('скоро открытие') ? <span className="onlypickup_small">скоро открытие</span> :
 					tsx.NoWorkPoint('онлайн-заказ недоступен') ? <span className="onlypickup_small">онлайн-заказ недоступен</span> :
 					tsx.NoDeliveryPoint('') ? '' : ''
