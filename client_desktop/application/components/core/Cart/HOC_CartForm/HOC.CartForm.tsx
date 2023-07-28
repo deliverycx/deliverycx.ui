@@ -115,7 +115,7 @@ const CartFrom: FC<IProps> = ({ builder,paths }) => {
         </div>
 				<div className="box_checkbox">
 					<input className="styled-checkbox" id="styled-checkbox-1" type="checkbox" value="value1" />
-    			<label htmlFor="styled-checkbox-1" onClick={()=> setCXOfer(prev => !prev)} ><span>Я согласен на <a href="/images/cx.pdf" download="">обработку персональных данных</a></span></label>
+    			<label htmlFor="styled-checkbox-1" onClick={()=> setCXOfer(prev => !prev)} ><span>Я согласен на <a href="https://starikkhinkalich.ru/legal">обработку персональных данных</a></span></label>
 					</div>	
         <div className="cart__order-btnbox">
 					{
