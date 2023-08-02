@@ -18,7 +18,7 @@ const SlideBarInfo = ({isVisible}:{isVisible: boolean}) => {
             </a>
           </div>
           <div className="about-comp_grind-item">
-            <a href="https://t.me/Starik_Khinkalych" target="_blank">
+            <a href="https://t.me/StarikHinkalichBot" target="_blank">
               <img className="about-comp_grind-item--img" src="/images/company-news/out.png" />
             </a>
           </div>

@@ -13,7 +13,7 @@ const FooterLocation = () => {
         <div className="footer_box_address_line phones">{selectedPoint.phone}</div>
         <div className="socialbox">
           {Object.keys(selectedPoint).length !== 0 &&
-              <a href="https://t.me/starikhinkalych" target="_blank" rel="noreferrer">
+              <a href="https://t.me/StarikHinkalichBot" target="_blank" rel="noreferrer">
                   <svg width="30" height="30" className="tg" viewBox="0 0 30 30" fill="none"
                        xmlns="http://www.w3.org/2000/svg">
                       <path fillRule="evenodd" clipRule="evenodd"
