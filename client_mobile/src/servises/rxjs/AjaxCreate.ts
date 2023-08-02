@@ -6,7 +6,7 @@ class AjaxCreate {
 	private URL: string = process.env.REACT_APP_API_URL as string;
 
 	apiAjax<T>(params:any,url:string):ReturnType<typeof ajax>  {
-		console.log('paramss',`${this.URL}/${url}`);
+		//console.log('paramss',`${this.URL}/${url}`);
 		return ajax({
 			url: `${this.URL}/${url}`,
 			method: params.method,

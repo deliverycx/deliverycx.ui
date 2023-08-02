@@ -1,42 +1,44 @@
-import repository from "application/repository";
-import { CityEntiti } from "../domain/city.entiti";
-import { map, filter, catchError, of,from } from 'rxjs';
+import { CityEntiti } from "../domain/city.entity";
+import { map, filter, catchError, of, from, OperatorFunction } from 'rxjs';
 import { cityMapper } from "../interfaces/city.dto";
 import { ICityResponse } from "../interfaces/city.type";
+import { AjaxResponse } from "rxjs/ajax";
+import { guardPiPeRepository, guardRepository } from "application/guards/repository.guard";
+import { requestCity, requestCityAjax } from "./city.request";
+
+
+
 
 export class CityRepository extends CityEntiti {
 
 
+	/*
 	getCityRepository(name = '') {
-		const users = repository.getAll(name)
-			//response.response as ICityResponse
-			.pipe(response => response.response)
+		const users = requestCityAjax.getAll(name)
 			.pipe(
-				
-				//this.existingCity(response.response as ICityResponse)
-				map(data => {
-					console.log(data);
-				}),
-				/*
+				guardPiPeRepository<ICityResponse[]>(this.existingCity),
 				map(response => {
 					//console.log(response); //cityMapper(response as ICityResponse)
 					return cityMapper(response as unknown as ICityResponse)
 				}),
-				*/
+				
 				catchError(error => {
 					console.log('error: ', error);
 					return of(error);
 				})
-			);
+			)
 
-		/*
-		users.subscribe({
-			next: (value:any) => console.log('v',value),
-			error: (err:any) => console.log('err',err)
-		});
-		*/
+
+
 
 		return users
 
+	}
+	*/
+
+	async getCityRepository(cityname:string){
+		const {data} = await requestCity.getAll(cityname)
+		const result = guardRepository(this.existingCity)(data)
+		return cityMapper(result as unknown as ICityResponse)
 	}
 }

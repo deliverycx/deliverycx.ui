@@ -1,11 +1,12 @@
 import { ApiSuper, methods } from "servises/Axios/AxiosApi"
 import { AjaxApiSuper } from "servises/rxjs/AjaxApi"
+import { ICityResponse } from "../interfaces/city.type"
 
 
 
 
 
-class RequestLocation extends AjaxApiSuper {
+class RequestCityAjax extends AjaxApiSuper {
  
   @methods('get')
   getAll(city:string) {
@@ -20,4 +21,14 @@ class RequestLocation extends AjaxApiSuper {
     return this.request(`/organization/buguid?organizationId=${orgid}`)
   }
 }
-export default new RequestLocation()
+
+class RequestCity extends ApiSuper {
+ 
+  @methods('get')
+  getAll(city:string) {
+    return this.request<ICityResponse[]>(`city/all?search=${city}`)
+  }
+}
+
+export const requestCity = new RequestCity()
+export const requestCityAjax = new RequestCityAjax()

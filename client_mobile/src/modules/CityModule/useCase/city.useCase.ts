@@ -9,7 +9,6 @@ export class UseCaseCity{
 	){}
 	
 	handlerGetCity(name:string){
-		
-		this.cityModel.actionSetSity(name)
+		return this.cityModel.actionSetSity(name)
 	}
 }
