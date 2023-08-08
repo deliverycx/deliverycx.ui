@@ -15,6 +15,7 @@ type IProps = {
 
 }
 const CounterHiModal: FC<IProps> = ({ setIsModalOpen }) => {
+	const pointe = adapterSelector.useSelectors(selector => selector.point)
 	const { phone, address, city,guid } = adapterSelector.useSelectors(selector => selector.point)
 	const [count, setCount] = useState<any>('000000000000');
 	const [tik, setTik] = useState<boolean>(false);
@@ -133,7 +134,7 @@ const CounterHiModal: FC<IProps> = ({ setIsModalOpen }) => {
 
 
 	//console.log("load", count);
-	console.log('phoneee',phone);
+	console.log('phoneee',pointe);
 
 	const getFlip = async () => {
 		try {
