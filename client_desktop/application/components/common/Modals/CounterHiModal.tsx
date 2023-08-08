@@ -132,10 +132,11 @@ const CounterHiModal: FC<IProps> = ({ setIsModalOpen }) => {
 	}, [load])
 
 
-	//console.log("load", count);
+	console.log("load", count);
 
 	const getFlip = async () => {
 		try {
+			console.log('qqqq',phone);
 			setLoad(true)
 			const time = format(new Date(), "yyy-LL-dd")
 			const oldtime = dtime_nums(-1)
