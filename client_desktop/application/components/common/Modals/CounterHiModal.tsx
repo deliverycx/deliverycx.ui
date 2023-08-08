@@ -134,7 +134,7 @@ const CounterHiModal: FC<IProps> = ({ setIsModalOpen }) => {
 
 
 	//console.log("load", count);
-	console.log('phoneee',pointe);
+	//console.log('phoneee',pointe);
 
 	const getFlip = async () => {
 		try {
@@ -145,7 +145,7 @@ const CounterHiModal: FC<IProps> = ({ setIsModalOpen }) => {
 			const { data } = await RequestWebhook.flip({
 				time, oldtime, phone
 			})
-			
+			console.log('сьедено за сегодня',data);
 			if (data) {
 				setLoad(false)
 				const zeroLength = 12;
