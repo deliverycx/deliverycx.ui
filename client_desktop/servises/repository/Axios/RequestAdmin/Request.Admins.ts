@@ -17,5 +17,14 @@ class RequestAdmin extends ApiAdminSuper {
   getBu(idorg:{idorganization: string}) {
     return this.request<any>(`/organization/getorgbu`)
   }
+
+	@methods('get')
+  getOraganizationCount(org:string) {
+    return this.request<{_id:string,coutn:number,date:string}>(`/counterhinkal/getcount?organization=${org}`)
+  }
+	@methods('post')
+  setOraganizationCount(data:any) {
+    return this.request<any>(`/counterhinkal/setcount`)
+  }
 }
 export default new RequestAdmin()
