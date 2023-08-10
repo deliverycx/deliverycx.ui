@@ -66,23 +66,19 @@ export function useCaseShop(this: any,{category,products}:any) {
 				
 			}
 		}
-		let tik:any
+		
 
 
 		if(!id){
 			if(point.guid) {
 				dispatch(fetStopList(point.guid)) 
-				tik = setInterval(()=>{
-					organizationCoutn()
-				},5000)
+				organizationCoutn()
 				
 			} 
 
 		}
 
-		() =>{
-			clearInterval(tik)
-		}
+		
   }, [id])
 
 
