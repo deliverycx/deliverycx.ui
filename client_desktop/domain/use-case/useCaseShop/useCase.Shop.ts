@@ -74,7 +74,7 @@ export function useCaseShop(this: any,{category,products}:any) {
 				dispatch(fetStopList(point.guid)) 
 				tik = setInterval(()=>{
 					organizationCoutn()
-				},500000)
+				},5000)
 				
 			} 
 
