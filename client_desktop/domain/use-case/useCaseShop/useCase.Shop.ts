@@ -9,6 +9,9 @@ import { fetStopList, setProductItem } from "servises/redux/slice/shopSlice";
 import { fetchAddToCart } from "servises/redux/slice/cartSlice";
 import { checkPoint } from "application/helpers/checkPoint";
 import { Redirects } from "application/helpers/redirectTo";
+import { format } from "date-fns";
+import { RequestWebhook } from "servises/repository/Axios/Request";
+import { RequestAdmin } from "servises/repository/Axios/RequestAdmin";
 
 export function useCaseShop(this: any,{category,products}:any) {
   const [id,setId] = useState(true)
@@ -33,8 +36,52 @@ export function useCaseShop(this: any,{category,products}:any) {
 
 
 	useEffect(() => {
+		async function organizationCoutn(){
+			
+			function dtime_nums(e: any) {
+				var n = new Date;
+				n.setDate(n.getDate() + e);
+				return format(n, "yyy-LL-dd") //n.toLocaleDateString();
+			}
+			const time = format(new Date(), "yyy-LL-dd")
+			const oldtime = dtime_nums(-1)
+			const { data } = await RequestWebhook.flip({
+				time, oldtime, phone:point.phone
+			})
+			const {data:countorg} = await RequestAdmin.getOraganizationCount(point.guid)
+			
+			if(countorg){
+				const today = format(new Date(), "yyy-LL-dd")
+				if(today !== countorg.date){
+					console.log('дата не совпала',today,countorg.date);
+					await RequestAdmin.setOraganizationCount({
+						...countorg,
+						coutn:(Number(countorg.coutn) + Number(data)),
+						date:today
+					})
+					
+				}else{
+					console.log('data');
+				}
+				
+			}
+		}
+		let tik:any
+
+
 		if(!id){
-			point.guid && dispatch(fetStopList(point.guid))  
+			if(point.guid) {
+				dispatch(fetStopList(point.guid)) 
+				tik = setInterval(()=>{
+					organizationCoutn()
+				},500000)
+				
+			} 
+
+		}
+
+		() =>{
+			clearInterval(tik)
 		}
   }, [id])
 

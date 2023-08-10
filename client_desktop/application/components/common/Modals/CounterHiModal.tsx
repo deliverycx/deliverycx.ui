@@ -93,7 +93,7 @@ const CounterHiModal: FC<IProps> = ({ setIsModalOpen }) => {
 				timercoutn = setInterval( async ()=>{
 					console.log('iiiiiiii');
 					await organizationCoutn()
-				},5000)
+				},10000)
 				
 				
 			}
