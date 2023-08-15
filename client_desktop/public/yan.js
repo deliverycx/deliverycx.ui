@@ -7,5 +7,7 @@
    ym(91135511, "init", {
         clickmap:true,
         trackLinks:true,
-        accurateTrackBounce:true
+        accurateTrackBounce:true,
+        webvisor:true,
+        ecommerce:"dataLayer"
    });
