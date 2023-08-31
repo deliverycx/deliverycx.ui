@@ -136,7 +136,7 @@ const CartFrom: FC<IProps> = ({ builder,paths }) => {
           
 					{
 						orderType === DELIVERY_METODS.ONSPOT 
-							? <div className="administrator">После заказа к вам подойдет официант</div>
+							? <div className="administrator"></div>
 							: <div className="administrator">После заказа с вами свяжется администратор</div>
 					}
           

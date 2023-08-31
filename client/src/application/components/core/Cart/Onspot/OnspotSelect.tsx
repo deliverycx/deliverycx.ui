@@ -8,6 +8,7 @@ import { setOrderTable } from 'servises/redux/slice/cartSlice';
 import cn from "classnames";
 import { useHistory } from "react-router-dom";
 import { ROUTE_APP } from 'application/contstans/route.const';
+import CartOnspotPopup from './CartOnspotPopup';
 
 const OnspotSelect = () => {
 	const history = useHistory();
@@ -15,6 +16,7 @@ const OnspotSelect = () => {
 	const cart = adapterSelector.useSelectors(selector => selector.cart)
 	const [select, setSelect] = useState(false)
 	const [table, setTables] = useState<any>()
+	const [popup, setPopup] = useState<boolean>(true)
 	const dispatch = useDispatch()
 
 	useEffect(() => {
@@ -64,16 +66,21 @@ const OnspotSelect = () => {
 		setSelect(false)
 	}
 
-	const resetTable = () =>{
+	const resetTable = () => {
 		handlTable(null)
 		history.push(ROUTE_APP.SHOP.SHOP_MAIN)
 	}
-	
+
 
 
 
 	return (
 		<div className="onspot_box">
+			{
+				popup &&
+				<CartOnspotPopup set={setPopup} />
+			}
+
 			{
 				cart.orderTable && cart.orderTable.section === 'fake'
 					?
@@ -93,10 +100,10 @@ const OnspotSelect = () => {
 						<div className="onspot_box__select" onClick={resetTable}>
 							<div className="onspot_select_def">
 								<div className="form__field-wrapper__placeholder onspot_select_item">
-								<img src={require("assets/i/smal_close.png").default} alt="" />
+									<img src={require("assets/i/smal_close.png").default} alt="" />
+								</div>
 							</div>
-							</div>
-							
+
 
 						</div>
 					</>
