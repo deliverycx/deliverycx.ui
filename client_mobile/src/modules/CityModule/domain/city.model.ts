@@ -1,23 +1,27 @@
-import { action, computed, makeObservable, observable } from "mobx"
+import { action, computed, configure, makeObservable, observable } from "mobx"
 import { CityDTO } from "../interfaces/city.dto"
 import { CityRepository } from "../data/city.repository"
 import { makePersistable } from 'mobx-persist-store';
 import { ICity } from 'modules/CityModule/interfaces/city.type';
 
 export class CityModel extends CityRepository {
-	sityList: Array<CityDTO> = []
-	selectSity:CityDTO | null = null
+	cityList: Array<CityDTO> = []
+	selectCity:CityDTO | null = null
 
 	constructor() {
 		super()
 		makeObservable(this, {
-			sityList: observable,
-			selectSity: observable,
+			cityList: observable,
+			selectCity: observable,
 			actionSetSity: action,
 			actionSelectSity:action,
 		})
-		makePersistable(this, { name: 'SampleStore', properties: ['selectSity'],storage: window.localStorage });
-
+		makePersistable(this, { name: 'SampleStore', properties: ['selectCity'],storage: window.localStorage });
+		/*
+		configure({
+			useProxies: "never"
+		})
+		*/
 	}
 
 	
@@ -28,13 +32,13 @@ export class CityModel extends CityRepository {
 		})
 		*/
 		return this.getCityRepository(name).then((data: any) => {
-			this.sityList = data
+			this.cityList = data
 			return data
 		})
 	}
 
 	actionSelectSity(city:ICity){
-		this.selectSity = city
+		this.selectCity = city
 	}
 
 

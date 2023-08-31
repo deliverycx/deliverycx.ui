@@ -1,19 +1,23 @@
 import ErrorPage from "application/components/common/Errors/ErrorPage"
 import HOCCity from "application/components/core/City/HOC.City"
-import { ROUTE_APP } from "application/contstans/route.const"
-import { cityModel, useCaseCity } from "modules/CityModule/city.module"
+import HOCOrganizations from "application/components/core/Organization/HOC.Organizations"
 
-export async function loader() {
-  useCaseCity.handlerGetCity('')
-	const cityMap = cityModel.sityList;
-	console.log(cityMap);
-	return cityMap
-}
+import { ROUTE_APP } from "application/contstans/route.const"
+
+import {useCaseCity } from "modules/CityModule/city.module"
+
+
 export const publicRoutes = [
 	{
 		path: ROUTE_APP.MAIN,
 		element:<HOCCity />,
 		errorElement: <ErrorPage />,
-		//loader:loader
+		loader:async () => await useCaseCity.handlerGetCity('')
+	},
+	{
+		path: ROUTE_APP.POINT,
+		element:<HOCOrganizations />,
+		errorElement: <ErrorPage />,
+		//loader:async () => await useCaseCity.handlerGetCity('')
 	}
 ]
