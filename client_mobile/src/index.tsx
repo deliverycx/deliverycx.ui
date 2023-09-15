@@ -1,4 +1,4 @@
-import "./scss/index.scss";
+import "./styles/scss/style.scss";
 
 
 import App from 'application/App';

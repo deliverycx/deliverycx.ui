@@ -1,12 +1,14 @@
 import { ICityResponse } from "modules/CityModule/interfaces/city.type"
 import { ApiSuper, methods } from "servises/Axios/AxiosApi"
+import { AjaxApiSuper } from "servises/rxjs/AjaxApi"
+import { IPointStatusRequest } from "../interfaces/organizationStatus.type"
 
-class RequestOrganizationStatus extends ApiSuper {
+class RequestOrganizationStatus extends AjaxApiSuper {
  
   @methods('get')
-  getAll(cityId:string) {
-    return this.request<ICityResponse[]>(`organization/all?cityId=${cityId}`)
+  getPointStatus(pointid:string) {
+    return this.request<IPointStatusRequest>(`organization/organizationstatus?organization=${pointid}`)
   }
 }
 
-export const requestOrganization = new RequestOrganizationStatus()
+export const requestOrganizationStatus = new RequestOrganizationStatus()

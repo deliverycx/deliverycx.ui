@@ -1,0 +1,45 @@
+.delivery-addresses{
+  &__list{
+    display: flex;
+    flex-direction: column;
+    flex: 1 0 auto;
+
+    &__items{
+      display: flex;
+      flex-direction: column;
+      padding: 16px;
+      gap: 8px;
+
+      &-item{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        color: $c-black;
+        font-size: 18px;
+        font-weight: 600;
+        line-height: 20px;
+
+        button{
+          svg{
+            width: 24px;
+            height: 24px;
+            fill: #8D191D;
+          }
+        }
+      }
+    }
+  }
+
+  &__buttons{
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    padding: 16px;
+    button{
+      img{
+        width: 24px;
+        height: 24px;
+      }
+    }
+  }
+}

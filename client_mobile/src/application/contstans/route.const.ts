@@ -15,9 +15,11 @@ export const ROUTE_APP = {
     CART_MAP: '/cart/map',
     CART_ORDER: '/cart/order'
   },
-  ORDER: '/success',
-	ORDER_CREATE:'/ordercreate',
-	DUALPAYMENT: '/dualpayment',
+  ORDER:{
+		ORDER_COURIER: "/order/delivery",
+    ORDER_ONSPOT: "/order/onspot",
+    ORDER_PICKUP: "/order/pickup",
+	},
   PAGES: {
     ABOUT:'/about',
 		GUESTVIP:'/guestvip'

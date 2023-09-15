@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-var-requires */
 import { ROUTE_APP } from "application/contstans/route.const"
 import { observer } from "mobx-react-lite"
 import { cityModel } from "modules/CityModule/city.module"
@@ -16,13 +17,21 @@ const CityListView: FC<IProps> = ({ submitCity, city }) => {
 
 
 	return (
-		<>
-
-
-			<Link to={ROUTE_APP.POINT} relative="path" onClick={() => submitCity(city)}>
-				{city.cityname} {city.countOrganization > 1 && <>({city.countOrganization})</>}
+		<div className="item__city">
+			<section>
+				<Link to={ROUTE_APP.POINT} relative="path" onClick={() => submitCity(city)}>
+				{city.cityname}
 			</Link>
-		</>
+			<div className="city__institutes">{city.countOrganization > 1 && <>({city.countOrganization})</>}</div>
+			</section>
+			
+			{
+									selectCity?.id === city.id &&
+									<div className="item__check">
+										<img src={require("assets/images/icons/check_circle.svg").default} alt="" />
+									</div>
+								}
+		</div>
 	)
 }
 export default observer(CityListView)

@@ -1,0 +1,118 @@
+.menu-wrapper{
+  z-index: 2;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: var(--background, rgba(19, 42, 62, 0.5));
+  backdrop-filter: blur(2px);
+}
+
+.menu{
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  position: fixed;
+  background: #fff;
+  z-index: 1;
+  height: 100%;
+  bottom: 0;
+  right: -264px;
+  padding: 0 0 56px 0;
+  transition: right ease .3s;
+  overflow-y: auto;
+
+  &.opened {
+    right: 0;
+  }
+
+  &-header{
+    display: flex;
+    padding: 4px;
+    justify-content: flex-end;
+    align-items: center;
+
+    button{
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 4px;
+      width: 48px;
+      height: 48px;
+      border: none;
+      border-radius: 12px;
+      background: none;
+      cursor: pointer;
+
+      svg{
+        width: 24px;
+        height: 24px;
+      }
+    }
+  }
+
+  &-menu{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+    padding: 0 32px;
+    flex: 1 0 auto;
+
+    a{
+      flex: 1 1 0;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      color: $c-black;
+      font-size: 16px;
+      font-weight: 400;
+      line-height: 20px;
+      text-decoration: none;
+      width: 200px;
+      span {
+        display: flex;
+        flex-direction: column;
+        color: $c-black;
+        font-size: 16px;
+        font-weight: 400;
+        line-height: 20px;
+        span {
+          color: $c-gray;
+          font-size: 14px;
+          font-weight: 400;
+          line-height: 16px;
+        }
+      }
+      img{
+        width: 24px;
+        height: 24px;
+      }
+    }
+  }
+
+  &-social{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+    padding: 6px 8px;
+    img{
+      width: 36px;
+      height: 36px;
+    }
+  }
+
+  &-full-link{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px 16px;
+    color: $c_red;
+    font-size: 12px;
+    font-weight: 400;
+    line-height: 16px;
+    text-decoration: none;
+  }
+}

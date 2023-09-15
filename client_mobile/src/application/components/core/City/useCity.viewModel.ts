@@ -30,7 +30,7 @@ export function useCityViewModel(this:any) {
 	*/
 
 	useEffect(()=>{
-		console.log('reset');
+		useCaseCity.handlerGetCity('')
 		organizationModel.actionResetOrganizationAll()
 	},[])
 

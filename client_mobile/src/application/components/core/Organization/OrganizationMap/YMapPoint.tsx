@@ -1,8 +1,10 @@
 /* eslint-disable @typescript-eslint/no-var-requires */
 import { initialStatePointsMap } from "application/reducers/PointsReducer";
 import { FC, useContext } from "react"
-import { YMaps, Map, Placemark } from 'react-yandex-maps';
+import { YMaps, Map, Placemark, ZoomControl, GeolocationControl } from 'react-yandex-maps';
 import { IOrganization } from 'modules/OrganizationModule/Organization/interfaces/organization.type';
+import { useState } from 'react';
+import { useEffect } from 'react';
 
 
 export const mokPoint = [
@@ -75,9 +77,10 @@ export const mokPoint = [
 
 const placeMarkOption = {
   iconLayout: 'default#image',
-  iconImageHref: require("assets/i/placemark.svg").default,
-  iconImageSize: [50, 60],
-  iconImageOffset: [-25, -60]
+  iconImageHref: require("assets/images/icons/placemark.svg").default,
+  iconImageSize: [44, 60],
+	iconImageOffset: [-20, -35],
+	
 }
 
 type IProps = {
@@ -87,29 +90,46 @@ type IProps = {
 }
 
 const YMapPoint:FC<IProps> = ({statePoint,addresses,placemarkClick}) => {
-  
+	const [cord,setCord] = useState([0.0, 0.0])
+
+	useEffect(()=>{
+		if(addresses && addresses.length){	
+			if(addresses[statePoint.slideIndex]){
+				setCord([addresses[statePoint.slideIndex].info.cords[1], addresses[statePoint.slideIndex].info.cords[0]])
+			}else{
+				const randomindex = Math.floor(Math.random() * addresses.length)
+				setCord([addresses[randomindex].info.cords[1], addresses[randomindex].info.cords[0]])
+			}
+		}
+		
+	},[statePoint.slideIndex,addresses])
 
   return (
     <>
-      { addresses &&
+     
                     <YMaps>
+											<div>
                         <Map
-                            className="welcome__map"
+                            
                             width="100"
                             height="100vh"
                             defaultState={{
-                                center: addresses[0] ? [addresses[statePoint.slideIndex].info.cords[1], addresses[statePoint.slideIndex].info.cords[0]] : [0.0, 0.0],
+                                center: cord,
                                 zoom: 13
                             }}
                             state={{
-                                center: addresses[0] ? [addresses[statePoint.slideIndex].info.cords[1], addresses[statePoint.slideIndex].info.cords[0]] : [0.0, 0.0],
+                                center: cord,
                                 zoom: 13,
 
                             }}
+														
                         >
+													<ZoomControl options={{ position: { right: 10, bottom: 150 }, zoomSize: 'small' }} />
+                            <GeolocationControl options={{ position: { right: 10, bottom: 100 }}} />
                             {
                                 addresses.map((address:IOrganization, index:number) => {
-                                    return (
+																	if(address.info){
+																		return (
                                         <Placemark
                                             onClick={() => placemarkClick(address,index)}
                                             key={index}
@@ -117,11 +137,14 @@ const YMapPoint:FC<IProps> = ({statePoint,addresses,placemarkClick}) => {
                                             geometry={[address.info.cords[1], address.info.cords[0]]}
                                         />
                                     );
+																	}
+                                    
                                 })
                             }
                         </Map>
+												</div>	
                     </YMaps>
-                }
+              
     </>
   )
 }

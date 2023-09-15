@@ -6,16 +6,30 @@ class AjaxCreate {
 	private URL: string = process.env.REACT_APP_API_URL as string;
 
 	apiAjax<T>(params:any,url:string):ReturnType<typeof ajax>  {
-		//console.log('paramss',`${this.URL}/${url}`);
-		return ajax({
-			url: `${this.URL}/${url}`,
-			method: params.method,
-			headers: {
-				'Content-Type': 'application/json',
-				'rxjs-custom-header': 'Rxjs'
-			},
-			
-		})
+
+		if(params.method === 'post'){
+			return ajax({
+				url: `${this.URL}/${url}`,
+				method: params.method,
+				body:params.data,
+				headers: {
+					'Content-Type': 'application/json',
+					'rxjs-custom-header': 'Rxjs'
+				},
+				
+			})
+		}else{
+			return ajax({
+				url: `${this.URL}/${url}`,
+				method: params.method,
+				headers: {
+					'Content-Type': 'application/json',
+					'rxjs-custom-header': 'Rxjs'
+				},
+				
+			})
+		}
+		
 	}
 
 	static getInstance() {

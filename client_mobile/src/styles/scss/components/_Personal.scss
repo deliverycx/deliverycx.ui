@@ -1,0 +1,40 @@
+.personal{
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  padding: 56px 0;
+  overflow-y: auto;
+
+  &-content{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    padding: 16px;
+    flex: 1 0 auto;
+
+    &__items{
+      width: 100%;
+      display: flex;
+      gap: 8px;
+      justify-content: center;
+      align-items: center;
+    }
+
+    label{
+      p{
+        color: #333;
+        font-size: 14px;
+        font-weight: 400;
+        line-height: 16px;
+      }
+    }
+  }
+
+  &-buttons{
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    padding: 16px;
+  }
+}

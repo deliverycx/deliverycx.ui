@@ -4,6 +4,7 @@ import { QueryClient, useQuery } from "react-query";
 import { useEffect } from 'react';
 import { useNavigate  } from "react-router-dom";
 import { ROUTE_APP } from 'application/contstans/route.const';
+import { requestOrganizationAdmin } from "modules/OrganizationModule/Organization/data/organization.request";
 
 export function useOrganizationsViewModel(this:any) {
 	const organizations = organizationModel.organizationList
@@ -16,15 +17,18 @@ export function useOrganizationsViewModel(this:any) {
 		}else{
 			navigate(ROUTE_APP.MAIN)
 		}
-		
 	},[city])
+
+	const handleBackCity = () =>{
+		navigate(ROUTE_APP.MAIN)
+	}
 
 	this.data({
 		organizations,
 		city
 	});
 	this.handlers({
-		
+		handleBackCity
 	});
 	this.status({
 		

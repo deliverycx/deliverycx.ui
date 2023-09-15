@@ -1,14 +1,20 @@
 import {QueryClient} from 'react-query'
 import { NestedRoute } from './routes/NestedRoute';
-import HOCCity from './components/core/City/HOC.City';
+import { BrowserRouter } from 'react-router-dom';
+import AppRouter from './routes/AppRouter';
+
+
 
 const App = (): JSX.Element => {
 
 	return (
 		<>
-
+			<BrowserRouter>
+          <AppRouter/>
+      </BrowserRouter>
 			{
-				NestedRoute()
+
+				//NestedRoute()
 			}
 
 

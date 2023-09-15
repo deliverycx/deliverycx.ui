@@ -36,12 +36,22 @@ export class CityRepository extends CityEntiti {
 	}
 	*/
 
-	async getCityRepository(cityname:string){
-		const {data} = await requestCity.getAll(cityname) // получаем города по имени или без
-		const result = guardRepository(this.existingCity)(data) // убираем скрытые города
-		const sortCity = this.sortByNameCity(result) // сортируем по алфовиту и раставляем по алфовиту
-		return sortCity.map((val)=>{
-			return cityMapper(val as unknown as ICityResponse) // пропускаем через маппер и валидатор
-		}) 
+	async getCityRepository(cityname: string) {
+		try {
+			const { data } = await requestCity.getAll(cityname) // получаем города по имени или без
+			const result = guardRepository(this.existingCity)(data) // убираем скрытые города
+			if(result){
+				const sortCity = this.sortByNameCity(result as ICityResponse[]) // сортируем по алфовиту и раставляем по алфовиту
+				return sortCity && sortCity.map((val) => {
+					return cityMapper(val as unknown as ICityResponse) // пропускаем через маппер и валидатор
+				})
+			}else{
+				throw Error()
+			}
+			
+		} catch (error) {
+			console.log(error);
+		}
+
 	}
 }

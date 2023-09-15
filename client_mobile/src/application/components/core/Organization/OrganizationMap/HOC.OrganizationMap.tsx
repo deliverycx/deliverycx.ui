@@ -7,15 +7,19 @@ import YMapPoint from './YMapPoint';
 import { useOrganizationMapViewModel } from './OrganizationMap.viewModel';
 
 
-const OrganizationMap:FC<{organizations:IOrganization[]}> = ({organizations}) =>{
-	const useCase = adapterComponentUseCase(useOrganizationMapViewModel,organizations)
-	const {statePoint} = useCase.data
-	const {placemarkClickHandler} = useCase.handlers
+const OrganizationMap: FC<{ organizations: IOrganization[] }> = ({ organizations }) => {
+	const useCase = adapterComponentUseCase(useOrganizationMapViewModel, organizations)
+	const { statePoint } = useCase.data
+	const { placemarkClickHandler } = useCase.handlers
 
-	
-	return(
+
+	return (
 		<>
-		<YMapPoint statePoint={statePoint} addresses={organizations} placemarkClick={placemarkClickHandler} />
+			{
+				organizations &&
+				<YMapPoint statePoint={statePoint} addresses={organizations} placemarkClick={placemarkClickHandler} />
+			}
+
 		</>
 	)
 }

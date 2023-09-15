@@ -1,0 +1,33 @@
+.validate{
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  white-space: nowrap;
+
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 16px;
+
+  &-error{
+    color: $c_red;
+
+    img{
+      width: 16px;
+      height: 16px;
+    }
+  }
+
+  &-additional{
+    color: #4D4D4D;
+
+    img{
+      width: 16px;
+      height: 16px;
+    }
+  }
+
+  svg{
+    width: 16px;
+    height: 16px;
+  }
+}

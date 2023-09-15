@@ -1,0 +1,35 @@
+import { organizationModel } from "modules/OrganizationModule/organization.module";
+import { useEffect } from "react";
+import { useNavigate } from 'react-router-dom';
+import { ROUTE_APP } from 'application/contstans/route.const';
+import { useQuery } from "react-query";
+import { shopUseCase } from "modules/ShopModule/shop.module";
+
+export function useShopViewModel(this: any) {
+	const organization = organizationModel.selectOrganization
+	const navigate = useNavigate()
+
+	const { data:nomenclatures, isLoading } = useQuery('shop', async () => await shopUseCase.getNomenclature(organization?.guid), {
+		refetchOnWindowFocus: true,
+	})
+
+
+	useEffect(() => {
+		if (!organization) {
+			//navigate(ROUTE_APP.MAIN)
+		}
+	}, [organization])
+
+
+
+	this.data({
+		organization,
+		nomenclatures
+	});
+	this.handlers({
+
+	});
+	this.status({
+		isLoading
+	});
+}

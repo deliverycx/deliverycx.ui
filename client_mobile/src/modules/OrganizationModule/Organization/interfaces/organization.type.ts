@@ -13,14 +13,26 @@ export interface IOrganizationResponse {
   isHidden:boolean
 	redirect:string
 	redirectON:boolean
+	gallery:string[]
+	filters:OrganizationFilters[]
 }
 
-export type IOrganizationStatus = {
-	_id:string,
-	organization:string,
-	deliveryMetod:string[]
-	organizationStatus:string
-	paymentMetod:string[]
+export type OrganizationFilters = {
+	_id:string
+	name:string
+	images:string[]
+}
+
+export type IWorkTimePoint = {
+	typework:"WORK" | "NOWORK" | "ONWORK"
+	todaytime:string[]
+	timelist:string[] | string
+
+}
+
+export type pointSerch= {
+	data:string
+	cityid:string
 }
 
 export type IOrganization = OrganizationDTO

@@ -1,7 +1,7 @@
 import { AjaxResponse } from "rxjs/ajax";
 import { map } from 'rxjs';
 
-export function guardPiPeRepository<T>(guard: (value: T) => T,) {
+export function guardPiPeRepository<T>(guard: (value: T) => T | boolean,) {
 	return (source: any) =>
 		source.pipe(
 			map((value: AjaxResponse<T>) => {
@@ -15,7 +15,7 @@ export function guardPiPeRepository<T>(guard: (value: T) => T,) {
 		);
 }
 
-export function guardRepository<T>(guard: (value: T) => T,) {
+export function guardRepository<T>(guard: (value: T) => T | boolean) {
 	return (source: any) => {
 		if (source) {
 			return guard(source)
