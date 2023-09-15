@@ -1,1 +1,2 @@
 !function(){var t=document.createElement("script");t.type="text/javascript",t.async=!0,t.src='https://vk.com/js/api/openapi.js?169',t.onload=function(){VK.Retargeting.Init("VK-RTRG-1591066-9fa2W"),VK.Retargeting.Hit()},document.head.appendChild(t)}();
+ym(91135511,'reachGoal','order_success');
