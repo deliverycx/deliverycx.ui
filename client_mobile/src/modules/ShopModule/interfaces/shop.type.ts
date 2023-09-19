@@ -20,6 +20,7 @@ export interface IProduct<C = ICategory> {
 	categoryImage: string;
 	isFav: boolean;
 	category:string
+	stoplist?:boolean
 }
 export interface IFavorites {
 	list: string[];
@@ -29,9 +30,9 @@ export interface IResponseProductCard {
 	product: IProduct;
 	group: ICategory;
 }
-export interface IStopList{
-	organization: string,
-	stopList: TStopListItems[]
+export type IStopList = {
+	balance:number,
+	productId:string
 }
 export type TStopListItems = {
 	balance: number,

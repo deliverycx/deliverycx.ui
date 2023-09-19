@@ -9,12 +9,14 @@
     box-shadow: 0 4px 24px 0 rgba(0, 0, 0, 0.12);
     cursor: pointer;
 
+		
     &-img{
       position: relative;
       display: flex;
       align-self: center;
       justify-content: center;
-
+			cursor: pointer;
+			
       img{
         border-radius: 17px 17px 0 0;
         width: 160px;
@@ -53,11 +55,12 @@
       .product-card-sale {
         background: #BFBFBF;
       }
+			
     }
 
     &-ended{
       display: none;
-
+			
       .ended &{
         display: flex;
         justify-content: center;
@@ -83,14 +86,12 @@
       gap: 4px;
       flex: 1 1 0;
       padding: 8px 8px 0 8px;
-
+			
       &-title{
         flex: 1 1 0;
         color: $c-black;
-
-        .ended &{
-          color: #BFBFBF;
-        }
+				cursor: pointer;
+        
       }
 
       &__info{
@@ -114,7 +115,7 @@
       justify-content: flex-end;
       padding: 8px;
 
-      a{
+      .addtocart{
         display: flex;
         justify-content: center;
         align-items: center;
@@ -127,6 +128,7 @@
         line-height: 20px;
         border: none;
         border-radius: 12px;
+				cursor: pointer;
         background: #E6E6E6;
 
         & svg{

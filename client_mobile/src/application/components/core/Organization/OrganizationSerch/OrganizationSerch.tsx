@@ -4,7 +4,7 @@ import { organizationModel } from "modules/OrganizationModule/organization.modul
 import { FC, useEffect } from "react"
 
 
-const HOCOrganizationSerch: FC<{ city: ICity }> = ({ city }) => {
+const OrganizationSerch: FC<{ city: ICity }> = ({ city }) => {
 
 
 	
@@ -25,4 +25,4 @@ const HOCOrganizationSerch: FC<{ city: ICity }> = ({ city }) => {
 		</div>
 	)
 }
-export default HOCOrganizationSerch
+export default OrganizationSerch

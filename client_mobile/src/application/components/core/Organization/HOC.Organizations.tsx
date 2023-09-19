@@ -12,8 +12,8 @@ import iconArrowBack from "assets/images/icons/arrow_back.png";
 import HOCOrganizationCard from "./OrganizationCard/HOC.OrganizationCard";
 import Draggable from "react-draggable";
 import { useState } from 'react';
-import HOCOrganizationFilters from "./OrganizationFilters/HOC.OrganizationFilters";
-import HOCOrganizationSerch from "./OrganizationSerch/HOC.OrganizationSerch";
+import HOCOrganizationFilters from "./OrganizationFilters/OrganizationFilters";
+import HOCOrganizationSerch from "./OrganizationSerch/OrganizationSerch";
 
 
 

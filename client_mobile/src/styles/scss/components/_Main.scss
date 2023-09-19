@@ -69,6 +69,7 @@ body {
 	left: 0;
 	right: 0;
 	margin: 0 auto;
+	z-index: 9999;
   &:before {
     position: absolute;
     content: '';
@@ -90,7 +91,7 @@ body {
     overflow-y: auto;
   }
   &__bg {
-    z-index: 4;
+    z-index: 9999;
     position: fixed;
     top: 0;
     left: 0;

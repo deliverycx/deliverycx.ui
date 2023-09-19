@@ -11,6 +11,7 @@ export function useShopViewModel(this: any) {
 
 	const { data:nomenclatures, isLoading } = useQuery('shop', async () => await shopUseCase.getNomenclature(organization?.guid), {
 		refetchOnWindowFocus: true,
+		cacheTime:1
 	})
 
 

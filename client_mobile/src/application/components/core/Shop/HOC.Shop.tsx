@@ -4,7 +4,9 @@ import { useShopViewModel } from "./Shop.viewModel";
 import ShopHeader from "./view/ShopHeader";
 import Stocks from "./Stocks/Stocks";
 import LoaderProduct from "application/components/common/Loaders/loaderProduct";
-import Categories from "./Categories";
+import Categories from "./Categories/Categories";
+import HOCProducts from "./Products/HOC.Products";
+import TabBar from "application/components/common/TabBar/TabBar";
 
 const HOCShop = () => {
 	const useCase = adapterComponentUseCase(useShopViewModel)
@@ -12,6 +14,7 @@ const HOCShop = () => {
 	const { isLoading } = useCase.status
 
 	return (
+		<>
 		<div className="catalogue">
 			<div className="catalogue-header">
 				{
@@ -27,11 +30,18 @@ const HOCShop = () => {
 			</div>
 			<div className="catalogue-content">
 				<div className="catalogue-content__cards">
-					qqq
+					{
+						!isLoading && nomenclatures ?
+							nomenclatures.products && <HOCProducts nomenclatureProducts={nomenclatures.products} /> : <LoaderProduct />
+					}
 				</div>
 			</div>
+			
 
 		</div>
+		<TabBar />	
+		</>
+			
 	)
 }
 export default observer(HOCShop)

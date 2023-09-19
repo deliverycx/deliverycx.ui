@@ -1,6 +1,7 @@
 import { OrganizationFilters } from "modules/OrganizationModule/Organization/interfaces/organization.type";
 import { ApiAdminSuper, ApiSuper, methods } from "servises/Axios/AxiosApi";
-import { IRequestNomeclature } from "../interfaces/shop.type";
+import { IRequestNomeclature, IStopList } from "../interfaces/shop.type";
+import { AjaxApiSuper } from "servises/rxjs/AjaxApi";
 
 class RequestShopApi extends ApiSuper {
 
@@ -8,6 +9,19 @@ class RequestShopApi extends ApiSuper {
 	getNomenclature(organization:string){
 		return this.request<IRequestNomeclature>(`product/nomenclature?organization=${organization}`)
 	}
+
+	@methods('get')
+  stoplist(org:string) {
+    return this.request<IStopList[]>(`/stoplist/getStopList/?organizationId=${org}`)
+  }
+}
+
+class RequestShopAjax extends AjaxApiSuper {
+ 
+  @methods('get')
+  stoplist(org:string) {
+    return this.request<IStopList[]>(`stoplist/getStopList/?organizationId=${org}`)
+  }
 }
 
 class RequestShopAdmin extends ApiAdminSuper {
@@ -20,5 +34,6 @@ class RequestShopAdmin extends ApiAdminSuper {
 	
 }
 
+export const requestShopAjax =  new RequestShopAjax()
 export const requestShopApi = new RequestShopApi()
 export const requestShopAdmin = new RequestShopAdmin()
