@@ -9,6 +9,8 @@ import { useProductsViewModel } from "./Products.viewModel"
 import { observer } from "mobx-react-lite"
 import cn from "classnames"
 import ProductCard from "./ProductCard"
+import ImageLoader from 'react-imageloader';
+import { CircularProgress } from "@mui/material"
 
 type IProps = {
 	nomenclatureProducts: IProduct[]
@@ -26,8 +28,14 @@ const HOCProducts: FC<IProps> = ({ nomenclatureProducts }) => {
 					const CN = cn('products product-card', { ended: product.stoplist })
 					return (
 						<div className={CN} key={index}>
-							<div className="product-card-img">
-								<img src={product.image} alt={product.name} onClick={()=> setModalmodalProduct(product)} />
+							<div className="product-card-img" onClick={()=> setModalmodalProduct(product)}>
+
+								<ImageLoader
+									src={product.image}
+									wrapper={React.createFactory('div')}
+									preloader={() => <CircularProgress color="primary" />}>
+									{product.name}
+								</ImageLoader>
 								<div className="product-card-sale">-123%</div>
 								<div className="product-card-ended">
 
@@ -36,7 +44,7 @@ const HOCProducts: FC<IProps> = ({ nomenclatureProducts }) => {
 									Закончилось
 								</div>
 							</div>
-							<div className="product-card__content" onClick={()=> setModalmodalProduct(product)}>
+							<div className="product-card__content" onClick={() => setModalmodalProduct(product)}>
 								<h5 className="product-card__content-title">
 									{product.name}
 								</h5>

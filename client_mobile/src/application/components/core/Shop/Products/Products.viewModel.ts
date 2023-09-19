@@ -13,7 +13,7 @@ export function useProductsViewModel(products:IProduct[]) {
 
 
 	
-	console.log('produc',selectProduct);
+
 
   this.data({
     selectProduct

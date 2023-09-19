@@ -45,6 +45,7 @@
     "react-dom": "^18.2.0",
     "react-draggable": "^4.4.5",
     "react-geolocated": "^4.1.0",
+    "react-imageloader": "^3.0.0",
     "react-input-mask": "^3.0.0-alpha.2",
     "react-jss": "^10.10.0",
     "react-query": "^3.39.3",
@@ -103,6 +104,7 @@
   },
   "devDependencies": {
     "@types/lodash.debounce": "^4.0.7",
+    "@types/react-imageloader": "^2.1.12",
     "@types/react-input-mask": "^3.0.2",
     "@types/react-lazy-load-image-component": "^1.5.3",
     "@types/react-router": "^5.1.20",
