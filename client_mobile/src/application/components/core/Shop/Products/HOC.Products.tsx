@@ -23,7 +23,7 @@ const HOCProducts: FC<IProps> = ({ nomenclatureProducts }) => {
 		<>
 			{
 				selectProduct && selectProduct.length ? selectProduct.map((product: IProduct, index: number) => {
-					const CN = cn('products', { ended: product.stoplist })
+					const CN = cn('products product-card', { ended: product.stoplist })
 					return (
 						<div className={CN} key={index}>
 							<div className="product-card-img">
@@ -36,7 +36,7 @@ const HOCProducts: FC<IProps> = ({ nomenclatureProducts }) => {
 									Закончилось
 								</div>
 							</div>
-							<div className="product-card__content">
+							<div className="product-card__content" onClick={()=> setModalmodalProduct(product)}>
 								<h5 className="product-card__content-title">
 									{product.name}
 								</h5>

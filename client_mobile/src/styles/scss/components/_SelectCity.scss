@@ -10,6 +10,7 @@
     gap: 4px;
     align-self: stretch;
     background: #fff;
+		margin-bottom: 15px;
   }
   &__header {
     display: flex;
@@ -48,24 +49,21 @@
   &__item {
     width: 100%;
     display: flex;
-    align-items: center;
+
     gap: 16px;
     cursor: pointer;
-		margin-bottom: 15px;
+		margin-bottom: 10px;
 		&-box{
 			width: 100%;
 			display: flex;
 			flex-wrap: wrap;
 			justify-content: space-between;
-			align-items: center;
 		}
     .item {
       &__letter {
         width: 40px;
         height: 40px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
+        
 
         color: $c_red;
         font-size: 16px;
@@ -75,15 +73,15 @@
         flex-shrink: 0;
       }
       &__city {
-        width: 50%;
+        width: 30%;
+				min-width: 150px;
         display: flex;
 				justify-content: space-between;
-        align-items: center;
 				padding-right: 20px;
         gap: 8px;
-				margin: 5px 0;
         color: $c-black;
         font-size: 16px;
+				margin-bottom: 10px;
         font-style: normal;
         font-weight: 400;
         line-height: 20px;
@@ -106,8 +104,6 @@
         }
       }
       &__check {
-        width: 40px;
-        height: 40px;
         display: flex;
         align-items: center;
         justify-content: center;
@@ -131,4 +127,14 @@
       }
     }
   }
+}
+@media screen and (max-width:600px) {
+	.select__item .item__city{
+		width: 50%;
+	}
+}
+@media screen and (max-width:400px) {
+	.select__item .item__city{
+		width: 70%;
+	}
 }

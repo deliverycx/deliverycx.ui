@@ -1,10 +1,11 @@
 .catalogue{
 
   //Header start
-
+	
   &-header{
+		background-color: #fff;
     box-shadow: 0 4px 24px 0 rgba(0, 0, 0, 0.12);
-
+		
     //Header-info start
 
     &__info{
@@ -169,8 +170,8 @@
   //Content start
 
   &-content{
-    padding: 16px 16px 72px;
-
+    padding: 16px 10px 72px;
+		background-color: #F9F9F9;
     //Content-cards start
 
     &__cards{
@@ -355,7 +356,7 @@
 
 
 .categories {
-	border-bottom: 1px solid #dedede;
+	box-shadow: 0 20px 24px 0 rgba(0, 0, 0, 0.1);
 	padding-bottom: 20px;
 	position: sticky;
 	top: -10px;
