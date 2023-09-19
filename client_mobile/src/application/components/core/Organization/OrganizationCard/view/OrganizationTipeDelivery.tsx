@@ -43,7 +43,7 @@ const OrganizationTipeDelivery = () => {
 				deliveryTipe.length !== 0 &&
 					statusTSX.OpenPoint()
 					? <button onClick={() => handlerCloseCardModal(false)} className="btn btn-mini btn-gray no-drag">Выбрать другую</button>
-					: statusTSX.pointstatus
+					: statusTSX.statuses
 						? <NavLink to={"/shop"} className="btn btn-mini btn-gray no-drag">Посмотреть меню</NavLink>
 					: deliveryTipe.map((type: IDeliveryTypes) => {
 							if (timeworkOrganization.typework === 'ONWORK' && type.metod === DELIVERY_METODS.COURIER) {

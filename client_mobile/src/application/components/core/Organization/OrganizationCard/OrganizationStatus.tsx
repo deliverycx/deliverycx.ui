@@ -36,7 +36,7 @@ const OrganizationStatus = () => {
 				<button onClick={() => setModal(false)} className="btn btn-sm btn-gray no-drag">
 					Назад
 				</button>
-				<button className="btn btn-sm btn-none no-drag">
+				<button onClick={()=> navigate(ROUTE_APP.SHOP.SHOP_MAIN)} className="btn btn-sm btn-none no-drag">
 					Посмотреть меню
 				</button>
 			</div>
