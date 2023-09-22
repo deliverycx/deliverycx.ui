@@ -16,7 +16,6 @@
     "@testing-library/react": "^14.0.0",
     "@testing-library/user-event": "^14.4.3",
     "@types/jest": "^29.5.2",
-    "@types/node": "^20.3.2",
     "@types/react": "^18.2.14",
     "@types/react-dom": "^18.2.6",
     "@types/yandex-maps": "^2.1.29",
@@ -104,6 +103,7 @@
   },
   "devDependencies": {
     "@types/lodash.debounce": "^4.0.7",
+    "@types/node": "^20.6.3",
     "@types/react-imageloader": "^2.1.12",
     "@types/react-input-mask": "^3.0.2",
     "@types/react-lazy-load-image-component": "^1.5.3",

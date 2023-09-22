@@ -19,7 +19,7 @@ import { adapterSelector } from "servises/redux/selectors/selectors";
 
 const placeMarkOption = {
   iconLayout: 'default#image',
-  iconImageHref: require("assets/i/placemark.svg").default,
+  iconImageHref: '',
   iconImageSize: [50, 60],
   iconImageOffset: [-25, -60]
 }

@@ -24,12 +24,12 @@ const OrganizationCard = () => {
 			</h3>
 			<div className="d-flex gap-16 flex-center">
 				<div className="institute-header__rating">
-					<img src={require("assets/images/icons/star.svg").default} alt="" />
+					<img src={''} alt="" />
 					<span>4,8</span>
 					<span>(1158)</span>
 				</div>
 				<div className="institute-header__goodplace">
-					<img src={require("assets/images/icons/yandex_znak.svg").default} alt="" />
+					<img src={''} alt="" />
 					<span>Хорошее место</span>
 				</div>
 			</div>
