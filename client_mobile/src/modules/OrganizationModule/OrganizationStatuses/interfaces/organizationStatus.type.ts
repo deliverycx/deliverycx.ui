@@ -24,3 +24,10 @@ export type IDeliveryTypes = {
 	route:string
 	active:boolean
 }
+
+export type IWorkTimePoint = {
+	typework:"WORK" | "NOWORK" | "ONWORK"
+	todaytime:string[]
+	timelist:string[] | string
+
+}

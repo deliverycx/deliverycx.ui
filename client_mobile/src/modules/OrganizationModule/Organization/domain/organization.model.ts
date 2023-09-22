@@ -2,19 +2,17 @@ import { makeObservable, observable, action } from "mobx";
 import { makePersistable } from "mobx-persist-store";
 import { ICity } from "modules/CityModule/interfaces/city.type";
 import { OrganizationRepository } from "../data/organization.repository";
-import { IOrganization, IWorkTimePoint, pointSerch } from "../interfaces/organization.type";
+import { IOrganization, pointSerch } from "../interfaces/organization.type";
 
 export class OrganizationModel extends OrganizationRepository {
 	organizationList: Array<IOrganization> | null = []
 	selectOrganization:IOrganization | null = null
-	timeworkOrganization:IWorkTimePoint | null = null
 
 	constructor() {
 		super()
 		makeObservable(this, {
 			organizationList: observable,
 			selectOrganization: observable,
-			timeworkOrganization:observable,
 			actionSetOrganizationAll: action,
 			actionResetOrganizationAll:action,
 			actionSelectOrganization:action
@@ -44,16 +42,16 @@ export class OrganizationModel extends OrganizationRepository {
 
 	actionSelectOrganization(point: IOrganization | null) {
 		if(point){
+			this.selectOrganization = null
 			this.repositoryOrganization(point.guid)
 			.subscribe((data: any) => {
 				this.selectOrganization = data
-				this.timeworkOrganization = this.timeWorkOrganizationEntiti(data.workTime)	
+				
 			})
 			
-		}else{
-			this.timeworkOrganization = null
 		}
 	}
+
 
 	actionSerchOrganizations(valueSerch:pointSerch){
 		this.repositoryOrganizationSerch(valueSerch)

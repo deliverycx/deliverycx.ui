@@ -1,5 +1,5 @@
 import { delivertyTime, workTimeCheck, workTimeHelp } from "application/helpers/workTime"
-import { IOrganizationResponse, IWorkTimePoint } from "../interfaces/organization.type"
+import { IOrganizationResponse } from "../interfaces/organization.type"
 
 export class OrganizationEntiti {
 	existingOrganization(pointMap: IOrganizationResponse[]) {
@@ -15,30 +15,5 @@ export class OrganizationEntiti {
 		}
 	}
 
-	timeWorkOrganizationEntiti(work:string[] | string):IWorkTimePoint {
-		let typework:"WORK" | "NOWORK" | "ONWORK"
-		let todaytime:string[] = []
-
-		const worktime = workTimeHelp(work)
-		const onworktime = delivertyTime(work,60)
-
-		const today = workTimeCheck(work)
-		if(today){
-			todaytime = today.split('-')
-		}
-
-		if(onworktime && !worktime){
-			typework = 'ONWORK'
-		}else if(worktime){
-			typework = 'NOWORK'
-		}else{
-			typework = 'WORK'
-		}
-
-		return{
-			typework,
-			todaytime,
-			timelist:work
-		}
-	}
+	
 }

@@ -38,9 +38,10 @@ export class StatusTSX {
 				exect,
 				content
 			}
+			return true
 		}
 
-		return exect
+		return false
 	}
 
 
@@ -85,8 +86,7 @@ export class StatusTSX {
 
 
 export const useOrganizationStatus = (): [StatusTSX, any] => {
-	const { timeworkOrganization } = organizationModel
-	const { organizationStatus } = organizationStatusModel
+	const { organizationStatus,timeworkOrganization } = organizationStatusModel
 
 	const tsx = new StatusTSX(organizationStatus as string, timeworkOrganization?.typework)
 
@@ -103,12 +103,15 @@ export const useOrganizationStatus = (): [StatusTSX, any] => {
 		return React.createElement(React.Fragment, null, w)
 		*/
 		const wrappers = tsx.statuses
+		
 		if (wrappers) {
 			const w = React.createElement(React.Fragment, { key: wrappers.name }, wrappers.content)
 			return React.createElement(React.Fragment, null, w)
 		}
 		return false
 	}
+
+	
 
 	return [tsx, switchMetod]
 }

@@ -2,14 +2,14 @@
 import ModalCard from "application/components/common/Modals/ModalCard";
 import { useOrganizationStatus } from "application/hooks/useOrganizationStatus"
 import { observer } from "mobx-react-lite";
-import { organizationModel } from "modules/OrganizationModule/organization.module";
+import { organizationStatusModel } from "modules/OrganizationModule/organization.module";
 import { useEffect } from 'react';
 import { useState } from 'react';
 import { useNavigate } from "react-router-dom";
 import { ROUTE_APP } from 'application/contstans/route.const';
 
 const OrganizationStatus = () => {
-	const {timeworkOrganization} = organizationModel
+	const {timeworkOrganization} = organizationStatusModel
 	const [statusTSX, switchMetod] = useOrganizationStatus()
 	const [modal, setModal] = useState(false)
 	const navigate = useNavigate()
@@ -18,6 +18,8 @@ const OrganizationStatus = () => {
 		statusTSX.statuses && setModal(true)
 
 	}, [])
+
+
 
 	statusTSX.NoWorkPoint((
 		<div className="modal__wrapper">

@@ -1,7 +1,7 @@
 import { TadapterCaseCallback, adapterComponentUseCase } from "adapters/adapterComponents"
 import { useOrganizationCardViewModel } from "./OrganizationCard.viewModel"
 import { useState } from 'react';
-import OrganizationCard from "./OrganizationCard";
+import OrganizationCard from "./view/OrganizationCard";
 import React from "react";
 import { observer } from "mobx-react-lite"
 import ModalCard from "application/components/common/Modals/ModalCard";
@@ -11,7 +11,7 @@ import OranizationWorkTime from "./view/OranizationWorkTime";
 import OrganizationCardFilter from "./view/OrganizationCardFilter";
 import OrganizationTableRestaurant from "./view/OrganizationTableRestaurant";
 import OrganizationTipeDelivery from "./view/OrganizationTipeDelivery";
-import OrganizationStatus from "./OrganizationStatus";
+import OrganizationStatus from "./view/OrganizationStatus";
 
 export const PointsContext = React.createContext<TadapterCaseCallback>({
 	data: {},
@@ -20,9 +20,8 @@ export const PointsContext = React.createContext<TadapterCaseCallback>({
 });
 const HOCOrganizationCard = () => {
 	const useCase = adapterComponentUseCase(useOrganizationCardViewModel)
-	const { selectOrganization, timeworkOrganization, cardModal, deliveryTipe } = useCase.data
+	const { selectOrganization, timeworkOrganization, cardModal, deliveryTipe,organizationStatus } = useCase.data
 	const { setCardModal, handlerCloseCardModal } = useCase.handlers
-
 
 	return (
 		<>
@@ -45,7 +44,10 @@ const HOCOrganizationCard = () => {
 							<div className="map__institute-content no-drag">
 								<div className="institute-header">
 									<OrganizationCard />
-									<OranizationWorkTime />
+									{
+										timeworkOrganization &&
+										<OranizationWorkTime />
+									}
 									{
 										selectOrganization.filters && selectOrganization.filters.length !== 0 &&
 										<OrganizationCardFilter organization={selectOrganization} />
@@ -57,8 +59,8 @@ const HOCOrganizationCard = () => {
 									<OrganizationTableRestaurant />
 								</div>
 							</div>
-
-							<OrganizationStatus />		
+							<OrganizationStatus />	
+								
 						</div>
 					</ModalCard>
 				}

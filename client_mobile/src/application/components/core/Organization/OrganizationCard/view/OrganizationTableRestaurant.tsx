@@ -5,7 +5,7 @@ import { Field, FormikProvider, useFormik } from "formik";
 import { compareAsc, format } from 'date-fns'
 import InputMask from "react-input-mask";
 import { observer } from 'mobx-react-lite';
-import { organizationModel } from 'modules/OrganizationModule/organization.module';
+import { organizationModel, organizationStatusModel } from 'modules/OrganizationModule/organization.module';
 import FormFieldWrapper from 'application/components/common/Forms/FormFieldWrapper';
 import RequestWebhook from 'servises/Request/Request.Webhook';
 
@@ -22,7 +22,8 @@ export interface IReverveTableValue {
 const OrganizationTableRestaurant = () => {
 	const [tableModal, setTableModal] = useState(false)
 	const [tableModalSucsses, settableModalSucsses] = useState(false)
-	const { timeworkOrganization, selectOrganization } = organizationModel
+	const { selectOrganization } = organizationModel
+	const {timeworkOrganization} = organizationStatusModel
 
 	const maxDate = new Date();
 	const maxDateValue = format(maxDate.setDate(maxDate.getDate() + 6), "yyyy-MM-dd")

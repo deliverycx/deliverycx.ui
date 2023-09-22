@@ -23,13 +23,6 @@ export type OrganizationFilters = {
 	images:string[]
 }
 
-export type IWorkTimePoint = {
-	typework:"WORK" | "NOWORK" | "ONWORK"
-	todaytime:string[]
-	timelist:string[] | string
-
-}
-
 export type pointSerch= {
 	data:string
 	cityid:string

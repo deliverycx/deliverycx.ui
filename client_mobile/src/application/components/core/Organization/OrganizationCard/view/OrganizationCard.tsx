@@ -1,12 +1,12 @@
 /* eslint-disable @typescript-eslint/no-var-requires */
 import { useContext } from "react"
-import { PointsContext } from "./HOC.OrganizationCard"
+import { PointsContext } from "../HOC.OrganizationCard"
 import { Carousel } from 'react-responsive-carousel';
-import OranizationWorkTime from "./view/OranizationWorkTime";
-import OrganizationCardFilter from "./view/OrganizationCardFilter";
+import OranizationWorkTime from "./OranizationWorkTime";
+import OrganizationCardFilter from "./OrganizationCardFilter";
 import { imgRoutDef } from "application/helpers/imgAdmin";
-import OrganizationTipeDelivery from "./view/OrganizationTipeDelivery";
-import OrganizationTableRestaurant from "./view/OrganizationTableRestaurant";
+import OrganizationTipeDelivery from "./OrganizationTipeDelivery";
+import OrganizationTableRestaurant from "./OrganizationTableRestaurant";
 
 
 

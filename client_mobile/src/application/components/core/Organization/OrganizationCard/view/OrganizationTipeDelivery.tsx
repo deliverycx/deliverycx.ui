@@ -1,9 +1,8 @@
-import { IWorkTimePoint } from "modules/OrganizationModule/Organization/interfaces/organization.type"
 import { IDeliveryTypes } from "modules/OrganizationModule/OrganizationStatuses/interfaces/organizationStatus.type"
 import { FC, useContext, useEffect } from "react"
 import { NavLink, useNavigate } from "react-router-dom"
 import { ROUTE_APP } from 'application/contstans/route.const';
-import { DELIVERY_METODS } from "application/contstans/const.orgstatus";
+import { DELIVERY_METODS, ORG_STATUS } from "application/contstans/const.orgstatus";
 
 import iconDelivery from "assets/images/icons/moped.png";
 import iconSelfPickup from "assets/images/icons/self_pickup.png";
@@ -17,8 +16,8 @@ import { PointsContext } from "../HOC.OrganizationCard";
 
 const OrganizationTipeDelivery = () => {
 	const useCasePoints = useContext(PointsContext)
-	const { selectOrganization, deliveryTipe, timeworkOrganization } = useCasePoints.data
-	const { setCardModal, handlerCloseCardModal } = useCasePoints.handlers
+	const { organizationStatus, deliveryTipe, timeworkOrganization } = useCasePoints.data
+	const { handlerSelectDeliveryTipe, handlerCloseCardModal } = useCasePoints.handlers
 	const navigate = useNavigate()
 	const [statusTSX, switchMetod] = useOrganizationStatus()
 
@@ -36,34 +35,74 @@ const OrganizationTipeDelivery = () => {
 		}
 	}
 
+	if (deliveryTipe.length !== 0 && statusTSX.OpenPoint()) {
+		return (
+			<button onClick={() => handlerCloseCardModal(false)} className="btn btn-mini btn-gray no-drag">Выбрать другую</button>
+		)
+	}
 
-	return (
-		<div className="institute-buttons">
-			{
-				deliveryTipe.length !== 0 &&
-					statusTSX.OpenPoint()
-					? <button onClick={() => handlerCloseCardModal(false)} className="btn btn-mini btn-gray no-drag">Выбрать другую</button>
-					: statusTSX.statuses
-						? <NavLink to={"/shop"} className="btn btn-mini btn-gray no-drag">Посмотреть меню</NavLink>
-					: deliveryTipe.map((type: IDeliveryTypes) => {
-							if (timeworkOrganization.typework === 'ONWORK' && type.metod === DELIVERY_METODS.COURIER) {
-								return (
-									<button key={type.metod} disabled className="btn btn-mini btn-gray no-drag">
-										<img src={icons(type.metod)} alt="" />
-										{type.name}
-									</button>
-								)
-							}
+	if (organizationStatus !== ORG_STATUS.WORK) {
+		return (
+			<NavLink to={"/shop"} className="btn btn-mini btn-gray no-drag">Посмотреть меню</NavLink>
+		)
+
+	}
+
+
+	if (deliveryTipe.length !== 0) {
+		return (
+			<>
+				{
+					deliveryTipe.map((type: IDeliveryTypes) => {
+						if (timeworkOrganization.typework === 'ONWORK' && type.metod === DELIVERY_METODS.COURIER) {
 							return (
-								<NavLink to={"/shop"} key={type.metod} className="btn btn-mini btn-gray no-drag">
+								<button key={type.metod} disabled className="btn btn-mini btn-gray no-drag">
 									<img src={icons(type.metod)} alt="" />
 									{type.name}
-								</NavLink>
+								</button>
 							)
-						})
+						}
+						return (
+							<NavLink to={"/shop"} key={type.metod} onClick={() => handlerSelectDeliveryTipe(type)} className="btn btn-mini btn-gray no-drag">
+								<img src={icons(type.metod)} alt="" />
+								{type.name}
+							</NavLink>
+						)
+					})
+				}
+			</>
+		)
 
-			}
-		</div>
-	)
+	}
+
+	/*
+		return (
+			<div className="institute-buttons">
+				{
+					deliveryTipe.length !== 0 &&
+						statusTSX.OpenPoint()
+						? <button onClick={() => handlerCloseCardModal(false)} className="btn btn-mini btn-gray no-drag">Выбрать другую</button>
+						: organizationStatus !== ORG_STATUS.WORK
+							? <NavLink to={"/shop"} className="btn btn-mini btn-gray no-drag">Посмотреть меню</NavLink>
+						: deliveryTipe.map((type: IDeliveryTypes) => {
+								if (timeworkOrganization.typework === 'ONWORK' && type.metod === DELIVERY_METODS.COURIER) {
+									return (
+										<button key={type.metod} disabled className="btn btn-mini btn-gray no-drag">
+											<img src={icons(type.metod)} alt="" />
+											{type.name}
+										</button>
+									)
+								}
+								return (
+									<NavLink to={"/shop"} key={type.metod} onClick={()=> handlerSelectDeliveryTipe(type)} className="btn btn-mini btn-gray no-drag">
+										<img src={icons(type.metod)} alt="" />
+										{type.name}
+									</NavLink>
+								)
+							})
+	
+				}
+			</div>
+		)*/
 }
 export default observer(OrganizationTipeDelivery)

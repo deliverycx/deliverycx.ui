@@ -1,23 +1,31 @@
-import { organizationModel, organizationStatusModel, useCaseOrganization } from "modules/OrganizationModule/organization.module";
+import { IDeliveryTypes } from "modules/OrganizationModule/OrganizationStatuses/interfaces/organizationStatus.type";
+import { organizationModel, organizationStatusModel, useCaseOrganization, useCaseOrganizationStatus } from "modules/OrganizationModule/organization.module";
 import { useEffect, useState } from "react";
 
 export function useOrganizationCardViewModel() {
 	const [cardModal,setCardModal] = useState(false)
-	const {selectOrganization,timeworkOrganization} = organizationModel
-	const {deliveryTipe} = organizationStatusModel
+	const {selectOrganization} = organizationModel
+	const {deliveryTipe,organizationStatus,timeworkOrganization} = organizationStatusModel
+
 
 	useEffect(()=>{
 		if(selectOrganization){
+			useCaseOrganizationStatus.statusOrganization()
 			setCardModal(true)
-			//useCaseOrganization.organizationAll()
+			
 		}
 		
 	},[selectOrganization])
 
 
+	
 	const handlerCloseCardModal = () =>{
 		useCaseOrganization.selectOrganization(null)
 		setCardModal(false)
+	}
+
+	const handlerSelectDeliveryTipe = (typeDeliv:IDeliveryTypes) =>{
+		useCaseOrganizationStatus.selectDeliveryMetod(typeDeliv)
 	}
 
 	
@@ -25,11 +33,13 @@ export function useOrganizationCardViewModel() {
 		selectOrganization,
 		timeworkOrganization,
 		cardModal,
-		deliveryTipe
+		deliveryTipe,
+		organizationStatus
 	});
 	this.handlers({
 		setCardModal,
-		handlerCloseCardModal
+		handlerCloseCardModal,
+		handlerSelectDeliveryTipe
 	});
 	this.status({
 

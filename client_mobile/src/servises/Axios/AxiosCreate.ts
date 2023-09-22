@@ -1,10 +1,11 @@
 import axios, {
-    AxiosInstance,
-    AxiosPromise,
-    AxiosResponse,
-    AxiosError,
-    AxiosRequestConfig
+	AxiosInstance,
+	AxiosPromise,
+	AxiosResponse,
+	AxiosError,
+	AxiosRequestConfig
 } from "axios";
+
 
 class AxiosCreate {
     static _instanse: null | AxiosCreate = null;
@@ -25,8 +26,8 @@ class AxiosCreate {
                 return Promise.reject(err);
             }
         );
-/*
-        this.api.interceptors.request.use((config: AxiosRequestConfig) => {
+/**/
+        this.api.interceptors.request.use((config: any) => {
             const token = localStorage.getItem("authToken");
 
             if (token && config.headers) {
@@ -35,7 +36,7 @@ class AxiosCreate {
 
             return config;
         });
-        */
+        
     }
     static getInstance(url:string) {
 			return new AxiosCreate(url)

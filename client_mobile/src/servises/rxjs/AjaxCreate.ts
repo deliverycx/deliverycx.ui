@@ -7,7 +7,10 @@ class AjaxCreate {
 
 	apiAjax<T>(params:any,url:string):ReturnType<typeof ajax>  {
 
-		if(params.method === 'post'){
+		if(params.method === "post" ||
+		params.method === "put" ||
+		params.method === "delete" ||
+		params.method === "patch"){
 			return ajax({
 				url: `${this.URL}/${url}`,
 				method: params.method,

@@ -1,6 +1,8 @@
 import { DELIVERY_METODS } from "application/contstans/const.orgstatus";
-import { IDeliveryTypes, IPointStatusRequest } from "../interfaces/organizationStatus.type";
+import { IDeliveryTypes, IPointStatusRequest, IWorkTimePoint } from "../interfaces/organizationStatus.type";
 import { ROUTE_APP } from 'application/contstans/route.const';
+import { delivertyTime, workTimeCheck, workTimeHelp } from "application/helpers/workTime";
+
 
 export class OrganizationStatusEntiti {
 
@@ -10,6 +12,33 @@ export class OrganizationStatusEntiti {
 		} else {
 			throw Error('no deliveryMetod and paymentMetod')
 
+		}
+	}
+
+	timeWorkOrganizationEntiti(work:string[] | string):IWorkTimePoint {
+		let typework:"WORK" | "NOWORK" | "ONWORK"
+		let todaytime:string[] = []
+
+		const worktime = workTimeHelp(work)
+		const onworktime = delivertyTime(work,60)
+
+		const today = workTimeCheck(work)
+		if(today){
+			todaytime = today.split('-')
+		}
+
+		if(onworktime && !worktime){
+			typework = 'ONWORK'
+		}else if(worktime){
+			typework = 'NOWORK'
+		}else{
+			typework = 'WORK'
+		}
+
+		return{
+			typework,
+			todaytime,
+			timelist:work
 		}
 	}
 
