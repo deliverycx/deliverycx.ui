@@ -28,7 +28,7 @@ const CityListView: FC<IProps> = ({ submitCity, city }) => {
 			{
 									selectCity?.id === city.id &&
 									<div className="item__check">
-										<img src={''} alt="" />
+										<img src={require("assets/images/icons/check_circle.svg")} alt="" />
 									</div>
 								}
 		</div>
