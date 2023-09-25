@@ -5,6 +5,7 @@ import { YMaps, Map, Placemark, ZoomControl, GeolocationControl } from 'react-ya
 import { IOrganization } from 'modules/OrganizationModule/Organization/interfaces/organization.type';
 import { useState } from 'react';
 import { useEffect } from 'react';
+import placemark from "assets/images/icons/placemark.svg"
 
 
 export const mokPoint = [
@@ -77,7 +78,7 @@ export const mokPoint = [
 
 const placeMarkOption = {
   iconLayout: 'default#image',
-  iconImageHref: '',
+  iconImageHref: placemark,
   iconImageSize: [44, 60],
 	iconImageOffset: [-20, -35],
 	

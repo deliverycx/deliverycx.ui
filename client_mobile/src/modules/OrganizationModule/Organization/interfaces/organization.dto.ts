@@ -32,9 +32,9 @@ export class OrganizationDTO{
 	guid!:string
 
 	@IsArray()
-	gallery!:string[]
+	gallery!:string[] | []
 	
-	@IsArray()
+	
 	filters!:OrganizationFilters[] | []
 }
 export const organizationDTO = new OrganizationDTO()
