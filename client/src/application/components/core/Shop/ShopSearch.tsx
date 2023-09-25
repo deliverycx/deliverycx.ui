@@ -23,7 +23,7 @@ const ShopSearch:FC<IProps> = ({close,nomenclatureProducts}) => {
                 <div className="container">
                     <img
                         className="header__search-field__search"
-                        src={require("assets/i/search.svg").default}
+                        src={''}
                     />
                     <input
                         type="text"
