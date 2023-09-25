@@ -19,6 +19,8 @@ export interface ICartProd {
 	oneprice:number;
 }
 
+export type IbodyReqCart = { orderType: string, organization: string }
+
 
 export interface IBasketPrice {
 	deliveryPrice: number;

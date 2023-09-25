@@ -2,18 +2,20 @@ import { basketUseCase } from "modules/BasketModule/basket.module"
 import { FC, useEffect } from "react"
 import { IProduct } from 'modules/ShopModule/interfaces/shop.type';
 import { adapterComponentUseCase } from 'adapters/adapterComponents';
-import { BasketCountViewModel } from "./Basket.viewModel";
+import { CartChangeViewModel } from "./Cart.viewModel";
+import { observer } from "mobx-react-lite";
 
 type IProps = {
 	theme: "list" | "card" | "basket"
 	product: IProduct
 }
 
-const BasketAdd: FC<IProps> = ({ theme, product }) => {
-	const useCase = adapterComponentUseCase(BasketCountViewModel, product)
+const HOCCartChange: FC<IProps> = ({ theme, product }) => {
+	const useCase = adapterComponentUseCase(CartChangeViewModel, product)
 	const { changeCount } = useCase.data
-	const { changeCountHandler } = useCase.handlers
+	const { changeCountHandler,handlerInputAmout,handlerInputAddAmout } = useCase.handlers
 
+	console.log(product);
 	if (theme === 'list') {
 		return (
 			<>
@@ -36,7 +38,12 @@ const BasketAdd: FC<IProps> = ({ theme, product }) => {
 						</svg>
 					</div>
 
-					<input type="number" value={changeCount} />
+					<input type="number" onChange={e => {
+						e.preventDefault();
+						handlerInputAmout(product.id,Number(e.target.value))
+					}} value={changeCount} />
+					
+					
 					<div
                         className="cart__item__increment"
                         onClick={(e) =>
@@ -53,10 +60,22 @@ const BasketAdd: FC<IProps> = ({ theme, product }) => {
                     </div>
 					
 				</div>
-				<button className="addtocart" onClick={() => basketUseCase.addtoBasket(product)}>
+				<button className="addtocart" onClick={() => basketUseCase.addtoCart(product)}>
 					<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 17 16" fill="none">
 						<path d="M12.4999 8.66781H9.16659V12.0011C9.16659 12.3678 8.86659 12.6678 8.49992 12.6678C8.13325 12.6678 7.83325 12.3678 7.83325 12.0011V8.66781H4.49992C4.13325 8.66781 3.83325 8.36781 3.83325 8.00114C3.83325 7.63447 4.13325 7.33447 4.49992 7.33447H7.83325V4.00114C7.83325 3.63447 8.13325 3.33447 8.49992 3.33447C8.86659 3.33447 9.16659 3.63447 9.16659 4.00114V7.33447H12.4999C12.8666 7.33447 13.1666 7.63447 13.1666 8.00114C13.1666 8.36781 12.8666 8.66781 12.4999 8.66781Z" />
 					</svg>
+					Добавить
+				</button>
+				<input type="number" onChange={e => {
+						e.preventDefault();
+						handlerInputAddAmout(product.id,Number(e.target.value))
+					
+					}} value={changeCount} />
+				<button className="addtocart" onClick={() => changeCount && basketUseCase.addtoCart(product,changeCount)}>
+					<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 17 16" fill="none">
+						<path d="M12.4999 8.66781H9.16659V12.0011C9.16659 12.3678 8.86659 12.6678 8.49992 12.6678C8.13325 12.6678 7.83325 12.3678 7.83325 12.0011V8.66781H4.49992C4.13325 8.66781 3.83325 8.36781 3.83325 8.00114C3.83325 7.63447 4.13325 7.33447 4.49992 7.33447H7.83325V4.00114C7.83325 3.63447 8.13325 3.33447 8.49992 3.33447C8.86659 3.33447 9.16659 3.63447 9.16659 4.00114V7.33447H12.4999C12.8666 7.33447 13.1666 7.63447 13.1666 8.00114C13.1666 8.36781 12.8666 8.66781 12.4999 8.66781Z" />
+					</svg>
+					{changeCount && product.price * changeCount}
 					Добавить
 				</button>
 			</>
@@ -65,4 +84,4 @@ const BasketAdd: FC<IProps> = ({ theme, product }) => {
 
 
 }
-export default BasketAdd
+export default observer(HOCCartChange)

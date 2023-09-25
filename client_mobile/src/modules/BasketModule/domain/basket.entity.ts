@@ -9,10 +9,13 @@ export class BasketEntity{
 	}
 
 
-	findIndexBasket(productid:string,cart:ICartProd[]){
+	findIndexCart(productid:string,cart:ICartProd[]){
 		const result = cart.find((el)=>{
 			return el.productId === productid
 		})
-		return result && result.id
+		return result && {
+			id:result.id,
+			anmout:result.amount
+		}
 	}	
 }

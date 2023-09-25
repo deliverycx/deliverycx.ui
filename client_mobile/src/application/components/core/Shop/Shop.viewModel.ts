@@ -29,6 +29,7 @@ export function useShopViewModel(this: any) {
 	const userRegister = async () =>{
 		try {
 			await RequestProfile.register();
+			basketUseCase.cartCase()
 		} catch (error) {
 			console.log(error);
 		}

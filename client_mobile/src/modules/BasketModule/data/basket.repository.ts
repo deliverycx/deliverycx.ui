@@ -6,12 +6,6 @@ import { BasketEntity } from "../domain/basket.entity";
 import { basketMapper } from "../interfaces/basket.dto";
 
 export class BasketRepository extends BasketEntity {
-	async repositoryAddToCart(body: any) {
-		const { data } = await requestBasket.addToCart(body)
-		if (data) {
-			return data
-		}
-	}
 
 	async repositorygetBasket(body: any) {
 		try {
@@ -22,6 +16,20 @@ export class BasketRepository extends BasketEntity {
 			}
 		} catch (error) {
 			console.log(error);
+		}
+	}
+
+	async repositoryAddToCart(body: any) {
+		const { data } = await requestBasket.addToCart(body)
+		if (data) {
+			return data
+		}
+	}
+
+	async repositoryChangeAmountCart(body:any){
+		const { data } = await requestBasket.changeAmount(body)
+		if (data) {
+			return data
 		}
 	}
 }

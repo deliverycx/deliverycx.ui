@@ -2,18 +2,22 @@ import { OrganizationModel } from "modules/OrganizationModule/Organization/domai
 import { OrganizationStatusModel } from "modules/OrganizationModule/OrganizationStatuses/domain/organizationStatus.model";
 import { BasketModel } from "../domain/basket.model";
 import { IProduct } from "modules/ShopModule/interfaces/shop.type";
+import { IbodyReqCart } from "../interfaces/basket.type";
 
 export class BasketUseCase {
+	
+
 	constructor(
-		private readonly basketModel: BasketModel,
+		public readonly basketModel: BasketModel,
 		private readonly organizationModel: OrganizationModel,
 		private readonly organizationStatusModel: OrganizationStatusModel,
-	) { }
+	) {
+	}
 
 	basketBody() {
 		if (this.organizationStatusModel.selectDeliveryTipe && this.organizationModel.selectOrganization) {
 			return {
-				orderType: this.organizationStatusModel.selectDeliveryTipe?.metod,
+				orderType: this.organizationStatusModel.selectDeliveryTipe.metod,
 				organization: this.organizationModel.selectOrganization?.guid,
 			}
 		} else {
@@ -26,21 +30,41 @@ export class BasketUseCase {
 		body && await this.basketModel.actionGetBasket(body)
 	}
 
-	async addtoBasket(product: IProduct) {
-		const body = this.basketBody()
-		if (body) {
-			await this.basketModel.repositoryAddToCart({
-				product,
-				...body
-			})
-			await this.getBasket(body)
+	findIdCart(id:string){
+		if (this.basketModel.cart) {
+			const cartid = this.basketModel.findIndexCart(id, this.basketModel.cart)
+			return cartid
 		}
-
 	}
 
-	async changeAmountBasket(id: string, coutn: number) {
-		if (this.basketModel.cart) {
-			const cartid = this.basketModel.findIndexBasket(id, this.basketModel.cart)
+	async cartCase(fn?:any){
+		const body = this.basketBody()
+		if (body) {
+			fn && await fn(body)
+			await this.getBasket(body)
+		}
+	}
+
+	async addtoCart(product: IProduct, anmount = 1) {
+		this.cartCase(async (bodyReqCart:IbodyReqCart)=>{
+			await this.basketModel.repositoryAddToCart({
+			product,
+			anmount,
+			...bodyReqCart
+			})
+		})
+	}
+
+	async changeAmountCart(id: string, coutn: number) {
+		const cartId = this.findIdCart(id)
+		if(cartId){
+			this.cartCase(async (bodyReqCart:IbodyReqCart)=>{
+				await this.basketModel.repositoryChangeAmountCart({
+						amount:coutn,
+						cartId:cartId.id,
+					...bodyReqCart
+				})
+			})
 		}
 
 	}

@@ -16,7 +16,7 @@ export function useCategoriesViewModel(categories: ICategory[]) {
 
 
 
-	//const { data: categories, isFetching } = useGetCategoriQuery(id)
+
 
 	const handleSliderClick = useCallback((index: number, slider?: any) => {
 		slider.current?.slickGoTo(index);

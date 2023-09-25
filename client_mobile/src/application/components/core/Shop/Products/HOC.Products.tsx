@@ -11,7 +11,8 @@ import cn from "classnames"
 import ProductCard from "./ProductCard"
 import ImageLoader from 'react-imageloader';
 import { CircularProgress } from "@mui/material"
-import BasketAdd from "../../Basket/BasketAdd"
+import HOCCartChange from "../../Basket/CartChange/HOC.CartChange"
+
 
 type IProps = {
 	nomenclatureProducts: IProduct[]
@@ -67,7 +68,7 @@ const HOCProducts: FC<IProps> = ({ nomenclatureProducts }) => {
 							<div className="product-card__button">
 								{
 									!product.stoplist ?
-										<BasketAdd theme="list" product={product} />
+										<HOCCartChange theme="list" product={product} />
 										: <button className="addtocart" disabled={true}>Будет позже</button>
 								}
 
