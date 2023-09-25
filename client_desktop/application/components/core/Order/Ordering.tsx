@@ -49,7 +49,7 @@ const Ordering: FC = (): JSX.Element => {
               <h2 className="cart_title">Ошибка при заказе</h2>
             </div>  
               <div className="cart_list">
-                <p className="checkout__dash">С вами свяжется администратор</p>
+                <p className="checkout__dash">Мы работаем над решением ошибки</p>
               </div>
            </div>   
             
