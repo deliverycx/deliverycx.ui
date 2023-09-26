@@ -140,7 +140,7 @@ const CartFrom: FC<IProps> = ({ builder,paths }) => {
 							? <div className="administrator"></div>
 							: <div className="administrator">После заказа с вами свяжется администратор</div>
 					}
-					<div className="administrator">При заказе в отдаленные районы- цена доставки может изменяться.</div>
+					<div className="zonedeliv">При заказе в отдаленные районы- цена доставки может изменяться.</div>
           
 
           {orderError.status === 500 && (

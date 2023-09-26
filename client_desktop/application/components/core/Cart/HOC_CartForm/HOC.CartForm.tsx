@@ -110,7 +110,7 @@ const CartFrom: FC<IProps> = ({ builder,paths }) => {
 					<input className="styled-checkbox" id="styled-checkbox-1" type="checkbox" value="value1" />
     			<label htmlFor="styled-checkbox-1" onClick={()=> setCXOfer(prev => !prev)} ><span>Я согласен на <a href="https://starikkhinkalich.ru/legal" target="_blank" download="">обработку персональных данных</a></span></label>
 					</div>	
-					<div className="administrator">При заказе в отдаленные районы- цена доставки может изменяться.</div>
+					<div className="zonedeliv">При заказе в отдаленные районы- цена доставки может изменяться.</div>
 
         <div className="cart__order-btnbox">
 					{
