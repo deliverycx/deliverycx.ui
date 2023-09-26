@@ -129,6 +129,7 @@ const CartFrom: FC<IProps> = ({ builder,paths }) => {
             formWrapper.getInitinal(builder)
           }
 
+
 					<div className="box_checkbox">
 						<input className="styled-checkbox" id="styled-checkbox-1" type="checkbox" value="value1" />
 	    			<label htmlFor="styled-checkbox-1" onClick={()=> setCXOfer(prev => !prev)} ><span>Я согласен на <a href="https://starikkhinkalich.ru/legal" target="_blank" download="">обработку персональных данных</a></span></label>
@@ -139,6 +140,7 @@ const CartFrom: FC<IProps> = ({ builder,paths }) => {
 							? <div className="administrator"></div>
 							: <div className="administrator">После заказа с вами свяжется администратор</div>
 					}
+					<div className="administrator">При заказе в отдаленные районы- цена доставки может изменяться.</div>
           
 
           {orderError.status === 500 && (
