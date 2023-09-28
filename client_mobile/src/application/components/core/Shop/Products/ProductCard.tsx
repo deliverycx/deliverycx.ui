@@ -2,6 +2,7 @@ import ModalCard from "application/components/common/Modals/ModalCard"
 import { FC } from "react"
 import { IProduct } from 'modules/ShopModule/interfaces/shop.type';
 import cn from "classnames"
+import HOCCartChange from "../../Basket/CartChange/HOC.CartChange";
 
 type IProps = {
 	product: IProduct
@@ -47,21 +48,7 @@ const ProductCard: FC<IProps> = ({ product, setIsModalOpened }) => {
 
 							{
 								!product.stoplist ?
-									<div className="product__modal-buttons">
-										<div className="input__counter input__counter-sm no-drag">
-											<svg width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
-												<path d="M17.9999 14.6668H9.99992C9.63325 14.6668 9.33325 14.3668 9.33325 14.0002C9.33325 13.6335 9.63325 13.3335 9.99992 13.3335H17.9999C18.3666 13.3335 18.6666 13.6335 18.6666 14.0002C18.6666 14.3668 18.3666 14.6668 17.9999 14.6668Z" fill="#111111" />
-											</svg>
-											<input value="1" type="number" />
-											<svg width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
-												<path d="M17.9999 14.6668H14.6666V18.0002C14.6666 18.3668 14.3666 18.6668 13.9999 18.6668C13.6333 18.6668 13.3333 18.3668 13.3333 18.0002V14.6668H9.99992C9.63325 14.6668 9.33325 14.3668 9.33325 14.0002C9.33325 13.6335 9.63325 13.3335 9.99992 13.3335H13.3333V10.0002C13.3333 9.6335 13.6333 9.3335 13.9999 9.3335C14.3666 9.3335 14.6666 9.6335 14.6666 10.0002V13.3335H17.9999C18.3666 13.3335 18.6666 13.6335 18.6666 14.0002C18.6666 14.3668 18.3666 14.6668 17.9999 14.6668Z" fill="#111111" />
-											</svg>
-										</div>
-										<button onClick={() => setIsModalOpened(false)} className="btn btn-md btn-red no-drag">
-											<img src={require("assets/images/icons/add_white.png")} alt="" />
-											270 ₽
-										</button>
-									</div>
+										<HOCCartChange theme="card" product={product} close={setIsModalOpened} />
 									: <div className="product__modal-buttons">
 										<div className="input__counter input__counter-sm no-drag">
 

@@ -33,6 +33,7 @@ const HOCOrganizationCard = () => {
 							<div onClick={handlerCloseCardModal} className="map__institute-close no-drag">
 								<img src={require('assets/images/icons/close_gray.png')} alt="" />
 							</div>
+							
 							{
 								selectOrganization.gallery && selectOrganization.gallery.length !== 0 &&
 								<Carousel showThumbs={false} autoPlay={true} showArrows={false} showStatus={false}>

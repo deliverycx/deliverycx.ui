@@ -19,4 +19,11 @@ export class ShopUseCase{
 			this.shopModel.actionSelectProduct(resultProduct,this.organizationModel.selectOrganization.guid)
 		}
 	}
+
+	async additionProducts(){
+		if(this.organizationModel.selectOrganization){
+			return await this.shopModel.reposityAdditionProducts(this.organizationModel.selectOrganization.guid)
+		}
+		
+	}
 }

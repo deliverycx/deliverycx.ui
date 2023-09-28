@@ -32,4 +32,19 @@ export class BasketRepository extends BasketEntity {
 			return data
 		}
 	}
+
+	async repositoryRemoveOneCart(body:any){
+		const { data } = await requestBasket.removeCart(body)
+		if (data) {
+			return data
+		}
+	}
+
+	async repositoryDeliteCart(){
+		const { data } = await requestBasket.deleteCart()
+		if (data) {
+			return data
+		}
+	}
+
 }

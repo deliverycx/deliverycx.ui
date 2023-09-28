@@ -27,7 +27,7 @@ export class BasketUseCase {
 	}
 
 	async getBasket(body: { orderType: string, organization: string }) {
-		body && await this.basketModel.actionGetBasket(body)
+		return body && await this.basketModel.actionGetBasket(body)
 	}
 
 	findIdCart(id:string){
@@ -41,7 +41,8 @@ export class BasketUseCase {
 		const body = this.basketBody()
 		if (body) {
 			fn && await fn(body)
-			await this.getBasket(body)
+			const res = await this.getBasket(body)
+			return res && res.cart
 		}
 	}
 
@@ -57,6 +58,7 @@ export class BasketUseCase {
 
 	async changeAmountCart(id: string, coutn: number) {
 		const cartId = this.findIdCart(id)
+		console.log(id);
 		if(cartId){
 			this.cartCase(async (bodyReqCart:IbodyReqCart)=>{
 				await this.basketModel.repositoryChangeAmountCart({
@@ -67,5 +69,20 @@ export class BasketUseCase {
 			})
 		}
 
+	}
+
+	async removeOneCart(idcart:string){
+		this.cartCase(async (bodyReqCart:IbodyReqCart)=>{
+			await this.basketModel.repositoryRemoveOneCart({
+					cartId:idcart,
+				...bodyReqCart
+			})
+		})
+	}
+
+	async deliteCart(){
+		this.cartCase(async (bodyReqCart:IbodyReqCart)=>{
+			await this.basketModel.repositoryDeliteCart()
+		})
 	}
 }

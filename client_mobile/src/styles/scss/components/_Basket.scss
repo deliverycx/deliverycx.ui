@@ -24,7 +24,7 @@
       }
 
       button{
-        color: #DD989B;
+        color: #8D191D;
       }
     }
 
@@ -236,18 +236,19 @@
   }
 
   &__more{
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
     padding: 16px;
 
     &-title{
       color: $c-black;
+			font-size: 18px;
+			font-style: normal;
+			font-weight: 700; 
+			margin-bottom: 15px;
     }
 
     &__content{
       display: grid;
-      grid-template-columns: repeat(3, 1fr);
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
       gap: 8px;
 
       &__product_card{

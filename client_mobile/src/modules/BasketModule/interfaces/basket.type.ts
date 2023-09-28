@@ -6,6 +6,7 @@ export type IRequestBasket  = {
 	deliveryPrice: number;
   deltaPrice: number;
 	totalPrice:number;
+	fullPrice:number
 }
 
 export interface ICartProd {
@@ -26,6 +27,7 @@ export interface IBasketPrice {
 	deliveryPrice: number;
   deltaPrice: number;
 	totalPrice:number;
+	fullPrice:number
 }
 
 export type IaddBasket = {

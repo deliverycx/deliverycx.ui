@@ -23,6 +23,7 @@ export function useShopViewModel(this: any) {
 		}else{
 			useCaseOrganizationStatus.statusOrganization()
 			userRegister()
+			
 		}
 	}, [organization])
 

@@ -24,14 +24,9 @@ const OrganizationCard = () => {
 			</h3>
 			<div className="d-flex gap-16 flex-center">
 				<div className="institute-header__rating">
-					<img src={require("assets/images/icons/star.svg")} alt="" />
-					<span>4,8</span>
-					<span>(1158)</span>
+				<iframe src="https://yandex.ru/sprav/widget/rating-badge/14570445460?type=award" width="150" height="50" frameBorder="0"></iframe>
 				</div>
-				<div className="institute-header__goodplace">
-					<img src={require("assets/images/icons/yandex_znak.svg")} alt="" />
-					<span>Хорошее место</span>
-				</div>
+				
 			</div>
 			<div className="institute-counter">
 				<h4>Съедено хинкали</h4>

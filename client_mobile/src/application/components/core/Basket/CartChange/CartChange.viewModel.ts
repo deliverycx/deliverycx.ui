@@ -9,6 +9,7 @@ import { useEffect } from 'react';
 export function CartChangeViewModel(this: any, product: IProduct) {
 	const [error, setError] = useState<null | string>(null);
 	const [changeCount, setChangeCount] = useState<number | string>(0)
+	const [changeCartCount, setChangeCartCount] = useState<number | string>(0)
 
 	useEffect(()=>{
 		const cartid = basketUseCase.findIdCart(product.productId)
@@ -24,12 +25,10 @@ export function CartChangeViewModel(this: any, product: IProduct) {
 
 
 	const changeCountHandler = ({ id, type, code }: any) => {
-
 		if (typeof changeCount === 'number') {
 			switch (type) {
 				case 'inc':
 					setChangeCount(prev => {
-						console.log(prev);
 						let count = typeof prev === 'number' ? prev + 1 : 1
 						debouncedChangeHandler({ id, count })
 						return count
@@ -68,22 +67,37 @@ export function CartChangeViewModel(this: any, product: IProduct) {
 
 	const handlerInputAddAmout = (id:string,count:number) =>{
 		if(count === 0){
-			setChangeCount('')
+			setChangeCartCount(0)
 			//debouncedChangeHandler({ id, count:1})
 		}else{
-			setChangeCount(count)
+			setChangeCartCount(count -1)
+			setChangeCount(1)
 			//debouncedChangeHandler({ id, count})
 		}
+	}
+
+	const handlerAddCard = () =>{
+		if(changeCartCount){
+			const count = Number(changeCount)  + Number(changeCartCount)
+			debouncedChangeHandler({ id:product.id, count:count})
+		}else{
+			basketUseCase.addtoCart(product, 1)
+		}
+		
 	}
 	
 
 	this.data({
-		changeCount
+		changeCount,
+		changeCartCount
 	});
 	this.handlers({
 		changeCountHandler,
+		setChangeCount,
+		setChangeCartCount,
 		handlerInputAmout,
-		handlerInputAddAmout
+		handlerInputAddAmout,
+		handlerAddCard
 	});
 	this.status({
 

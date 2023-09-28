@@ -5,6 +5,7 @@ import { ROUTE_APP } from 'application/contstans/route.const';
 import HOCCity from 'application/components/core/City/HOC.City';
 import HOCOrganizations from 'application/components/core/Organization/HOC.Organizations';
 import HOCShop from 'application/components/core/Shop/HOC.Shop';
+import HOCBasket from 'application/components/core/Basket/HOCBasket';
 
 
 export const publicRoutes = [
@@ -19,6 +20,10 @@ export const publicRoutes = [
 	{
 		path: ROUTE_APP.SHOP.SHOP_MAIN,
 		Component: HOCShop
+	},
+	{
+		path: ROUTE_APP.CART.BASKET_MAIN,
+		Component: HOCBasket
 	},
 
 	

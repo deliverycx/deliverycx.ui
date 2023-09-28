@@ -15,7 +15,7 @@ export class BasketModel extends BasketRepository{
 			basketPrice: observable,
 			actionGetBasket:action,
 		})
-		makePersistable(this, { name: 'basket', properties: ['cart'],storage: window.localStorage });
+		//makePersistable(this, { name: 'basket', properties: ['cart'],storage: window.localStorage });
 	}
 
 	async actionGetBasket(body:any){
@@ -23,7 +23,9 @@ export class BasketModel extends BasketRepository{
 		if(result){
 			this.cart = result.cart
 			this.basketPrice = result.basketPrice
+			return result
 		}
+		
 	}
 
 }
