@@ -17,7 +17,7 @@ const BasketOrder:FC<{basketPrice:IBasketPrice}> = ({basketPrice}) => {
 					</div>
 				</div>
 			</div>
-			<NavLink to={ROUTE_APP.ORDER.ORDER_COURIER} className="btn btn-md btn-red">
+			<NavLink to={ROUTE_APP.ORDER.ORDER_MAIN} className="btn btn-md btn-red">
 				Оформить
 			</NavLink>
 		</div>

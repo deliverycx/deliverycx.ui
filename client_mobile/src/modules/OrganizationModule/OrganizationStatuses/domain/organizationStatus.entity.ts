@@ -49,7 +49,7 @@ export class OrganizationStatusEntiti {
 					return {
 						metod: value,
 						name: "Доставка",
-						route: ROUTE_APP.ORDER.ORDER_COURIER,
+						//route: ROUTE_APP.ORDER.ORDER_COURIER,
 						active: false
 					}
 
@@ -57,21 +57,21 @@ export class OrganizationStatusEntiti {
 					return {
 						metod: value,
 						name: "Самовывоз",
-						route: ROUTE_APP.ORDER.ORDER_PICKUP,
+						//route: ROUTE_APP.ORDER.ORDER_PICKUP,
 						active: false
 					}
 				case DELIVERY_METODS.ONSPOT:
 					return {
 						metod: value,
 						name: "За столом",
-						route: ROUTE_APP.ORDER.ORDER_ONSPOT,
+						//route: ROUTE_APP.ORDER.ORDER_ONSPOT,
 						active: false
 					}
 				default:
 					return {
 						metod: DELIVERY_METODS.COURIER,
 						name: "Доставка",
-						route: ROUTE_APP.ORDER.ORDER_COURIER,
+						//route: ROUTE_APP.ORDER.ORDER_COURIER,
 						active: true
 					}	
 			}

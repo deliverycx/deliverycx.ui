@@ -12,9 +12,7 @@ export const ROUTE_APP = {
     BASKET_MAIN:"/basket/main"
   },
   ORDER:{
-		ORDER_COURIER: "/order/delivery",
-    ORDER_ONSPOT: "/order/onspot",
-    ORDER_PICKUP: "/order/pickup",
+		ORDER_MAIN: "/order/main",
 	},
   PAGES: {
     ABOUT:'/about',

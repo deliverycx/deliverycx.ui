@@ -21,7 +21,7 @@ export type IOrganizationStatus = {
 export type IDeliveryTypes = {
 	metod:string
 	name:string
-	route:string
+
 	active:boolean
 }
 
