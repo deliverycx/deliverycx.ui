@@ -1,7 +1,7 @@
 import ModalCard from "application/components/common/Modals/ModalCard"
 import { imgRoutDef } from "application/helpers/imgAdmin"
 import { ICity } from "modules/CityModule/interfaces/city.type"
-import { requestOrganization, requestOrganizationAdmin, requestOrganizationApi } from "modules/OrganizationModule/Organization/data/organization.request"
+import { requestOrganization, requestOrganizationApi } from "modules/OrganizationModule/Organization/data/organization.request"
 import { OrganizationFilters } from "modules/OrganizationModule/Organization/interfaces/organization.type"
 import { organizationModel } from "modules/OrganizationModule/organization.module"
 import { FC, useEffect, useState } from "react"
@@ -10,7 +10,7 @@ import { adapterComponentUseCase } from 'adapters/adapterComponents';
 import { useOrganizationFiltersViewModel } from "./OrganizationFilters.viewModel"
 
 const HOCOrganizationFilters: FC<{ city: ICity }> = ({ city }) => {
-	const useCase = adapterComponentUseCase(useOrganizationFiltersViewModel,city)
+	const useCase	 = adapterComponentUseCase(useOrganizationFiltersViewModel,city)
 	const {filters,isOpenedFilters,changeFilter} = useCase.data
 	const {setIsOpenedFilters,handlerFiler,handlerResetFilter} = useCase.handlers
 

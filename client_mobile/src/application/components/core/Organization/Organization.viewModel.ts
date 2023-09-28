@@ -4,7 +4,6 @@ import { QueryClient, useQuery } from "react-query";
 import { useEffect } from 'react';
 import { useNavigate  } from "react-router-dom";
 import { ROUTE_APP } from 'application/contstans/route.const';
-import { requestOrganizationAdmin } from "modules/OrganizationModule/Organization/data/organization.request";
 
 export function useOrganizationsViewModel(this:any) {
 	const organizations = organizationModel.organizationList

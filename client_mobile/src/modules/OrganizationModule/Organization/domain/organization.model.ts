@@ -4,15 +4,23 @@ import { ICity } from "modules/CityModule/interfaces/city.type";
 import { OrganizationRepository } from "../data/organization.repository";
 import { IOrganization, pointSerch } from "../interfaces/organization.type";
 
+interface IRequisites {
+	ogrn: string
+	inn: string
+	name: string
+}
+
 export class OrganizationModel extends OrganizationRepository {
 	organizationList: Array<IOrganization> | null = []
 	selectOrganization:IOrganization | null = null
+	selectRequisites:IRequisites | null = null
 
 	constructor() {
 		super()
 		makeObservable(this, {
 			organizationList: observable,
 			selectOrganization: observable,
+			selectRequisites: observable,
 			actionSetOrganizationAll: action,
 			actionResetOrganizationAll:action,
 			actionSelectOrganization:action

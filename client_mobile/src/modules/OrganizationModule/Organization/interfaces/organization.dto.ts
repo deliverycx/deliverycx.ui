@@ -33,6 +33,9 @@ export class OrganizationDTO{
 
 	@IsArray()
 	gallery!:string[] | []
+
+	@IsString()
+	city!: string
 	
 	
 	filters!:OrganizationFilters[] | []

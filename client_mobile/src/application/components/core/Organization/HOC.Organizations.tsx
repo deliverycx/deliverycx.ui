@@ -23,7 +23,6 @@ const HOCOrganizations = () => {
 	const { city, organizations } = useCase.data
 	const { handleBackCity } = useCase.handlers
 
-	//console.log(organizations);
 	return (
 		<div className="map">
 
@@ -50,7 +49,7 @@ const HOCOrganizations = () => {
 				<div className="map__search">
 					<HOCOrganizationSerch city={city} />
 					<HOCOrganizationFilters city={city} />
-					
+
 				</div>
 			}
 

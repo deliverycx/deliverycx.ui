@@ -17,6 +17,12 @@ export interface IOrganizationResponse {
 	filters:OrganizationFilters[]
 }
 
+export interface IRequisitiesOrganization {
+	ogrn: string
+	inn: string
+	name: string
+}
+
 export type OrganizationFilters = {
 	_id:string
 	name:string

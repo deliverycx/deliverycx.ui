@@ -376,6 +376,7 @@ body {
   padding: 4px;
   align-items: center;
   align-self: stretch;
+  background-color: #fff;
 }
 .modal__header-btn {
   display: flex;

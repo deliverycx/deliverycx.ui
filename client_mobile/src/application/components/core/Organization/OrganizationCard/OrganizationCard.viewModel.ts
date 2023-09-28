@@ -6,7 +6,8 @@ export function useOrganizationCardViewModel() {
 	const [cardModal,setCardModal] = useState(false)
 	const {selectOrganization} = organizationModel
 	const {deliveryTipe,organizationStatus,timeworkOrganization} = organizationStatusModel
-
+	//TODO ПОЛУЧАЕМ GUID ЧТОБЫ ЗАПРОС ДОБАВИТЬ ЕГО В ЗАПРОС, И ОТПРАВЛЯЕМ ЕГО В USECASE
+	const organization = organizationModel.selectOrganization
 
 	useEffect(()=>{
 		if(selectOrganization){
@@ -34,7 +35,8 @@ export function useOrganizationCardViewModel() {
 		timeworkOrganization,
 		cardModal,
 		deliveryTipe,
-		organizationStatus
+		organizationStatus,
+		guid: organization?.guid
 	});
 	this.handlers({
 		setCardModal,

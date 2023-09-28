@@ -7,15 +7,13 @@ import OrganizationCardFilter from "./OrganizationCardFilter";
 import { imgRoutDef } from "application/helpers/imgAdmin";
 import OrganizationTipeDelivery from "./OrganizationTipeDelivery";
 import OrganizationTableRestaurant from "./OrganizationTableRestaurant";
-
-
-
+import axios from "axios";
+import OragnizationRequisities from "./OragnizationRequisities";
 
 const OrganizationCard = () => {
 	const useCasePoints = useContext(PointsContext)
-	const { selectOrganization, deliveryTipe, timeworkOrganization } = useCasePoints.data
+	const { selectOrganization, deliveryTipe, timeworkOrganization, guid } = useCasePoints.data
 	const { setCardModal, handlerCloseCardModal } = useCasePoints.handlers
-
 
 	return (
 		<>
@@ -26,7 +24,7 @@ const OrganizationCard = () => {
 				<div className="institute-header__rating">
 				<iframe src="https://yandex.ru/sprav/widget/rating-badge/14570445460?type=award" width="150" height="50" frameBorder="0"></iframe>
 				</div>
-				
+
 			</div>
 			<div className="institute-counter">
 				<h4>Съедено хинкали</h4>
@@ -34,6 +32,7 @@ const OrganizationCard = () => {
 					123
 				</div>
 			</div>
+			<OragnizationRequisities />
 		</>
 	)
 }

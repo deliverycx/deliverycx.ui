@@ -28,7 +28,7 @@ const HOCOrganizationCard = () => {
 			<PointsContext.Provider value={useCase}>
 				{
 					cardModal && selectOrganization && deliveryTipe &&
-					<ModalCard setIsOpened={setCardModal}>
+						<ModalCard setIsOpened={setCardModal}>
 						<div className="modal__wrapper map__institute-info">
 							<div onClick={handlerCloseCardModal} className="map__institute-close no-drag">
 								<img src={require('assets/images/icons/close_gray.png')} alt="" />
@@ -60,8 +60,8 @@ const HOCOrganizationCard = () => {
 									<OrganizationTableRestaurant />
 								</div>
 							</div>
-							<OrganizationStatus />	
-								
+							<OrganizationStatus />
+
 						</div>
 					</ModalCard>
 				}

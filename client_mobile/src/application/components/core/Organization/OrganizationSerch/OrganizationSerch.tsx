@@ -6,9 +6,6 @@ import { FC, useEffect } from "react"
 
 const OrganizationSerch: FC<{ city: ICity }> = ({ city }) => {
 
-
-	
-
 	const handlerSerchPoint = async (value:string) =>{
 		organizationModel.actionSerchOrganizations({
 			data:value,

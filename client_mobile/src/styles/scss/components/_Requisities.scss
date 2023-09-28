@@ -1,0 +1,52 @@
+.modal__wrapper {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  background: #fff;
+  border-radius: 17px 17px 0 0;
+  max-height: 90vh;
+  overflow-y: auto;
+
+  .modal__header {
+    display: flex;
+    padding: 4px;
+    align-items: center;
+    align-self: stretch;
+    background-color: #fff;
+  }
+
+  .modal__content {
+    display: flex;
+    flex-direction: column;
+    padding: 16px;
+    align-items: center;
+
+    .data-company {
+      font-size: 13px;
+      line-height: 16px;
+      color: #000;
+    }
+
+    .word-bold {
+      font-weight: 700;
+      font-size: 17px;
+      line-height: 120%;
+      color: #000;
+    }
+
+    .ur-address {
+      font-weight: 700;
+      font-size: 11px;
+      line-height: 120%;
+      letter-spacing: .2em;
+      text-transform: uppercase;
+      color: #ccc;
+      margin-bottom: 10px;
+    }
+
+    div {
+      width: 70%;
+      background: #fff;
+    }
+  }
+}

@@ -32,6 +32,11 @@ class RequestOrganizationApi extends ApiSuper {
 	pointSerch(body:any){
 		return this.request<IOrganization[]>(`organization/serch`)
 	}
+
+	@methods('get')
+	getRequisites(cityId: string) {
+		return this.request<any>(`organization/recvisites?organizationId=${cityId}`)
+	}
 }
 
 
