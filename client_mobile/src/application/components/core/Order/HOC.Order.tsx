@@ -1,4 +1,4 @@
-import { useNavigate } from 'react-router-dom';
+import { NavLink, useNavigate } from 'react-router-dom';
 import { ROUTE_APP } from 'application/contstans/route.const';
 import TabBar from 'application/components/common/TabBar/TabBar';
 import HOCOrderMetods from './OrderMetods/HOC.OrderMetods';
@@ -13,14 +13,14 @@ const HOCOrder = () => {
 	const navigate = useNavigate()
 
 
-	useQuery('pointstatus',() => useCaseOrganizationStatus.statusOrganization(),{
-    refetchOnWindowFocus: true,
-  }) 
+	useQuery('pointstatus', () => useCaseOrganizationStatus.statusOrganization(), {
+		refetchOnWindowFocus: true,
+	})
 
-	useEffect(()=>{
+	useEffect(() => {
 		basketUseCase.cartCase()
-	},[])
-	
+	}, [])
+
 
 	return (
 		<div className="order-placement unauthorized">
@@ -38,6 +38,11 @@ const HOCOrder = () => {
 			<HOCOrderMetods />
 			<HOCOrderForm />
 			<HOCOrderGeneral />
+			<div className="order-placement__buttons">
+				<NavLink to={""} className="btn btn-md btn-red">Всё верно, продолжить</NavLink>
+				<NavLink to={ROUTE_APP.CART.BASKET_MAIN} className="btn btn-md btn-gray">Назад</NavLink>
+				<NavLink className="order-placement__buttons-link" to={""}>Продолжая, вы соглашаетесь на обработку персональных данных и условия пользовательского соглашения</NavLink>
+			</div>
 			<TabBar />
 		</div>
 	)

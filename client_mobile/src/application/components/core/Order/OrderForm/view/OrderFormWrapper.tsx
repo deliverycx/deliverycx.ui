@@ -65,35 +65,38 @@ export const OrderFormWrapper = (formik: any, usecase: any): IWrapper => {
 
 				<div className="order-placement__payment-method">
 					<h2 className="order-placement__payment-method-title">Способ оплаты</h2>
+					
 					{
 						paymentsMetod &&
 						paymentsMetod.map((value: any) => {
 							return (
 								<div key={value.id} onClick={() => formik.setFieldValue('payment', value.id)} className="order-placement__payment-method__item">
-
-									<div className="order-placement__payment-method__item-name">{value.value}</div>
-									<div className="order-placement__payment-method__item-btn">
-										<input name="payment-method" type="radio" checked={formik.values.payment === value.id} />
-										<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
-											<path d="M12 2C6.48 2 2 6.48 2 12C2 17.52 6.48 22 12 22C17.52 22 22 17.52 22 12C22 6.48 17.52 2 12 2ZM12 20C7.58 20 4 16.42 4 12C4 7.58 7.58 4 12 4C16.42 4 20 7.58 20 12C20 16.42 16.42 20 12 20Z" fill="#B3B3B3" />
-										</svg>
+									<div className="order-placement__payment-method-box">
+										<div className="order-placement__payment-method__item-name">{value.value}</div>
+										<div className="order-placement__payment-method__item-btn">
+											<input name="payment-method" type="radio" checked={formik.values.payment === value.id} />
+											<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+												<path d="M12 2C6.48 2 2 6.48 2 12C2 17.52 6.48 22 12 22C17.52 22 22 17.52 22 12C22 6.48 17.52 2 12 2ZM12 20C7.58 20 4 16.42 4 12C4 7.58 7.58 4 12 4C16.42 4 20 7.58 20 12C20 16.42 16.42 20 12 20Z" fill="#B3B3B3" />
+											</svg>
+										</div>
 									</div>
+									{
+										formik.values.payment === PAYMENT_METODS.CASH && value.id === PAYMENT_METODS.CASH &&
+										<div className="input__item">
+											<label htmlFor="change">С какой суммы подготовить сдачу?</label>
+											<div className="input__container">
+												<input placeholder="Введите сумму" name="change" value={formik.values.money !== 0 ? formik.values.money : ''} defaultValue={formik.values.money !== 0 ? formik.values.money : ''} onChange={e => formik.setFieldValue('money', e.target.value)} type="text" />
+												<button className="btn btn-none" onClick={() => formik.setFieldValue('money', 0)}>Без сдачи</button>
+											</div>
+										</div>
+									}
 
 								</div>
 							)
 						})
 
 					}
-					{
-						formik.values.payment === PAYMENT_METODS.CASH &&
-						<div className="input__item">
-							<label htmlFor="change">С какой суммы подготовить сдачу?</label>
-							<div className="input__container">
-								<input placeholder="Введите сумму" name="change" value={formik.values.money !== 0 ? formik.values.money : ''} defaultValue={formik.values.money !== 0 ? formik.values.money : ''} onChange={e => formik.setFieldValue('money', e.target.value)} type="text" />
-								<button className="btn btn-none" onClick={() => formik.setFieldValue('money', 0)}>Без сдачи</button>
-							</div>
-						</div>
-					}
+
 
 				</div>
 
@@ -156,12 +159,12 @@ export const OrderFormWrapper = (formik: any, usecase: any): IWrapper => {
 						<div className="input__container">
 							<img src={require("assets/images/icons/timer_gray_999.png")} alt="" />
 							<Field
-									className="form__field-wrapper__input gray"
-									name="flat"
-									placeholder="В ближайшее время"
-									value={formik.values.timedelivery}
-									onChange={formik.handleChange}
-								/>
+								className="form__field-wrapper__input gray"
+								name="timedelivery"
+								placeholder="В ближайшее время"
+								value={formik.values.timedelivery}
+								onChange={formik.handleChange}
+							/>
 						</div>
 					</div>
 

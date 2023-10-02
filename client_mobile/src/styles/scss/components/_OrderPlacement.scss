@@ -173,13 +173,15 @@
       display: flex;
       padding: 8px 0;
     }
-
-    &__item{
-      display: flex;
+		&-box{
+			display: flex;
       justify-content: center;
       align-items: center;
       gap: 8px;
       cursor: pointer;
+		}
+    &__item{
+      
 
       &-name{
         color: $c_red;
@@ -344,6 +346,7 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
+						
             &-name{
               color: $c-black;
               font-size: 16px;

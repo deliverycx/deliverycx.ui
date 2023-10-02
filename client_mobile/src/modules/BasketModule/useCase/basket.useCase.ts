@@ -9,8 +9,8 @@ export class BasketUseCase {
 
 	constructor(
 		public readonly basketModel: BasketModel,
-		private readonly organizationModel: OrganizationModel,
-		private readonly organizationStatusModel: OrganizationStatusModel,
+		public readonly organizationModel: OrganizationModel,
+		public readonly organizationStatusModel: OrganizationStatusModel,
 	) {
 	}
 
