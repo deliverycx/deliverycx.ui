@@ -54,7 +54,7 @@ const HOCProducts: FC<IProps> = ({ nomenclatureProducts }) => {
 									<small className="product-card__content__info-weight">
 										{
 											product.measureUnit === "порц"
-												? `${convertWeight(product.weight)} г` :
+												? `${convertWeight(product.weight)} гр` :
 												product.measureUnit === "мл" ? product.weight + 'мл'
 													: "1 шт"
 										}

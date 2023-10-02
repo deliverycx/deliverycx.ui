@@ -30,7 +30,7 @@ const HOCCity = () => {
 				<div className="input__item input_icon input_icon_left">
 					<label htmlFor="search">Выберите город</label>
 					<div className="input__container">
-						<img src={require("assets/images/icons/search.svg")} alt="" />
+						<img src={require("assets/images/icons/search.png")} alt="" />
 						<input onChange={(e) => seletSerchCity(e.target.value)} placeholder="Найти" name="search" type="text" />
 					</div>
 				</div>

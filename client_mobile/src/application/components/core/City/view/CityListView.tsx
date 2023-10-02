@@ -22,7 +22,7 @@ const CityListView: FC<IProps> = ({ submitCity, city }) => {
 				<Link to={ROUTE_APP.POINT} relative="path" onClick={() => submitCity(city)}>
 				{city.cityname}
 			</Link>
-			<div className="city__institutes">{city.countOrganization > 1 && <>({city.countOrganization})</>}</div>
+			<div className="city__institutes">{city.countOrganization > 1 && <>{city.countOrganization}</>}</div>
 			</section>
 			
 			{

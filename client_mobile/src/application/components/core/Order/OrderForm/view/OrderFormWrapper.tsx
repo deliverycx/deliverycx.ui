@@ -304,7 +304,7 @@ export const OrderFormWrapper = (formik: any, usecase: any): IWrapper => {
 								/>
 							)}
 						/>
-
+						<img src={require("assets/images/icons/contact_page.png")} alt="" />
 					</div>
 
 				</FormFieldWrapper>
@@ -320,7 +320,7 @@ export const OrderFormWrapper = (formik: any, usecase: any): IWrapper => {
 							name="comment"
 							onChange={formik.handleChange}
 							className="form__textarea"
-							placeholder="Напишите сюда, если хотите добавить еще какую-то информацию о заказе..."
+							placeholder={`Вы можете добавить примечание	\nк заказу`}
 						></textarea>
 					</div>
 				</div>

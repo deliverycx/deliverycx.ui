@@ -38,10 +38,9 @@ const CountCity = () => {
 		<>
 			{
 				coutCity &&
-				<h3 className="select__title">
-					<span>{coutCity.orgCount} хинкальная в  {coutCity.cityCoutn} городах </span>
-					
-				</h3>
+				<div className="select__title">
+					{coutCity.orgCount} хинкальная в  {coutCity.cityCoutn} городах
+				</div>
 			}
 
 

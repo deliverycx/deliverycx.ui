@@ -59,7 +59,6 @@ const OragnizationRequisities = () => {
                                 </div>
                             </div>
                         </div>
-
                     </ModalCard>
                 )
             }

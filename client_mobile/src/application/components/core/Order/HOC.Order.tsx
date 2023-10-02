@@ -41,7 +41,11 @@ const HOCOrder = () => {
 			<div className="order-placement__buttons">
 				<NavLink to={""} className="btn btn-md btn-red">Всё верно, продолжить</NavLink>
 				<NavLink to={ROUTE_APP.CART.BASKET_MAIN} className="btn btn-md btn-gray">Назад</NavLink>
-				<NavLink className="order-placement__buttons-link" to={""}>Продолжая, вы соглашаетесь на обработку персональных данных и условия пользовательского соглашения</NavLink>
+				<NavLink className="order-placement__buttons-link" to={""}>
+					<div>
+						Продолжая, вы соглашаетесь на <span>обработку персональных данных</span> и <span>условия пользовательского соглашения</span>
+					</div>
+				</NavLink>
 			</div>
 			<TabBar />
 		</div>

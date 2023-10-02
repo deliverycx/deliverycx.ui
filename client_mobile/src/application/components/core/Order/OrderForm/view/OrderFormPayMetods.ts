@@ -8,7 +8,7 @@ export const OrderFormPayMetods = {
   paymentsMetod:[
     {
       id: "CASH",
-      value: "Наличными курьеру",
+      value: "Наличными",
 			icon: `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
 			<path d="M2 17C2 16.4477 2.44772 16 3 16H21C21.5523 16 22 16.4477 22 17C22 17.5523 21.5523 18 21 18H3C2.44772 18 2 17.5523 2 17Z" fill="#8D191D" />
 			<path d="M2 20C2 19.4477 2.44772 19 3 19H21C21.5523 19 22 19.4477 22 20C22 20.5523 21.5523 21 21 21H3C2.44772 21 2 20.5523 2 20Z" fill="#8D191D" />
@@ -20,14 +20,14 @@ export const OrderFormPayMetods = {
     },
 		{
       id: "BYCARD",
-      value: "Картой курьеру",
+      value: "Картой",
 			icon: `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
 			<path d="M20 4H4C2.89 4 2.01 4.89 2.01 6L2 18C2 19.11 2.89 20 4 20H20C21.11 20 22 19.11 22 18V6C22 4.89 21.11 4 20 4ZM19 18H5C4.45 18 4 17.55 4 17V12H20V17C20 17.55 19.55 18 19 18ZM20 8H4V6H20V8Z" fill="#8D191D" />
 		</svg>`
     },
     {
       id: "CARD",
-      value: "Картой в приложении",
+      value: "Онлайн (PayMaster)",
 			icon: `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
 			<path fillRule="evenodd" clipRule="evenodd" d="M3 4V6.94911L2 6.53111V15.82L12 20L22 15.82V6.53111L21 6.94911V4L12 7.49673L3 4ZM16.3278 11.1365L20 9.70977V14.4216L12 17.7656L4 14.4216V9.70977L7.67218 11.1365L12 12.9455L16.3278 11.1365ZM19 7.78511V6.99009L12 9.70977L5 6.99009V7.78511L8.39755 9.20529L12 10.6049L15.6024 9.20529L19 7.78511Z" fill="#8D191D" />
 		</svg>`

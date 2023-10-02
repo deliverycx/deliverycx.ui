@@ -14,6 +14,8 @@ const OrderMetodsTabs:FC<{deliveryTabs:IDeliveryTypes[]}> = ({deliveryTabs}) => 
 					{
 						deliveryTabs && deliveryTabs.length &&
 						deliveryTabs.map((tab) => {
+							console.log(tab, 'TAB');
+							console.log(tab.active, 'TABACTIVE');
 							return (
 								<div key={tab.metod} onClick={()=> useCaseOrganizationStatus.selectDeliveryMetod(tab)} className="form-radio__toggle__item">
 									<input type="radio" name="delivery" checked={tab.active} />

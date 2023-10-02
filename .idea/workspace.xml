@@ -5,26 +5,20 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="67ecf96e-fe80-4340-a9f6-f5acc541cf3e" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/client_mobile/src/application/components/core/Organization/OrganizationCard/view/OragnizationRequisities.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client_mobile/src/styles/scss/components/_Requisities.scss" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client_mobile/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/client_mobile/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client_mobile/src/application/components/core/Organization/HOC.Organizations.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client_mobile/src/application/components/core/Organization/HOC.Organizations.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client_mobile/src/application/components/core/Organization/Organization.viewModel.ts" beforeDir="false" afterPath="$PROJECT_DIR$/client_mobile/src/application/components/core/Organization/Organization.viewModel.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client_mobile/src/application/components/core/Organization/OrganizationCard/HOC.OrganizationCard.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client_mobile/src/application/components/core/Organization/OrganizationCard/HOC.OrganizationCard.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client_mobile/src/application/components/core/Organization/OrganizationCard/OrganizationCard.viewModel.ts" beforeDir="false" afterPath="$PROJECT_DIR$/client_mobile/src/application/components/core/Organization/OrganizationCard/OrganizationCard.viewModel.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client_mobile/src/application/components/core/Organization/OrganizationCard/view/OrganizationCard.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client_mobile/src/application/components/core/Organization/OrganizationCard/view/OrganizationCard.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client_mobile/src/application/components/core/Organization/OrganizationFilters/OrganizationFilters.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client_mobile/src/application/components/core/Organization/OrganizationFilters/OrganizationFilters.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client_mobile/src/application/components/core/Organization/OrganizationSerch/OrganizationSerch.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client_mobile/src/application/components/core/Organization/OrganizationSerch/OrganizationSerch.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client_mobile/src/modules/OrganizationModule/Organization/data/organization.request.ts" beforeDir="false" afterPath="$PROJECT_DIR$/client_mobile/src/modules/OrganizationModule/Organization/data/organization.request.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client_mobile/src/modules/OrganizationModule/Organization/domain/organization.model.ts" beforeDir="false" afterPath="$PROJECT_DIR$/client_mobile/src/modules/OrganizationModule/Organization/domain/organization.model.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client_mobile/src/modules/OrganizationModule/Organization/interfaces/organization.dto.ts" beforeDir="false" afterPath="$PROJECT_DIR$/client_mobile/src/modules/OrganizationModule/Organization/interfaces/organization.dto.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client_mobile/src/modules/OrganizationModule/Organization/interfaces/organization.type.ts" beforeDir="false" afterPath="$PROJECT_DIR$/client_mobile/src/modules/OrganizationModule/Organization/interfaces/organization.type.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client_mobile/src/styles/css/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/client_mobile/src/styles/css/style.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client_mobile/src/styles/scss/components/_Main.scss" beforeDir="false" afterPath="$PROJECT_DIR$/client_mobile/src/styles/scss/components/_Main.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client_mobile/src/application/components/core/City/HOC.City.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client_mobile/src/application/components/core/City/HOC.City.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client_mobile/src/application/components/core/City/view/CityListView.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client_mobile/src/application/components/core/City/view/CityListView.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client_mobile/src/application/components/core/City/view/CountCity.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client_mobile/src/application/components/core/City/view/CountCity.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client_mobile/src/application/components/core/Order/HOC.Order.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client_mobile/src/application/components/core/Order/HOC.Order.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client_mobile/src/application/components/core/Order/OrderForm/view/OrderFormPayMetods.ts" beforeDir="false" afterPath="$PROJECT_DIR$/client_mobile/src/application/components/core/Order/OrderForm/view/OrderFormPayMetods.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client_mobile/src/application/components/core/Order/OrderForm/view/OrderFormWrapper.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client_mobile/src/application/components/core/Order/OrderForm/view/OrderFormWrapper.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client_mobile/src/application/components/core/Order/OrderMetods/OrderMetodsTabs.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client_mobile/src/application/components/core/Order/OrderMetods/OrderMetodsTabs.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client_mobile/src/application/components/core/Organization/OrganizationCard/view/OragnizationRequisities.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client_mobile/src/application/components/core/Organization/OrganizationCard/view/OragnizationRequisities.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client_mobile/src/application/components/core/Shop/Products/HOC.Products.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client_mobile/src/application/components/core/Shop/Products/HOC.Products.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client_mobile/src/styles/scss/components/_MapScreen.scss" beforeDir="false" afterPath="$PROJECT_DIR$/client_mobile/src/styles/scss/components/_MapScreen.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client_mobile/src/styles/scss/components/_ProductCard.scss" beforeDir="false" afterPath="$PROJECT_DIR$/client_mobile/src/styles/scss/components/_ProductCard.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client_mobile/src/styles/scss/style.scss" beforeDir="false" afterPath="$PROJECT_DIR$/client_mobile/src/styles/scss/style.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client_mobile/src/styles/scss/components/_Menu.scss" beforeDir="false" afterPath="$PROJECT_DIR$/client_mobile/src/styles/scss/components/_Menu.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client_mobile/src/styles/scss/components/_OrderPlacement.scss" beforeDir="false" afterPath="$PROJECT_DIR$/client_mobile/src/styles/scss/components/_OrderPlacement.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client_mobile/src/styles/scss/components/_Requisities.scss" beforeDir="false" afterPath="$PROJECT_DIR$/client_mobile/src/styles/scss/components/_Requisities.scss" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -42,21 +36,21 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "git-widget-placeholder": "redesing",
-    "last_opened_file_path": "D:/projects/deliverycx.ui",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "ts.external.directory.path": "D:\\projects\\deliverycx.ui\\client\\node_modules\\typescript\\lib",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;redesing&quot;,
+    &quot;last_opened_file_path&quot;: &quot;D:/projects/deliverycx.ui&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;ts.external.directory.path&quot;: &quot;D:\\projects\\deliverycx.ui\\client\\node_modules\\typescript\\lib&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
@@ -67,6 +61,8 @@
       <updated>1695369900284</updated>
       <workItem from="1695369902270" duration="84000" />
       <workItem from="1695370088364" duration="1029000" />
+      <workItem from="1696240702425" duration="3262000" />
+      <workItem from="1696247373296" duration="14749000" />
     </task>
     <servers />
   </component>

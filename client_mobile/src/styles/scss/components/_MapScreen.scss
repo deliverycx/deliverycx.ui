@@ -1,11 +1,12 @@
 .recvisites{
-  color: #ABABAB;
-  letter-spacing: 0.02em;
-  font-size: 15px;
-  line-height: 18px;
-  text-decoration-line: underline;
-  cursor: pointer;
+  color: $c-red;
   text-align: center;
+  /* Input/Additional text */
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 16px;
+  cursor: pointer;
 }
 
 .map {

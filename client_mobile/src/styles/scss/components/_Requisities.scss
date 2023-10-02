@@ -9,10 +9,16 @@
 
   .modal__header {
     display: flex;
-    padding: 4px;
     align-items: center;
     align-self: stretch;
     background-color: #fff;
+
+    h3 {
+      font-size: 18px;
+      font-style: normal;
+      font-weight: 700;
+      line-height: 20px;
+    }
   }
 
   .modal__content {
