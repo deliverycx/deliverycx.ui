@@ -13,16 +13,17 @@ interface IProps{
 }
 
 const FormFieldWrapper: FC<IProps> = ({ placeholderIco, placeholderValue, children, isValid, error,errorValue,addfild }) => {
-    const validCN = cn("form__field-wrapper", {
+    const validCN = cn("input__item input_icon input_icon_left input_icon_right", {
         "not-valid": isValid !== undefined ? isValid : false,
         "error": error !== undefined ? error : false,
         [addfild]: addfild
     });
     return (
         <div className={validCN}>
-            <div className="row form__field-wrapper__address">
+            
 							{
 								placeholderIco &&
+								
 								<div className="form__field-wrapper__placeholder">
                     <div className="form__field-wrapper__placeholder__ico">
                         <img src={placeholderIco} alt="" />
@@ -31,7 +32,7 @@ const FormFieldWrapper: FC<IProps> = ({ placeholderIco, placeholderValue, childr
 							}
                 
                 {children}
-            </div>
+            
             {
                 error &&
                 <div className="form__field-wrapper__error">

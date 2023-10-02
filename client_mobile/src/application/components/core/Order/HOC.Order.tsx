@@ -1,9 +1,26 @@
 import { useNavigate } from 'react-router-dom';
 import { ROUTE_APP } from 'application/contstans/route.const';
 import TabBar from 'application/components/common/TabBar/TabBar';
+import HOCOrderMetods from './OrderMetods/HOC.OrderMetods';
+import { useQuery } from 'react-query';
+import { useCaseOrganizationStatus } from 'modules/OrganizationModule/organization.module';
+import { useEffect } from 'react';
+import HOCOrderForm from './OrderForm/HOC.OrderForm';
+import HOCOrderGeneral from './OrderGeneral/HOC.OrderGeneral';
+import { basketUseCase } from 'modules/BasketModule/basket.module';
 
 const HOCOrder = () => {
 	const navigate = useNavigate()
+
+
+	useQuery('pointstatus',() => useCaseOrganizationStatus.statusOrganization(),{
+    refetchOnWindowFocus: true,
+  }) 
+
+	useEffect(()=>{
+		basketUseCase.cartCase()
+	},[])
+	
 
 	return (
 		<div className="order-placement unauthorized">
@@ -18,6 +35,9 @@ const HOCOrder = () => {
 			<div className="order-placement__tabs">
 
 			</div>
+			<HOCOrderMetods />
+			<HOCOrderForm />
+			<HOCOrderGeneral />
 			<TabBar />
 		</div>
 	)

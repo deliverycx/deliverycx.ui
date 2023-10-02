@@ -14,7 +14,14 @@ export class UseCaseOrganizationStatus{
 
 	statusOrganization(){
 		if(this.organizationModel.selectOrganization){
-			this.organizationStatusModel.actionOrganizationStatus(this.organizationModel.selectOrganization)
+			return this.organizationStatusModel.actionOrganizationStatus(this.organizationModel.selectOrganization)
 		}
+	}
+
+	checkDeliveryMetod(){
+		if(this.organizationStatusModel.selectDeliveryTipe){
+			this.organizationStatusModel.actionCheckDeliveryTipe(this.organizationStatusModel.selectDeliveryTipe)
+		}
+		
 	}
 }

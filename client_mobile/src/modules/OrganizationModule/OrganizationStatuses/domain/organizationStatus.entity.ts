@@ -1,4 +1,4 @@
-import { DELIVERY_METODS } from "application/contstans/const.orgstatus";
+import { DELIVERY_METODS, ORG_STATUS } from "application/contstans/const.orgstatus";
 import { IDeliveryTypes, IPointStatusRequest, IWorkTimePoint } from "../interfaces/organizationStatus.type";
 import { ROUTE_APP } from 'application/contstans/route.const';
 import { delivertyTime, workTimeCheck, workTimeHelp } from "application/helpers/workTime";
@@ -15,30 +15,30 @@ export class OrganizationStatusEntiti {
 		}
 	}
 
-	timeWorkOrganizationEntiti(work:string[] | string):IWorkTimePoint {
-		let typework:"WORK" | "NOWORK" | "ONWORK"
-		let todaytime:string[] = []
+	timeWorkOrganizationEntiti(work: string[] | string): IWorkTimePoint {
+		let typework: "WORK" | "NOWORK" | "ONWORK"
+		let todaytime: string[] = []
 
 		const worktime = workTimeHelp(work)
-		const onworktime = delivertyTime(work,60)
+		const onworktime = delivertyTime(work, 60)
 
 		const today = workTimeCheck(work)
-		if(today){
+		if (today) {
 			todaytime = today.split('-')
 		}
 
-		if(onworktime && !worktime){
+		if (onworktime && !worktime) {
 			typework = 'ONWORK'
-		}else if(worktime){
+		} else if (worktime) {
 			typework = 'NOWORK'
-		}else{
+		} else {
 			typework = 'WORK'
 		}
 
-		return{
+		return {
 			typework,
 			todaytime,
-			timelist:work
+			timelist: work
 		}
 	}
 
@@ -73,8 +73,36 @@ export class OrganizationStatusEntiti {
 						name: "Доставка",
 						//route: ROUTE_APP.ORDER.ORDER_COURIER,
 						active: true
-					}	
+					}
 			}
 		})
 	}
+
+	changesDeliveryType(deliveryTypes: IDeliveryTypes[], deliveryTime: IWorkTimePoint,deliveryMetod?: IDeliveryTypes | null) {
+		return deliveryTypes.map((types) => {
+			// проверям что точка скоро закроется
+			if (deliveryTime.typework === ORG_STATUS.ONWORK) {
+				// подставляем что сейчас только самовывоз
+				if (types.metod === DELIVERY_METODS.PICKUP) {
+					return { ...types, active: true }
+				}else{
+					return types
+				}
+				
+				// если точка закрылась неодного типа нету
+			} else if (deliveryTime.typework === ORG_STATUS.NOWORK) {
+				return { ...types, active: false }
+			} else {
+				// делаем активный выбранный тип при выборе точки
+				if (deliveryMetod && types.metod === deliveryMetod.metod) {
+					return { ...types, active: true }
+				} else {
+					return types
+				}
+			}
+
+
+		})
+	}
+
 }

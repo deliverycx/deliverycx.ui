@@ -9,6 +9,7 @@ export class OrganizationStatusModel extends OrganizationStatusRepository{
 	organizationStatus:string | null = null
 	timeworkOrganization:IWorkTimePoint | null = null
 	selectDeliveryTipe:IDeliveryTypes | null = null
+	paymentMetod:string[] | null = null
 	
 	constructor() {
 		super()
@@ -18,19 +19,24 @@ export class OrganizationStatusModel extends OrganizationStatusRepository{
 			selectDeliveryTipe: observable,
 			timeworkOrganization: observable,
 			actionOrganizationStatus:action,
-			actionSelectDeliveryTipe:action
+			actionSelectDeliveryTipe:action,
+			actionCheckDeliveryTipe:action
 		})
 		makePersistable(this, { name: 'selectDeliveryTipe', properties: ['selectDeliveryTipe'],storage: window.localStorage });
 	}
 
 	actionOrganizationStatus(point:IOrganization | null){
 		if(point){
-			this.getOrganizationStatus(point.guid)
-			.subscribe((data: IPointStatus) => {
-				this.deliveryTipe = this.deliveryTypesMetod(data.deliveryMetod)
+			const observableStatus = this.getOrganizationStatus(point.guid)
+			observableStatus.subscribe((data: IPointStatus) => {
+				const time = this.timeWorkOrganizationEntiti(point.workTime)
+				const deliverytypes = this.deliveryTypesMetod(data.deliveryMetod)
+				this.deliveryTipe =  this.changesDeliveryType(deliverytypes,time,this.selectDeliveryTipe)
 				this.organizationStatus = data.organizationStatus
-				this.timeworkOrganization = this.timeWorkOrganizationEntiti(point.workTime)
+				this.timeworkOrganization = time
+				this.paymentMetod = data.paymentMetod
 			})
+			return observableStatus
 		}else{
 			this.deliveryTipe = null
 		}
@@ -39,6 +45,16 @@ export class OrganizationStatusModel extends OrganizationStatusRepository{
 
 	actionSelectDeliveryTipe(deliveryTipe:IDeliveryTypes){
 		this.selectDeliveryTipe = deliveryTipe
+		//this.actionCheckDeliveryTipe(deliveryTipe)
 	}
+
+	actionCheckDeliveryTipe(deliveryTipe:IDeliveryTypes){
+		if(this.deliveryTipe && this.timeworkOrganization){
+			this.deliveryTipe = this.changesDeliveryType(this.deliveryTipe,this.timeworkOrganization,deliveryTipe)
+
+		}
+	}
+
+	
 
 }
