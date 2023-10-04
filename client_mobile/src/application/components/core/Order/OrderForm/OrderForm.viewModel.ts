@@ -1,4 +1,4 @@
-import { organizationStatusModel } from "modules/OrganizationModule/organization.module";
+import { organizationModel, organizationStatusModel } from "modules/OrganizationModule/organization.module";
 import { FormBuilderTabsOrder } from "./view/OrderFormBuilderTabs";
 import { OrderFormPayMetods } from "./view/OrderFormPayMetods";
 import { useEffect, useRef, useState } from 'react';
@@ -9,6 +9,7 @@ import { orderModel } from "modules/OrderModule/order.module";
 
 export function useOrderFromViewModel(this:any) {
 	const {selectDeliveryTipe,paymentMetod} = organizationStatusModel
+	const {selectOrganization} = organizationModel
 	const {orderBody} = orderModel
 	const [builder,setBuilder] = useState<any>()
 	
@@ -51,6 +52,7 @@ export function useOrderFromViewModel(this:any) {
 	this.data({
 		builder,
 		selectDeliveryTipe,
+		selectOrganization,
 		paymentMetod,
 		formik
 	});

@@ -47,4 +47,13 @@ export class BasketRepository extends BasketEntity {
 		}
 	}
 
+	async repositoryCheckCart(){
+		const { data } = await requestBasket.checkCart()
+		if (data) {
+			return data
+		}
+	}
+
+
+
 }

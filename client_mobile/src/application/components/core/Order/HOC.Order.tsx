@@ -8,10 +8,14 @@ import { useEffect } from 'react';
 import HOCOrderForm from './OrderForm/HOC.OrderForm';
 import HOCOrderGeneral from './OrderGeneral/HOC.OrderGeneral';
 import { basketUseCase } from 'modules/BasketModule/basket.module';
+import cn from "classnames"
+import { useOrganizationStatus } from 'application/hooks/useOrganizationStatus';
+import OrderNotificate from './OrderNotificate';
+import { observer } from 'mobx-react-lite';
 
 const HOCOrder = () => {
 	const navigate = useNavigate()
-
+	const [statusTSX, switchMetod] = useOrganizationStatus()
 
 	useQuery('pointstatus', () => useCaseOrganizationStatus.statusOrganization(), {
 		refetchOnWindowFocus: true,
@@ -21,7 +25,7 @@ const HOCOrder = () => {
 		basketUseCase.cartCase()
 	}, [])
 
-
+	const CN = cn("order-placement__form", { 'close-soon': statusTSX.NoTimeWork() })
 	return (
 		<div className="order-placement unauthorized">
 			<div className="top-bar">
@@ -32,23 +36,30 @@ const HOCOrder = () => {
 					<h3>Оформление заказа</h3>
 				</div>
 			</div>
-			<div className="order-placement__tabs">
-
-			</div>
 			<HOCOrderMetods />
-			<HOCOrderForm />
-			<HOCOrderGeneral />
-			<div className="order-placement__buttons">
-				<NavLink to={""} className="btn btn-md btn-red">Всё верно, продолжить</NavLink>
-				<NavLink to={ROUTE_APP.CART.BASKET_MAIN} className="btn btn-md btn-gray">Назад</NavLink>
-				<NavLink className="order-placement__buttons-link" to={""}>
-					<div>
-						Продолжая, вы соглашаетесь на <span>обработку персональных данных</span> и <span>условия пользовательского соглашения</span>
-					</div>
-				</NavLink>
+			{
+				statusTSX.NoTimeWork() && <OrderNotificate masage='nowork' />
+			}
+			{
+				statusTSX.ONTimeWork() && <OrderNotificate masage='onwork' />
+			}
+			
+			<div className={CN}>
+
+				<HOCOrderForm />
+				<HOCOrderGeneral />
+				<div className="order-placement__buttons">
+					<NavLink to={""} className="btn btn-md btn-red">Всё верно, продолжить</NavLink>
+					<NavLink to={ROUTE_APP.CART.BASKET_MAIN} className="btn btn-md btn-gray">Назад</NavLink>
+					<NavLink className="order-placement__buttons-link" to={""}>
+						<div>
+							Продолжая, вы соглашаетесь на <span>обработку персональных данных</span> и <span>условия пользовательского соглашения</span>
+						</div>
+					</NavLink>
+				</div>
 			</div>
 			<TabBar />
 		</div>
 	)
 }
-export default HOCOrder
+export default observer(HOCOrder)

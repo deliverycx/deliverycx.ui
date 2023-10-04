@@ -1,7 +1,8 @@
 import { ICartProd } from "modules/BasketModule/interfaces/basket.type"
-import { FC, memo } from 'react';
+import { FC, memo, useEffect, useState } from 'react';
 import HOCCartChange from "../CartChange/HOC.CartChange";
 import { basketUseCase } from "modules/BasketModule/basket.module";
+import { observer } from "mobx-react-lite";
 
 type IProps = {
 	product: ICartProd
@@ -10,7 +11,26 @@ type IProps = {
 }
 
 const CartList: FC<IProps> = ({ product,choise,select }) => {
+	const [error, setError] = useState<null | string>(null);
+	const errorSchema = basketUseCase.basketModel.basketError
+	useEffect(() => {
+		
+    if (product.productTags && errorSchema) {
+			
+      const tag = product.productTags.find(el => el !== "HIDDEN"); //?.match(/[a-z]{2,}/i)![0]
+      const tag_hi = tag ? tag.match(/[a-z]{2,}/i)![0].toUpperCase() : " "
+			
+      if(tag && tag_hi in errorSchema){
+					console.log(errorSchema);
+          setError(errorSchema?.HI?.message);
+      }
+    }else{
+			setError(null)
+		}
 
+  }, [errorSchema])
+
+	console.log(error,errorSchema);
 
 	return (
 		<>
@@ -49,11 +69,17 @@ const CartList: FC<IProps> = ({ product,choise,select }) => {
 						<HOCCartChange theme="basket" product={product} />
 
 					</div>
-
+					{error &&
+                <div className="cart__item__validate">
+                    {
+                        error
+                    }
+                </div>
+            }
 
 				</div>
 			</div>
 		</>
 	)
 }
-export default CartList
+export default observer(CartList)

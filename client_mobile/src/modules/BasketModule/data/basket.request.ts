@@ -69,6 +69,11 @@ class RequestBasket extends ApiSuper {
 	deleteCart() {
 		return this.request<[]>("/cart/deleteAll");
 	}
+	@methods("get")
+	checkCart() {
+		return this.request<ReqCart.add>("order/checkcart");
+	}
+
 }
 
 export const requestBasket = new RequestBasket()

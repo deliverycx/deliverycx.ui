@@ -18,3 +18,10 @@ export interface IInitialValues {
 	money:number
 	timedelivery:string
 }
+
+export type IOrderOnspotTable = {
+	section:string
+	id:string
+	numb:number
+	tables:any[]
+}

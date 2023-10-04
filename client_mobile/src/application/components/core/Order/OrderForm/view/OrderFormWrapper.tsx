@@ -9,6 +9,9 @@ import FormFieldWrapper from "application/components/common/Forms/FormFieldWrapp
 import { IOrderFormPayMetods, OrderFormPayMetods } from "./OrderFormPayMetods";
 import { useNavigate } from "react-router-dom";
 import { PAYMENT_METODS } from "application/contstans/const.orgstatus";
+import parse from 'html-react-parser'
+import OrderOnspotSelect from "../OnspotTable/OrderOnspotSelect";
+import HOCOrderOnspotSelect from "../OnspotTable/HOC.OrderOnspotSelect";
 
 
 export interface IWrapper {
@@ -18,15 +21,14 @@ export interface IWrapper {
 	name(): ReactNode
 	phone(): ReactNode
 	deliv(): ReactNode
+	onspotSelect():ReactNode
 	selectdeliv(): ReactNode
 	deliveryTime(): ReactNode
 	comment(): ReactNode
 }
 export const OrderFormWrapper = (formik: any, usecase: any): IWrapper => {
 	const navigate = useNavigate()
-	const { stateForm, paths, paymentMetod } = usecase.data
-
-
+	const { selectDeliveryTipe,selectOrganization, paymentMetod } = usecase.data
 
 
 	return {
@@ -72,6 +74,7 @@ export const OrderFormWrapper = (formik: any, usecase: any): IWrapper => {
 							return (
 								<div key={value.id} onClick={() => formik.setFieldValue('payment', value.id)} className="order-placement__payment-method__item">
 									<div className="order-placement__payment-method-box">
+									{parse(value.icon)}
 										<div className="order-placement__payment-method__item-name">{value.value}</div>
 										<div className="order-placement__payment-method__item-btn">
 											<input name="payment-method" type="radio" checked={formik.values.payment === value.id} />
@@ -116,8 +119,8 @@ export const OrderFormWrapper = (formik: any, usecase: any): IWrapper => {
 					<label htmlFor="adresses-delivey">Адрес доставки</label>
 					<div className="input__container">
 						<img src={require("assets/images/icons/location_gray_999.png")} alt="" />
-						<input placeholder="ул. Севастопольская, 126, Симферополь" name="adresses-delivey" type="text" />
-						<img src={require("assets/images/icons/keyboard_arrow_down_gray_999.png")} alt="" />
+						<div onClick={()=> navigate(ROUTE_APP.ORDER.ORDER_MAP)}>adress</div>
+
 					</div>
 				</FormFieldWrapper>
 			)
@@ -136,14 +139,30 @@ export const OrderFormWrapper = (formik: any, usecase: any): IWrapper => {
 					<div className="input__container">
 						<img src={require("assets/images/icons/location_gray_999.png")} alt="" />
 						<input placeholder="ул. Севастопольская, 126, Симферополь" name="adresses-delivey" type="text" />
-						<img src={require("assets/images/icons/keyboard_arrow_down_gray_999.png")} alt="" />
+						
 					</div>
 
 				</FormFieldWrapper>
 
 			)
 		},
+		onspotSelect(){
+			return(
+				<FormFieldWrapper
+					placeholderIco={""}
+					placeholderValue="Где"
 
+					error={!!formik.errors.timedelivery || !!formik.errors.timedelivery}
+					errorValue={formik.errors.timedelivery || formik.errors.timedelivery}
+				>
+					{
+						selectDeliveryTipe &&
+						<HOCOrderOnspotSelect deliveryType={selectDeliveryTipe} organization={selectOrganization} />
+					}
+					
+				</FormFieldWrapper>
+			)
+		},
 		deliveryTime() {
 			return (
 

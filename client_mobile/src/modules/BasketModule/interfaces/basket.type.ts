@@ -36,4 +36,10 @@ export type IaddBasket = {
 	product:IProduct
 }
 
+export type IBasketError = {
+	HI:{
+		message:string
+	}
+}
+
 export type IBasket = BasketDTO

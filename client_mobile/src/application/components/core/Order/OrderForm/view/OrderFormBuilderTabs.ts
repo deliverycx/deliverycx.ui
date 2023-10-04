@@ -24,7 +24,7 @@ export class FormBuilderTabsOrder {
         };
     }
     static pickup(metods: IOrderFormPayMetods) {
-        return (builder: any): IWrapper[] => {
+        return (builder: IWrapper): ReactNode[] => {
 					//console.log('build pickup',builder);
             return [
                 //builder.paymentPopup(),
@@ -37,12 +37,10 @@ export class FormBuilderTabsOrder {
         };
     }
 		static onspot(metods: IOrderFormPayMetods) {
-			return (builder: any): IWrapper[] => {
+			return (builder: IWrapper): ReactNode[] => {
 				//console.log('build onspot',builder);
 					return [
-							builder.paymentPopup(),
-							//builder.payment(metods.paymentsMetod),
-							//builder.adress(),
+							builder.onspotSelect(),
 							builder.name(),
 							builder.phone()
 					];

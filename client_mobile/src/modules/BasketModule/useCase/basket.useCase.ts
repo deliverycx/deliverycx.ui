@@ -58,9 +58,9 @@ export class BasketUseCase {
 
 	async changeAmountCart(id: string, coutn: number) {
 		const cartId = this.findIdCart(id)
-		console.log(id);
 		if(cartId){
 			this.cartCase(async (bodyReqCart:IbodyReqCart)=>{
+				this.basketModel.actionCheckbasketError(null)
 				await this.basketModel.repositoryChangeAmountCart({
 						amount:coutn,
 						cartId:cartId.id,

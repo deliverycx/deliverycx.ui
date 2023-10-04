@@ -1,16 +1,17 @@
 import { observer } from "mobx-react-lite"
 import { basketModel, basketUseCase } from "modules/BasketModule/basket.module"
 import { orderModel } from "modules/OrderModule/order.module"
-import { useCaseOrganization } from "modules/OrganizationModule/organization.module"
+import { organizationStatusModel, useCaseOrganization } from "modules/OrganizationModule/organization.module"
 import { OrderFormPayMetods } from "../OrderForm/view/OrderFormPayMetods"
-import { PAYMENT_METODS } from "application/contstans/const.orgstatus"
+import { DELIVERY_METODS, PAYMENT_METODS } from "application/contstans/const.orgstatus"
 
 const HOCOrderGeneral = () => {
 	const { cart, basketPrice } = basketModel
 	const { orderBody } = orderModel
+	const { selectDeliveryTipe } = organizationStatusModel
 	const city = useCaseOrganization.cityModel.selectCity
 
-	console.log(orderBody);
+
 
 	return (
 		<div className="order-placement__check">
@@ -39,61 +40,90 @@ const HOCOrderGeneral = () => {
 						<h3>{basketPrice?.totalPrice} ₽</h3>
 					</div>
 				</div>
-				<div className="order-placement__check__info__delivery">
-					<div className="order-placement__check__info__delivery__price">
-						<h3 className="order-placement__check__info__delivery__price-title">Доставка</h3>
-						<div className="order-placement__check__info__delivery__price-cost">
-							{
-								basketPrice?.deliveryPrice === 0 ? <span>Бесплатно</span> : <span>{basketPrice?.deliveryPrice}₽</span>
-							}
-
-						</div>
-					</div>
 
 
+				{
+					selectDeliveryTipe?.metod === DELIVERY_METODS.COURIER ?
+						<div className="order-placement__check__info__delivery">
+							<div className="order-placement__check__info__delivery__price">
+								<h3 className="order-placement__check__info__delivery__price-title">Доставка</h3>
+								<div className="order-placement__check__info__delivery__price-cost">
+									{
+										basketPrice?.deliveryPrice === 0 ? <span>Бесплатно</span> : <span>{basketPrice?.deliveryPrice}₽</span>
+									}
 
-					<div className="order-placement__check__info__delivery__info">
-						<div className="order-placement__check__info__delivery__info-time">{orderBody.timedelivery || "В ближайшее время"}</div>
-						<div className="order-placement__check__info__delivery__info-contact">{orderBody.name} {orderBody.phone}</div>
-						<div className="order-placement__check__info__delivery__info-addresses">{orderBody.address && `${orderBody.address},${orderBody.house},`}{city?.cityname}</div>
-						{
-							basketPrice?.deltaPrice !== 0 &&
-							<div className="order-placement__check__info__delivery__info-additional">
-								<img src={require("assets/images/icons/info_green.png")} alt="" />
-								Для бесплатной доставки добавьте ещё на
-								<span>{basketPrice?.deltaPrice} ₽</span>
+								</div>
 							</div>
-						}
 
-					</div>
-				</div>
+
+							<div className="order-placement__check__info__delivery__info">
+								<div className="order-placement__check__info__delivery__info-time">{orderBody.timedelivery || "В ближайшее время"}</div>
+								<div className="order-placement__check__info__delivery__info-contact">{orderBody.name} {orderBody.phone}</div>
+								<div className="order-placement__check__info__delivery__info-addresses">{orderBody.address && `${orderBody.address},${orderBody.house},`}{city?.cityname}</div>
+								{
+									basketPrice?.deltaPrice !== 0 &&
+									<div className="order-placement__check__info__delivery__info-additional">
+										<img src={require("assets/images/icons/info_green.png")} alt="" />
+										Для бесплатной доставки добавьте ещё на
+										<span>{basketPrice?.deltaPrice} ₽</span>
+									</div>
+								}
+
+							</div>
+						</div>
+						: selectDeliveryTipe?.metod === DELIVERY_METODS.PICKUP ?
+							<div className="order-placement__check__info__delivery">
+								<div className="order-placement__check__info__delivery__price">
+									<h3 className="order-placement__check__info__delivery__price-title">Самовывоз</h3>
+
+								</div>
+							</div>
+							: selectDeliveryTipe?.metod === DELIVERY_METODS.ONSPOT ?
+								<div className="order-placement__check__info__delivery">
+									<div className="order-placement__check__info__delivery__price">
+										<h3 className="order-placement__check__info__delivery__price-title">За столиком</h3>
+
+									</div>
+								</div>
+								: ""
+				}
+
+
+
+
+
+
 				<div className="order-placement__check__info__total">
 					<h2 className="order-placement__check__info__total-title">Итого</h2>
 					<div className="order-placement__check__info__total-cost price--cost">
 						<h2>{basketPrice?.totalPrice} ₽</h2>
 					</div>
 				</div>
-				<div className="order-placement__check__info__payment">
-					<h3 className="order-placement__check__info__payment-title">Оплата</h3>
-					<div className="order-placement__check__info__payment__info">
-						<div className="order-placement__check__info__payment__info__item">
-							<div className="order-placement__check__info__payment__info__item-name">{OrderFormPayMetods.paymentsMetod.map((val) => val.id == orderBody.payment && val.value)}</div>
+				{
+					selectDeliveryTipe?.metod === DELIVERY_METODS.COURIER &&
+					<div className="order-placement__check__info__payment">
+						<h3 className="order-placement__check__info__payment-title">Оплата</h3>
+						<div className="order-placement__check__info__payment__info">
+							<div className="order-placement__check__info__payment__info__item">
+								<div className="order-placement__check__info__payment__info__item-name">{OrderFormPayMetods.paymentsMetod.map((val) => val.id == orderBody.payment && val.value)}</div>
+								{
+									orderBody.payment === PAYMENT_METODS.CASH && orderBody.money !== 0 &&
+									<div className="order-placement__check__info__payment__info__item-cost">{orderBody.money} ₽</div>
+								}
+
+							</div>
 							{
-								orderBody.payment === PAYMENT_METODS.CASH && orderBody.money !== 0 &&
-								<div className="order-placement__check__info__payment__info__item-cost">{orderBody.money} ₽</div>
+								orderBody.payment === PAYMENT_METODS.CASH && orderBody.money !== 0 && basketPrice &&
+								<div className="order-placement__check__info__payment__info__item">
+									<div className="order-placement__check__info__payment__info__item-name">Сдача</div>
+									<div className="order-placement__check__info__payment__info__item-cost">{orderBody.money - basketPrice.totalPrice > 0 ? `${orderBody.money - basketPrice.totalPrice} ₽` : "Без сдачи"}</div>
+								</div>
 							}
 
 						</div>
-						{
-							orderBody.payment === PAYMENT_METODS.CASH && orderBody.money !== 0  && basketPrice &&
-							<div className="order-placement__check__info__payment__info__item">
-								<div className="order-placement__check__info__payment__info__item-name">Сдача</div>
-								<div className="order-placement__check__info__payment__info__item-cost">{orderBody.money - basketPrice.totalPrice > 0 ? `${orderBody.money - basketPrice.totalPrice} ₽` : "Без сдачи"}</div>
-							</div>
-						}
-
 					</div>
-				</div>
+				}
+
 			</div>
 		</div>
 	)

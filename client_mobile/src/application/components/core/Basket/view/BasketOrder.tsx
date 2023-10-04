@@ -1,9 +1,25 @@
-import { NavLink } from "react-router-dom"
+import { NavLink, useNavigate } from "react-router-dom"
 import { ROUTE_APP } from 'application/contstans/route.const';
 import { IBasketPrice } from "modules/BasketModule/interfaces/basket.type";
 import { FC } from "react";
+import { basketUseCase } from "modules/BasketModule/basket.module";
 
 const BasketOrder:FC<{basketPrice:IBasketPrice}> = ({basketPrice}) => {
+	const navigate = useNavigate()
+
+	const handlerOrder = async () =>{
+		try {
+			await basketUseCase.basketModel.repositoryCheckCart()
+			navigate(ROUTE_APP.ORDER.ORDER_MAIN)
+		} catch (error:any) {
+			if (error.response.status === 422 && error.response) {
+				basketUseCase.basketModel.actionCheckbasketError(error.response.data.errors)
+			}
+		}
+
+	}
+
+
 	return (
 		<div className="basket__buttons">
 			<div className="basket__buttons__total">
@@ -17,9 +33,8 @@ const BasketOrder:FC<{basketPrice:IBasketPrice}> = ({basketPrice}) => {
 					</div>
 				</div>
 			</div>
-			<NavLink to={ROUTE_APP.ORDER.ORDER_MAIN} className="btn btn-md btn-red">
-				Оформить
-			</NavLink>
+			
+			<div className="btn btn-md btn-red" onClick={handlerOrder}>Оформить</div>
 		</div>
 	)
 }

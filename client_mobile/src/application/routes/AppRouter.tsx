@@ -7,6 +7,7 @@ import HOCOrganizations from 'application/components/core/Organization/HOC.Organ
 import HOCShop from 'application/components/core/Shop/HOC.Shop';
 import HOCBasket from 'application/components/core/Basket/HOCBasket';
 import HOCOrder from 'application/components/core/Order/HOC.Order';
+import OrderAdressMap from 'application/components/core/Order/OrderAdress/OrderAdressMap/OrderAdressMap';
 
 
 export const publicRoutes = [
@@ -30,7 +31,10 @@ export const publicRoutes = [
 		path: ROUTE_APP.ORDER.ORDER_MAIN,
 		Component: HOCOrder
 	},
-
+	{
+		path: ROUTE_APP.ORDER.ORDER_MAP,
+		Component: OrderAdressMap
+	},
 	
 ]
 

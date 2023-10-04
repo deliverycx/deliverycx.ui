@@ -2,7 +2,6 @@ import { IBasketPrice } from "modules/BasketModule/interfaces/basket.type"
 import { FC } from "react"
 
 const BasketPrice:FC<{basketPrice:IBasketPrice}> = ({basketPrice}) => {
-	console.log(basketPrice);
 	return (
 		<div className="basket__content__price">
 			<div className="basket__content__price__item">

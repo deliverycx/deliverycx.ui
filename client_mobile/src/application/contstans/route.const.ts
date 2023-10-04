@@ -13,6 +13,7 @@ export const ROUTE_APP = {
   },
   ORDER:{
 		ORDER_MAIN: "/order/main",
+		ORDER_MAP: "/order/map",
 	},
   PAGES: {
     ABOUT:'/about',

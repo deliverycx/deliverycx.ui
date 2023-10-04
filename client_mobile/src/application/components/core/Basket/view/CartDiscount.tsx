@@ -55,7 +55,7 @@ const CartDiscount:FC<{cartList:ICartProd[]}> = ({cartList}) => {
                             <div className="basket__content__dozen__item__icon">
                                 <img src={require("assets/images/icons/khinkali-icon.png")} alt=""/>
                                 <div className="basket__content__dozen__item__icon-numb">
-                                    {countDiscount}
+                                    {12 - countDiscount}
                                 </div>
                             </div>
                             <div className="basket__content__dozen__item__content">
