@@ -9,12 +9,13 @@ import { requestCity } from 'modules/CityModule/data/city.request';
 import { ICity } from 'modules/CityModule/interfaces/city.type';
 import { CityDTO } from 'modules/CityModule/interfaces/city.dto';
 import { organizationModel } from 'modules/OrganizationModule/organization.module';
+import { appUseCase } from 'modules/AppModule/app.module';
 
 
 export function useCityViewModel(this:any) {
 	//const queryClient = new QueryClient()
 	
-	const {cityList} = cityModel
+	const {cityList,selectCity} = cityModel
 
 	/*
 	const {data,isLoading} = useQuery('city', async () => await useCaseCity.handlerGetCity(''),{
@@ -35,6 +36,9 @@ export function useCityViewModel(this:any) {
 	},[])
 
 	const submitCity = (city:ICity) =>{
+		if(selectCity && selectCity.id !== city.id){
+			appUseCase.clearApp()
+		}
 		useCaseCity.cityModel.actionSelectSity(city)
 	}
 
