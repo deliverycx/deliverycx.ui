@@ -29,7 +29,7 @@ const OrganizationCard = () => {
 			<div className="institute-counter">
 				<h4>Съедено хинкали</h4>
 				<div className="counter-wrapper">
-					123
+					<img src={require('assets/images/coutner.png')} />
 				</div>
 			</div>
 			<OragnizationRequisities />

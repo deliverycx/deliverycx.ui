@@ -16,7 +16,7 @@ const OragnizationRequisities = () => {
             try {
                 const res = await axios.get<IRequisitiesOrganization>(`http://localhost:5000/organization/recvisites?organizationId=${organizationModel.selectOrganization?.guid}`)
 
-                console.log('МОИ ДАННЫЕ', res.data)
+                
                 setData(res.data)
             } catch (e) {
                 console.log(e);
@@ -27,7 +27,7 @@ const OragnizationRequisities = () => {
     }, [])
 
     return (
-        <div>
+        <>
             {
                 (data && Object.keys(data).length !== 0) && <div onClick={() => setModal(true)} className="recvisites">Реквизиты компаний</div>
             }
@@ -43,7 +43,7 @@ const OragnizationRequisities = () => {
                                 </svg>
                                 <h3>Реквизиты</h3>
                             </div>
-                            <div className="modal__content gap-8">
+                            <div className="recvisites_box modal__content gap-8">
                                 <div className='word-bold'>
                                     <b>ИП: </b>
                                     {data?.name}
@@ -62,7 +62,7 @@ const OragnizationRequisities = () => {
                     </ModalCard>
                 )
             }
-        </div>
+        </>
     );
 };
 

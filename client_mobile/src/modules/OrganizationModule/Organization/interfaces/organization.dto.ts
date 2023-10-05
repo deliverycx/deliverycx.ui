@@ -44,7 +44,7 @@ export const organizationDTO = new OrganizationDTO()
 
 export const organizationMapper = (p:IOrganizationResponse[] | IOrganizationResponse):OrganizationDTO[] | OrganizationDTO => {
 	return mappersDTO<IOrganizationResponse,OrganizationDTO>(p,(val)=>{
-		
+		console.log(val.city);
 		organizationDTO.id = val.id
 		organizationDTO.guid = val.guid
 		organizationDTO.info = {
@@ -61,7 +61,6 @@ export const organizationMapper = (p:IOrganizationResponse[] | IOrganizationResp
 		}
 		organizationDTO.gallery = val.gallery
 		organizationDTO.filters = val.filters
-		
 		validatorDTO(organizationDTO)
 		return {...organizationDTO}
 	})

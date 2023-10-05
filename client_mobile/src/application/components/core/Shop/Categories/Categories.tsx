@@ -9,6 +9,7 @@ import { adapterComponentUseCase } from "adapters/adapterComponents";
 import { ICategory } from "modules/ShopModule/interfaces/shop.type";
 import { useCategoriesViewModel } from "./Categories.viewModel";
 import { useState } from 'react';
+import { observer } from "mobx-react-lite";
 
 
 type IProps = {
@@ -80,4 +81,4 @@ const Categories: FC<IProps> = ({ nomenclatureCategories }) => {
 		</Slider>
 	)
 }
-export default memo(Categories) 
+export default observer(Categories) 

@@ -5,6 +5,9 @@ export interface IOrganizationResponse {
   id:	string
   address:	string
   city:	string
+	cityid:{
+		name:string
+	}
   cords:	number[]
   phone:	string
 	guid:string

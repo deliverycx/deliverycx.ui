@@ -22,7 +22,7 @@ const HOCCity = () => {
 	return (
 		<>
 			<div className="select__header">
-				<img src={require("assets/images/logo.svg")} alt="Старик Хинкалыч" />
+				<img src={require("assets/images/logo.jpg")} alt="Старик Хинкалыч" />
 			</div>
 			<CountCity />
 			
