@@ -21,14 +21,14 @@ export const PointsContext = React.createContext<TadapterCaseCallback>({
 const HOCOrganizationCard = () => {
 	const useCase = adapterComponentUseCase(useOrganizationCardViewModel)
 	const { selectOrganization, timeworkOrganization, cardModal, deliveryTipe,organizationStatus } = useCase.data
-	const { setCardModal, handlerCloseCardModal } = useCase.handlers
+	const { handlerCloseCardModal } = useCase.handlers
 
 	return (
 		<>
 			<PointsContext.Provider value={useCase}>
 				{
 					cardModal && selectOrganization && deliveryTipe &&
-						<ModalCard setIsOpened={setCardModal}>
+						<ModalCard setIsOpened={handlerCloseCardModal}>
 						<div className="modal__wrapper map__institute-info">
 							<div onClick={handlerCloseCardModal} className="map__institute-close no-drag">
 								<img src={require('assets/images/icons/close_gray.png')} alt="" />

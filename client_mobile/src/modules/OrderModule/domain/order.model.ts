@@ -3,23 +3,23 @@ import { IInitialValues, IOrderOnspotTable } from "../interfaces/order.type"
 import { PAYMENT_METODS } from "application/contstans/const.orgstatus"
 import { OrderRepository } from "../data/order.repository"
 
-
+const InitOrderBody = {
+	address: '',
+	house: "",
+	kladrid: '',
+	comment: "",
+	flat: "",
+	intercom: "",
+	entrance: "",
+	floor: "",
+	name: "",
+	phone: "",
+	payment: PAYMENT_METODS.CASH,
+	money:0,
+	timedelivery:""
+}
 export class OrderModel extends OrderRepository{
-	orderBody:IInitialValues = {
-		address: '',
-		house: "",
-		kladrid: '',
-		comment: "",
-		flat: "",
-		intercom: "",
-		entrance: "",
-		floor: "",
-		name: "",
-		phone: "",
-		payment: PAYMENT_METODS.CASH,
-		money:0,
-		timedelivery:""
-	}
+	orderBody:IInitialValues = InitOrderBody
 	orderOnspotTable:IOrderOnspotTable | null = null
 
 	constructor() {
@@ -29,7 +29,8 @@ export class OrderModel extends OrderRepository{
 			orderOnspotTable:observable,
 			actionOrderBody:action,
 			actionOrderOnspotTable:action,
-			actionSetOrderOnspotTable:action
+			actionSetOrderOnspotTable:action,
+			actionResetOrder:action
 		})
 		//makePersistable(this, { name: 'basket', properties: ['cart'],storage: window.localStorage });
 	}
@@ -53,6 +54,11 @@ export class OrderModel extends OrderRepository{
 
 	actionSetOrderOnspotTable(onspotTable:IOrderOnspotTable){
 		this.orderOnspotTable = onspotTable
+	}
+
+	actionResetOrder(){
+		this.orderOnspotTable = null
+		this.orderBody = InitOrderBody
 	}
 
 }

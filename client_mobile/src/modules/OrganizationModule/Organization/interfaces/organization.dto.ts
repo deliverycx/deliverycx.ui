@@ -33,10 +33,6 @@ export class OrganizationDTO{
 
 	@IsArray()
 	gallery!:string[] | []
-
-	@IsString()
-	city!: string
-	
 	
 	filters!:OrganizationFilters[] | []
 }
@@ -44,14 +40,13 @@ export const organizationDTO = new OrganizationDTO()
 
 export const organizationMapper = (p:IOrganizationResponse[] | IOrganizationResponse):OrganizationDTO[] | OrganizationDTO => {
 	return mappersDTO<IOrganizationResponse,OrganizationDTO>(p,(val)=>{
-		console.log(val.city);
 		organizationDTO.id = val.id
 		organizationDTO.guid = val.guid
 		organizationDTO.info = {
 			address:val.address,
 			cords:val.cords,
 			phone:	val.phone,
-			city:	val.city
+			city: val.city
 		}
 		organizationDTO.isHidden = val.isHidden
 		organizationDTO.workTime = val.workTime

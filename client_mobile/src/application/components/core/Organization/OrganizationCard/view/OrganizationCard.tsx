@@ -18,7 +18,7 @@ const OrganizationCard = () => {
 	return (
 		<>
 			<h3>
-				{selectOrganization.info.address}
+				{selectOrganization.info.address}, {selectOrganization.info.city}
 			</h3>
 			<div className="d-flex gap-16 flex-center">
 				<div className="institute-header__rating">

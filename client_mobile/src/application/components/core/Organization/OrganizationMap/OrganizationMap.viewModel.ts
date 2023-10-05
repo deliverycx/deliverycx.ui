@@ -1,10 +1,11 @@
 import { PointsReducer, ReducerActionTypePoints, initialStatePointsMap } from 'application/reducers/PointsReducer';
+import { appUseCase } from 'modules/AppModule/app.module';
 import { IOrganization } from 'modules/OrganizationModule/Organization/interfaces/organization.type';
-import { useCaseOrganization } from 'modules/OrganizationModule/organization.module';
+import { organizationModel, useCaseOrganization } from 'modules/OrganizationModule/organization.module';
 import { useReducer, useEffect } from 'react';
 
 export function useOrganizationMapViewModel(this:any,organizations:IOrganization[]) {
-
+	const {selectOrganization} = organizationModel
 	const [statePoint, dispatchPoint] = useReducer(
 		PointsReducer,
 		initialStatePointsMap
@@ -28,11 +29,11 @@ export function useOrganizationMapViewModel(this:any,organizations:IOrganization
 		}
 	};
 
-	const placemarkClickHandler = (address: IOrganization, index: number) => {
-		useCaseOrganization.selectOrganization(address)
+	const placemarkClickHandler = (organization: IOrganization, index: number) => {
+		useCaseOrganization.selectOrganization(organization)
 		dispatchPoint({
 			type: ReducerActionTypePoints.placemarkClick,
-			payload: { address, index }
+			payload: { organization, index }
 		});
 	};
 

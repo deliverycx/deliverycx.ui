@@ -20,9 +20,7 @@ export class UseCaseOrganization{
 	}
 
 	selectOrganization(point:IOrganization | null){
-		if(point){
-			this.organizationModel.actionSelectOrganization(point)
-		}
+		this.organizationModel.actionSelectOrganization(point)
 	}
 
 	

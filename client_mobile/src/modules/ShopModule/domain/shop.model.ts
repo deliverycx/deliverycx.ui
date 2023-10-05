@@ -19,7 +19,7 @@ export class ShopModel extends ShopRepository{
 		makePersistable(this, { name: 'Category', properties: ['selectCategory'],storage: window.localStorage });
 	}
 
-	actionSelectCategory(category:ICategory){
+	actionSelectCategory(category:ICategory | null){
 		this.selectCategory = category
 	}
 

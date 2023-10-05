@@ -5,6 +5,8 @@ import { TadapterCaseCallback, adapterComponentUseCase } from 'adapters/adapterC
 import React from 'react';
 import YMapPoint from './YMapPoint';
 import { useOrganizationMapViewModel } from './OrganizationMap.viewModel';
+import { observable } from 'mobx';
+import { observer } from 'mobx-react-lite';
 
 
 const OrganizationMap: FC<{ organizations: IOrganization[] }> = ({ organizations }) => {
@@ -23,4 +25,4 @@ const OrganizationMap: FC<{ organizations: IOrganization[] }> = ({ organizations
 		</>
 	)
 }
-export default OrganizationMap
+export default observer(OrganizationMap) 

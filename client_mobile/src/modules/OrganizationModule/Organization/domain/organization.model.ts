@@ -50,13 +50,14 @@ export class OrganizationModel extends OrganizationRepository {
 
 	actionSelectOrganization(point: IOrganization | null) {
 		if(point){
-			this.selectOrganization = null
 			this.repositoryOrganization(point.guid)
 			.subscribe((data: any) => {
 				this.selectOrganization = data
 				
 			})
 			
+		}else{
+			this.selectOrganization = null
 		}
 	}
 
@@ -70,6 +71,7 @@ export class OrganizationModel extends OrganizationRepository {
 
 	actionResetOrganizationAll(){
 		this.organizationList = null
+		this.selectRequisites = null
 	}
 
 

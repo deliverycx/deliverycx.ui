@@ -43,9 +43,8 @@ export class OrganizationStatusModel extends OrganizationStatusRepository{
 		
 	}
 
-	actionSelectDeliveryTipe(deliveryTipe:IDeliveryTypes){
+	actionSelectDeliveryTipe(deliveryTipe:IDeliveryTypes | null){
 		this.selectDeliveryTipe = deliveryTipe
-		//this.actionCheckDeliveryTipe(deliveryTipe)
 	}
 
 	actionCheckDeliveryTipe(deliveryTipe:IDeliveryTypes){

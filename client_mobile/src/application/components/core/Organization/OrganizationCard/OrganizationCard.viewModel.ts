@@ -1,3 +1,4 @@
+import { appUseCase } from "modules/AppModule/app.module";
 import { IDeliveryTypes } from "modules/OrganizationModule/OrganizationStatuses/interfaces/organizationStatus.type";
 import { organizationModel, organizationStatusModel, useCaseOrganization, useCaseOrganizationStatus } from "modules/OrganizationModule/organization.module";
 import { useEffect, useState } from "react";
@@ -21,7 +22,7 @@ export function useOrganizationCardViewModel() {
 
 	
 	const handlerCloseCardModal = () =>{
-		useCaseOrganization.selectOrganization(null)
+		appUseCase.clearApp()
 		setCardModal(false)
 	}
 
