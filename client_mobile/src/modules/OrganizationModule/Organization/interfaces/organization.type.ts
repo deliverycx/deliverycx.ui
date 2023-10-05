@@ -29,6 +29,12 @@ export type OrganizationFilters = {
 	images:string[]
 }
 
+export type OrganizationGoodPlaceID = {
+	_id: string
+	goodplaceid: string
+	organization: string
+}
+
 export type pointSerch= {
 	data:string
 	cityid:string
