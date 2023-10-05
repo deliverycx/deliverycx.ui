@@ -11,7 +11,6 @@
       <change beforePath="$PROJECT_DIR$/client_mobile/src/application/components/core/Organization/OrganizationCard/view/OragnizationRequisities.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client_mobile/src/application/components/core/Organization/OrganizationCard/view/OragnizationRequisities.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client_mobile/src/application/components/core/Organization/OrganizationCard/view/OrganizationCard.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client_mobile/src/application/components/core/Organization/OrganizationCard/view/OrganizationCard.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client_mobile/src/modules/OrganizationModule/Organization/data/organization.request.ts" beforeDir="false" afterPath="$PROJECT_DIR$/client_mobile/src/modules/OrganizationModule/Organization/data/organization.request.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client_mobile/src/modules/OrganizationModule/Organization/interfaces/organization.type.ts" beforeDir="false" afterPath="$PROJECT_DIR$/client_mobile/src/modules/OrganizationModule/Organization/interfaces/organization.type.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -57,7 +56,7 @@
       <workItem from="1696240702425" duration="3262000" />
       <workItem from="1696247373296" duration="14749000" />
       <workItem from="1696440243403" duration="52000" />
-      <workItem from="1696499964577" duration="9358000" />
+      <workItem from="1696499964577" duration="11462000" />
     </task>
     <servers />
   </component>

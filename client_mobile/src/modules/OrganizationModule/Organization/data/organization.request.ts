@@ -50,7 +50,7 @@ class RequestOrganizationAdmin extends ApiAdminSuper {
 
   @methods('get')
   getByOrganizationGoodPlaceId(organizationId: string | any) {
-	return this.request<OrganizationGoodPlaceID>(`/organization_goodplace/buorg?id=${organizationId}`)
+	return this.request<OrganizationGoodPlaceID>(`/organization_goodplace/buorg?organization=${organizationId}`)
   }
 
 }

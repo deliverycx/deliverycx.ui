@@ -9,17 +9,6 @@ import {
 const OragnizationRequisities = () => {
     const [modal, setModal] = useState(false)
     const [data, setData] = useState<null | IRequisitiesOrganization>(null)
-    console.log(organizationModel.selectOrganization?.guid, 'ID ORGS');
-
-    const getGoodPlaceId = async (id: string) => {
-        try {
-            console.log('ID', id);
-            const res = await axios.get<any>(`http://localhost:6500/organization_goodplace/buorg?id=${id}`)
-            console.log(res.data, 'GOODPLACE');
-        } catch (e) {
-            console.log(e);
-        }
-    }
 
     useEffect(() => {
         const getRequisities = async () => {
@@ -33,12 +22,6 @@ const OragnizationRequisities = () => {
 
         getRequisities()
     }, [])
-
-    useEffect(() => {
-        if(organizationModel.selectOrganization) {
-            getGoodPlaceId(organizationModel.selectOrganization.guid)
-        }
-    }, [organizationModel.selectOrganization])
 
     return (
         <div>

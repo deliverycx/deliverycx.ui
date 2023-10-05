@@ -20,10 +20,8 @@ export const PointsContext = React.createContext<TadapterCaseCallback>({
 });
 const HOCOrganizationCard = () => {
 	const useCase = adapterComponentUseCase(useOrganizationCardViewModel)
-	const { selectOrganization, timeworkOrganization, cardModal, deliveryTipe, goodplaceid } = useCase.data
+	const { selectOrganization, timeworkOrganization, cardModal, deliveryTipe } = useCase.data
 	const { setCardModal, handlerCloseCardModal } = useCase.handlers
-
-	console.log(goodplaceid, 'GG WP');
 
 	return (
 		<>

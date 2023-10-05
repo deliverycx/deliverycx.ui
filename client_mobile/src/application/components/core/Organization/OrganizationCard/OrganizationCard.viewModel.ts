@@ -10,7 +10,6 @@ export function useOrganizationCardViewModel() {
 	const {selectOrganization} = organizationModel
 	const {deliveryTipe,organizationStatus,timeworkOrganization} = organizationStatusModel
 	const [goodPlaceId, setGoodPlaceId] = useState<string>('')
-	//TODO ПОЛУЧАЕМ GUID ЧТОБЫ ЗАПРОС ДОБАВИТЬ ЕГО В ЗАПРОС, И ОТПРАВЛЯЕМ ЕГО В USECASE
 	const organization = organizationModel.selectOrganization
 
 	useEffect(()=>{
@@ -21,6 +20,19 @@ export function useOrganizationCardViewModel() {
 		}
 		
 	},[selectOrganization])
+
+	useEffect(() => {
+		const getGoodPlaceId = async () => {
+			try {
+				const { data } = await requestOrganizationAdmin.getByOrganizationGoodPlaceId(organizationModel.selectOrganization?.guid)
+				setGoodPlaceId(data.goodplaceid)
+			} catch (error) {
+				console.log(error);
+			}
+		}
+
+		getGoodPlaceId()
+	}, [organizationModel.selectOrganization?.guid])
 	
 	const handlerCloseCardModal = () =>{
 		useCaseOrganization.selectOrganization(null)
