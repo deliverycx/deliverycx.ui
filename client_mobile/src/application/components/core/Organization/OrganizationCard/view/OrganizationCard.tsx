@@ -1,19 +1,11 @@
 /* eslint-disable @typescript-eslint/no-var-requires */
-import { useContext } from "react"
+import { useContext, useEffect } from "react";
 import { PointsContext } from "../HOC.OrganizationCard"
-import { Carousel } from 'react-responsive-carousel';
-import OranizationWorkTime from "./OranizationWorkTime";
-import OrganizationCardFilter from "./OrganizationCardFilter";
-import { imgRoutDef } from "application/helpers/imgAdmin";
-import OrganizationTipeDelivery from "./OrganizationTipeDelivery";
-import OrganizationTableRestaurant from "./OrganizationTableRestaurant";
-import axios from "axios";
 import OragnizationRequisities from "./OragnizationRequisities";
 
 const OrganizationCard = () => {
 	const useCasePoints = useContext(PointsContext)
-	const { selectOrganization, deliveryTipe, timeworkOrganization, guid } = useCasePoints.data
-	const { setCardModal, handlerCloseCardModal } = useCasePoints.handlers
+	const { selectOrganization, goodPlaceId } = useCasePoints.data
 
 	return (
 		<>
@@ -22,7 +14,9 @@ const OrganizationCard = () => {
 			</h3>
 			<div className="d-flex gap-16 flex-center">
 				<div className="institute-header__rating">
-				<iframe src="https://yandex.ru/sprav/widget/rating-badge/14570445460?type=award" width="150" height="50" frameBorder="0"></iframe>
+					{
+						goodPlaceId && <iframe src={`https://yandex.ru/sprav/widget/rating-badge/${goodPlaceId}?type=award`} width="150" height="50" frameBorder="0"></iframe>
+					}
 				</div>
 
 			</div>

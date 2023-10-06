@@ -2,12 +2,15 @@ import { appUseCase } from "modules/AppModule/app.module";
 import { IDeliveryTypes } from "modules/OrganizationModule/OrganizationStatuses/interfaces/organizationStatus.type";
 import { organizationModel, organizationStatusModel, useCaseOrganization, useCaseOrganizationStatus } from "modules/OrganizationModule/organization.module";
 import { useEffect, useState } from "react";
+import {
+	requestOrganizationAdmin
+} from "../../../../../modules/OrganizationModule/Organization/data/organization.request";
 
 export function useOrganizationCardViewModel() {
 	const [cardModal,setCardModal] = useState(false)
 	const {selectOrganization} = organizationModel
 	const {deliveryTipe,organizationStatus,timeworkOrganization} = organizationStatusModel
-	//TODO ПОЛУЧАЕМ GUID ЧТОБЫ ЗАПРОС ДОБАВИТЬ ЕГО В ЗАПРОС, И ОТПРАВЛЯЕМ ЕГО В USECASE
+	const [goodPlaceId, setGoodPlaceId] = useState<string>('')
 	const organization = organizationModel.selectOrganization
 
 	useEffect(()=>{
@@ -19,7 +22,18 @@ export function useOrganizationCardViewModel() {
 		
 	},[selectOrganization])
 
+	useEffect(() => {
+		const getGoodPlaceId = async () => {
+			try {
+				const { data } = await requestOrganizationAdmin.getByOrganizationGoodPlaceId(organizationModel.selectOrganization?.guid)
+				setGoodPlaceId(data.goodplaceid)
+			} catch (error) {
+				console.log(error);
+			}
+		}
 
+		getGoodPlaceId()
+	}, [organizationModel.selectOrganization?.guid])
 	
 	const handlerCloseCardModal = () =>{
 		appUseCase.clearApp()
@@ -32,6 +46,7 @@ export function useOrganizationCardViewModel() {
 
 	
 	this.data({
+		goodPlaceId,
 		selectOrganization,
 		timeworkOrganization,
 		cardModal,

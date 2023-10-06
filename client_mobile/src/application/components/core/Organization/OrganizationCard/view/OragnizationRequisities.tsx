@@ -10,13 +10,10 @@ const OragnizationRequisities = () => {
     const [modal, setModal] = useState(false)
     const [data, setData] = useState<null | IRequisitiesOrganization>(null)
 
-
     useEffect(() => {
         const getRequisities = async () => {
             try {
                 const res = await axios.get<IRequisitiesOrganization>(`http://localhost:5000/organization/recvisites?organizationId=${organizationModel.selectOrganization?.guid}`)
-
-                
                 setData(res.data)
             } catch (e) {
                 console.log(e);
