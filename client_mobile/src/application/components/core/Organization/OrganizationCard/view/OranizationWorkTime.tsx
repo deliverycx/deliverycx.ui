@@ -49,8 +49,11 @@ const OranizationWorkTime = () => {
 							? "Закрыто"
 							: `Открыто до ${timeworkOrganization.todaytime[1]}`
 					}
-
-					<img src={require('assets/images/icons/keyboard_arrow_down.png')} alt="" />
+					{
+						!checktype &&
+						<img src={require('assets/images/icons/keyboard_arrow_down.png')} alt="" />
+					}
+					
 				</button>
 				<button className="btn btn-mini btn-gray no-drag">
 					<img src={require('assets/images/icons/phone.png')} alt="" />
