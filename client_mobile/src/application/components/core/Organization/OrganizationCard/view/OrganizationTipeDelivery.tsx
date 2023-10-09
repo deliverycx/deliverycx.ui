@@ -41,7 +41,7 @@ const OrganizationTipeDelivery = () => {
 		)
 	}
 
-	if (organizationStatus !== ORG_STATUS.WORK) {
+	if (organizationStatus !== ORG_STATUS.WORK || timeworkOrganization.typework === ORG_STATUS.NOWORK) {
 		return (
 			<NavLink to={"/shop"} className="btn btn-mini btn-gray no-drag">Посмотреть меню</NavLink>
 		)

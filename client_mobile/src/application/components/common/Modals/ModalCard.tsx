@@ -5,10 +5,10 @@ import { ReactNode } from 'react';
 type IProps = {
 	setIsOpened:any
 	children:any
-	data?:any
+	theme?:"children"
 }
 
-const ModalCard:FC<IProps> = ({setIsOpened, children, data}) => {
+const ModalCard:FC<IProps> = ({setIsOpened, children, theme}) => {
     const wrapperRef = useRef<any>()
     const [positionY, setPositionY] = useState(720);
     const handleClick = (event:any) => {
@@ -37,7 +37,7 @@ const ModalCard:FC<IProps> = ({setIsOpened, children, data}) => {
     }, [])
 
     return (
-        <div onClick={(e) => handleClick(e)} ref={wrapperRef} className="modal__bg">
+        <div onClick={(e) => handleClick(e)} ref={wrapperRef} className={theme == 'children' ? "modal__bg-children" : "modal__bg"}>
             <Draggable
                 axis="y"
                 onStop={handleDrag}

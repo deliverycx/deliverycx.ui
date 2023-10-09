@@ -61,7 +61,7 @@ const OranizationWorkTime = () => {
 				</button>
 			</div>
 			{modalWork && !checktype &&
-				<ModalCard setIsOpened={setModalWork}>
+				<ModalCard setIsOpened={setModalWork} theme="children">
 
 					<div className="modal__wrapper">
 						<div className="modal__header">

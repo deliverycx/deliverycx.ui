@@ -17,7 +17,7 @@ const OrganizationStatus = () => {
 	useEffect(() => {
 		statusTSX.statuses && setModal(true)
 
-	}, [])
+	}, [timeworkOrganization])
 
 
 
@@ -147,7 +147,7 @@ const OrganizationStatus = () => {
 		<>
 			{
 				modal &&
-				<ModalCard setIsOpened={setModal}>
+				<ModalCard setIsOpened={setModal} theme="children">
 					{
 						switchMetod()
 					}

@@ -69,7 +69,7 @@ body {
 	left: 0;
 	right: 0;
 	margin: 0 auto;
-	z-index: 9999;
+	z-index: 999;
   &:before {
     position: absolute;
     content: '';
@@ -89,9 +89,11 @@ body {
     border-radius: 17px 17px 0 0;
     max-height: 90vh;
     overflow-y: auto;
+		box-shadow: 0px 0px 16px 0px rgba(17, 17, 17, 0.40);
+
   }
   &__bg {
-    z-index: 9999;
+    z-index: 7777;
     position: fixed;
     top: 0;
     left: 0;
@@ -100,6 +102,16 @@ body {
     background: var(--background, rgba(19, 42, 62, 0.50));
     backdrop-filter: blur(2px);
   }
+	&__bg-children{
+		z-index:8888;
+    position: static;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: var(--background, rgba(19, 42, 62, 0.80));
+    backdrop-filter: blur(2px);
+	}
   &__header {
     display: flex;
     padding: 4px;
