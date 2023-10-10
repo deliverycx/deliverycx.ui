@@ -1,27 +1,11 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import ModalCard from "../../../../common/Modals/ModalCard";
-import axios from "axios";
-import { organizationModel } from "../../../../../../modules/OrganizationModule/organization.module";
 import {
-    IRequisitiesOrganization
+    IDataRequisites,
 } from "../../../../../../modules/OrganizationModule/Organization/interfaces/organization.type";
 
-const OragnizationRequisities = () => {
+const OragnizationRequisities = ({data}: IDataRequisites) => {
     const [modal, setModal] = useState(false)
-    const [data, setData] = useState<null | IRequisitiesOrganization>(null)
-
-    useEffect(() => {
-        const getRequisities = async () => {
-            try {
-                const res = await axios.get<IRequisitiesOrganization>(`http://localhost:5000/organization/recvisites?organizationId=${organizationModel.selectOrganization?.guid}`)
-                setData(res.data)
-            } catch (e) {
-                console.log(e);
-            }
-        }
-
-        getRequisities()
-    }, [])
 
     return (
         <>

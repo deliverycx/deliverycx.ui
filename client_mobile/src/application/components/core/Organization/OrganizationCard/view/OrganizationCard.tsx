@@ -5,7 +5,7 @@ import OragnizationRequisities from "./OragnizationRequisities";
 
 const OrganizationCard = () => {
 	const useCasePoints = useContext(PointsContext)
-	const { selectOrganization, goodPlaceId } = useCasePoints.data
+	const { selectOrganization, goodPlaceId, data } = useCasePoints.data
 
 	return (
 		<>
@@ -26,7 +26,7 @@ const OrganizationCard = () => {
 					<img src={require('assets/images/coutner.png')} />
 				</div>
 			</div>
-			<OragnizationRequisities />
+			<OragnizationRequisities data={data} />
 		</>
 	)
 }

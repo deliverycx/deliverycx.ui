@@ -26,6 +26,10 @@ export interface IRequisitiesOrganization {
 	name: string
 }
 
+export interface IDataRequisites {
+	data: IRequisitiesOrganization
+}
+
 export type OrganizationFilters = {
 	_id:string
 	name:string

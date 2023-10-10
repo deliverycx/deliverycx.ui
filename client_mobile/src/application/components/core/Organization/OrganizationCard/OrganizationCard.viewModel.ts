@@ -5,22 +5,41 @@ import { useEffect, useState } from "react";
 import {
 	requestOrganizationAdmin
 } from "../../../../../modules/OrganizationModule/Organization/data/organization.request";
+import axios from "axios";
+import {
+	IRequisitiesOrganization
+} from "../../../../../modules/OrganizationModule/Organization/interfaces/organization.type";
 
 export function useOrganizationCardViewModel() {
 	const [cardModal,setCardModal] = useState(false)
 	const {selectOrganization} = organizationModel
 	const {deliveryTipe,organizationStatus,timeworkOrganization} = organizationStatusModel
 	const [goodPlaceId, setGoodPlaceId] = useState<string>('')
+	const [data, setData] = useState<IRequisitiesOrganization>()
 	const organization = organizationModel.selectOrganization
 
 	useEffect(()=>{
 		if(selectOrganization){
 			useCaseOrganizationStatus.statusOrganization()
 			setCardModal(true)
-			
+
 		}
-		
+
 	},[selectOrganization])
+
+	useEffect(() => {
+		const getRequisities = async () => {
+			try {
+				const res = await axios.get<IRequisitiesOrganization>(`http://localhost:5000/organization/recvisites?organizationId=${organizationModel.selectOrganization?.guid}`)
+				console.log('RES REQ', res.data);
+				setData(res.data)
+			} catch (e) {
+				console.log(e);
+			}
+		}
+
+		getRequisities()
+	}, [organizationModel.selectOrganization?.guid])
 
 	useEffect(() => {
 		const getGoodPlaceId = async () => {
@@ -34,7 +53,7 @@ export function useOrganizationCardViewModel() {
 
 		getGoodPlaceId()
 	}, [organizationModel.selectOrganization?.guid])
-	
+
 	const handlerCloseCardModal = () =>{
 		appUseCase.clearApp()
 		setCardModal(false)
@@ -46,6 +65,7 @@ export function useOrganizationCardViewModel() {
 
 	
 	this.data({
+		data,
 		goodPlaceId,
 		selectOrganization,
 		timeworkOrganization,
