@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import {Navigate, Route, Routes} from "react-router-dom";
 
 import { ROUTE_APP } from 'application/contstans/route.const';
@@ -8,6 +8,8 @@ import HOCShop from 'application/components/core/Shop/HOC.Shop';
 import HOCBasket from 'application/components/core/Basket/HOCBasket';
 import HOCOrder from 'application/components/core/Order/HOC.Order';
 import OrderAdressMap from 'application/components/core/Order/OrderAdress/OrderAdressMap/OrderAdressMap';
+import { userUseCase } from 'modules/UserModule/user.module';
+import { observer } from 'mobx-react-lite';
 
 
 export const publicRoutes = [
@@ -39,6 +41,7 @@ export const publicRoutes = [
 ]
 
 const AppRouter = () => {
+
     return (
         <Routes>
             {publicRoutes.map(({path, Component}) =>
@@ -49,4 +52,4 @@ const AppRouter = () => {
     );
 };
 
-export default AppRouter;
+export default observer(AppRouter) ;
