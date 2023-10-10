@@ -52,7 +52,7 @@ console.log(point.reservetable,workTimeHelp(point.workTime));
                         <Link to={ROUTE_APP.PAGES.ABOUT} className="header__menu__link faq">О сервисе</Link>
 												<a target="_blank" rel="noreferrer" href={require("assets/colur.pdf").default} className="header__menu__link faq">Калорийность и состав</a>
                         <a target="_blank" rel="noreferrer" href="//xn--80aaudyq1a9a.xn--80apgfh0ct5a.xn--p1ai/" className="header__menu__link franchise">Франшиза</a>
-												
+												<a target="_blank" rel="noreferrer" href="https://starikkhinkalich.ru/legal" className="header__menu__link franchise">Правовой раздел</a>
                     </div>
                 </div>
                 <div className="header__menu__bg-images"></div>
