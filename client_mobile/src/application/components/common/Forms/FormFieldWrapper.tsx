@@ -13,7 +13,7 @@ interface IProps{
 }
 
 const FormFieldWrapper: FC<IProps> = ({ placeholderIco, placeholderValue, children, isValid, error,errorValue,addfild }) => {
-    const validCN = cn("input__item input_icon input_icon_left input_icon_right", {
+    const validCN = cn("input__item input_icon", {
         "not-valid": isValid !== undefined ? isValid : false,
         "error": error !== undefined ? error : false,
         [addfild]: addfild

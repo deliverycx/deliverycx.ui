@@ -7,10 +7,14 @@ class RequestUser extends ApiSuper {
 		return this.request<userType.IUserGuest>("/user/create");
 	}
 	@methods("post")
-	check(body:userType.IUserGuest) {
+	check(body:userType.IUser) {
 		return this.request<userType.IUserGuest>("/user/check_guest");
 	}
-	@methods("patch")
+	@methods("get")
+	smsSend(phone:string) {
+		return this.request(`/user/send_sms?phone=${phone}`);
+	}
+	@methods("post")
 	update(data: userType.IUpdateData) {
 		return this.request("/user/update");
 	}

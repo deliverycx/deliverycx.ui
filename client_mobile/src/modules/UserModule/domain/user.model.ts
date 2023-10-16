@@ -1,17 +1,18 @@
 import { action, makeObservable, observable } from "mobx";
 import { UserRepository } from "../data/user.repository";
 import { makePersistable } from "mobx-persist-store";
-import { IUserGuest } from "../interfaces/user.type";
+import { IUpdateData, IUser, IUserGuest } from "../interfaces/user.type";
 
 export class UserModel extends UserRepository{
-	guestUser:IUserGuest | null = null
+	guestUser:IUser | null = null
 
 	constructor() {
 		super()
 		makeObservable(this, {
 			guestUser:observable,
 			actionCreateGusetUser:action,
-			actionCheckGusetUser:action
+			actionCheckGusetUser:action,
+			actionAuthUser:action
 		})
 		makePersistable(this, { name: 'user', properties: ['guestUser'],storage: window.localStorage });
 	}
@@ -19,6 +20,7 @@ export class UserModel extends UserRepository{
 	async actionCreateGusetUser(){
 		try {
 			const result = await this.repositoryCreateGuest()
+			console.log(result);
 			if(result){
 				this.guestUser = result
 			}else{
@@ -32,7 +34,7 @@ export class UserModel extends UserRepository{
 		}
 	}
 
-	async actionCheckGusetUser(user:IUserGuest){
+	async actionCheckGusetUser(user:IUser){
 		try {
 			const result = await this.repositoryCheckGuest(user)
 			if(result){
@@ -45,6 +47,14 @@ export class UserModel extends UserRepository{
 		} catch (error) {
 			console.log(error);
 			this.guestUser = null
+		}
+	}
+
+	async actionAuthUser(body:IUpdateData){
+		const user = await this.repositoryAuthUser(body)
+		if(user){
+			this.guestUser = user
+			return user
 		}
 	}
 }

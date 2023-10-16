@@ -18,7 +18,14 @@ export const ROUTE_APP = {
   PAGES: {
     ABOUT:'/about',
 		GUESTVIP:'/guestvip'
-  }
+  },
+	AUTH:{
+		REGISTER:'/register'
+	},
+	PROFILE:{
+		PROFILE_MAIN:'/profile',
+		PROFILE_PERSONAL:'/profile/personal'
+	}
 }
 
 

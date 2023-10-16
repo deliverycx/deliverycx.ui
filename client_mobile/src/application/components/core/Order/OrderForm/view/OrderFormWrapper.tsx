@@ -280,6 +280,7 @@ export const OrderFormWrapper = (formik: any, usecase: any): IWrapper => {
 					}
 					error={!!(formik.errors.name && formik.touched.name)}
 					errorValue={formik.errors.name}
+					addfild={"input_icon_left input_icon_right"}
 				>
 					<label htmlFor="user">Получатель</label>
 					<div className="input__container">
@@ -306,6 +307,7 @@ export const OrderFormWrapper = (formik: any, usecase: any): IWrapper => {
 					}
 					error={!!(formik.errors.phone && formik.touched.phone)}
 					errorValue={formik.errors.phone}
+					addfild={"input_icon_left input_icon_right"}
 				>
 					<div className="input__container">
 						<img src={require("assets/images/icons/phone_gray.png")} alt="" />

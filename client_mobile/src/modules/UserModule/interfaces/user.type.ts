@@ -1,19 +1,18 @@
+import { UserDTO } from "./user.dto";
 
 export type IDatReg = {
 	isNew: boolean;
 	access?: string;
 };
 export interface IUserGuest {
-	_id: string
+	id: string
 	username: string
-
+	phone?:string
 }
 export interface IUpdateData {
-	name?: string;
-	phone?: string;
-	address?: {
-		home: number;
-		street: string;
-	};
-	organizationId?: string;
+	id: string
+	username: string
+	phone: string;
+	code:string
 }
+export type IUser = UserDTO

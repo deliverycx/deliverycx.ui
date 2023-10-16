@@ -46,7 +46,7 @@ import * as yup from "yup";
 
 // const debounceCheckAddress = debounce(checkAddress, 200);
 
-const valid ={
+export const valid ={
 	name: yup
 			.string()
 			.required('Поле обязательно для заполнения'),
@@ -62,7 +62,8 @@ const valid ={
 			.matches(/^(\+7)(\s(\d){3}){2}(\s(\d){2}){2}/, {
 					message: "Не верный формат телефона"
 			})
-			.required('Поле обязательно для заполнения')
+			.required('Поле обязательно для заполнения'),
+	email:yup.string().email()		
 }
 
 const schemaBuild = (type:string) => {
@@ -113,5 +114,16 @@ export const shemaReserve = () => yup.object().shape({
     .string()
     .required('Поле обязательно для заполнения'),
 })
+
+export const shemaProfilePersonal = () => yup.object().shape({
+  name: valid.name,
+	lastname:yup.string(),
+	male:yup
+		.string()
+		.required('Поле обязательно для заполнения'),
+  phone: valid.phone,
+	email:valid.email
+})
+
 
 export default schemaBuild;

@@ -8,8 +8,13 @@ import HOCShop from 'application/components/core/Shop/HOC.Shop';
 import HOCBasket from 'application/components/core/Basket/HOCBasket';
 import HOCOrder from 'application/components/core/Order/HOC.Order';
 import OrderAdressMap from 'application/components/core/Order/OrderAdress/OrderAdressMap/OrderAdressMap';
+import UserRegister from 'application/components/common/Auth/view/UserRegister';
+import HOCAUTH from 'application/components/common/Auth/HOC.Auth';
 import { userUseCase } from 'modules/UserModule/user.module';
 import { observer } from 'mobx-react-lite';
+import HOCProfile from 'application/components/core/Profile/HOC.Profile';
+import HOCPersonal from 'application/components/core/Profile/Personal/HOC.Personal';
+
 
 
 export const publicRoutes = [
@@ -37,6 +42,19 @@ export const publicRoutes = [
 		path: ROUTE_APP.ORDER.ORDER_MAP,
 		Component: OrderAdressMap
 	},
+	{
+		path: ROUTE_APP.AUTH.REGISTER,
+		Component: HOCAUTH
+	},
+	{
+		path: ROUTE_APP.PROFILE.PROFILE_MAIN,
+		Component: HOCProfile,
+		
+	},
+	{
+		path: ROUTE_APP.PROFILE.PROFILE_PERSONAL,
+		Component: HOCPersonal,
+	}
 	
 ]
 
@@ -45,7 +63,11 @@ const AppRouter = () => {
     return (
         <Routes>
             {publicRoutes.map(({path, Component}) =>
-                <Route key={path} path={path} element={<Component/>}/>
+                {
+
+									return <Route key={path} path={path} element={<Component/>}></Route>
+								}
+								
             )}
             <Route path="*" element={<Navigate to="/" />} />
         </Routes>

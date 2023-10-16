@@ -12,4 +12,18 @@ export class UserUseCase {
 			this.userModel.actionCreateGusetUser()
 		}
 	}
+
+	async authUser(phone:string,code:string){
+		if(this.userModel.guestUser){
+			const successCode = await this.userModel.actionAuthUser({
+				...this.userModel.guestUser,
+				phone,
+				code
+			})
+			return successCode
+		}else{
+			return null
+		}
+		
+	}
 }

@@ -16,6 +16,7 @@ import iconChat from "assets/images/icons/chat.png";
 import iconClose from "assets/images/icons/close.png";
 import iconVk from "assets/images/icons/vk.png";
 import iconTg from "assets/images/icons/telegram.png";
+import { ROUTE_APP } from 'application/contstans/route.const';
 
 const MainMenu:FC<{closeMenu:any}> = observer(({closeMenu}) => {
     
@@ -50,7 +51,7 @@ const MainMenu:FC<{closeMenu:any}> = observer(({closeMenu}) => {
                 </div>
                 <div className="menu-menu">
                     {true ? (
-                        <NavLink to="">
+                        <NavLink to={ROUTE_APP.AUTH.REGISTER}>
                             <img src={iconPerson} alt=""/>
                             Профиль
                         </NavLink>
