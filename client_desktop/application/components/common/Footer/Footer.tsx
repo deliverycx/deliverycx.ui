@@ -29,7 +29,7 @@ const Footer = () => {
   					<span>«Старик Хинкалыч» © 2022</span>
   				</div>
 					<div className="foot-item">
-  					<a href="https://starikkhinkalich.ru/legal" target="_blank" rel="noreferrer">Правовой раздел</a>
+  					<a href="/pravorazdel" target="_blank" rel="noreferrer">Правовой раздел</a>
   				</div>
   				<div className="foot-item">
   					<a href="/private.pdf" target="_blank" rel="noreferrer">Пользовательское соглашение</a>
