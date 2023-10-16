@@ -1,3 +1,4 @@
+/* eslint-disable react/jsx-no-target-blank */
 import React from "react";
 import Link from "next/link";
 import Footer from "../../application/components/common/Footer/Footer";
