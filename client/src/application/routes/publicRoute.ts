@@ -15,6 +15,11 @@ const publicRoutes: IRoute[] = [
       layout:CitiListLayout,
   },
   {
+        exact: true,
+        path: ROUTE_APP.PRAVORAZDEL,
+        component: lazy(() => import('application/components/core/Pravorazdel/Pravorazdel')),
+  },
+  {
     exact: true,
     path: ROUTE_APP.POINT,
     component: lazy(() => import('application/components/core/Location/Points/Points')),
