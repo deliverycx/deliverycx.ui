@@ -12,6 +12,7 @@ import { PAYMENT_METODS } from "application/contstans/const.orgstatus";
 import parse from 'html-react-parser'
 import OrderOnspotSelect from "../OnspotTable/OrderOnspotSelect";
 import HOCOrderOnspotSelect from "../OnspotTable/HOC.OrderOnspotSelect";
+import OrderAdressMap from "../../OrderAdress/OrderAdressMap/OrderAdressMap";
 
 
 export interface IWrapper {
@@ -117,11 +118,7 @@ export const OrderFormWrapper = (formik: any, usecase: any): IWrapper => {
 					errorValue={formik.errors.deliv}
 				>
 					<label htmlFor="adresses-delivey">Адрес доставки</label>
-					<div className="input__container">
-						<img src={require("assets/images/icons/location_gray_999.png")} alt="" />
-						<div onClick={()=> navigate(ROUTE_APP.ORDER.ORDER_MAP)}>adress</div>
-
-					</div>
+					
 				</FormFieldWrapper>
 			)
 		},
@@ -136,11 +133,7 @@ export const OrderFormWrapper = (formik: any, usecase: any): IWrapper => {
 					errorValue={formik.errors.address || formik.errors.house}
 				>
 					<label htmlFor="adresses-delivey">Адрес доставки</label>
-					<div className="input__container">
-						<img src={require("assets/images/icons/location_gray_999.png")} alt="" />
-						<input placeholder="ул. Севастопольская, 126, Симферополь" name="adresses-delivey" type="text" />
-						
-					</div>
+					<OrderAdressMap formik={formik} />
 
 				</FormFieldWrapper>
 

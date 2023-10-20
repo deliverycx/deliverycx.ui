@@ -11,6 +11,15 @@ class RequestProfile extends ApiSuper {
 	getProfile(userid:any) {
 		return this.request<IUserGuest>(`/profile/getprofile?userid=${userid}`);
 	}
+
+	@methods("post")
+	deliveryAdress(body:any) {
+		return this.request<IUserGuest>(`/profile/adressdelivery`);
+	}
+	@methods("post")
+	delDeliveryAdress(body:any) {
+		return this.request<IUserGuest>(`/profile/deladressdelivery`);
+	}
 	
 }
 export const requestProfile = new RequestProfile()

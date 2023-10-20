@@ -11,6 +11,7 @@ import iconQrCodeScanner from "assets/images/icons/qr_code_scanner.png";
 import { useOrganizationStatus } from "application/hooks/useOrganizationStatus";
 import { observer } from "mobx-react-lite";
 import { PointsContext } from "../HOC.OrganizationCard";
+import _  from "lodash";
 
 
 
@@ -48,12 +49,11 @@ const OrganizationTipeDelivery = () => {
 
 	}
 
-
 	if (deliveryTipe.length !== 0) {
 		return (
 			<>
 				{
-					deliveryTipe.map((type: IDeliveryTypes) => {
+					deliveryTipe.slice().sort((a:any, b:any) => a['sort'] > b['sort'] ? 1 : -1).map((type: IDeliveryTypes) => {
 						if (timeworkOrganization.typework === 'ONWORK' && type.metod === DELIVERY_METODS.COURIER) {
 							return (
 								<button key={type.metod} disabled className="btn btn-mini btn-gray no-drag">

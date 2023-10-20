@@ -71,7 +71,7 @@ const schemaBuild = (type:string) => {
     case 'COURIER':
       return yup.object().shape({
         address:valid.address,
-				house:valid.house,
+				//house:valid.house,
         name: valid.name,
         phone: valid.phone
       })
@@ -90,7 +90,7 @@ const schemaBuild = (type:string) => {
       break;	
     default:
       return yup.object().shape({
-        address:valid.address,
+        //address:valid.address,
         name: valid.name,
         phone: valid.phone
       })
@@ -113,6 +113,11 @@ export const shemaReserve = () => yup.object().shape({
   person: yup
     .string()
     .required('Поле обязательно для заполнения'),
+})
+
+export const shemaAdress = () => yup.object().shape({
+  address:valid.address,
+	house:valid.house,
 })
 
 export const shemaProfilePersonal = () => yup.object().shape({

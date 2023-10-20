@@ -21,13 +21,15 @@ const HOCProducts: FC<IProps> = ({ nomenclatureProducts }) => {
 	const useCase = adapterComponentUseCase(useProductsViewModel, nomenclatureProducts)
 	const { selectProduct } = useCase.data
 
-	const [modalProduct, setModalmodalProduct] = useState<IProduct | boolean>(false)
 
+	const [modalProduct, setModalmodalProduct] = useState<IProduct | boolean>(false)
+	
 	return (
 		<>
 			{
-				selectProduct && selectProduct.length ? selectProduct.map((product: IProduct, index: number) => {
+				selectProduct && selectProduct.length !== 0 ? selectProduct.map((product: IProduct, index: number) => {
 					const CN = cn('products product-card', { ended: product.stoplist })
+					
 					return (
 						<div className={CN} key={index}>
 							<div className="product-card-img" onClick={()=> setModalmodalProduct(product)}>

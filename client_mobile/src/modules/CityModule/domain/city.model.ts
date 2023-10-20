@@ -16,7 +16,7 @@ export class CityModel extends CityRepository {
 			actionSetSity: action,
 			actionSelectSity:action,
 		})
-		makePersistable(this, { name: 'SampleStore', properties: ['selectCity'],storage: window.localStorage });
+		makePersistable(this, { name: 'city', properties: ['selectCity'],storage: window.localStorage });
 		/*
 		configure({
 			useProxies: "never"

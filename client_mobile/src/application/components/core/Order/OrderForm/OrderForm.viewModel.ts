@@ -6,11 +6,14 @@ import { DELIVERY_METODS, PAYMENT_METODS } from "application/contstans/const.org
 import { useFormik } from "formik";
 import schema from "application/helpers/validationSchema";
 import { orderModel } from "modules/OrderModule/order.module";
+import { userModel } from "modules/UserModule/user.module";
 
 export function useOrderFromViewModel(this:any) {
 	const {selectDeliveryTipe,paymentMetod} = organizationStatusModel
 	const {selectOrganization} = organizationModel
-	const {orderBody} = orderModel
+	const {orderBody,orderDeliveryAddress} = orderModel
+	
+	
 	const [builder,setBuilder] = useState<any>()
 	
 	
@@ -19,10 +22,12 @@ export function useOrderFromViewModel(this:any) {
 		initialValues,
 		validationSchema: schema(selectDeliveryTipe?.metod as string),
 		onSubmit: (values, meta) => {
-			console.log(values);
+			console.log('submin',values);
 
 		},
 	});
+
+
 
 	useEffect(()=>{
 		if(selectDeliveryTipe){
@@ -43,9 +48,11 @@ export function useOrderFromViewModel(this:any) {
 	},[selectDeliveryTipe])
 
 
+
 	useEffect(()=>{
 		orderModel.actionOrderBody(formik.values)
 	},[formik.values])
+		
 
 	
 	
@@ -54,7 +61,7 @@ export function useOrderFromViewModel(this:any) {
 		selectDeliveryTipe,
 		selectOrganization,
 		paymentMetod,
-		formik
+		formik,
 	});
 	this.handlers({
 		

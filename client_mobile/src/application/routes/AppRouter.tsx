@@ -14,6 +14,8 @@ import { userUseCase } from 'modules/UserModule/user.module';
 import { observer } from 'mobx-react-lite';
 import HOCProfile from 'application/components/core/Profile/HOC.Profile';
 import HOCPersonal from 'application/components/core/Profile/Personal/HOC.Personal';
+import HOCDeliveryAdress from 'application/components/core/Profile/DeliveryAdress/HOC.DeliveryAdress';
+import HOCDeliveryMap from 'application/components/common/Maps/DeliveryMap/HOC.DeliveryMap';
 
 
 
@@ -54,6 +56,14 @@ export const publicRoutes = [
 	{
 		path: ROUTE_APP.PROFILE.PROFILE_PERSONAL,
 		Component: HOCPersonal,
+	},
+	{
+		path: ROUTE_APP.PROFILE.PROFILE_ADRESS,
+		Component: HOCDeliveryAdress,
+	},
+	{
+		path: ROUTE_APP.MAP.DELIVERY_MAP + '/:adress?',
+		Component: HOCDeliveryMap,
 	}
 	
 ]

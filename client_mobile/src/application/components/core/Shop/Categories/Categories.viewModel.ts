@@ -35,13 +35,18 @@ export function useCategoriesViewModel(categories: ICategory[]) {
 
 				setCurrentSlide(catIndex);
 			}, 100)
+		}else{
+			time = setTimeout(() => {
+				shopModel.actionSelectCategory(categories[0])
+				setCurrentSlide(0);
+			}, 100)
 		}
 
 
 		return () => {
 			typeof time === 'number' && clearTimeout(time)
 		}
-	}, [categories])
+	}, [categories,category])
 
 
 

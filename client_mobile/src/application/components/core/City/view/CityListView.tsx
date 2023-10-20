@@ -6,6 +6,7 @@ import { CityDTO } from "modules/CityModule/interfaces/city.dto"
 import { ICity } from "modules/CityModule/interfaces/city.type"
 import { FC } from "react"
 import { Link } from "react-router-dom"
+import selectCityIcon from "assets/images/icons/check_circle.svg"
 
 type IProps = {
 	submitCity: (city: ICity) => void
@@ -28,7 +29,7 @@ const CityListView: FC<IProps> = ({ submitCity, city }) => {
 			{
 									selectCity?.id === city.id &&
 									<div className="item__check">
-										<img src={require("assets/images/icons/check_circle.svg")} alt="" />
+										<img src={selectCityIcon} alt="" />
 									</div>
 								}
 		</div>

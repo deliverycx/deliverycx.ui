@@ -13,9 +13,12 @@ export class BasketEntity{
 		const result = cart.find((el)=>{
 			return el.productId === productid
 		})
+		//console.log(result);
 		return result && {
 			id:result.id,
-			anmout:result.amount
+			productId:result.productId,
+			anmout:result.amount,
+			name:result.productName
 		}
 	}	
 }

@@ -3,6 +3,7 @@ import { OrganizationStatusModel } from "modules/OrganizationModule/Organization
 import { BasketModel } from "../domain/basket.model";
 import { IProduct } from "modules/ShopModule/interfaces/shop.type";
 import { IbodyReqCart } from "../interfaces/basket.type";
+import { UserModel } from "modules/UserModule/domain/user.model";
 
 export class BasketUseCase {
 	
@@ -11,14 +12,17 @@ export class BasketUseCase {
 		public readonly basketModel: BasketModel,
 		public readonly organizationModel: OrganizationModel,
 		public readonly organizationStatusModel: OrganizationStatusModel,
+		public readonly userModel:UserModel
 	) {
 	}
 
 	basketBody() {
+		const user = this.userModel.guestUser && this.userModel.guestUser.id
 		if (this.organizationStatusModel.selectDeliveryTipe && this.organizationModel.selectOrganization) {
 			return {
 				orderType: this.organizationStatusModel.selectDeliveryTipe.metod,
 				organization: this.organizationModel.selectOrganization?.guid,
+				userid:user
 			}
 		} else {
 			return null

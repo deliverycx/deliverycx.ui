@@ -14,7 +14,7 @@ type IProps = {
 
 const HOCCartChange: FC<IProps> = ({ theme, product, close }) => {
 	const useCase = adapterComponentUseCase(CartChangeViewModel, product)
-	const { changeCount, changeCartCount } = useCase.data
+	const { changeCount, changeCartCount,basketPrice,prodInCart } = useCase.data
 	const { changeCountHandler, handlerInputAmout, handlerInputAddAmout, handlerAddCard, setChangeCartCount } = useCase.handlers
 
 	//console.log('changeCartCount',changeCartCount);
@@ -139,7 +139,12 @@ const HOCCartChange: FC<IProps> = ({ theme, product, close }) => {
 						changeCount !== 0 && close(false)
 					}} className="btn btn-md btn-red no-drag">
 						<img src={require("assets/images/icons/add_white.png")} alt="" />
-						{changeCartCount !== 0 ? (product.price * changeCartCount) : "Добавить"}
+						{changeCartCount !== 0 
+							? `
+									${(product.price * changeCartCount)} ₽
+									(${basketPrice &&  (product.price * (changeCount + changeCartCount))}₽)
+								` 
+							: "Добавить"}
 					</button>
 				</div>
 			</>

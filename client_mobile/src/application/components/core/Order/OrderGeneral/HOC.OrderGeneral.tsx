@@ -59,7 +59,7 @@ const HOCOrderGeneral = () => {
 							<div className="order-placement__check__info__delivery__info">
 								<div className="order-placement__check__info__delivery__info-time">{orderBody.timedelivery || "В ближайшее время"}</div>
 								<div className="order-placement__check__info__delivery__info-contact">{orderBody.name} {orderBody.phone}</div>
-								<div className="order-placement__check__info__delivery__info-addresses">{orderBody.address && `${orderBody.address},${orderBody.house},`}{city?.cityname}</div>
+								<div className="order-placement__check__info__delivery__info-addresses">{orderBody.address && `${orderBody.address},`}{city?.cityname}</div>
 								{
 									basketPrice?.deltaPrice !== 0 &&
 									<div className="order-placement__check__info__delivery__info-additional">

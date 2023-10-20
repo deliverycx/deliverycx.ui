@@ -1,6 +1,7 @@
 import React, {FC, useEffect, useRef, useState} from 'react';
 import Draggable from "react-draggable"
 import { ReactNode } from 'react';
+import { createPortal } from 'react-dom';
 
 type IProps = {
 	setIsOpened:any
@@ -36,7 +37,8 @@ const ModalCard:FC<IProps> = ({setIsOpened, children, theme}) => {
         }
     }, [])
 
-    return (
+    return createPortal((
+			
         <div onClick={(e) => handleClick(e)} ref={wrapperRef} className={theme == 'children' ? "modal__bg-children" : "modal__bg"}>
             <Draggable
                 axis="y"
@@ -45,13 +47,14 @@ const ModalCard:FC<IProps> = ({setIsOpened, children, theme}) => {
                 bounds={{top: 0}}
                 cancel=".no-drag"
             >
+
 							<div className="modal">
 								{children}
 							</div>
                 
             </Draggable>
         </div>
-    );
+    ),document.body)
 };
 
 export default ModalCard;

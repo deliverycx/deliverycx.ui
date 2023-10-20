@@ -5,6 +5,7 @@ import { PointsContext } from '../HOC.OrganizationCard';
 import { ORG_STATUS } from 'application/contstans/const.orgstatus';
 import { checkWorkIsArray } from 'application/helpers/workTime';
 import cn from "classnames";
+import { createPortal } from 'react-dom';
 
 type IProps = {
 	organization: IOrganization

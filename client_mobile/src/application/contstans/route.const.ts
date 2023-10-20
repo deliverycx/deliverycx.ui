@@ -22,9 +22,13 @@ export const ROUTE_APP = {
 	AUTH:{
 		REGISTER:'/register'
 	},
+	MAP:{
+		DELIVERY_MAP:'/deliverymap'
+	},
 	PROFILE:{
 		PROFILE_MAIN:'/profile',
-		PROFILE_PERSONAL:'/profile/personal'
+		PROFILE_PERSONAL:'/profile/personal',
+		PROFILE_ADRESS:'/profile/adress'
 	}
 }
 

@@ -3,22 +3,26 @@
 import { IProduct } from 'modules/ShopModule/interfaces/shop.type';
 import { useMemo, useState } from 'react';
 import debounce from "lodash.debounce";
-import { basketUseCase } from 'modules/BasketModule/basket.module';
+import { basketModel, basketUseCase } from 'modules/BasketModule/basket.module';
 import { useEffect } from 'react';
 
 export function CartChangeViewModel(this: any, product: IProduct) {
+	const {basketPrice,cart} = basketModel
 	const [error, setError] = useState<null | string>(null);
 	const [changeCount, setChangeCount] = useState<number | string>(0)
 	const [changeCartCount, setChangeCartCount] = useState<number | string>(0)
+	const [prodInCart, setProdInCart] = useState(false)
 
 	useEffect(()=>{
 		const cartid = basketUseCase.findIdCart(product.productId)
-		if(cartid){
+		if(cartid && cartid.productId === product.productId){
 			setChangeCount(cartid.anmout)
+		}else{
+			setChangeCount(0)
 		}
-	},[basketUseCase.basketModel.cart])
+	},[cart,product.productId])
 
-
+	//console.log('prodInCart',product.name);
 	const debouncedChangeHandler = useMemo(() => debounce(({ id, count }: any) => {
 		basketUseCase.changeAmountCart(id, count)
 	}), [])
@@ -86,10 +90,21 @@ export function CartChangeViewModel(this: any, product: IProduct) {
 		
 	}
 	
+	/*
+	const findCartProduct = () =>{
+		const prodincart = cart && cart.find((value) =>{
+			console.log(value.productId,product.id);
+			value.productId === product.id
+		})
+		prodincart && setProdInCart(true)
+	}
+	*/
 
 	this.data({
 		changeCount,
-		changeCartCount
+		changeCartCount,
+		basketPrice,
+		prodInCart
 	});
 	this.handlers({
 		changeCountHandler,
@@ -97,7 +112,8 @@ export function CartChangeViewModel(this: any, product: IProduct) {
 		setChangeCartCount,
 		handlerInputAmout,
 		handlerInputAddAmout,
-		handlerAddCard
+		handlerAddCard,
+
 	});
 	this.status({
 

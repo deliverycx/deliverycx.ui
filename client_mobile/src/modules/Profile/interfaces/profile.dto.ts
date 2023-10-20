@@ -10,6 +10,9 @@ export class ProfileDTO{
 
 	@IsOptional()
 	personal!:profileType.IPersonal
+
+	@IsOptional()
+	adressdelivery!:profileType.IAddressDelivery[]
 }
 
 export const profileDTO = new ProfileDTO()
@@ -18,6 +21,7 @@ export const profileMapper = (val: profileType.IRequestProfile): ProfileDTO => {
 	
 	profileDTO.userid = val.userid
 	profileDTO.personal = val.personal
+	profileDTO.adressdelivery = val.adressdelivery || []
 	validatorDTO(profileDTO)
 	return { ...profileDTO }
 

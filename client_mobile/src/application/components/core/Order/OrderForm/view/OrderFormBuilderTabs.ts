@@ -14,7 +14,7 @@ export class FormBuilderTabsOrder {
                 //builder.paymentPopup(),
                 
 								builder.selectdeliv(),
-                builder.adress(),
+                //builder.adress(),
                 builder.name(),
                 builder.phone(),
 								builder.deliveryTime(),

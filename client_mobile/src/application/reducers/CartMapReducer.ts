@@ -4,11 +4,14 @@ export const initialStateCartMap = {
     cord: [],
     myPosition: [],
     stateMap: [],
-    valueMap: "",
+    valueMap: null,
     disclaimer: false,
+		notificate:false,
     MapLoading: true,
     inputMap:true,
-		dispalyzone:false
+		dispalyzone:false,
+		clickValueMap:null
+
 };
 type typeinitialState = typeof initialStateCartMap;
 
@@ -22,6 +25,8 @@ export enum ReducerActionTypePoints {
     setDisclaimer,
     setValueMap,
     setInputMap,
+		setClickValueMap,
+		setNotificate,
     loading
 }
 
@@ -44,6 +49,7 @@ export function CartMapReducer(
                 cord: action.payload.cord,
                 valueMap:action.payload.value,
                 disclaimer: false,
+								notificate:false,
                 inputMap:false
                 
             };    
@@ -62,6 +68,7 @@ export function CartMapReducer(
                 ...state,
                 cord: action.payload,
                 disclaimer: false,
+								notificate:false,
             };
         case ReducerActionTypePoints.setDisclaimer:
             return {
@@ -81,6 +88,18 @@ export function CartMapReducer(
               inputMap: action.payload,
               
           };
+					case ReducerActionTypePoints.setClickValueMap:
+						return {
+								...state,
+								clickValueMap: action.payload,
+								
+						};	
+						case ReducerActionTypePoints.setNotificate:
+							return {
+									...state,
+									notificate: action.payload,
+									
+							};			
 				case ReducerActionTypePoints.hendleZone:
 					
 						return {
