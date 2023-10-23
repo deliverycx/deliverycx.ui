@@ -10,8 +10,11 @@ import HOCOrderGeneral from './OrderGeneral/HOC.OrderGeneral';
 import { basketUseCase } from 'modules/BasketModule/basket.module';
 import cn from "classnames"
 import { useOrganizationStatus } from 'application/hooks/useOrganizationStatus';
-import OrderNotificate from './OrderNotificate';
+import OrderNotificate from './view/OrderNotificate';
 import { observer } from 'mobx-react-lite';
+import { userUseCase } from 'modules/UserModule/user.module';
+import OfferAuth from 'application/components/common/Auth/view/OfferAuth';
+import OrderAuthNotificate from './view/OrderAuthNotificate';
 
 const HOCOrder = () => {
 	const navigate = useNavigate()
@@ -25,8 +28,10 @@ const HOCOrder = () => {
 		basketUseCase.cartCase()
 	}, [])
 
+
 	const CN = cn("order-placement__form", { 'close-soon': statusTSX.NoTimeWork() })
 	return (
+		
 		<div className="order-placement unauthorized">
 			<div className="top-bar">
 				<div className="top-bar__left">
@@ -50,6 +55,9 @@ const HOCOrder = () => {
 				
 			</div>
 			<TabBar />
+			{
+				!userUseCase.checkAuthUser() && <OrderAuthNotificate openmodal={true} />
+			}
 		</div>
 	)
 }

@@ -16,6 +16,9 @@ import HOCProfile from 'application/components/core/Profile/HOC.Profile';
 import HOCPersonal from 'application/components/core/Profile/Personal/HOC.Personal';
 import HOCDeliveryAdress from 'application/components/core/Profile/DeliveryAdress/HOC.DeliveryAdress';
 import HOCDeliveryMap from 'application/components/common/Maps/DeliveryMap/HOC.DeliveryMap';
+import OrderCreate from 'application/components/core/Order/OrderCreate/OrderCreate';
+import OrderSucces from 'application/components/core/Order/OrderCreate/OrderSucces';
+import OfferAuth from 'application/components/common/Auth/view/OfferAuth';
 
 
 
@@ -45,8 +48,20 @@ export const publicRoutes = [
 		Component: OrderAdressMap
 	},
 	{
+		path: ROUTE_APP.ORDER.ORDER_CREATE,
+		Component: OrderCreate
+	},
+	{
+		path: ROUTE_APP.ORDER.ORDER_SUCCESS,
+		Component: OrderSucces
+	},
+	{
 		path: ROUTE_APP.AUTH.REGISTER,
 		Component: HOCAUTH
+	},
+	{
+		path: ROUTE_APP.AUTH.AUTORIZATE,
+		Component: OfferAuth
 	},
 	{
 		path: ROUTE_APP.PROFILE.PROFILE_MAIN,

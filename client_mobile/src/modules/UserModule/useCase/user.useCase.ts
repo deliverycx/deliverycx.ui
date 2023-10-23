@@ -26,4 +26,9 @@ export class UserUseCase {
 		}
 		
 	}
+
+
+	checkAuthUser(){
+		return this.userModel.guestUser && this.userModel.guestUser.phone
+	}
 }

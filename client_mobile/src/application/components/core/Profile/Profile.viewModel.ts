@@ -17,14 +17,18 @@ export function useProfileViewModel(this:any) {
 		}
 	},[user])
 
-	console.log(profile);
+	const logout = async () =>{
+		await profileUseCase.logoutUser()
+		navigate(ROUTE_APP.AUTH.REGISTER)
+	}
 
 	
 	this.data({
-		profile
+		profile,
+		user
 	});
 	this.handlers({
-		
+		logout
 	});
 	this.status({
 		

@@ -5,13 +5,18 @@ import { useEffect, useRef, useState } from 'react';
 import { DELIVERY_METODS, PAYMENT_METODS } from "application/contstans/const.orgstatus";
 import { useFormik } from "formik";
 import schema from "application/helpers/validationSchema";
-import { orderModel } from "modules/OrderModule/order.module";
+import { orderCreateUseCase, orderModel } from "modules/OrderModule/order.module";
 import { userModel } from "modules/UserModule/user.module";
+import { useNavigate } from 'react-router-dom';
+import { ROUTE_APP } from './../../../../contstans/route.const';
 
 export function useOrderFromViewModel(this:any) {
+	const navigate = useNavigate()
 	const {selectDeliveryTipe,paymentMetod} = organizationStatusModel
 	const {selectOrganization} = organizationModel
 	const {orderBody,orderDeliveryAddress} = orderModel
+
+	const [error,setError] = useState()
 	
 	
 	const [builder,setBuilder] = useState<any>()
@@ -21,12 +26,28 @@ export function useOrderFromViewModel(this:any) {
 	const formik = useFormik({
 		initialValues,
 		validationSchema: schema(selectDeliveryTipe?.metod as string),
-		onSubmit: (values, meta) => {
-			console.log('submin',values);
-
+		onSubmit: async (values, meta) => {
+			try {
+				
+				formik.setSubmitting(true)
+				const url:any = await orderCreateUseCase.orderCheck()
+				formik.setSubmitting(false)
+				console.log(url);
+				if(typeof url === 'string'){
+					navigate(ROUTE_APP.ORDER.ORDER_CREATE + `/${url}`)
+				}
+				if(url.response.data.errors){
+					setError(url.response.data.errors)
+				}
+				
+				//
+			} catch (error:any) {
+				//console.log(error.response.data);
+				
+			}
+			
 		},
 	});
-
 
 
 	useEffect(()=>{
@@ -67,7 +88,7 @@ export function useOrderFromViewModel(this:any) {
 		
 	});
 	this.status({
-
+		error
 	});
 
 

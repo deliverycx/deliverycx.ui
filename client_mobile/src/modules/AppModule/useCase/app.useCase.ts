@@ -3,9 +3,11 @@ import { OrderModel } from "modules/OrderModule/domain/order.model";
 import { OrganizationModel } from "modules/OrganizationModule/Organization/domain/organization.model";
 import { OrganizationStatusModel } from "modules/OrganizationModule/OrganizationStatuses/domain/organizationStatus.model";
 import { ShopModel } from "modules/ShopModule/domain/shop.model";
+import { AppModel } from "../domain/app.model";
 
 export class AppUseCase{
 	constructor(
+		public readonly appModel:AppModel,
 		public readonly organizationModel:OrganizationModel,
 		public readonly	organizationStatusModel:OrganizationStatusModel,
 		public readonly shopModel:ShopModel,
@@ -19,5 +21,9 @@ export class AppUseCase{
 		this.shopModel.actionSelectCategory(null)
 		this.basketModel.actionCheckbasketError(null)
 		//this.orderModel.actionResetOrder()
+	}
+
+	authNotificate(val:boolean){
+		this.appModel.actionAuthNotificate(val)
 	}
 }

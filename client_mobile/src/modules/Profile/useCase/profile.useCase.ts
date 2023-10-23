@@ -9,8 +9,10 @@ export class ProfileUseCase{
 	){}
 
 	getProfile(){
-		if(this.userModel.guestUser){
+		if(this.userModel.guestUser && this.userModel.guestUser.phone){
 			this.profileModel.actionProfile(this.userModel.guestUser.id)
+		}else{
+			this.profileModel.actionLogoutProfile()
 		}
 	}
 
@@ -43,6 +45,12 @@ export class ProfileUseCase{
 		} catch (error) {
 			console.log(error);
 		}
+	}
+
+
+	async logoutUser(){
+		await	this.userModel.actionLogoutUser()
+		this.profileModel.actionLogoutProfile()
 	}
 
 }

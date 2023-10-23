@@ -12,7 +12,8 @@ export class UserModel extends UserRepository{
 			guestUser:observable,
 			actionCreateGusetUser:action,
 			actionCheckGusetUser:action,
-			actionAuthUser:action
+			actionAuthUser:action,
+			actionLogoutUser:action
 		})
 		makePersistable(this, { name: 'user', properties: ['guestUser'],storage: window.localStorage });
 	}
@@ -56,5 +57,10 @@ export class UserModel extends UserRepository{
 			this.guestUser = user
 			return user
 		}
+	}
+
+	async actionLogoutUser(){
+		this.guestUser = null
+		await this.actionCreateGusetUser()
 	}
 }

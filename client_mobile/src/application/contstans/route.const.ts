@@ -14,13 +14,16 @@ export const ROUTE_APP = {
   ORDER:{
 		ORDER_MAIN: "/order/main",
 		ORDER_MAP: "/order/map",
+		ORDER_SUCCESS: '/success',
+		ORDER_CREATE:'/ordercreate/:hash',
 	},
   PAGES: {
     ABOUT:'/about',
 		GUESTVIP:'/guestvip'
   },
 	AUTH:{
-		REGISTER:'/register'
+		REGISTER:'/register',
+		AUTORIZATE:'/autorizate'
 	},
 	MAP:{
 		DELIVERY_MAP:'/deliverymap'

@@ -335,6 +335,7 @@
   &__buttons{
     position: fixed;
     left: 0;
+		right: 0;
     bottom: 56px;
     width: 100%;
 
@@ -342,7 +343,8 @@
     justify-content: center;
     align-items: center;
     gap: 16px;
-
+		max-width: 760px;
+		margin: 0 auto;
     padding: 8px 16px;
     background: #fff;
     box-shadow: 0 -4px 20px 0 rgba(0, 0, 0, 0.12);

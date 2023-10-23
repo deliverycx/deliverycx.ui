@@ -11,6 +11,7 @@ export class ProfileModel extends ProfileRepository{
 		makeObservable(this, {
 			profile:observable,
 			actionProfile:action,
+			actionLogoutProfile:action
 		})
 		makePersistable(this, { name: 'profile', properties: ['profile'],storage: window.localStorage });
 	}
@@ -19,6 +20,12 @@ export class ProfileModel extends ProfileRepository{
 		const resProfile = await this.repositoryGetProfile(userid)
 		if(resProfile){
 			this.profile = resProfile
+		}else{
+			this.profile = null
 		}
+	}
+
+	actionLogoutProfile(){
+		this.profile = null
 	}
 }

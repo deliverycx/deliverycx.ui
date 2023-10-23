@@ -3,12 +3,15 @@ import React, { useEffect, useState } from "react";
 import { FC } from "react"
 import PinInput from 'react-pin-input';
 import cn from 'classnames'
+import { useNavigate } from 'react-router-dom';
+import { ROUTE_APP } from 'application/contstans/route.const';
 
 type IProps = {
 	formik: any
 	set:any
 }
 const UserRegister: FC<IProps> = ({ formik,set }) => {
+	const navigate = useNavigate()
 	const [errorCode,setErrorCode] = useState(false)
 
 	const [over, setOver] = useState(false);
@@ -42,9 +45,9 @@ const UserRegister: FC<IProps> = ({ formik,set }) => {
 	const handlerCodeSend = async (code:string,phone:string) =>{
 		try {
 			const successCode = await userUseCase.authUser(phone,code)
-			console.log('successCode0',successCode);
+
 			if(successCode){
-				//setErrorCode(true)
+				navigate(ROUTE_APP.PROFILE.PROFILE_MAIN)
 			}else{
 				setErrorCode(true)
 			}

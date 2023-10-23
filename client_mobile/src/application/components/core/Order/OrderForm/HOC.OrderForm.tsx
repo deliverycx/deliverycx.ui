@@ -15,7 +15,8 @@ import HOCOrderGeneral from '../OrderGeneral/HOC.OrderGeneral';
 
 const HOCOrderForm = () => {
 	const useCase = adapterComponentUseCase(useOrderFromViewModel)
-	const { selectDeliveryTipe, builder,formik } = useCase.data
+	const { builder,formik } = useCase.data
+	const {error} = useCase.status
 
 	const formWrapper = new OrderFormBuilder(formik, useCase);
 
@@ -31,9 +32,10 @@ const HOCOrderForm = () => {
 						formWrapper.getInitinal(builder.current)
 					}
 				</div>
-				<HOCOrderGeneral />
+				<HOCOrderGeneral errors={error} />
+
 				<div className="order-placement__buttons">
-					<input className="btn btn-md btn-red" type="submit" value="Всё верно, продолжить" />
+					<input disabled={formik.isSubmitting} className="btn btn-md btn-red" type="submit" value="Всё верно, продолжить" />
 					
 					<NavLink to={ROUTE_APP.CART.BASKET_MAIN} className="btn btn-md btn-gray">Назад</NavLink>
 					<NavLink className="order-placement__buttons-link" to={""}>
