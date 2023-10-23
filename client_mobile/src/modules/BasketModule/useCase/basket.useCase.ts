@@ -90,4 +90,9 @@ export class BasketUseCase {
 			user && await this.basketModel.repositoryDeliteCart({userid:user})
 		})
 	}
+
+	async checkCartHI(){
+		const user = this.userModel.guestUser && this.userModel.guestUser.id
+		user && await this.basketModel.repositoryCheckCart({userid:user})
+	}
 }

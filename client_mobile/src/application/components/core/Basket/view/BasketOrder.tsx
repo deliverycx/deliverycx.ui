@@ -9,7 +9,7 @@ const BasketOrder:FC<{basketPrice:IBasketPrice}> = ({basketPrice}) => {
 
 	const handlerOrder = async () =>{
 		try {
-			await basketUseCase.basketModel.repositoryCheckCart()
+			await basketUseCase.checkCartHI()
 			navigate(ROUTE_APP.ORDER.ORDER_MAIN)
 		} catch (error:any) {
 			if (error.response.status === 422 && error.response) {
