@@ -41,6 +41,7 @@ export class BasketRepository extends BasketEntity {
 	}
 
 	async repositoryDeliteCart(body:any){
+		console.log('wwwwww');
 		const { data } = await requestBasket.deleteCart(body)
 		if (data) {
 			return data

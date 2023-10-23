@@ -30,6 +30,9 @@ export function useOrganizationMapViewModel(this:any,organizations:IOrganization
 	};
 
 	const placemarkClickHandler = (organization: IOrganization, index: number) => {
+		if(selectOrganization && selectOrganization.guid !== organization.guid){
+			appUseCase.clearApp()
+		}
 		useCaseOrganization.selectOrganization(organization)
 		dispatchPoint({
 			type: ReducerActionTypePoints.placemarkClick,

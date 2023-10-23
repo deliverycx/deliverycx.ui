@@ -4,6 +4,8 @@ import { OrganizationModel } from "modules/OrganizationModule/Organization/domai
 import { OrganizationStatusModel } from "modules/OrganizationModule/OrganizationStatuses/domain/organizationStatus.model";
 import { ShopModel } from "modules/ShopModule/domain/shop.model";
 import { AppModel } from "../domain/app.model";
+import { basketUseCase } from "modules/BasketModule/basket.module";
+import { BasketUseCase } from "modules/BasketModule/useCase/basket.useCase";
 
 export class AppUseCase{
 	constructor(
@@ -11,7 +13,7 @@ export class AppUseCase{
 		public readonly organizationModel:OrganizationModel,
 		public readonly	organizationStatusModel:OrganizationStatusModel,
 		public readonly shopModel:ShopModel,
-		public readonly basketModel:BasketModel,
+		public readonly basketUseCase:BasketUseCase,
 		public readonly orderModel:OrderModel,
 	){}
 
@@ -19,8 +21,9 @@ export class AppUseCase{
 		this.organizationModel.actionSelectOrganization(null)
 		this.organizationStatusModel.actionSelectDeliveryTipe(null)
 		this.shopModel.actionSelectCategory(null)
-		this.basketModel.actionCheckbasketError(null)
-		//this.orderModel.actionResetOrder()
+		this.basketUseCase.resetCart()
+		this.orderModel.actionResetOrder()
+
 	}
 
 	authNotificate(val:boolean){

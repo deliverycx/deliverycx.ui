@@ -43,6 +43,7 @@ export class BasketUseCase {
 
 	async cartCase(fn?:any){
 		const body = this.basketBody()
+		console.log('eeee',body);
 		if (body) {
 			fn && await fn(body)
 			const res = await this.getBasket(body)
@@ -86,9 +87,16 @@ export class BasketUseCase {
 
 	async deliteCart(){
 		const user = this.userModel.guestUser && this.userModel.guestUser.id
+		console.log('deliteCart',user);
 		this.cartCase(async (bodyReqCart:IbodyReqCart)=>{
 			user && await this.basketModel.repositoryDeliteCart({userid:user})
 		})
+	}
+
+	async resetCart(){
+		const user = this.userModel.guestUser && this.userModel.guestUser.id
+		user && await this.basketModel.repositoryDeliteCart({userid:user})
+		this.basketModel.actionCheckbasketError(null)
 	}
 
 	async checkCartHI(){

@@ -35,7 +35,7 @@ export class OrderModel extends OrderRepository {
 			name: 'order',
 			properties: ['orderBody', 'orderDeliveryAddress'],
 			storage: window.localStorage,
-			expireIn: 86400000,
+			expireIn: 8640000,
 			removeOnExpiration: true,
 		});
 	}
@@ -67,6 +67,7 @@ export class OrderModel extends OrderRepository {
 	actionResetOrder() {
 		this.orderOnspotTable = null
 		this.orderBody = InitOrderBody
+		this.orderDeliveryAddress = null
 	}
 
 }
