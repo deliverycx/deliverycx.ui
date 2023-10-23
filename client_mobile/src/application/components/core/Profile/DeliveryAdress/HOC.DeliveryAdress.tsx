@@ -16,10 +16,10 @@ const HOCDeliveryAdress = () => {
 		profileUseCase.deliveryAdressUpdate(value)
 		navigate(ROUTE_APP.MAP.DELIVERY_MAP + '/' + value.address)
 	}
-
+	console.log(profile);
 
 	return (
-		<>
+		<div className="delivery-addresses authorized">
 			<div className="top-bar">
 			<div className="top-bar__left">
 				<div className="top-bar__icon">
@@ -79,7 +79,7 @@ const HOCDeliveryAdress = () => {
 				<NavLink to={ROUTE_APP.PROFILE.PROFILE_MAIN} className="btn btn-md btn-gray">Назад</NavLink>
 			</div>
 			<TabBar />
-		</>
+		</div>
 	)
 }
 export default observer(HOCDeliveryAdress) 
