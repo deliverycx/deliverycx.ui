@@ -40,8 +40,8 @@ export class BasketRepository extends BasketEntity {
 		}
 	}
 
-	async repositoryDeliteCart(){
-		const { data } = await requestBasket.deleteCart()
+	async repositoryDeliteCart(body:any){
+		const { data } = await requestBasket.deleteCart(body)
 		if (data) {
 			return data
 		}
