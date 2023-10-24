@@ -14,17 +14,18 @@ import { observer } from "mobx-react-lite";
 
 type IProps = {
 	nomenclatureCategories: ICategory[]
+	setCat:any
 }
 
-const Categories: FC<IProps> = ({ nomenclatureCategories }) => {
+const Categories: FC<IProps> = ({ nomenclatureCategories,setCat }) => {
 	
 	const [slidecount,setSlideCount] = useState(7)
 
-	const useCasePoints = adapterComponentUseCase(useCategoriesViewModel, nomenclatureCategories)
+	const useCasePoints = adapterComponentUseCase(useCategoriesViewModel,{categories:nomenclatureCategories,setCat} )
 	const { categories, currentSlide, slider } = useCasePoints.data
 	const { handleSliderClick } = useCasePoints.handlers
 
-	
+	setCat(123)
 
 	const handleWindowResize = useMemo(() => debounce(() => {
     if (window.innerWidth < 600) {
@@ -54,7 +55,7 @@ const Categories: FC<IProps> = ({ nomenclatureCategories }) => {
 
 		>
 			{
-				categories.map((category: ICategory, i: number) => {
+				categories && categories.map((category: ICategory, i: number) => {
 					const CN = cn("categories__item", { active: currentSlide === i });
 					if (category.description !== 'HIDDEN') {
 						return (

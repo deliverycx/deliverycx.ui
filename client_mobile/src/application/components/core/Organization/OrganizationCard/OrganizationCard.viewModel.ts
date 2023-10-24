@@ -5,6 +5,8 @@ import { useEffect, useState } from "react";
 import {
 	requestOrganizationAdmin
 } from "../../../../../modules/OrganizationModule/Organization/data/organization.request";
+import { useQueryClient } from "react-query";
+import { shopRepository } from "modules/ShopModule/data/shop.repository";
 
 export function useOrganizationCardViewModel() {
 	const [cardModal,setCardModal] = useState(false)
@@ -44,6 +46,10 @@ export function useOrganizationCardViewModel() {
 		useCaseOrganizationStatus.selectDeliveryMetod(typeDeliv)
 	}
 
+	const queryClient = useQueryClient();
+	queryClient.prefetchQuery(
+		'shop',
+		({ queryKey }) => shopRepository.reposityNomenclature(selectOrganization?.guid as string))
 	
 	this.data({
 		goodPlaceId,

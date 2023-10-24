@@ -12,17 +12,24 @@ export class ShopUseCase{
 		return pointid && await this.shopModel.reposityNomenclature(pointid)
 	}
 
-	caseSelectProduct(products:IProduct[]){
+	caseSelectProduct(products:IProduct[],catid:string){
 		
-		if(this.shopModel.selectCategory && this.organizationModel.selectOrganization){
-			const resultProduct = this.shopModel.filterProductsBuCategory(products,this.shopModel.selectCategory.id)
-			this.shopModel.actionSelectProduct(resultProduct,this.organizationModel.selectOrganization.guid)
+		if(catid && this.organizationModel.selectOrganization){
+			const resultProduct = this.shopModel.filterProductsBuCategory(products,catid)
+			return resultProduct
 		}
 	}
 
 	async additionProducts(){
 		if(this.organizationModel.selectOrganization){
 			return await this.shopModel.reposityAdditionProducts(this.organizationModel.selectOrganization.guid)
+		}
+		
+	}
+
+	async getStopList(){
+		if(this.organizationModel.selectOrganization){
+			this.shopModel.actionSelectProduct(this.organizationModel.selectOrganization.guid)
 		}
 		
 	}

@@ -9,13 +9,13 @@ import Slider from 'react-slick';
 
 
 
-export function useCategoriesViewModel(categories: ICategory[]) {
+export function useCategoriesViewModel({categories,setCat}:{categories: ICategory[],setCat:any}) {
 	const slider = useRef<any>(null);
 	const [currentSlide, setCurrentSlide] = useState<number>(0)
 	const category = shopModel.selectCategory
 
 
-
+	//console.log('categories',categories);
 
 
 	const handleSliderClick = useCallback((index: number, slider?: any) => {
@@ -30,7 +30,8 @@ export function useCategoriesViewModel(categories: ICategory[]) {
 		let time: null | ReturnType<typeof setTimeout> = null
 		if (category && slider.current) {
 			const catIndex = categories.findIndex((cat) => cat.id === category.id)
-			//categories && dispatch(setCategories(categories[catIndex]))
+			setCat(categories[catIndex])
+		
 			time = setTimeout(() => {
 
 				setCurrentSlide(catIndex);

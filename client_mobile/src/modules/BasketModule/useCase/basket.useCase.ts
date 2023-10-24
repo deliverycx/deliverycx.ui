@@ -43,7 +43,6 @@ export class BasketUseCase {
 
 	async cartCase(fn?:any){
 		const body = this.basketBody()
-		console.log('eeee',body);
 		if (body) {
 			fn && await fn(body)
 			const res = await this.getBasket(body)

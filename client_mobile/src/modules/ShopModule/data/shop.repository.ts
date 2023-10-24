@@ -42,3 +42,4 @@ export class ShopRepository extends ShopEntiti {
 			)
 	}
 }
+export const shopRepository = new ShopRepository()

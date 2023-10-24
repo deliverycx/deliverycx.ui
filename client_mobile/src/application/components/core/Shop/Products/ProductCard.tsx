@@ -1,15 +1,29 @@
 import ModalCard from "application/components/common/Modals/ModalCard"
-import { FC } from "react"
+import { FC, useEffect, useState } from "react"
 import { IProduct } from 'modules/ShopModule/interfaces/shop.type';
 import cn from "classnames"
 import HOCCartChange from "../../Basket/CartChange/HOC.CartChange";
+import { IStopList } from 'modules/ShopModule/interfaces/shop.type';
 
 type IProps = {
 	product: IProduct
 	setIsModalOpened: (toggle: boolean) => void
+	stoplist:IStopList[] | null
 }
-const ProductCard: FC<IProps> = ({ product, setIsModalOpened }) => {
-	const CN = cn('modal', { ended: product.stoplist })
+const ProductCard: FC<IProps> = ({ product, setIsModalOpened,stoplist }) => {
+	const [disableItem,setDisableItem] = useState(false)
+	const CN = cn('modal', { ended: disableItem })
+
+
+	useEffect(() => {
+    if (stoplist) {
+			stoplist.forEach((item: IStopList) => {
+        item.productId === product.id && setDisableItem(true)
+      })
+    }
+
+  },[stoplist])
+	
 	return (
 		<div className="product">
 			<ModalCard setIsOpened={setIsModalOpened}>
@@ -19,7 +33,7 @@ const ProductCard: FC<IProps> = ({ product, setIsModalOpened }) => {
 
 							<img src={product.image} alt={product.name} />
 							{
-								product.stoplist &&
+								disableItem &&
 								<div className="product-card-ended">
 									Упс..
 									<br />
@@ -47,7 +61,7 @@ const ProductCard: FC<IProps> = ({ product, setIsModalOpened }) => {
 							</div>
 
 							{
-								!product.stoplist ?
+								!disableItem ?
 										<HOCCartChange theme="card" product={product} close={setIsModalOpened} />
 									: <div className="product__modal-buttons">
 										<div className="input__counter input__counter-sm no-drag">

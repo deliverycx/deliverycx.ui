@@ -10,9 +10,12 @@ import TabBar from "application/components/common/TabBar/TabBar";
 
 const HOCShop = () => {
 	const useCase = adapterComponentUseCase(useShopViewModel)
-	const { organization, nomenclatures } = useCase.data
+	const { organization, nomenclatures,selectCat } = useCase.data
 	const { isLoading } = useCase.status
+	const {setSelectCat} = useCase.handlers
 
+
+	
 	return (
 		<>
 		<div className="catalogue">
@@ -25,14 +28,14 @@ const HOCShop = () => {
 				}
 				{
 					!isLoading && nomenclatures ?
-						nomenclatures.categoryes && <Categories nomenclatureCategories={nomenclatures.categoryes} /> : <LoaderProduct />
+						nomenclatures.categoryes && <Categories nomenclatureCategories={nomenclatures.categoryes} setCat={setSelectCat} /> : <LoaderProduct />
 				}
 			</div>
 			<div className="catalogue-content">
 				<div className="catalogue-content__cards">
 					{
 						!isLoading && nomenclatures ?
-							nomenclatures.products && <HOCProducts nomenclatureProducts={nomenclatures.products} /> : <LoaderProduct />
+							nomenclatures.products && <HOCProducts nomenclatureProducts={nomenclatures.products} selectCat={selectCat} /> : <LoaderProduct />
 					}
 				</div>
 			</div>

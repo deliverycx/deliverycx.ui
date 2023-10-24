@@ -1,18 +1,20 @@
 import { action, makeObservable, observable } from "mobx";
 import { ShopRepository } from "../data/shop.repository";
-import { ICategory, IStopList } from 'modules/ShopModule/interfaces/shop.type';
+import { ICategory, IStopList, TStopListItems } from 'modules/ShopModule/interfaces/shop.type';
 import { makePersistable } from "mobx-persist-store";
 import { IProduct } from 'modules/ShopModule/interfaces/shop.type';
 
 export class ShopModel extends ShopRepository{
 	selectCategory:ICategory | null = null
 	selectProduct:IProduct[] | null = null
+	stopList:IStopList[] | null = null
 
 	constructor() {
 		super()
 		makeObservable(this, {
 			selectCategory:observable,
 			selectProduct:observable,
+			stopList:observable,
 			actionSelectCategory: action,
 			actionSelectProduct:action
 		})
@@ -23,14 +25,14 @@ export class ShopModel extends ShopRepository{
 		this.selectCategory = category
 	}
 
-	actionSelectProduct(products:IProduct[],pointid:string){
+	actionSelectProduct(pointid:string){
 		
-		if(products && products.length){
+		if(pointid){
 			this.reposityStoplist(pointid).subscribe((data: IStopList[]) => {
-				this.selectProduct = this.filterStopList(products,data)
+				this.stopList = data
 			})
 		}else{
-			this.selectProduct = null
+			this.stopList = null
 		}
 		
 	}

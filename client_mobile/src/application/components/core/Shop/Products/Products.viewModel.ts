@@ -1,27 +1,28 @@
 import { basketModel, basketUseCase } from "modules/BasketModule/basket.module"
-import { IProduct } from "modules/ShopModule/interfaces/shop.type"
+import { ICategory, IProduct } from "modules/ShopModule/interfaces/shop.type"
 import { shopModel, shopUseCase } from "modules/ShopModule/shop.module"
 import { useEffect, useState } from "react"
 
 
-export function useProductsViewModel(products:IProduct[]) {
-	const {selectCategory,selectProduct} = shopModel
-	const {cart} = basketModel
+export function useProductsViewModel({products,selectCat}:{products:IProduct[],selectCat:ICategory}) {
+	const [selectProduct,setSelectProduct] = useState<IProduct[] | null>()
+	const {stopList} = shopModel
   
 
   useEffect(() => {
-    if(selectCategory && selectCategory.id){
-			shopUseCase.caseSelectProduct(products)
-			basketUseCase.cartCase()
+    if(selectCat && selectCat.id){
+			const product = shopUseCase.caseSelectProduct(products,selectCat.id)
+			product && setSelectProduct(product)
 		}
-  }, [selectCategory])
+  }, [selectCat])
 
 
 	
 
 
   this.data({
-    selectProduct
+    selectProduct,
+		stopList
   })
   this.handlers({
 		
