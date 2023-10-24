@@ -42,8 +42,8 @@ const HOCOrganizationFilters: FC<{ city: ICity }> = ({ city }) => {
 									filters.map((val: OrganizationFilters) => {
 										const CN = cn("filter", { active: changeFilter?.includes(val._id) })
 										return (
-											<section key={val._id} >
-												<button onClick={() => handlerFiler(val._id)} className={CN}>
+											<section key={val._id} onClick={() => handlerFiler(val._id)}>
+												<button className={CN}>
 													<img src={imgRoutDef(val.images[0])} />
 													{val.name}
 												</button>
