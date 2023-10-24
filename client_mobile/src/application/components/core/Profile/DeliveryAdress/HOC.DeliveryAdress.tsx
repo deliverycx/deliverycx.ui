@@ -16,7 +16,7 @@ const HOCDeliveryAdress = () => {
 		profileUseCase.deliveryAdressUpdate(value)
 		navigate(ROUTE_APP.MAP.DELIVERY_MAP + '/' + value.address)
 	}
-	console.log(profile);
+	
 
 	return (
 		<div className="delivery-addresses authorized">

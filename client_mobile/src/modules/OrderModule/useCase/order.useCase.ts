@@ -3,6 +3,7 @@ import { OrderModel } from "../domain/order.model";
 import { OrganizationStatusModel } from "modules/OrganizationModule/OrganizationStatuses/domain/organizationStatus.model";
 import { DELIVERY_METODS } from "application/contstans/const.orgstatus";
 import { IOrderOnspotTable } from "../interfaces/order.type";
+import { IAddressDelivery } from "modules/Profile/interfaces/profile.type";
 
 export class OrderUseCase{
 	constructor(
@@ -25,5 +26,10 @@ export class OrderUseCase{
 	}
 	setOnSpotTable(seletSpot:IOrderOnspotTable){
 		this.orderModel.actionSetOrderOnspotTable(seletSpot)
+	}
+
+	orderDeliveryAddress(addres:IAddressDelivery){
+		console.log(addres);
+		this.orderModel.actionOrderDeliveryAddress(addres)
 	}
 }
