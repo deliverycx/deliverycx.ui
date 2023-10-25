@@ -9,12 +9,10 @@ const BasketDevices = () => {
     };
 
     const handleIncrement = () => {
-        // Используем функцию обратного вызова для обновления count
         setCount((prevCount) => prevCount + 1);
     };
 
     const handleDecrement = () => {
-        // Используем функцию обратного вызова для обновления count
         setCount((prevCount) => prevCount - 1);
 
 

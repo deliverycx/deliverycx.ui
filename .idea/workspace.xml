@@ -5,15 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="67ecf96e-fe80-4340-a9f6-f5acc541cf3e" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/client_mobile/src/application/components/core/Basket/view/BasketDevices.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client_mobile/src/assets/images/icons/add.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client_mobile/src/assets/images/icons/remove.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client_mobile/src/assets/images/icons/vector.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client_mobile/src/styles/scss/components/BasketDevices.scss" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client_mobile/src/application/components/core/Basket/HOCBasket.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client_mobile/src/application/components/core/Basket/HOCBasket.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client_mobile/src/application/components/core/Basket/view/CartDiscount.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client_mobile/src/application/components/core/Basket/view/CartDiscount.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client_mobile/src/styles/scss/style.scss" beforeDir="false" afterPath="$PROJECT_DIR$/client_mobile/src/styles/scss/style.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client_mobile/src/application/components/core/Basket/view/BasketDevices.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client_mobile/src/application/components/core/Basket/view/BasketDevices.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client_mobile/src/styles/scss/components/BasketDevices.scss" beforeDir="false" afterPath="$PROJECT_DIR$/client_mobile/src/styles/scss/components/BasketDevices.scss" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -65,7 +59,7 @@
       <workItem from="1696247373296" duration="14749000" />
       <workItem from="1696440243403" duration="52000" />
       <workItem from="1696499964577" duration="11462000" />
-      <workItem from="1698245536268" duration="5390000" />
+      <workItem from="1698245536268" duration="5475000" />
     </task>
     <servers />
   </component>
