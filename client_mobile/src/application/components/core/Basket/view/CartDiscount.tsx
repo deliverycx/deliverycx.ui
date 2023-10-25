@@ -1,6 +1,4 @@
 import { validationHIdiscount } from "application/helpers/validationHIdiscount"
-import { observer } from "mobx-react-lite"
-import { basketUseCase } from "modules/BasketModule/basket.module"
 import { ICartProd } from "modules/BasketModule/interfaces/basket.type"
 import { useState, useEffect, FC, memo } from "react"
 

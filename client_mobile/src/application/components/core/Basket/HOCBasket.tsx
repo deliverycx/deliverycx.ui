@@ -11,6 +11,7 @@ import HOCAdditionProducts from "../Shop/Products/AdditionProducts/HOC.AdditionP
 import TabBar from "application/components/common/TabBar/TabBar";
 import BasketOrder from "./view/BasketOrder";
 import ModalCard from "application/components/common/Modals/ModalCard";
+import BasketDevices from "./view/BasketDevices";
 
 const HOCBasket = () => {
 	const { cart, basketPrice } = basketUseCase.basketModel
@@ -46,6 +47,7 @@ const HOCBasket = () => {
 						<div className="basket__content">
 
 							<HOCCart cart={cart} />
+							<BasketDevices />
 							<CartDiscount cartList={cart} />
 							<BasketPrice basketPrice={basketPrice} />
 
