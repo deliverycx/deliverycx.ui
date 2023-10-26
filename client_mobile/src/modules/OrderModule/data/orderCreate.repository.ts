@@ -19,6 +19,7 @@ export class OrderCreateRepository extends OrderCreateEntity {
 	async repositoryOrderHasRedis(orderhash:string){
 		try {
 			const {data} = await orderCreateRequest.getOrderHashRedis(orderhash)
+
 			if(data && data === orderhash){
 				const orderNumb = await this.repositoryGetOrder(orderhash)
 				return orderNumb

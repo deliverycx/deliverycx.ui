@@ -35,12 +35,10 @@ export class  OrderCreateUseCase{
 		}
 		if(
 			this.organizationStatusModel.selectDeliveryTipe &&
-			this.orderModel.orderOnspotTable &&
 			this.basketModel.basketPrice
 			){
 				this.createOrderBody.metodsOrder(
 					this.organizationStatusModel.selectDeliveryTipe,
-					this.orderModel.orderOnspotTable,
 					this.basketModel.basketPrice
 				)
 			}
@@ -59,7 +57,7 @@ export class  OrderCreateUseCase{
 		const resultOrder = await orderCreateRepository.repositoryOrderHasRedis(hash)
 		if(!resultOrder){
 			const body = this.createOrderFabric(hash)
-			await this.orderCreatePayMetod(body)
+			await this.orderCreateMetod(body)
 			return null
 		}else{
 			return resultOrder && resultOrder.orderNumber
@@ -67,7 +65,7 @@ export class  OrderCreateUseCase{
 		}
 	}
 
-	async orderCreatePayMetod(body:any){
+	async orderCreateMetod(body:any){
 		if(this.orderModel.orderBody.payment === PAYMENT_METODS.CARD){
 			const pay = await this.orderCreateModel.repositoryCreateOrder(body,true)
 			if (pay && pay.redirectUrl) {

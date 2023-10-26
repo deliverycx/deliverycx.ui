@@ -61,6 +61,7 @@ export class OrderCreateBodyEntity{
 	defaultBody(hashCode = "",organization:IOrganization,userid:string){
 		const result = {
 			organizationid: organization.guid,
+			organization: organization.guid,
 			localhost:`${document.location.protocol}//${document.location.host}`,
 			hash:hashCode,
 			userid:userid,
@@ -73,12 +74,11 @@ export class OrderCreateBodyEntity{
 	/**/
 	metodsOrder(
 		orderType:IDeliveryTypes,
-		orderTable:IOrderOnspotTable,
 		orderPrice:IBasketPrice,
 	){
+
 		const result = {
 			orderType: orderType.metod,
-			orderTable:orderTable,
 			orderAmount:orderPrice.totalPrice
 		}
 

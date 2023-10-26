@@ -23,6 +23,7 @@ export function useOrderCreateViewModel() {
 			navigate(ROUTE_APP.ORDER.ORDER_MAIN)
 		}  
 		() => {
+
 			clearInterval(ref.current as any);
 		};   
 	}, [hash]);
@@ -50,12 +51,12 @@ export function useOrderCreateViewModel() {
 		try {
 				let tik = 0;
 					ref.current = setInterval(async () => {
-							const { data } = await orderCreateRepository.repositoryGetOrder(hashNumb);
+							const result = await orderCreateRepository.repositoryGetOrder(hashNumb);
 							new Promise((res, rej) => {
 
-									if (data && data.orderNumber) {
+									if (result && result.orderNumber) {
 											clearInterval(ref.current as any);
-											res(data.orderNumber);
+											res(result.orderNumber);
 									} else {
 											++tik;
 											rej();
@@ -88,7 +89,7 @@ export function useOrderCreateViewModel() {
 		orderLoad
 	});
 	this.handlers({
-
+		navigate
 	});
 	this.status({
 		

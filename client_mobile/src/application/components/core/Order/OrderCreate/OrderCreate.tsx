@@ -6,9 +6,10 @@ import { ROUTE_APP } from 'application/contstans/route.const';
 import LoaderProduct from "application/components/common/Loaders/loaderProduct";
 
 const OrderCreate = () => {
-	const navigate = useNavigate()
+
 	const useCase = adapterComponentUseCase(useOrderCreateViewModel)
 	const { orderNumber, orderLoad } = useCase.data
+	const {navigate} = useCase.handlers
 
 	return (
 		<div className="order-accepted">
@@ -49,14 +50,14 @@ const OrderCreate = () => {
 						<div className="order-accepted__content-title">Спасибо за заказ!</div>
 						<div className="order-accepted__content-number">
 							Номер заказа
-							<span>№ 2565</span>
+							<span>№ {orderNumber}</span>
 						</div>
 						<div className="order-accepted__content-text">
 							В ближайшее время с вами свяжется наш администратор и уточнит детали
 						</div>
 					</div>
 					<div className="order-accepted__buttons">
-						<button className="btn btn-md btn-red">Хорошо</button>
+						<button className="btn btn-md btn-red" onClick={()=> navigate(ROUTE_APP.SHOP.SHOP_MAIN)}>Хорошо</button>
 						<button className="btn btn-md btn-gray">Оставить отзыв</button>
 					</div>
 				</>
