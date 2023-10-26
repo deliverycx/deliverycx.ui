@@ -20,7 +20,7 @@ const PoductListItem: FC<IProps> = ({ product, setModalmodalProduct,stoplist }) 
 
 
 	useEffect(() => {
-    if (stoplist) {
+    if (stoplist && product) {
 			stoplist.forEach((item: IStopList) => {
         item.productId === product.id && setDisableItem(true)
       })

@@ -9,7 +9,7 @@ import { IInitialValues, IOrderOnspotTable } from '../interfaces/order.type'
 import { IDeliveryTypes, IPointStatus } from 'modules/OrganizationModule/OrganizationStatuses/interfaces/organizationStatus.type'
 import { IBasketPrice } from 'modules/BasketModule/interfaces/basket.type'
 
-export class OrderCreateEntity{
+export class OrderCreateBodyEntity{
 	protected orderState = {}
 
 
@@ -58,11 +58,12 @@ export class OrderCreateEntity{
 	}
 	
 
-	defaultBody(hashCode = "",organization:IOrganization){
+	defaultBody(hashCode = "",organization:IOrganization,userid:string){
 		const result = {
 			organizationid: organization.guid,
 			localhost:`${document.location.protocol}//${document.location.host}`,
 			hash:hashCode,
+			userid:userid,
 			date:`${format(new Date(), 'yyyy-MM-dd')} ${new Date().toLocaleTimeString()}`,
 		}
 		
@@ -84,5 +85,9 @@ export class OrderCreateEntity{
 		this.orderStates = result
 		//console.log(this.orderState);
 	}
+	
+}
+
+export class OrderCreateEntity{
 	
 }

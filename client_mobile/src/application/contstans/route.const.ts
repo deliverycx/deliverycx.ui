@@ -15,7 +15,7 @@ export const ROUTE_APP = {
 		ORDER_MAIN: "/order/main",
 		ORDER_MAP: "/order/map",
 		ORDER_SUCCESS: '/success',
-		ORDER_CREATE:'/ordercreate/:hash',
+		ORDER_CREATE:'/ordercreate',
 	},
   PAGES: {
     ABOUT:'/about',

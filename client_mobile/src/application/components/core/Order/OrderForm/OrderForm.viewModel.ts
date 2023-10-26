@@ -32,9 +32,8 @@ export function useOrderFromViewModel(this:any) {
 				formik.setSubmitting(true)
 				const url:any = await orderCreateUseCase.orderCheck()
 				formik.setSubmitting(false)
-				console.log(url);
 				if(typeof url === 'string'){
-					navigate(ROUTE_APP.ORDER.ORDER_CREATE + `/${url}`)
+					navigate(`${ROUTE_APP.ORDER.ORDER_CREATE}/${url}`)
 				}
 				if(url.response.data.errors){
 					setError(url.response.data.errors)

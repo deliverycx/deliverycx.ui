@@ -25,6 +25,7 @@ const HOCAdditionProducts = () => {
 		})
 	}, [])
 
+
 	return (
 		<div className="basket__more">
 			<h3 className="basket__more-title">Может, что‑нибудь ещё?</h3>
@@ -32,7 +33,7 @@ const HOCAdditionProducts = () => {
 				{
 					additionProducts ?
 					additionProducts.map((product, index: number) => {
-						return <PoductListItem key={index} product={product} stoplist={stopList} setModalmodalProduct={setModalmodalProduct} />
+						return product && <PoductListItem key={index} product={product} stoplist={stopList} setModalmodalProduct={setModalmodalProduct} />
 					})
 					: <LoaderProduct />
 				}

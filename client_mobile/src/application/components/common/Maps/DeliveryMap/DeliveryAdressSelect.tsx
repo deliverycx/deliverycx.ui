@@ -64,7 +64,7 @@ const DeliveryAdressSelect: FC<IProps> = ({ setModal }) => {
 
 	return (
 
-		<div className="modal modal_full">
+		<div className="modal modal_fullpage">
 			<div className="modal__wrapper">
 				<div className="modal__header">
 

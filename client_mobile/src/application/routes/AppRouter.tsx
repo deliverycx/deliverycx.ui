@@ -48,11 +48,11 @@ export const publicRoutes = [
 		Component: OrderAdressMap
 	},
 	{
-		path: ROUTE_APP.ORDER.ORDER_CREATE,
+		path: ROUTE_APP.ORDER.ORDER_CREATE + '/:hash',
 		Component: OrderCreate
 	},
 	{
-		path: ROUTE_APP.ORDER.ORDER_SUCCESS,
+		path: ROUTE_APP.ORDER.ORDER_SUCCESS + '/:hash',
 		Component: OrderSucces
 	},
 	{
@@ -82,7 +82,7 @@ export const publicRoutes = [
 	}
 	
 ]
-
+//<Route path="*" element={<Navigate to="" />} />
 const AppRouter = () => {
 
     return (
@@ -94,7 +94,7 @@ const AppRouter = () => {
 								}
 								
             )}
-            <Route path="*" element={<Navigate to="/" />} />
+            
         </Routes>
     );
 };
