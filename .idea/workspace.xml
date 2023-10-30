@@ -6,11 +6,8 @@
   <component name="ChangeListManager">
     <list default="true" id="67ecf96e-fe80-4340-a9f6-f5acc541cf3e" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client_mobile/src/application/components/core/Organization/OrganizationCard/HOC.OrganizationCard.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client_mobile/src/application/components/core/Organization/OrganizationCard/HOC.OrganizationCard.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client_mobile/src/application/components/core/Organization/OrganizationCard/OrganizationCard.viewModel.ts" beforeDir="false" afterPath="$PROJECT_DIR$/client_mobile/src/application/components/core/Organization/OrganizationCard/OrganizationCard.viewModel.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client_mobile/src/application/components/core/Organization/OrganizationCard/view/OragnizationRequisities.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client_mobile/src/application/components/core/Organization/OrganizationCard/view/OragnizationRequisities.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client_mobile/src/application/components/core/Organization/OrganizationCard/view/OrganizationCard.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client_mobile/src/application/components/core/Organization/OrganizationCard/view/OrganizationCard.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client_mobile/src/modules/OrganizationModule/Organization/data/organization.request.ts" beforeDir="false" afterPath="$PROJECT_DIR$/client_mobile/src/modules/OrganizationModule/Organization/data/organization.request.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client_mobile/src/application/components/core/Basket/view/BasketDevices.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client_mobile/src/application/components/core/Basket/view/BasketDevices.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client_mobile/src/styles/scss/components/BasketDevices.scss" beforeDir="false" afterPath="$PROJECT_DIR$/client_mobile/src/styles/scss/components/BasketDevices.scss" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -32,17 +29,22 @@
   "keyToString": {
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "WebServerToolWindowFactoryState": "false",
-    "git-widget-placeholder": "goodPlaceUI",
+    "git-widget-placeholder": "CartDevices",
     "last_opened_file_path": "D:/projects/deliverycx.ui",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
-    "ts.external.directory.path": "D:\\projects\\deliverycx.ui\\client\\node_modules\\typescript\\lib",
+    "ts.external.directory.path": "D:\\projects\\deliverycx.ui\\client_desktop\\node_modules\\typescript\\lib",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\projects\deliverycx.ui\client_mobile\src\assets\images\icons" />
+    </key>
+  </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
@@ -57,6 +59,7 @@
       <workItem from="1696247373296" duration="14749000" />
       <workItem from="1696440243403" duration="52000" />
       <workItem from="1696499964577" duration="11462000" />
+      <workItem from="1698245536268" duration="5475000" />
     </task>
     <servers />
   </component>
