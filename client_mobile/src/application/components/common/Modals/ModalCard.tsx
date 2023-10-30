@@ -1,60 +1,41 @@
-import React, {FC, useEffect, useRef, useState} from 'react';
-import Draggable from "react-draggable"
-import { ReactNode } from 'react';
+import React, { FC, useEffect, useRef, useState } from 'react';
+import { CSSTransition } from 'react-transition-group';
+import { animated, useSpring, useTransition } from "react-spring"
 import { createPortal } from 'react-dom';
 
 type IProps = {
-	setIsOpened:any
-	children:any
-	theme?:"children"
+	setIsOpened: any
+	children: any
+	theme?: "children"
 }
 
-const ModalCard:FC<IProps> = ({setIsOpened, children, theme}) => {
-    const wrapperRef = useRef<any>()
-    const [positionY, setPositionY] = useState(720);
-    const handleClick = (event:any) => {
-        if (wrapperRef.current && wrapperRef.current === event.target) {
-            setIsOpened(false);
-        }
-    };
+const ModalCard: FC<IProps> = ({ setIsOpened, children, theme }) => {
 
-    const handleDrag = (e:any, data:any) => {
-        if (data.y >= (data.node.clientHeight / 3.5)) {
-            setPositionY(data.node.clientHeight)
-            setTimeout(() => {
-                setIsOpened(false)
-            }, 300)
-        }
-    };
 
-    useEffect(() => {
-        if (wrapperRef.current) {
-						const doc = document.querySelector('.react-draggable')
-            doc && setPositionY(doc.getBoundingClientRect().height)
-            setTimeout(() => {
-                setPositionY(0)
-            }, 100)
-        }
-    }, [])
+	const [props, api] = useSpring(
+		() => ({
+			from: { transform: "translateY(250px)", transition: "0.01s" },
+			to: { transform: "translateY(0px)" },
+		}),
+		[]
+	)
 
-    return createPortal((
-			
-        <div onClick={(e) => handleClick(e)} ref={wrapperRef} className={theme == 'children' ? "modal__bg-children" : "modal__bg"}>
-            <Draggable
-                axis="y"
-                onStop={handleDrag}
-                position={{x:0, y: positionY}}
-                bounds={{top: 0}}
-                cancel=".no-drag"
-            >
 
-							<div className="modal">
-								{children}
-							</div>
-                
-            </Draggable>
-        </div>
-    ),document.body)
+	const handlerClose = () => {
+		setIsOpened(false)
+	}
+
+	return createPortal((<div>
+		<div className="modal__bg" onClick={handlerClose}></div>
+		{
+			<animated.div style={props} className="modal">
+				<div className="modal">
+					{children}
+				</div>
+			</animated.div>
+		}
+	</div>
+	),document.body)
 };
 
 export default ModalCard;

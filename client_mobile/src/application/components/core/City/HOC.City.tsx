@@ -9,6 +9,7 @@ import { CityDTO } from 'modules/CityModule/interfaces/city.dto';
 import { ICity } from 'modules/CityModule/interfaces/city.type';
 import CountCity from './view/CountCity';
 import CityListView from './view/CityListView';
+import TestModal from 'application/components/common/Modals/TestModal';
 
 
 const HOCCity = () => {
@@ -21,6 +22,7 @@ const HOCCity = () => {
 
 	return (
 		<>
+			<TestModal />
 			<div className="select__header">
 				<img src={require("assets/images/logo.jpg")} alt="Старик Хинкалыч" />
 			</div>
