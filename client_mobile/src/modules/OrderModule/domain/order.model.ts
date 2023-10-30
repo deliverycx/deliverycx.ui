@@ -49,6 +49,7 @@ export class OrderModel extends OrderRepository {
 	async actionOrderOnspotTable(pointid: string | null) {
 		if (pointid) {
 			const result = await this.repositoryONSpotTable(pointid)
+			console.log(result);
 			if (result) {
 				this.orderOnspotTable = result
 

@@ -1,5 +1,6 @@
 import { IUserGuest } from "modules/UserModule/interfaces/user.type";
 import { ApiSuper, methods } from "servises/Axios/AxiosApi";
+import { IRequestOrderUser } from "../interfaces/profile.type";
 
 class RequestProfile extends ApiSuper {
 	@methods("post")
@@ -20,6 +21,9 @@ class RequestProfile extends ApiSuper {
 	delDeliveryAdress(body:any) {
 		return this.request<IUserGuest>(`/profile/deladressdelivery`);
 	}
-	
+	@methods("get")
+	ordersUser(userid:string){
+		return this.request<IRequestOrderUser[]>(`/order/orderuser/${userid}`);
+	}
 }
 export const requestProfile = new RequestProfile()

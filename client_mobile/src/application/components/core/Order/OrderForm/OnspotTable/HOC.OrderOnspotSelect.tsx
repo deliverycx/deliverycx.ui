@@ -11,8 +11,11 @@ const HOCOrderOnspotSelect: FC<{ deliveryType: IDeliveryTypes, organization: IOr
 	const [onSpotTable, setOnspotTable] = useState<IOrderOnspotTable | null>(null)
 	const [onSpotTables, setOnspotTables] = useState<IOrderOnspotTable | null>(null)
 
+
+	
 	useEffect(() => {
 		const table = orderUseCase.onSpotTable()
+		console.log(table);
 		if (table) {
 			table.then((data) => {
 				data && setOnspotTable(data)
@@ -28,7 +31,7 @@ const HOCOrderOnspotSelect: FC<{ deliveryType: IDeliveryTypes, organization: IOr
 	}
 
 
-	console.log(onSpotTable);
+	
 
 	const CNONSPOT = cn("onspot_tabs-item", { selected: onSpotTable?.section !== 'queue' })
 	const CNOQueue = cn("onspot_tabs-item", { selected: onSpotTable?.section === 'queue' })

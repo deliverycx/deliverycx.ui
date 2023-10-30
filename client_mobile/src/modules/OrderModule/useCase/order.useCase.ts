@@ -29,7 +29,6 @@ export class OrderUseCase{
 	}
 
 	orderDeliveryAddress(addres:IAddressDelivery){
-		console.log(addres);
 		this.orderModel.actionOrderDeliveryAddress(addres)
 	}
 }

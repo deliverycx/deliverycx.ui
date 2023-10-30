@@ -31,7 +31,8 @@ export const ROUTE_APP = {
 	PROFILE:{
 		PROFILE_MAIN:'/profile',
 		PROFILE_PERSONAL:'/profile/personal',
-		PROFILE_ADRESS:'/profile/adress'
+		PROFILE_ADRESS:'/profile/adress',
+		PROFILE_ORDERS:'/profile/orders'
 	}
 }
 

@@ -53,4 +53,13 @@ export class ProfileUseCase{
 		this.profileModel.actionLogoutProfile()
 	}
 
+	async userOrderList(){
+		if(this.profileModel.profile && this.userModel.guestUser){
+			return this.profileModel.repositoryGetUserOrders(this.userModel.guestUser.id)
+		}
+		
+	}
+
+	
+
 }

@@ -19,6 +19,7 @@ import HOCDeliveryMap from 'application/components/common/Maps/DeliveryMap/HOC.D
 import OrderCreate from 'application/components/core/Order/OrderCreate/OrderCreate';
 import OrderSucces from 'application/components/core/Order/OrderCreate/OrderSucces';
 import OfferAuth from 'application/components/common/Auth/view/OfferAuth';
+import HOCUserOrders from 'application/components/core/Profile/UserOrders/HOC.UserOrders';
 
 
 
@@ -79,8 +80,11 @@ export const publicRoutes = [
 	{
 		path: ROUTE_APP.MAP.DELIVERY_MAP + '/:adress?',
 		Component: HOCDeliveryMap,
+	},
+	{
+		path: ROUTE_APP.PROFILE.PROFILE_ORDERS,
+		Component: HOCUserOrders,
 	}
-	
 ]
 //<Route path="*" element={<Navigate to="" />} />
 const AppRouter = () => {

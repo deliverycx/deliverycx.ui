@@ -16,4 +16,14 @@ export class ProfileRepository extends ProfileEntity{
 			console.log(error);
 		}
 	}
+
+	async repositoryGetUserOrders(userid:string){
+		try {
+			const {data} = await requestProfile.ordersUser(userid)
+			return data && this.OrdersListBody(data)
+		} catch (error) {
+			console.log(error);
+		}
+		
+	}
 }
