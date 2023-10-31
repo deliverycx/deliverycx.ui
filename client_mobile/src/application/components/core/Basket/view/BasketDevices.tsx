@@ -1,8 +1,15 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 
 const BasketDevices = () => {
     const [count, setCount] = useState(1);
     const [isActive, setIsActive] = useState(false);
+
+    useEffect(() => {
+        if(count === 0) {
+            setIsActive(false)
+            setCount(1)
+        }
+    }, [count])
 
     const handleClick = () => {
         setIsActive(!isActive);
@@ -14,7 +21,6 @@ const BasketDevices = () => {
 
     const handleDecrement = () => {
         setCount((prevCount) => prevCount - 1);
-
 
         if (count < 1) {
             setCount(1)

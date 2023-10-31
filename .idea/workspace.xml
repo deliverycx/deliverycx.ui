@@ -6,8 +6,10 @@
   <component name="ChangeListManager">
     <list default="true" id="67ecf96e-fe80-4340-a9f6-f5acc541cf3e" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client_mobile/src/application/components/common/Auth/view/UserSendSMS.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client_mobile/src/application/components/common/Auth/view/UserSendSMS.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client_mobile/src/application/components/core/Basket/view/BasketDevices.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client_mobile/src/application/components/core/Basket/view/BasketDevices.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client_mobile/src/styles/scss/components/BasketDevices.scss" beforeDir="false" afterPath="$PROJECT_DIR$/client_mobile/src/styles/scss/components/BasketDevices.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client_mobile/src/styles/scss/components/_Auth.scss" beforeDir="false" afterPath="$PROJECT_DIR$/client_mobile/src/styles/scss/components/_Auth.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client_mobile/src/styles/scss/components/_MapScreen.scss" beforeDir="false" afterPath="$PROJECT_DIR$/client_mobile/src/styles/scss/components/_MapScreen.scss" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -29,7 +31,7 @@
   "keyToString": {
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "WebServerToolWindowFactoryState": "false",
-    "git-widget-placeholder": "CartDevices",
+    "git-widget-placeholder": "FixDesign",
     "last_opened_file_path": "D:/projects/deliverycx.ui",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
@@ -60,6 +62,7 @@
       <workItem from="1696440243403" duration="52000" />
       <workItem from="1696499964577" duration="11462000" />
       <workItem from="1698245536268" duration="5475000" />
+      <workItem from="1698745488141" duration="3045000" />
     </task>
     <servers />
   </component>
