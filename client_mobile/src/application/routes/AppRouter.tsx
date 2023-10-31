@@ -20,6 +20,7 @@ import OrderCreate from 'application/components/core/Order/OrderCreate/OrderCrea
 import OrderSucces from 'application/components/core/Order/OrderCreate/OrderSucces';
 import OfferAuth from 'application/components/common/Auth/view/OfferAuth';
 import HOCUserOrders from 'application/components/core/Profile/UserOrders/HOC.UserOrders';
+import ErrorPage from "../components/common/Errors/ErrorPage";
 
 
 
@@ -84,6 +85,14 @@ export const publicRoutes = [
 	{
 		path: ROUTE_APP.PROFILE.PROFILE_ORDERS,
 		Component: HOCUserOrders,
+	},
+	{
+		path: ROUTE_APP.ERRORS.ERROR404,
+		Component: ErrorPage,
+	},
+	{
+		path: ROUTE_APP.ERRORS.ERROR501,
+		Component: ErrorPage,
 	}
 ]
 //<Route path="*" element={<Navigate to="" />} />

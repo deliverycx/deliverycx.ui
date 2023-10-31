@@ -6,8 +6,8 @@
   <component name="ChangeListManager">
     <list default="true" id="67ecf96e-fe80-4340-a9f6-f5acc541cf3e" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client_mobile/src/application/components/core/Basket/view/BasketDevices.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client_mobile/src/application/components/core/Basket/view/BasketDevices.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client_mobile/src/styles/scss/components/BasketDevices.scss" beforeDir="false" afterPath="$PROJECT_DIR$/client_mobile/src/styles/scss/components/BasketDevices.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client_mobile/src/application/contstans/route.const.ts" beforeDir="false" afterPath="$PROJECT_DIR$/client_mobile/src/application/contstans/route.const.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client_mobile/src/application/routes/AppRouter.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client_mobile/src/application/routes/AppRouter.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -29,7 +29,7 @@
   "keyToString": {
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "WebServerToolWindowFactoryState": "false",
-    "git-widget-placeholder": "CartDevices",
+    "git-widget-placeholder": "Pages404And501",
     "last_opened_file_path": "D:/projects/deliverycx.ui",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
