@@ -411,8 +411,9 @@
 			}
 
 			&.active {
-					position: relative;
-					
+
+              position: relative;
+
 					&:after {
 							content: "";
 							position: absolute;
