@@ -24,7 +24,7 @@ const Stocks:FC<{organization:IOrganization}> = ({organization}) => {
 	useEffect(() => {
 		const updateSlidesToShow = () => {
 			if (window.innerWidth >= 1200) {
-				setSlidesToShow(4);
+				setSlidesToShow(2.3);
 			} else if (window.innerWidth >= 900) {
 				setSlidesToShow(2);
 			} else if (window.innerWidth >= 759) {
