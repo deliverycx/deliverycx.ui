@@ -74,7 +74,7 @@ body {
 	left: 0;
 	right: 0;
 	margin: 0 auto;
-	z-index: 9999;
+	z-index: 8888;
 
 	&:before {
 		position: absolute;
@@ -201,6 +201,15 @@ body {
 	.modal__wrapper {
 		height: 100%;
 		max-height: 100%;
+	}
+}
+.modal__bg_childen{
+	.modal__bg{
+		z-index: 8889;
+	}
+	
+	.modal{
+		z-index: 9999;
 	}
 }
 

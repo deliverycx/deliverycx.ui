@@ -2,6 +2,7 @@ import React, { FC, useEffect, useRef, useState } from 'react';
 import { CSSTransition } from 'react-transition-group';
 import { animated, useSpring, useTransition } from "react-spring"
 import { createPortal } from 'react-dom';
+import cn from 'classnames'
 
 type IProps = {
 	setIsOpened: any
@@ -33,13 +34,15 @@ const ModalCard: FC<IProps> = ({ setIsOpened, children, theme }) => {
 		setIsOpened(false)
 	}
 
+	const CN = cn('modalbox',{modal__bg_childen:theme})
+
 	return createPortal((
-		<>
+		<div className={CN}>
 			<div className="modal__bg" onClick={handlerClose}></div>
 			<animated.div style={props} className="modal">
 				{children}
 			</animated.div>
-		</>
+		</div>
 	), document.body);
 
 };
