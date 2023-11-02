@@ -1,7 +1,7 @@
 import { IIkkoStreet } from "application/components/common/Maps/DeliveryMap/DeliveryAdressSelect"
 import { ProfileDTO } from "./profile.dto"
 import { ICartProd } from "modules/BasketModule/interfaces/basket.type"
-import { IInitialValues } from "modules/OrderModule/interfaces/order.type"
+import { IInitialValues, IOrderOnspotTable } from "modules/OrderModule/interfaces/order.type"
 
 export type IRequestProfile = {
 	userid: string
@@ -59,9 +59,7 @@ export type IRequestOrderUser = {
 		orderAmount: number
 		orderType: string
 		paymentMethod: string
-		orderTable: null | {
-			numb:number
-		}
+		orderTable: null | IOrderOnspotTable
 		timedelivery:string
 		money:number
 	}

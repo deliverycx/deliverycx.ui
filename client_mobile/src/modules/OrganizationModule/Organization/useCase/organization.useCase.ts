@@ -20,7 +20,7 @@ export class UseCaseOrganization{
 	}
 
 	selectOrganization(point:IOrganization | null){
-		this.organizationModel.actionSelectOrganization(point)
+		this.organizationModel.actionSelectOrganization(point ? point.guid : null)
 	}
 
 	

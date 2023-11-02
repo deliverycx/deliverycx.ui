@@ -1,14 +1,20 @@
 import { NavLink } from "react-router-dom"
 import { ROUTE_APP } from 'application/contstans/route.const';
-import { adapterComponentUseCase } from 'adapters/adapterComponents';
+import { TadapterCaseCallback, adapterComponentUseCase } from 'adapters/adapterComponents';
 import { useUserOrdersViewModel } from "./UserOrders.viewModel";
 import { IUserOrders } from "modules/Profile/interfaces/profile.type";
 import UserOrderList from "./UserOrderList";
+import React from "react";
 
-
+export const UserOrderContext = React.createContext<TadapterCaseCallback>({
+  data: {},
+  handlers: {},
+  status:{}
+});
 const HOCUserOrders = () => {
 	const useCase = adapterComponentUseCase(useUserOrdersViewModel)
 	const {orderList,organization} = useCase.data
+	const {returnOrder} = useCase.handlers
 
 	return (
 		<div className="orders authorized">
@@ -21,11 +27,13 @@ const HOCUserOrders = () => {
 				</div>
 			</div>
 			<div className="orders__list">
+				<UserOrderContext.Provider value={useCase}>
 				{
 					orderList && orderList.map((value:IUserOrders)=> {
 						return organization.guid === value.order.organization && <UserOrderList key={value.order.orderId} order={value} />
 					})
 				}
+				</UserOrderContext.Provider>
 			</div>
 			<div className="orders__button">
 				<NavLink to={ROUTE_APP.PROFILE.PROFILE_MAIN} className="btn btn-md btn-red">Назад</NavLink>

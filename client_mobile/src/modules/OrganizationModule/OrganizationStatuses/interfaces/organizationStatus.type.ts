@@ -21,8 +21,8 @@ export type IOrganizationStatus = {
 export type IDeliveryTypes = {
 	metod:string
 	name:string
-
 	active:boolean
+	sort?:number
 }
 
 export type IWorkTimePoint = {

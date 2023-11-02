@@ -149,7 +149,7 @@ export const OrderFormWrapper = (formik: any, usecase: any): IWrapper => {
 					errorValue={formik.errors.timedelivery || formik.errors.timedelivery}
 				>
 					{
-						selectDeliveryTipe &&
+
 						<HOCOrderOnspotSelect deliveryType={selectDeliveryTipe} organization={selectOrganization} />
 					}
 					

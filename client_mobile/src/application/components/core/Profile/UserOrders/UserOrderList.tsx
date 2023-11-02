@@ -3,8 +3,9 @@ import OrderStatus from "./OrderStatus"
 import { IUserOrders } from "modules/Profile/interfaces/profile.type"
 import ModalCard from "application/components/common/Modals/ModalCard"
 import UserOrderCard from "./UserOrderCard"
+import { DELIVERY_METODS } from "application/contstans/const.orgstatus"
 
-const UserOrderList:FC<{order:IUserOrders}> = ({order}) => {
+const UserOrderList: FC<{ order: IUserOrders }> = ({ order }) => {
 	const [isModalOpened, setIsModalOpened] = useState(false)
 
 	return (
@@ -23,14 +24,27 @@ const UserOrderList:FC<{order:IUserOrders}> = ({order}) => {
 					</div>
 					<OrderStatus status={order.order.orderStatus} />
 				</div>
-				<div className="orders__list__item__delivery">
-					<h3 className="orders__list__item__delivery-title">Доставка</h3>
-					<small className="orders__list__item__delivery-addresses">{`${order.order.orderParams.address.city}, ${order.order.orderParams.address.street},${order.order.orderParams.address.home}`}</small>
-				</div>
+				{
+					order.order.orderParams.orderType === DELIVERY_METODS.COURIER
+						? <div className="orders__list__item__delivery">
+						<h3 className="orders__list__item__delivery-title">Доставка</h3>
+						<small className="orders__list__item__delivery-addresses">{`${order.order.orderParams.address.city}, ${order.order.orderParams.address.street},${order.order.orderParams.address.home}`}</small>
+					</div>
+						: order.order.orderParams.orderType === DELIVERY_METODS.PICKUP
+							? <div className="orders__list__item__delivery">
+								<h3 className="orders__list__item__delivery-title">Самовывоз</h3>
+								</div>
+							: order.order.orderParams.orderType === DELIVERY_METODS.ONSPOT
+								? <div className="orders__list__item__delivery">
+									<h3 className="orders__list__item__delivery-title">За столиком</h3>
+									</div>
+								: ""
+				}
+
 				<div className="orders__list__item__price">
 					<h3>Сумма</h3>
 					<div className="orders__list__item__price-cost price--cost">
-						
+
 						<h3>{order.order.orderParams.orderAmount || "0"} ₽</h3>
 					</div>
 				</div>

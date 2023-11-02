@@ -46,12 +46,18 @@ export class OrderModel extends OrderRepository {
 	actionOrderDeliveryAddress(body: IAddressDelivery) {
 		this.orderDeliveryAddress = body
 	}
-	async actionOrderOnspotTable(pointid: string | null) {
+	async actionOrderOnspotTable(pointid: string | null,qr:any) {
 		if (pointid) {
 			const result = await this.repositoryONSpotTable(pointid)
-			console.log(result);
+			
 			if (result) {
-				this.orderOnspotTable = result
+				const tableSection = this.checkOrderTable(result,qr)
+				console.log('result',tableSection);
+				if(tableSection){
+					
+					this.orderOnspotTable = tableSection
+				}
+				
 
 				return result
 			}
@@ -59,9 +65,11 @@ export class OrderModel extends OrderRepository {
 			this.orderOnspotTable = null
 			return null
 		}
+
+		
 	}
 
-	actionSetOrderOnspotTable(onspotTable: IOrderOnspotTable) {
+	actionSetOrderOnspotTable(onspotTable: IOrderOnspotTable | null) {
 		this.orderOnspotTable = onspotTable
 	}
 

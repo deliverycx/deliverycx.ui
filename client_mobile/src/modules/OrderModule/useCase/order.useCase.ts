@@ -16,15 +16,21 @@ export class OrderUseCase{
 		if(this.organizationModel.selectOrganization && this.organizationStatusModel.selectDeliveryTipe){
 			const typeMetod = this.organizationStatusModel.selectDeliveryTipe.metod
 				if(typeMetod === DELIVERY_METODS.ONSPOT){
-					return this.orderModel.actionOrderOnspotTable(this.organizationModel.selectOrganization.guid)
-				}else{
-					this.orderModel.actionOrderOnspotTable(null)
-					return null
+					return this.orderModel.actionOrderOnspotTable(this.organizationModel.selectOrganization.guid,null)
 				}
 		}
 		
 	}
-	setOnSpotTable(seletSpot:IOrderOnspotTable){
+
+
+
+	onSpotTableQR(pointid:string,qr:any = false){
+		if(qr){
+			return this.orderModel.actionOrderOnspotTable(pointid,qr)
+		}
+	}
+
+	setOnSpotTable(seletSpot:IOrderOnspotTable | null){
 		this.orderModel.actionSetOrderOnspotTable(seletSpot)
 	}
 

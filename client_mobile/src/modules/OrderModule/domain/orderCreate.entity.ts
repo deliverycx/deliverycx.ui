@@ -85,6 +85,18 @@ export class OrderCreateBodyEntity{
 		this.orderStates = result
 		//console.log(this.orderState);
 	}
+
+	orderTable(table:IOrderOnspotTable){
+		const result = {
+			orderTable:{
+				section: table.section,
+				id: table.id,
+				numb: table.numb,
+			}
+			
+		}
+		this.orderStates = result
+	}
 	
 }
 

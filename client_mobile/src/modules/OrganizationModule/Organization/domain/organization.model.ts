@@ -48,14 +48,14 @@ export class OrganizationModel extends OrganizationRepository {
 			})
 	}
 
-	actionSelectOrganization(point: IOrganization | null) {
-		if(point){
-			this.repositoryOrganization(point.guid)
-			.subscribe((data: any) => {
+	actionSelectOrganization(pointid: string | null) {
+		if(pointid){
+			const point = this.repositoryOrganization(pointid)
+			point.subscribe((data: any) => {
 				this.selectOrganization = data
 				
 			})
-			
+			return point
 		}else{
 			this.selectOrganization = null
 		}

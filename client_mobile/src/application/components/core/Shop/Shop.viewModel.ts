@@ -7,16 +7,20 @@ import { shopUseCase } from "modules/ShopModule/shop.module";
 import { useSearchParams } from "react-router-dom";
 import { basketUseCase } from "modules/BasketModule/basket.module";
 import { ICategory } from "modules/ShopModule/interfaces/shop.type";
+import { appUseCase } from "modules/AppModule/app.module";
+import { orderModel, orderUseCase } from "modules/OrderModule/order.module";
 
 export function useShopViewModel(this: any) {
 	const [searchParams, setSearchParams] = useSearchParams();
 	const [selectCat,setSelectCat] = useState<ICategory | null>(null)
 	const organization = organizationModel.selectOrganization
+	const [pointid,setPointid] = useState<string | undefined>()
 	const navigate = useNavigate()
 
-	const { data:nomenclatures, isLoading } = useQuery('shop', async () => await shopUseCase.getNomenclature(organization?.guid), {
+	const { data:nomenclatures, isLoading } = useQuery('shop', async () => await shopUseCase.getNomenclature(pointid), {
 		refetchOnWindowFocus: false,
-		cacheTime:5
+		cacheTime:5,
+		enabled: !!pointid,
 	})
 
 	
@@ -24,15 +28,6 @@ export function useShopViewModel(this: any) {
 
 
 
-	useEffect(() => {
-		if (!organization) {
-			navigate(ROUTE_APP.MAIN)
-		}else{
-			useCaseOrganizationStatus.statusOrganization()
-			//userRegister()
-			
-		}
-	}, [organization])
 
 
 	useEffect(()=>{
@@ -46,13 +41,30 @@ export function useShopViewModel(this: any) {
 	useEffect(()=>{
 		const queyOrg = searchParams.get('organuzation')
 		const queyTable = searchParams.get('table')
-		const sectionTable = searchParams.get('section')
 		const delivMetod = searchParams.get('delivMetod')
 
-		console.log(queyOrg);
+	
+
 		if(queyOrg){
-		
-			useCaseOrganization.selectOrganization(organization)
+			appUseCase.clearApp()
+			const obversPoint = useCaseOrganizationStatus.targetOrganization(queyOrg,delivMetod)
+			
+			if(obversPoint){
+				obversPoint.subscribe(data =>{
+					
+					setPointid(data.guid)
+					queyTable && orderUseCase.onSpotTableQR(data.guid,JSON.parse(queyTable))
+				})
+			}
+		}else{
+			if (!organization) {
+				navigate(ROUTE_APP.MAIN)
+			}else{
+				setPointid(organization.guid)
+				useCaseOrganizationStatus.statusOrganization()
+				//userRegister()
+				
+			}
 		}
 		
 	},[searchParams])

@@ -18,9 +18,9 @@ export class BasketUseCase {
 
 	basketBody() {
 		const user = this.userModel.guestUser && this.userModel.guestUser.id
-		if (this.organizationStatusModel.selectDeliveryTipe && this.organizationModel.selectOrganization) {
+		if (this.organizationModel.selectOrganization) {
 			return {
-				orderType: this.organizationStatusModel.selectDeliveryTipe.metod,
+				orderType: this.organizationStatusModel.selectDeliveryTipe?.metod || "",
 				organization: this.organizationModel.selectOrganization?.guid,
 				userid:user
 			}

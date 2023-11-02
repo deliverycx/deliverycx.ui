@@ -83,6 +83,7 @@ export class OrganizationStatusEntiti {
 
 	changesDeliveryType(deliveryTypes: IDeliveryTypes[], deliveryTime: IWorkTimePoint,deliveryMetod?: IDeliveryTypes | null) {
 		return deliveryTypes.map((types) => {
+			
 			// проверям что точка скоро закроется
 			if (deliveryTime.typework === ORG_STATUS.ONWORK) {
 				// подставляем что сейчас только самовывоз

@@ -14,7 +14,8 @@ export function useOrderFromViewModel(this:any) {
 	const navigate = useNavigate()
 	const {selectDeliveryTipe,paymentMetod} = organizationStatusModel
 	const {selectOrganization} = organizationModel
-	const {orderBody,orderDeliveryAddress} = orderModel
+	const {orderBody,orderOnspotTable} = orderModel
+
 
 	const [error,setError] = useState()
 	
@@ -63,9 +64,13 @@ export function useOrderFromViewModel(this:any) {
 				break;
 				default : setBuilder({current:null}) 
 			}
+		}else{
+			orderOnspotTable?.section === 'queue' && 
+			setBuilder({current:FormBuilderTabsOrder.onspot(OrderFormPayMetods)}) 
 		}
+
 		
-	},[selectDeliveryTipe])
+	},[selectDeliveryTipe,orderOnspotTable])
 
 
 
