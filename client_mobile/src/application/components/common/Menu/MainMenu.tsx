@@ -19,6 +19,14 @@ import iconTg from "assets/images/icons/telegram.png";
 import { ROUTE_APP } from 'application/contstans/route.const';
 
 const MainMenu:FC<{closeMenu:any}> = observer(({closeMenu}) => {
+
+    useEffect(() => {
+        document.body.style.overflow = 'hidden';
+
+        return () => {
+            document.body.style.overflow = '';
+        };
+    }, []);
     
     const menuRef = useRef<any>()
     useEffect(() => {

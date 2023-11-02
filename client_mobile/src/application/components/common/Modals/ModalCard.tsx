@@ -20,22 +20,28 @@ const ModalCard: FC<IProps> = ({ setIsOpened, children, theme }) => {
 		[]
 	)
 
+	useEffect(() => {
+		document.body.style.overflow = 'hidden';
+
+		return () => {
+			document.body.style.overflow = '';
+		};
+	}, []);
+
 
 	const handlerClose = () => {
 		setIsOpened(false)
 	}
 
-	return createPortal((<div>
-		<div className="modal__bg" onClick={handlerClose}></div>
-		{
+	return createPortal((
+		<>
+			<div className="modal__bg" onClick={handlerClose}></div>
 			<animated.div style={props} className="modal">
-				<div className="modal">
-					{children}
-				</div>
+				{children}
 			</animated.div>
-		}
-	</div>
-	),document.body)
+		</>
+	), document.body);
+
 };
 
 export default ModalCard;

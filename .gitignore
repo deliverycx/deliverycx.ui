@@ -8,3 +8,4 @@ nginx/*
 admin/*
 server/.clinic
 .
+.idea/workspace.xml
