@@ -14,7 +14,7 @@ export class ProfileEntity {
 		return orders.map((value) => {
 			return {
 				order:value,
-				orderDelivery: {
+				orderDelivery: value.orderParams.address ? {
 					address: value.orderParams.address.street,
 					house: value.orderParams.address.home,
 					floor: value.orderParams.address.floor,
@@ -24,7 +24,7 @@ export class ProfileEntity {
 					userid: value.user,
 					city: value.orderParams.address.city,
 					kladrid: value.orderParams.address.kladrid
-				},
+				} : null,
 				orderBody:{
 					comment: value.orderParams.comment,
 					name: value.orderParams.name,

@@ -7,7 +7,7 @@ import { DELIVERY_METODS } from "application/contstans/const.orgstatus"
 
 const UserOrderList: FC<{ order: IUserOrders }> = ({ order }) => {
 	const [isModalOpened, setIsModalOpened] = useState(false)
-
+	console.log(order);
 	return (
 		<>
 			{
@@ -28,7 +28,10 @@ const UserOrderList: FC<{ order: IUserOrders }> = ({ order }) => {
 					order.order.orderParams.orderType === DELIVERY_METODS.COURIER
 						? <div className="orders__list__item__delivery">
 						<h3 className="orders__list__item__delivery-title">Доставка</h3>
-						<small className="orders__list__item__delivery-addresses">{`${order.order.orderParams.address.city}, ${order.order.orderParams.address.street},${order.order.orderParams.address.home}`}</small>
+						{
+							order.order.orderParams.address &&
+							<small className="orders__list__item__delivery-addresses">{`${order.order.orderParams.address.city}, ${order.order.orderParams.address.street},${order.order.orderParams.address.home}`}</small>
+						} 
 					</div>
 						: order.order.orderParams.orderType === DELIVERY_METODS.PICKUP
 							? <div className="orders__list__item__delivery">
