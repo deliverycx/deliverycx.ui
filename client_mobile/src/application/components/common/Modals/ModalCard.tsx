@@ -1,25 +1,37 @@
 import React, { FC, useEffect, useRef, useState } from 'react';
 import { CSSTransition } from 'react-transition-group';
-import { animated, useSpring, useTransition } from "react-spring"
+import { animated, useSpring, useTransition } from "react-spring";
 import { createPortal } from 'react-dom';
-import cn from 'classnames'
+import cn from 'classnames';
 
 type IProps = {
-	setIsOpened: any
-	children: any
-	theme?: "children"
-}
+	setIsOpened: any;
+	children: any;
+	theme?: "children";
+};
 
 const ModalCard: FC<IProps> = ({ setIsOpened, children, theme }) => {
+	const [isClosing, setIsClosing] = useState(false);
 
-
-	const [props, api] = useSpring(
+	const [openProps, openApi] = useSpring(
 		() => ({
-			from: { transform: "translateY(250px)", transition: "0.01s" },
-			to: { transform: "translateY(0px)" },
+			from: { transform: "translateY(250px)", opacity: 0 },
+			to: { transform: "translateY(0px)", opacity: 1 },
+			config: { duration: 100 },
 		}),
 		[]
-	)
+	);
+
+	const [closeProps, closeApi] = useSpring(
+		() => ({
+			transform: "translateY(250px)",
+			opacity: 0,
+			display: "none",
+			config: { duration: 100 },
+		}),
+		[]
+	);
+
 
 	useEffect(() => {
 		document.body.style.overflow = 'hidden';
@@ -29,22 +41,31 @@ const ModalCard: FC<IProps> = ({ setIsOpened, children, theme }) => {
 		};
 	}, []);
 
+	const handleClose = () => {
+		setIsClosing(true);
+		closeApi.start({
+			to: async (next) => {
+				await next({ transform: "translateY(250px)", opacity: 0, display: "block" });
+				setIsOpened(false);
+			},
+			from: { transform: "translateY(0px)", opacity: 1 },
+		});
+	};
 
-	const handlerClose = () => {
-		setIsOpened(false)
-	}
+	const CN = cn('modalbox', { modal__bg_childen: theme });
 
-	const CN = cn('modalbox',{modal__bg_childen:theme})
-
-	return createPortal((
+	return createPortal(
 		<div className={CN}>
-			<div className="modal__bg" onClick={handlerClose}></div>
-			<animated.div style={props} className="modal">
+			<div className="modal__bg" onClick={handleClose}></div>
+			<animated.div
+				style={isClosing ? closeProps : openProps}
+				className="modal"
+			>
 				{children}
 			</animated.div>
-		</div>
-	), document.body);
-
+		</div>,
+		document.body
+	);
 };
 
 export default ModalCard;

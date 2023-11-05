@@ -21,17 +21,17 @@ const CityListView: FC<IProps> = ({ submitCity, city }) => {
 		<div className="item__city">
 			<section>
 				<Link to={ROUTE_APP.POINT} relative="path" onClick={() => submitCity(city)}>
-				{city.cityname}
-			</Link>
-			<div className="city__institutes">{city.countOrganization > 1 && <>{city.countOrganization}</>}</div>
+					{city.cityname}
+				</Link>
+				<div className="city__institutes">{city.countOrganization > 1 && <>{city.countOrganization}</>}</div>
 			</section>
-			
+
 			{
-									selectCity?.id === city.id &&
-									<div className="item__check">
-										<img src={selectCityIcon} alt="" />
-									</div>
-								}
+				selectCity?.id === city.id &&
+				<div className="item__check">
+					<img src={selectCityIcon} alt="" />
+				</div>
+			}
 		</div>
 	)
 }

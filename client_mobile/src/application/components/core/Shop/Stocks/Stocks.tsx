@@ -104,8 +104,7 @@ const Stocks:FC<{organization:IOrganization}> = ({organization}) => {
 		speed: 500,
 		rows: 1,
 		slidesPerRow: 1,
-		dots: false,
-		dotsClass:'stocks__points'
+		dots: true,
 	};
 
 
@@ -120,7 +119,6 @@ const Stocks:FC<{organization:IOrganization}> = ({organization}) => {
 					baners.sort((a:any,b:any) => (a.order - b.order)).map((val:any,index:number)=>{
 						return <a key={val._id} onClick={()=> handlerStories(val.stories,index)} className="stocks__item"><StockItem  content={imgRoutDef(val.mobimages[0])} /></a>
 					})
-
 				}
 			</Slider>
 			{

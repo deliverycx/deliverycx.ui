@@ -34,7 +34,6 @@ const OfferAuth = () => {
 			</div>
 			<div className="unauthorized__buttons">
 				<NavLink to={ROUTE_APP.AUTH.REGISTER} className="btn btn-md btn-red">Войти</NavLink>
-				<button onClick={() => navigate(-1)} className="btn btn-md btn-gray">Назад</button>
 			</div>
 			<TabBar />
 		</div>
