@@ -2,6 +2,7 @@
 import { useContext, useEffect } from "react";
 import { PointsContext } from "../HOC.OrganizationCard"
 import OragnizationRequisities from "./OragnizationRequisities";
+import OrganizationCounterHi from "./OrganizationCounter/OrganizationCounterHi";
 
 const OrganizationCard = () => {
 	const useCasePoints = useContext(PointsContext)
@@ -23,7 +24,7 @@ const OrganizationCard = () => {
 			<div className="institute-counter">
 				<h4>Съедено хинкали</h4>
 				<div className="counter-wrapper">
-					<img src={require('assets/images/coutner.png')} />
+					<OrganizationCounterHi />
 				</div>
 			</div>
 			<OragnizationRequisities />

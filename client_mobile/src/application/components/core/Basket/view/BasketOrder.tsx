@@ -1,16 +1,24 @@
 import { NavLink, useNavigate } from "react-router-dom"
 import { ROUTE_APP } from 'application/contstans/route.const';
 import { IBasketPrice } from "modules/BasketModule/interfaces/basket.type";
-import { FC } from "react";
+import { FC, useEffect, useState } from "react";
 import { basketUseCase } from "modules/BasketModule/basket.module";
+import { useOrganizationStatus } from "application/hooks/useOrganizationStatus";
+import { observer } from "mobx-react-lite";
+import { organizationModel, organizationStatusModel } from "modules/OrganizationModule/organization.module";
+import OrderNotificate from "../../Order/view/OrderNotificate";
 
 const BasketOrder:FC<{basketPrice:IBasketPrice}> = ({basketPrice}) => {
 	const navigate = useNavigate()
+	const [disable, setDisable] = useState(false)
+
+	
 
 	const handlerOrder = async () =>{
 		try {
 			await basketUseCase.checkCartHI()
-			navigate(ROUTE_APP.ORDER.ORDER_MAIN)
+			!disable && navigate(ROUTE_APP.ORDER.ORDER_MAIN)
+			
 		} catch (error:any) {
 			if (error.response.status === 422 && error.response) {
 				basketUseCase.basketModel.actionCheckbasketError(error.response.data.errors)
@@ -21,6 +29,7 @@ const BasketOrder:FC<{basketPrice:IBasketPrice}> = ({basketPrice}) => {
 
 
 	return (
+		<>
 		<div className="basket__buttons">
 			<div className="basket__buttons__total">
 				<h3 className="basket__buttons__total-title">
@@ -34,8 +43,11 @@ const BasketOrder:FC<{basketPrice:IBasketPrice}> = ({basketPrice}) => {
 				</div>
 			</div>
 			
-			<div className="btn btn-md btn-red" onClick={handlerOrder}>Оформить</div>
+			<button disabled={disable}  className="btn btn-md btn-red" onClick={handlerOrder}>Оформить</button>
 		</div>
+		<OrderNotificate disable={setDisable}/>
+		</>
+		
 	)
 }
-export default BasketOrder
+export default observer(BasketOrder)

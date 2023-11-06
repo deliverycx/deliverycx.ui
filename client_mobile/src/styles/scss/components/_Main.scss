@@ -283,3 +283,26 @@ body {
   transform: scale(0.9);
   transition: opacity 300ms, transform 300ms;
 }
+
+.tick {
+  font-size: 1.5em;
+	text-align: center;
+}
+.counter-tik_box{
+	width: 100%;
+	margin: 5% 0;
+}
+.counter-tik_title{	
+	font-family: 'manrope';
+	font-weight: 600;
+	font-size: 41px;
+	text-align: center;
+	margin-bottom: 20px;
+}
+.counter-tik_point{
+	font-family: 'manrope';
+	font-weight: 500;
+	font-size: 32px;
+	text-align: center;
+	margin-bottom: 20px;
+}

@@ -24,5 +24,9 @@ class RequestWebhook extends ApiSuper {
   reverveTable(reservebody:any) {
     return this.request(`/webhook/revervetable`)
   }
+	@methods('post')
+  flip(body:any) {
+    return this.request(`/webhook/flipcount`)
+  }
 }
 export default new RequestWebhook()

@@ -42,12 +42,6 @@ const HOCOrder = () => {
 				</div>
 			</div>
 			<HOCOrderMetods />
-			{
-				statusTSX.NoTimeWork() && <OrderNotificate masage='nowork' />
-			}
-			{
-				statusTSX.ONTimeWork() && <OrderNotificate masage='onwork' />
-			}
 			
 			<div className={CN}>
 

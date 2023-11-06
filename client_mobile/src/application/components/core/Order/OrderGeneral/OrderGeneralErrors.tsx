@@ -2,7 +2,8 @@ import { FC } from "react"
 
 const OrderGeneralErrors:FC<{error:string}> = ({error}) =>{
 	return (
-		<div className="errors">
+		<div className="order_errors">
+			<h4>Ошибка при заказе</h4>
 			{
 				error
 			}

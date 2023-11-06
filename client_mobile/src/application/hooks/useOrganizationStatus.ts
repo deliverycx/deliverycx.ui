@@ -3,8 +3,9 @@
 import { DELIVERY_METODS, ORG_STATUS } from "application/contstans/const.orgstatus"
 import { workTimeHelp } from "application/helpers/workTime"
 import { IPointStatus } from "modules/OrganizationModule/OrganizationStatuses/interfaces/organizationStatus.type"
-import { organizationModel, organizationStatusModel } from "modules/OrganizationModule/organization.module"
+import { organizationModel, organizationStatusModel, useCaseOrganizationStatus } from "modules/OrganizationModule/organization.module"
 import React, { ReactNode } from "react"
+import { useQuery } from "react-query"
 
 
 export class StatusTSX {
@@ -87,6 +88,10 @@ export class StatusTSX {
 
 export const useOrganizationStatus = (): [StatusTSX, any] => {
 	const { organizationStatus,timeworkOrganization } = organizationStatusModel
+
+	useQuery('pointstatus', () => useCaseOrganizationStatus.statusOrganization(), {
+		refetchOnWindowFocus: true,
+	})
 
 	const tsx = new StatusTSX(organizationStatus as string, timeworkOrganization?.typework)
 

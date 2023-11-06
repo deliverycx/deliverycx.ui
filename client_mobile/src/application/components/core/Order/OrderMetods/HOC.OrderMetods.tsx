@@ -13,10 +13,12 @@ const HOCOrderMetods = () =>{
 		if(selectDeliveryTipe && deliveryTipe){
 			deliveryTipe.forEach((el) =>{
 				if(el.metod !== selectDeliveryTipe.metod){
-					//navigate(ROUTE_APP.MAIN)
+					//
 				}
 			})
 			useCaseOrganizationStatus.statusOrganization()
+		}else{
+			navigate(ROUTE_APP.MAIN)
 		}
 		
 	},[selectDeliveryTipe])

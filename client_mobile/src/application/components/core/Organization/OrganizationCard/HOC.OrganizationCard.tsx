@@ -47,7 +47,9 @@ const HOCOrganizationCard = () => {
 							}
 							<div className="map__institute-content no-drag">
 								<div className="institute-header">
+									
 									<OrganizationCard />
+									<OrganizationStatus />
 									{
 										timeworkOrganization &&
 										<OranizationWorkTime />
@@ -63,7 +65,7 @@ const HOCOrganizationCard = () => {
 									<OrganizationTableRestaurant />
 								</div>
 							</div>
-							<OrganizationStatus />
+							
 
 						</div>
 					</ModalCard>

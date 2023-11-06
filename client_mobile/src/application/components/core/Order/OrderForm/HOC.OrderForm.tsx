@@ -12,11 +12,14 @@ import { observer } from 'mobx-react-lite';
 import { ROUTE_APP } from 'application/contstans/route.const';
 import { NavLink } from 'react-router-dom';
 import HOCOrderGeneral from '../OrderGeneral/HOC.OrderGeneral';
+import OrderNotificate from '../view/OrderNotificate';
 
 const HOCOrderForm = () => {
 	const useCase = adapterComponentUseCase(useOrderFromViewModel)
 	const { builder,formik } = useCase.data
 	const {error} = useCase.status
+
+	const [disable, setDisable] = useState(false)
 
 	const formWrapper = new OrderFormBuilder(formik, useCase);
 
@@ -33,8 +36,9 @@ const HOCOrderForm = () => {
 					}
 				</div>
 				<HOCOrderGeneral errors={error} />
-
-				<div className="order-placement__buttons">
+				{
+					!disable &&
+					<div className="order-placement__buttons">
 					<input disabled={formik.isSubmitting} className="btn btn-md btn-red" type="submit" value="Всё верно, продолжить" />
 					
 					<NavLink to={ROUTE_APP.CART.BASKET_MAIN} className="btn btn-md btn-gray">Назад</NavLink>
@@ -44,7 +48,10 @@ const HOCOrderForm = () => {
 						</div>
 					</NavLink>
 				</div>
+				}	
+				
 			</form>
+			<OrderNotificate disable={setDisable} />
 		</FormikProvider>
 	)
 }
