@@ -27,6 +27,7 @@ export class UserRepository extends UserEntity{
 			}
 		} catch (error) {
 			console.log(error);
+			this.repositoryCreateGuest()
 		}
 	}
 
