@@ -20,7 +20,12 @@ const OrderNotificate:FC<{disable:any}> = ({disable}) =>{
 	useEffect(() => {
 		if(statusTSX.statuses){
 			setModal(true)
-			disable(true)
+			if(timeworkOrganization && timeworkOrganization.typework === 'ONWORK'){
+				disable(false)
+			}else{
+				disable(true)
+			}
+			
 		}else{
 			disable(false)
 		}
@@ -28,7 +33,7 @@ const OrderNotificate:FC<{disable:any}> = ({disable}) =>{
 
 	}, [timeworkOrganization])
 
-	
+	console.log(timeworkOrganization);
 	statusTSX.NoWorkPoint((
 		<div className="modal__wrapper">
 			<div className="modal__header">

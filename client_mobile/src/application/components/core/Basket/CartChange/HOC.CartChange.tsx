@@ -5,6 +5,8 @@ import { adapterComponentUseCase } from 'adapters/adapterComponents';
 import { CartChangeViewModel } from "./CartChange.viewModel";
 import { observer } from "mobx-react-lite";
 import { ICartProd } from "modules/BasketModule/interfaces/basket.type";
+import { userUseCase } from "modules/UserModule/user.module";
+import OrderAuthNotificate from "../../Order/view/OrderAuthNotificate";
 
 type IProps = {
 	theme: "list" | "card" | "basket"
@@ -17,8 +19,8 @@ const HOCCartChange: FC<IProps> = ({ theme, product, close }) => {
 	const { changeCount, changeCartCount,basketPrice,prodInCart } = useCase.data
 	const { changeCountHandler, handlerInputAmout, handlerInputAddAmout, handlerAddCard, setChangeCartCount } = useCase.handlers
 
-	console.log('changeCartCount',changeCartCount);
-	console.log('changeCount',changeCount,typeof changeCount);
+	//console.log('changeCartCount',changeCartCount);
+	//console.log('changeCount',changeCount,typeof changeCount);
 
 
 	
@@ -84,7 +86,7 @@ const HOCCartChange: FC<IProps> = ({ theme, product, close }) => {
 						
 				}
 
-
+				
 			</>
 		)
 	} else if (theme === 'card') {

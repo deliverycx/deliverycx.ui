@@ -11,6 +11,7 @@ import OrderNotificate from "../../Order/view/OrderNotificate";
 const BasketOrder:FC<{basketPrice:IBasketPrice}> = ({basketPrice}) => {
 	const navigate = useNavigate()
 	const [disable, setDisable] = useState(false)
+	const time = organizationStatusModel.timeworkOrganization
 
 	
 

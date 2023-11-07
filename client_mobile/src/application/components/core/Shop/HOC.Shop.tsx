@@ -7,6 +7,8 @@ import LoaderProduct from "application/components/common/Loaders/loaderProduct";
 import Categories from "./Categories/Categories";
 import HOCProducts from "./Products/HOC.Products";
 import TabBar from "application/components/common/TabBar/TabBar";
+import { userUseCase } from "modules/UserModule/user.module";
+import OrderAuthNotificate from "../Order/view/OrderAuthNotificate";
 
 const HOCShop = () => {
 	const useCase = adapterComponentUseCase(useShopViewModel)
@@ -40,7 +42,9 @@ const HOCShop = () => {
 				</div>
 			</div>
 			
-
+			{
+				!userUseCase.checkAuthUser() && <OrderAuthNotificate openmodal={true} />
+			}
 		</div>
 		<TabBar />	
 		</>

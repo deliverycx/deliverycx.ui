@@ -4,6 +4,7 @@ import { useEffect, useRef, useState } from "react";
 import { useNavigate, useParams } from 'react-router-dom';
 import { ROUTE_APP } from 'application/contstans/route.const';
 import { appUseCase } from "modules/AppModule/app.module";
+import ym from 'react-yandex-metrika';
 
 export function useOrderCreateViewModel() {
 	const {hash} = useParams()
@@ -31,6 +32,7 @@ export function useOrderCreateViewModel() {
 	useEffect(()=>{
 		if(orderNumber){
 			appUseCase.crearOrder()
+			ym('reachGoal','ordercreate')
 		}
 	},[orderNumber])
 
