@@ -56,7 +56,7 @@ const PopupPoint = () => {
                   alt="Телефон заведения"
                />
                <a href={`tel: ${address.phone}`}>
-                  {address.phone}я
+                  {address.phone}
                </a>
             </div>
 						{
