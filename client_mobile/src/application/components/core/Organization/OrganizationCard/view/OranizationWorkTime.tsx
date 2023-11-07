@@ -56,10 +56,10 @@ const OranizationWorkTime = () => {
 					}
 					
 				</button>
-				<button className="btn btn-mini btn-gray no-drag">
+				<a href="tel:+79782287220" className="btn btn-mini btn-gray no-drag">
 					<img src={require('assets/images/icons/phone.png')} alt="" />
 					+7 978 228-72-20
-				</button>
+				</a>
 			</div>
 			{modalWork && !checktype &&
 				<ModalCard setIsOpened={setModalWork} theme="children">

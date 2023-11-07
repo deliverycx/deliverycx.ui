@@ -6,16 +6,10 @@
   <component name="ChangeListManager">
     <list default="true" id="67ecf96e-fe80-4340-a9f6-f5acc541cf3e" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client_mobile/src/application/components/common/Auth/view/OfferAuth.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client_mobile/src/application/components/common/Auth/view/OfferAuth.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client_mobile/src/application/components/common/Modals/ModalCard.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client_mobile/src/application/components/common/Modals/ModalCard.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client_mobile/src/application/components/core/City/view/CityListView.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client_mobile/src/application/components/core/City/view/CityListView.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client_mobile/src/application/components/core/Shop/Stocks/Stocks.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client_mobile/src/application/components/core/Shop/Stocks/Stocks.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client_mobile/src/styles/scss/components/_Basket.scss" beforeDir="false" afterPath="$PROJECT_DIR$/client_mobile/src/styles/scss/components/_Basket.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client_mobile/src/styles/scss/components/_Input.scss" beforeDir="false" afterPath="$PROJECT_DIR$/client_mobile/src/styles/scss/components/_Input.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client_mobile/src/styles/scss/components/_Main.scss" beforeDir="false" afterPath="$PROJECT_DIR$/client_mobile/src/styles/scss/components/_Main.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client_mobile/src/styles/scss/components/_ProductCard.scss" beforeDir="false" afterPath="$PROJECT_DIR$/client_mobile/src/styles/scss/components/_ProductCard.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client_mobile/src/styles/scss/components/_SelectCity.scss" beforeDir="false" afterPath="$PROJECT_DIR$/client_mobile/src/styles/scss/components/_SelectCity.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client_mobile/src/styles/scss/components/_stocks.scss" beforeDir="false" afterPath="$PROJECT_DIR$/client_mobile/src/styles/scss/components/_stocks.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client_desktop/application/components/core/Location/HOC_Points/view/PopupPoint.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client_desktop/application/components/core/Location/HOC_Points/view/PopupPoint.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client_mobile/src/application/components/common/Menu/MainMenu.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client_mobile/src/application/components/common/Menu/MainMenu.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client_mobile/src/application/components/core/Organization/OrganizationCard/view/OranizationWorkTime.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client_mobile/src/application/components/core/Organization/OrganizationCard/view/OranizationWorkTime.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client_mobile/src/application/contstans/route.const.ts" beforeDir="false" afterPath="$PROJECT_DIR$/client_mobile/src/application/contstans/route.const.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -71,7 +65,10 @@
       <workItem from="1698851313328" duration="10379000" />
       <workItem from="1698934437761" duration="916000" />
       <workItem from="1699184959679" duration="890000" />
-      <workItem from="1699188736916" duration="8580000" />
+      <workItem from="1699188736916" duration="8723000" />
+      <workItem from="1699275802167" duration="12000" />
+      <workItem from="1699277059507" duration="56000" />
+      <workItem from="1699362742421" duration="1244000" />
     </task>
     <servers />
   </component>

@@ -13,6 +13,7 @@ import iconThumbDown from "assets/images/icons/thumb_down.png";
 import iconWork from "assets/images/icons/work.png";
 import iconHandshake from "assets/images/icons/handshake.png";
 import iconChat from "assets/images/icons/chat.png";
+import iconInfo from "assets/images/icons/info_black.png";
 import iconClose from "assets/images/icons/close.png";
 import iconVk from "assets/images/icons/vk.png";
 import iconTg from "assets/images/icons/telegram.png";
@@ -103,6 +104,10 @@ const MainMenu:FC<{closeMenu:any}> = observer(({closeMenu}) => {
                     <NavLink to="">
                         <img src={iconHandshake} alt=""/>
                         Франшиза
+                    </NavLink>
+                    <NavLink to={ROUTE_APP.PRAVORAZDEL}>
+                        <img src={iconInfo} alt=""/>
+                        Правовая информация
                     </NavLink>
                     <NavLink to="">
                         <img src={iconChat} alt=""/>
