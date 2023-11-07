@@ -5,7 +5,7 @@ import AppRouter from './routes/AppRouter';
 import { userUseCase } from 'modules/UserModule/user.module';
 import { useEffect } from 'react';
 import { profileUseCase } from 'modules/Profile/profile.module';
-
+import { YMInitializer } from 'react-yandex-metrika';
 
 
 const App = (): JSX.Element => {
@@ -14,6 +14,7 @@ const App = (): JSX.Element => {
 		userUseCase.checkUserGuest()
 		profileUseCase.getProfile()
 	},[])
+
 
 	return (
 		<>
@@ -25,7 +26,7 @@ const App = (): JSX.Element => {
 				//NestedRoute()
 			}
 
-
+		<YMInitializer accounts={[95435515]} />
 		</>
 
 	)

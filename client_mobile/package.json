@@ -60,6 +60,7 @@
     "react-spring": "9.7.2",
     "react-transition-group": "^4.4.5",
     "react-yandex-maps": "^4.6.0",
+    "react-yandex-metrika": "^2.6.0",
     "redux": "4.2.1",
     "redux-devtools-extension": "^2.13.9",
     "redux-logger": "3.0.6",

@@ -17,13 +17,17 @@ const HOCCartChange: FC<IProps> = ({ theme, product, close }) => {
 	const { changeCount, changeCartCount,basketPrice,prodInCart } = useCase.data
 	const { changeCountHandler, handlerInputAmout, handlerInputAddAmout, handlerAddCard, setChangeCartCount } = useCase.handlers
 
-	//console.log('changeCartCount',changeCartCount);
-	//console.log('changeCount',changeCount);
+	console.log('changeCartCount',changeCartCount);
+	console.log('changeCount',changeCount,typeof changeCount);
+
+
+	
+
 	if (theme === 'list') {
 		return (
 			<>
 				{
-					changeCount ?
+					changeCount !== 0 ?
 						<div className="input__counter input__counter-sm no-drag">
 
 							<>
@@ -45,7 +49,7 @@ const HOCCartChange: FC<IProps> = ({ theme, product, close }) => {
 									</svg>
 								</div>
 
-								<input type="number" onChange={e => {
+								<input type="number" onBeforeInput={e => console.log(e,'ww')} onChange={e => {
 									e.preventDefault();
 									handlerInputAmout(product.id, Number(e.target.value))
 								}} value={changeCount} />
@@ -77,6 +81,7 @@ const HOCCartChange: FC<IProps> = ({ theme, product, close }) => {
 							</svg>
 							Добавить
 						</button>
+						
 				}
 
 
@@ -141,8 +146,8 @@ const HOCCartChange: FC<IProps> = ({ theme, product, close }) => {
 						<img src={require("assets/images/icons/add_white.png")} alt="" />
 						{changeCartCount !== 0 
 							? `
-									${(product.price * changeCartCount)} ₽
-									(${basketPrice &&  (product.price * (changeCount + changeCartCount))}₽)
+									
+									${basketPrice &&  (product.price * (changeCount + changeCartCount))}₽
 								` 
 							: "Добавить"}
 					</button>
