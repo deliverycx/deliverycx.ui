@@ -1,6 +1,8 @@
 .basket{
   padding: 56px 0 124px;
   display: flex;
+  height: 100vh;
+  justify-content: center;
   flex-direction: column;
 
   &__content{

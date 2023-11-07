@@ -10,7 +10,7 @@
     gap: 4px;
     align-self: stretch;
     background: #fff;
-		margin-bottom: 15px;
+    margin-bottom: 15px;
   }
   &__header {
     display: flex;
@@ -37,6 +37,7 @@
     line-height: 20px;
   }
   &__list {
+    width: 100%;
     display: flex;
     padding: 0 16px;
     align-items: flex-start;
@@ -44,7 +45,7 @@
     gap: 8px;
     align-self: stretch;
     flex-wrap: wrap;
-    
+
   }
   &__item {
     width: 100%;
@@ -52,18 +53,19 @@
 
     gap: 16px;
     cursor: pointer;
-		margin-bottom: 10px;
-		&-box{
-			width: 100%;
-			display: flex;
-			flex-wrap: wrap;
-			justify-content: space-between;
-		}
+    margin-bottom: 10px;
+    &-box{
+      width: 100%;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+    }
     .item {
+
       &__letter {
         width: 40px;
         height: 40px;
-        
+
 
         color: $c_red;
         font-size: 16px;
@@ -73,25 +75,25 @@
         flex-shrink: 0;
       }
       &__city {
-        width: 30%;
-				min-width: 150px;
+        //background-color: red;
+        width: 100%;
         display: flex;
-				justify-content: space-between;
-				padding-right: 20px;
+        justify-content: space-between;
+        padding-right: 20px;
         gap: 8px;
         color: $c-black;
         font-size: 16px;
-				margin-bottom: 10px;
+        margin-bottom: 10px;
         font-style: normal;
         font-weight: 400;
         line-height: 20px;
-				section{
-					display: flex;
-				}
-				a{
-					text-decoration: none;
-					color: #111111;
-				}
+        section{
+          display: flex;
+        }
+        a{
+          text-decoration: none;
+          color: #111111;
+        }
         .city {
           &__institutes {
             color: $c-gray;
@@ -99,7 +101,7 @@
             font-style: normal;
             font-weight: 400;
             line-height: 20px;
-						margin-left: 10px;
+            margin-left: 10px;
           }
         }
       }
@@ -128,13 +130,13 @@
     }
   }
 }
-@media screen and (max-width:600px) {
-	.select__item .item__city{
-		width: 50%;
-	}
-}
-@media screen and (max-width:400px) {
-	.select__item .item__city{
-		width: 70%;
-	}
-}
+//@media screen and (max-width:600px) {
+//  .select__item .item__city{
+//    width: 50%;
+//  }
+//}
+//@media screen and (max-width:400px) {
+//  .select__item .item__city{
+//    width: 70%;
+//  }
+//}
