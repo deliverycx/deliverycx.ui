@@ -17,7 +17,7 @@ type IProps = {
 const HOCCartChange: FC<IProps> = ({ theme, product, close }) => {
 	const useCase = adapterComponentUseCase(CartChangeViewModel, product)
 	const { changeCount, changeCartCount,basketPrice,prodInCart } = useCase.data
-	const { changeCountHandler, handlerInputAmout, handlerInputAddAmout, handlerAddCard, setChangeCartCount } = useCase.handlers
+	const { changeCountHandler, handlerInputAmout, handlerInputAddAmout, handlerAddCard, setChangeCartCount, setChangeCount } = useCase.handlers
 
 	//console.log('changeCartCount',changeCartCount);
 	//console.log('changeCount',changeCount,typeof changeCount);
@@ -51,7 +51,9 @@ const HOCCartChange: FC<IProps> = ({ theme, product, close }) => {
 									</svg>
 								</div>
 
-								<input type="number" onBeforeInput={e => console.log(e,'ww')} onChange={e => {
+								<input type="number" onBlur={e => {
+									e.target.value === '' && setChangeCount(1)
+								}} onChange={e => {
 									e.preventDefault();
 									handlerInputAmout(product.id, Number(e.target.value))
 								}} value={changeCount} />

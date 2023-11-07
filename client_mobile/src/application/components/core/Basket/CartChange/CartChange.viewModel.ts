@@ -60,6 +60,7 @@ export function CartChangeViewModel(this: any, product: IProduct) {
 	}
 	
 
+
 	const handlerInputAmout = (id:string,count:number) =>{
 		if(count === 0){
 			setChangeCount('')
