@@ -3,6 +3,7 @@ import { useEffect } from 'react';
 import { userModel } from "modules/UserModule/user.module";
 import { ROUTE_APP } from 'application/contstans/route.const';
 import { profileModel, profileUseCase } from "modules/Profile/profile.module";
+import ym from 'react-yandex-metrika';
 
 export function useProfileViewModel(this:any) {
 	const navigate = useNavigate()
@@ -12,6 +13,7 @@ export function useProfileViewModel(this:any) {
 	useEffect(()=>{
 		if(user && user.phone){
 			profileUseCase.getProfile()
+			ym('reachGoal','autorization_success')
 		}else{
 			navigate(ROUTE_APP.AUTH.REGISTER)
 		}
