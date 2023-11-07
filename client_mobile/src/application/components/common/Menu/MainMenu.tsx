@@ -1,8 +1,8 @@
 /* eslint-disable no-constant-condition */
-import React, {FC, useContext, useEffect, useRef} from 'react';
+import React, { FC, useContext, useEffect, useRef } from 'react';
 
-import {NavLink} from "react-router-dom";
-import {observer} from "mobx-react-lite";
+import { NavLink } from "react-router-dom";
+import { observer } from "mobx-react-lite";
 import iconPerson from "assets/images/icons/person.png";
 import iconLocation from "assets/images/icons/location.png";
 import iconListAlt from "assets/images/icons/list_alt.png";
@@ -17,112 +17,124 @@ import iconClose from "assets/images/icons/close.png";
 import iconVk from "assets/images/icons/vk.png";
 import iconTg from "assets/images/icons/telegram.png";
 import { ROUTE_APP } from 'application/contstans/route.const';
+import { userModel } from 'modules/UserModule/user.module';
 
-const MainMenu:FC<{closeMenu:any}> = observer(({closeMenu}) => {
 
-    useEffect(() => {
-        document.body.style.overflow = 'hidden';
+const MainMenu: FC<{ closeMenu: any }> = observer(({ closeMenu }) => {
+	const user = userModel.guestUser
 
-        return () => {
-            document.body.style.overflow = '';
-        };
-    }, []);
-    
-    const menuRef = useRef<any>()
-    useEffect(() => {
-        setTimeout(() => {
-            menuRef.current.classList.add('opened')
-        }, 50)
-    }, [menuRef])
-    const handleClose = () => {
-        menuRef.current.classList.remove('opened')
-        setTimeout(() => {
-            closeMenu(false)
-        }, 300)
-    }
-    const handleWrapperClick = (e:any) => {
-        if (e.target.classList.contains('menu-wrapper')) {
-            menuRef.current.classList.remove('opened')
-            setTimeout(() => {
-                closeMenu(false)
-            }, 300)
-        }
+	useEffect(() => {
+		document.body.style.overflow = 'hidden';
 
-    }
-    return (
-        <div className="menu-wrapper" onClick={(e) => handleWrapperClick(e)}>
-            <div ref={menuRef} className="menu">
-                <div className="menu-header">
-                    <button onClick={handleClose}>
-                        <img src={iconClose} alt=""/>
-                    </button>
-                </div>
-                <div className="menu-menu">
-                    {true ? (
-                        <NavLink to={ROUTE_APP.AUTH.REGISTER}>
-                            <img src={iconPerson} alt=""/>
-                            Профиль
-                        </NavLink>
-                    ):(
-                        <NavLink to="">
-                            <img src={iconPerson} alt=""/>
-                            Профиль
-                        </NavLink>
-                    )}
-                    <NavLink to="">
-                        <img src={iconLocation} alt=""/>
-                        Адреса доставки
-                    </NavLink>
-                    <NavLink to="">
-                        <img src={iconListAlt} alt=""/>
-                        Заказы
-                    </NavLink>
-                    <NavLink to="">
-                        <img src={iconStoreGray} alt=""/>
-                        <span>
-                            Симферополь
-                            <span>ул. Турецкая, 25</span>
-                        </span>
-                    </NavLink>
-                    <NavLink to="">
-                        <img src={iconTableRestaurantGray} alt=""/>
-                        Забронировать столик
-                    </NavLink>
-                    <NavLink to="">
-                        <img src={iconThumbUp} alt=""/>
-                        Похвалить
-                    </NavLink>
-                    <NavLink to="">
-                        <img src={iconThumbDown} alt=""/>
-                        Пожаловаться
-                    </NavLink>
-                    <NavLink to="">
-                        <img src={iconWork} alt=""/>
-                        Вакансии
-                    </NavLink>
-                    <NavLink to="">
-                        <img src={iconHandshake} alt=""/>
-                        Франшиза
-                    </NavLink>
-                    <NavLink to="">
-                        <img src={iconChat} alt=""/>
-                        Связаться с нами
-                    </NavLink>
-                </div>
-                <div className="menu-social">
-                    <NavLink to="https://vk.com/starikhinkalych" target="_blank">
-                        <img src={iconVk} alt=""/>
-                    </NavLink>
-                    <NavLink to="https://t.me/s/starikhinkalych" target="_blank">
-                        <img src={iconTg} alt=""/>
-                    </NavLink>
-                </div>
-                <NavLink to="https://доставка.хинкалыч.рф/" className="menu-full-link">
-                    Полная версия сайта
-                </NavLink>
-            </div>
-        </div>
-    );
+		return () => {
+			document.body.style.overflow = '';
+		};
+	}, []);
+
+	const menuRef = useRef<any>()
+	useEffect(() => {
+		setTimeout(() => {
+			menuRef.current.classList.add('opened')
+		}, 50)
+	}, [menuRef])
+	const handleClose = () => {
+		menuRef.current.classList.remove('opened')
+		setTimeout(() => {
+			closeMenu(false)
+		}, 300)
+	}
+	const handleWrapperClick = (e: any) => {
+		if (e.target.classList.contains('menu-wrapper')) {
+			menuRef.current.classList.remove('opened')
+			setTimeout(() => {
+				closeMenu(false)
+			}, 300)
+		}
+
+	}
+
+
+
+
+	return (
+		<div className="menu-wrapper" onClick={(e) => handleWrapperClick(e)}>
+			<div ref={menuRef} className="menu">
+				<div className="menu-header">
+					<button onClick={handleClose}>
+						<img src={iconClose} alt="" />
+					</button>
+				</div>
+				<div className="menu-menu">
+					{user && user.phone ? (
+						<>
+							<NavLink to={ROUTE_APP.PROFILE.PROFILE_MAIN}>
+								<img src={iconPerson} alt="" />
+								Профиль
+							</NavLink>
+							<NavLink to={ROUTE_APP.PROFILE.PROFILE_ADRESS}>
+								<img src={iconLocation} alt="" />
+								Адреса доставки
+							</NavLink>
+							<NavLink to={ROUTE_APP.PROFILE.PROFILE_ORDERS}>
+								<img src={iconListAlt} alt="" />
+								Заказы
+							</NavLink>
+						</>
+
+
+					) : (
+						<NavLink to={ROUTE_APP.AUTH.REGISTER}>
+							<img src={iconPerson} alt="" />
+							Войти в	профиль
+						</NavLink>
+					)}
+
+					<NavLink to={ROUTE_APP.MAIN}>
+						<img src={iconStoreGray} alt="" />
+						<span>
+							Симферополь
+							<span>ул. Турецкая, 25</span>
+						</span>
+					</NavLink>
+	
+					<NavLink to="">
+						<img src={iconThumbUp} alt="" />
+						Похвалить
+					</NavLink>
+					<NavLink to="https://t.me/StarikHinkalichBot">
+						<img src={iconThumbDown} alt="" />
+						Пожаловаться
+					</NavLink>
+					<NavLink to="https://docs.google.com/forms/d/e/1FAIpQLScF_kqRIOC4YtZGJnravy94pIEbzlmW4MM3IWhR_tBGLqcQ0g/viewform?pli=1">
+						<img src={iconWork} alt="" />
+						Вакансии
+					</NavLink>
+					<NavLink to="https://франшиза.хинкалыч.рф/">
+						<img src={iconHandshake} alt="" />
+						Франшиза
+					</NavLink>
+					<NavLink to="https://t.me/StarikHinkalichBot" target="_blank">
+						<img src={iconChat} alt="" />
+						Связаться с нами
+					</NavLink>
+				</div>
+				<div className="menu-social">
+					<NavLink to="https://vk.com/starikhinkalych" target="_blank">
+						<img src={iconVk} alt="" />
+					</NavLink>
+					<NavLink to="https://t.me/s/starikhinkalych" target="_blank">
+						<img src={iconTg} alt="" />
+					</NavLink>
+				</div>
+				<NavLink to="https://доставка.хинкалыч.рф/pravorazdel" className="menu-full-link">
+					Правовой раздел
+				</NavLink>
+				<NavLink to="https://доставка.хинкалыч.рф/" className="menu-full-link">
+					Калорийность и состав
+				</NavLink>
+			</div>
+		</div>
+	);
 });
 
 export default MainMenu;
