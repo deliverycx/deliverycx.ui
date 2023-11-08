@@ -6,7 +6,10 @@
   <component name="ChangeListManager">
     <list default="true" id="67ecf96e-fe80-4340-a9f6-f5acc541cf3e" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client_desktop/application/components/core/Location/HOC_Points/view/PopupPoint.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client_desktop/application/components/core/Location/HOC_Points/view/PopupPoint.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client_mobile/src/application/components/core/Organization/OrganizationCard/view/OranizationWorkTime.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client_mobile/src/application/components/core/Organization/OrganizationCard/view/OranizationWorkTime.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client_mobile/src/application/components/core/Shop/Products/PoductListItem.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client_mobile/src/application/components/core/Shop/Products/PoductListItem.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client_mobile/src/styles/scss/components/_Basket.scss" beforeDir="false" afterPath="$PROJECT_DIR$/client_mobile/src/styles/scss/components/_Basket.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client_mobile/src/styles/scss/components/_ProductCard.scss" beforeDir="false" afterPath="$PROJECT_DIR$/client_mobile/src/styles/scss/components/_ProductCard.scss" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -66,7 +69,8 @@
       <workItem from="1699275802167" duration="12000" />
       <workItem from="1699277059507" duration="56000" />
       <workItem from="1699362742421" duration="1279000" />
-      <workItem from="1699367232141" duration="15000" />
+      <workItem from="1699367232141" duration="91000" />
+      <workItem from="1699428253767" duration="1435000" />
     </task>
     <servers />
   </component>
