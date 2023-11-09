@@ -28,7 +28,7 @@ const HOCDeliveryMap = () => {
 			{
 				point &&
 				<>
-				<div  className="map__topbar">
+				<div className="map__topbar">
 				<div className="map__topbar-btn" onClick={()=> navigate(-1)}>
 					<img src={require("assets/images/icons/arrow_back.png")} alt="" />
 				</div>
@@ -39,9 +39,9 @@ const HOCDeliveryMap = () => {
 					<DeliveryAdress openModalAdress={true}/>
 				</DeliveryMapContext.Provider>
 				</>
-				
+
 			}
-			
+
 			
 		</div>
 

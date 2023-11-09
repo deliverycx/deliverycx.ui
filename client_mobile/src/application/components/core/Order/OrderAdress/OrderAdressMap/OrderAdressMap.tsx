@@ -100,14 +100,14 @@ const OrderAdressMap: FC<IProps> = ({ formik }) => {
 									)
 								)}
 							</div>
-						</div>
 
-						<div className="delivery-addresses__buttons">
-							<button className="btn btn-md btn-red gap-4" onClick={() => navigate(ROUTE_APP.MAP.DELIVERY_MAP)}>
+							<div className="delivery-addresses__buttons">
+								<button className="btn btn-md btn-red gap-4" onClick={() => navigate(ROUTE_APP.MAP.DELIVERY_MAP)}>
 
-								Добавить новый адрес
-							</button>
-							<button className="btn btn-md btn-gray" onClick={() => setIsModalOpened(false)}>Закрыть</button>
+									Добавить новый адрес
+								</button>
+								<button className="btn btn-md btn-gray" onClick={() => setIsModalOpened(false)}>Закрыть</button>
+							</div>
 						</div>
 					</div>
 				</ModalCard>

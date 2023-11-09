@@ -5,12 +5,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="67ecf96e-fe80-4340-a9f6-f5acc541cf3e" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/client_mobile/src/assets/images/icons/close_stories.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client_mobile/src/assets/images/icons/closestories2.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client_mobile/src/application/components/core/Shop/Stocks/Stocks.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client_mobile/src/application/components/core/Shop/Stocks/Stocks.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client_mobile/src/application/components/common/Maps/DeliveryMap/HOC.DeliveryMap.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client_mobile/src/application/components/common/Maps/DeliveryMap/HOC.DeliveryMap.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client_mobile/src/application/components/core/Order/OrderAdress/OrderAdressMap/OrderAdressMap.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client_mobile/src/application/components/core/Order/OrderAdress/OrderAdressMap/OrderAdressMap.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client_mobile/src/application/components/core/Organization/HOC.Organizations.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client_mobile/src/application/components/core/Organization/HOC.Organizations.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client_mobile/src/styles/scss/_reset.scss" beforeDir="false" afterPath="$PROJECT_DIR$/client_mobile/src/styles/scss/_reset.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client_mobile/src/styles/scss/components/_stocks.scss" beforeDir="false" afterPath="$PROJECT_DIR$/client_mobile/src/styles/scss/components/_stocks.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client_mobile/src/styles/scss/components/_MapScreen.scss" beforeDir="false" afterPath="$PROJECT_DIR$/client_mobile/src/styles/scss/components/_MapScreen.scss" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -73,7 +73,7 @@
       <workItem from="1699367232141" duration="91000" />
       <workItem from="1699428253767" duration="5764000" />
       <workItem from="1699526431512" duration="404000" />
-      <workItem from="1699529864561" duration="7373000" />
+      <workItem from="1699529864561" duration="8802000" />
     </task>
     <servers />
   </component>

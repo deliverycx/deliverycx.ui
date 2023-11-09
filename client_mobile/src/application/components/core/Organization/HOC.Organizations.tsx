@@ -27,7 +27,7 @@ const HOCOrganizations = () => {
 		<div className="map">
 
 			<HOCOrganizationCard />
-			<div onClick={handleBackCity} className="map__topbar">
+			<div onClick={handleBackCity} className="map__topbar map__topbar__fixed">
 				<div className="map__topbar-btn">
 					<img src={iconArrowBack} alt="" />
 				</div>
