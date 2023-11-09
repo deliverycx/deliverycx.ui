@@ -1,7 +1,12 @@
+.auth-block {
+  display: flex;
+  justify-content: center;
+  height: 100vh;
+}
+
 .basket{
   padding: 56px 0 124px;
   display: flex;
-  
   flex-direction: column;
 
   &__content{

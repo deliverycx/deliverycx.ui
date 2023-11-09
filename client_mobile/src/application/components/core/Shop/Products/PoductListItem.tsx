@@ -48,7 +48,9 @@ const PoductListItem: FC<IProps> = ({ product, setModalmodalProduct,stoplist }) 
 				</div>
 			</div>
 			<div className="product-card__content" onClick={() => setModalmodalProduct(product)}>
-				<h5 className="product-card__content-title">
+				<h5 style={{
+					color: disableItem ? '#BFBFBF' : ''
+				}} className="product-card__content-title">
 					{product.name}
 				</h5>
 				<div className="product-card__content__info">

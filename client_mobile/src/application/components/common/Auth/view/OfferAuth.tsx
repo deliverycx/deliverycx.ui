@@ -13,7 +13,7 @@ const OfferAuth = () => {
 	const navigate = useNavigate()
 
 	return (
-		<div className="basket">
+		<div className="basket auth-block">
 			<div className="top-bar">
 				<div className="top-bar__left">
 					<div className="top-bar__icon">
