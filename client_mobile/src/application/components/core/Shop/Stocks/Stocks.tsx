@@ -31,10 +31,6 @@ const Stocks:FC<{organization:IOrganization}> = ({organization}) => {
 				setSlidesToShow(2.3);
 			} else if (window.innerWidth >= 600) {
 				setSlidesToShow(1.8);
-			} else if (window.innerWidth >= 570) {
-				setSlidesToShow(1.5);
-			} else if (window.innerWidth >= 470) {
-				setSlidesToShow(1.4);
 			} else {
 				setSlidesToShow(1);
 			}

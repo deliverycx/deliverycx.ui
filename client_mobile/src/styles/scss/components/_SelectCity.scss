@@ -37,7 +37,7 @@
     line-height: 20px;
   }
   &__list {
-    width: 100%;
+    //width: 100%;
     display: flex;
     padding: 0 16px;
     align-items: flex-start;
@@ -53,6 +53,13 @@
 
     gap: 16px;
     cursor: pointer;
+    //margin-bottom: 10px;
+    //&-box{
+    //  width: 100%;
+    //  display: flex;
+    //  flex-wrap: wrap;
+    //  justify-content: space-between;
+    //}
     margin-bottom: 10px;
     &-box{
       width: 100%;
@@ -65,7 +72,6 @@
       &__letter {
         width: 40px;
         height: 40px;
-
 
         color: $c_red;
         font-size: 16px;
@@ -130,11 +136,11 @@
     }
   }
 }
-//@media screen and (max-width:600px) {
-//  .select__item .item__city{
-//    width: 50%;
-//  }
-//}
+@media screen and (min-width:560px) {
+  .select__item .item__city{
+    width: 50%;
+  }
+}
 //@media screen and (max-width:400px) {
 //  .select__item .item__city{
 //    width: 70%;

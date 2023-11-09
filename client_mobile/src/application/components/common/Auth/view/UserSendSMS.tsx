@@ -16,7 +16,7 @@ const UserSendSMS: FC<IProps> = ({ formik }) => {
 	return (
 		<FormikProvider value={formik}>
 			<form onSubmit={formik.handleSubmit}>
-				<div className="auth-content unauthorized__content">
+				<div className="auth-center auth-content unauthorized__content">
 					<div className="auth-content__info">
 						<h2 className="auth-content__info-title">
 							Укажите номер телефона
@@ -63,12 +63,12 @@ const UserSendSMS: FC<IProps> = ({ formik }) => {
 						</div>
 
 					</div>
-				</div>
-				<div className="auth-footer">
-					<button className="btn btn-md btn-red">Получить СМС-код</button>
-					<a className="auth-footer__link">
-						Продолжая, вы соглашаетесь на <span style={{color: "#8D191D"}}>обработку персональных данных</span> и <span style={{color: "#8D191D"}}>условия пользовательского соглашения</span>
-					</a>
+					<div className="auth-footer">
+						<button className="btn btn-md btn-red">Получить СМС-код</button>
+						<a className="auth-footer__link">
+							Продолжая, вы соглашаетесь на <span style={{color: "#8D191D"}}>обработку персональных данных</span> и <span style={{color: "#8D191D"}}>условия пользовательского соглашения</span>
+						</a>
+					</div>
 				</div>
 			</form>
 		</FormikProvider>
