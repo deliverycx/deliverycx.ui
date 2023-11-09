@@ -65,17 +65,14 @@ const ModalCard: FC<IProps> = ({ setIsOpened, children, theme }) => {
 	const tikRef = useRef<any>()
 
 	const [positionY, setPositionY] = useState(720);
-	const handleClick = (event: any) => {
-		if (wrapperRef.current && wrapperRef.current === event.target) {
-			setIsOpened(false);
-		}
-	};
+
 
 	const handleDrag = (e: any, data: any) => {
 		if (data.y >= (data.node.clientHeight / 3.5)) {
 			setPositionY(data.node.clientHeight)
-			setTimeout(() => {
-				tikRef.current = setIsOpened(false)
+			tikRef.current =  setTimeout(() => {
+				setIsOpened(false)
+				setIsClosing(true);
 			}, 300)
 		}
 	};
