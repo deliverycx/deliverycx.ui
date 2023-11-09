@@ -24,23 +24,23 @@ const HOCProfile = () => {
 				</div>
 				{
 					profile && user &&
-					<div className="profile-content profile-fix">
-						<div className="profile-content__info">
-							<h2 className="profile-content__info-name">{profile.personal && profile.personal.name ? profile.personal.name : <a href={ROUTE_APP.PROFILE.PROFILE_PERSONAL}>Добавить имя</a> } </h2>
-							<h4 className="profile-content__info-numb">{user.phone}</h4>
+					<div className="profile-content">
+					<div className="profile-content__info">
+						<h2 className="profile-content__info-name">{profile.personal && profile.personal.name ? profile.personal.name : <a href={ROUTE_APP.PROFILE.PROFILE_PERSONAL}>Добавить имя</a> } </h2>
+						<h4 className="profile-content__info-numb">{user.phone}</h4>
+					</div>
+					<div className="profile-content__gift">
+						<div className="profile-content__gift-header">
+							<h3>Получи дюжину хинкали в подарок!</h3>
+							<button className="btn btn-none">
+								<img src={require("assets/images/icons/info.png")} alt="" />
+							</button>
 						</div>
-						<div className="profile-content__gift">
-							<div className="profile-content__gift-header">
-								<h3>Получи дюжину хинкали в подарок!</h3>
-								<button className="btn btn-none">
-									<img src={require("assets/images/icons/info.png")} alt="" />
-								</button>
-							</div>
-							<div className="profile-content__gift__content">
+						<div className="profile-content__gift__content">
 
-							</div>
 						</div>
-						<div className="profile-content__list">
+					</div>
+					<div className="profile-content__list">
 						<NavLink to={ROUTE_APP.PROFILE.PROFILE_PERSONAL} className="profile-content__list-link">
 							Личные данные
 							<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
@@ -60,15 +60,15 @@ const HOCProfile = () => {
 							</svg>
 						</NavLink>
 					</div>
-
-						<div className="profile__button">
-							<button  className="btn btn-none btn-none-defualt" onClick={logout}>
-								<img src={require("assets/images/icons/logout.png")} alt="" />
-								Выйти из аккаунта
-							</button>
-						</div>
 				</div>
 				}
+
+				<div className="profile__button">
+					<button  className="btn btn-none btn-none-defualt" onClick={logout}>
+						<img src={require("assets/images/icons/logout.png")} alt="" />
+						Выйти из аккаунта
+					</button>
+				</div>
 				<TabBar />
 			</div>
 		</>
