@@ -30,7 +30,7 @@ const HOCCartChange: FC<IProps> = ({ theme, product, close }) => {
 			<>
 				{
 					changeCount !== 0 ?
-						<div className="input__counter input__counter-sm no-drag">
+						<div className="input-h input__counter input__counter-sm no-drag">
 
 							<>
 								<div

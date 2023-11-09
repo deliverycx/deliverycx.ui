@@ -196,6 +196,10 @@
   }
 }
 
+.input-h {
+  height: 28px;
+}
+
 .input__counter {
   display: flex;
   align-items: center;
@@ -203,7 +207,6 @@
   border-radius: 12px;
   border: 1px solid #E6E6E6;
 
-  background: #fff;
 
   &-sm {
     padding: 7px;

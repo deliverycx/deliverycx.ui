@@ -102,6 +102,7 @@
         align-items: center;
 
         &-weight{
+          width: 50px;
           color: #B3B3B3;
 
           .ended &{
@@ -191,6 +192,7 @@
 
         &-weight{
           color: #B3B3B3;
+          width: 50px;
         }
       }
       .product-card__button{
@@ -224,6 +226,7 @@
         }
 
         &-weight{
+          width: 50px;
           color: #B3B3B3;
           font-size: 14px;
           font-weight: 400;
