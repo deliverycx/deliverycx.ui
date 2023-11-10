@@ -28,5 +28,7 @@ class RequestWebhook extends ApiSuper {
   flip(body:any) {
     return this.request(`/webhook/flipcount`)
   }
+
+	
 }
 export default new RequestWebhook()
