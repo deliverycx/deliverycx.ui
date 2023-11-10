@@ -1,3 +1,4 @@
+/* eslint-disable no-irregular-whitespace */
 import { NavLink } from "react-router-dom"
 import { ROUTE_APP } from 'application/contstans/route.const';
 import { TadapterCaseCallback, adapterComponentUseCase } from 'adapters/adapterComponents';
@@ -7,14 +8,14 @@ import UserOrderList from "./UserOrderList";
 import React from "react";
 
 export const UserOrderContext = React.createContext<TadapterCaseCallback>({
-  data: {},
-  handlers: {},
-  status:{}
+	data: {},
+	handlers: {},
+	status: {}
 });
 const HOCUserOrders = () => {
 	const useCase = adapterComponentUseCase(useUserOrdersViewModel)
-	const {orderList,organization} = useCase.data
-	const {returnOrder} = useCase.handlers
+	const { orderList, organization } = useCase.data
+	const { returnOrder } = useCase.handlers
 
 	return (
 		<div className="orders authorized">
@@ -26,13 +27,27 @@ const HOCUserOrders = () => {
 					<h3>Заказы</h3>
 				</div>
 			</div>
-			<div className="orders__list">
+			<div className="orders__list ">
 				<UserOrderContext.Provider value={useCase}>
-				{
-					orderList && orderList.map((value:IUserOrders)=> {
-						return organization.guid === value.order.organization && <UserOrderList key={value.order.orderId} order={value} />
-					})
-				}
+					{
+						orderList ? orderList.map((value: IUserOrders) => {
+
+							return <UserOrderList key={value.order.orderId} order={value} />
+
+						})
+							:
+							<div className="">
+								<div className="unauthorized__content">
+									<div className="unauthorized__content-sticker">
+										<img src={require("assets/images/delivery/no_addresses.png")} alt="Весёлый хинкалик" />
+									</div>
+									<div className="unauthorized__content-title">У вас ещё не было заказов… в {organization.info.address}</div>
+									<div className="unauthorized__content-text">
+										Чтобы совершить свой первый заказ,<br /> выберете себе что‑нибудь вкусное на главной странице
+									</div>
+								</div>
+							</div>
+					}
 				</UserOrderContext.Provider>
 			</div>
 			<div className="orders__button">

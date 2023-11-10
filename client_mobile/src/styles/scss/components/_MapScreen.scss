@@ -48,11 +48,15 @@
       }
     }
   }
+
+  &__topbar__fixed {
+    position: fixed;
+  }
+
   &__topbar {
     display: flex;
     align-items: center;
     gap: 12px;
-    position: absolute;
     width: 100%;
     padding: 4px;
     background: #fff;

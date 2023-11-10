@@ -37,7 +37,7 @@ const HOCProfile = () => {
 							</button>
 						</div>
 						<div className="profile-content__gift__content">
-							
+
 						</div>
 					</div>
 					<div className="profile-content__list">
@@ -62,7 +62,7 @@ const HOCProfile = () => {
 					</div>
 				</div>
 				}
-				
+
 				<div className="profile__button">
 					<button  className="btn btn-none btn-none-defualt" onClick={logout}>
 						<img src={require("assets/images/icons/logout.png")} alt="" />

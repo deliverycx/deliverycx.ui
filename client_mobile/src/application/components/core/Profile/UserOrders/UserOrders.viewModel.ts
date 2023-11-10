@@ -16,9 +16,17 @@ export function useUserOrdersViewModel(this:any) {
 	useEffect(()=>{
 		profileUseCase.userOrderList()
 			.then(data =>{
-				data && setOrderList(data)
+				if(data && organization){
+					const orders = data.filter((value) =>{
+						return organization.guid === value.order.organization
+					})
+					orders.length !== 0 && setOrderList(orders)
+					
+				}
 			})
 	},[])
+
+	console.log(organization);
 
 	const navigate = useNavigate()
 	const point = organizationModel.selectOrganization
