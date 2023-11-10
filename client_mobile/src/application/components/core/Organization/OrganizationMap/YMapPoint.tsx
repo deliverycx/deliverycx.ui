@@ -125,8 +125,8 @@ const YMapPoint:FC<IProps> = ({statePoint,addresses,placemarkClick}) => {
                             }}
 														
                         >
-													<ZoomControl options={{ position: { right: 10, bottom: 150 }, zoomSize: 'small' }} />
-                            <GeolocationControl options={{ position: { right: 10, bottom: 100 }}} />
+													<ZoomControl options={{ position: { right: 10, bottom: 300 }, zoomSize: 'small' }} />
+                            <GeolocationControl options={{ position: { right: 10, bottom: 250 }}} />
                             {
                                 addresses.map((address:IOrganization, index:number) => {
 																	if(address.info){
