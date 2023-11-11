@@ -31,10 +31,11 @@ const OfferAuth = () => {
 				<div className="unauthorized__content-text">
 					Для доступа к сохранённым адресам доставки и истории заказов, необходимо войти в свой профиль
 				</div>
-			</div>
-			<div className="unauthorized__buttons">
+				<div className="unauthorized__buttons">
 				<NavLink to={ROUTE_APP.AUTH.REGISTER} className="btn btn-md btn-red">Войти</NavLink>
+			</div>	
 			</div>
+			
 			<TabBar />
 		</div>
 
