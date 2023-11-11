@@ -158,7 +158,6 @@ const HOCCartChange: FC<IProps> = ({ theme, product, close }) => {
 				</div>
 			</>
 		)
-
 	} else if (theme === 'basket') {
 		return (
 			<div className="input__counter input__counter-sm basket__content__product_card__info__buttons-input">
