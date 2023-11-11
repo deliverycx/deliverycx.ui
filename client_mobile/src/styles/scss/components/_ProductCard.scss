@@ -264,6 +264,10 @@
     }
   }
 
+  .price--fix {
+    width: 100%!important;
+  }
+
   .product-card__content__price-cost, .product-card__content__info-cost{
     display: flex;
     width: 50%;
