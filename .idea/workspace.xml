@@ -5,20 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="67ecf96e-fe80-4340-a9f6-f5acc541cf3e" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/client_mobile/public/docs/cx.pdf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client_mobile/public/docs/Акции сети кафе.pdf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client_mobile/public/docs/Пользовательское соглашение.pdf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client_mobile/public/docs/Порядок возврата.pdf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client_mobile/public/docs/Порядок_приобретения_и_использования_Подарочных_сертификатов_1_1(1).docx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client_mobile/public/docs/Региональная Акция Приведи друга.pdf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client_mobile/src/application/components/common/HeaderBack/HeaderBack.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client_mobile/src/application/components/core/Pravorazdel/Pravorazdel.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client_mobile/src/assets/images/icons/back.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client_mobile/src/styles/scss/components/_Pravorazdel.scss" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client_mobile/src/application/components/common/Menu/MainMenu.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client_mobile/src/application/components/common/Menu/MainMenu.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client_mobile/src/application/routes/AppRouter.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client_mobile/src/application/routes/AppRouter.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client_mobile/src/styles/scss/style.scss" beforeDir="false" afterPath="$PROJECT_DIR$/client_mobile/src/styles/scss/style.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client_mobile/src/application/components/core/Order/OrderAdress/OrderAdressMap/OrderAdressMap.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client_mobile/src/application/components/core/Order/OrderAdress/OrderAdressMap/OrderAdressMap.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client_mobile/src/styles/scss/components/_OrderPlacement.scss" beforeDir="false" afterPath="$PROJECT_DIR$/client_mobile/src/styles/scss/components/_OrderPlacement.scss" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -85,7 +74,7 @@
       <workItem from="1699526431512" duration="404000" />
       <workItem from="1699529864561" duration="9907000" />
       <workItem from="1699721506851" duration="3125000" />
-      <workItem from="1699792898785" duration="3879000" />
+      <workItem from="1699792898785" duration="5232000" />
     </task>
     <servers />
   </component>
