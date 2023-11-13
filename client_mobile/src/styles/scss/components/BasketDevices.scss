@@ -61,11 +61,10 @@
 
   .counter {
     display: flex;
-    min-width: 144px;
     width: 100%;
+    max-width: 144px;
     margin: 0 8px;
     height: 28px;
-    //margin-right: 30px;
     align-items: center;
     justify-content: center;
     border-radius: 12px;
