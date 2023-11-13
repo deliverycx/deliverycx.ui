@@ -1,8 +1,9 @@
 .devices-container {
+  //background-color: red;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 15px;
+  padding: 9px 0 9px 9px;
   width: 100%;
   border-radius: 5px;
 
@@ -15,13 +16,14 @@
     }
 
     .label {
-      margin-left: 15px;
-      margin-right: 30px;
+      margin-left: 8px;
+      //margin-right: 30px;
       font-size: 16px;
     }
   }
 
   .toggle-block {
+    //background-color: green;
     min-width: 52px;
     max-width: 52px;
 
@@ -59,9 +61,11 @@
 
   .counter {
     display: flex;
-    width: 144px;
+    min-width: 144px;
+    width: 100%;
+    margin: 0 8px;
     height: 28px;
-    margin-right: 30px;
+    //margin-right: 30px;
     align-items: center;
     justify-content: center;
     border-radius: 12px;

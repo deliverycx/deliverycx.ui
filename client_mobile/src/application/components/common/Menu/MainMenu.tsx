@@ -126,7 +126,7 @@ const MainMenu: FC<{ closeMenu: any }> = observer(({ closeMenu }) => {
 						<img src={iconTg} alt="" />
 					</NavLink>
 				</div>
-				<NavLink to="https://доставка.хинкалыч.рф/pravorazdel" className="menu-full-link">
+				<NavLink to="/pravorazdel" className="menu-full-link">
 					Правовой раздел
 				</NavLink>
 				<NavLink to="https://доставка.хинкалыч.рф/" className="menu-full-link">

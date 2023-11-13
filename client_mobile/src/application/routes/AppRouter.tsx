@@ -21,6 +21,7 @@ import OrderSucces from 'application/components/core/Order/OrderCreate/OrderSucc
 import OfferAuth from 'application/components/common/Auth/view/OfferAuth';
 import HOCUserOrders from 'application/components/core/Profile/UserOrders/HOC.UserOrders';
 import ErrorPage from "../components/common/Errors/ErrorPage";
+import Pravorazdel from "../components/core/Pravorazdel/Pravorazdel";
 
 
 
@@ -28,6 +29,10 @@ export const publicRoutes = [
 	{
 			path: ROUTE_APP.MAIN,
 			Component: HOCCity
+	},
+	{
+			path: ROUTE_APP.PRAVORAZDEL,
+			Component: Pravorazdel
 	},
 	{
 		path: ROUTE_APP.POINT,

@@ -59,7 +59,7 @@ const OrderAdressMap: FC<IProps> = ({ formik }) => {
 	return (
 		<>
 
-			<div className="input__item input_icon not-valid input_icon_left input_icon_right">
+			<div className="	input__item input_icon not-valid input_icon_left input_icon_right">
 				<div className="input__container">
 					<img src={require("assets/images/icons/location_gray_999.png")} alt="" />
 					<input readOnly onClick={handlerMap} placeholder="Нажмите для выбора адреса" value={formik.values.address} name="address" type="text" />
