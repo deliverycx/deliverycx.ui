@@ -9,9 +9,14 @@ export class ShopRepository extends ShopEntiti {
 
 	async reposityNomenclature(pointid: string) {
 		try {
-			const { data } = await requestShopApi.getNomenclature(pointid)
-			const result = guardRepository(this.existingNomenclature)(data)
-			return result && ShopMapper(result as unknown as IRequestNomeclature)
+			if(pointid){
+				const { data } = await requestShopApi.getNomenclature(pointid)
+				const result = guardRepository(this.existingNomenclature)(data)
+				return result && ShopMapper(result as unknown as IRequestNomeclature)
+			}else{
+				return null
+			}
+			
 		} catch (error) {
 			console.log(error);
 		}
