@@ -129,9 +129,9 @@ const MainMenu: FC<{ closeMenu: any }> = observer(({ closeMenu }) => {
 				<NavLink to="/pravorazdel" className="menu-full-link">
 					Правовой раздел
 				</NavLink>
-				<NavLink to="https://доставка.хинкалыч.рф/" className="menu-full-link">
+				<a href="/docs/Старик_Хинкалыч_Калорийность_блюд_Осень_2023.pdf" target='_blank' className="menu-full-link">
 					Калорийность и состав
-				</NavLink>
+				</a>
 			</div>
 		</div>
 	);
