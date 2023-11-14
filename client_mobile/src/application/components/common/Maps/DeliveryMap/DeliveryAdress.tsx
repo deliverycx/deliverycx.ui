@@ -46,7 +46,7 @@ const DeliveryAdress: FC<IProps> = ({ openModalAdress }) => {
 				<div className="maps_notificate">Адрес в базе, не найден</div>
 			}
 			<div className="modal">
-				<div className="modal__wrapper">
+				<div className="modal__wrapper ">
 					<div className="modal__content gap-8">
 						<button className="btn btn-sm btn-red no-drag" onClick={() => setModalAdress(true)}>
 							Показать

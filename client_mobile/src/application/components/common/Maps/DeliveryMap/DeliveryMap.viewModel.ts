@@ -24,8 +24,12 @@ export function useDeliveryMapViewModel() {
 	const { adress } = useParams();
 	const [searchParams, setSearchParams] = useSearchParams();
 
+	const pointid = point?.guid
 	
-	const { data: ikkostreet, isLoading } = useQuery('street', async () => await RequestWebhook.getStreetCity({ organizationId: point?.guid, }))
+	const { data: ikkostreet, isLoading } = useQuery('street', async () => await RequestWebhook.getStreetCity({ organizationId: pointid, }),
+	{
+		enabled: !!pointid
+	})
 
 	const [stateReduceMap, dispatchMap] = useReducer(
 		CartMapReducer,
@@ -50,6 +54,8 @@ export function useDeliveryMapViewModel() {
 			} else {
 				getGeoLoc(point.info.cords)
 			}
+		}else{
+			navigate(-1)
 		}
 		
 	}, [adress, profile, point])

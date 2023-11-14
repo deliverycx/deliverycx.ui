@@ -28,7 +28,7 @@ const HOCDeliveryMap = () => {
 			{
 				point &&
 				<>
-				<div className="map__topbar">
+				<div className="map__topbar map__topbar__fixed">
 				<div className="map__topbar-btn" onClick={()=> navigate(-1)}>
 					<img src={require("assets/images/icons/arrow_back.png")} alt="" />
 				</div>
