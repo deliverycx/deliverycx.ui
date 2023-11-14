@@ -43,7 +43,7 @@ const ShopProductCard: FC<IProps> = ({ product }) => {
 													? `${convertWeight(product.weight)} г`:
 													product.measureUnit === "мл"  ? product.weight + 'мл'
 													
-													: "1 шт"
+													: "1 шт."
 												}
                     </div>
                     <span className="select-red">{product.price} ₽</span>

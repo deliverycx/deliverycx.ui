@@ -62,7 +62,7 @@ const DeliveryAdress: FC<IProps> = ({ openModalAdress }) => {
 
 						<FormikProvider value={formik}>
 							<form onSubmit={formik.handleSubmit}>
-								<div className="modal__content gap-8">
+								<div className="modal__content modal__fix gap-8">
 									<div className="adress_fild">
 
 										<div className="d-flex flex-center gap-8">
