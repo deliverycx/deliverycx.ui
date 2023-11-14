@@ -135,6 +135,10 @@ body {
 		backdrop-filter: blur(2px);
 	}
 
+	&__header__fix {
+		margin-top: 15px;
+	}
+
 	&__header {
 		display: flex;
 		padding: 4px;
@@ -159,7 +163,7 @@ body {
 	&__content {
 		display: flex;
 		flex-direction: column;
-		padding: 16px;
+		padding: 0 16px 16px 16px;
 
 		.bold {
 			font-weight: bold;
@@ -172,6 +176,7 @@ body {
 		p {
 			color: $c-gray;
 			padding-bottom: 8px;
+			margin-bottom: 10px;
 		}
 	}
 
