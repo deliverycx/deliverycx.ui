@@ -24,7 +24,7 @@ const HOCDeliveryMap = () => {
 	//console.log(point.info.city);
 
 	return (
-		<div className="map">
+		<div className="delivery_map">
 			{
 				point &&
 				<>

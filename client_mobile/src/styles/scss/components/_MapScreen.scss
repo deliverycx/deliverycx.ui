@@ -293,3 +293,11 @@
   }
 }
 
+.delivery_map{
+	position: relative;
+	overflow: auto;
+	height: 100vh;
+	.modal{
+		position: absolute;
+	}
+}
