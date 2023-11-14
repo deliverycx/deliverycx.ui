@@ -90,7 +90,7 @@ export const OrderFormWrapper = (formik: any, usecase: any): IWrapper => {
 											<label htmlFor="change">С какой суммы подготовить сдачу?</label>
 											<div className="input__container">
 												<input placeholder="Введите сумму" name="change" value={formik.values.money !== 0 ? formik.values.money : ''} defaultValue={formik.values.money !== 0 ? formik.values.money : ''} onChange={e => formik.setFieldValue('money', e.target.value)} type="text" />
-												<button className="btn btn-none" onClick={() => formik.setFieldValue('money', 0)}>Без сдачи</button>
+												<a className="btn btn-none nomoney" onClick={() => formik.setFieldValue('money', 0)}>Без сдачи</a>
 											</div>
 										</div>
 									}

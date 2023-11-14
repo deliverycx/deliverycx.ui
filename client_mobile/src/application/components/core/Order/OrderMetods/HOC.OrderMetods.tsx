@@ -18,7 +18,7 @@ const HOCOrderMetods = () =>{
 			})
 			useCaseOrganizationStatus.statusOrganization()
 		}else{
-			navigate(ROUTE_APP.MAIN)
+			//navigate(ROUTE_APP.MAIN)
 		}
 		
 	},[selectDeliveryTipe])
