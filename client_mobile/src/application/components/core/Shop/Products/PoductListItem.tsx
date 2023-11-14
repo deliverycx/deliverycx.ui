@@ -57,9 +57,9 @@ const PoductListItem: FC<IProps> = ({ product, setModalmodalProduct,stoplist }) 
 					<small className="product-card__content__info-weight">
 						{
 							product.measureUnit === "порц"
-								? `${convertWeight(product.weight)} гр` :
+								? `${convertWeight(product.weight)} г` :
 								product.measureUnit === "мл" ? product.weight + 'мл'
-									: "1 шт"
+									: "1 шт."
 						}
 					</small>
 					<h3 className="product-card__content__info-cost price--cost price--fix">

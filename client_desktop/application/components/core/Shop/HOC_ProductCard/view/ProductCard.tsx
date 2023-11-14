@@ -79,7 +79,7 @@ const ProductCard:FC<IProps> = ({product,onClose}) => {
 									 ? `${convertWeight(product.weight)} г`:
 									 product.measureUnit === "мл"  ? product.weight + 'мл' 
 									 
-									 : "1 шт"
+									 : "1 шт."
                 }
                 </div>
     						<div className="price">{product.price} ₽</div>
