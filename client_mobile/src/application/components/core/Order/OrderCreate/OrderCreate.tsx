@@ -58,7 +58,13 @@ const OrderCreate = () => {
 					</div>
 					<div className="order-accepted__buttons">
 						<button className="btn btn-md btn-red" onClick={()=> navigate(ROUTE_APP.SHOP.SHOP_MAIN)}>Хорошо</button>
-						<button className="btn btn-md btn-gray">Оставить отзыв</button>
+						<a rel="noreferrer" className="btn btn-md btn-red" style={{
+							textDecoration: 'none',
+							color: '#8D191D',
+							background: '#E6E6E6'
+						}} href="https://t.me/StarikHinkalichBot" target="_blank">
+							Оставить отзыв
+						</a>
 					</div>
 				</>
 			}

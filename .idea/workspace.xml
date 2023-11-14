@@ -6,11 +6,7 @@
   <component name="ChangeListManager">
     <list default="true" id="67ecf96e-fe80-4340-a9f6-f5acc541cf3e" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/application/components/core/Shop/ShopProductCard.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/application/components/core/Shop/ShopProductCard.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/application/components/core/Shop/ShopProductItems.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/application/components/core/Shop/ShopProductItems.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client_desktop/application/components/core/Shop/HOC/view/ShopProductItems.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client_desktop/application/components/core/Shop/HOC/view/ShopProductItems.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client_desktop/application/components/core/Shop/HOC_ProductCard/view/ProductCard.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client_desktop/application/components/core/Shop/HOC_ProductCard/view/ProductCard.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client_mobile/src/application/components/core/Shop/Products/PoductListItem.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client_mobile/src/application/components/core/Shop/Products/PoductListItem.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client_mobile/src/application/components/core/Order/OrderCreate/OrderCreate.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client_mobile/src/application/components/core/Order/OrderCreate/OrderCreate.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -82,7 +78,7 @@
       <workItem from="1699887762814" duration="14000" />
       <workItem from="1699949248377" duration="272000" />
       <workItem from="1699952408636" duration="271000" />
-      <workItem from="1699965939226" duration="969000" />
+      <workItem from="1699965939226" duration="1784000" />
     </task>
     <servers />
   </component>
