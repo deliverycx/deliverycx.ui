@@ -9,11 +9,11 @@ import { useEffect } from 'react';
 
 type IProps = {
 	openModalAdress?: boolean
+	setModalStreet:any
 }
 
-const DeliveryAdress: FC<IProps> = ({ openModalAdress }) => {
+const DeliveryAdress: FC<IProps> = ({ openModalAdress,setModalStreet }) => {
 	const [modalAdress, setModalAdress] = useState(openModalAdress || false)
-	const [modalStreet, setModalStreet] = useState(false)
 
 
 	const useCaseYMap = useContext(DeliveryMapContext)
@@ -21,7 +21,7 @@ const DeliveryAdress: FC<IProps> = ({ openModalAdress }) => {
 	const { geoCodeAdress,onMapTyping } = useCaseYMap.handlers
 
 
-
+	
 
 	useEffect(() => {
 		if (stateReduceMap.valueMap) {
@@ -33,6 +33,7 @@ const DeliveryAdress: FC<IProps> = ({ openModalAdress }) => {
 	useEffect(() => {
 
 		if (stateReduceMap.clickValueMap && stateReduceMap.clickValueMap.length > 1) {
+			
 			setModalStreet(true)
 		}
 	}, [stateReduceMap.clickValueMap])
@@ -171,11 +172,7 @@ const DeliveryAdress: FC<IProps> = ({ openModalAdress }) => {
 				</div>
 
 			}
-			{
-				modalStreet &&
-				<DeliveryAdressSelect setModal={setModalStreet} />
-			}
-
+			
 		</>
 
 	)

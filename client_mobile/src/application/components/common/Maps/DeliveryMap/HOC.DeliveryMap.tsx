@@ -7,44 +7,54 @@ import React from "react";
 import { observer } from 'mobx-react-lite';
 import DeliveryAdress from "./DeliveryAdress";
 import { ROUTE_APP } from 'application/contstans/route.const';
+import DeliveryAdressSelect from "./DeliveryAdressSelect";
 
 
 
 
 export const DeliveryMapContext = React.createContext<TadapterCaseCallback>({
-  data: {},
-  handlers: {},
-  status:{}
+	data: {},
+	handlers: {},
+	status: {}
 });
 const HOCDeliveryMap = () => {
 	const useCase = adapterComponentUseCase(useDeliveryMapViewModel)
-	const { point,adress } = useCase.data
-	const {navigate} = useCase.handlers
+	const { point, adress } = useCase.data
+	const { navigate } = useCase.handlers
 
 	//console.log(point.info.city);
+	const [modalStreet, setModalStreet] = React.useState(false)
 
+	
 	return (
-		<div className="delivery_map">
-			{
-				point &&
-				<>
-				<div className="map__topbar map__topbar__fixed">
-				<div className="map__topbar-btn" onClick={()=> navigate(-1)}>
-					<img src={require("assets/images/icons/arrow_back.png")} alt="" />
-				</div>
-				<h3>{point.info.city}{adress && `, ${adress}`}</h3>
+		<DeliveryMapContext.Provider value={useCase}>
+			<div className="delivery_map">
+
+				{
+					point && !modalStreet &&
+					<>
+						<div className="map__topbar map__topbar__fixed">
+							<div className="map__topbar-btn" onClick={() => navigate(-1)}>
+								<img src={require("assets/images/icons/arrow_back.png")} alt="" />
+							</div>
+							<h3>{point.info.city}{adress && `, ${adress}`}</h3>
+						</div>
+
+						<DeliveryYMaps />
+						<DeliveryAdress openModalAdress={true} setModalStreet={setModalStreet} />
+						
+
+					</>
+
+				}
+				{
+					point && modalStreet &&
+					<DeliveryAdressSelect setModalStreet={setModalStreet} />
+				}
+
+
 			</div>
-				<DeliveryMapContext.Provider value={useCase}>
-					<DeliveryYMaps />
-					<DeliveryAdress openModalAdress={true}/>
-				</DeliveryMapContext.Provider>
-				</>
-
-			}
-
-			
-		</div>
-
+		</DeliveryMapContext.Provider >
 	)
 }
 export default observer(HOCDeliveryMap)  
