@@ -53,9 +53,16 @@ export class OrderCreateUseCase {
 	}
 
 	async orderCheck() {
-		const body = this.createOrderFabric()
-		const url = await orderCreateRepository.repositoryCheckOrder(body)
-		return url
+		try {
+			const body = this.createOrderFabric()
+			const url = await orderCreateRepository.repositoryCheckOrder(body)
+			return url
+		} catch (error:any) {
+			console.log(error.response.status);
+			this.userModel.guestUser && this.userModel.actionCheckGusetUser(this.userModel.guestUser)
+			
+		}
+		
 	}
 
 	async orderCreate(hash: string) {
