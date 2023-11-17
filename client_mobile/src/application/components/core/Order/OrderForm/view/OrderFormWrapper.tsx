@@ -318,9 +318,7 @@ export const OrderFormWrapper = (formik: any, usecase: any): IWrapper => {
 								/>
 							)}
 						/>
-					{
-					//<img src={require("assets/images/icons/contact_page.png")} alt="" />
-					}	
+					
 					</div>
 
 				</FormFieldWrapper>

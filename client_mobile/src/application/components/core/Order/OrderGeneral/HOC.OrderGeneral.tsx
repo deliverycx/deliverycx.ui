@@ -39,7 +39,7 @@ const HOCOrderGeneral:FC<{errors:any}> = ({errors}) => {
 					<h3 className="order-placement__check__info__price-title">Стоимость заказа</h3>
 					<div className="order-placement__check__info__price-cost price--cost">
 
-						<h3>{basketPrice?.totalPrice} ₽</h3>
+						<h3>{basketPrice?.fullPrice} ₽</h3>
 					</div>
 				</div>
 
