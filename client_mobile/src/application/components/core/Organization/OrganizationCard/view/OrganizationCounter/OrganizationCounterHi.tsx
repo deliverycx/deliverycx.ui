@@ -32,6 +32,7 @@ const OrganizationCounterHi = () => {
 		return format(n, "yyy-LL-dd") //n.toLocaleDateString();
 	}
 
+	console.log('count',count);
 
 	/**/
 	useEffect(() => {
@@ -45,9 +46,10 @@ const OrganizationCounterHi = () => {
 				const setDelay = (((num1) * delay) / (num2));
 				return { delay2: setDelay, delay1: delay }
 			}
-			function setCounter(el: any, toNumber: any, delay: any, counter = (Number(numbFlip) - 1000)) {
+			function setCounter(el: any, toNumber: any, delay: any, counter = (Number(numbFlip) - 100)) {
 				//console.log('for',toNumber);
-				for (let i = (toNumber - 1000); i < toNumber; i++) {
+
+				for (let i = (toNumber - 100); i < toNumber; i++) {
 					//clearTimeout(timer)
 
 					timer = setTimeout(() => {
@@ -66,7 +68,7 @@ const OrganizationCounterHi = () => {
 				}/**/
 			}
 			async function organizationCoutn(guid:string) {
-				let finalNumber = 0
+				
 				const { data: countorg } =  await RequestAdmins.getOraganizationCount(guid)
 				if (countorg) {
 					const today = format(new Date(), "yyy-LL-dd")
@@ -77,10 +79,12 @@ const OrganizationCounterHi = () => {
 							coutn: (Number(countorg.coutn) + Number(numbFlip)),
 							date: today
 						})
-						finalNumber = (Number(countorg.coutn) + Number(numbFlip))
+						numbFlip = (Number(countorg.coutn) + Number(numbFlip))
 					} else {
-						finalNumber = Number(countorg.coutn)
+						numbFlip = Number(countorg.coutn)
 					}
+					console.log(numbFlip);
+	
 
 					const num1 = Number(numbFlip);
 					const num2 = Number(numbFlip) - 10;
