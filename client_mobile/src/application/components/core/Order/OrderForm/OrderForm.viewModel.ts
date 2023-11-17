@@ -9,12 +9,14 @@ import { orderCreateUseCase, orderModel } from "modules/OrderModule/order.module
 import { userModel } from "modules/UserModule/user.module";
 import { useNavigate } from 'react-router-dom';
 import { ROUTE_APP } from './../../../../contstans/route.const';
+import { profileModel } from "modules/Profile/profile.module";
 
 export function useOrderFromViewModel(this:any) {
 	const navigate = useNavigate()
 	const {selectDeliveryTipe,paymentMetod} = organizationStatusModel
 	const {selectOrganization} = organizationModel
 	const {orderBody,orderOnspotTable} = orderModel
+	const {profile} = profileModel
 
 
 	const [error,setError] = useState()
@@ -49,6 +51,14 @@ export function useOrderFromViewModel(this:any) {
 		},
 	});
 
+
+	useEffect(()=>{
+		if(profile && profile.personal){
+			
+			profile.personal.phone && formik.setFieldValue('phone',profile.personal.phone)
+			profile.personal.name && formik.setFieldValue('name',profile.personal.name)
+		}
+	},[profile])
 
 	useEffect(()=>{
 		if(selectDeliveryTipe){

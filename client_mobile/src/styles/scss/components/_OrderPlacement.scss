@@ -168,11 +168,24 @@
   &__payment-method{
     display: flex;
     flex-direction: column;
-    padding: 8px 16px;
+    padding: 8px 0;
+
+		&__item{
+			
+			padding: 16px;
+		}
+		&__item.active{
+			background-color:rgba(244, 244, 244, 0.39);
+			box-shadow: 0 4px 24px 0 rgba(0, 0, 0, 0.12);
+  		border-radius: 17px;
+		}
 
     &-title{
       display: flex;
       padding: 8px 0;
+			font-size: 21px;
+			margin-bottom: 10px;
+			font-weight: 600;
     }
 		&-box{
 			display: flex;
@@ -252,6 +265,8 @@
 
       &-title{
         padding: 8px 0;
+				font-size: 21px;
+				font-weight: 600;
       }
       &__list{
         border-radius: unset;

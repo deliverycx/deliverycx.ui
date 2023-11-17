@@ -13,7 +13,7 @@ import parse from 'html-react-parser'
 import OrderOnspotSelect from "../OnspotTable/OrderOnspotSelect";
 import HOCOrderOnspotSelect from "../OnspotTable/HOC.OrderOnspotSelect";
 import OrderAdressMap from "../../OrderAdress/OrderAdressMap/OrderAdressMap";
-
+import cn from "classnames"
 
 export interface IWrapper {
 	paymentPopup(): ReactNode
@@ -64,7 +64,7 @@ export const OrderFormWrapper = (formik: any, usecase: any): IWrapper => {
 
 
 			return (
-
+				
 
 				<div className="order-placement__payment-method">
 					<h2 className="order-placement__payment-method-title">Способ оплаты</h2>
@@ -72,17 +72,17 @@ export const OrderFormWrapper = (formik: any, usecase: any): IWrapper => {
 					{
 						paymentsMetod &&
 						paymentsMetod.map((value: any) => {
+							const CN = cn('order-placement__payment-method__item',{active:formik.values.payment === value.id})
 							return (
-								<div key={value.id} onClick={() => formik.setFieldValue('payment', value.id)} className="order-placement__payment-method__item">
+								<div key={value.id} onClick={() => formik.setFieldValue('payment', value.id)} className={CN}>
 									<div className="order-placement__payment-method-box">
 									{parse(value.icon)}
 										<div className="order-placement__payment-method__item-name">{value.value}</div>
-										<div className="order-placement__payment-method__item-btn">
-											<input name="payment-method" type="radio" checked={formik.values.payment === value.id} />
-											<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
-												<path d="M12 2C6.48 2 2 6.48 2 12C2 17.52 6.48 22 12 22C17.52 22 22 17.52 22 12C22 6.48 17.52 2 12 2ZM12 20C7.58 20 4 16.42 4 12C4 7.58 7.58 4 12 4C16.42 4 20 7.58 20 12C20 16.42 16.42 20 12 20Z" fill="#B3B3B3" />
-											</svg>
-										</div>
+										{
+											formik.values.payment === value.id &&
+											<img src={require("assets/images/icons/doneok.png")} />
+										}
+										
 									</div>
 									{
 										formik.values.payment === PAYMENT_METODS.CASH && value.id === PAYMENT_METODS.CASH &&
@@ -318,7 +318,9 @@ export const OrderFormWrapper = (formik: any, usecase: any): IWrapper => {
 								/>
 							)}
 						/>
-						<img src={require("assets/images/icons/contact_page.png")} alt="" />
+					{
+					//<img src={require("assets/images/icons/contact_page.png")} alt="" />
+					}	
 					</div>
 
 				</FormFieldWrapper>
