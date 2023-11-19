@@ -20,8 +20,9 @@ import { ROUTE_APP } from 'application/contstans/route.const';
 import { userModel } from 'modules/UserModule/user.module';
 
 
-const MainMenu: FC<{ closeMenu: any }> = observer(({ closeMenu }) => {
+const MainMenu: FC<{ closeMenu: any, like: string | any }> = observer(({ closeMenu, like }) => {
 	const user = userModel.guestUser
+	console.log('LIKE', like);
 
 	useEffect(() => {
 		document.body.style.overflow = 'hidden';
@@ -52,9 +53,6 @@ const MainMenu: FC<{ closeMenu: any }> = observer(({ closeMenu }) => {
 		}
 
 	}
-
-
-
 
 	return (
 		<div className="menu-wrapper" onClick={(e) => handleWrapperClick(e)}>
@@ -96,11 +94,21 @@ const MainMenu: FC<{ closeMenu: any }> = observer(({ closeMenu }) => {
 							<span>ул. Турецкая, 25</span>
 						</span>
 					</NavLink>
-	
-					<NavLink to="">
-						<img src={iconThumbUp} alt="" />
-						Похвалить
-					</NavLink>
+
+					{
+						like ? (
+							<NavLink to={like} target="_blank">
+								<img src={iconThumbUp} alt="" />
+								Похвалить
+							</NavLink>
+						) : (
+							<NavLink to="">
+								<img src={iconThumbUp} alt="" />
+								Похвалить
+							</NavLink>
+						)
+					}
+
 					<NavLink to="https://t.me/StarikHinkalichBot">
 						<img src={iconThumbDown} alt="" />
 						Пожаловаться

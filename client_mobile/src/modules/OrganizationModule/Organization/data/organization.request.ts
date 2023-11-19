@@ -5,11 +5,11 @@ import type { IOrganization, OrganizationFilters, pointSerch } from "../interfac
 import { OrganizationGoodPlaceID } from "../interfaces/organization.type";
 
 class RequestOrganization extends AjaxApiSuper {
- 
-  @methods('get')
-  getAll(cityId:string) {
-    return this.request<ICityResponse[]>(`organization/all?cityId=${cityId}`)
-  }
+
+	@methods('get')
+	getAll(cityId:string) {
+		return this.request<ICityResponse[]>(`organization/all?cityId=${cityId}`)
+	}
 
 	@methods('post')
 	filterPoint(data:any){
@@ -23,8 +23,8 @@ class RequestOrganization extends AjaxApiSuper {
 
 	@methods('get')
 	getOrg(orgid:string) {
-    return this.request<ICityResponse[]>(`organization/buguid?organizationId=${orgid}`)
-  }
+		return this.request<ICityResponse[]>(`organization/buguid?organizationId=${orgid}`)
+	}
 }
 
 
@@ -42,17 +42,21 @@ class RequestOrganizationApi extends ApiSuper {
 
 
 class RequestOrganizationAdmin extends ApiAdminSuper {
- 
-  @methods('get')
-  getFilters() {
-    return this.request<OrganizationFilters[]>(`/organizationfilter/all?id=''`)
-  }
 
-  @methods('get')
-  getByOrganizationGoodPlaceId(organizationId: string | any) {
-	return this.request<OrganizationGoodPlaceID>(`/organization_goodplace/buorg?organization=${organizationId}`)
-  }
+	@methods('get')
+	getFilters() {
+			return this.request<OrganizationFilters[]>(`/organizationfilter/all?id=''`)
+	}
 
+	@methods('get')
+	getByOrganizationGoodPlaceId(organizationId: string | any) {
+		return this.request<OrganizationGoodPlaceID>(`/organization_goodplace/buorg?organization=${organizationId}`)
+	}
+
+	@methods('get')
+	socialBu(query:any) {
+		return this.request<{social:any, like: string}>(`/organization/socialbu?idorganization=${query}`)
+	}
 }
 export const requestOrganizationAdmin = new RequestOrganizationAdmin()
 export const requestOrganizationApi = new RequestOrganizationApi()
