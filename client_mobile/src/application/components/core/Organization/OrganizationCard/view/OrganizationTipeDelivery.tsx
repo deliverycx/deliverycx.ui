@@ -17,7 +17,7 @@ import _  from "lodash";
 
 const OrganizationTipeDelivery = () => {
 	const useCasePoints = useContext(PointsContext)
-	const { organizationStatus, deliveryTipe, timeworkOrganization } = useCasePoints.data
+	const { organizationStatus, deliveryTipe, timeworkOrganization,selectOrganization } = useCasePoints.data
 	const { handlerSelectDeliveryTipe, handlerCloseCardModal } = useCasePoints.handlers
 	const navigate = useNavigate()
 	const [statusTSX, switchMetod] = useOrganizationStatus()
@@ -44,7 +44,7 @@ const OrganizationTipeDelivery = () => {
 
 	if (organizationStatus !== ORG_STATUS.WORK || timeworkOrganization.typework === ORG_STATUS.NOWORK) {
 		return (
-			<NavLink to={"/shop"} className="btn btn-mini btn-gray no-drag">Посмотреть меню</NavLink>
+			<NavLink to={`/shop?address=${selectOrganization?.info.city},${selectOrganization?.info.address}`} className="btn btn-mini btn-gray no-drag">Посмотреть меню</NavLink>
 		)
 
 	}
@@ -63,7 +63,7 @@ const OrganizationTipeDelivery = () => {
 							)
 						}
 						return (
-							<NavLink to={"/shop"} key={type.metod} onClick={() => handlerSelectDeliveryTipe(type)} className="btn btn-mini btn-gray no-drag">
+							<NavLink to={`/shop?address=${selectOrganization?.info.city},${selectOrganization?.info.address}`} key={type.metod} onClick={() => handlerSelectDeliveryTipe(type)} className="btn btn-mini btn-gray no-drag">
 								<img src={icons(type.metod)} alt="" />
 								{type.name}
 							</NavLink>
