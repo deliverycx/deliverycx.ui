@@ -14,7 +14,7 @@ const OrganizationSerch: FC<{ city: ICity }> = ({ city }) => {
 	}
 
 	return (
-		<div className="input__item input_icon input_icon_left">
+		<div className="input__item input__fix input_icon input_icon_left">
 			<div className="input__container">
 				<img src={require('assets/images/icons/search.png')} alt="" />
 				<input placeholder="Найти по адресу" onChange={e => handlerSerchPoint(e.target.value)} name="search" type="text" />

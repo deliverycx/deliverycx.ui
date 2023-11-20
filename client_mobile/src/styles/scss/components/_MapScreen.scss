@@ -79,6 +79,7 @@
   }
   &__search {
     background-color: #FFFFFF;
+    box-shadow: 0px 0px 16px 0px rgba(17, 17, 17, 0.40);
     width: 100%;
     display: flex;
     align-items: center;
@@ -94,6 +95,9 @@
     .input__item {
       border-radius: 14px;
       box-shadow: 0px 0px 16px 0px rgba(17, 17, 17, 0.40);
+    }
+    .input__fix {
+      box-shadow: none;
     }
     button {
       box-shadow: 0px 0px 16px 0px rgba(17, 17, 17, 0.40);

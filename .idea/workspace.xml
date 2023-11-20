@@ -6,9 +6,8 @@
   <component name="ChangeListManager">
     <list default="true" id="67ecf96e-fe80-4340-a9f6-f5acc541cf3e" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client_mobile/src/application/components/common/Menu/MainMenu.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client_mobile/src/application/components/common/Menu/MainMenu.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client_mobile/src/application/components/common/TabBar/TabBar.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client_mobile/src/application/components/common/TabBar/TabBar.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client_mobile/src/modules/OrganizationModule/Organization/data/organization.request.ts" beforeDir="false" afterPath="$PROJECT_DIR$/client_mobile/src/modules/OrganizationModule/Organization/data/organization.request.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client_mobile/src/application/components/core/Organization/OrganizationSerch/OrganizationSerch.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client_mobile/src/application/components/core/Organization/OrganizationSerch/OrganizationSerch.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client_mobile/src/styles/scss/components/_MapScreen.scss" beforeDir="false" afterPath="$PROJECT_DIR$/client_mobile/src/styles/scss/components/_MapScreen.scss" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -31,7 +30,7 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "WebServerToolWindowFactoryState": "false",
-    "git-widget-placeholder": "LikeLogic",
+    "git-widget-placeholder": "v3.0.fix",
     "last_opened_file_path": "D:/projects/My-Project",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",

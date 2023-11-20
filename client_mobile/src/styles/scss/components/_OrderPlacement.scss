@@ -158,10 +158,9 @@
   }
 
   &__form{
-
     display: flex;
     flex-direction: column;
-    padding: 8px 16px;
+    padding: 8px;
     gap: 16px;
       }
 
@@ -188,6 +187,7 @@
 			font-weight: 600;
     }
 		&-box{
+          margin-bottom: 8px;
 			display: flex;
       justify-content: center;
       align-items: center;
@@ -252,7 +252,7 @@
     display: flex;
     flex-direction: column;
     gap: 4px;
-    padding: 8px 16px;
+    padding: 8px;
 
     &__info{
       display: flex;
@@ -385,7 +385,7 @@
     display: flex;
     flex-direction: column;
     gap: 8px;
-    padding: 16px;
+    padding: 8px;
     &-link{
       display: flex;
       justify-content: center;
