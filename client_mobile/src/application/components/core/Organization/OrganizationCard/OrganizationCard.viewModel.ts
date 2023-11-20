@@ -49,7 +49,10 @@ export function useOrganizationCardViewModel() {
 	const queryClient = useQueryClient();
 	queryClient.prefetchQuery(
 		'shop',
-		({ queryKey }) => shopRepository.reposityNomenclature(selectOrganization ? selectOrganization.guid as string : ''))
+		({ queryKey }) => shopRepository.reposityNomenclature(
+				selectOrganization && (!selectOrganization.redirect || selectOrganization.redirect.redirectON === false) 
+					? selectOrganization.guid as string : '')
+			)
 	
 	this.data({
 		goodPlaceId,

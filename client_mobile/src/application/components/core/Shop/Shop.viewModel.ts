@@ -9,6 +9,7 @@ import { basketUseCase } from "modules/BasketModule/basket.module";
 import { ICategory } from "modules/ShopModule/interfaces/shop.type";
 import { appUseCase } from "modules/AppModule/app.module";
 import { orderModel, orderUseCase } from "modules/OrderModule/order.module";
+import { Redirects } from "application/helpers/redirectsOld";
 
 export function useShopViewModel(this: any) {
 	const [searchParams, setSearchParams] = useSearchParams();
@@ -31,10 +32,17 @@ export function useShopViewModel(this: any) {
 
 
 	useEffect(()=>{
-		if(!isLoading && nomenclatures){
-			basketUseCase.cartCase()
-			shopUseCase.getStopList()
+		if(organization && organization.redirect && organization.redirect.redirectON){
+			setPointid(undefined)
+			Redirects(organization.redirect)
+		
+		}else{
+			if(!isLoading && nomenclatures){
+				basketUseCase.cartCase()
+				shopUseCase.getStopList()
+			}
 		}
+		
 	},[nomenclatures,isLoading])
 
 
@@ -43,7 +51,7 @@ export function useShopViewModel(this: any) {
 		const queyTable = searchParams.get('table')
 		const delivMetod = searchParams.get('delivMetod')
 
-	
+		
 
 		if(queyOrg){
 			appUseCase.clearApp()
