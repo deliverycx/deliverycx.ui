@@ -1,5 +1,5 @@
 /* eslint-disable no-constant-condition */
-import { useState } from "react"
+import { useEffect, useState } from "react";
 import { NavLink } from "react-router-dom"
 import { CATALOGUE_ROUTE, BASKET_ROUTE, AUTH_ROUTE, PROFILE_ROUTE } from "utils/consts"
 import MainMenu from "../Menu/MainMenu"
@@ -9,11 +9,30 @@ import { observer } from "mobx-react-lite"
 import { profileModel } from "modules/Profile/profile.module"
 import { userModel } from "modules/UserModule/user.module"
 import cn from "classnames"
+import {
+	requestOrganizationAdmin
+} from "../../../../modules/OrganizationModule/Organization/data/organization.request";
+import { organizationModel } from "../../../../modules/OrganizationModule/organization.module";
 
 const TabBar = () => {
 	const [isMenuOpen, setIsMenuOpen] = useState(false)
 	const user = userModel.guestUser
 	const cartprice = basketModel.basketPrice
+	const point = organizationModel.selectOrganization
+	const [like, setLike] = useState<string>()
+
+	useEffect(() => {
+		const FN = async () => {
+			try {
+				const res = await requestOrganizationAdmin.socialBu(point?.guid)
+				setLike(res?.data?.like)
+			} catch (e) {
+				console.log(e, 'like error or nothing');
+			}
+		}
+
+		FN()
+	}, [])
 
 	const scroll = () => {
 		window.scrollTo({
@@ -114,7 +133,7 @@ const TabBar = () => {
 				</ul>
 			</nav>
 			{isMenuOpen && (
-				<MainMenu closeMenu={setIsMenuOpen} />
+				<MainMenu closeMenu={setIsMenuOpen} like={like} />
 			)}
 		</>
 	)
