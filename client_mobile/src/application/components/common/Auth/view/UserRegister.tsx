@@ -23,9 +23,9 @@ const UserRegister: FC<IProps> = ({ formik,set }) => {
 		if (h === 0 && m === 0 && s === 0) {
 			setOver(true);
 		} else if (m === 0 && s === 0) {
-			setTime([h - 1, 59, 59]);
+			setTime([h - 1, 119, 119]);
 		} else if (s == 0) {
-			setTime([h, m - 1, 59]);
+			setTime([h, m - 1, 119]);
 		} else {
 			setTime([h, m, s - 1]);
 		}
@@ -73,6 +73,7 @@ const UserRegister: FC<IProps> = ({ formik,set }) => {
 					<h3 className="auth-content__info-numb">
 						{formik.values.phone}
 					</h3>
+					<h5 className="codewaith">ожидание может состовлять до <strong>5 мин</strong></h5>
 				</div>
 				<div className="auth-content__inputs">
 					<div className={CN}>
