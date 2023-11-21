@@ -37,4 +37,8 @@ export class OrderUseCase{
 	orderDeliveryAddress(addres:IAddressDelivery){
 		this.orderModel.actionOrderDeliveryAddress(addres)
 	}
+
+	setOrderBody(body:any){
+		this.orderModel.actionOrderBody(body)
+	}
 }

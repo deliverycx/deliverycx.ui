@@ -52,6 +52,7 @@ export class OrderCreateBodyEntity{
 			money:bodyorder.money,
 			timedelivery:bodyorder.timedelivery,
 			paymentMethod: bodyorder.payment,
+			devises:String(bodyorder.devices)
 		}
 		
 		this.orderStates = result

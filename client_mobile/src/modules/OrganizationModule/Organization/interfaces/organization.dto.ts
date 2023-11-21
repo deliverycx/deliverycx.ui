@@ -1,6 +1,6 @@
 import { mappersDTO } from "application/helpers/mappersDTO"
 import { validatorDTO } from "application/helpers/validatorDTO"
-import { IsNotEmpty, IsString, IsBoolean, IsNumber, IsObject, IsArray } from "class-validator"
+import { IsNotEmpty, IsString, IsBoolean, IsNumber, IsObject, IsArray, IsOptional } from "class-validator"
 import { IOrganizationResponse, OrganizationFilters } from "./organization.type"
 
 export class OrganizationDTO{
@@ -31,6 +31,9 @@ export class OrganizationDTO{
 	@IsString()
 	guid!:string
 
+	@IsOptional()
+	delivery!: string | null
+
 	@IsArray()
 	gallery!:string[] | []
 	
@@ -54,6 +57,7 @@ export const organizationMapper = (p:IOrganizationResponse[] | IOrganizationResp
 			redirectUrl:val.redirect,
 			redirectON:val.redirectON
 		}
+		organizationDTO.delivery = val.delivMetod
 		organizationDTO.gallery = val.gallery
 		organizationDTO.filters = val.filters
 		validatorDTO(organizationDTO)

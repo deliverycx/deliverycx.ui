@@ -20,7 +20,7 @@ export class OrderEntity{
 				}
 			}
 
-			if(table && table.name === "С Собой"){
+			if(table && table.name === "С собой (СС)"){
 				return {
 					section: 'queue',
 					id: table.tables[0].id,

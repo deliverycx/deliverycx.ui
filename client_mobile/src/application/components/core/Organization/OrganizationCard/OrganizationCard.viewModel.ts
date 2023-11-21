@@ -50,7 +50,9 @@ export function useOrganizationCardViewModel() {
 	queryClient.prefetchQuery(
 		'shop',
 		({ queryKey }) => shopRepository.reposityNomenclature(
-				selectOrganization && (!selectOrganization.redirect || selectOrganization.redirect.redirectON === false) 
+				selectOrganization &&
+				(!selectOrganization.redirect || selectOrganization.redirect.redirectON === false) &&
+				!selectOrganization.delivery
 					? selectOrganization.guid as string : '')
 			)
 	

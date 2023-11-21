@@ -11,6 +11,7 @@ export interface IInitialValues {
 	payment:string
 	money:number
 	timedelivery:string
+	devices:number
 }
 
 

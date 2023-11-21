@@ -12,7 +12,8 @@ const InitOrderBody = {
 	phone: "",
 	payment: PAYMENT_METODS.CASH,
 	money: 0,
-	timedelivery: ""
+	timedelivery: "",
+	devices:0
 }
 export class OrderModel extends OrderRepository {
 	orderBody: IInitialValues = InitOrderBody

@@ -42,6 +42,15 @@ const OrganizationTipeDelivery = () => {
 		)
 	}
 
+	if(selectOrganization.delivery){
+		return (
+			<button disabled className="btn btn-mini btn-gray no-drag">
+				
+				Онлайн-заказ в данной хинкальной недоступен
+			</button>
+		)
+	}
+
 	if (organizationStatus !== ORG_STATUS.WORK || timeworkOrganization.typework === ORG_STATUS.NOWORK) {
 		return (
 			<NavLink to={`/shop?address=${selectOrganization?.info.city},${selectOrganization?.info.address}`} className="btn btn-mini btn-gray no-drag">Посмотреть меню</NavLink>
@@ -54,6 +63,7 @@ const OrganizationTipeDelivery = () => {
 			<>
 				{
 					deliveryTipe.slice().sort((a:any, b:any) => a['sort'] > b['sort'] ? 1 : -1).map((type: IDeliveryTypes) => {
+						
 						if (timeworkOrganization.typework === 'ONWORK' && type.metod === DELIVERY_METODS.COURIER) {
 							return (
 								<button key={type.metod} disabled className="btn btn-mini btn-gray no-drag">

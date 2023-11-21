@@ -1,14 +1,19 @@
+import { orderModel, orderUseCase } from "modules/OrderModule/order.module";
 import React, { useEffect, useState } from "react";
 
 const BasketDevices = () => {
     const [count, setCount] = useState(1);
     const [isActive, setIsActive] = useState(false);
+		const {orderBody} = orderModel
+	
+		
 
     useEffect(() => {
         if(count === 0) {
             setIsActive(false)
             setCount(1)
         }
+				orderUseCase.setOrderBody({...orderBody,devices:count})
     }, [count])
 
     const handleClick = () => {
