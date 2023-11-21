@@ -23,9 +23,9 @@ const UserRegister: FC<IProps> = ({ formik,set }) => {
 		if (h === 0 && m === 0 && s === 0) {
 			setOver(true);
 		} else if (m === 0 && s === 0) {
-			setTime([h - 1, 119, 119]);
+			setTime([h - 1, 60, 60]);
 		} else if (s == 0) {
-			setTime([h, m - 1, 119]);
+			setTime([h, m - 1, 60]);
 		} else {
 			setTime([h, m, s - 1]);
 		}
