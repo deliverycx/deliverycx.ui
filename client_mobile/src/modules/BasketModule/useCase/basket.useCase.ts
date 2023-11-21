@@ -61,15 +61,21 @@ export class BasketUseCase {
 	}
 
 	async changeAmountCart(id: string, coutn: number) {
+		
 		const cartId = this.findIdCart(id)
 		if(cartId){
 			this.cartCase(async (bodyReqCart:IbodyReqCart)=>{
 				this.basketModel.actionCheckbasketError(null)
-				await this.basketModel.repositoryChangeAmountCart({
-						amount:coutn,
-						cartId:cartId.id,
-					...bodyReqCart
-				})
+				if(coutn !== 0){
+					await this.basketModel.repositoryChangeAmountCart({
+							amount:coutn,
+							cartId:cartId.id,
+						...bodyReqCart
+					})
+				}else{
+					await this.removeOneCart(cartId.id)
+				}
+				
 			})
 		}
 

@@ -39,6 +39,13 @@ export function CartChangeViewModel(this: any, product: IProduct) {
 					});
 					break;
 				case 'dec':
+					
+					setChangeCount(prev => {
+						let count = Number(prev) - 1
+						debouncedChangeHandler({ id, count })
+						return count
+					});
+					/*
 					if (!(changeCount <= 1)) {
 						setChangeCount(prev => {
 							let count = Number(prev) - 1
@@ -46,6 +53,7 @@ export function CartChangeViewModel(this: any, product: IProduct) {
 							return count
 						});
 					}
+					*/
 					break;
 				default: setChangeCount(0)
 			}

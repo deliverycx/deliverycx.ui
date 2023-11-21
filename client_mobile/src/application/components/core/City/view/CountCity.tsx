@@ -13,7 +13,7 @@ const CountCity = () => {
 		const { data } = await requestCity.getAll('')
 		if (data && data.length) {
 			const result = data.reduce((acc, value, arr, array) => {
-				console.log(acc,value.countOrg);
+				//console.log(acc,value.countOrg);
 				acc.cityCoutn = array.length
 				if(value.countOrg){
 					acc.orgCount += value.countOrg
