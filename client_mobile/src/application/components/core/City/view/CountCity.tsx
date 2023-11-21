@@ -15,7 +15,9 @@ const CountCity = () => {
 			const result = data.reduce((acc, value, arr, array) => {
 				console.log(acc,value.countOrg);
 				acc.cityCoutn = array.length
-				acc.orgCount += value.countOrg
+				if(value.countOrg){
+					acc.orgCount += value.countOrg
+				} 
 
 				return acc
 			}, {
