@@ -36,6 +36,9 @@ export class OrganizationDTO{
 
 	@IsArray()
 	gallery!:string[] | []
+
+	@IsBoolean()
+	reservetable!:boolean
 	
 	filters!:OrganizationFilters[] | []
 }
@@ -60,6 +63,7 @@ export const organizationMapper = (p:IOrganizationResponse[] | IOrganizationResp
 		organizationDTO.delivery = val.delivMetod
 		organizationDTO.gallery = val.gallery
 		organizationDTO.filters = val.filters
+		organizationDTO.reservetable = val.reservetable
 		validatorDTO(organizationDTO)
 		return {...organizationDTO}
 	})

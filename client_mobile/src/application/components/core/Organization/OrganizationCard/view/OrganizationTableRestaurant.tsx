@@ -88,17 +88,21 @@ const OrganizationTableRestaurant = () => {
 	});
 
 
-	//console.log(formik.errors);
+	
 
 
 
 
 	return (
 		<>
-			<button onClick={() => setTableModal(true)} className="btn btn-mini btn-gray no-drag">
-				<img src={require("assets/images/icons/table_restaurant.png")} alt="" />
-				Забронировать столик
-			</button>
+			{
+				selectOrganization && selectOrganization.reservetable &&
+				<button onClick={() => setTableModal(true)} className="btn btn-mini btn-gray no-drag">
+					<img src={require("assets/images/icons/table_restaurant.png")} alt="" />
+					Забронировать столик
+				</button>
+			}
+			
 			{tableModalSucsses &&
 				<ModalCard setIsOpened={settableModalSucsses}>
 
