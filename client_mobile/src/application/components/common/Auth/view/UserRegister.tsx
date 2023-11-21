@@ -15,7 +15,7 @@ const UserRegister: FC<IProps> = ({ formik,set }) => {
 	const [errorCode,setErrorCode] = useState(false)
 
 	const [over, setOver] = useState(false);
-	const [[h, m, s], setTime] = useState([0, 1, 0]);
+	const [[h, m, s], setTime] = useState([0, 5, 0]);
 
 	const tick = () => {
 		if (over) return;
@@ -39,7 +39,7 @@ const UserRegister: FC<IProps> = ({ formik,set }) => {
 	const reset = () => {
 		setTime([0, 1, 0]);
 		setOver(false);
-		formik.submitForm()
+		//formik.submitForm()
 	};
 
 	const handlerCodeSend = async (code:string,phone:string) =>{
