@@ -31,7 +31,7 @@ services:
     deliverycx_client:
         image: docker/client_mobile
         container_name: development_client
-        build: ./client_mobile
+        build: ./client
         ports:
           - "88:88"
         
