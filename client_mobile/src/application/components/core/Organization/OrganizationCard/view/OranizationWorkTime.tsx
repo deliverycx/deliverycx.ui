@@ -58,7 +58,7 @@ const OranizationWorkTime = () => {
 				</button>
 				<button className="btn btn-mini btn-gray no-drag">
 					<img src={require('assets/images/icons/phone.png')} alt="" />
-					<a href="tel:+79782287220" style={{textDecoration: 0, color: '#8D191D'}}>+7 978 228-72-20</a>
+					<a href={`tel:${selectOrganization.info.phone}`} style={{textDecoration: 0, color: '#8D191D'}}>{selectOrganization.info.phone}</a>
 				</button>
 			</div>
 			{modalWork && !checktype &&
