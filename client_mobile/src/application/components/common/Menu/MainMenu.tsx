@@ -18,9 +18,11 @@ import iconVk from "assets/images/icons/vk.png";
 import iconTg from "assets/images/icons/telegram.png";
 import { ROUTE_APP } from 'application/contstans/route.const';
 import { userModel } from 'modules/UserModule/user.module';
+import { organizationModel } from 'modules/OrganizationModule/organization.module';
 
 
 const MainMenu: FC<{ closeMenu: any, like: string | any }> = observer(({ closeMenu, like }) => {
+	const point = organizationModel.selectOrganization
 	const user = userModel.guestUser
 	console.log('LIKE', like);
 
@@ -90,8 +92,8 @@ const MainMenu: FC<{ closeMenu: any, like: string | any }> = observer(({ closeMe
 					<NavLink to={ROUTE_APP.MAIN}>
 						<img src={iconStoreGray} alt="" />
 						<span>
-							Симферополь
-							<span>ул. Турецкая, 25</span>
+							{point?.info.city}
+							<span>{point?.info.address}</span>
 						</span>
 					</NavLink>
 

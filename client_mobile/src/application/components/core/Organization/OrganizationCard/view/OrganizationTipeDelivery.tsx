@@ -59,6 +59,13 @@ const OrganizationTipeDelivery = () => {
 	}
 
 	if (deliveryTipe.length !== 0) {
+		return(
+			<NavLink to={`/shop?address=${selectOrganization?.info.city},${selectOrganization?.info.address}`} className="btn btn-mini btn-gray no-drag gomenu">
+		
+								Перейти в меню
+							</NavLink>
+		)
+		/*
 		return (
 			<>
 				{
@@ -82,7 +89,7 @@ const OrganizationTipeDelivery = () => {
 				}
 			</>
 		)
-
+		*/		
 	}
 
 	/*

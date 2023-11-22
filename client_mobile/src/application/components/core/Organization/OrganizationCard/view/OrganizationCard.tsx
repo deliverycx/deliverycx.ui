@@ -16,7 +16,8 @@ const OrganizationCard = () => {
 			<div className="d-flex gap-16 flex-center">
 				<div className="institute-header__rating">
 					{
-						goodPlaceId && <iframe src={`https://yandex.ru/sprav/widget/rating-badge/${goodPlaceId}?type=award`} width="150" height="50" frameBorder="0"></iframe>
+						goodPlaceId && 
+						<div className="goodpalese"><iframe src={`https://yandex.ru/sprav/widget/rating-badge/${goodPlaceId}?type=award`} width="150" height="50" frameBorder="0"></iframe></div>
 					}
 				</div>
 

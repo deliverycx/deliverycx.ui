@@ -30,12 +30,19 @@ const HOCProfile = () => {
 						<h4 className="profile-content__info-numb">{user.phone}</h4>
 					</div>
 					<div className="profile-content__gift">
-						<div className="profile-content__gift-header">
+						{
+							/*
+							
+							<div className="profile-content__gift-header">
 							<h3>Получи дюжину хинкали в подарок!</h3>
 							<button className="btn btn-none">
 								<img src={require("assets/images/icons/info.png")} alt="" />
 							</button>
 						</div>
+							
+							*/
+						}
+						
 						<div className="profile-content__gift__content">
 
 						</div>

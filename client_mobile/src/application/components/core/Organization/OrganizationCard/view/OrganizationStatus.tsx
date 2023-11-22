@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-var-requires */
 /* eslint-disable no-irregular-whitespace */
 import ModalCard from "application/components/common/Modals/ModalCard";
 import { useOrganizationStatus } from "application/hooks/useOrganizationStatus"
@@ -183,6 +184,16 @@ const OrganizationStatus = () => {
 					<img src={require('assets/images/icons/phonewite.png')} alt="" />
 					{point?.info.phone}
 				</a>
+			</div>
+		</div>
+	))
+
+	statusTSX.OnliPICKUP((
+		<div className="order-placement__form">
+			<div className="order-placement__tabs__notification">
+				<h3>У данного заведения нету доставки</h3>
+				<h5>Для заказа курьером выберите другое заведение</h5>
+				<small>или воспользуйтесь <b>самовывозом</b> </small>
 			</div>
 		</div>
 	))

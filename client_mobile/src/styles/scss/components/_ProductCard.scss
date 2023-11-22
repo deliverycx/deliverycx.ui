@@ -275,8 +275,10 @@
     justify-content: end;
     gap: 4px;
     color: $c_red;
-		font-size: 24px;
+		font-size: 21px;
+		line-height: 30px;
 		font-weight: 700;
+		margin-top: 5px;
     .ended &{
       color: #BFBFBF;
     }

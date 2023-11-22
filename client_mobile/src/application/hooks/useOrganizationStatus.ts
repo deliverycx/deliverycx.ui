@@ -12,16 +12,18 @@ export class StatusTSX {
 	public readonly pointstatus: {
 		organizationStatus: string
 		timeworkOrganization: string
+		deliveryTipe:any
 	}
 	public statuses: {
 		name: string
 		exect: boolean
 		content: ReactNode
 	} | null = null
-	constructor(organizationStatus: string = '', timeworkOrganization: string = '') {
+	constructor(organizationStatus: string = '', timeworkOrganization: string = '',deliveryTipe:any = []) {
 		this.pointstatus = {
 			organizationStatus,
-			timeworkOrganization
+			timeworkOrganization,
+			deliveryTipe
 		}
 	}
 
@@ -83,17 +85,38 @@ export class StatusTSX {
 			tsx
 		)
 	}
+
+	OnliPICKUP(tsx?:ReactNode){
+		const picup = this.pointstatus.deliveryTipe.find((val:any) =>{
+			return val.metod === DELIVERY_METODS.COURIER
+		})
+
+		
+
+		return this.init(
+			"Только самовывоз",
+			!picup &&
+			(
+				this.pointstatus.organizationStatus !== ORG_STATUS.OPEN && 
+				this.pointstatus.organizationStatus !== ORG_STATUS.NODELIVERY &&
+				this.pointstatus.organizationStatus !== ORG_STATUS.NOWORK
+			),
+			tsx
+		)
+	}
 }
 
 
 export const useOrganizationStatus = (): [StatusTSX, any] => {
-	const { organizationStatus,timeworkOrganization } = organizationStatusModel
+	const { organizationStatus,timeworkOrganization,deliveryTipe } = organizationStatusModel
+
+
 
 	useQuery('pointstatus', () => useCaseOrganizationStatus.statusOrganization(), {
 		refetchOnWindowFocus: true,
 	})
 
-	const tsx = new StatusTSX(organizationStatus as string, timeworkOrganization?.typework)
+	const tsx = new StatusTSX(organizationStatus as string, timeworkOrganization?.typework,deliveryTipe)
 
 
 	const switchMetod = () => {

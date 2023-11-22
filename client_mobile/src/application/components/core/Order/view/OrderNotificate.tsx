@@ -33,7 +33,7 @@ const OrderNotificate:FC<{disable:any}> = ({disable}) =>{
 
 	}, [timeworkOrganization])
 
-	console.log(timeworkOrganization);
+	
 	statusTSX.NoWorkPoint((
 		<div className="modal__wrapper">
 			<div className="modal__header">

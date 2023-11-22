@@ -4,23 +4,24 @@ import { organizationStatusModel, useCaseOrganizationStatus } from "modules/Orga
 import { useEffect } from 'react';
 import { useNavigate } from "react-router-dom";
 import { ROUTE_APP } from 'application/contstans/route.const';
+import { basketUseCase } from "modules/BasketModule/basket.module";
+
 
 const HOCOrderMetods = () =>{
 	const {deliveryTipe,selectDeliveryTipe} = organizationStatusModel
 	const navigate = useNavigate()
 	
 	useEffect(()=>{
-		if(selectDeliveryTipe && deliveryTipe){
-			deliveryTipe.forEach((el) =>{
-				if(el.metod !== selectDeliveryTipe.metod){
-					//
-				}
-			})
+		if(selectDeliveryTipe){
 			useCaseOrganizationStatus.statusOrganization()
 		}else{
-			//navigate(ROUTE_APP.MAIN)
+			if(deliveryTipe){
+				useCaseOrganizationStatus.selectDeliveryMetod(deliveryTipe.slice().sort((a:any, b:any) => a['sort'] > b['sort'] ? 1 : -1)[0])
+				basketUseCase.cartCase()
+			}
+			
 		}
-		
+		console.log(deliveryTipe);
 	},[selectDeliveryTipe])
 
 	

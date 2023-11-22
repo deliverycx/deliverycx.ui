@@ -36,7 +36,7 @@ const PoductListItem: FC<IProps> = ({ product, setModalmodalProduct,stoplist }) 
 				<ImageLoader
 					src={product.image}
 					wrapper={React.createFactory('div')}
-					preloader={() => <div className="loader_shop"></div>}>
+					preloader={() => <div className="cssload-loader"></div>}>
 					{product.name}
 				</ImageLoader>
 				<div className="product-card-sale">-123%</div>
