@@ -1,7 +1,7 @@
 import { ICityResponse } from "modules/CityModule/interfaces/city.type"
 import { ApiAdminSuper, ApiSuper, methods } from "servises/Axios/AxiosApi"
 import { AjaxApiSuper } from "servises/rxjs/AjaxApi"
-import type { IOrganization, OrganizationFilters, pointSerch } from "../interfaces/organization.type"
+import type { IOrganization, IRequisitiesOrganization, OrganizationFilters, pointSerch } from "../interfaces/organization.type"
 import { OrganizationGoodPlaceID } from "../interfaces/organization.type";
 
 class RequestOrganization extends AjaxApiSuper {
@@ -57,6 +57,7 @@ class RequestOrganizationAdmin extends ApiAdminSuper {
 	socialBu(query:any) {
 		return this.request<{social:any, like: string}>(`/organization/socialbu?idorganization=${query}`)
 	}
+
 }
 export const requestOrganizationAdmin = new RequestOrganizationAdmin()
 export const requestOrganizationApi = new RequestOrganizationApi()

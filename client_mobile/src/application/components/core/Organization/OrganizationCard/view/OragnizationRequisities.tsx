@@ -5,22 +5,24 @@ import { organizationModel } from "../../../../../../modules/OrganizationModule/
 import {
     IRequisitiesOrganization
 } from "../../../../../../modules/OrganizationModule/Organization/interfaces/organization.type";
+import { requestOrganizationAdmin, requestOrganizationApi } from "modules/OrganizationModule/Organization/data/organization.request";
 
 const OragnizationRequisities = () => {
     const [modal, setModal] = useState(false)
     const [data, setData] = useState<null | IRequisitiesOrganization>(null)
 
+
     useEffect(() => {
-        const getRequisities = async () => {
+        const getRequisities = async (id:string) => {
             try {
-                const res = await axios.get<IRequisitiesOrganization>(`http://localhost:5000/organization/recvisites?organizationId=${organizationModel.selectOrganization?.guid}`)
-                setData(res.data)
+                const {data} = await requestOrganizationApi.getRequisites(id)
+                setData(data)
             } catch (e) {
                 console.log(e);
             }
         }
 
-        getRequisities()
+				organizationModel.selectOrganization && getRequisities(organizationModel.selectOrganization.guid)
     }, [])
 
     return (
