@@ -1,3 +1,4 @@
+/* eslint-disable prefer-const */
 import { memo, useEffect, useMemo, useState } from "react";
 import { requestCity } from "modules/CityModule/data/city.request";
 import { ICity, ICityResponse } from "modules/CityModule/interfaces/city.type";
@@ -51,12 +52,21 @@ const CountCity = () => {
     return five;
   }
 
+	const q = (number:number) =>{
+		let last_num:any
+		if (number > 10 && [11, 12, 13, 14].includes(number%100)) return 'ных';
+    last_num = number%10;
+    if (last_num == 1) return 'ная';
+    if ([2,3,4].includes(last_num)) return 'ных';
+    if ([5,6,7,8,9, 0].includes(last_num)) return 'ных';
+	}
+
 	return (
 		<>
 			{
 				coutCity &&
 				<div className="select__title">
-					{coutCity.orgCount} хинкаль{getNoun(coutCity.orgCount,"ных","ная","ных")} в  {coutCity.cityCoutn} городах
+					{coutCity.orgCount} хинкаль{q(coutCity.orgCount)} в  {coutCity.cityCoutn} городах
 				</div>
 			}
 
