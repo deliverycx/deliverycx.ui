@@ -33,7 +33,7 @@ const OragnizationRequisities = () => {
 
             {
                 modal && (
-                    <ModalCard setIsOpened={setModal}>
+                    <ModalCard setIsOpened={setModal} theme="children">
 
                         <div className="modal__wrapper">
                             <div className="modal__header">
