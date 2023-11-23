@@ -35,13 +35,28 @@ const CountCity = () => {
 	}, [])
 
 
+	function getNoun(number:any, one:any, two:any, five:any) {
+    let n = Math.abs(number);
+    n %= 100;
+    if (n >= 5 && n <= 20) {
+      return five;
+    }
+    n %= 10;
+    if (n === 1) {
+      return one;
+    }
+    if (n >= 2 && n <= 4) {
+      return two;
+    }
+    return five;
+  }
 
 	return (
 		<>
 			{
 				coutCity &&
 				<div className="select__title">
-					{coutCity.orgCount} хинкальная в  {coutCity.cityCoutn} городах
+					{coutCity.orgCount} хинкаль{getNoun(coutCity.orgCount,"ных","ная","ных")} в  {coutCity.cityCoutn} городах
 				</div>
 			}
 
