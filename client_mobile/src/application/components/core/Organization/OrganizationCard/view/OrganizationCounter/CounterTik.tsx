@@ -36,7 +36,7 @@ const CountTik:FC<IProps> = ({count}) =>{
 		};
 	}, [count]);
 
-	console.log(count);
+
 	return(
 		<div style={{ margin: "0" }}>
 							<div className="tick">

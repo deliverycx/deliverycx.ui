@@ -40,7 +40,7 @@ export function useOrderCreateViewModel() {
 	const orderCreate = async (hashorder:string) =>{
 		setOrderLoad(true)
 		const orderNumb = await orderCreateUseCase.orderCreate(hashorder)
-		console.log(orderNumb);
+		
 		if(orderNumb){
 			setOrderNumber(orderNumb)
 			setOrderLoad(false)

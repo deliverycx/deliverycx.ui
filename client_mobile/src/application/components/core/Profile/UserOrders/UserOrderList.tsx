@@ -7,7 +7,7 @@ import { DELIVERY_METODS } from "application/contstans/const.orgstatus"
 
 const UserOrderList: FC<{ order: IUserOrders }> = ({ order }) => {
 	const [isModalOpened, setIsModalOpened] = useState(false)
-	console.log(order);
+
 	return (
 		<>
 			{

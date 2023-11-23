@@ -67,7 +67,7 @@ class RequestBasket extends ApiSuper {
 	}
 	@methods("delete")
 	deleteCart(body:any) {
-		console.log('qqqqqqq');
+		
 		return this.request<[]>("/cart/deleteAll");
 	}
 	@methods("post")

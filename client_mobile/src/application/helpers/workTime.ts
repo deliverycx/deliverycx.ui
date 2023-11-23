@@ -87,7 +87,7 @@ export const delivertyTime = (workTime:any,deliveryTime:any) =>{
 			const timepickup = format(onliPickUPTime.setMinutes(onliPickUPTime.getMinutes() + deliveryTime), "HH:mm")
 			const nodelivery = format(noDeliveryTime.setMinutes(noDeliveryTime.getMinutes() + 30), "HH:mm")
 
-			console.log(timepickup,nodelivery,max);
+		
 
 			if(nodelivery > max){
 				return {

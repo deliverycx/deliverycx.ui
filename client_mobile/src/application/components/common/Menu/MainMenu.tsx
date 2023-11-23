@@ -24,7 +24,7 @@ import { organizationModel } from 'modules/OrganizationModule/organization.modul
 const MainMenu: FC<{ closeMenu: any, like: string | any }> = observer(({ closeMenu, like }) => {
 	const point = organizationModel.selectOrganization
 	const user = userModel.guestUser
-	console.log('LIKE', like);
+	
 
 	useEffect(() => {
 		document.body.style.overflow = 'hidden';

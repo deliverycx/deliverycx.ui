@@ -26,7 +26,7 @@ export function useUserOrdersViewModel(this:any) {
 			})
 	},[])
 
-	console.log(organization);
+
 
 	const navigate = useNavigate()
 	const point = organizationModel.selectOrganization
@@ -53,7 +53,7 @@ export function useUserOrdersViewModel(this:any) {
 				}
 
 			}
-			console.log(cartbody);
+		
 			basketModel.repositoryAddToCart(cartbody)
 			
 		})

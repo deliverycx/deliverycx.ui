@@ -72,7 +72,7 @@ const Stocks:FC<{organization:IOrganization}> = ({organization}) => {
 	const handlerStories = (story:string[] | null,index:number) => {
 		//const q = document.querySelector(".shop__box") as any
 		setStoriesIndex(index)
-		console.log(story);
+
 		if(story?.length !== 0){
 			setStories(story)
 
@@ -104,7 +104,7 @@ const Stocks:FC<{organization:IOrganization}> = ({organization}) => {
 	};
 
 
-	console.log(mapStory);
+
 
 	return (
 		<div className="stocks">

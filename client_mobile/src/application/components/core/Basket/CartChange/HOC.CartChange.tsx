@@ -123,7 +123,7 @@ const HOCCartChange: FC<IProps> = ({ theme, product, close }) => {
 							</div>
 							<input onChange={e => {
 								e.preventDefault();
-								console.log("e", e.target.value);
+								
 								handlerInputAddAmout(product.id, Number(e.target.value))
 
 							}} value={changeCount + changeCartCount} type="number" />

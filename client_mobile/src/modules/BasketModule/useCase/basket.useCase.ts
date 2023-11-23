@@ -92,7 +92,7 @@ export class BasketUseCase {
 
 	async deliteCart(){
 		const user = this.userModel.guestUser && this.userModel.guestUser.id
-		console.log('deliteCart',user);
+		
 		this.cartCase(async (bodyReqCart:IbodyReqCart)=>{
 			user && await this.basketModel.repositoryDeliteCart({userid:user})
 		})

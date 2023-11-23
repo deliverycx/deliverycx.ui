@@ -18,7 +18,7 @@ export function useAuthViewModel(this: any) {
 			phone: valid.phone
 		}),
 		onSubmit: (values, meta) => {
-			console.log(values);
+			
 			handlerSMSSend(values.phone)
 		},
 	});

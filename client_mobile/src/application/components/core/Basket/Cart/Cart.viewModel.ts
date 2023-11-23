@@ -21,7 +21,7 @@ export function useCartViewModel(this: any,cart:ICartProd[]) {
 		if (e.target.checked) {
 			if(cart){
 				const res = cart.reduce((accumulator:any, currentValue:any) => {
-					console.log(accumulator);
+					
 					return [...accumulator,currentValue.id]
 				}, [])
 				setSelect(res)

@@ -34,7 +34,7 @@ export function useOrganizationFiltersViewModel(this:any,city:ICity) {
 	const handlerFiler = async (id: string) => {
 		if (changeFilter) {
 			const index = changeFilter.indexOf(id)
-			console.log(index);
+			
 			if (index === -1) {
 				setChangeFilter((prev: any) => [...prev, id])
 			} else {

@@ -58,7 +58,7 @@ export class OrderCreateUseCase {
 			const url = await orderCreateRepository.repositoryCheckOrder(body)
 			return url
 		} catch (error:any) {
-			console.log(error.response.status);
+			
 			this.userModel.guestUser && this.userModel.actionCheckGusetUser(this.userModel.guestUser)
 			
 		}

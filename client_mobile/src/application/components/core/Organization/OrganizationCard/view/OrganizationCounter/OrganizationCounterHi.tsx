@@ -32,7 +32,7 @@ const OrganizationCounterHi = () => {
 		return format(n, "yyy-LL-dd") //n.toLocaleDateString();
 	}
 
-	console.log('count',count);
+
 
 	/**/
 	useEffect(() => {
@@ -83,7 +83,7 @@ const OrganizationCounterHi = () => {
 					} else {
 						numbFlip = Number(countorg.coutn)
 					}
-					console.log(numbFlip);
+					
 	
 
 					const num1 = Number(numbFlip);
@@ -156,7 +156,7 @@ const OrganizationCounterHi = () => {
 			const { data } = await RequestWebhook.flip({
 				time, oldtime, phone:point?.info.phone
 			})
-			console.log('сьедено за сегодня', data);
+			//console.log('сьедено за сегодня', data);
 			if (data) {
 				setLoad(false)
 				const zeroLength = 12;

@@ -53,7 +53,7 @@ export class OrderModel extends OrderRepository {
 			
 			if (result) {
 				const tableSection = this.checkOrderTable(result,qr)
-				console.log('result',tableSection);
+				
 				if(tableSection){
 					
 					this.orderOnspotTable = tableSection
