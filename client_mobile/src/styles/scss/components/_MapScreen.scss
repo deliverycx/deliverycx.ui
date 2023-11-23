@@ -322,13 +322,16 @@
 	.orglist_box-item{
 		display: flex;
 		padding: 16px;
-		justify-content: center;
+		justify-content: space-between;
 		align-items: center;
 		gap: 8px;
 		margin: 10px 0;
 		align-self: stretch; 
 		border-radius: 17px;
 		border: 1px solid var(--black-to-white-white-75-black-disabled, #BFBFBF); 
+	}
+	.orglist_box-item.active{
+		border: 3px solid #8D191D;
 	}
 	.orglistitem_point{
 		width: 50%;

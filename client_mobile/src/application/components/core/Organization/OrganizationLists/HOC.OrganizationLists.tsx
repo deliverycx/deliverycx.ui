@@ -29,4 +29,4 @@ const HOCOrganizationLists: FC<IProps> = ({ set, organizations,setCord }) => {
 		</>
 	)
 }
-export default observer(HOCOrganizationLists) 
+export default HOCOrganizationLists
