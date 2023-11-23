@@ -39,6 +39,7 @@ const OrganizationListsItem: FC<IProps> = ({ organization, setCordPoint, set }) 
 		set(false)
 	}
 
+	
 	const CN = cn('orglist_box-item',{active:selectOrganization?.id === organization.id})
 	return (
 		<div className={CN}>
