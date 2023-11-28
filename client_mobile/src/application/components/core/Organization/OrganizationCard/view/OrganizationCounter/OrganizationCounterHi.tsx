@@ -12,6 +12,7 @@ import CounterTik from "./CounterTik";
 import { organizationModel } from 'modules/OrganizationModule/organization.module';
 import { observer } from 'mobx-react-lite';
 import RequestAdmins from "servises/Request/Request.Admins";
+import { IOrganization } from 'modules/OrganizationModule/Organization/interfaces/organization.type';
 
 
 type IProps = {
@@ -19,8 +20,8 @@ type IProps = {
 	setIsModalOpen: any
 
 }
-const OrganizationCounterHi = () => {
-	const point = organizationModel.selectOrganization
+const OrganizationCounterHi:FC<{point:IOrganization}> = ({point}) => {
+	
 	const [count, setCount] = useState<any>('000000000000');
 	const [tik, setTik] = useState<boolean>(false);
 	const [load, setLoad] = useState<boolean>(false);
@@ -57,7 +58,7 @@ const OrganizationCounterHi = () => {
 						const zeroLength = 12;
 						const c = parseInt(count)
 						const newcount = String(c + counter).padStart(zeroLength, '0')
-						
+
 						setCount(newcount)
 						if (toNumber === counter) {
 							setTik(true)
@@ -67,9 +68,9 @@ const OrganizationCounterHi = () => {
 					}, 1)
 				}/**/
 			}
-			async function organizationCoutn(guid:string) {
-				
-				const { data: countorg } =  await RequestAdmins.getOraganizationCount(guid)
+			async function organizationCoutn(guid: string) {
+
+				const { data: countorg } = await RequestAdmins.getOraganizationCount(guid)
 				if (countorg) {
 					const today = format(new Date(), "yyy-LL-dd")
 					if (today !== countorg.date) {
@@ -83,8 +84,8 @@ const OrganizationCounterHi = () => {
 					} else {
 						numbFlip = Number(countorg.coutn)
 					}
-					
-	
+
+
 
 					const num1 = Number(numbFlip);
 					const num2 = Number(numbFlip) - 10;
@@ -154,7 +155,7 @@ const OrganizationCounterHi = () => {
 			const time = format(new Date(), "yyy-LL-dd")
 			const oldtime = dtime_nums(-1)
 			const { data } = await RequestWebhook.flip({
-				time, oldtime, phone:point?.info.phone
+				time, oldtime, phone: point?.info.phone
 			})
 			//console.log('сьедено за сегодня', data);
 			if (data) {
@@ -174,21 +175,30 @@ const OrganizationCounterHi = () => {
 
 
 	return (
-		<div className="product_card flipmodal">
-			<div className="product_card-container">
+		
+			<div className="institute-counter">
+				
+				<h4>Съедено хинкали</h4>
+				<div className="counter-wrapper">
+					<div className="product_card flipmodal">
+						<div className="product_card-container">
 
-				<section className="counter-tik_box">
+							<section className="counter-tik_box">
 
-					{
-						load ? <span>Загрузка...</span> : <CounterTik value={count} />
-					}
-
-
-				</section>
+								{
+									load ? <span>Загрузка...</span> : <CounterTik value={count} />
+								}
 
 
+							</section>
+
+
+						</div>
+					</div>
+				</div>
+				
 			</div>
-		</div>
+
 	)
 }
 export default observer(OrganizationCounterHi) 

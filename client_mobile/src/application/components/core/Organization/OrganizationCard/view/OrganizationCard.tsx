@@ -1,17 +1,18 @@
 /* eslint-disable @typescript-eslint/no-var-requires */
-import { useContext, useEffect } from "react";
+import { FC, useContext, useEffect } from "react";
 import { PointsContext } from "../HOC.OrganizationCard"
 import OragnizationRequisities from "./OragnizationRequisities";
 import OrganizationCounterHi from "./OrganizationCounter/OrganizationCounterHi";
+import { IOrganization } from 'modules/OrganizationModule/Organization/interfaces/organization.type';
 
-const OrganizationCard = () => {
+const OrganizationCard:FC<{organization:IOrganization}> = ({organization}) => {
 	const useCasePoints = useContext(PointsContext)
 	const { selectOrganization, goodPlaceId } = useCasePoints.data
 
 	return (
 		<>
 			<h3>
-				{selectOrganization.info.address}, {selectOrganization.info.city}
+				{organization.info.address}, {organization.info.city}
 			</h3>
 			<div className="d-flex gap-16 flex-center">
 				<div className="institute-header__rating">
@@ -22,13 +23,7 @@ const OrganizationCard = () => {
 				</div>
 
 			</div>
-			<div className="institute-counter">
-				<h4>Съедено хинкали</h4>
-				<div className="counter-wrapper">
-					<OrganizationCounterHi />
-				</div>
-			</div>
-			<OragnizationRequisities />
+			
 		</>
 	)
 }

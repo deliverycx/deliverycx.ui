@@ -1,6 +1,6 @@
 import ModalCard from 'application/components/common/Modals/ModalCard';
 import { shemaReserve } from 'application/guards/validationSchema';
-import { useState } from 'react';
+import { FC, useState } from 'react';
 import { Field, FormikProvider, useFormik } from "formik";
 import { compareAsc, format } from 'date-fns'
 import InputMask from "react-input-mask";
@@ -8,6 +8,7 @@ import { observer } from 'mobx-react-lite';
 import { organizationModel, organizationStatusModel } from 'modules/OrganizationModule/organization.module';
 import FormFieldWrapper from 'application/components/common/Forms/FormFieldWrapper';
 import RequestWebhook from 'servises/Request/Request.Webhook';
+import { IOrganization } from 'modules/OrganizationModule/Organization/interfaces/organization.type';
 
 
 export interface IReverveTableValue {
@@ -19,7 +20,7 @@ export interface IReverveTableValue {
 }
 
 
-const OrganizationTableRestaurant = () => {
+const OrganizationTableRestaurant:FC<{organization:IOrganization}> = ({organization}) => {
 	const [tableModal, setTableModal] = useState(false)
 	const [tableModalSucsses, settableModalSucsses] = useState(false)
 	const { selectOrganization } = organizationModel
