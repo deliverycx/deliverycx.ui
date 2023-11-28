@@ -15,6 +15,7 @@ import { useState } from 'react';
 import HOCOrganizationFilters from "./OrganizationFilters/OrganizationFilters";
 import HOCOrganizationSerch from "./OrganizationSerch/OrganizationSerch";
 import HOCOrganizationLists from "./OrganizationLists/HOC.OrganizationLists";
+import Slider from "react-slick";
 
 
 
@@ -26,10 +27,29 @@ const HOCOrganizations = () => {
 
 	const [modalOpenedList, setIsOpenedList] = useState(false)
 
+	const settings = {
+		className: "center",
+		centerMode: true,
+		infinite: true,
+		centerPadding: "25px",
+		slidesToShow: 1,
+		speed: 500,
+		rows: 1,
+		slidesPerRow: 1,
+		
+	};
+
+	
+
 	return (
 		<div className="map">
 
-			<HOCOrganizationCard />
+		
+			{
+				organizations &&
+				<HOCOrganizationCard organizations={organizations} />
+			}
+			
 			<div onClick={handleBackCity} className="map__topbar map__topbar__fixed">
 				<div className="map__topbar-btn">
 					<img src={iconArrowBack} alt="" />

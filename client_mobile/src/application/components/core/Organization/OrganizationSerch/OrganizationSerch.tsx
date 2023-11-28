@@ -13,6 +13,8 @@ const OrganizationSerch: FC<{ city: ICity }> = ({ city }) => {
 		})
 	}
 
+	
+
 	return (
 		<div className="input__item input__fix input_icon input_icon_left">
 			<div className="input__container">

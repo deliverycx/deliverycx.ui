@@ -9,6 +9,8 @@
   cursor: pointer;
 }
 
+
+
 .map {
   position: relative;
 	
@@ -52,6 +54,8 @@
   &__topbar__fixed {
     position: fixed;
   }
+
+	
 
   &__topbar {
     display: flex;
@@ -368,4 +372,15 @@
 	.orglistitem_point-time.close{
 		color: #8D191D;
 	}
+}
+
+.organization_slide .slick-slide > div{
+	height: 100%;
+}
+.organization_slide .modal__wrapper{
+	width: 98% !important;
+	
+}
+.organization_slide .slick-active .modal__wrapper{
+	height: 100%;
 }

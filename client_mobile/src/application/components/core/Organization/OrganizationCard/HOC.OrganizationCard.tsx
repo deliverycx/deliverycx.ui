@@ -1,6 +1,6 @@
 import { TadapterCaseCallback, adapterComponentUseCase } from "adapters/adapterComponents"
 import { useOrganizationCardViewModel } from "./OrganizationCard.viewModel"
-import { useState } from 'react';
+import { FC, useState } from 'react';
 import OrganizationCard from "./view/OrganizationCard";
 import React from "react";
 import { observer } from "mobx-react-lite"
@@ -13,61 +13,94 @@ import OrganizationTableRestaurant from "./view/OrganizationTableRestaurant";
 import OrganizationTipeDelivery from "./view/OrganizationTipeDelivery";
 import OrganizationStatus from "./view/OrganizationStatus";
 import { createPortal } from "react-dom";
+import Slider from "react-slick";
+import { IOrganization } from "modules/OrganizationModule/Organization/interfaces/organization.type";
+
 
 export const PointsContext = React.createContext<TadapterCaseCallback>({
 	data: {},
 	handlers: {},
 	status: {}
 });
-const HOCOrganizationCard = () => {
+const HOCOrganizationCard:FC<{organizations:IOrganization[]}> = ({organizations}) => {
 	const useCase = adapterComponentUseCase(useOrganizationCardViewModel)
 
 	const { selectOrganization, timeworkOrganization, cardModal, deliveryTipe } = useCase.data
 	const { setCardModal, handlerCloseCardModal } = useCase.handlers
 
+	const settings = {
+		className: "center",
+		centerMode: true,
+		infinite: true,
+		centerPadding: "30px",
+		slidesToShow: 1,
+		speed: 500,
+		rows: 1,
+		slidesPerRow: 1,
+		dots: false,
+		arrows:false
+	};
+
+
+	
 
 	return (
 		<>
 			<PointsContext.Provider value={useCase}>
 				{
 					cardModal && selectOrganization && deliveryTipe &&
-						<ModalCard setIsOpened={handlerCloseCardModal}>
-						<div className="modal__wrapper map__institute-info">
-							<div onClick={handlerCloseCardModal} className="map__institute-close no-drag">
-								<img src={require('assets/images/icons/close_gray.png')} alt="" />
-							</div>
-							
-							{
-								selectOrganization.gallery && selectOrganization.gallery.length !== 0 &&
-								<Carousel showThumbs={false} autoPlay={true} showArrows={false} showStatus={false}>
-									{selectOrganization.gallery.map((image: string, index: number) => (
-										<img key={index} src={imgRoutDef(image)} alt="" />
-									))}
-								</Carousel>
-							}
-							<div className="map__institute-content no-drag">
-								<div className="institute-header">
-									
-									<OrganizationCard />
-									<OrganizationStatus />
-									{
-										timeworkOrganization &&
-										<OranizationWorkTime />
-									}
-									{
-										selectOrganization.filters && selectOrganization.filters.length !== 0 &&
-										<OrganizationCardFilter organization={selectOrganization} />
-									}
-									{
-										timeworkOrganization && deliveryTipe &&
-										<OrganizationTipeDelivery />
-									}
-									<OrganizationTableRestaurant />
-								</div>
-							</div>
-							
+					<ModalCard setIsOpened={handlerCloseCardModal}>
 
-						</div>
+						{
+							organizations &&
+								<Slider {...settings} className="organization_slide">
+									{
+										organizations.map((org: IOrganization) => {
+											return (
+												<div key={org.guid} className="modal__wrapper map__institute-info">
+									<div onClick={handlerCloseCardModal} className="map__institute-close no-drag">
+										<img src={require('assets/images/icons/close_gray.png')} alt="" />
+									</div>
+
+									{
+										selectOrganization.gallery && selectOrganization.gallery.length !== 0 &&
+										<Carousel showThumbs={false} autoPlay={true} showArrows={false} showStatus={false}>
+											{selectOrganization.gallery.map((image: string, index: number) => (
+												<img key={index} src={imgRoutDef(image)} alt="" />
+											))}
+										</Carousel>
+									}
+									<div className="map__institute-content no-drag">
+										<div className="institute-header">
+
+											<OrganizationCard />
+											<OrganizationStatus />
+											{
+												timeworkOrganization &&
+												<OranizationWorkTime />
+											}
+											{
+												selectOrganization.filters && selectOrganization.filters.length !== 0 &&
+												<OrganizationCardFilter organization={selectOrganization} />
+											}
+											{
+												timeworkOrganization && deliveryTipe &&
+												<OrganizationTipeDelivery />
+											}
+											<OrganizationTableRestaurant />
+										</div>
+									</div>
+
+
+								</div>
+										)
+										})
+									}
+								</Slider>
+								
+						}
+
+
 					</ModalCard>
 				}
 
@@ -77,3 +110,42 @@ const HOCOrganizationCard = () => {
 	)
 }
 export default observer(HOCOrganizationCard)
+
+/*
+<div className="modal__wrapper map__institute-info">
+									<div onClick={handlerCloseCardModal} className="map__institute-close no-drag">
+										<img src={require('assets/images/icons/close_gray.png')} alt="" />
+									</div>
+
+									{
+										selectOrganization.gallery && selectOrganization.gallery.length !== 0 &&
+										<Carousel showThumbs={false} autoPlay={true} showArrows={false} showStatus={false}>
+											{selectOrganization.gallery.map((image: string, index: number) => (
+												<img key={index} src={imgRoutDef(image)} alt="" />
+											))}
+										</Carousel>
+									}
+									<div className="map__institute-content no-drag">
+										<div className="institute-header">
+
+											<OrganizationCard />
+											<OrganizationStatus />
+											{
+												timeworkOrganization &&
+												<OranizationWorkTime />
+											}
+											{
+												selectOrganization.filters && selectOrganization.filters.length !== 0 &&
+												<OrganizationCardFilter organization={selectOrganization} />
+											}
+											{
+												timeworkOrganization && deliveryTipe &&
+												<OrganizationTipeDelivery />
+											}
+											<OrganizationTableRestaurant />
+										</div>
+									</div>
+
+
+								</div>
+*/

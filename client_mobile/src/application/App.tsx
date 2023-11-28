@@ -26,7 +26,11 @@ const App = (): JSX.Element => {
 				//NestedRoute()
 			}
 
-		<YMInitializer accounts={[95435515]} options={{webvisor: true}} version="2" />
+		{
+			process.env.NODE_ENV === 'production' &&
+			<YMInitializer accounts={[95435515]} options={{webvisor: true}} version="2" />
+		}
+		
 		</>
 
 	)
