@@ -376,11 +376,22 @@
 
 .organization_slide .slick-slide > div{
 	height: 100%;
+	display: flex;
+	justify-content: flex-end;
 }
 .organization_slide .modal__wrapper{
-	width: 98% !important;
+	position: relative;
+	bottom: -15px;
+	opacity: .8;
+  transition: all .3s ease;
+	transform: scale(.9);
 	
 }
-.organization_slide .slick-active .modal__wrapper{
-	height: 100%;
+.organization_slide .slick-center .modal__wrapper{
+	width: 100% !important;
+	opacity: 1;
+  -ms-transform: scale(1);
+  transform: scale(1);
+	position: relative;
+	bottom: 0;
 }

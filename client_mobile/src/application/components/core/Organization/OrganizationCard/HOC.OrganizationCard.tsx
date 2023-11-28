@@ -15,6 +15,7 @@ import OrganizationStatus from "./view/OrganizationStatus";
 import { createPortal } from "react-dom";
 import Slider from "react-slick";
 import { IOrganization } from "modules/OrganizationModule/Organization/interfaces/organization.type";
+import { useCaseOrganization } from "modules/OrganizationModule/organization.module";
 
 
 export const PointsContext = React.createContext<TadapterCaseCallback>({
@@ -32,13 +33,14 @@ const HOCOrganizationCard:FC<{organizations:IOrganization[]}> = ({organizations}
 		className: "center",
 		centerMode: true,
 		infinite: true,
-		centerPadding: "30px",
+		centerPadding: "50px",
 		slidesToShow: 1,
 		speed: 500,
 		rows: 1,
 		slidesPerRow: 1,
 		dots: false,
-		arrows:false
+		arrows:false,
+		afterChange:(index:number) => useCaseOrganization.selectOrganization(organizations[index])
 	};
 
 
