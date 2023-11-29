@@ -56,7 +56,18 @@ const OrganizationCardItem:FC<IProps> = ({organization}) =>{
 													<div className="institute-header">
 
 														<OrganizationCard organization={organization} />
-														{
+														
+													</div>
+												</div>
+
+
+											</div>
+	)
+}
+export default observer(OrganizationCardItem) 
+//<OrganizationCounterHi point={organization} /> 
+/**
+ * {
 															selectOrganization &&
 															<>
 																
@@ -78,12 +89,4 @@ const OrganizationCardItem:FC<IProps> = ({organization}) =>{
 															<OrganizationTipeDelivery />
 														}
 														<OrganizationTableRestaurant organization={organization} />
-													</div>
-												</div>
-
-
-											</div>
-	)
-}
-export default observer(OrganizationCardItem) 
-//<OrganizationCounterHi point={organization} /> 
+ */
