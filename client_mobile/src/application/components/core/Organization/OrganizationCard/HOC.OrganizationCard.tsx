@@ -47,11 +47,11 @@ const HOCOrganizationCard: FC<{ organizations: IOrganization[] }> = ({ organizat
 		adaptiveHeight: true,
 		beforeChange:(oldIndex:number, newIndex:number) =>{
 			//console.log('beforeChange',organizations[newIndex].info.address,selectOrganization.info.address);
-			useCaseOrganization.selectOrganization(organizations[newIndex])
+			//useCaseOrganization.selectOrganization(organizations[newIndex])
 		},
 		afterChange: (index: number) => {
-			console.log('afterChange',organizations[index]);
-			useCaseOrganization.selectOrganization(organizations[index])
+			//console.log('afterChange',organizations[index]);
+			//useCaseOrganization.selectOrganization(organizations[index])
 			
 		},
 		//onSwipe:() => useCaseOrganization.selectOrganization(null),
