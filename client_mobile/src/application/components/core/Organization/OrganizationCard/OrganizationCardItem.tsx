@@ -59,7 +59,7 @@ const OrganizationCardItem:FC<IProps> = ({organization}) =>{
 														{
 															selectOrganization &&
 															<>
-																<OrganizationCounterHi point={organization} />
+																
 																<OragnizationRequisities />
 																<OrganizationStatus />
 																{
@@ -86,3 +86,4 @@ const OrganizationCardItem:FC<IProps> = ({organization}) =>{
 	)
 }
 export default observer(OrganizationCardItem) 
+//<OrganizationCounterHi point={organization} /> 
