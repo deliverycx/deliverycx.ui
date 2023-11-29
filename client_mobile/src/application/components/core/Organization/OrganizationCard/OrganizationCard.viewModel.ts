@@ -24,6 +24,7 @@ export function useOrganizationCardViewModel() {
 		
 	},[selectOrganization])
 
+	/*
 	useEffect(() => {
 		const getGoodPlaceId = async () => {
 			try {
@@ -36,7 +37,8 @@ export function useOrganizationCardViewModel() {
 
 		getGoodPlaceId()
 	}, [organizationModel.selectOrganization?.guid])
-	
+	*/
+
 	const handlerCloseCardModal = () =>{
 		appUseCase.clearApp()
 		setCardModal(false)
@@ -46,6 +48,7 @@ export function useOrganizationCardViewModel() {
 		useCaseOrganizationStatus.selectDeliveryMetod(typeDeliv)
 	}
 
+	/*
 	const queryClient = useQueryClient();
 	queryClient.prefetchQuery(
 		'shop',
@@ -55,6 +58,7 @@ export function useOrganizationCardViewModel() {
 				!selectOrganization.delivery
 					? selectOrganization.guid as string : '')
 			)
+			*/
 	
 	this.data({
 		goodPlaceId,
