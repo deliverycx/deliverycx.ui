@@ -59,7 +59,7 @@ const OrganizationCardItem:FC<IProps> = ({organization}) =>{
 
 														<OrganizationCard organization={organization} />
 														{
-															selectOrganization && selectOrganization.guid === organization.guid &&
+															selectOrganization &&
 															<>
 																
 																<OragnizationRequisities organization={organization} />
