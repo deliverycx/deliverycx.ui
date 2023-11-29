@@ -36,8 +36,10 @@ const OrganizationCardItem:FC<IProps> = ({organization}) =>{
 	},[selectOrganization])
 	*/
 
+	if(selectOrganization.guid === organization.guid){
+		console.log(selectOrganization.info.address,organization.info.address);
+	}
 	
-	//console.log(selectOrganization.info.address,organization.info.address);
 	return(
 		<div key={organization.guid} className="modal__wrapper map__institute-info">
 												<div onClick={handlerCloseCardModal} className="map__institute-close no-drag">
@@ -56,7 +58,18 @@ const OrganizationCardItem:FC<IProps> = ({organization}) =>{
 													<div className="institute-header">
 
 														<OrganizationCard organization={organization} />
-														
+														{
+															selectOrganization && selectOrganization.guid === organization.guid &&
+															<>
+																
+																<OragnizationRequisities organization={organization} />
+																<OrganizationStatus />
+																{
+																	timeworkOrganization &&
+																	<OranizationWorkTime />
+																}
+															</>
+														}
 													</div>
 												</div>
 

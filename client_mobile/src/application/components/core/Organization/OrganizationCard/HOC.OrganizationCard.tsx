@@ -17,6 +17,7 @@ import Slider from "react-slick";
 import { IOrganization } from "modules/OrganizationModule/Organization/interfaces/organization.type";
 import { useCaseOrganization } from "modules/OrganizationModule/organization.module";
 import OrganizationCardItem from "./OrganizationCardItem";
+import { appUseCase } from "modules/AppModule/app.module";
 
 
 export const PointsContext = React.createContext<TadapterCaseCallback>({
@@ -54,7 +55,7 @@ const HOCOrganizationCard: FC<{ organizations: IOrganization[] }> = ({ organizat
 			//useCaseOrganization.selectOrganization(organizations[index])
 			
 		},
-		//onSwipe:() => useCaseOrganization.selectOrganization(null),
+		onSwipe:() => appUseCase.crearOrder(),
 		//onLazyLoad:(q:any) => console.log('onEdge',q)
 	
 	};
@@ -74,6 +75,7 @@ const HOCOrganizationCard: FC<{ organizations: IOrganization[] }> = ({ organizat
 							<Slider {...settings} className="organization_slide">
 								{
 									organizations.map((org: IOrganization) => {
+										
 										return (
 											<OrganizationCardItem key={org.guid} organization={org} />
 											
