@@ -374,6 +374,10 @@
 	}
 }
 
+.swiper{
+	padding-top: 50px;
+}
+
 .organization_slide{
 	width: 100%;
 }
@@ -381,18 +385,21 @@
 	opacity: .8;
   transition: all .3s ease;
 	height: 100%;
-	
-	
-	transform: scale(.9);
+	position: relative;
+	bottom: -10px;
+	transform: scale(.95);
 	
 }
 
+.swiper-slide{
+	align-self: flex-end;
+}
 .organization_slide .swiper-slide-active .modal__wrapper{
 	width: 100% !important;
 	opacity: 1;
   -ms-transform: scale(1);
   transform: scale(1);
-	
+	bottom: 0;
 	width: 100%;
 
 
