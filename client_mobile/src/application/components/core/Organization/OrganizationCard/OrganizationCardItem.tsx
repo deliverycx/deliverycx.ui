@@ -15,18 +15,16 @@ import { organizationModel } from 'modules/OrganizationModule/organization.modul
 import { observer } from "mobx-react-lite"
 import LoaderProduct from "application/components/common/Loaders/loaderProduct"
 
+
 type IProps = {
 	organization: IOrganization
-
+	active: any
 }
 
-const OrganizationCardItem: FC<IProps> = ({ organization }) => {
+const OrganizationCardItem: FC<IProps> = ({ organization, active }) => {
 	const useCasePoints = useContext(PointsContext)
 	const { timeworkOrganization, deliveryTipe, selectOrganization } = useCasePoints.data
 	const { handlerCloseCardModal } = useCasePoints.handlers
-
-
-
 
 
 
@@ -48,11 +46,17 @@ const OrganizationCardItem: FC<IProps> = ({ organization }) => {
 				<div className="institute-header">
 
 					<OrganizationCard organization={organization} />
-					<OragnizationRequisities organization={organization} />
-					<OrganizationStatus />
 					{
-						timeworkOrganization &&
-						<OranizationWorkTime />
+						active &&
+						<>
+							<OragnizationRequisities organization={organization} />
+							<OrganizationStatus />
+							{
+								timeworkOrganization &&
+								<OranizationWorkTime />
+							}
+
+						</>
 					}
 					{
 						organization.filters && organization.filters.length !== 0 &&

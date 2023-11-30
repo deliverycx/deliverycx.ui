@@ -1,6 +1,6 @@
 import { TadapterCaseCallback, adapterComponentUseCase } from "adapters/adapterComponents"
 import { useOrganizationCardViewModel } from "./OrganizationCard.viewModel"
-import { FC, useState } from 'react';
+import { FC, useState, useEffect, useMemo, useRef } from 'react';
 import OrganizationCard from "./view/OrganizationCard";
 import React from "react";
 import { observer } from "mobx-react-lite"
@@ -25,6 +25,7 @@ import { FreeMode, Pagination } from 'swiper/modules';
 import 'swiper/css';
 import 'swiper/css/virtual';
 
+import { useSwiper } from 'swiper/react';
 import { Virtual } from 'swiper/modules';
 
 export const PointsContext = React.createContext<TadapterCaseCallback>({
@@ -37,9 +38,17 @@ const HOCOrganizationCard: FC<{ organizations: IOrganization[] }> = ({ organizat
 
 	const { selectOrganization, timeworkOrganization, cardModal, deliveryTipe } = useCase.data
 	const { setCardModal, handlerCloseCardModal } = useCase.handlers
+	const sw = useRef<any>()
 
 
+	useEffect(()=>{
+		if(cardModal && selectOrganization){
+			const findindex = organizations.findIndex(val => val.guid === selectOrganization.guid)
+			sw && sw.current && sw.current.slideToLoop(findindex, 500);
+		}
+	},[cardModal,sw.current])
 
+	//
 	return (
 		<>
 			<PointsContext.Provider value={useCase}>
@@ -53,16 +62,15 @@ const HOCOrganizationCard: FC<{ organizations: IOrganization[] }> = ({ organizat
 							organizations &&
 							<Swiper
 
-								modules={[Virtual]}
+								
 								spaceBetween={0}
 								loop={true}
-								slidesPerView={1.1} virtual
+								slidesPerView={1.1}
 								centeredSlides={true}
-
+							
 								className="organization_slide"
-
-								onSlideChange={() => console.log('slide change')}
-								onSwiper={(swiper) => console.log(swiper)}
+								onSwiper={(swiper) => sw.current = swiper}
+								onRealIndexChange={(swiper) => useCaseOrganization.selectOrganization(organizations[swiper.realIndex])}
 							>
 
 								{
@@ -71,9 +79,9 @@ const HOCOrganizationCard: FC<{ organizations: IOrganization[] }> = ({ organizat
 										return (
 
 
-											<SwiperSlide key={organization.guid} virtualIndex={index}>
+											<SwiperSlide key={organization.guid} >
 												{({ isActive }) => (
-													<OrganizationCardItem organization={organization} />
+													<OrganizationCardItem active={isActive}  organization={organization} />
 												)}
 
 											</SwiperSlide>
