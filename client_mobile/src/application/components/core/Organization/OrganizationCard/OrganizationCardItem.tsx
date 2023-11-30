@@ -41,19 +41,7 @@ const OrganizationCardItem:FC<IProps> = ({organization}) =>{
 	}
 	
 	return(
-		<div key={organization.guid} className="modal__wrapper map__institute-info">
-												<div onClick={handlerCloseCardModal} className="map__institute-close no-drag">
-													<img src={require('assets/images/icons/close_gray.png')} alt="" />
-												</div>
-
-												{
-													organization.gallery && organization.gallery.length !== 0 &&
-													<Carousel showThumbs={false} autoPlay={true} showArrows={false} showStatus={false}>
-														{organization.gallery.map((image: string, index: number) => (
-															<img key={index} src={imgRoutDef(image)} alt="" />
-														))}
-													</Carousel>
-												}
+	
 												<div className="map__institute-content no-drag">
 													<div className="institute-header">
 
@@ -82,8 +70,6 @@ const OrganizationCardItem:FC<IProps> = ({organization}) =>{
 													</div>
 												</div>
 
-
-											</div>
 	)
 }
 export default observer(OrganizationCardItem) 

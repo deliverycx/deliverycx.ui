@@ -31,7 +31,7 @@ const HOCOrganizationCard: FC<{ organizations: IOrganization[] }> = ({ organizat
 	const { selectOrganization, timeworkOrganization, cardModal, deliveryTipe } = useCase.data
 	const { setCardModal, handlerCloseCardModal } = useCase.handlers
 
-	const [swaipe,setSwaipe] = useState(false)
+	const [swaipe, setSwaipe] = useState(false)
 
 	const settings = {
 		className: "center",
@@ -46,18 +46,18 @@ const HOCOrganizationCard: FC<{ organizations: IOrganization[] }> = ({ organizat
 		dots: false,
 		arrows: false,
 		adaptiveHeight: true,
-		beforeChange:(oldIndex:number, newIndex:number) =>{
+		beforeChange: (oldIndex: number, newIndex: number) => {
 			//console.log('beforeChange',organizations[newIndex].info.address,selectOrganization.info.address);
 			useCaseOrganization.selectOrganization(organizations[newIndex])
 		},
 		afterChange: (index: number) => {
 			//console.log('afterChange',organizations[index]);
 			//useCaseOrganization.selectOrganization(organizations[index])
-			
+
 		},
-		onSwipe:() => appUseCase.crearOrder(),
+		onSwipe: () => appUseCase.crearOrder(),
 		//onLazyLoad:(q:any) => console.log('onEdge',q)
-	
+
 	};
 
 	//console.log(selectOrganization);
@@ -75,28 +75,51 @@ const HOCOrganizationCard: FC<{ organizations: IOrganization[] }> = ({ organizat
 							<Slider {...settings} className="organization_slide">
 								{
 									organizations.map((organization: IOrganization) => {
-										
-										return(
-											selectOrganization.guid === organization.guid ?
-												<OrganizationCardItem key={organization.guid} organization={selectOrganization} />
-											: <div key={organization.guid} className="modal__wrapper map__institute-info">
-{
-													organization.gallery && organization.gallery.length !== 0 &&
-													<Carousel showThumbs={false} autoPlay={true} showArrows={false} showStatus={false}>
-														{organization.gallery.map((image: string, index: number) => (
-															<img key={index} src={imgRoutDef(image)} alt="" />
-														))}
-													</Carousel>
-												}
-												<div className="map__institute-content no-drag">
-													<div className="institute-header">
 
-														<OrganizationCard organization={organization} />
+										return (
+											<div key={organization.guid} className="modal__wrapper map__institute-info">
+												
+												{
+													selectOrganization.guid === organization.guid ?
+												<>
+													{
+														organization.gallery && organization.gallery.length !== 0 &&
+														<Carousel showThumbs={false} autoPlay={true} showArrows={false} showStatus={false}>
+															{organization.gallery.map((image: string, index: number) => (
+																<img key={index} src={imgRoutDef(image)} alt="" />
+															))}
+														</Carousel>
+													}
+													<div className="map__institute-content no-drag">
+														<div className="institute-header">
+
+															
+															<OrganizationCardItem organization={organization}/>
 														</div>
+													</div>
+												</>
+												
+											
+												: <>
+													{
+														organization.gallery && organization.gallery.length !== 0 &&
+														<Carousel showThumbs={false} autoPlay={true} showArrows={false} showStatus={false}>
+															{organization.gallery.map((image: string, index: number) => (
+																<img key={index} src={imgRoutDef(image)} alt="" />
+															))}
+														</Carousel>
+													}
+													<div className="map__institute-content no-drag">
+														<div className="institute-header">
+
+															<OrganizationCard organization={organization} />
 														</div>
-											</div>
+													</div>
+												</>
+									}
+												</div>
 										)
-										
+
 									})
 								}
 							</Slider>
