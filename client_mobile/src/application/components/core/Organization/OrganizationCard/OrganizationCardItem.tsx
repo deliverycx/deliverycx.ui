@@ -47,8 +47,9 @@ const OrganizationCardItem: FC<IProps> = ({ organization, active }) => {
 
 					<OrganizationCard organization={organization} />
 					{
-						active &&
+						active ?
 						<>
+							<OrganizationCounterHi point={organization} /> 
 							<OragnizationRequisities organization={organization} />
 							<OrganizationStatus />
 							{
@@ -57,6 +58,7 @@ const OrganizationCardItem: FC<IProps> = ({ organization, active }) => {
 							}
 
 						</>
+						: <LoaderProduct />
 					}
 					{
 						organization.filters && organization.filters.length !== 0 &&
