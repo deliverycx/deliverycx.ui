@@ -91,13 +91,7 @@ const HOCOrganizationCard: FC<{ organizations: IOrganization[] }> = ({ organizat
 															))}
 														</Carousel>
 													}
-													<div className="map__institute-content no-drag">
-														<div className="institute-header">
-
-															
-															<OrganizationCardItem organization={organization}/>
-														</div>
-													</div>
+													<OrganizationCardItem organization={organization} />
 												</>
 												
 											

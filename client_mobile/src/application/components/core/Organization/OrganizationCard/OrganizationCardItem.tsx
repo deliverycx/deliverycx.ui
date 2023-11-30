@@ -1,3 +1,5 @@
+/* eslint-disable prefer-const */
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import { imgRoutDef } from "application/helpers/imgAdmin"
 import { Carousel } from "react-responsive-carousel"
 import OranizationWorkTime from "./view/OranizationWorkTime"
@@ -13,6 +15,7 @@ import OrganizationCounterHi from "./view/OrganizationCounter/OrganizationCounte
 import OragnizationRequisities from "./view/OragnizationRequisities"
 import { organizationModel } from 'modules/OrganizationModule/organization.module';
 import { observer } from "mobx-react-lite"
+import LoaderProduct from "application/components/common/Loaders/loaderProduct"
 
 type IProps = {
 	organization:IOrganization
@@ -24,51 +27,57 @@ const OrganizationCardItem:FC<IProps> = ({organization}) =>{
 	const {timeworkOrganization,deliveryTipe,selectOrganization} = useCasePoints.data
 	const {handlerCloseCardModal} = useCasePoints.handlers
 	
-	/*
-	const [load,setLoad] = useState(false)
+	
+	const [load,setLoad] = useState(true)
 
 	useEffect(()=>{
-		if(selectOrganization.guid === organization.guid){
-			setLoad(true)
-		}else{
-			setLoad(false)
-		}
-	},[selectOrganization])
-	*/
+		let time:any
 
-	if(selectOrganization.guid === organization.guid){
-		//console.log(selectOrganization.info.address,organization.info.address);
-	}
+		time = setTimeout(()=>{
+			setLoad(false)
+		},1000)
+
+		return () => clearTimeout(time)
+	},[selectOrganization])
+
+
+
 	
 	return(
-	
-												<div className="map__institute-content no-drag">
-													<div className="institute-header">
+		<>
+		{
+			load
+			? <LoaderProduct />
+			: <div className="map__institute-content no-drag">
+			<div className="institute-header">
 
-														<OrganizationCard organization={organization} />
-														{
-															selectOrganization &&
-															<>
-																
-																<OragnizationRequisities organization={organization} />
-																
-																{
-																	timeworkOrganization &&
-																	<OranizationWorkTime />
-																}
-															</>
-														}
-														{
-															organization.filters && organization.filters.length !== 0 &&
-															<OrganizationCardFilter organization={organization} />
-														}
-														{
-															timeworkOrganization && deliveryTipe &&
-															<OrganizationTipeDelivery />
-														}
-														<OrganizationTableRestaurant organization={organization} />
-													</div>
-												</div>
+				<OrganizationCard organization={organization} />
+				{
+					selectOrganization &&
+					<>
+						
+						<OragnizationRequisities organization={organization} />
+						<OrganizationStatus />
+						{
+							timeworkOrganization &&
+							<OranizationWorkTime />
+						}
+					</>
+				}
+				{
+					organization.filters && organization.filters.length !== 0 &&
+					<OrganizationCardFilter organization={organization} />
+				}
+				{
+					timeworkOrganization && deliveryTipe &&
+					<OrganizationTipeDelivery />
+				}
+				<OrganizationTableRestaurant organization={organization} />
+			</div>
+		</div>
+		}
+		
+		</>		
 
 	)
 }
