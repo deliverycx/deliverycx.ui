@@ -18,6 +18,7 @@ import { IOrganization } from "modules/OrganizationModule/Organization/interface
 import { useCaseOrganization } from "modules/OrganizationModule/organization.module";
 import OrganizationCardItem from "./OrganizationCardItem";
 import { appUseCase } from "modules/AppModule/app.module";
+import OragnizationRequisities from "./view/OragnizationRequisities";
 
 
 export const PointsContext = React.createContext<TadapterCaseCallback>({
@@ -113,6 +114,21 @@ const HOCOrganizationCard: FC<{ organizations: IOrganization[] }> = ({ organizat
 														<div className="institute-header">
 
 															<OrganizationCard organization={organization} />
+															<OragnizationRequisities organization={organization} />
+																	
+																	{
+																		timeworkOrganization &&
+																		<OranizationWorkTime />
+																	}
+															{
+																organization.filters && organization.filters.length !== 0 &&
+																<OrganizationCardFilter organization={organization} />
+															}
+															{
+																timeworkOrganization && deliveryTipe &&
+																<OrganizationTipeDelivery />
+															}
+															<OrganizationTableRestaurant organization={organization} />
 														</div>
 													</div>
 												</>
