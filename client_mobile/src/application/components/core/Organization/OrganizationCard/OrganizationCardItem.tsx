@@ -51,7 +51,7 @@ const OrganizationCardItem:FC<IProps> = ({organization}) =>{
 															<>
 																
 																<OragnizationRequisities organization={organization} />
-																<OrganizationStatus />
+																
 																{
 																	timeworkOrganization &&
 																	<OranizationWorkTime />
