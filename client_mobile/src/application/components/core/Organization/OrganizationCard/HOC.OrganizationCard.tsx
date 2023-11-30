@@ -18,7 +18,14 @@ import { IOrganization } from "modules/OrganizationModule/Organization/interface
 import { useCaseOrganization } from "modules/OrganizationModule/organization.module";
 import OrganizationCardItem from "./OrganizationCardItem";
 import { appUseCase } from "modules/AppModule/app.module";
+import { Swiper, SwiperSlide } from 'swiper/react';
+import { EffectCards } from 'swiper/modules';
+import { FreeMode, Pagination } from 'swiper/modules';
+// Import Swiper styles
+import 'swiper/css';
+import 'swiper/css/virtual';
 
+import { Virtual } from 'swiper/modules';
 
 export const PointsContext = React.createContext<TadapterCaseCallback>({
 	data: {},
@@ -31,36 +38,6 @@ const HOCOrganizationCard: FC<{ organizations: IOrganization[] }> = ({ organizat
 	const { selectOrganization, timeworkOrganization, cardModal, deliveryTipe } = useCase.data
 	const { setCardModal, handlerCloseCardModal } = useCase.handlers
 
-	const [swaipe,setSwaipe] = useState(false)
-
-	const settings = {
-		className: "center",
-		centerMode: true,
-		infinite: true,
-
-		centerPadding: "20px",
-		slidesToShow: 1,
-		speed: 500,
-		rows: 1,
-		slidesPerRow: 1,
-		dots: false,
-		arrows: false,
-		adaptiveHeight: true,
-		beforeChange:(oldIndex:number, newIndex:number) =>{
-			//console.log('beforeChange',organizations[newIndex].info.address,selectOrganization.info.address);
-			useCaseOrganization.selectOrganization(organizations[newIndex])
-		},
-		afterChange: (index: number) => {
-			//console.log('afterChange',organizations[index]);
-			//useCaseOrganization.selectOrganization(organizations[index])
-			
-		},
-		onSwipe:() => appUseCase.crearOrder(),
-		//onLazyLoad:(q:any) => console.log('onEdge',q)
-	
-	};
-
-	//console.log(selectOrganization);
 
 
 	return (
@@ -70,19 +47,46 @@ const HOCOrganizationCard: FC<{ organizations: IOrganization[] }> = ({ organizat
 					cardModal && selectOrganization && deliveryTipe &&
 					<ModalCard setIsOpened={handlerCloseCardModal}>
 
+
 						{
+
 							organizations &&
-							<Slider {...settings} className="organization_slide">
+							<Swiper
+
+								modules={[Virtual]} spaceBetween={-80} slidesPerView={1} virtual
+
+
+								className="organization_slide"
+
+								onSlideChange={() => console.log('slide change')}
+								onSwiper={(swiper) => console.log(swiper)}
+							>
+
 								{
-									organizations.map((organization: IOrganization) => {
-										
-										return(
-											<OrganizationCardItem key={organization.guid} organization={organization} />
+									organizations.map((organization: IOrganization, index) => {
+
+										return (
+
+
+											<SwiperSlide key={organization.guid} virtualIndex={index}>
+												{({ isActive }) => (
+													<OrganizationCardItem organization={organization} />
+												)}
+
+											</SwiperSlide>
+
+
+
+
 										)
-										
+
 									})
 								}
-							</Slider>
+
+
+
+							</Swiper>
+
 
 						}
 
