@@ -27,7 +27,7 @@ const OrganizationCardItem: FC<IProps> = ({ organization, active,viseble }) => {
 	const { timeworkOrganization, deliveryTipe, selectOrganization } = useCasePoints.data
 	const { handlerCloseCardModal } = useCasePoints.handlers
 
-
+	console.log(active,viseble);
 
 	return (
 		<div className="modal__wrapper map__institute-info">
@@ -52,7 +52,7 @@ const OrganizationCardItem: FC<IProps> = ({ organization, active,viseble }) => {
 						<>
 							<OrganizationCounterHi point={organization} /> 
 							<OragnizationRequisities organization={organization} />
-							<OrganizationStatus />
+							
 							{
 								timeworkOrganization &&
 								<OranizationWorkTime />
