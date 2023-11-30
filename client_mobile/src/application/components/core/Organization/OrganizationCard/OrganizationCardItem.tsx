@@ -1,3 +1,5 @@
+/* eslint-disable prefer-const */
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import { imgRoutDef } from "application/helpers/imgAdmin"
 import { Carousel } from "react-responsive-carousel"
 import OranizationWorkTime from "./view/OranizationWorkTime"
@@ -26,8 +28,19 @@ const OrganizationCardItem: FC<IProps> = ({ organization, active,viseble }) => {
 	const useCasePoints = useContext(PointsContext)
 	const { timeworkOrganization, deliveryTipe, selectOrganization } = useCasePoints.data
 	const { handlerCloseCardModal } = useCasePoints.handlers
+	const [load,setLoad] = useState(true)
 
-	console.log(active,viseble);
+	useEffect(()=>{
+		let tiks:any
+		if(active){
+			tiks = setTimeout(()=>{
+				setLoad(false)
+			},500)
+		}
+		
+
+		return () => clearTimeout(tiks)
+	},[selectOrganization,active])
 
 	return (
 		<div className="modal__wrapper map__institute-info">
@@ -48,11 +61,11 @@ const OrganizationCardItem: FC<IProps> = ({ organization, active,viseble }) => {
 
 					<OrganizationCard organization={organization} />
 					{
-						active && !viseble ?
+						active && !load ?
 						<>
 							<OrganizationCounterHi point={organization} /> 
 							<OragnizationRequisities organization={organization} />
-							
+							<OrganizationStatus />
 							{
 								timeworkOrganization &&
 								<OranizationWorkTime />
