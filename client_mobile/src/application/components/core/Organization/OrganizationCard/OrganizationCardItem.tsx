@@ -37,7 +37,7 @@ const OrganizationCardItem:FC<IProps> = ({organization}) =>{
 	*/
 
 	if(selectOrganization.guid === organization.guid){
-		console.log(selectOrganization.info.address,organization.info.address);
+		//console.log(selectOrganization.info.address,organization.info.address);
 	}
 	
 	return(
@@ -70,6 +70,15 @@ const OrganizationCardItem:FC<IProps> = ({organization}) =>{
 																}
 															</>
 														}
+														{
+															organization.filters && organization.filters.length !== 0 &&
+															<OrganizationCardFilter organization={organization} />
+														}
+														{
+															timeworkOrganization && deliveryTipe &&
+															<OrganizationTipeDelivery />
+														}
+														<OrganizationTableRestaurant organization={organization} />
 													</div>
 												</div>
 

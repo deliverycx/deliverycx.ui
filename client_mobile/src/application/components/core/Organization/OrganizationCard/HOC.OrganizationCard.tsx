@@ -74,12 +74,29 @@ const HOCOrganizationCard: FC<{ organizations: IOrganization[] }> = ({ organizat
 							organizations &&
 							<Slider {...settings} className="organization_slide">
 								{
-									organizations.map((org: IOrganization) => {
+									organizations.map((organization: IOrganization) => {
 										
-										return (
-											<OrganizationCardItem key={org.guid} organization={org} />
-											
+										return(
+											selectOrganization.guid === organization.guid ?
+												<OrganizationCardItem key={organization.guid} organization={selectOrganization} />
+											: <div key={organization.guid} className="modal__wrapper map__institute-info">
+{
+													organization.gallery && organization.gallery.length !== 0 &&
+													<Carousel showThumbs={false} autoPlay={true} showArrows={false} showStatus={false}>
+														{organization.gallery.map((image: string, index: number) => (
+															<img key={index} src={imgRoutDef(image)} alt="" />
+														))}
+													</Carousel>
+												}
+												<div className="map__institute-content no-drag">
+													<div className="institute-header">
+
+														<OrganizationCard organization={organization} />
+														</div>
+														</div>
+											</div>
 										)
+										
 									})
 								}
 							</Slider>
