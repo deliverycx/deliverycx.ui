@@ -80,8 +80,8 @@ const HOCOrganizationCard: FC<{ organizations: IOrganization[] }> = ({ organizat
 
 
 											<SwiperSlide key={organization.guid} >
-												{({ isActive }) => (
-													<OrganizationCardItem active={isActive}  organization={organization} />
+												{({ isActive,isVisible }) => (
+													<OrganizationCardItem active={isActive} viseble={isVisible}  organization={organization} />
 												)}
 
 											</SwiperSlide>

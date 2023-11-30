@@ -19,9 +19,10 @@ import LoaderProduct from "application/components/common/Loaders/loaderProduct"
 type IProps = {
 	organization: IOrganization
 	active: any
+	viseble:any
 }
 
-const OrganizationCardItem: FC<IProps> = ({ organization, active }) => {
+const OrganizationCardItem: FC<IProps> = ({ organization, active,viseble }) => {
 	const useCasePoints = useContext(PointsContext)
 	const { timeworkOrganization, deliveryTipe, selectOrganization } = useCasePoints.data
 	const { handlerCloseCardModal } = useCasePoints.handlers
@@ -47,7 +48,7 @@ const OrganizationCardItem: FC<IProps> = ({ organization, active }) => {
 
 					<OrganizationCard organization={organization} />
 					{
-						active ?
+						active && !viseble ?
 						<>
 							<OrganizationCounterHi point={organization} /> 
 							<OragnizationRequisities organization={organization} />
