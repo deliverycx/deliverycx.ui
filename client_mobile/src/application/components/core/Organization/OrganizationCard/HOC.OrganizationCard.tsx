@@ -53,7 +53,7 @@ const HOCOrganizationCard: FC<{ organizations: IOrganization[] }> = ({ organizat
 							organizations &&
 							<Swiper
 
-								modules={[Virtual]} spaceBetween={-80} slidesPerView={1} virtual
+								modules={[Virtual]} spaceBetween={0} slidesPerView={1} virtual
 
 
 								className="organization_slide"
