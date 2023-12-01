@@ -13,7 +13,7 @@ import { FC, memo, useContext, useEffect, useState } from "react"
 import { PointsContext } from "./HOC.OrganizationCard"
 import OrganizationCounterHi from "./view/OrganizationCounter/OrganizationCounterHi"
 import OragnizationRequisities from "./view/OragnizationRequisities"
-import { organizationModel } from 'modules/OrganizationModule/organization.module';
+import { organizationModel, useCaseOrganizationStatus } from 'modules/OrganizationModule/organization.module';
 import { observer } from "mobx-react-lite"
 import LoaderProduct from "application/components/common/Loaders/loaderProduct"
 
@@ -21,29 +21,34 @@ import LoaderProduct from "application/components/common/Loaders/loaderProduct"
 type IProps = {
 	organization: IOrganization
 	active: any
-	viseble:any
+	viseble: any
 }
 
-const OrganizationCardItem: FC<IProps> = ({ organization, active,viseble }) => {
+const OrganizationCardItem: FC<IProps> = ({ organization, active, viseble }) => {
 	const useCasePoints = useContext(PointsContext)
 	const { timeworkOrganization, deliveryTipe, selectOrganization } = useCasePoints.data
 	const { handlerCloseCardModal } = useCasePoints.handlers
-	const [load,setLoad] = useState(true)
+	const [load, setLoad] = useState(true)
 
-	useEffect(()=>{
-		let tiks:any
-		if(active){
-			tiks = setTimeout(()=>{
+	useEffect(() => {
+		let tiks: any
+		if (active) {
+			tiks = setTimeout(() => {
 				setLoad(false)
-			},500)
+			}, 500)
+			useCaseOrganizationStatus.statusOrganization()
 		}
-		
+
 
 		return () => clearTimeout(tiks)
-	},[selectOrganization,active])
+	}, [selectOrganization, active])
+
 
 	return (
+		<>
+		
 		<div className="modal__wrapper map__institute-info">
+			
 			<div onClick={handlerCloseCardModal} className="map__institute-close no-drag">
 				<img src={require('assets/images/icons/close_gray.png')} alt="" />
 			</div>
@@ -60,34 +65,29 @@ const OrganizationCardItem: FC<IProps> = ({ organization, active,viseble }) => {
 				<div className="institute-header">
 
 					<OrganizationCard organization={organization} />
+					<OrganizationStatus organization={organization} />
 					{
 						active && !load ?
-						<>
-							<OrganizationCounterHi point={organization} /> 
-							<OragnizationRequisities organization={organization} />
-							<OrganizationStatus />
-							{
-								timeworkOrganization &&
-								<OranizationWorkTime />
-							}
-
-						</>
-						: <LoaderProduct />
+							<>
+								<OrganizationCounterHi point={organization} />
+								<OragnizationRequisities organization={organization} />
+							</>
+							: <LoaderProduct />
 					}
+					
+					<OranizationWorkTime organization={organization}/>
 					{
 						organization.filters && organization.filters.length !== 0 &&
 						<OrganizationCardFilter organization={organization} />
 					}
-					{
-						timeworkOrganization && deliveryTipe &&
-						<OrganizationTipeDelivery />
-					}
+					<OrganizationTipeDelivery organization={organization} />
 					<OrganizationTableRestaurant organization={organization} />
 				</div>
 			</div>
 
 
 		</div>
+		</>
 	)
 }
 export default observer(OrganizationCardItem)

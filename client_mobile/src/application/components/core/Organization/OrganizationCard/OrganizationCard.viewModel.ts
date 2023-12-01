@@ -12,32 +12,18 @@ export function useOrganizationCardViewModel() {
 	const [cardModal,setCardModal] = useState(false)
 	const {selectOrganization} = organizationModel
 	const {deliveryTipe,organizationStatus,timeworkOrganization} = organizationStatusModel
-	const [goodPlaceId, setGoodPlaceId] = useState<string>('')
 	const organization = organizationModel.selectOrganization
 
 	useEffect(()=>{
 		if(selectOrganization){
-			useCaseOrganizationStatus.statusOrganization()
+		
 			setCardModal(true)
 			
 		}
 		
 	},[selectOrganization])
 
-	/*
-	useEffect(() => {
-		const getGoodPlaceId = async () => {
-			try {
-				const { data } = await requestOrganizationAdmin.getByOrganizationGoodPlaceId(organizationModel.selectOrganization?.guid)
-				setGoodPlaceId(data.goodplaceid)
-			} catch (error) {
-				console.log(error);
-			}
-		}
 
-		getGoodPlaceId()
-	}, [organizationModel.selectOrganization?.guid])
-	*/
 
 	const handlerCloseCardModal = () =>{
 		appUseCase.clearApp()
@@ -61,7 +47,6 @@ export function useOrganizationCardViewModel() {
 			*/
 	
 	this.data({
-		goodPlaceId,
 		selectOrganization,
 		timeworkOrganization,
 		cardModal,

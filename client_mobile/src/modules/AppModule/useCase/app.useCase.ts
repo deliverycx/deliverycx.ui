@@ -31,6 +31,13 @@ export class AppUseCase{
 		this.orderModel.actionResetOrder()
 	}
 
+	crealPoint(){
+		this.shopModel.actionSelectCategory(null)
+		this.basketUseCase.resetCart()
+		this.orderModel.actionResetOrder()
+		this.organizationStatusModel.actionSelectDeliveryTipe(null)
+	}
+
 	authNotificate(val:boolean){
 		this.appModel.actionAuthNotificate(val)
 	}

@@ -11,4 +11,13 @@ class RequestOrganizationStatus extends AjaxApiSuper {
   }
 }
 
+class RequestOrganizationStatusAPI extends ApiSuper {
+ 
+  @methods('get')
+  getPointStatus(pointid:string) {
+    return this.request<IPointStatusRequest>(`organization/organizationstatus?organization=${pointid}`)
+  }
+}
+
+export const requestOrganizationStatusAPI = new RequestOrganizationStatusAPI()
 export const requestOrganizationStatus = new RequestOrganizationStatus()

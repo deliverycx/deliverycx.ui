@@ -98,7 +98,7 @@ return createPortal(
 			position={{ x: 0, y: positionY }}
 			bounds={{ top: 0 }}
 			cancel=".no-drag"
-			handle="strong"
+			handle=".modal-draggles"
 
 		>
 			{

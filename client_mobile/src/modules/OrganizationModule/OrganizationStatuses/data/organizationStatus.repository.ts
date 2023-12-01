@@ -1,7 +1,7 @@
-import { guardPiPeRepository } from "application/guards/repository.guard";
+import { guardPiPeRepository, guardRepository } from "application/guards/repository.guard";
 import { OrganizationStatusEntiti } from "../domain/organizationStatus.entity";
 import { IPointStatusRequest } from "../interfaces/organizationStatus.type";
-import { requestOrganizationStatus } from "./organizationStatus.request";
+import { requestOrganizationStatus, requestOrganizationStatusAPI } from "./organizationStatus.request";
 import { organizationMapper } from "modules/OrganizationModule/Organization/interfaces/organization.dto";
 import { IOrganizationResponse } from "modules/OrganizationModule/Organization/interfaces/organization.type";
 import { map, catchError, of } from "rxjs";
@@ -23,5 +23,16 @@ export class OrganizationStatusRepository extends OrganizationStatusEntiti{
 				})
 			)
 		return points
+	}
+
+	async getOrganizationStatusAxios(pointid:string){
+		const {data} = await requestOrganizationStatusAPI.getPointStatus(pointid)
+		const result = guardRepository(this.existingOrganizationStatus)(data) // убираем скрытые города
+			if(result){
+				const q:any = organizationStatusMapper(result as unknown as IPointStatusRequest)
+				return q
+			}else{
+				throw Error()
+			}
 	}
 }

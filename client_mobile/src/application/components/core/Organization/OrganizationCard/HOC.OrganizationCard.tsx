@@ -15,7 +15,7 @@ import OrganizationStatus from "./view/OrganizationStatus";
 import { createPortal } from "react-dom";
 import Slider from "react-slick";
 import { IOrganization } from "modules/OrganizationModule/Organization/interfaces/organization.type";
-import { useCaseOrganization } from "modules/OrganizationModule/organization.module";
+import { useCaseOrganization, useCaseOrganizationStatus } from "modules/OrganizationModule/organization.module";
 import OrganizationCardItem from "./OrganizationCardItem";
 import { appUseCase } from "modules/AppModule/app.module";
 import { Swiper, SwiperSlide } from 'swiper/react';
@@ -53,7 +53,7 @@ const HOCOrganizationCard: FC<{ organizations: IOrganization[] }> = ({ organizat
 		<>
 			<PointsContext.Provider value={useCase}>
 				{
-					cardModal && selectOrganization && deliveryTipe &&
+					cardModal && selectOrganization &&
 					<ModalCard setIsOpened={handlerCloseCardModal}>
 
 
@@ -70,7 +70,11 @@ const HOCOrganizationCard: FC<{ organizations: IOrganization[] }> = ({ organizat
 							
 								className="organization_slide"
 								onSwiper={(swiper) => sw.current = swiper}
-								onRealIndexChange={(swiper) => useCaseOrganization.selectOrganization(organizations[swiper.realIndex])}
+							
+								onRealIndexChange={(swiper) => {
+									useCaseOrganization.selectOrganization(organizations[swiper.realIndex])
+									appUseCase.crealPoint()
+								}}
 							>
 
 								{

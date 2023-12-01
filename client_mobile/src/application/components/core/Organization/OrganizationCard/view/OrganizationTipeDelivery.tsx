@@ -12,14 +12,17 @@ import { useOrganizationStatus } from "application/hooks/useOrganizationStatus";
 import { observer } from "mobx-react-lite";
 import { PointsContext } from "../HOC.OrganizationCard";
 import _  from "lodash";
+import { IOrganization } from "modules/OrganizationModule/Organization/interfaces/organization.type";
+import { appUseCase } from "modules/AppModule/app.module";
 
 
 
-const OrganizationTipeDelivery = () => {
+const OrganizationTipeDelivery:FC<{organization:IOrganization}> = ({organization}) => {
 	const useCasePoints = useContext(PointsContext)
 	const { organizationStatus, deliveryTipe, timeworkOrganization,selectOrganization } = useCasePoints.data
 	const { handlerSelectDeliveryTipe, handlerCloseCardModal } = useCasePoints.handlers
 	const navigate = useNavigate()
+	/*
 	const [statusTSX, switchMetod] = useOrganizationStatus()
 
 	useEffect(() => {
@@ -57,15 +60,32 @@ const OrganizationTipeDelivery = () => {
 		)
 
 	}
+	*/
 
-	if (deliveryTipe.length !== 0) {
-		return(
-			<NavLink to={`/shop?address=${selectOrganization?.info.city},${selectOrganization?.info.address}`} className="btn btn-mini btn-gray no-drag gomenu">
-		
-								Перейти в меню
-							</NavLink>
+	const handlerMenu = () =>{
+		console.log(selectOrganization.guid,organization.guid);
+		if(selectOrganization.guid !== organization.guid){
+			appUseCase.clearApp()
+		}
+		navigate(`/shop?address=${organization.info.city},${organization.info.address}`)
+	}
+
+	if(organization.delivery){
+		return (
+			<button disabled className="btn btn-mini btn-gray no-drag">
+				
+				Онлайн-заказ в данной хинкальной недоступен
+			</button>
 		)
-		/*
+	}
+
+	return(
+		<button onClick={handlerMenu} className="btn btn-mini btn-gray no-drag gomenu">Перейти в меню</button>
+	)
+/*
+	if (deliveryTipe.length !== 0) {
+		
+		
 		return (
 			<>
 				{
@@ -89,9 +109,9 @@ const OrganizationTipeDelivery = () => {
 				}
 			</>
 		)
-		*/		
+			
 	}
-
+*/	
 	/*
 		return (
 			<div className="institute-buttons">

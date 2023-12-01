@@ -6,15 +6,15 @@ import { ORG_STATUS } from 'application/contstans/const.orgstatus';
 import { checkWorkIsArray } from 'application/helpers/workTime';
 import cn from "classnames";
 import { createPortal } from 'react-dom';
+import { useCaseOrganizationStatus } from 'modules/OrganizationModule/organization.module';
 
 type IProps = {
 	organization: IOrganization
 }
 
-const OranizationWorkTime = () => {
+const OranizationWorkTime:FC<{organization:IOrganization}> = ({organization}) => {
 	const [modalWork, setModalWork] = useState(false)
-	const useCasePoints = useContext(PointsContext)
-	const { selectOrganization, timeworkOrganization, cardModal } = useCasePoints.data
+	const [timeworkOrganization,setTimeworkOrganization] = useState<any>()
 
 
 	const [activeDate, setActiveDate] = useState<number>(0)
@@ -35,30 +35,42 @@ const OranizationWorkTime = () => {
 		} else {
 			setActiveDate(date - 1)
 		}
-	}, [date, selectOrganization.workTime])
 
+		if(organization.workTime){
+			const time = useCaseOrganizationStatus.pointTimeWork(organization)
+			
+			time && setTimeworkOrganization(time)
+		}
 
+		
+	}, [date, organization.workTime])
 
-	const checktype = !!(typeof checkWorkIsArray(selectOrganization.workTime) === 'string')
+	
+
+	const checktype = !!(typeof checkWorkIsArray(organization.workTime) === 'string')
 	return (
 		<>
 			<div className="institute-phone">
-				<button onClick={() => setModalWork(true)} className="btn btn-mini btn-gray no-drag">
-					<img src={require('assets/images/icons/schedule.png')} alt="" />
-					{
-						timeworkOrganization.typework === ORG_STATUS.NOWORK
-							? "Закрыто"
-							: `Открыто до ${timeworkOrganization.todaytime[1]}`
-					}
-					{
-						!checktype &&
-						<img src={require('assets/images/icons/keyboard_arrow_down.png')} alt="" />
-					}
-					
-				</button>
+				{
+					timeworkOrganization &&  
+					<button onClick={() => setModalWork(true)} className="btn btn-mini btn-gray no-drag">
+						<img src={require('assets/images/icons/schedule.png')} alt="" />
+						{
+							(timeworkOrganization.typework === ORG_STATUS.NOWORK)
+								? "Закрыто"
+								: `Открыто до ${timeworkOrganization.todaytime[1]}`
+						}
+						{
+							!checktype &&
+							<img src={require('assets/images/icons/keyboard_arrow_down.png')} alt="" />
+						}
+						
+					</button>
+				}
+				
 				<button className="btn btn-mini btn-gray no-drag">
 					<img src={require('assets/images/icons/phone.png')} alt="" />
-					<a href={`tel:${selectOrganization.info.phone}`} style={{textDecoration: 0, color: '#8D191D'}}>{selectOrganization.info.phone}</a>
+					<a href={`tel:${organization.info.phone}`} style={{textDecoration: 0, color: '#8D191D'}}>{organization.info.phone}</a>
 				</button>
 			</div>
 			{modalWork && !checktype &&
@@ -74,7 +86,7 @@ const OranizationWorkTime = () => {
 						<div className="modal__content">
 							<ul className="map__schedule-list">
 								{
-									timeworkOrganization.timelist.map((value: string, index: number) => {
+									timeworkOrganization && timeworkOrganization.timelist.map((value: string, index: number) => {
 										const CNActive = cn("welcome_timebox_item", { active: activeDate === index })
 										return (
 											<li key={index} className={CNActive}>

@@ -111,7 +111,7 @@ export const useOrganizationStatus = (): [StatusTSX, any] => {
 	const { organizationStatus,timeworkOrganization,deliveryTipe } = organizationStatusModel
 
 
-
+	
 	useQuery('pointstatus', () => useCaseOrganizationStatus.statusOrganization(), {
 		refetchOnWindowFocus: true,
 	})

@@ -1,29 +1,59 @@
 /* eslint-disable @typescript-eslint/no-var-requires */
 /* eslint-disable no-irregular-whitespace */
 import ModalCard from "application/components/common/Modals/ModalCard";
-import { useOrganizationStatus } from "application/hooks/useOrganizationStatus"
+import { StatusTSX } from "application/hooks/useOrganizationStatus"
 import { observer } from "mobx-react-lite";
-import { organizationStatusModel } from "modules/OrganizationModule/organization.module";
-import { useEffect } from 'react';
+import { organizationStatusModel, useCaseOrganizationStatus } from "modules/OrganizationModule/organization.module";
+import { FC, useEffect } from 'react';
 import { useState } from 'react';
 import { useNavigate } from "react-router-dom";
 import { ROUTE_APP } from 'application/contstans/route.const';
 import { organizationModel } from 'modules/OrganizationModule/organization.module';
+import { IOrganization } from "modules/OrganizationModule/Organization/interfaces/organization.type";
+import { useQuery } from "react-query";
+import React from "react";
 
-const OrganizationStatus = () => {
+const OrganizationStatus:FC<{organization:IOrganization}> = ({organization}) => {
 	const point = organizationModel.selectOrganization
 	const { timeworkOrganization } = organizationStatusModel
-	const [statusTSX, switchMetod] = useOrganizationStatus()
-	const [modal, setModal] = useState(false)
-	const navigate = useNavigate()
 
-	useEffect(() => {
-		statusTSX.statuses && setModal(true)
+	const [statusTSX,setStatusTSX] = useState<any>()
+	
+	const getStatus = async (organization:any) =>{
+		try {
+			const result = await useCaseOrganizationStatus.statusPointsList(organization)
+			if(result){
+				const tsx = new StatusTSX(result.organizationStatus as string, result.timeworkOrganization.typework,result.deliveryTipe)
+			
+				setStatusTSX(tsx)
+			}
+			
+		} catch (error) {
+			console.log(error);
+		}
+	}
 
-	}, [timeworkOrganization])
+	useEffect(()=>{
+		organization && getStatus(organization)
+	},[organization])
 
 
-	statusTSX.NoWorkPoint((
+	const switchMetod = (status:any) => {
+
+		const wrappers = status.statuses
+		
+		if (wrappers) {
+			const w = React.createElement(React.Fragment, { key: wrappers.name }, wrappers.content)
+			return React.createElement(React.Fragment, null, w)
+		}
+		return false
+	
+	}
+
+
+
+
+	statusTSX && statusTSX.NoWorkPoint((
 
 		<div className="order-placement__form">
 			<div className="order-placement__tabs__notification">
@@ -36,7 +66,7 @@ const OrganizationStatus = () => {
 		</div>
 	))
 
-	statusTSX.OpenPoint((
+	statusTSX && statusTSX.OpenPoint((
 
 		<div className="order-placement__form">
 			<div className="order-placement__tabs__notification">
@@ -47,7 +77,7 @@ const OrganizationStatus = () => {
 		</div>
 	))
 
-	statusTSX.NoDeliveryPoint((
+	statusTSX && statusTSX.NoDeliveryPoint((
 
 		<div className="order-placement__form">
 			<div className="order-placement__tabs__notification">
@@ -65,7 +95,7 @@ const OrganizationStatus = () => {
 		</div>
 	))
 
-	statusTSX.OnliPICKUP((
+	statusTSX && statusTSX.OnliPICKUP((
 		<div className="order-placement__form">
 			<div className="order-placement__tabs__notification">
 				<h3>У данного заведения нету доставки</h3>
@@ -75,7 +105,7 @@ const OrganizationStatus = () => {
 		</div>
 	))
 
-	statusTSX.NoTimeWork((
+	statusTSX && statusTSX.NoTimeWork((
 
 		<div className="order-placement__form">
 			<div className="order-placement__tabs__notification">
@@ -86,7 +116,7 @@ const OrganizationStatus = () => {
 		</div>
 	))
 
-	statusTSX.ONTimeWork((
+	statusTSX && statusTSX.ONTimeWork((
 
 		<div className="order-placement__form">
 			<div className="order-placement__tabs__notification">
@@ -102,7 +132,7 @@ const OrganizationStatus = () => {
 	return (
 		<>
 			{
-				switchMetod()
+				statusTSX && switchMetod(statusTSX)
 
 			}
 

@@ -34,8 +34,6 @@ const OrganizationCounterHi:FC<{point:IOrganization}> = ({point}) => {
 	}
 
 
-
-	/**/
 	useEffect(() => {
 		let timer: any
 		let timercoutn: any
@@ -48,8 +46,9 @@ const OrganizationCounterHi:FC<{point:IOrganization}> = ({point}) => {
 				return { delay2: setDelay, delay1: delay }
 			}
 			function setCounter(el: any, toNumber: any, delay: any, counter = (Number(numbFlip) - 100)) {
-				//console.log('for',toNumber);
-
+				console.log('for',toNumber);
+				setCount(toNumber)
+				/*
 				for (let i = (toNumber - 100); i < toNumber; i++) {
 					//clearTimeout(timer)
 
@@ -58,7 +57,7 @@ const OrganizationCounterHi:FC<{point:IOrganization}> = ({point}) => {
 						const zeroLength = 12;
 						const c = parseInt(count)
 						const newcount = String(c + counter).padStart(zeroLength, '0')
-
+						console.log('nex',newcount);
 						setCount(newcount)
 						if (toNumber === counter) {
 							setTik(true)
@@ -66,7 +65,7 @@ const OrganizationCounterHi:FC<{point:IOrganization}> = ({point}) => {
 						}
 
 					}, 1)
-				}/**/
+				}*/
 			}
 			async function organizationCoutn(guid: string) {
 
@@ -99,7 +98,7 @@ const OrganizationCounterHi:FC<{point:IOrganization}> = ({point}) => {
 
 
 
-
+			/*
 			if (numbFlip && point) {
 				await organizationCoutn(point.guid)
 				timercoutn = setInterval(async () => {
@@ -109,13 +108,9 @@ const OrganizationCounterHi:FC<{point:IOrganization}> = ({point}) => {
 
 
 			}
+			*/
 
 		})();
-
-
-
-
-
 
 		return () => {
 			clearTimeout(timer)
@@ -124,29 +119,6 @@ const OrganizationCounterHi:FC<{point:IOrganization}> = ({point}) => {
 	}, [])
 
 
-
-
-	/*	*/
-	useEffect(() => {
-		/*
-		let timer:any
-		setTimeout(()=>{
-			const zeroLength = 12;
-			const c = parseInt(count)
-			const newcount = String(c + 1).padStart(zeroLength, '0')
-			setCount(newcount)
-		},5000)
-		return () =>{
-			clearTimeout(timer)
-		}
-		*/
-
-
-	}, [load])
-
-
-	//console.log("load", count);
-	//console.log('phoneee',pointe);
 
 	const getFlip = async () => {
 		try {

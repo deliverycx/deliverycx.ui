@@ -1,6 +1,6 @@
 import { OrganizationModel } from "modules/OrganizationModule/Organization/domain/organization.model";
 import { OrganizationStatusModel } from "../domain/organizationStatus.model";
-import { IDeliveryTypes } from "../interfaces/organizationStatus.type";
+import { IDeliveryTypes, IPointStatus } from "../interfaces/organizationStatus.type";
 import { IOrganization } from "modules/OrganizationModule/Organization/interfaces/organization.type";
 
 export class UseCaseOrganizationStatus {
@@ -47,5 +47,25 @@ export class UseCaseOrganizationStatus {
 		}
 		return point
 
+	}
+
+
+	async statusPointsList(point:IOrganization){
+	
+		const observableStatus = await this.organizationStatusModel.getOrganizationStatusAxios(point.guid)
+		if(observableStatus){
+				const time = this.pointTimeWork(point)
+				const deliverytypes = this.organizationStatusModel.deliveryTypesMetod(observableStatus.deliveryMetod)
+			return {
+				deliveryTipe:this.organizationStatusModel.changesDeliveryType(deliverytypes,time),
+				organizationStatus:observableStatus.organizationStatus,
+				timeworkOrganization:time,
+				paymentMetod:observableStatus.paymentMetod
+			}
+		}
+	}
+
+	pointTimeWork(point:IOrganization){
+		return this.organizationStatusModel.timeWorkOrganizationEntiti(point.workTime)
 	}
 }
