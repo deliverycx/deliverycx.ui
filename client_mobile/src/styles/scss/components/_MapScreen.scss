@@ -382,7 +382,6 @@
 	width: 100%;
 }
 .organization_slide .modal__wrapper{
-	opacity: .8;
   transition: all .3s ease;
 	height: 100%;
 	position: relative;
@@ -396,7 +395,6 @@
 }
 .organization_slide .swiper-slide-active .modal__wrapper{
 	width: 100% !important;
-	opacity: 1;
   -ms-transform: scale(1);
   transform: scale(1);
 	bottom: 0;
