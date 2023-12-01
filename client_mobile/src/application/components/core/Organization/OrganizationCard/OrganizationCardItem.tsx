@@ -16,6 +16,7 @@ import OragnizationRequisities from "./view/OragnizationRequisities"
 import { organizationModel, useCaseOrganizationStatus } from 'modules/OrganizationModule/organization.module';
 import { observer } from "mobx-react-lite"
 import LoaderProduct from "application/components/common/Loaders/loaderProduct"
+import Slider from "react-slick"
 
 
 type IProps = {
@@ -43,6 +44,13 @@ const OrganizationCardItem: FC<IProps> = ({ organization, active, viseble }) => 
 		return () => clearTimeout(tiks)
 	}, [selectOrganization, active])
 
+	const settings = {
+		dots: true,
+		infinite: true,
+		speed: 500,
+		slidesToShow: 1,
+		slidesToScroll: 1
+	};
 
 	return (
 		<>
@@ -55,11 +63,11 @@ const OrganizationCardItem: FC<IProps> = ({ organization, active, viseble }) => 
 
 			{
 				organization.gallery && organization.gallery.length !== 0 &&
-				<Carousel showThumbs={false} autoPlay={true} showArrows={true} showStatus={false}>
+				<Slider {...settings} className="carousel">
 					{organization.gallery.map((image: string, index: number) => (
 						<img key={index} src={imgRoutDef(image)} alt="" />
 					))}
-				</Carousel>
+				</Slider>
 			}
 			<div className="map__institute-content no-drag">
 				<div className="institute-header">
