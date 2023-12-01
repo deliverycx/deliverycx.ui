@@ -5,15 +5,6 @@ import OrganizationCard from "./view/OrganizationCard";
 import React from "react";
 import { observer } from "mobx-react-lite"
 import ModalCard from "application/components/common/Modals/ModalCard";
-import { imgRoutDef } from "application/helpers/imgAdmin";
-import { Carousel } from "react-responsive-carousel";
-import OranizationWorkTime from "./view/OranizationWorkTime";
-import OrganizationCardFilter from "./view/OrganizationCardFilter";
-import OrganizationTableRestaurant from "./view/OrganizationTableRestaurant";
-import OrganizationTipeDelivery from "./view/OrganizationTipeDelivery";
-import OrganizationStatus from "./view/OrganizationStatus";
-import { createPortal } from "react-dom";
-import Slider from "react-slick";
 import { IOrganization } from "modules/OrganizationModule/Organization/interfaces/organization.type";
 import { useCaseOrganization, useCaseOrganizationStatus } from "modules/OrganizationModule/organization.module";
 import OrganizationCardItem from "./OrganizationCardItem";
