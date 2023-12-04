@@ -16,6 +16,11 @@ class RequestShopApi extends ApiSuper {
 	}
 
 	@methods('get')
+	getSosusProducts(organization:string){
+		return this.request<IProduct[]>(`product/getsous?organization=${organization}`)
+	}
+
+	@methods('get')
   stoplist(org:string) {
     return this.request<IStopList[]>(`/stoplist/getStopList/?organizationId=${org}`)
   }

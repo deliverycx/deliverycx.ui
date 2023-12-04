@@ -4,6 +4,7 @@ import { IProduct } from 'modules/ShopModule/interfaces/shop.type';
 import cn from "classnames"
 import HOCCartChange from "../../Basket/CartChange/HOC.CartChange";
 import { IStopList } from 'modules/ShopModule/interfaces/shop.type';
+import AdditionSouses from "./AdditionProducts/AdditionSouses";
 
 type IProps = {
 	product: IProduct
@@ -53,13 +54,13 @@ const ProductCard: FC<IProps> = ({ product, setIsModalOpened,stoplist }) => {
 									<h1 className="product-price">{product.price} ₽</h1>
 								</div>
 							</div>
-
+							
 							<div className="product__modal-desc">
 								<p>
 									{product.description}
 								</p>
 							</div>
-
+							<AdditionSouses />
 							{
 								!disableItem ?
 										<HOCCartChange theme="card" product={product} close={setIsModalOpened} />

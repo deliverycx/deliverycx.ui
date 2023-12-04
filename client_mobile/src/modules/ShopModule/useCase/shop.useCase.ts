@@ -27,6 +27,13 @@ export class ShopUseCase{
 		
 	}
 
+	async sousesProducts(){
+		if(this.organizationModel.selectOrganization){
+			return await this.shopModel.repositySousProducts(this.organizationModel.selectOrganization.guid)
+		}
+		
+	}
+
 	async getStopList(){
 		if(this.organizationModel.selectOrganization){
 			this.shopModel.actionSelectProduct(this.organizationModel.selectOrganization.guid)

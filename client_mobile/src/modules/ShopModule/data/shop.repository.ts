@@ -36,6 +36,19 @@ export class ShopRepository extends ShopEntiti {
 		
 	}
 
+	async repositySousProducts(pointid: string) {
+		try {
+			const { data } = await requestShopApi.getSosusProducts(pointid)
+			if(data){
+				return data
+			}
+		} catch (error) {
+			console.log(error);
+		}
+		
+		
+	}
+
 	reposityStoplist(pointid: string) {
 		return requestShopAjax.stoplist(pointid)
 			.pipe(
