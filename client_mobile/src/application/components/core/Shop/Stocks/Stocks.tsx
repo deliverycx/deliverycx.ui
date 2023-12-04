@@ -121,7 +121,7 @@ const Stocks:FC<{organization:IOrganization}> = ({organization}) => {
 				mapStory &&
 				<div className="stories">
 					<div className="stories_box">
-						<img className="stories_box-close" onClick={()=> handlerStories(null,0)} src={require("assets/images/icons/closestories2.png")} />
+						<img className="stories_box-close" width="20" height="20" onClick={()=> handlerStories(null,0)} src={require("assets/images/icons/closestories2.png")} />
 						<Stories width="100%" height="100%" onAllStoriesEnd={()=> handlerStories(null,0)} stories={mapStory} />
 					</div>
 				</div>
