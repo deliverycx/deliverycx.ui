@@ -71,6 +71,7 @@ const Stocks:FC<{organization:IOrganization}> = ({organization}) => {
 
 	const handlerStories = (story:string[] | null,index:number) => {
 		//const q = document.querySelector(".shop__box") as any
+		console.log(story,index);
 		setStoriesIndex(index)
 
 		if(story?.length !== 0){
