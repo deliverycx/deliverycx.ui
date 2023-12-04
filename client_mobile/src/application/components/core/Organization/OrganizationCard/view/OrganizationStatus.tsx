@@ -81,11 +81,11 @@ const OrganizationStatus:FC<{organization:IOrganization}> = ({organization}) => 
 
 		<div className="order-placement__form">
 			<div className="order-placement__tabs__notification">
-				<h3>Онлайн-заказ не доступен</h3>
+				<h3>К сожалению онлайн-заказ не доступен</h3>
 				<span className="bold">Заказ на сайте временно не доступен. Оформить заказ вы можете по телефону.</span>
 				<strong>Приносим извинения за неудобства!</strong>
 				<p>
-					А пока вы можете ознакомиться с нашим меню и почитать новости на главной странице
+				На сайте вы можете посмотреть наше меню, контакты и забронировать столик. Ждем вас в гости!
 				</p>
 				<a href={`tel:${point?.info.phone}`} className="btn btn-sm btn-red no-drag">
 					<img src={require('assets/images/icons/phonewite.png')} alt="" />
@@ -96,11 +96,11 @@ const OrganizationStatus:FC<{organization:IOrganization}> = ({organization}) => 
 	))
 
 	statusTSX && statusTSX.OnliPICKUP((
-		<div className="order-placement__form">
+		<div className="order-placement__form onlipickup">
 			<div className="order-placement__tabs__notification">
-				<h3>У данного заведения нету доставки</h3>
+				<h4>У данного заведения нету доставки</h4>
 				<h5>Для заказа курьером выберите другое заведение</h5>
-				<small>или воспользуйтесь <b>самовывозом</b> </small>
+				<small >или воспользуйтесь <b>самовывозом</b> </small>
 			</div>
 		</div>
 	))

@@ -62,7 +62,7 @@ const PoductListItem: FC<IProps> = ({ product, setModalmodalProduct,stoplist }) 
 									: "1 шт."
 						}
 					</small>
-					<h3 className="product-card__content__info-cost price--cost price--fix">
+					<h3 className="product-card__content__info-cost price--cost">
 
 						{product.price} ₽
 					</h3>
