@@ -22,7 +22,7 @@ const AdditionSouses = () => {
 
 	return (
 		<div className="product__modal-additional">
-			<h3>Добавить к заказу</h3>
+			{souses && <h3>Добавить к заказу</h3>}
 			{
 				souses && souses.map((product) => {
 					return product && (
