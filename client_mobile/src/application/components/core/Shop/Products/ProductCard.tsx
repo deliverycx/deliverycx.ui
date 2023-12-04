@@ -60,7 +60,7 @@ const ProductCard: FC<IProps> = ({ product, setIsModalOpened,stoplist }) => {
 									{product.description}
 								</p>
 							</div>
-							<AdditionSouses />
+							<AdditionSouses set={setIsModalOpened} />
 							{
 								!disableItem ?
 										<HOCCartChange theme="card" product={product} close={setIsModalOpened} />
