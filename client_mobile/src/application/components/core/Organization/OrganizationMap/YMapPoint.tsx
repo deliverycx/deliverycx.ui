@@ -116,11 +116,11 @@ const YMapPoint:FC<IProps> = ({statePoint,addresses,placemarkClick}) => {
                             height="100vh"
                             defaultState={{
                                 center: cord,
-                                zoom: 15
+                                zoom: 10
                             }}
                             state={{
                                 center: cord,
-                                zoom: 15,
+                                zoom: 10,
 
                             }}
 														

@@ -66,7 +66,7 @@ const CountCity = () => {
 			{
 				coutCity &&
 				<div className="select__title">
-					{coutCity.orgCount} хинкаль{q(coutCity.orgCount)} в  {coutCity.cityCoutn} городах
+					{coutCity.orgCount -1} хинкаль{q(coutCity.orgCount -1)} в  {coutCity.cityCoutn} городах
 				</div>
 			}
 
