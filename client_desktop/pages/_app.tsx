@@ -8,6 +8,7 @@ import debounce from 'lodash.debounce';
 
 
 function MyApp({ Component, pageProps }: AppProps) {
+	
 
   const handleWindowResize = useMemo(() => debounce(() => {
     if (window.innerWidth < 1024) {
@@ -20,6 +21,8 @@ function MyApp({ Component, pageProps }: AppProps) {
     window.addEventListener('resize', handleWindowResize);
     return () => window.removeEventListener('resize', handleWindowResize);
   }, [])
+
+
 
   return (
     <Provider store={store}>

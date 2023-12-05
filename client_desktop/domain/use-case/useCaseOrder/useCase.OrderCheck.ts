@@ -14,14 +14,15 @@ export function useOrderCheck(this:any) {
   const dispatch = useDispatch()
 
 	const {guid} = adapterSelector.useSelectors(selector => selector.point)
- 
+	const user = adapterSelector.useSelectors(selector => selector.profile)
 
 	const handlerSubmitOrder = async (value:IInitialValues) =>{
 		try {
 			dispatch(setOrderInfo(value))
 			const request =  await dispatch(fetchOrderCart({
 				organizationid: guid,
-				address: value
+				address: value,
+				userid:user.id
 			}) as any);
 			
 			if (request.payload && request.payload.data) {

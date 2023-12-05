@@ -96,15 +96,15 @@ export function useCartItems(this: any, empty: any) {
   useEffect(() => {
 
       if (!checkPoint(false)) {
-        dispatch(fetchDeleteCart())
-        empty();
+        //dispatch(fetchDeleteCart())
+        //empty();
       } else {
         dispatch(fetchAllCart())
       }
     },[])
     useEffect(() => {
       if (cartList.length === 0) {
-          empty();
+          //empty();
       }else{
 				guid &&	dispatch(fetStopList(guid))
 			}

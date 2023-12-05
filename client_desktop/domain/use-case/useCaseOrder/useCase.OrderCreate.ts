@@ -59,7 +59,7 @@ class CreateOrder{
 		this.orderStates = result
 	}
 
-	bodyOrder(hashCode:string){
+	bodyOrder(hashCode:string,userid:string){
 		const result = {
 			organization: this.selectLocationPoint.guid,
 			name: this.selectCart.orderInfo.name,
@@ -68,6 +68,7 @@ class CreateOrder{
       comment: this.selectCart.orderInfo.comment,
 			localhost:`${document.location.protocol}//${document.location.host}`,
 			hash:hashCode,
+			userid:userid,
 			orderAmount:this.selectCart.totalPrice
 		}
 		
@@ -98,6 +99,7 @@ export function useOrderCreate(this: any) {
 	const selectLocationPoint = adapterSelector.useSelectors(selector => selector.point)
 	const selectCart = adapterSelector.useSelectors(selector => selector.cart)
 	const selectCardBank = adapterSelector.useSelectors(selector => selector.bankcard)
+	const user = adapterSelector.useSelectors(selector => selector.profile)
 
 	const createOrderFabric = () =>{
 		const createOrder = new CreateOrder(
@@ -106,7 +108,7 @@ export function useOrderCreate(this: any) {
 			selectCardBank
 		)
 		createOrder.prepareAddress()
-		createOrder.bodyOrder(hash)
+		createOrder.bodyOrder(hash,user.id)
 		createOrder.metodsOrder()
 		return createOrder.orderStates
 	}

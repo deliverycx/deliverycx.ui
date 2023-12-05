@@ -87,7 +87,8 @@ const store = configureStore({
 })
 
 const persistor = persistStore(store, undefined, async () => {
-  await store.dispatch(fetchUser() as any)
+	
+  //await store.dispatch(fetchUser() as any)
   await store.dispatch(fetchAllCart() as any) 
 });
 
