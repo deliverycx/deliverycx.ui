@@ -21,7 +21,7 @@ import CartNotificateDyalPay from "application/components/core/Cart/CartModals/C
 
 type ICartLayout = {
     children:ReactNode
-} 
+}
 
 const CartLayout: FC<ICartLayout> = ({ children }) => {
 	const point = adapterSelector.useSelectors((selector) => selector.point);
