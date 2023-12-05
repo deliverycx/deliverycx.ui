@@ -41,10 +41,13 @@ const HOCOrganizationFilters: FC<{ city: ICity }> = ({ city }) => {
 								{
 									filters.map((val: OrganizationFilters) => {
 										const CN = cn("filter", { active: changeFilter?.includes(val._id) })
-										return (
+										return val && (
 											<section key={val._id} onClick={() => handlerFiler(val._id)}>
 												<button className={CN}>
-													<img src={imgRoutDef(val.images[0])} />
+													{
+														val.images &&
+														<img src={imgRoutDef(val.images[0])} />
+													}
 													{val.name}
 												</button>
 											</section>
@@ -53,7 +56,7 @@ const HOCOrganizationFilters: FC<{ city: ICity }> = ({ city }) => {
 								}
 							</div>
 							<div className="d-flex flex-column gap-8">
-								<button onClick={handlerResetFilter} className="btn btn-sm btn-red no-drag">
+								<button onClick={() => setIsOpenedFilters(false)} className="btn btn-sm btn-red no-drag">
 									Принять
 								</button>
 								<button onClick={handlerResetFilter} className="btn btn-sm btn-gray no-drag">
