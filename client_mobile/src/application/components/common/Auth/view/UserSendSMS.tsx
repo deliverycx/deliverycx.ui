@@ -25,7 +25,30 @@ const UserSendSMS: FC<IProps> = ({ formik }) => {
 							Чтобы быстро совершать заказы, получать скидки и использовать все преимущества регистрации
 						</p>
 					</div>
+
 					<div className="auth-content__inputs">
+						<div className="input__item input_icon input_icon_left">
+							<div className="input__container">
+									<h3>Временно не доступно</h3>
+								</div>
+								</div>
+								</div>
+					
+					<div className="auth-footer">
+						<button className="btn btn-md btn-red">Получить СМС-код</button>
+						<a className="auth-footer__link">
+							Продолжая, вы соглашаетесь на <span style={{color: "#8D191D"}}>обработку персональных данных</span> и <span style={{color: "#8D191D"}}>условия пользовательского соглашения</span>
+						</a>
+					</div>
+				</div>
+			</form>
+		</FormikProvider>
+	)
+}
+export default UserSendSMS
+
+/*
+<div className="auth-content__inputs">
 						<div className="input__item input_icon input_icon_left">
 							<div className="input__container">
 								<img src={require("assets/images/icons/phone_gray.png")} alt="" />
@@ -62,16 +85,4 @@ const UserSendSMS: FC<IProps> = ({ formik }) => {
 							</div>
 						</div>
 
-					</div>
-					<div className="auth-footer">
-						<button className="btn btn-md btn-red">Получить СМС-код</button>
-						<a className="auth-footer__link">
-							Продолжая, вы соглашаетесь на <span style={{color: "#8D191D"}}>обработку персональных данных</span> и <span style={{color: "#8D191D"}}>условия пользовательского соглашения</span>
-						</a>
-					</div>
-				</div>
-			</form>
-		</FormikProvider>
-	)
-}
-export default UserSendSMS
+					</div> */
