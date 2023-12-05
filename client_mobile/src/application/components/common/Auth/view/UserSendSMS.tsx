@@ -29,10 +29,41 @@ const UserSendSMS: FC<IProps> = ({ formik }) => {
 					<div className="auth-content__inputs">
 						<div className="input__item input_icon input_icon_left">
 							<div className="input__container">
-									<h3>Временно не доступно</h3>
-								</div>
-								</div>
-								</div>
+								<img src={require("assets/images/icons/phone_gray.png")} alt="" />
+								<FormFieldWrapper
+									placeholderIco={""}
+									placeholderValue="Телефон"
+									isValid={
+										!formik.values.phone.length || formik.errors.phone
+									}
+									error={!!(formik.errors.phone && formik.touched.phone)}
+									errorValue={formik.errors.phone}
+								>
+									<div className="input__container">
+										<img src={require("assets/images/icons/phone_gray.png")} alt="" />
+										<Field
+											name="phone"
+											render={({ field }: any) => (
+												<InputMask
+													{...field}
+													mask="+7 999 999 99 99"
+													maskPlaceholder={null}
+													className="form__field-wrapper__input"
+													placeholder="+7"
+													value={formik.values.phone}
+													onChange={formik.handleChange}
+												/>
+											)}
+										/>
+
+									</div>
+
+								</FormFieldWrapper>
+
+							</div>
+						</div>
+
+					</div> 
 					
 					<div className="auth-footer">
 						<button className="btn btn-md btn-red">Получить СМС-код</button>
