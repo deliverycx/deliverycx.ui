@@ -58,10 +58,8 @@ const OrganizationStatus:FC<{organization:IOrganization}> = ({organization}) => 
 		<div className="order-placement__form">
 			<div className="order-placement__tabs__notification">
 				<h3>В данный момент заведение не принимает онлайн-заказ</h3>
-				<strong>С удовольствием примем его немного позднее!</strong>
-				<p>
-					А пока вы можете ознакомиться с нашим меню и почитать новости на главной странице
-				</p>
+				<strong>Приносим извинения за неудобства!</strong>
+				
 			</div>
 		</div>
 	))
