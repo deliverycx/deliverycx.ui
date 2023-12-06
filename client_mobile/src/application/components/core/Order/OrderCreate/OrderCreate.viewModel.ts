@@ -77,7 +77,7 @@ export function useOrderCreateViewModel() {
 													setOrderLoad(true);
 											}
 									});
-					}, 5000);
+					}, 2000);
 			} catch (error) {
 					setOrderNumber(null);
 					clearInterval(ref.current as any);
