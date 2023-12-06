@@ -42,9 +42,12 @@ export class OrderCreateRepository extends OrderCreateEntity {
 		try {
 			if(pay){
 				const {data} = await orderCreateRequest.OrderCreatePayment(orderBody)
+				
 				return data
 			}else{
-				await orderCreateRequest.OrderCreate(orderBody)
+				const {data} = await orderCreateRequest.OrderCreate(orderBody)
+				console.log(data);
+				return data
 			}
 		} catch (error) {
 			console.log(error);

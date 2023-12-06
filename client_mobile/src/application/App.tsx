@@ -27,10 +27,8 @@ const App = (): JSX.Element => {
 			}
 
 		{
-			/*
 			process.env.NODE_ENV === 'production' &&
 			<YMInitializer accounts={[95435515]} options={{webvisor: true}} version="2" />
-			*/
 		}
 		
 		</>

@@ -32,7 +32,7 @@ export function useOrderCreateViewModel() {
 	useEffect(()=>{
 		if(orderNumber){
 			appUseCase.crearOrder()
-			ym('reachGoal','ordercreate')
+			//ym('reachGoal','ordercreate')
 		}
 	},[orderNumber])
 
@@ -54,6 +54,7 @@ export function useOrderCreateViewModel() {
 				let tik = 0;
 					ref.current = setInterval(async () => {
 							const result = await orderCreateRepository.repositoryGetOrder(hashNumb);
+							console.log(result);
 							new Promise((res, rej) => {
 
 									if (result && result.orderNumber) {
