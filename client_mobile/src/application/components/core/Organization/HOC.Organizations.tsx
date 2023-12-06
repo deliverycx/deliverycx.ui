@@ -22,8 +22,8 @@ import Slider from "react-slick";
 const HOCOrganizations = () => {
 
 	const useCase = adapterComponentUseCase(useOrganizationsViewModel)
-	const { city, organizations,pointCords } = useCase.data
-	const { handleBackCity,selectPointPosition } = useCase.handlers
+	const { city, organizations,pointCords,pointIndex } = useCase.data
+	const { handleBackCity,selectPointPosition,setPointIndex } = useCase.handlers
 
 	const [modalOpenedList, setIsOpenedList] = useState(false)
 
@@ -47,7 +47,7 @@ const HOCOrganizations = () => {
 		
 			{
 				organizations &&
-				<HOCOrganizationCard organizations={organizations} />
+				<HOCOrganizationCard organizations={organizations} pointIndex={pointIndex} />
 			}
 			
 			<div onClick={handleBackCity} className="map__topbar map__topbar__fixed">
@@ -64,7 +64,7 @@ const HOCOrganizations = () => {
 			<div className="map__map">
 				{
 					organizations &&
-					<OrganizationMap organizations={organizations} setCord={pointCords} />
+					<OrganizationMap organizations={organizations} setPointIndex={setPointIndex} setCord={pointCords} />
 				}
 			</div>
 			{

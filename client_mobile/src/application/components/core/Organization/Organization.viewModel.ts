@@ -10,6 +10,7 @@ export function useOrganizationsViewModel(this:any) {
 	const city = useCaseOrganization.cityModel.selectCity
 	const navigate = useNavigate()
 	const [pointCords,setPointCords] = useState<string[] | null>(null)
+	const [pointIndex,setPointIndex] = useState<string | null>(null)
 	
 	useEffect(()=>{
 		if(city){
@@ -23,21 +24,24 @@ export function useOrganizationsViewModel(this:any) {
 		navigate(ROUTE_APP.MAIN)
 	}
 
-	const selectPointPosition = (cords:string[]) =>{
-		
-		setPointCords(cords)
+	const selectPointPosition = (index:string) =>{
+		setPointIndex(index)
 	}
+
+
 
 
 
 	this.data({
 		organizations,
 		city,
-		pointCords
+		pointCords,
+		pointIndex
 	});
 	this.handlers({
 		handleBackCity,
-		selectPointPosition
+		selectPointPosition,
+		setPointIndex
 	});
 	this.status({
 		

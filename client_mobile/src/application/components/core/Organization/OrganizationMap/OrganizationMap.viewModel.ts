@@ -4,7 +4,7 @@ import { IOrganization } from 'modules/OrganizationModule/Organization/interface
 import { organizationModel, useCaseOrganization } from 'modules/OrganizationModule/organization.module';
 import { useReducer, useEffect } from 'react';
 
-export function useOrganizationMapViewModel(this: any, { organizations, setCord }: { organizations: IOrganization[], setCord: any }) {
+export function useOrganizationMapViewModel(this: any, { organizations, setCord,setPointIndex }: { organizations: IOrganization[], setCord: any,setPointIndex:any }) {
 	const { selectOrganization } = organizationModel
 	const [statePoint, dispatchPoint] = useReducer(
 		PointsReducer,
@@ -30,6 +30,7 @@ export function useOrganizationMapViewModel(this: any, { organizations, setCord 
 			appUseCase.clearApp()
 		}
 		useCaseOrganization.selectOrganization(organization)
+		setPointIndex(organization.guid)
 		dispatchPoint({
 			type: ReducerActionTypePoints.placemarkClick,
 			payload: { organization, index }

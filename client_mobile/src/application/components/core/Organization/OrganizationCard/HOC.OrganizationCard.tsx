@@ -24,7 +24,7 @@ export const PointsContext = React.createContext<TadapterCaseCallback>({
 	handlers: {},
 	status: {}
 });
-const HOCOrganizationCard: FC<{ organizations: IOrganization[] }> = ({ organizations }) => {
+const HOCOrganizationCard: FC<{ organizations: IOrganization[],pointIndex:string }> = ({ organizations,pointIndex }) => {
 	const useCase = adapterComponentUseCase(useOrganizationCardViewModel)
 
 	const { selectOrganization, timeworkOrganization, cardModal, deliveryTipe } = useCase.data
@@ -34,10 +34,10 @@ const HOCOrganizationCard: FC<{ organizations: IOrganization[] }> = ({ organizat
 
 	useEffect(()=>{
 		if(cardModal && selectOrganization){
-			const findindex = organizations.findIndex(val => val.guid === selectOrganization.guid)
+			const findindex = organizations.findIndex(val => val.guid === pointIndex)
 			sw && sw.current && sw.current.slideToLoop(findindex, 500);
 		}
-	},[cardModal,sw.current])
+	},[cardModal,pointIndex,sw.current])
 
 	//
 	return (

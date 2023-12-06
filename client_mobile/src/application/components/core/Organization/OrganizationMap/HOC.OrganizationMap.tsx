@@ -8,9 +8,10 @@ import { useOrganizationMapViewModel } from './OrganizationMap.viewModel';
 import { observable } from 'mobx';
 import { observer } from 'mobx-react-lite';
 
+type IProps = { organizations: IOrganization[],setCord:any,setPointIndex:any }
 
-const OrganizationMap: FC<{ organizations: IOrganization[],setCord:any }> = ({ organizations,setCord }) => {
-	const useCase = adapterComponentUseCase(useOrganizationMapViewModel, {organizations,setCord})
+const OrganizationMap: FC<IProps> = ({ organizations,setCord,setPointIndex }) => {
+	const useCase = adapterComponentUseCase(useOrganizationMapViewModel, {organizations,setCord,setPointIndex})
 	const { statePoint } = useCase.data
 	const { placemarkClickHandler } = useCase.handlers
 
