@@ -46,8 +46,20 @@ const OrganizationCounterHi:FC<{point:IOrganization}> = ({point}) => {
 				return { delay2: setDelay, delay1: delay }
 			}
 			function setCounter(el: any, toNumber: any, delay: any, counter = (Number(numbFlip) - 100)) {
-				console.log('for',toNumber);
-				setCount(toNumber)
+				
+				timer = setTimeout(() => {
+					counter++
+					const zeroLength = 12;
+					const c = parseInt(count)
+					const newcount = String(c + counter).padStart(zeroLength, '0')
+					console.log('nex',newcount);
+					setCount(newcount)
+					if (toNumber === counter) {
+						setTik(true)
+
+					}
+
+				}, 1)
 				/*
 				for (let i = (toNumber - 100); i < toNumber; i++) {
 					//clearTimeout(timer)
@@ -98,17 +110,18 @@ const OrganizationCounterHi:FC<{point:IOrganization}> = ({point}) => {
 
 
 
-			/*
+			/**/
 			if (numbFlip && point) {
 				await organizationCoutn(point.guid)
+				/*
 				timercoutn = setInterval(async () => {
 					console.log('iiiiiiii');
 					await organizationCoutn(point.guid)
 				}, 100000)
-
+				*/
 
 			}
-			*/
+			
 
 		})();
 
