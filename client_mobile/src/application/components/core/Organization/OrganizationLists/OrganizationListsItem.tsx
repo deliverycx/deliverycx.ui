@@ -32,6 +32,7 @@ const OrganizationListsItem: FC<IProps> = ({ organization, setCordPoint,setPoint
 
 	const handlerSetCords = () => {
 		setCordPoint(organization.info.cords)
+		//setPointIndex(organization.guid)
 		set(false)
 	}
 

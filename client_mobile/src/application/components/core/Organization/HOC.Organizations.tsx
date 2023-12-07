@@ -23,7 +23,7 @@ const HOCOrganizations = () => {
 
 	const useCase = adapterComponentUseCase(useOrganizationsViewModel)
 	const { city, organizations,pointCords,pointIndex } = useCase.data
-	const { handleBackCity,selectPointPosition,setPointIndex } = useCase.handlers
+	const { handleBackCity,selectPointPosition,setPointIndex,setPointCords } = useCase.handlers
 
 	const [modalOpenedList, setIsOpenedList] = useState(false)
 
@@ -39,7 +39,7 @@ const HOCOrganizations = () => {
 		
 	};
 
-	
+	console.log(pointCords);
 
 	return (
 		<div className="map">
@@ -89,7 +89,7 @@ const HOCOrganizations = () => {
 				</div>
 				{
 					modalOpenedList &&
-					<HOCOrganizationLists organizations={organizations} setPointIndex={setPointIndex} set={setIsOpenedList} setCord={selectPointPosition} />
+					<HOCOrganizationLists organizations={organizations} setPointIndex={setPointIndex} set={setIsOpenedList} setCord={setPointCords} />
 				}
 				
 				</>

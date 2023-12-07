@@ -41,7 +41,8 @@ export function useOrganizationsViewModel(this:any) {
 	this.handlers({
 		handleBackCity,
 		selectPointPosition,
-		setPointIndex
+		setPointIndex,
+		setPointCords
 	});
 	this.status({
 		

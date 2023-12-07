@@ -11,7 +11,7 @@ export function useOrganizationMapViewModel(this: any, { organizations, setCord,
 		initialStatePointsMap
 	);
 
-
+		console.log(setPointIndex);
 	useEffect(() => {
 		organizations && setCordPoint()
 	}, [setCord,organizations])
