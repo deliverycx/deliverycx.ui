@@ -61,16 +61,15 @@ const OrganizationTipeDelivery:FC<{organization:IOrganization}> = ({organization
 
 	}
 	*/
-
+	
 	const handlerMenu = () =>{
-		console.log(selectOrganization.guid,organization.guid);
 		if(selectOrganization.guid !== organization.guid){
 			appUseCase.clearApp()
 		}
 		navigate(`/shop?address=${organization.info.city},${organization.info.address}`)
 	}
 
-	if(organization.delivery){
+	if(organization.delivery && organizationStatus !== ORG_STATUS.WORK){
 		return (
 			<button disabled className="btn btn-mini btn-gray no-drag">
 				
