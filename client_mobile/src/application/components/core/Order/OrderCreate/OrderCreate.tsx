@@ -1,7 +1,7 @@
 import TabBar from "application/components/common/TabBar/TabBar"
 import { adapterComponentUseCase } from 'adapters/adapterComponents';
 import { useOrderCreateViewModel } from "./OrderCreate.viewModel";
-import { useNavigate } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import { ROUTE_APP } from 'application/contstans/route.const';
 import LoaderProduct from "application/components/common/Loaders/loaderProduct";
 
@@ -82,7 +82,7 @@ const OrderCreate = () => {
 					</div>
 					<div className="order-accepted__buttons">
 						<button className="btn btn-md btn-red" onClick={() => navigate(ROUTE_APP.ORDER.ORDER_MAIN)}>Вернуться в назад</button>
-						<button className="btn btn-md btn-gray">Сообщить об ошибке</button>
+						<NavLink to="https://t.me/StarikHinkalichBot" className="btn btn-md btn-gray">Сообщить об ошибке</NavLink>
 					</div>
 
 				</div>

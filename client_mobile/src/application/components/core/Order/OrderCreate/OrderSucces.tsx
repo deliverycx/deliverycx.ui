@@ -4,7 +4,7 @@ import { ROUTE_APP } from "application/contstans/route.const";
 import { appUseCase } from "modules/AppModule/app.module";
 import { orderCreateRepository } from "modules/OrderModule/data/orderCreate.repository";
 import { useState, useEffect, useRef } from "react";
-import { useParams, useNavigate } from "react-router-dom";
+import { useParams, useNavigate, NavLink } from "react-router-dom";
 import ym from "react-yandex-metrika";
 import { ref } from "yup";
 
@@ -138,7 +138,7 @@ const OrderSucces = () =>{
 					</div>
 					<div className="order-accepted__buttons">
 						<button className="btn btn-md btn-red" onClick={() => navigate(ROUTE_APP.ORDER.ORDER_MAIN)}>Вернуться в назад</button>
-						<button className="btn btn-md btn-gray">Сообщить об ошибке</button>
+						<NavLink to="https://t.me/StarikHinkalichBot"  className="btn btn-md btn-gray">Сообщить об ошибке</NavLink>
 					</div>
 
 				</div>
