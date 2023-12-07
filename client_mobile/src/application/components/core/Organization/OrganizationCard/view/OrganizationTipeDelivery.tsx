@@ -14,6 +14,7 @@ import { PointsContext } from "../HOC.OrganizationCard";
 import _  from "lodash";
 import { IOrganization } from "modules/OrganizationModule/Organization/interfaces/organization.type";
 import { appUseCase } from "modules/AppModule/app.module";
+import { Redirects } from "application/helpers/redirectsOld";
 
 
 
@@ -66,7 +67,14 @@ const OrganizationTipeDelivery:FC<{organization:IOrganization}> = ({organization
 		if(selectOrganization.guid !== organization.guid){
 			appUseCase.clearApp()
 		}
-		navigate(`/shop?address=${organization.info.city},${organization.info.address}`)
+		
+		if(organization.delivery === ORG_STATUS.NOWORK && selectOrganization.redirect.redirectON){
+			console.log(organization.delivery,selectOrganization.redirect.redirectON);
+			Redirects(organization)
+		}else{
+			navigate(`/shop?address=${organization.info.city},${organization.info.address}`)
+		}
+		
 	}
 
 	if(organization.delivery && organizationStatus !== ORG_STATUS.WORK){
