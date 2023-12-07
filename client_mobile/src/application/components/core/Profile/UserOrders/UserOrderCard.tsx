@@ -98,9 +98,9 @@ const UserOrderCard: FC<IProps> = ({ set, data }) => {
 										{
 											data.order.orderParams.paymentMethod === PAYMENT_METODS.CASH
 												? "Наличными"
-												: data.order.orderParams.paymentMethod === PAYMENT_METODS.CARD
+												: data.order.orderParams.paymentMethod === PAYMENT_METODS.BYCARD
 													? "Картой курьеру"
-													: data.order.orderParams.paymentMethod === PAYMENT_METODS.BYCARD
+													: data.order.orderParams.paymentMethod === PAYMENT_METODS.CARD
 														? "Оплата в приложении"
 														: ""
 										}
@@ -119,8 +119,8 @@ const UserOrderCard: FC<IProps> = ({ set, data }) => {
 						</div>
 					</div>
 				</div>
-				<div className="orders__modal__buttons" onClick={() => returnOrder(data)}>
-					<button className="btn btn-red btn-icon-modal no-drag">
+				<div className="orders__modal__buttons" >
+					<button className="btn btn-red btn-icon-modal no-drag" onClick={() => returnOrder(data)}>
 						<img src={require("assets/images/icons/refresh.png")} alt="" />
 						Повторить заказ
 					</button>

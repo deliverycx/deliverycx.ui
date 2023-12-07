@@ -26,6 +26,7 @@ export function useUserOrdersViewModel(this:any) {
 			})
 	},[])
 
+	console.log(orderList);
 
 
 	const navigate = useNavigate()

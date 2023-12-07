@@ -14,7 +14,7 @@ export function useProfileViewModel(this:any) {
 	useEffect(()=>{
 		if(user && user.phone){
 			profileUseCase.getProfile()
-			ym('reachGoal','autorization_success')
+			//ym('reachGoal','autorization_success')
 			basketUseCase.cartCase()
 		}else{
 			navigate(ROUTE_APP.AUTH.REGISTER)

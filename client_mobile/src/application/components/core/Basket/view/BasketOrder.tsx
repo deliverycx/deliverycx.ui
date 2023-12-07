@@ -24,6 +24,9 @@ const BasketOrder:FC<{basketPrice:IBasketPrice}> = ({basketPrice}) => {
 			if (error.response.status === 422 && error.response) {
 				basketUseCase.basketModel.actionCheckbasketError(error.response.data.errors)
 			}
+			if(error.response.status === 401){
+				navigate(0)
+			}
 		}
 
 	}
