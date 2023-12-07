@@ -33,7 +33,7 @@ const OrderSucces = () =>{
 	useEffect(()=>{
 		if(orderNumber){
 			appUseCase.crearOrder()
-			ym('reachGoal','ordercreate')
+			//ym('reachGoal','ordercreate')
 		}
 	},[orderNumber])
 

@@ -68,7 +68,7 @@ const OrganizationTipeDelivery:FC<{organization:IOrganization}> = ({organization
 			appUseCase.clearApp()
 		}
 		
-		if(organization.delivery === ORG_STATUS.NOWORK && selectOrganization.redirect.redirectON){
+		if(organization.delivery === ORG_STATUS.NOWORK && organization.redirect.redirectON){
 			console.log(organization.delivery,selectOrganization.redirect.redirectON);
 			Redirects(organization)
 		}else{
