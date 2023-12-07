@@ -89,7 +89,7 @@ const HOCOrganizations = () => {
 				</div>
 				{
 					modalOpenedList &&
-					<HOCOrganizationLists organizations={organizations} set={setIsOpenedList} setCord={selectPointPosition} />
+					<HOCOrganizationLists organizations={organizations} setPointIndex={setPointIndex} set={setIsOpenedList} setCord={selectPointPosition} />
 				}
 				
 				</>

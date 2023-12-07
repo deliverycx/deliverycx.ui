@@ -11,9 +11,10 @@ type IProps = {
 	organization: IOrganization
 	setCordPoint: any
 	set: any
+	setPointIndex:any
 }
 
-const OrganizationListsItem: FC<IProps> = ({ organization, setCordPoint, set }) => {
+const OrganizationListsItem: FC<IProps> = ({ organization, setCordPoint,setPointIndex, set }) => {
 	const [times, setTimes] = useState<IWorkTimePoint | null>(null)
 	const {selectOrganization} = organizationModel
 
@@ -36,6 +37,7 @@ const OrganizationListsItem: FC<IProps> = ({ organization, setCordPoint, set }) 
 
 	const handlerSelectPoint = () =>{
 		useCaseOrganization.selectOrganization(organization)
+		setPointIndex(organization.guid)
 		set(false)
 	}
 

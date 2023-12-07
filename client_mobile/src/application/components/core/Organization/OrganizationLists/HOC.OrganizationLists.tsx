@@ -8,9 +8,10 @@ type IProps = {
 	set: any,
 	organizations: IOrganization[]
 	setCord:any
+	setPointIndex:any
 }
 
-const HOCOrganizationLists: FC<IProps> = ({ set, organizations,setCord }) => {
+const HOCOrganizationLists: FC<IProps> = ({ set, organizations,setCord,setPointIndex }) => {
 	
 
 	
@@ -21,7 +22,7 @@ const HOCOrganizationLists: FC<IProps> = ({ set, organizations,setCord }) => {
 				<div className="orglist_box">
 					{
 						organizations && organizations.map((org) => {
-							return <OrganizationListsItem organization={org} set={set} setCordPoint={setCord} key={org.id} />
+							return <OrganizationListsItem organization={org} set={set} setPointIndex={setPointIndex} setCordPoint={setCord} key={org.id} />
 						})
 					}
 				</div>
