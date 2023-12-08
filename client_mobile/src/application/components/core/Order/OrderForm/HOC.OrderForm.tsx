@@ -7,15 +7,15 @@ import { FormBuilderTabsOrder } from './view/OrderFormBuilderTabs';
 import { OrderFormPayMetods } from './view/OrderFormPayMetods';
 import { DELIVERY_METODS } from 'application/contstans/const.orgstatus';
 import { organizationStatusModel } from 'modules/OrganizationModule/organization.module';
-import { useState, useEffect, useRef } from 'react';
+import { useState, useEffect, useRef, FC } from 'react';
 import { observer } from 'mobx-react-lite';
 import { ROUTE_APP } from 'application/contstans/route.const';
 import { NavLink } from 'react-router-dom';
 import HOCOrderGeneral from '../OrderGeneral/HOC.OrderGeneral';
 import OrderNotificate from '../view/OrderNotificate';
 
-const HOCOrderForm = () => {
-	const useCase = adapterComponentUseCase(useOrderFromViewModel)
+const HOCOrderForm:FC<{paymentMetod:string[]}> = (paymentMetod) => {
+	const useCase = adapterComponentUseCase(useOrderFromViewModel,paymentMetod)
 	const { builder,formik } = useCase.data
 	const {error} = useCase.status
 
@@ -23,7 +23,7 @@ const HOCOrderForm = () => {
 
 	const formWrapper = new OrderFormBuilder(formik, useCase);
 
-
+	
 
 
 	return (

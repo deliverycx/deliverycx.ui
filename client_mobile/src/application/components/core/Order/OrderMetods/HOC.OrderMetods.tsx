@@ -21,7 +21,7 @@ const HOCOrderMetods = () =>{
 			}
 			
 		}
-		console.log(deliveryTipe);
+		
 	},[selectDeliveryTipe])
 
 	

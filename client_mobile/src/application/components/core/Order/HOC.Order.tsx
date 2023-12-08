@@ -3,7 +3,7 @@ import { ROUTE_APP } from 'application/contstans/route.const';
 import TabBar from 'application/components/common/TabBar/TabBar';
 import HOCOrderMetods from './OrderMetods/HOC.OrderMetods';
 import { useQuery } from 'react-query';
-import { useCaseOrganizationStatus } from 'modules/OrganizationModule/organization.module';
+import { organizationStatusModel, useCaseOrganizationStatus } from 'modules/OrganizationModule/organization.module';
 import { useEffect } from 'react';
 import HOCOrderForm from './OrderForm/HOC.OrderForm';
 import HOCOrderGeneral from './OrderGeneral/HOC.OrderGeneral';
@@ -19,6 +19,7 @@ import OrderAuthNotificate from './view/OrderAuthNotificate';
 const HOCOrder = () => {
 	const navigate = useNavigate()
 	const [statusTSX, switchMetod] = useOrganizationStatus()
+	const {paymentMetod} = organizationStatusModel
 
 	useQuery('pointstatus', () => useCaseOrganizationStatus.statusOrganization(), {
 		refetchOnWindowFocus: true,
@@ -28,6 +29,7 @@ const HOCOrder = () => {
 		basketUseCase.cartCase()
 	}, [])
 
+	
 
 	const CN = cn("order-placement__form", { 'close-soon': statusTSX.NoTimeWork() })
 	return (
@@ -44,8 +46,11 @@ const HOCOrder = () => {
 			<HOCOrderMetods />
 			
 			<div className={CN}>
-
-				<HOCOrderForm />
+				{
+					paymentMetod &&
+					<HOCOrderForm paymentMetod={paymentMetod} />
+				}
+				
 				
 			</div>
 			<TabBar />

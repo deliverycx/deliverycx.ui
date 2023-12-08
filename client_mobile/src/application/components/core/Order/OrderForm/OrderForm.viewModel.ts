@@ -11,14 +11,14 @@ import { useNavigate } from 'react-router-dom';
 import { ROUTE_APP } from './../../../../contstans/route.const';
 import { profileModel } from "modules/Profile/profile.module";
 
-export function useOrderFromViewModel(this:any) {
+export function useOrderFromViewModel(this:any,{paymentMetod}:any) {
 	const navigate = useNavigate()
-	const {selectDeliveryTipe,paymentMetod} = organizationStatusModel
+	const {selectDeliveryTipe} = organizationStatusModel
 	const {selectOrganization} = organizationModel
 	const {orderBody,orderOnspotTable} = orderModel
 	const {profile} = profileModel
 
-
+	
 	const [error,setError] = useState()
 	
 	

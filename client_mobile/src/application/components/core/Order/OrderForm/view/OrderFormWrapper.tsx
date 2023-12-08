@@ -30,7 +30,7 @@ export interface IWrapper {
 export const OrderFormWrapper = (formik: any, usecase: any): IWrapper => {
 	const navigate = useNavigate()
 	const { selectDeliveryTipe,selectOrganization, paymentMetod } = usecase.data
-
+	
 
 	return {
 		paymentPopup() {
@@ -70,10 +70,12 @@ export const OrderFormWrapper = (formik: any, usecase: any): IWrapper => {
 					<h2 className="order-placement__payment-method-title">Способ оплаты</h2>
 					
 					{
-						paymentsMetod &&
+						paymentsMetod && 
 						paymentsMetod.map((value: any) => {
 							const CN = cn('order-placement__payment-method__item',{active:formik.values.payment === value.id})
-							return (
+							const findpay = paymentMetod && paymentMetod.includes(value.id)
+						
+							return findpay && (
 								<div key={value.id} onClick={() => formik.setFieldValue('payment', value.id)} className={CN}>
 									<div className="order-placement__payment-method-box">
 									{parse(value.icon)}
