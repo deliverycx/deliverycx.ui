@@ -16,7 +16,8 @@ export class ShopModel extends ShopRepository{
 			selectProduct:observable,
 			stopList:observable,
 			actionSelectCategory: action,
-			actionSelectProduct:action
+			actionSelectProduct:action,
+			actionStopList:action
 		})
 		makePersistable(this, { name: 'Category', properties: ['selectCategory'],storage: window.localStorage });
 	}
@@ -25,9 +26,10 @@ export class ShopModel extends ShopRepository{
 		this.selectCategory = category
 	}
 
-	actionSelectProduct(pointid:string){
-		
+	actionSelectProduct(pointid:string,product:IProduct[]){		
 		if(pointid){
+			
+			this.selectProduct = product
 			this.reposityStoplist(pointid).subscribe((data: IStopList[]) => {
 				this.stopList = data
 			})
@@ -35,5 +37,15 @@ export class ShopModel extends ShopRepository{
 			this.stopList = null
 		}
 		
+		
+	}
+	actionStopList(pointid:string){
+		if(pointid){
+			this.reposityStoplist(pointid).subscribe((data: IStopList[]) => {
+				this.stopList = data
+			})
+		}else{
+			this.stopList = null
+		}
 	}
 }

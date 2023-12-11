@@ -16,6 +16,7 @@ export class ShopUseCase{
 		
 		if(catid && this.organizationModel.selectOrganization){
 			const resultProduct = this.shopModel.filterProductsBuCategory(products,catid)
+			this.shopModel.actionSelectProduct(this.organizationModel.selectOrganization.guid,resultProduct)
 			return resultProduct
 		}
 	}
@@ -36,7 +37,7 @@ export class ShopUseCase{
 
 	async getStopList(){
 		if(this.organizationModel.selectOrganization){
-			this.shopModel.actionSelectProduct(this.organizationModel.selectOrganization.guid)
+			this.shopModel.actionStopList(this.organizationModel.selectOrganization.guid)
 		}
 		
 	}

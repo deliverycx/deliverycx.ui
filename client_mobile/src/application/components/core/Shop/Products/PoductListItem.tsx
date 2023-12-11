@@ -26,7 +26,9 @@ const PoductListItem: FC<IProps> = ({ product, setModalmodalProduct,stoplist }) 
       })
     }
 
-  },[stoplist])
+  },[stoplist,product])
+
+	
 
 	const CN = cn('products product-card', { ended: disableItem })
 	return (
@@ -79,4 +81,4 @@ const PoductListItem: FC<IProps> = ({ product, setModalmodalProduct,stoplist }) 
 		</div>
 	)
 }
-export default PoductListItem
+export default  PoductListItem

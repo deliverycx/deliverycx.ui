@@ -21,17 +21,17 @@ type IProps = {
 }
 const HOCProducts: FC<IProps> = ({ nomenclatureProducts,selectCat }) => {
 	const useCase = adapterComponentUseCase(useProductsViewModel,{products:nomenclatureProducts,selectCat} )
-	const { selectProduct,stopList } = useCase.data
+	const { selectProduct,stopList,selectCategory } = useCase.data
 
 
 	const [modalProduct, setModalmodalProduct] = useState<IProduct | boolean>(false)
-	
+	//console.log(selectProduct,selectCategory.name);
 	return (
 		<>
 			{
 				selectProduct && selectProduct.length !== 0 ? selectProduct.map((product: IProduct, index: number) => {
 					
-					return <PoductListItem key={index} product={product} stoplist={stopList} setModalmodalProduct={setModalmodalProduct} />
+					return (selectCategory.id === product.category) && <PoductListItem key={index} product={product} stoplist={stopList} setModalmodalProduct={setModalmodalProduct} />
 				})
 					: "Эта категория пуста :("
 			}

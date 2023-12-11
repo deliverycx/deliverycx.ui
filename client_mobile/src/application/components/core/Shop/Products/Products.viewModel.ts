@@ -5,16 +5,18 @@ import { useEffect, useState } from "react"
 
 
 export function useProductsViewModel({products,selectCat}:{products:IProduct[],selectCat:ICategory}) {
-	const [selectProduct,setSelectProduct] = useState<IProduct[] | null>()
-	const {stopList} = shopModel
+	//const [selectProduct,setSelectProduct] = useState<IProduct[] | null>()
+	const {stopList,selectProduct,selectCategory} = shopModel
   
 
   useEffect(() => {
-    if(selectCat && selectCat.id){
-			const product = shopUseCase.caseSelectProduct(products,selectCat.id)
-			product && setSelectProduct(product)
+		
+    if(selectCategory){
+			const product = shopUseCase.caseSelectProduct(products,selectCategory.id)
+			//console.log(product);
+			//product && setSelectProduct(product)
 		}
-  }, [selectCat])
+  }, [selectCategory])
 
 
 	
@@ -22,7 +24,8 @@ export function useProductsViewModel({products,selectCat}:{products:IProduct[],s
 
   this.data({
     selectProduct,
-		stopList
+		stopList,
+		selectCategory
   })
   this.handlers({
 		
