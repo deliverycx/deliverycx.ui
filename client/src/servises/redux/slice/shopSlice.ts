@@ -28,6 +28,21 @@ export const fetStopList = createAsyncThunk(
 	}
 );
 
+export const getHiddenProductsByOrg = createAsyncThunk(
+	"menu/hiddenProducts",
+	async (orgId:any, { dispatch, getState,rejectWithValue }) => {
+		try {
+			const request = await RequestWebhook.stoplist(orgId);
+			if (request.status == 200 && request.data) {
+				dispatch(setStopList(request.data));
+				dispatch(fetchRefreshCart())
+			}
+		} catch (error: any) {
+			return rejectWithValue(error.response.data);
+		}
+	}
+)
+
 const ShopSlice = createSlice({
   name: 'shop',
   initialState:ShopEntities.getEntities as IShopEntities,

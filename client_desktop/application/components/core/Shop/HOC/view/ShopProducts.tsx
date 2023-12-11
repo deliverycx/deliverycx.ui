@@ -15,7 +15,6 @@ const ShopProducts: FC<IProps> = ({ idCategory,nomenclatureProducts }) => {
   const useCasePoints = adapterComponentUseCase(useCaseShop,{category:idCategory,products:nomenclatureProducts})
   const { category,products } = useCasePoints.data
 
-
   return (
     <div className="shop_grid">
       {
