@@ -24,6 +24,8 @@ class RequestShopApi extends ApiSuper {
   stoplist(org:string) {
     return this.request<IStopList[]>(`/stoplist/getStopList/?organizationId=${org}`)
   }
+
+	
 }
 
 class RequestShopAjax extends AjaxApiSuper {
@@ -41,6 +43,10 @@ class RequestShopAdmin extends ApiAdminSuper {
     return this.request(`/display/all?organization=${org}`)
   }
 
+	@methods('post')
+  async getHiddenProducts(organization: {organization: string}) {
+    return this.request<any>(`/organizationProduct/hiddenProducts`)
+  }
 	
 }
 

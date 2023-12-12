@@ -39,7 +39,7 @@ const HOCOrganizations = () => {
 		
 	};
 
-	console.log(pointCords);
+	
 
 	return (
 		<div className="map">

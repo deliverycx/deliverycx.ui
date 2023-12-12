@@ -1,6 +1,6 @@
 import { guardRepository } from "application/guards/repository.guard";
 import { ShopEntiti } from "../domain/shop.entity";
-import { requestShopAjax, requestShopApi } from "./shop.request";
+import { requestShopAdmin, requestShopAjax, requestShopApi } from "./shop.request";
 import { ShopMapper } from "../interfaces/shop.dto";
 import { IRequestNomeclature } from "../interfaces/shop.type";
 import { catchError, map, of } from "rxjs";
@@ -39,6 +39,19 @@ export class ShopRepository extends ShopEntiti {
 	async repositySousProducts(pointid: string) {
 		try {
 			const { data } = await requestShopApi.getSosusProducts(pointid)
+			if(data){
+				return data
+			}
+		} catch (error) {
+			console.log(error);
+		}
+		
+		
+	}
+
+	async reposityHiddenProducts(pointid: string) {
+		try {
+			const { data } = await requestShopAdmin.getHiddenProducts({organization:pointid})
 			if(data){
 				return data
 			}

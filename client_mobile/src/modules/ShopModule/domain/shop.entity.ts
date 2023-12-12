@@ -16,6 +16,13 @@ export class ShopEntiti {
 		})
 	}
 
+	filterHiddenProducts(products:IProduct[],hiddenProduct:string[]){
+		const filteredProducts = products.filter((product: any) => {
+			return !hiddenProduct.includes(product.id);
+		});
+		return filteredProducts
+	}
+
 	filterStopList(products:IProduct[],stopList:IStopList[]){
 		const list = stopList.reduce( (a:any,c,i) => {a.push(c.productId); return a} , []);
 		return products.map((prod) => {

@@ -22,7 +22,7 @@ class RequestAdmin extends ApiAdminSuper {
 
   @methods('post')
   async getHiddenProducts(organization: {organization: string}) {
-    return this.request<any>(`/organization/get`)
+    return this.request<any>(`/organizationProduct/hiddenProducts`)
   }
 }
 export default new RequestAdmin()

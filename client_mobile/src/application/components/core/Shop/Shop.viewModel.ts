@@ -66,7 +66,8 @@ export function useShopViewModel(this: any) {
 			}
 		}else{
 			if (!organization) {
-				navigate(ROUTE_APP.MAIN)
+				
+				//navigate(ROUTE_APP.MAIN)
 			}else{
 				setPointid(organization.guid)
 				useCaseOrganizationStatus.statusOrganization()
@@ -75,7 +76,7 @@ export function useShopViewModel(this: any) {
 			}
 		}
 		
-	},[searchParams])
+	},[searchParams,organization])
 	
 
 

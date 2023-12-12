@@ -8,7 +8,7 @@ const ShopHeader:FC<{organization:IOrganization}> = ({organization}) => {
 	return (
 		<div className="catalogue-header__info">
 			<NavLink to={ROUTE_APP.POINT} className="catalogue-header__info-geo">
-				<img src={require("assets/images/icons/store.png")} alt="Ресторанчик" />
+				<img src={require("assets/images/icons/store.png")} alt={organization.info.address} />
 				{organization.info.city}, {organization.info.address}
 			</NavLink>
 

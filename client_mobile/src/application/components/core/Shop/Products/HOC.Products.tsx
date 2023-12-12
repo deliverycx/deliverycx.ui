@@ -29,7 +29,7 @@ const HOCProducts: FC<IProps> = ({ nomenclatureProducts,selectCat }) => {
 	return (
 		<>
 			{
-				selectProduct && selectProduct.length !== 0 ? selectProduct.map((product: IProduct, index: number) => {
+				selectProduct && selectCategory && selectProduct.length !== 0 ? selectProduct.map((product: IProduct, index: number) => {
 					
 					return (selectCategory.id === product.category) && <PoductListItem key={index} product={product} stoplist={stopList} setModalmodalProduct={setModalmodalProduct} />
 				})

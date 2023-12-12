@@ -12,12 +12,13 @@ export class ShopUseCase{
 		return pointid && await this.shopModel.reposityNomenclature(pointid)
 	}
 
-	caseSelectProduct(products:IProduct[],catid:string){
+	async caseSelectProduct(products:IProduct[],catid:string){
 		
 		if(catid && this.organizationModel.selectOrganization){
 			const resultProduct = this.shopModel.filterProductsBuCategory(products,catid)
-			this.shopModel.actionSelectProduct(this.organizationModel.selectOrganization.guid,resultProduct)
-			return resultProduct
+			const result = await this.hiddenProducts(resultProduct,this.organizationModel.selectOrganization.guid)
+			this.shopModel.actionSelectProduct(this.organizationModel.selectOrganization.guid,result)
+			return result
 		}
 	}
 
@@ -26,6 +27,20 @@ export class ShopUseCase{
 			return await this.shopModel.reposityAdditionProducts(this.organizationModel.selectOrganization.guid)
 		}
 		
+	}
+
+	async hiddenProducts(products:IProduct[],pointid:string){
+		try {
+			const hidden = await this.shopModel.reposityHiddenProducts(pointid)
+			
+			if(hidden && hidden.hiddenProduct.length !== 0){
+				return this.shopModel.filterHiddenProducts(products,hidden.hiddenProduct)
+			}else{
+				return products
+			}
+		} catch (error) {
+			return products
+		}
 	}
 
 	async sousesProducts(){
