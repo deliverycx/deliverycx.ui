@@ -1,3 +1,4 @@
+/* eslint-disable no-async-promise-executor */
 import { orderCreateRepository } from "modules/OrderModule/data/orderCreate.repository";
 import { orderCreateUseCase } from "modules/OrderModule/order.module";
 import { useEffect, useRef, useState } from "react";
@@ -5,6 +6,7 @@ import { useNavigate, useParams } from 'react-router-dom';
 import { ROUTE_APP } from 'application/contstans/route.const';
 import { appUseCase } from "modules/AppModule/app.module";
 import ym from 'react-yandex-metrika';
+import { PAYMENT_METODS } from "application/contstans/const.orgstatus";
 
 export function useOrderCreateViewModel() {
 	const {hash} = useParams()
@@ -13,6 +15,7 @@ export function useOrderCreateViewModel() {
 
 	const [orderNumber,setOrderNumber] = useState<null | number>(null)
 	const [orderLoad, setOrderLoad] = useState(true);
+	const [payError,setPayError] = useState(false)
 
 
 	
@@ -31,6 +34,7 @@ export function useOrderCreateViewModel() {
 
 	useEffect(()=>{
 		if(orderNumber){
+
 			appUseCase.crearOrder()
 			//ym('reachGoal','ordercreate')
 		}
@@ -39,14 +43,27 @@ export function useOrderCreateViewModel() {
 
 	const orderCreate = async (hashorder:string) =>{
 		setOrderLoad(true)
-		const orderNumb = await orderCreateUseCase.orderCreate(hashorder)
+		const order = await orderCreateUseCase.orderCreate(hashorder)
 		
-		if(orderNumb){
-			setOrderNumber(orderNumb)
+		if(order){
+			await createPayPayment(order)
+			setOrderNumber(order.orderNumber)
 			setOrderLoad(false)
 		}else{
 			presentOrder(hashorder)
 		}
+	}
+
+	const createPayPayment = async (result:any) =>{
+		try {
+			if(result && result.orderNumber && result.orderParams.paymentMethod === PAYMENT_METODS.CARD && !result.payment){
+				const pay = await orderCreateUseCase.createPayment(result)
+				!pay && setPayError(true)
+			}
+		} catch (error) {
+			setPayError(true)
+		}
+		
 	}
 
 	const presentOrder = async (hashNumb: string, tik = 0) => {
@@ -54,11 +71,13 @@ export function useOrderCreateViewModel() {
 				let tik = 0;
 					ref.current = setInterval(async () => {
 							const result = await orderCreateRepository.repositoryGetOrder(hashNumb);
-							console.log(result);
+							//console.log(result);
+							await createPayPayment(result)
 							new Promise((res, rej) => {
 
 									if (result && result.orderNumber) {
 											clearInterval(ref.current as any);
+											
 											res(result.orderNumber);
 									} else {
 											++tik;
@@ -89,7 +108,8 @@ export function useOrderCreateViewModel() {
 
 	this.data({
 		orderNumber,
-		orderLoad
+		orderLoad,
+		payError
 	});
 	this.handlers({
 		navigate

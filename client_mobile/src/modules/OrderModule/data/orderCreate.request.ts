@@ -22,6 +22,10 @@ export class OrderCreateRequest extends ApiSuper{
       return this.request<IOrderUrl>(`/order/createPaymentOrder`);
   }
 	@methods("post")
+  CreatePayment(body:any) {
+      return this.request<IOrderUrl>(`/webhook/paymentCreate`);
+  }
+	@methods("post")
 	OrderCheck(body: any) {
 			return this.request<any>("/order/check");
 	}

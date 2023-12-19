@@ -8,8 +8,9 @@ import LoaderProduct from "application/components/common/Loaders/loaderProduct";
 const OrderCreate = () => {
 
 	const useCase = adapterComponentUseCase(useOrderCreateViewModel)
-	const { orderNumber, orderLoad } = useCase.data
+	const { orderNumber, orderLoad,payError } = useCase.data
 	const {navigate} = useCase.handlers
+
 
 	return (
 		<div className="order-accepted">
@@ -55,6 +56,10 @@ const OrderCreate = () => {
 						<div className="order-accepted__content-text">
 							В ближайшее время с вами свяжется наш администратор и уточнит детали
 						</div>
+						{
+							payError &&
+							<div className="order-accepted__content-title"><strong>Внимание!</strong> Ошибка при обработке оплаты</div>
+						}
 					</div>
 					<div className="order-accepted__buttons">
 						<button className="btn btn-md btn-red" onClick={()=> navigate(ROUTE_APP.SHOP.SHOP_MAIN)}>Хорошо</button>
@@ -87,6 +92,8 @@ const OrderCreate = () => {
 
 				</div>
 			}
+
+	
 
 			<TabBar />
 		</div>
