@@ -11,8 +11,14 @@ type IProps = {
 }
 
 const UserSendSMS: FC<IProps> = ({ formik }) => {
-
-
+	return(
+		<div className="auth-content__inputs">
+						<div className="input__item input_icon input_icon_left">
+							<div className="input__container"><h1>Временно недоступно</h1></div>
+							</div>
+							</div>
+	)
+	/*
 	return (
 		<FormikProvider value={formik}>
 			<form onSubmit={formik.handleSubmit}>
@@ -75,6 +81,7 @@ const UserSendSMS: FC<IProps> = ({ formik }) => {
 			</form>
 		</FormikProvider>
 	)
+	*/
 }
 export default UserSendSMS
 
