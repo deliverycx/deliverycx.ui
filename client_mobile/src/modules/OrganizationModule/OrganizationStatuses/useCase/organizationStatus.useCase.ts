@@ -66,6 +66,6 @@ export class UseCaseOrganizationStatus {
 	}
 
 	pointTimeWork(point:IOrganization){
-		return this.organizationStatusModel.timeWorkOrganizationEntiti(point.workTime)
+		return this.organizationStatusModel.timeWorkOrganizationEntiti(point.workTime,point.guid)
 	}
 }
