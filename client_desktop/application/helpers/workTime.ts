@@ -1187,7 +1187,7 @@ const ng = [
 		data:[
 			{
 				d:new Date(2023,11,29),
-				time:"10:00-00:00"
+				time:"00:00-00:00"
 			},
 			{
 				d:new Date(2024,1,1),
@@ -1406,12 +1406,14 @@ export const ngFN = (org:any) =>{
 
 	
 	ng.forEach((val:any) =>{
-		//console.log(val.id,org);
+		
 		if(val.id == org){
-			
+			//console.log(val.id,org);
 			val.data.forEach((value:any) =>{
 				//console.log(formatDate(trueDate),formatDate(value.d));
-				//console.log(trueDate,value.d);
+				if(value.time === '00:00-00:00'){
+					time = '00:00-00:00'
+				}
 				if(formatDate(trueDate) === formatDate(value.d)){
 					//console.log(value.time);
 					time = value.time
@@ -1429,9 +1431,13 @@ export const workTimeHelp = (org?:any) =>{
 	const  {workTime,guid} = storage.location.point
 
 	const NGtime = org ? ngFN(org) : ngFN(guid)
+
+
+	console.log('NGtime',NGtime);
 	if(workTime){
 		const mok = "10:00-12:00"
-		const [min,max] = NGtime ? NGtime.split('-') : workTimeCheck(workTime).split('-') //workTimeCheck(workTime) ? workTimeCheck(workTime).split('-') : mok //NGtime ? NGtime.split('-') : workTimeCheck(workTime).split('-')
+		
+		const [min,max] = !ngFN(guid) ? workTimeCheck(workTime).split('-')  :ngFN(guid).split('-') //workTimeCheck(workTime) ? workTimeCheck(workTime).split('-') : mok //NGtime ? NGtime.split('-') : workTimeCheck(workTime).split('-')
 		const time = format(new Date(), "HH:mm")
 
 		if(min >= time){
@@ -1470,9 +1476,10 @@ export const checkWorkIsArray = (work:any) =>{
 
 export const workTimeCheck = (work:any,org?:any):any => {
 	const date = new Date().getDay()
+	const storage = store.getState();
 
-
-	const NGtime = org && ngFN(org)
+	const NGtime = org && ngFN(storage.location.point.guid)
+	console.log('qqq',NGtime);
 
 	if(NGtime){
 		return NGtime
@@ -1514,7 +1521,7 @@ export const delivertyTime = () =>{
 			const timepickup = format(onliPickUPTime.setMinutes(onliPickUPTime.getMinutes() + deliveryTime), "HH:mm")
 			const nodelivery = format(noDeliveryTime.setMinutes(noDeliveryTime.getMinutes() + 30), "HH:mm")
 
-			console.log(timepickup,nodelivery,max);
+			//console.log(timepickup,nodelivery,max);
 
 			if(nodelivery > max){
 				return {
