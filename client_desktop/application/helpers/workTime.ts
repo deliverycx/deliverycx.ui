@@ -1421,7 +1421,7 @@ export const ngFN = (org:any) =>{
 			})
 		}
 	})
-	//console.log('time',time );
+	console.log('time',time );
 	return time
 }
 
