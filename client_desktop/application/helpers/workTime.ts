@@ -195,31 +195,31 @@ const ng = [
 				time:"00:00-00:00"
 			},
 			{
-				d:new Date(2024,1,2),
+				d:new Date(2024,0,2),
 				time:"10:00-23:00"
 			},
 			{
-				d:new Date(2024,1,3),
+				d:new Date(2024,0,3),
 				time:"10:00-23:00"
 			},
 			{
-				d:new Date(2024,1,4),
+				d:new Date(2024,0,4),
 				time:"10:00-23:00"
 			},
 			{
-				d:new Date(2024,1,5),
+				d:new Date(2024,0,5),
 				time:"10:00-23:00"
 			},
 			{
-				d:new Date(2024,1,6),
+				d:new Date(2024,0,6),
 				time:"10:00-23:00"
 			},
 			{
-				d:new Date(2024,1,7),
+				d:new Date(2024,0,7),
 				time:"10:00-23:00"
 			},
 			{
-				d:new Date(2024,1,8),
+				d:new Date(2024,0,8),
 				time:"10:00-23:00"
 			},
 		]
@@ -252,31 +252,31 @@ const ng = [
 				time:"15:00-23:00"
 			},
 			{
-				d:new Date(2024,1,2),
+				d:new Date(2024,0,2),
 				time:"10:00-23:00"
 			},
 			{
-				d:new Date(2024,1,3),
+				d:new Date(2024,0,3),
 				time:"10:00-23:00"
 			},
 			{
-				d:new Date(2024,1,4),
+				d:new Date(2024,0,4),
 				time:"10:00-23:00"
 			},
 			{
-				d:new Date(2024,1,5),
+				d:new Date(2024,0,5),
 				time:"10:00-23:00"
 			},
 			{
-				d:new Date(2024,1,6),
+				d:new Date(2024,0,6),
 				time:"10:00-23:00"
 			},
 			{
-				d:new Date(2024,1,7),
+				d:new Date(2024,0,7),
 				time:"10:00-23:00"
 			},
 			{
-				d:new Date(2024,1,8),
+				d:new Date(2024,0,8),
 				time:"10:00-23:00"
 			},
 		]
@@ -941,15 +941,15 @@ const ng = [
 				time:"10:00-23:00"
 			},
 			{
-				d:new Date(2024,1,2),
+				d:new Date(2024,0,2),
 				time:"10:00-23:00"
 			},
 			{
-				d:new Date(2024,1,3),
+				d:new Date(2024,0,3),
 				time:"10:00-23:00"
 			},
 			{
-				d:new Date(2024,1,4),
+				d:new Date(2024,0,4),
 				time:"10:00-23:00"
 			},
 		]
@@ -981,15 +981,15 @@ const ng = [
 				time:"10:00-23:00"
 			},
 			{
-				d:new Date(2024,1,2),
+				d:new Date(2024,0,2),
 				time:"10:00-23:00"
 			},
 			{
-				d:new Date(2024,1,3),
+				d:new Date(2024,0,3),
 				time:"10:00-23:00"
 			},
 			{
-				d:new Date(2024,1,4),
+				d:new Date(2024,0,4),
 				time:"10:00-23:00"
 			},
 		]
@@ -1008,7 +1008,7 @@ const ng = [
 				time:"00:00-00:00"
 			},
 			{
-				d:new Date(2024,1,1),
+				d:new Date(2024,0,2),
 				time:"14:00-23:00"
 			},
 		]
@@ -1025,7 +1025,7 @@ const ng = [
 				time:"00:00-00:00"
 			},
 			{
-				d:new Date(2024,1,1),
+				d:new Date(2024,0,2),
 				time:"14:00-23:00"
 			},
 		]
@@ -1042,7 +1042,7 @@ const ng = [
 				time:"00:00-00:00"
 			},
 			{
-				d:new Date(2024,1,1),
+				d:new Date(2024,0,2),
 				time:"14:00-23:00"
 			},
 		]
@@ -1059,7 +1059,7 @@ const ng = [
 				time:"00:00-00:00"
 			},
 			{
-				d:new Date(2024,1,1),
+				d:new Date(2024,0,2),
 				time:"14:00-23:00"
 			},
 		]
@@ -1074,7 +1074,7 @@ const ng = [
 				time:"00:00-00:00"
 			},
 			{
-				d:new Date(2024,1,1),
+				d:new Date(2024,0,1),
 				time:"00:00-00:00"
 			},
 			
@@ -1240,11 +1240,11 @@ const ng = [
 				time:"14:00-20:00"
 			},
 			{
-				d:new Date(2024,6,1),
+				d:new Date(2024,0,2),
 				time:"10:00-20:00"
 			},
 			{
-				d:new Date(2024,7,1),
+				d:new Date(2024,0,3),
 				time:"14:00-20:00"
 			},
 			
@@ -1402,6 +1402,7 @@ const ng = [
 	},
 	
 ]
+
 
 
 export const ngFN = (org:any) =>{
