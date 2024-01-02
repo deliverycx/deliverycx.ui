@@ -1418,9 +1418,7 @@ export const ngFN = (org:any) =>{
 			val.data.forEach((value:any) =>{
 				//console.log(formatDate(trueDate),formatDate(value.d));
 				console.log(org,value.d);
-				if(value.time === '00:00-00:00'){
-					time = '00:00-00:00'
-				}
+			
 				
 
 				if(formatDate(trueDate) === formatDate(value.d)){
