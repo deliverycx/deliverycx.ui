@@ -20,7 +20,7 @@ function formatDate(date:any) {
   return dd + '.' + mm + '.' + yy;
 }
 
-
+/*
 const ng = [
 	{
 		id:"8e118b94-5883-489f-b3da-aafd5781fdd4",
@@ -1431,7 +1431,7 @@ export const ngFN = (org:any) =>{
 	console.log(time);
 	return time
 }
-
+*/
 
 
 export const workTimeHelp = (work:any,guid?:string) =>{
@@ -1440,14 +1440,14 @@ export const workTimeHelp = (work:any,guid?:string) =>{
 
 	if(work){
 		const mok2 = "10:00-21:00"
-		const NGtime = ngFN(guid)
+		//const NGtime = ngFN(guid)
 		//console.log('w',workTimeCheck(work));
 		//console.log('q',NGtime);
 		/*
 		const mok = workTime || work
 		const [min,max] = mok ? mok2.split('-') : mok2.split('-')
 		*/
-		const [min,max] = !ngFN(guid) ? workTimeCheck(work).split('-')  :ngFN(guid).split('-') //workTimeCheck(work) ? workTimeCheck(work).split('-') : mok2
+		const [min,max] = workTimeCheck(work) ? workTimeCheck(work).split('-') : mok2   //!ngFN(guid) ? workTimeCheck(work).split('-')  :ngFN(guid).split('-')
 		const time = format(new Date(), "HH:mm")
 
 		if(min >= time){
@@ -1487,11 +1487,14 @@ export const workTimeCheck = (work:any,org?:string):any => {
 	const date = new Date().getDay()
 
 	//console.log('wokcheck',work);
+
+	/*
 	const NGtime = org && ngFN(org)
 
 	if(NGtime){
 		return NGtime
 	}
+	*/
 
 	if(!work || work.length === 0){
 		console.log('время сломано');
@@ -1515,7 +1518,7 @@ export const delivertyTime = (workTime:any,deliveryTime:any,guid?:string) =>{
 	
 	if(workTime && deliveryTime){
 		
-		const NGtime = ngFN(guid)
+		//const NGtime = ngFN(guid)
 		
 
 		const onliPickUPTime = new Date();

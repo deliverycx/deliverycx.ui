@@ -73,7 +73,7 @@ const OranizationWorkTime:FC<{organization:IOrganization}> = ({organization}) =>
 					<a href={`tel:${organization.info.phone}`} style={{textDecoration: 0, color: '#8D191D'}}>{organization.info.phone}</a>
 				</button>
 			</div>
-			{false && //modalWork && !checktype &&
+			{modalWork && !checktype &&
 				<ModalCard setIsOpened={setModalWork} theme="children">
 
 					<div className="modal__wrapper">

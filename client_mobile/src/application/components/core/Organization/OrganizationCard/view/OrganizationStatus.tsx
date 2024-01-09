@@ -108,10 +108,7 @@ const OrganizationStatus:FC<{organization:IOrganization}> = ({organization}) => 
 		<div className="order-placement__form">
 			<div className="order-placement__tabs__notification">
 				<h3>Хинкальная закрылась</h3>
-				{
-					timeworkOrganization?.todaytime[0] !== '00:00' &&
-					<h5>Оформить доставку можно с {timeworkOrganization?.todaytime[0]} - {timeworkOrganization?.todaytime[1]}</h5>
-				}
+				<h5>Оформить доставку можно с {timeworkOrganization?.todaytime[0]} - {timeworkOrganization?.todaytime[1]}</h5>
 				
 				<small>А пока вы можете ознакомиться с нашим меню и почитать новости на главной странице</small>
 			</div>
