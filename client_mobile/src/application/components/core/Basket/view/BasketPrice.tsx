@@ -13,7 +13,7 @@ const BasketPrice:FC<{basketPrice:IBasketPrice}> = ({basketPrice}) => {
 			</div>
 			<span className="validate validate-additional">
 				<img src={require("assets/images/icons/info_black.png")} alt="" />
-				Стоимость доставки определяется в процессе оформления
+				Стоимость доставки определяется в процессе оформления. <br />
 				Условия доставки в отдалённые районы могут отличаться
 			</span>
 		</div>
