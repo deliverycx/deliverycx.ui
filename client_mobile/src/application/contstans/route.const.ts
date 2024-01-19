@@ -2,7 +2,12 @@ export const ROUTE_APP = {
 	MAIN: "/",
 	PRAVORAZDEL: "/pravorazdel",
 	CITILIST: "/cities",
-	POINT: "/point",
+	POINT:"/point",
+	CITY:"/city",
+	POINT_DESC:{
+		POINT_CITY:"/point/city"
+	},
+	
 	SHOP: {
 		SHOP_MAIN: "/shop",
 		SHOP_SERCH: "/shop/serch",

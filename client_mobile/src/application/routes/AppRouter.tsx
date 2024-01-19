@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import {Navigate, Route, Routes} from "react-router-dom";
+import { Navigate, Route, Routes } from "react-router-dom";
 
 import { ROUTE_APP } from 'application/contstans/route.const';
 import HOCCity from 'application/components/core/City/HOC.City';
@@ -22,17 +22,23 @@ import OfferAuth from 'application/components/common/Auth/view/OfferAuth';
 import HOCUserOrders from 'application/components/core/Profile/UserOrders/HOC.UserOrders';
 import ErrorPage from "../components/common/Errors/ErrorPage";
 import Pravorazdel from "../components/core/Pravorazdel/Pravorazdel";
+import { Desktop, Mobile } from 'application/ResponseMedia';
+import HOCdeskMain from 'application/components/core/Main/HOC.desk.Main';
+import HOCCITYDesc from 'application/components/core/City/HOC.City.desc';
+import HOCOrganizationsDesc from 'application/components/core/Organization/HOC.Organizations.desc';
+import HOCBasketDesc from 'application/components/core/Basket/HOC.Basket.desc';
+import HOCOrderDesc from 'application/components/core/Order/HOC.Order.desc';
 
 
 
-export const publicRoutes = [
+export const publicRoutesMobile = [
 	{
-			path: ROUTE_APP.MAIN,
-			Component: HOCCity
+		path: ROUTE_APP.MAIN,
+		Component: HOCCity
 	},
 	{
-			path: ROUTE_APP.PRAVORAZDEL,
-			Component: Pravorazdel
+		path: ROUTE_APP.PRAVORAZDEL,
+		Component: Pravorazdel
 	},
 	{
 		path: ROUTE_APP.POINT,
@@ -73,7 +79,7 @@ export const publicRoutes = [
 	{
 		path: ROUTE_APP.PROFILE.PROFILE_MAIN,
 		Component: HOCProfile,
-		
+
 	},
 	{
 		path: ROUTE_APP.PROFILE.PROFILE_PERSONAL,
@@ -100,21 +106,64 @@ export const publicRoutes = [
 		Component: ErrorPage,
 	}
 ]
+
+const publicRoutesDeskop = [
+	{
+		path: ROUTE_APP.MAIN,
+		Component: HOCdeskMain,
+	},
+	{
+		path:ROUTE_APP.CITY,
+		Component: HOCCITYDesc,
+	},
+	{
+		path:ROUTE_APP.POINT,
+		Component: HOCOrganizationsDesc,
+	},
+	{
+		path: ROUTE_APP.SHOP.SHOP_MAIN,
+		Component: HOCdeskMain,
+	},
+	{
+		path: ROUTE_APP.CART.BASKET_MAIN,
+		Component: HOCBasketDesc,
+	},
+	{
+		path: ROUTE_APP.ORDER.ORDER_MAIN,
+		Component: HOCOrderDesc,
+	}
+]
+
+
 //<Route path="*" element={<Navigate to="" />} />
 const AppRouter = () => {
 
-    return (
-        <Routes>
-            {publicRoutes.map(({path, Component}) =>
-                {
+	return (
+		<>
+			<Desktop>
+				<Routes>
+					{publicRoutesDeskop.map(({ path, Component }) => {
 
-									return <Route key={path} path={path} element={<Component/>}></Route>
-								}
-								
-            )}
-            
-        </Routes>
-    );
+						return <Route key={path} path={path} element={<Component />}></Route>
+					}
+
+					)}
+					
+				</Routes>
+			</Desktop>
+			<Mobile>
+				<Routes>
+					{publicRoutesMobile.map(({ path, Component }) => {
+
+						return <Route key={path} path={path} element={<Component />}></Route>
+					}
+
+					)}
+					
+				</Routes>
+			</Mobile>
+		</>
+	);
 };
 
-export default observer(AppRouter) ;
+export default observer(AppRouter);

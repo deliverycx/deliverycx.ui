@@ -212,7 +212,7 @@
 
     &-buttons {
       z-index: 2;
-      position: fixed;
+      position: relative;
       display: flex;
       bottom: 0;
       left: 0;
@@ -236,7 +236,7 @@
     &-content {
       display: flex;
       flex-direction: column;
-      padding-bottom: 64px;
+      padding-bottom: 0;
       svg {
         z-index: 1;
       }
@@ -494,4 +494,14 @@
   to {
     background-position: 185px 0, center 10px, center 125px, center 155px;
   }
+}
+
+
+@media only screen and (max-width: 780px){
+	.product__modal-buttons{
+		position: fixed;
+	}
+	.product__modal-content{
+		padding-bottom: 64px;
+	}
 }

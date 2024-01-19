@@ -57,7 +57,7 @@ const OrganizationCardItem: FC<IProps> = ({ organization, active, viseble }) => 
 		
 		<div className="modal__wrapper map__institute-info">
 			
-			<div onClick={handlerCloseCardModal} className="map__institute-close no-drag">
+			<div onClick={() => handlerCloseCardModal()} className="map__institute-close no-drag">
 				<img src={require('assets/images/icons/close_gray.png')} alt="" />
 			</div>
 

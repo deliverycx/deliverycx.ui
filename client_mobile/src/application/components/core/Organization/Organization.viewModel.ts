@@ -28,7 +28,10 @@ export function useOrganizationsViewModel(this:any) {
 		setPointIndex(index)
 	}
 
-
+	const closeModalDesc = () =>{
+		navigate(ROUTE_APP.MAIN)
+	}
+	
 
 
 
@@ -42,7 +45,8 @@ export function useOrganizationsViewModel(this:any) {
 		handleBackCity,
 		selectPointPosition,
 		setPointIndex,
-		setPointCords
+		setPointCords,
+		closeModalDesc
 	});
 	this.status({
 		

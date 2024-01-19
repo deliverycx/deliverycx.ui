@@ -4,16 +4,19 @@ import { animated, useSpring, useTransition } from "react-spring";
 import { createPortal } from 'react-dom';
 import cn from 'classnames';
 import Draggable from 'react-draggable';
+import { Desktop, Mobile, isDesctomMediaQuery } from 'application/ResponseMedia';
 
 type IProps = {
 	setIsOpened: any;
 	children: any;
-	theme?: "children";
+	theme?: "children" | null;
+	styles?:string
 };
 
-const ModalCard: FC<IProps> = ({ setIsOpened, children, theme }) => {
+const ModalCard: FC<IProps> = ({ setIsOpened, children, theme,styles }) => {
 
 	const [isClosing, setIsClosing] = useState(false);
+	const descQuery = isDesctomMediaQuery()
 
 	const [openProps, openApi] = useSpring(
 		() => ({
@@ -59,7 +62,7 @@ const ModalCard: FC<IProps> = ({ setIsOpened, children, theme }) => {
 	};
 
 	const CN = cn('modalbox', { modal__bg_childen: theme });
-
+	
 
 	const wrapperRef = useRef()
 	const tikRef = useRef<any>()
@@ -70,7 +73,7 @@ const ModalCard: FC<IProps> = ({ setIsOpened, children, theme }) => {
 	const handleDrag = (e: any, data: any) => {
 		if (data.y >= (data.node.clientHeight / 3.5)) {
 			setPositionY(data.node.clientHeight)
-			tikRef.current =  setTimeout(() => {
+			tikRef.current = setTimeout(() => {
 				setIsOpened(false)
 				setIsClosing(true);
 			}, 300)
@@ -87,36 +90,47 @@ const ModalCard: FC<IProps> = ({ setIsOpened, children, theme }) => {
 		return () => clearTimeout(tikRef.current)
 	}, [])
 
+	return createPortal(
+		<>
+			<Desktop>
+				<div className={CN}>
+					<div className="modal__bg" onClick={handleClose}></div>
+					<div className={`modal modal_desc ${styles || ''}`}>
+						{children}
+					</div>
+				</div>
+			</Desktop>
+			<Mobile>
+				<div className={CN}>
+					<div className="modal__bg" onClick={handleClose}></div>
+					<Draggable
+						axis="y"
+						onStop={handleDrag}
+						position={{ x: 0, y: positionY }}
+						bounds={{ top: 0 }}
+						cancel=".no-drag"
+						handle=".modal-draggles"
 
-return createPortal(
+					>
+						{
+							<animated.div
+								style={isClosing ? closeProps : openProps}
+								className="modal"
 
-	<div className={CN}>
-		<div className="modal__bg" onClick={handleClose}></div>
-		<Draggable
-			axis="y"
-			onStop={handleDrag}
-			position={{ x: 0, y: positionY }}
-			bounds={{ top: 0 }}
-			cancel=".no-drag"
-			handle=".modal-draggles"
+							>
+								<strong className="modal-draggles"></strong>
+								{children}
+							</animated.div>
 
-		>
-			{
-				<animated.div
-					style={isClosing ? closeProps : openProps}
-					className="modal"
+						}
 
-				>
-					<strong className="modal-draggles"></strong>
-					{children}
-				</animated.div>
+					</Draggable>
+				</div>
+			</Mobile>
+		</>,
+		document.body
+	);
 
-			}
-
-		</Draggable>
-	</div>,
-	document.body
-);
 
 };
 

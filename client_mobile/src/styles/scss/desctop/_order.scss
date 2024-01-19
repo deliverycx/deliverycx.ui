@@ -1,0 +1,19 @@
+.order-desc{
+	h1{
+		margin: 20px 0;
+		font-size: 48px;
+		font-style: normal;
+		font-weight: 700; 
+	}
+
+	.order-form{
+		display: flex;
+		.order-placement__form{
+			width: 50%;
+		}
+		.order-placement_general{
+			width: 50%;
+			margin-left: 20px;
+		}
+	}
+}

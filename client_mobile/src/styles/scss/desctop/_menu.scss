@@ -1,0 +1,24 @@
+.menu-desc{
+	padding: 15px;
+	display: flex;
+	align-items: center;
+	a{
+		margin-right: 30px;
+		font-size: 16px;
+		font-style: normal;
+		font-weight: 500;
+		line-height: 20px;
+		text-decoration: none;
+		color: var(--Red-Red, #8D191D); 
+		&:hover{
+			text-decoration: underline;
+		}
+	}
+
+	a.active{
+		padding:6px 15px;
+		border-radius: 12px;
+		background: var(--Red-Red, #8D191D); 
+		color: #fff;
+	}
+}

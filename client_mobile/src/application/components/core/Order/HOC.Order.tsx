@@ -43,7 +43,7 @@ const HOCOrder = () => {
 					<h3>Оформление заказа</h3>
 				</div>
 			</div>
-			<HOCOrderMetods />
+			
 			
 			<div className={CN}>
 				{

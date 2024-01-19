@@ -10,6 +10,8 @@ import { ICategory } from "modules/ShopModule/interfaces/shop.type";
 import { appUseCase } from "modules/AppModule/app.module";
 import { orderModel, orderUseCase } from "modules/OrderModule/order.module";
 import { Redirects } from "application/helpers/redirectsOld";
+import { useMediaQuery } from "react-responsive";
+import { isDesctomMediaQuery } from "application/ResponseMedia";
 
 export function useShopViewModel(this: any) {
 	const [searchParams, setSearchParams] = useSearchParams();
@@ -17,6 +19,8 @@ export function useShopViewModel(this: any) {
 	const organization = organizationModel.selectOrganization
 	const [pointid,setPointid] = useState<string | undefined>()
 	const navigate = useNavigate()
+	//const isDesctomMediaQuery = useMediaQuery({ minWidth: process.env.REACT_APP_MEDIAQUERY_DESC })
+	const descQuery = isDesctomMediaQuery()
 
 	const { data:nomenclatures, isLoading } = useQuery('shop', async () => await shopUseCase.getNomenclature(pointid), {
 		refetchOnWindowFocus: false,
@@ -66,8 +70,15 @@ export function useShopViewModel(this: any) {
 			}
 		}else{
 			if (!organization) {
+				if(descQuery){
+					
+					setPointid(String(process.env.REACT_APP_DEFAULT_ORG))
+				}else{
+					navigate(ROUTE_APP.MAIN)
+				}
 				
-				//navigate(ROUTE_APP.MAIN)
+				
+				
 			}else{
 				setPointid(organization.guid)
 				useCaseOrganizationStatus.statusOrganization()

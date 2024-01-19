@@ -1,0 +1,25 @@
+.categories-desc{
+	box-shadow: 0 20px 24px 0 rgba(0, 0, 0, 0.1);
+}
+
+@media only screen and (min-width: 780px) {
+	.categories{
+		box-shadow: none;
+	}
+	.catalogue-content__cards{
+
+		display: flex;
+		flex-wrap: wrap;
+		
+		//grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+	
+		//gap: 10px;
+	}
+	.product-card{
+		min-width: 15%;
+		margin-right: .5%;
+		margin-left: .6%;
+		margin-bottom: 10px;
+		margin-top: 5px;
+	}
+}

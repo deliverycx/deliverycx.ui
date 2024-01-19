@@ -1,6 +1,7 @@
 import { OrganizationModel } from "modules/OrganizationModule/Organization/domain/organization.model";
 import { ShopModel } from "../domain/shop.model";
 import { IProduct } from 'modules/ShopModule/interfaces/shop.type';
+import { isDesctomMediaQuery } from "application/ResponseMedia";
 
 export class ShopUseCase{
 	constructor(
@@ -12,13 +13,20 @@ export class ShopUseCase{
 		return pointid && await this.shopModel.reposityNomenclature(pointid)
 	}
 
-	async caseSelectProduct(products:IProduct[],catid:string){
+	async caseSelectProduct(products:IProduct[],catid:string,defPoint?:string | null){
 		
 		if(catid && this.organizationModel.selectOrganization){
 			const resultProduct = this.shopModel.filterProductsBuCategory(products,catid)
 			const result = await this.hiddenProducts(resultProduct,this.organizationModel.selectOrganization.guid)
 			this.shopModel.actionSelectProduct(this.organizationModel.selectOrganization.guid,result)
 			return result
+		}else{
+			if(catid && typeof defPoint === 'string'){
+				const resultProduct = this.shopModel.filterProductsBuCategory(products,catid)
+				const result = await this.hiddenProducts(resultProduct,defPoint)
+				this.shopModel.actionSelectProduct(defPoint,result)
+				return result
+			}
 		}
 	}
 

@@ -12,7 +12,7 @@ body {
 
 body {
 	min-width: 360px;
-	max-width: 760px;
+	
 	margin: 0 auto;
 }
 
@@ -69,8 +69,9 @@ body {
 
 	position: fixed;
 	width: 100%;
+
 	bottom: 0;
-	max-width: 760px;
+	max-width: 380px;
 	left: 0;
 	right: 0;
 	margin: 0 auto;
@@ -196,6 +197,10 @@ body {
 	.no-drag {
 		//cursor: pointer;
 	}
+}
+
+.modal_def{
+	max-width: 760px;
 }
 
 .modal_full_bg {
@@ -503,6 +508,13 @@ body {
 		width: 97px;
 		height: 97px;
 		border-width: 0;
+	}
+}
+
+
+@media only screen and (max-width: 780px){
+	.modal{
+		max-width: 780px;
 	}
 }
 

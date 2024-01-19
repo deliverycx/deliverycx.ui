@@ -13,7 +13,7 @@ type IProps = {
 }
 const ProductCard: FC<IProps> = ({ product, setIsModalOpened,stoplist }) => {
 	const [disableItem,setDisableItem] = useState(false)
-	const CN = cn('modal', { ended: disableItem })
+	const CN = cn('productbox', { ended: disableItem })
 
 
 	useEffect(() => {

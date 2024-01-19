@@ -13,6 +13,7 @@ import { ROUTE_APP } from 'application/contstans/route.const';
 import { NavLink } from 'react-router-dom';
 import HOCOrderGeneral from '../OrderGeneral/HOC.OrderGeneral';
 import OrderNotificate from '../view/OrderNotificate';
+import HOCOrderMetods from '../OrderMetods/HOC.OrderMetods';
 
 const HOCOrderForm:FC<{paymentMetod:string[]}> = (paymentMetod) => {
 	const useCase = adapterComponentUseCase(useOrderFromViewModel,paymentMetod)
@@ -28,13 +29,15 @@ const HOCOrderForm:FC<{paymentMetod:string[]}> = (paymentMetod) => {
 
 	return (
 		<FormikProvider value={formik}>
-			<form onSubmit={formik.handleSubmit}>
+			<form onSubmit={formik.handleSubmit} className="order-form">
 				<div className="order-placement__form">
+				<HOCOrderMetods />
 					{
 						builder && builder.current &&
 						formWrapper.getInitinal(builder.current)
 					}
 				</div>
+				<div className="order-placement_general">
 				<HOCOrderGeneral errors={error} />
 				{
 					!disable &&
@@ -49,7 +52,7 @@ const HOCOrderForm:FC<{paymentMetod:string[]}> = (paymentMetod) => {
 					</NavLink>
 				</div>
 				}	
-				
+				</div>
 			</form>
 			<OrderNotificate disable={setDisable} />
 		</FormikProvider>

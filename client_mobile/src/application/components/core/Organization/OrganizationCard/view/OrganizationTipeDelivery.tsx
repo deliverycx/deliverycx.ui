@@ -15,6 +15,7 @@ import _  from "lodash";
 import { IOrganization } from "modules/OrganizationModule/Organization/interfaces/organization.type";
 import { appUseCase } from "modules/AppModule/app.module";
 import { Redirects } from "application/helpers/redirectsOld";
+import { isDesctomMediaQuery } from "application/ResponseMedia";
 
 
 
@@ -23,6 +24,9 @@ const OrganizationTipeDelivery:FC<{organization:IOrganization}> = ({organization
 	const { organizationStatus, deliveryTipe, timeworkOrganization,selectOrganization } = useCasePoints.data
 	const { handlerSelectDeliveryTipe, handlerCloseCardModal } = useCasePoints.handlers
 	const navigate = useNavigate()
+
+	const mediaDesc = isDesctomMediaQuery()
+
 	/*
 	const [statusTSX, switchMetod] = useOrganizationStatus()
 
@@ -64,7 +68,7 @@ const OrganizationTipeDelivery:FC<{organization:IOrganization}> = ({organization
 	*/
 	
 	const handlerMenu = () =>{
-		if(selectOrganization.guid !== organization.guid){
+		if(!mediaDesc && selectOrganization.guid !== organization.guid){
 			appUseCase.clearApp()
 		}
 		

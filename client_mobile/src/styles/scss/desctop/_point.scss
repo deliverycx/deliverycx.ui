@@ -1,0 +1,103 @@
+.point_modal-desc{
+	max-width: 980px;
+}
+
+.organization_modal{
+	top: 5% !important;
+	max-width: 580px;
+	max-height: 80vh;
+	.map__institute-content{
+		height: 100%;
+	}
+	.institute-header{
+		justify-content: space-between;
+		height: 100%;
+	}
+}
+
+.modal__header-pointdesc{
+	display: flex;
+	justify-content: space-between;
+	.backcity{
+		margin-top: 15px;
+		margin-right: 10px;
+		width: 200px !important;
+		height: 34px;
+		padding: 4px 16px;
+		text-align: center;
+		border-radius: 12px;
+		background: var(--Red-Red, #8D191D); 
+		color:#fff;
+		font-family: Tilda Sans VF;
+		font-size: 16px;
+		font-weight: 800;
+		line-height: 24px;
+		text-decoration: none;
+		transform: all;
+		&:hover{
+			background: var(--black-to-white-white-90-white-50-disabled, #E6E6E6); 
+			color: var(--Red-Red, #8D191D); 
+		}
+	}
+}
+.points-desc{
+	display: flex;
+	.points-desc_list{
+		width: 30%;
+		.orglistmodal{
+			display: block;
+			position: relative;
+			.orglist_box{
+				padding:0 10px;
+			}
+		}
+	}
+	.points-desc_map{
+		width: 70%;
+		height: 550px;
+		overflow: hidden;
+		padding-right: 5px;
+		position: relative;
+		.points-desc_map-serch{
+			position: relative;
+			display: flex;
+			margin-bottom: 10px;
+			margin-top: 10px;
+			button{
+				margin-left: 10px;
+			}
+			
+		}
+		.points-desc_map-box{
+			border: 1px solid rgba(17, 17, 17, 0.10);
+		}
+		.points-desc_map-hr{
+			display: block;
+			position: absolute;
+			bottom: 0;
+			left: 0;
+			width: 100%;
+			height: 35px;
+			background-color: #fff;
+			border-top: 1px solid rgba(17, 17, 17, 0.10);;
+			z-index: 999;
+		}
+	}
+
+	.filter_modal-desc{
+		position: absolute;
+		width: 368px;
+		border-radius: 17px;
+		right: 5px;
+		top: 50px;
+		background: #FFF;
+		box-shadow: 0px 18px 30px 0px rgba(51, 51, 51, 0.50);
+		z-index: 999;
+		.filers-button{
+			flex-direction: row;
+			button{
+				width: 100%;
+			}
+		}
+	}
+}

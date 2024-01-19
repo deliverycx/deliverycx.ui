@@ -7,6 +7,7 @@ import { useOrganizationStatus } from "application/hooks/useOrganizationStatus";
 import { observer } from "mobx-react-lite";
 import { organizationModel, organizationStatusModel } from "modules/OrganizationModule/organization.module";
 import OrderNotificate from "../../Order/view/OrderNotificate";
+import { Mobile, Desktop } from "application/ResponseMedia";
 
 const BasketOrder:FC<{basketPrice:IBasketPrice}> = ({basketPrice}) => {
 	const navigate = useNavigate()
@@ -34,21 +35,26 @@ const BasketOrder:FC<{basketPrice:IBasketPrice}> = ({basketPrice}) => {
 
 	return (
 		<>
-		<div className="basket__buttons">
-			<div className="basket__buttons__total">
-				<h3 className="basket__buttons__total-title">
-					Стоимость заказа
-				</h3>
-				<div className="basket__buttons__total__price">
-					<div className="basket__buttons__total__price-cost price--cost">
-						
-						<h2>{basketPrice.fullPrice} ₽</h2>
+		<Mobile>
+			<div className="basket__buttons">
+				<div className="basket__buttons__total">
+					<h3 className="basket__buttons__total-title">
+						Стоимость заказа
+					</h3>
+					<div className="basket__buttons__total__price">
+						<div className="basket__buttons__total__price-cost price--cost">
+							
+							<h2>{basketPrice.fullPrice} ₽</h2>
+						</div>
 					</div>
 				</div>
+				
+				<button disabled={disable}  className="btn btn-md btn-red" onClick={handlerOrder}>Оформить</button>
 			</div>
-			
+		</Mobile>
+		<Desktop>
 			<button disabled={disable}  className="btn btn-md btn-red" onClick={handlerOrder}>Оформить</button>
-		</div>
+		</Desktop>
 		<OrderNotificate disable={setDisable}/>
 		</>
 		

@@ -5,6 +5,9 @@ import { useMemo, useState } from 'react';
 import debounce from "lodash.debounce";
 import { basketModel, basketUseCase } from 'modules/BasketModule/basket.module';
 import { useEffect } from 'react';
+import { isDesctomMediaQuery } from 'application/ResponseMedia';
+import { organizationModel } from 'modules/OrganizationModule/organization.module';
+import { useMediaRedirectPoint } from 'application/hooks/useMediaRedirectPoint';
 
 export function CartChangeViewModel(this: any, product: IProduct) {
 	const {basketPrice,cart} = basketModel
@@ -12,6 +15,8 @@ export function CartChangeViewModel(this: any, product: IProduct) {
 	const [changeCount, setChangeCount] = useState<number | string>(0)
 	const [changeCartCount, setChangeCartCount] = useState<number | string>(0)
 	const [prodInCart, setProdInCart] = useState(false)
+	
+	const {redirectToDectPoints} = useMediaRedirectPoint()
 
 	useEffect(()=>{
 		const cartid = basketUseCase.findIdCart(product.productId)
@@ -29,6 +34,7 @@ export function CartChangeViewModel(this: any, product: IProduct) {
 
 
 	const changeCountHandler = ({ id, type, code }: any) => {
+		
 		if (typeof changeCount === 'number') {
 			switch (type) {
 				case 'inc':
@@ -90,6 +96,7 @@ export function CartChangeViewModel(this: any, product: IProduct) {
 	}
 
 	const handlerAddCard = () =>{
+		redirectToDectPoints()
 		if(changeCartCount){
 			const count = Number(changeCount)  + Number(changeCartCount)
 			debouncedChangeHandler({ id:product.id, count:count})
@@ -98,6 +105,14 @@ export function CartChangeViewModel(this: any, product: IProduct) {
 		}
 		
 	}
+
+	const handlerAddProd = (product:IProduct) =>{
+		redirectToDectPoints()
+		basketUseCase.addtoCart(product)
+	}
+
+
+
 	
 	/*
 	const findCartProduct = () =>{
@@ -122,7 +137,7 @@ export function CartChangeViewModel(this: any, product: IProduct) {
 		handlerInputAmout,
 		handlerInputAddAmout,
 		handlerAddCard,
-
+		handlerAddProd
 	});
 	this.status({
 

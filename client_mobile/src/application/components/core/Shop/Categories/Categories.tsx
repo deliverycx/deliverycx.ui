@@ -25,13 +25,15 @@ const Categories: FC<IProps> = ({ nomenclatureCategories,setCat }) => {
 	const { categories, currentSlide, slider } = useCasePoints.data
 	const { handleSliderClick } = useCasePoints.handlers
 
-	setCat(123)
+	
 
 	const handleWindowResize = useMemo(() => debounce(() => {
     if (window.innerWidth < 600) {
       setSlideCount(5)
-    }else{
+    }else if(window.innerWidth < 780){
 			setSlideCount(7)
+		}else{
+			setSlideCount(9)
 		}
   }, 100), [])
 
