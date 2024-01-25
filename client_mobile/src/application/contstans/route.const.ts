@@ -38,7 +38,8 @@ export const ROUTE_APP = {
 		PROFILE_MAIN:'/profile',
 		PROFILE_PERSONAL:'/profile/personal',
 		PROFILE_ADRESS:'/profile/adress',
-		PROFILE_ORDERS:'/profile/orders'
+		PROFILE_ORDERS:'/profile/orders',
+		PROFILE_MAP:'/profile/map'
 	},
 	ERRORS: {
 		ERROR404: '/404',

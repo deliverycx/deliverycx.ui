@@ -3,6 +3,7 @@ import { useShopViewModel } from "./Shop.viewModel"
 import LoaderProduct from "application/components/common/Loaders/loaderProduct"
 import Categories from "./Categories/Categories"
 import HOCProducts from "./Products/HOC.Products"
+import StocksDesc from "./Stocks/Stocks.desc"
 
 const HOCShopDesc = () => {
 	const useCase = adapterComponentUseCase(useShopViewModel)
@@ -13,7 +14,11 @@ const HOCShopDesc = () => {
 	return (
 		<>
 			<div className="categories-desc">
+					{
+						organization && <StocksDesc organization={organization} />
+					}
 				<div className="container">
+					
 					{
 						!isLoading && nomenclatures ?
 							nomenclatures.categoryes && <Categories nomenclatureCategories={nomenclatures.categoryes} setCat={setSelectCat} /> : <LoaderProduct />

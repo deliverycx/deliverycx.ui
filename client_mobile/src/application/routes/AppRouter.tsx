@@ -28,6 +28,11 @@ import HOCCITYDesc from 'application/components/core/City/HOC.City.desc';
 import HOCOrganizationsDesc from 'application/components/core/Organization/HOC.Organizations.desc';
 import HOCBasketDesc from 'application/components/core/Basket/HOC.Basket.desc';
 import HOCOrderDesc from 'application/components/core/Order/HOC.Order.desc';
+import HOCDeliveryMapDesc from 'application/components/common/Maps/DeliveryMap/HOC.DeliveryMap.desc';
+import HOCAUTHDesc from 'application/components/common/Auth/HOC.Auth.desc';
+import HOCProfileDesc from 'application/components/core/Profile/HOC.Profile.desc';
+import HOCPersonalDesc from 'application/components/core/Profile/Personal/HOC.Personal.desc';
+import HOCDeliveryAdressDesc from 'application/components/core/Profile/DeliveryAdress/HOC.DeliveryAdress.desc';
 
 
 
@@ -131,7 +136,28 @@ const publicRoutesDeskop = [
 	{
 		path: ROUTE_APP.ORDER.ORDER_MAIN,
 		Component: HOCOrderDesc,
-	}
+	},
+	{
+		path: ROUTE_APP.ORDER.ORDER_MAP + '/:adress?',
+		Component: HOCOrderDesc,
+	},
+	{
+		path: ROUTE_APP.AUTH.REGISTER,
+		Component: HOCAUTHDesc
+	},
+	{
+		path: ROUTE_APP.PROFILE.PROFILE_MAIN,
+		Component: HOCProfileDesc,
+
+	},
+	{
+		path: ROUTE_APP.PROFILE.PROFILE_PERSONAL,
+		Component: HOCPersonalDesc,
+	},
+	{
+		path: ROUTE_APP.PROFILE.PROFILE_MAP + '/:adress?',
+		Component: HOCProfileDesc,
+	},
 ]
 
 

@@ -3,16 +3,20 @@ import { basketUseCase } from "modules/BasketModule/basket.module"
 import { organizationStatusModel, useCaseOrganizationStatus } from "modules/OrganizationModule/organization.module"
 import { useEffect } from "react"
 import { useQuery } from "react-query"
-import { useNavigate } from "react-router-dom"
+import { useLocation, useNavigate, useParams } from "react-router-dom"
 import HOCOrderMetods from "./OrderMetods/HOC.OrderMetods"
 import HOCOrderForm from "./OrderForm/HOC.OrderForm"
 import LayoutDesctop from "application/components/common/Layout/LayoutDesctop"
 import cn from "classnames"
+import { observer } from "mobx-react-lite"
+import HOCDeliveryMapDesc from "application/components/common/Maps/DeliveryMap/HOC.DeliveryMap.desc"
+import { ROUTE_APP } from "application/contstans/route.const"
 
 const HOCOrderDesc = () => {
 	const navigate = useNavigate()
 	const [statusTSX, switchMetod] = useOrganizationStatus()
 	const { paymentMetod } = organizationStatusModel
+	const params = useLocation()
 
 	useQuery('pointstatus', () => useCaseOrganizationStatus.statusOrganization(), {
 		refetchOnWindowFocus: true,
@@ -32,9 +36,13 @@ const HOCOrderDesc = () => {
 						paymentMetod &&
 						<HOCOrderForm paymentMetod={paymentMetod} />
 					}
+					{
+						params.pathname === ROUTE_APP.ORDER.ORDER_MAP &&
+						<HOCDeliveryMapDesc />
+					}
 				</div>
 			</div>
 		</LayoutDesctop>
 	)
 }
-export default HOCOrderDesc
+export default observer(HOCOrderDesc) 

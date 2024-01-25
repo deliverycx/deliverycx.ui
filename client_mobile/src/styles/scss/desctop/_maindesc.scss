@@ -18,3 +18,21 @@
 		height: 100%;
 	}
 }
+
+.page-contaiter{
+	max-width: 780px;
+	margin: 0 auto;
+	padding: 30px 0;
+	.top-bar{
+		position: relative;
+		width: 100%;
+		box-shadow: none;
+		margin: 0;
+	}
+
+
+	//
+	.personal{
+		height: auto;
+	}
+}

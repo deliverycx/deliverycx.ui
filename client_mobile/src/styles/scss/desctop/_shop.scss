@@ -23,3 +23,77 @@
 		margin-top: 5px;
 	}
 }
+
+
+
+.stocks-desc{
+	margin-top: 30px;
+	margin-bottom: 60px;
+	position: relative;
+	height: 400px;
+	img{
+		width: 100%;
+	}
+	.slick-list {
+		border-radius: 30px;
+	}
+	.arr{
+		position: absolute;
+		top: 50%;
+		width: 48px;
+		height: 48px;
+	}
+
+	.slick-prev,
+	.slick-next {
+		height: 40px;
+	}
+
+	.slick-list{
+		border: none !important;
+	}
+
+	.stocks__item img {
+		width: 100%;
+		max-width: 1280px;
+		margin: 0 auto;
+		padding:10px 20px;
+		height:400px;
+		box-shadow:none;
+		border-radius: 30px;
+	}
+	
+
+	.stocks__points{
+		display: flex;
+		margin-top: 15px;
+		justify-content: center;
+		text-align: center;
+		li{
+				display: inline-block;
+		}
+		button{
+				font-size: 0px;
+				height: 2px;
+				cursor: pointer;
+				width: 24px;
+				margin: 0 12px;
+				background-color: #ABABAB;
+				border-radius: 1.5em;
+				border: none;
+		}
+		.slick-active button{
+				background-color: #8D191D;
+		}
+	}
+}
+
+.stocks-desc .slick-list{
+	border-radius:0;
+}
+
+@media screen and (max-width: 1024px) {
+	.stocks-desc .slick-prev,.stocks .slick-next{
+		display: none !important;
+	}
+}

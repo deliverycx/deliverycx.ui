@@ -9,6 +9,7 @@ import { userModel } from "modules/UserModule/user.module";
 import { FC, useEffect, useState } from "react"
 import { useNavigate, useSearchParams } from 'react-router-dom';
 import cn from "classnames"
+import { isDesctomMediaQuery } from "application/ResponseMedia";
 
 type IProps = {
 	formik?: any
@@ -23,6 +24,9 @@ const OrderAdressMap: FC<IProps> = ({ formik }) => {
 	const [isModalDeleteOpened, setIsModalDeleteOpened] = useState(false)
 	const [isModalOpened, setIsModalOpened] = useState(false)
 
+	const isdesc = isDesctomMediaQuery()
+
+	const ROUTE = isdesc ? ROUTE_APP.ORDER.ORDER_MAP : ROUTE_APP.MAP.DELIVERY_MAP
 
 	useEffect(() => {
 		if (orderDeliveryAddress) {
@@ -37,10 +41,10 @@ const OrderAdressMap: FC<IProps> = ({ formik }) => {
 			setIsModalOpened(true)
 		} else {
 			if (orderDeliveryAddress) {
-				navigate(ROUTE_APP.MAP.DELIVERY_MAP + `/${orderDeliveryAddress.address}${orderDeliveryAddress.house}?query=${JSON.stringify(orderDeliveryAddress)}`)
+				navigate(ROUTE + `/${orderDeliveryAddress.address}${orderDeliveryAddress.house}?query=${JSON.stringify(orderDeliveryAddress)}`)
 
 			} else {
-				navigate(ROUTE_APP.MAP.DELIVERY_MAP)
+				navigate(ROUTE)
 			}
 
 		}
@@ -103,7 +107,7 @@ const OrderAdressMap: FC<IProps> = ({ formik }) => {
 							</div>
 
 							<div className="delivery-addresses__buttons">
-								<button className="btn btn-md btn-red gap-4" onClick={() => navigate(ROUTE_APP.MAP.DELIVERY_MAP)}>
+								<button className="btn btn-md btn-red gap-4" onClick={() => navigate(ROUTE)}>
 
 									Добавить новый адрес
 								</button>
