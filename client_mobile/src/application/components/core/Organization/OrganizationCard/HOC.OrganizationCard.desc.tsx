@@ -48,7 +48,7 @@ const HOCOrganizationCardDesc = () => {
 	return (
 		<>
 			{
-				selectOrganization &&
+				cardModal &&
 				<ModalCard setIsOpened={() => handlerCloseCardModal()} theme="children" styles="organization_modal">
 					<div className="modal__wrapper map__institute-info">
 						<div onClick={handlerCloseCardModal} className="map__institute-close no-drag">

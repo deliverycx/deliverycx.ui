@@ -7,12 +7,14 @@ import {
 } from "../../../../../modules/OrganizationModule/Organization/data/organization.request";
 import { useQueryClient } from "react-query";
 import { shopRepository } from "modules/ShopModule/data/shop.repository";
+import { isDesctomMediaQuery } from "application/ResponseMedia";
 
 export function useOrganizationCardViewModel() {
 	const [cardModal,setCardModal] = useState(false)
 	const {selectOrganization} = organizationModel
 	const {deliveryTipe,organizationStatus,timeworkOrganization} = organizationStatusModel
 	const organization = organizationModel.selectOrganization
+	const desc = isDesctomMediaQuery()
 
 	useEffect(()=>{
 		if(selectOrganization){
@@ -26,7 +28,7 @@ export function useOrganizationCardViewModel() {
 
 
 	const handlerCloseCardModal = () =>{
-		appUseCase.clearApp()
+		!desc && appUseCase.clearApp()
 		setCardModal(false)
 	}
 
