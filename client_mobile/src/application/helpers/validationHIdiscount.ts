@@ -3,7 +3,7 @@ import { number } from "yup";
 
 export const validationHIdiscount = (cart:any) =>{
 	const regex = new RegExp('HI' + "-\\d+", "i");
-
+	
 	const {count,sum} = cart.reduce((acc:{count:number,sum:number[]},cartEl:any) =>{
 		const tagIndex = cartEl.productTags
                     ? cartEl.productTags.findIndex((el:any) => el.match(regex))

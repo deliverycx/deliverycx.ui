@@ -4,12 +4,12 @@ import { basketModel } from "modules/BasketModule/basket.module"
 import { requestOrganizationAdmin } from "modules/OrganizationModule/Organization/data/organization.request"
 import { organizationModel } from "modules/OrganizationModule/organization.module"
 import { userModel } from "modules/UserModule/user.module"
-import { useState, useEffect } from "react"
+import { useState, useEffect, FC } from "react"
 import { NavLink, useNavigate } from "react-router-dom"
 import MainMenuDesc from "../Menu/MainMenu.desc"
 import { observer } from "mobx-react-lite"
 
-const HOCdescHead = () => {
+const HOCdescHead:FC<{styles?:string}> = ({styles}) => {
 	const point = organizationModel.selectOrganization
 	const user = userModel.guestUser
 	const cartprice = basketModel.basketPrice
@@ -34,7 +34,8 @@ const HOCdescHead = () => {
 
 	return (
 		<>
-		<div className="head-desc">
+		<div className={`head-desc ${styles}`}>
+			
 			<section>
 				<img src={require("assets/images/logo.svg").default} alt="Старик Хинкалыч" />
 				{
@@ -78,9 +79,15 @@ const HOCdescHead = () => {
 				{
 					point &&
 					<div className="head-cart">
-						<img src={require('assets/images/icons/shopping_basket.png')} />
+						
 						{
-							cartprice && cartprice.fullPrice !== 0 ? <NavLink to={ROUTE_APP.CART.BASKET_MAIN}>{cartprice.fullPrice} ₽</NavLink> : <span>Корзина</span>
+							cartprice && cartprice.fullPrice !== 0 
+							?
+							<NavLink to={ROUTE_APP.CART.BASKET_MAIN}><img src={require('assets/images/icons/shopping_basket.png')} />
+							<span>{cartprice.fullPrice} ₽</span>
+							</NavLink>
+							
+							: <a><img src={require('assets/images/icons/shopping_basket.png')} />Корзина</a>
 						}
 						
 					</div>

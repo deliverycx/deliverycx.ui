@@ -1,18 +1,23 @@
 import { validationHIdiscount } from "application/helpers/validationHIdiscount"
+import { observer } from "mobx-react-lite"
+import { basketUseCase } from "modules/BasketModule/basket.module"
 import { ICartProd } from "modules/BasketModule/interfaces/basket.type"
 import { useState, useEffect, FC, memo } from "react"
 
 const CartDiscount:FC<{cartList:ICartProd[]}> = ({cartList}) => {
 	const [countDiscount, setCountDiscount] = useState(0)
 	const [freeHi, setFreeHi] = useState(0)
+	const { cart, basketPrice } = basketUseCase.basketModel
 
-	const { count, free } = validationHIdiscount(cartList)
+	const { count, free } = validationHIdiscount(cart)
 
 
 	useEffect(() => {
 		if (count !== 0) {
 			setCountDiscount(count)
 			setFreeHi(free)
+		}else{
+			setCountDiscount(0)
 		}
 	}, [count])
 
@@ -66,4 +71,4 @@ const CartDiscount:FC<{cartList:ICartProd[]}> = ({cartList}) => {
 		</>
 	)
 }
-export default memo(CartDiscount)
+export default observer(CartDiscount)

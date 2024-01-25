@@ -52,6 +52,7 @@ const HOCBasketDesc = () => {
 							<HOCAdditionProducts />
 						</div>
 						<div className="basket-desc_order">
+							<div className="basket-desc_order-box">
 							<BasketDevices />
 							<CartDiscount cartList={cart} />
 							<BasketPrice basketPrice={basketPrice} />
@@ -59,6 +60,7 @@ const HOCBasketDesc = () => {
 								basketPrice &&
 								<BasketOrder basketPrice={basketPrice}/>
 							}
+							</div>
 						</div>
 						</>
 						: <LoaderProduct />

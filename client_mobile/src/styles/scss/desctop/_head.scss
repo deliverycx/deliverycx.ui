@@ -1,3 +1,7 @@
+.layout-head{
+	background-color: #fff;
+	box-shadow: 0px 4px 24px 0px rgba(0, 0, 0, 0.12);
+}
 .head-desc{
 	display: flex;
 	justify-content: space-between;
@@ -65,9 +69,15 @@
 		font-weight: 600;
 		margin-left: 15px;
 		a{
+			display: flex;
+			justify-content: center;
+			align-items: center;
 			text-decoration: none;
 			color: #fff;
 			margin-left: 5px;
+			img{
+				margin-right: 5px;
+			}
 		}
 	}
 }
