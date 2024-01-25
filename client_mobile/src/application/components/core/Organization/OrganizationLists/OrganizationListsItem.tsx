@@ -5,6 +5,8 @@ import { IWorkTimePoint } from 'modules/OrganizationModule/OrganizationStatuses/
 import { organizationModel, organizationStatusModel, useCaseOrganization } from 'modules/OrganizationModule/organization.module';
 import { FC, useEffect, useState } from 'react';
 import cn from 'classnames'
+import { isDesctomMediaQuery } from 'application/ResponseMedia';
+import { appUseCase } from 'modules/AppModule/app.module';
 
 
 type IProps = {
@@ -17,6 +19,7 @@ type IProps = {
 const OrganizationListsItem: FC<IProps> = ({ organization, setCordPoint,setPointIndex, set }) => {
 	const [times, setTimes] = useState<IWorkTimePoint | null>(null)
 	const {selectOrganization} = organizationModel
+	const desc = isDesctomMediaQuery()
 
 	useEffect(() => {
 		/*
@@ -37,6 +40,14 @@ const OrganizationListsItem: FC<IProps> = ({ organization, setCordPoint,setPoint
 	}
 
 	const handlerSelectPoint = () =>{
+		
+		if(desc && selectOrganization){
+			
+			if(selectOrganization.guid !== organization.guid){
+				appUseCase.crealPoint()
+			}
+			
+		}
 		useCaseOrganization.selectOrganization(organization)
 		setPointIndex(organization.guid)
 		set(false)

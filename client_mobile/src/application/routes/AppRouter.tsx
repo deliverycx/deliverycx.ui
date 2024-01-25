@@ -33,6 +33,11 @@ import HOCAUTHDesc from 'application/components/common/Auth/HOC.Auth.desc';
 import HOCProfileDesc from 'application/components/core/Profile/HOC.Profile.desc';
 import HOCPersonalDesc from 'application/components/core/Profile/Personal/HOC.Personal.desc';
 import HOCDeliveryAdressDesc from 'application/components/core/Profile/DeliveryAdress/HOC.DeliveryAdress.desc';
+import OrderCreateDesc from 'application/components/core/Order/OrderCreate/OrderCreate.desc';
+import OrderSuccesDesc from 'application/components/core/Order/OrderCreate/OrderSucces.desc';
+import LayoutDesctop from 'application/components/common/Layout/LayoutDesctop';
+
+
 
 
 
@@ -158,6 +163,24 @@ const publicRoutesDeskop = [
 		path: ROUTE_APP.PROFILE.PROFILE_MAP + '/:adress?',
 		Component: HOCProfileDesc,
 	},
+	{
+		path: ROUTE_APP.ORDER.ORDER_CREATE + '/:hash',
+		Component: OrderCreateDesc
+	},
+	{
+		path: ROUTE_APP.ORDER.ORDER_SUCCESS + '/:hash',
+		Component: OrderSuccesDesc
+	},
+	{
+		path: ROUTE_APP.PRAVORAZDEL,
+		Component:Pravorazdel,
+		Layout:LayoutDesctop
+	},
+	{
+		path: ROUTE_APP.ERRORS.ERROR404,
+		Component:ErrorPage,
+		Layout:LayoutDesctop
+	}
 ]
 
 
@@ -168,8 +191,10 @@ const AppRouter = () => {
 		<>
 			<Desktop>
 				<Routes>
-					{publicRoutesDeskop.map(({ path, Component }) => {
-
+					{publicRoutesDeskop.map(({ path, Component,Layout }) => {
+						if(Layout){
+							return <Route key={path} path={path} element={<Layout><Component /></Layout>}></Route>
+						}
 						return <Route key={path} path={path} element={<Component />}></Route>
 					}
 

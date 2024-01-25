@@ -17,7 +17,7 @@ export function useProfileViewModel(this:any) {
 			//ym('reachGoal','autorization_success')
 			basketUseCase.cartCase()
 		}else{
-			//navigate(ROUTE_APP.AUTH.REGISTER)
+			navigate(ROUTE_APP.AUTH.REGISTER)
 		}
 	},[user])
 

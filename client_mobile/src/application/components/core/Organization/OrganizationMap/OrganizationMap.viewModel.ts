@@ -1,3 +1,4 @@
+import { isDesctomMediaQuery } from 'application/ResponseMedia';
 import { PointsReducer, ReducerActionTypePoints, initialStatePointsMap } from 'application/reducers/PointsReducer';
 import { appUseCase } from 'modules/AppModule/app.module';
 import { IOrganization } from 'modules/OrganizationModule/Organization/interfaces/organization.type';
@@ -10,6 +11,7 @@ export function useOrganizationMapViewModel(this: any, { organizations, setCord,
 		PointsReducer,
 		initialStatePointsMap
 	);
+	const desc = isDesctomMediaQuery()
 
 		
 	useEffect(() => {
@@ -26,9 +28,18 @@ export function useOrganizationMapViewModel(this: any, { organizations, setCord,
 	};
 
 	const placemarkClickHandler = (organization: IOrganization, index: number) => {
-		if (selectOrganization && selectOrganization.guid !== organization.guid) {
+		if (selectOrganization && selectOrganization.guid !== organization.guid && !desc) {
 			appUseCase.clearApp()
 		}
+
+		if(desc && selectOrganization){
+			
+			if(selectOrganization.guid !== organization.guid){
+				appUseCase.crealPoint()
+			}
+			
+		}
+
 		useCaseOrganization.selectOrganization(organization)
 		setPointIndex(organization.guid)
 		dispatchPoint({

@@ -4,6 +4,10 @@ import { useProfileViewModel } from "./Profile.viewModel"
 import { ROUTE_APP } from "application/contstans/route.const"
 import HOCDeliveryAdress from "./DeliveryAdress/HOC.DeliveryAdress"
 import HOCDeliveryAdressDesc from "./DeliveryAdress/HOC.DeliveryAdress.desc"
+import { observer } from "mobx-react-lite"
+import HOCUserOrders from "./UserOrders/HOC.UserOrders"
+import HOCUserOrdersDesc from "./UserOrders/HOC.UserOrders.desc"
+
 
 const HOCProfileDesc = () => {
 	const useCase = adapterComponentUseCase(useProfileViewModel)
@@ -12,6 +16,10 @@ const HOCProfileDesc = () => {
 
 	return (
 		<LayoutDesctop>
+			{
+				profile && user &&
+
+			
 			<div className="profile-desc">
 				<div className="profile-desc-left">
 					<div className="profile-desc_personal-box profile-desc_box">
@@ -57,11 +65,12 @@ const HOCProfileDesc = () => {
 
 				</div>
 				<div className="profile-desc-right">
-
+					<HOCUserOrdersDesc />
 				</div>
 
 			</div>
+			}
 		</LayoutDesctop>
 	)
 }
-export default HOCProfileDesc
+export default observer(HOCProfileDesc) 
