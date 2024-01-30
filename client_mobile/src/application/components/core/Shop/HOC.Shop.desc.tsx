@@ -4,6 +4,7 @@ import LoaderProduct from "application/components/common/Loaders/loaderProduct"
 import Categories from "./Categories/Categories"
 import HOCProducts from "./Products/HOC.Products"
 import StocksDesc from "./Stocks/Stocks.desc"
+import { observer } from "mobx-react-lite"
 
 const HOCShopDesc = () => {
 	const useCase = adapterComponentUseCase(useShopViewModel)
@@ -41,4 +42,4 @@ const HOCShopDesc = () => {
 		</>
 	)
 }
-export default HOCShopDesc
+export default observer(HOCShopDesc) 
