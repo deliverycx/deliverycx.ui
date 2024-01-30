@@ -16,7 +16,7 @@ const HOCShopDesc = () => {
 		<>
 			<div className="categories-desc">
 					{
-						organization ? <StocksDesc organization={organization} /> : <StocksDesc organization={process.env.REACT_APP_DEFAULT_ORG as string} />
+						organization ? <StocksDesc organization={organization.guid} /> : <StocksDesc organization={process.env.REACT_APP_DEFAULT_ORG as string} />
 					}
 				<div className="container">
 					
