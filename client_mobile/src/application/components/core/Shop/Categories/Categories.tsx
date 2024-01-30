@@ -84,4 +84,4 @@ const Categories: FC<IProps> = ({ nomenclatureCategories,setCat }) => {
 		</Slider>
 	)
 }
-export default memo(observer(Categories) )
+export default observer(Categories) 

@@ -12,6 +12,8 @@ import ModalCard from "../Modals/ModalCard"
 import OfferAuth from "../Auth/view/OfferAuth"
 import HOCAUTHDesc from "../Auth/HOC.Auth.desc"
 import NotificatCity from "application/components/core/City/view/NotificatCity"
+import HOCCITYDesc from "application/components/core/City/HOC.City.desc"
+import HOCOrganizationsDesc from "application/components/core/Organization/HOC.Organizations.desc"
 
 const HOCdescHead:FC<{styles?:string}> = ({styles}) => {
 	const point = organizationModel.selectOrganization
@@ -110,7 +112,8 @@ const HOCdescHead:FC<{styles?:string}> = ({styles}) => {
 				<OfferAuth />
 			</ModalCard>
 		}		
-		
+		<HOCCITYDesc />
+		<HOCOrganizationsDesc />
 		</>
 	)
 }

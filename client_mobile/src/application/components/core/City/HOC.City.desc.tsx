@@ -8,21 +8,22 @@ import { adapterComponentUseCase } from "adapters/adapterComponents"
 import { ICity } from "modules/CityModule/interfaces/city.type"
 import { useCityViewModel } from "./useCity.viewModel"
 import CityListView from "./view/CityListView"
+import { useLocation } from 'react-router-dom';
+import { ROUTE_APP } from './../../../contstans/route.const';
 
 const HOCCITYDesc = () => {
 	const useCase = adapterComponentUseCase(useCityViewModel)
 	const { cityList, selectCity } = useCase.data
 	const { seletSerchCity, submitCity,closeModalDesc } = useCase.handlers
 	
-	
+	const params = useLocation()
 
 	return (
 		<>
-			<div className="container">
-				<HOCdescHead />
+			{
+				params.pathname === ROUTE_APP.CITY &&
 
-			</div>
-			<ModalCard setIsOpened={() => closeModalDesc()} theme={null} styles="modal_def citymodal">
+				<ModalCard setIsOpened={() => closeModalDesc()} theme={null} styles="modal_def citymodal">
 				<div className="modal__wrapper">
 					<div className="modal__header">
 						<svg className="no-drag" onClick={() => closeModalDesc()} width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -69,9 +70,9 @@ const HOCCITYDesc = () => {
 				</div>
 
 			</ModalCard>
-			<HOCShopDesc />
-
-			<HOCFooterDesc />
+			}
+			
+			
 		</>
 	)
 }

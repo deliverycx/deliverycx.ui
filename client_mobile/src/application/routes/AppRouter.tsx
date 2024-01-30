@@ -124,11 +124,11 @@ const publicRoutesDeskop = [
 	},
 	{
 		path:ROUTE_APP.CITY,
-		Component: HOCCITYDesc,
+		Component: HOCdeskMain,
 	},
 	{
 		path:ROUTE_APP.POINT,
-		Component: HOCOrganizationsDesc,
+		Component: HOCdeskMain,
 	},
 	{
 		path: ROUTE_APP.SHOP.SHOP_MAIN,
