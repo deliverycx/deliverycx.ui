@@ -6,12 +6,13 @@ import { FC, useState, useEffect } from "react";
 import Slider from "react-slick";
 import StocksItem from "./Stocksitem";
 
-const StocksDesc:FC<{organization:IOrganization}> = ({organization}) =>{
+const StocksDesc:FC<{organization:string}> = ({organization}) =>{
 	const [baners,setBaners] = useState<any | null>(null)
 	
 
 	const getStocks = async (guid:string) =>{
 		try {
+			console.log(guid);
 			const {data}:any = await requestShopAdmin.bannersList(guid)
 			const ban = data.reduce((acc:any,val:any,index:number) =>{
 				
@@ -55,8 +56,8 @@ const StocksDesc:FC<{organization:IOrganization}> = ({organization}) =>{
 
 
 	useEffect(()=>{
-		if(organization.guid){
-			getStocks(organization.guid)
+		if(organization){
+			getStocks(organization)
 		}else{
 			getStocks(process.env.REACT_APP_DEFAULT_ORG as string)
 		}
