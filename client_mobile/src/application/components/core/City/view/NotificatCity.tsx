@@ -3,36 +3,36 @@ import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { ROUTE_APP } from 'application/contstans/route.const';
 import { appModel, appUseCase } from 'modules/AppModule/app.module';
+import { observer } from 'mobx-react-lite';
+import { useLocation } from 'react-router-dom';
+
 
 const NotificatCity = () => {
 	const city = cityModel.selectCity
-	const youcitymodal = appModel.youcity
-	const nf = appUseCase.youCityNotificate
+	const {youcity} = appModel
+	
 	const navigate = useNavigate()
-	const [modalnotif, setModalNotif] = useState(false)
-
-	/*
+	const params = useLocation()
+	
+	
 	useEffect(() => {
 		let tik: any
-		if (city) {
-			handleCity(true)
+		if (city && params.pathname === ROUTE_APP.MAIN) {
+			appUseCase.youCityNotificate(true)
 			tik = setTimeout(() => {
-				handleCity(false)
-			}, 300000)
+				appUseCase.youCityNotificate(false)
+			}, 5000)
 		}
 
 		return () => clearTimeout(tik)
-	}, [city])
-	*/
+	}, [])
+	
 
-	const handleCity = (bol: boolean) => {
-		nf(bol)
-	}
 
 	return (
 		<>
 			{
-				youcitymodal &&
+				youcity &&
 				<div className="notification_modal notification_city">
 					<div className="notification_modal-container">
 						<div className="notification-i"><svg width="28" height="14" viewBox="0 0 28 14" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -52,7 +52,7 @@ const NotificatCity = () => {
 							Покажем актуальное меню, условия доставки и акции ближайшего к тебе ресторана
 						</div>
 						<div className="notification_city__change">
-							<div className="notification_city-btn-success" onClick={() => handleCity(false)}>Да, верно</div>
+							<div className="notification_city-btn-success" onClick={() => appUseCase.youCityNotificate(false)}>Да, верно</div>
 							<span className="notification_city-swap" onClick={() => {
 								navigate(ROUTE_APP.CITY)
 							}}>Выбрать другой</span>
@@ -64,4 +64,4 @@ const NotificatCity = () => {
 
 	);
 };
-export default NotificatCity;
+export default observer(NotificatCity)

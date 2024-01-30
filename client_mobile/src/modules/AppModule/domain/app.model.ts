@@ -1,4 +1,5 @@
 import { action, makeObservable, observable } from "mobx";
+import { makePersistable } from "mobx-persist-store";
 
 export class AppModel{
 	authnotificate = false
@@ -11,7 +12,13 @@ export class AppModel{
 			actionAuthNotificate: action,
 			actionYoucity:action
 		})
-		
+		makePersistable(this, {
+			name: 'order',
+			properties: ['youcity'],
+			storage: window.localStorage,
+			expireIn: 86400,
+			removeOnExpiration: true,
+		});
 	}
 
 	actionAuthNotificate(val:boolean){

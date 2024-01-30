@@ -43,6 +43,7 @@ export class AppUseCase{
 	}
 
 	youCityNotificate(val:boolean){
+		console.log(this);
 		this.appModel.actionYoucity(val)
 	}
 }
