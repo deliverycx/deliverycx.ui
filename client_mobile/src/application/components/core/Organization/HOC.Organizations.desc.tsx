@@ -26,7 +26,7 @@ const HOCOrganizationsDesc = () =>{
 				<HOCdescHead />
 
 			</div>
-			<ModalCard setIsOpened={() => closeModalDesc()} theme={null} styles="point_modal-desc">
+			<ModalCard setIsOpened={() => closeModalDesc()} theme={null} styles="point_modal-desc citymodal">
 				<div className="modal__wrapper">
 					<div className="modal__header-pointdesc">
 						<div className="modal__header">

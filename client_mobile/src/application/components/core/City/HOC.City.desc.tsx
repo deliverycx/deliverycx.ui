@@ -22,7 +22,7 @@ const HOCCITYDesc = () => {
 				<HOCdescHead />
 
 			</div>
-			<ModalCard setIsOpened={() => closeModalDesc()} theme={null} styles="modal_def">
+			<ModalCard setIsOpened={() => closeModalDesc()} theme={null} styles="modal_def citymodal">
 				<div className="modal__wrapper">
 					<div className="modal__header">
 						<svg className="no-drag" onClick={() => closeModalDesc()} width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
