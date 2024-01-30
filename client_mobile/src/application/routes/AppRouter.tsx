@@ -180,7 +180,11 @@ const publicRoutesDeskop = [
 		path: ROUTE_APP.ERRORS.ERROR404,
 		Component:ErrorPage,
 		Layout:LayoutDesctop
-	}
+	},
+	{
+		path: ROUTE_APP.AUTH.AUTORIZATE,
+		Component: HOCdeskMain
+	},
 ]
 
 

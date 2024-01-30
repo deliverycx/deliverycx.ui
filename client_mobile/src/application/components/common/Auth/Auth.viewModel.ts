@@ -6,32 +6,42 @@ import { useState } from 'react';
 import * as yup from "yup";
 
 export function useAuthViewModel(this: any) {
-	const [sendSMS,setSendSMS] = useState<boolean | 'error' | null>(null)
-	
+	const [sendSMS, setSendSMS] = useState<boolean | 'error' | null>(null)
+
 	const initialValues = {
-		phone:''
+		phone: '',
+		password: '',
+		confirmpassword: ''
 	}
 
 	const formik = useFormik({
 		initialValues,
 		validationSchema: yup.object().shape({
-			phone: valid.phone
+			phone: valid.phone,
+			password: yup
+				.string()
+				.required('Пароль обезателен')
+				.min(5, 'Ваш пароль слишком короткий.'),
+				//.matches(/[a-zA-Z]/, 'Пароль может содержать только латинские буквы.'),
+			confirmpassword: yup
+				.string()
+				.oneOf([yup.ref('password')], 'Пароли должны совпадать')
 		}),
 		onSubmit: (values, meta) => {
-			
+
 			handlerSMSSend(values.phone)
 		},
 	});
 
 
 
-	const handlerSMSSend = async (phone:string) =>{
+	const handlerSMSSend = async (phone: string) => {
 		try {
-			if(phone){
+			if (phone) {
 				await requestUser.smsSend(phone)
 				setSendSMS(true)
 			}
-			
+
 		} catch (error) {
 			setSendSMS('error')
 		}

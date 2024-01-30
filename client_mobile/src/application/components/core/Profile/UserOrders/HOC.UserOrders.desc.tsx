@@ -40,6 +40,10 @@ const HOCUserOrdersDesc = () => {
 									<div className="unauthorized__content-text">
 										Чтобы совершить свой первый заказ,<br /> выберете себе что‑нибудь вкусное на главной странице
 									</div>
+									<NavLink to={`${ROUTE_APP.MAIN}`} className="btn btn-md btn-red gap-4">
+
+												На главную
+											</NavLink>
 								</div>
 							</div>
 					}

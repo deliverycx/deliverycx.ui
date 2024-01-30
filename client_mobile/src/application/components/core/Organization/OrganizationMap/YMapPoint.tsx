@@ -93,6 +93,8 @@ type IProps = {
 const YMapPoint:FC<IProps> = ({statePoint,addresses,placemarkClick}) => {
 	const [cord,setCord] = useState([0.0, 0.0])
 
+	
+
 	useEffect(()=>{
 		if(addresses && addresses.length){	
 			if(addresses[statePoint.slideIndex]){

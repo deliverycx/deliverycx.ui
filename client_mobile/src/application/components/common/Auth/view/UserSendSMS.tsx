@@ -63,6 +63,49 @@ const UserSendSMS: FC<IProps> = ({ formik }) => {
 							</div>
 						</div>
 
+						<div className="input__item input_icon">
+							<div className="input__container">
+								
+								<FormFieldWrapper
+									placeholderIco={""}
+									placeholderValue="Телефон"
+									isValid={
+										!formik.values.password.length || formik.errors.password
+									}
+									error={!!(formik.errors.password && formik.touched.password)}
+									errorValue={formik.errors.password}
+								>
+									<div className="input__container">
+										
+										<Field type="password" name="password" placeholder="Пароль" />
+
+									</div>
+
+								</FormFieldWrapper>
+
+							</div>
+							<div className="input__container">
+								
+								<FormFieldWrapper
+									placeholderIco={""}
+									placeholderValue="Телефон"
+									isValid={
+										!formik.values.confirmpassword.length || formik.errors.confirmpassword
+									}
+									error={!!(formik.errors.confirmpassword && formik.touched.confirmpassword)}
+									errorValue={formik.errors.confirmpassword}
+								>
+									<div className="input__container">
+										
+										<Field type="password" name="confirmpassword" placeholder="Повторите пароль" />
+
+									</div>
+
+								</FormFieldWrapper>
+
+							</div>
+						</div>
+
 					</div> 
 					
 					<div className="auth-footer">

@@ -5,7 +5,7 @@ import {isEqual} from "lodash";
 interface IProps{
     placeholderIco?: string,
     placeholderValue?: string,
-    isValid?: string,
+    isValid?: any,
     error?: boolean,
     errorValue?: string,
     addfild?:any

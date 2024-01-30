@@ -38,23 +38,26 @@ const HOCOrderForm:FC<{paymentMetod:string[]}> = (paymentMetod) => {
 					}
 				</div>
 				<div className="order-placement_general">
-				<HOCOrderGeneral errors={error} />
-				{
-					!disable &&
-					<div className="order-placement__buttons">
-					<input disabled={formik.isSubmitting} className="btn btn-md btn-red" type="submit" value="Всё верно, продолжить" />
-					
-					<NavLink to={ROUTE_APP.CART.BASKET_MAIN} className="btn btn-md btn-gray">Назад</NavLink>
-					<NavLink className="order-placement__buttons-link" to={ROUTE_APP.PRAVORAZDEL}>
-						<div>
-							Продолжая, вы соглашаетесь на <span>обработку персональных данных</span> и <span>условия пользовательского соглашения</span>
-						</div>
-					</NavLink>
-				</div>
-				}	
+					<div className="order-placement_general-desc">
+					<HOCOrderGeneral errors={error} />
+					{
+						!disable &&
+						<div className="order-placement__buttons">
+						<input disabled={formik.isSubmitting} className="btn btn-md btn-red" type="submit" value="Всё верно, продолжить" />
+						
+						<NavLink to={ROUTE_APP.CART.BASKET_MAIN} className="btn btn-md btn-gray">Назад</NavLink>
+						<NavLink className="order-placement__buttons-link" to={ROUTE_APP.PRAVORAZDEL}>
+							<div>
+								Продолжая, вы соглашаетесь на <span>обработку персональных данных</span> и <span>условия пользовательского соглашения</span>
+							</div>
+						</NavLink>
+					</div>
+					}	
+					<OrderNotificate disable={setDisable} />
+					</div>
 				</div>
 			</form>
-			<OrderNotificate disable={setDisable} />
+			
 		</FormikProvider>
 	)
 }

@@ -11,6 +11,8 @@ export function useOrganizationsViewModel(this:any) {
 	const navigate = useNavigate()
 	const [pointCords,setPointCords] = useState<string[] | null>(null)
 	const [pointIndex,setPointIndex] = useState<string | null>(null)
+
+	
 	
 	useEffect(()=>{
 		if(city){

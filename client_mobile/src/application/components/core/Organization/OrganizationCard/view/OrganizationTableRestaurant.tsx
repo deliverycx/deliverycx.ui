@@ -105,7 +105,7 @@ const OrganizationTableRestaurant:FC<{organization:IOrganization}> = ({organizat
 			}
 			
 			{tableModalSucsses &&
-				<ModalCard setIsOpened={settableModalSucsses}>
+				<ModalCard setIsOpened={settableModalSucsses} theme="children-pre">
 
 					<div className="modal__wrapper">
 						<div className="modal__header">

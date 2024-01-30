@@ -34,7 +34,7 @@ const OragnizationRequisities:FC<{organization:IOrganization}> = ({organization}
 
             {
                 modal && (
-                    <ModalCard setIsOpened={setModal} theme="children">
+                    <ModalCard setIsOpened={setModal} theme="children-pre">
 
                         <div className="modal__wrapper">
                             <div className="modal__header">

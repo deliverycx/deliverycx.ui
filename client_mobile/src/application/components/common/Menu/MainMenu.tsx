@@ -83,7 +83,7 @@ const MainMenu: FC<{ closeMenu: any, like: string | any }> = observer(({ closeMe
 
 
 					) : (
-						<NavLink to={ROUTE_APP.AUTH.REGISTER}>
+						<NavLink to={ROUTE_APP.AUTH.AUTORIZATE}>
 							<img src={iconPerson} alt="" />
 							Войти в	профиль
 						</NavLink>

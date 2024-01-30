@@ -42,9 +42,10 @@ const UserRegister: FC<IProps> = ({ formik,set }) => {
 		//formik.submitForm()
 	};
 
-	const handlerCodeSend = async (code:string,phone:string) =>{
+	const handlerCodeSend = async (code:string,phone:string,password:string) =>{
 		try {
-			const successCode = await userUseCase.authUser(phone,code)
+			const successCode = await userUseCase.authUser(phone,code,password)
+			console.log(successCode);
 
 			if(successCode){
 				navigate(ROUTE_APP.PROFILE.PROFILE_MAIN)
@@ -78,7 +79,7 @@ const UserRegister: FC<IProps> = ({ formik,set }) => {
 				<div className="auth-content__inputs">
 					<div className={CN}>
 						
-						<PinInput length={4} onChange={(value, index) => {setErrorCode(false)}}  onComplete={(value, index) => handlerCodeSend(value,formik.values.phone)} />
+						<PinInput length={4} onChange={(value, index) => {setErrorCode(false)}}  onComplete={(value, index) => handlerCodeSend(value,formik.values.phone,formik.values.password)} />
 					</div>
 					{
 						errorCode &&

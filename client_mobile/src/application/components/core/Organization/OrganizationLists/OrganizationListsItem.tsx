@@ -35,7 +35,7 @@ const OrganizationListsItem: FC<IProps> = ({ organization, setCordPoint,setPoint
 
 	const handlerSetCords = () => {
 		setCordPoint(organization.info.cords)
-		//setPointIndex(organization.guid)
+		setPointIndex(organization.guid)
 		set(false)
 	}
 
@@ -50,6 +50,7 @@ const OrganizationListsItem: FC<IProps> = ({ organization, setCordPoint,setPoint
 		}
 		useCaseOrganization.selectOrganization(organization)
 		setPointIndex(organization.guid)
+		setCordPoint(organization.info.cords)
 		set(false)
 	}
 

@@ -13,6 +13,7 @@ export function useOrganizationMapViewModel(this: any, { organizations, setCord,
 	);
 	const desc = isDesctomMediaQuery()
 
+
 		
 	useEffect(() => {
 		organizations && setCordPoint()
@@ -53,6 +54,8 @@ export function useOrganizationMapViewModel(this: any, { organizations, setCord,
 			return value.info.cords === setCord
 
 		})
+
+		
 		
 		if (index !== -1) {
 			dispatchPoint({
@@ -63,6 +66,8 @@ export function useOrganizationMapViewModel(this: any, { organizations, setCord,
 			randomPoint()
 		}
 	}
+
+	
 
 	this.data({
 		statePoint,

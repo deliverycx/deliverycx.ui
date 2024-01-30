@@ -37,7 +37,7 @@ const HOCOrderDesc = () => {
 						<HOCOrderForm paymentMetod={paymentMetod} />
 					}
 					{
-						params.pathname === ROUTE_APP.ORDER.ORDER_MAP &&
+						params.pathname.includes(ROUTE_APP.ORDER.ORDER_MAP) &&
 						<HOCDeliveryMapDesc />
 					}
 				</div>

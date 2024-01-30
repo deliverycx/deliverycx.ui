@@ -9,7 +9,7 @@ import { Desktop, Mobile, isDesctomMediaQuery } from 'application/ResponseMedia'
 type IProps = {
 	setIsOpened: any;
 	children: any;
-	theme?: "children" | null;
+	theme?: string | null;
 	styles?:string
 };
 
@@ -61,7 +61,7 @@ const ModalCard: FC<IProps> = ({ setIsOpened, children, theme,styles }) => {
 		});
 	};
 
-	const CN = cn('modalbox', { modal__bg_childen: theme });
+	const CN = cn(`modalbox`, { modal__bg_childen: theme == 'children' },{modal__bg_childenpre: theme == 'children-pre'});
 	
 
 	const wrapperRef = useRef()
@@ -96,6 +96,7 @@ const ModalCard: FC<IProps> = ({ setIsOpened, children, theme,styles }) => {
 				<div className={CN}>
 					<div className="modal__bg" onClick={handleClose}></div>
 					<div className={`modal modal_desc ${styles || ''}`}>
+						
 						{children}
 					</div>
 				</div>

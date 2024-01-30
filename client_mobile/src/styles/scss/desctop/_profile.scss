@@ -3,12 +3,23 @@
 .profile-desc{
 	display: flex;
 	padding: 30px 0;
+	
 	.profile-desc-left{
 		width: 40%;
 		margin-right: 20px;
 	}
 	.profile-desc-right{
 		width: 60%;
+		height: 100%;
+		.orders__list {
+			padding: 0;
+		}
+		.profile-desc_box{
+			height: 100%;
+			.btn{
+				width: 100%;
+			}
+		}
 	}
 
 	.profile-desc_box{
@@ -17,6 +28,7 @@
 		background-color: #fff;
 		box-shadow: 0px 4px 24px 0px rgba(0, 0, 0, 0.12); 
 		border-radius: 17px;
+		
 		.profile-desc_box-title{
 			display: flex;
 			margin-bottom: 15px;
@@ -60,7 +72,7 @@
 
 
 	.personal-box{
-		margin: 30px 0;
+		margin-top: 25px;
 		.personal-box_title{
 			color: var(--Red-Red, #8D191D); 
 			font-size: 24px;
@@ -78,5 +90,26 @@
 			font-style: normal;
 			font-weight: 700; 
 		}
+	}
+}
+
+//авториз
+.auth-content__info-title{
+	font-size: 24px;
+	font-weight: 700;
+}
+.auth-button{
+	width: 250px !important;
+}
+
+.login-container_modal{
+	background-color: #fff;
+	border-radius: 15px;
+
+	padding: 0;
+	overflow: hidden;
+	height: 480px;
+	.page-contaiter{
+		padding: 0;
 	}
 }

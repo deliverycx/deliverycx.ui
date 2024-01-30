@@ -7,6 +7,10 @@ class RequestUser extends ApiSuper {
 		return this.request<userType.IUserGuest>("/user/create");
 	}
 	@methods("post")
+	loginUser(body:userType.ILoginUser) {
+		return this.request<userType.IUserGuest>("/user/login");
+	}
+	@methods("post")
 	check(body:userType.IUser) {
 		return this.request<userType.IUserGuest>("/user/check_guest");
 	}

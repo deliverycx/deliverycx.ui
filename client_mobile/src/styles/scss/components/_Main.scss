@@ -240,9 +240,19 @@ body {
 	}
 	
 	.modal{
-		z-index: 9999;
+		z-index: 9000;
 	}
 }
+
+.modal__bg_childenpre{
+	.modal__bg{
+		z-index: 9001;
+	}
+	.modal{
+		z-index: 9002;
+	}
+}
+
 
 .price--cost {
 	display: flex;

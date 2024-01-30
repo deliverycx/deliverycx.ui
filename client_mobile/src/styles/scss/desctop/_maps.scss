@@ -2,6 +2,8 @@
 	max-width: 780px;
 	border-radius: 17px;
 	overflow: hidden;
+	background-color: #fff;
+	border-radius: 15px;
 }
 .deliverymap-desc{
 	width: 100%;
@@ -9,7 +11,7 @@
 	background-color: #fff;
 	.map__topbar{
 		width: 100%;
-		
+		box-shadow: none;
 		max-width: 100%;
 		position: relative;
 	}

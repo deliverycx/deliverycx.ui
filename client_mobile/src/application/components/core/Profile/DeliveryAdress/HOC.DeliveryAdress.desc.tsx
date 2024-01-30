@@ -19,7 +19,7 @@ const HOCDeliveryAdressDesc = () => {
 		navigate(ROUTE_APP.PROFILE.PROFILE_MAP + '/' + value.address)
 	}
 
-	console.log(params.pathname.includes(ROUTE_APP.PROFILE.PROFILE_MAP));
+	//console.log(params.pathname.includes(ROUTE_APP.PROFILE.PROFILE_MAP));
 	
 
 	return (

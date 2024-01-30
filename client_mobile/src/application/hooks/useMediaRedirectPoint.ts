@@ -11,7 +11,9 @@ export const useMediaRedirectPoint = () =>{
 	const redirectToDectPoints = () => {
 		if(!organization && descQuery){
 			navigate(ROUTE_APP.CITY)
+			return false
 		}
+		return true
 	}
 	
 	return {redirectToDectPoints}

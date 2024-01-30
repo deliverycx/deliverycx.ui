@@ -41,7 +41,7 @@ const HOCCITYDesc = () => {
 							</div>
 						</div>
 					</div>
-					<ul className="select__list">
+					<ul className="select__list select__list-desc">
 						{
 
 							cityList && cityList.length !== 0 && cityList.map((cityMass: ICity[], index: number) => {

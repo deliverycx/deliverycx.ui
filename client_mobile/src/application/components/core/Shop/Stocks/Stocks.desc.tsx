@@ -58,7 +58,7 @@ const StocksDesc:FC<{organization:IOrganization}> = ({organization}) =>{
 		if(organization.guid){
 			getStocks(organization.guid)
 		}else{
-			getStocks(process.env.NEXT_PUBLIC_DEFAULT_ORG as string)
+			getStocks(process.env.REACT_APP_DEFAULT_ORG as string)
 		}
 	},[organization])
 		/*

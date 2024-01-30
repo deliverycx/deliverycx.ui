@@ -16,4 +16,31 @@
 			margin-left: 20px;
 		}
 	}
+
+	.order-placement_general-desc{
+		padding: 5px;
+		border-radius: 17px;
+	  background: #FFF;
+	  box-shadow: 0 4px 24px 0 rgba(0, 0, 0, 0.12);
+			.order-placement__check__info{
+				border-radius: 0;
+			  background: #FFF;
+			  box-shadow:none;
+			}
+	}
+}
+
+.order_adressmodal-desc{
+	max-height: 400px;
+	top: 30% !important;
+	.modal__wrapper{
+		height: 100%;
+		.delivery-addresses__list{
+			height: 100%;
+			display: flex;
+			flex-direction: column;
+			justify-content: space-between;
+			overflow: auto;
+		}
+	}
 }

@@ -41,4 +41,8 @@ export class AppUseCase{
 	authNotificate(val:boolean){
 		this.appModel.actionAuthNotificate(val)
 	}
+
+	youCityNotificate(val:boolean){
+		this.appModel.actionYoucity(val)
+	}
 }

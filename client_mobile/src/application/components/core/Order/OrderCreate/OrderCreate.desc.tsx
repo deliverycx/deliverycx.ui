@@ -14,7 +14,7 @@ const OrderCreateDesc = () => {
 
 	return (
 		<LayoutDesctop>
-			<div className="page-contaiter">
+			<div className="page-contaiter page-contaiter-sm">
 				<div className="top-bar">
 					{
 						orderNumber ?

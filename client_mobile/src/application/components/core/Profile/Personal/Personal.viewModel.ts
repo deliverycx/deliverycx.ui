@@ -44,7 +44,7 @@ export function useProfilePersonalViewModel(this:any) {
 		if(user && user.phone){
 			profileUseCase.getProfile()
 		}else{
-			navigate(ROUTE_APP.AUTH.REGISTER)
+			navigate(ROUTE_APP.AUTH.AUTORIZATE)
 		}
 	},[user])
 

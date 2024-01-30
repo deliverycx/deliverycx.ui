@@ -1,4 +1,5 @@
 import { UserModel } from "../domain/user.model";
+import { ILoginUser } from "../interfaces/user.type";
 
 export class UserUseCase {
 	constructor(
@@ -13,18 +14,23 @@ export class UserUseCase {
 		}
 	}
 
-	async authUser(phone:string,code:string){
+	async authUser(phone:string,code:string,password:string){
 		if(this.userModel.guestUser){
 			const successCode = await this.userModel.actionAuthUser({
 				...this.userModel.guestUser,
 				phone,
-				code
+				code,
+				password
 			})
 			return successCode
 		}else{
 			return null
 		}
 		
+	}
+
+	async loginUser(bodylogin:ILoginUser){
+		return await this.userModel.actionLoginUser(bodylogin)
 	}
 
 

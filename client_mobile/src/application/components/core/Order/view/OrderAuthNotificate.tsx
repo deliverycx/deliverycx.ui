@@ -36,7 +36,7 @@ const OrderAuthNotificate: FC<{ openmodal: boolean }> = ({ openmodal }) => {
 							<div className="unauthorized__buttons">
 								
 								<button onClick={() => {
-									navigate(ROUTE_APP.AUTH.REGISTER)
+									navigate(ROUTE_APP.AUTH.AUTORIZATE)
 									appUseCase.authNotificate(true)
 								}} className="btn btn-md btn-red">Войти</button>
 								<button onClick={() => {

@@ -74,7 +74,7 @@ const OranizationWorkTime:FC<{organization:IOrganization}> = ({organization}) =>
 				</button>
 			</div>
 			{modalWork && !checktype &&
-				<ModalCard setIsOpened={setModalWork} theme="children">
+				<ModalCard setIsOpened={setModalWork} theme="children-pre">
 
 					<div className="modal__wrapper">
 						<div className="modal__header">

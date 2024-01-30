@@ -1,7 +1,7 @@
 import { action, makeObservable, observable } from "mobx";
 import { UserRepository } from "../data/user.repository";
 import { makePersistable } from "mobx-persist-store";
-import { IUpdateData, IUser, IUserGuest } from "../interfaces/user.type";
+import { ILoginUser, IUpdateData, IUser, IUserGuest } from "../interfaces/user.type";
 
 export class UserModel extends UserRepository{
 	guestUser:IUser | null = null
@@ -58,6 +58,24 @@ export class UserModel extends UserRepository{
 			return user
 		}
 	}
+
+	async actionLoginUser(user:ILoginUser){
+		try {
+			const result = await this.repositoryLoginUser(user)
+			if(result){
+				this.guestUser = result
+			}else{
+				this.guestUser = null
+			}
+			return result
+			
+		} catch (error) {
+			console.log(error);
+			this.guestUser = null
+			return null
+		}
+	}
+
 
 	async actionLogoutUser(){
 		this.guestUser = null

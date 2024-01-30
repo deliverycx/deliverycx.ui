@@ -8,11 +8,18 @@ export interface IUserGuest {
 	id: string
 	username: string
 	phone?:string
+	password?:string
 }
 export interface IUpdateData {
 	id: string
 	username: string
 	phone: string;
 	code:string
+	password:string
 }
+export type ILoginUser = {
+	phone: string;
+	password:string
+}
+
 export type IUser = UserDTO
