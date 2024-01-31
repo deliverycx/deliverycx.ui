@@ -10,6 +10,7 @@ import { useCityViewModel } from "./useCity.viewModel"
 import CityListView from "./view/CityListView"
 import { useLocation } from 'react-router-dom';
 import { ROUTE_APP } from './../../../contstans/route.const';
+import { observer } from 'mobx-react-lite';
 
 const HOCCITYDesc = () => {
 	const useCase = adapterComponentUseCase(useCityViewModel)
@@ -76,4 +77,4 @@ const HOCCITYDesc = () => {
 		</>
 	)
 }
-export default HOCCITYDesc
+export default observer(HOCCITYDesc) 

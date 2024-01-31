@@ -203,7 +203,7 @@ const AppRouter = () => {
 					}
 
 					)}
-					
+					<Route path="*" element={<Navigate to="" />} />
 				</Routes>
 			</Desktop>
 			<Mobile>
@@ -214,7 +214,7 @@ const AppRouter = () => {
 					}
 
 					)}
-					
+					<Route path="*" element={<Navigate to="" />} />
 				</Routes>
 			</Mobile>
 		</>
