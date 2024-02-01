@@ -14,7 +14,7 @@ type IProps = {
 
 }
 const CounterHiModal:FC<IProps> = ({setIsModalOpen}) =>{
-	const {phone,address,city} = adapterSelector.useSelectors(selector => selector.point)
+	const {phone,address,city,guid} = adapterSelector.useSelectors(selector => selector.point)
 	const [count, setCount] = useState<any>('000000000000');
 	const [tik, setTik] = useState<boolean>(false);
 	const [load, setLoad] = useState<boolean>(false);
@@ -100,12 +100,22 @@ const CounterHiModal:FC<IProps> = ({setIsModalOpen}) =>{
 
 	console.log("load",count);
 
+	function dtime_nums(e: any) {
+		// eslint-disable-next-line no-var
+		var n = new Date;
+		n.setDate(n.getDate() + e);
+		return format(n, "yyy-LL-dd") //n.toLocaleDateString();
+	}
+
 	const getFlip =  async () =>{
 		setLoad(true)
+		
+		
 		const time = format(new Date(), "yyy-LL-dd")
-		const {data} = await RequestWebhook.flip({
-			time,phone
-		})
+			const oldtime = dtime_nums(-1)
+			const { data } = await RequestWebhook.flip({
+				time, oldtime, phone
+			})
 		if(data){
 			setLoad(false)
 			const zeroLength = 12;
