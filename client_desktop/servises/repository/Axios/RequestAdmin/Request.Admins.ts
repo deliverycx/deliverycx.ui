@@ -24,5 +24,13 @@ class RequestAdmin extends ApiAdminSuper {
   async getHiddenProducts(organization: {organization: string}) {
     return this.request<any>(`/organizationProduct/hiddenProducts`)
   }
+	@methods('get')
+	getOraganizationCount(orgid:string){
+		return this.request<any>(`/counterhinkal/buorg?organization=${orgid}`)
+	}
+	@methods('post')
+	setOraganizationCount(body:any){
+		return this.request(`/counterhinkal/setcount`)
+	}
 }
 export default new RequestAdmin()
