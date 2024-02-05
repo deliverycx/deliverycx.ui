@@ -29,7 +29,8 @@ export class OrganizationStatusModel extends OrganizationStatusRepository{
 		if(point){
 			const observableStatus = this.getOrganizationStatus(point.guid)
 			observableStatus.subscribe((data: IPointStatus) => {
-				const time = this.timeWorkOrganizationEntiti(point.workTime)
+				const time = this.timeWorkOrganizationEntiti(point.workTime,point.guid)
+				
 				const deliverytypes = this.deliveryTypesMetod(data.deliveryMetod)
 				this.deliveryTipe =  this.changesDeliveryType(deliverytypes,time,this.selectDeliveryTipe)
 				this.organizationStatus = data.organizationStatus

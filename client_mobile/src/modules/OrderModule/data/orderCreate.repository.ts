@@ -18,11 +18,9 @@ export class OrderCreateRepository extends OrderCreateEntity {
 
 	async repositoryOrderHasRedis(orderhash:string){
 		try {
-			const {data} = await orderCreateRequest.getOrderHashRedis(orderhash)
-
-			if(data && data === orderhash){
-				const orderNumb = await this.repositoryGetOrder(orderhash)
-				return orderNumb
+			const {data} = await orderCreateRequest.getOrder(orderhash)
+			if(data && data.orderHash === orderhash){
+				return data
 			}
 		} catch (error) {
 			console.log(error);
@@ -40,19 +38,22 @@ export class OrderCreateRepository extends OrderCreateEntity {
 
 	async repositoryCreateOrder(orderBody:any,pay = false){
 		try {
-			if(pay){
-				const {data} = await orderCreateRequest.OrderCreatePayment(orderBody)
-				
-				return data
-			}else{
-				const {data} = await orderCreateRequest.OrderCreate(orderBody)
-				console.log(data);
-				return data
-			}
+			const {data} = await orderCreateRequest.OrderCreate(orderBody)
+		
+			return data
 		} catch (error) {
 			console.log(error);
 		}
 		
+	}
+
+	async repositoryCreatePayment(orderBody:any){
+		try {
+			const {data} = await orderCreateRequest.CreatePayment(orderBody)
+			return data
+		} catch (error) {
+			console.log(error);
+		}
 	}
 
 }

@@ -83,7 +83,7 @@ const OrganizationStatus:FC<{organization:IOrganization}> = ({organization}) => 
 				<span className="bold">Заказ на сайте временно не доступен. Оформить заказ вы можете по телефону.</span>
 				<strong>Приносим извинения за неудобства!</strong>
 				<p>
-				На сайте вы можете посмотреть наше меню, контакты и забронировать столик. Ждем вас в гости!
+				На сайте вы можете посмотреть наше меню, контакты. Ждем вас в гости!
 				</p>
 				<a href={`tel:${point?.info.phone}`} className="btn btn-sm btn-red no-drag">
 					<img src={require('assets/images/icons/phonewite.png')} alt="" />
@@ -109,6 +109,7 @@ const OrganizationStatus:FC<{organization:IOrganization}> = ({organization}) => 
 			<div className="order-placement__tabs__notification">
 				<h3>Хинкальная закрылась</h3>
 				<h5>Оформить доставку можно с {timeworkOrganization?.todaytime[0]} - {timeworkOrganization?.todaytime[1]}</h5>
+				
 				<small>А пока вы можете ознакомиться с нашим меню и почитать новости на главной странице</small>
 			</div>
 		</div>

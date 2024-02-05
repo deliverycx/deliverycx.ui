@@ -3,6 +3,6 @@ export const Redirects = async (adress:any) =>{
 console.log(adress.redirectON);
 	if(adress.redirect.redirectON){
 		
-		window.location.href = `https://м.доставка.хинкалыч.рф/shop?organuzation=${adress.redirectUrl}`
+		window.location.href = `https://м.доставка.хинкалыч.рф/shop?organuzation=${adress.redirect.redirectUrl}`
 	}
 }

@@ -37,7 +37,7 @@ const ShopList:FC<IProps> = ({nomenclatureCategories,nomenclatureProducts}) => {
                             return (
                                 <Element key={i} name={category.id}>
                                     <div className="title">{category.name}</div>
-                                    <ShopProducts nomenclatureProducts={filteredArr ?? []} idCategory={category.id} />
+                                    <ShopProducts nomenclatureProducts={filteredArr ?? nomenclatureProducts} idCategory={category.id} />
                                 </Element>
 
                             )

@@ -70,10 +70,12 @@ export class OrderCreateUseCase {
 		const resultOrder = await orderCreateRepository.repositoryOrderHasRedis(hash)
 		if (!resultOrder) {
 			const body = this.createOrderFabric(hash)
-			await this.orderCreateMetod(body)
+			//await this.orderCreateMetod(body)
+			await this.orderCreateModel.repositoryCreateOrder(body)
 			return null
 		} else {
-			return resultOrder && resultOrder.orderNumber
+			//await this.createPayment(resultOrder)
+			return resultOrder
 			//this.orderCreateModel.actionSetOrderNumber(orderNumber)
 		}
 	}
@@ -89,6 +91,21 @@ export class OrderCreateUseCase {
 			}
 		} else {
 			await this.orderCreateModel.repositoryCreateOrder(body)
+		}
+	}
+
+	async createPayment(body: any){
+		console.log('pay',body);
+		if (body && body.orderParams.paymentMethod === PAYMENT_METODS.CARD && body.orderStatus === "Success") {
+			const pay = await this.orderCreateModel.repositoryCreatePayment(body)
+			if (pay && pay.redirectUrl) {
+				if (typeof pay.redirectUrl === 'string') {
+					window.location.href = pay.redirectUrl;
+				}
+
+			}else{
+				return null
+			}
 		}
 	}
 }

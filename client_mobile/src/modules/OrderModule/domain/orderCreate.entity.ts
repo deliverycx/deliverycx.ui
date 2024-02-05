@@ -80,7 +80,8 @@ export class OrderCreateBodyEntity{
 
 		const result = {
 			orderType: orderType.metod,
-			orderAmount:orderPrice.totalPrice
+			orderAmount:orderPrice.totalPrice,
+			orderTotalAmount:orderPrice.totalPrice
 		}
 
 		this.orderStates = result

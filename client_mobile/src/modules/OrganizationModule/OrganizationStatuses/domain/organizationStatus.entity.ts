@@ -15,14 +15,15 @@ export class OrganizationStatusEntiti {
 		}
 	}
 
-	timeWorkOrganizationEntiti(work: string[] | string): IWorkTimePoint {
+	timeWorkOrganizationEntiti(work: string[] | string,pointid?:string): IWorkTimePoint {
 		let typework: "WORK" | "NOWORK" | "ONWORK"
 		let todaytime: string[] = []
 
-		const worktime = workTimeHelp(work)
-		const onworktime = delivertyTime(work, 60)
+		const worktime = workTimeHelp(work,pointid)
+		
+		const onworktime = delivertyTime(work, 60,pointid)
 
-		const today = workTimeCheck(work)
+		const today = workTimeCheck(work,pointid)
 		if (today) {
 			todaytime = today.split('-')
 		}
