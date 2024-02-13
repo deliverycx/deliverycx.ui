@@ -8,7 +8,7 @@ import LoaderProduct from "application/components/common/Loaders/loaderProduct";
 const OrderCreate = () => {
 
 	const useCase = adapterComponentUseCase(useOrderCreateViewModel)
-	const { orderNumber, orderLoad,payError } = useCase.data
+	const { orderNumber, orderLoad,pay } = useCase.data
 	const {navigate} = useCase.handlers
 
 
@@ -57,7 +57,16 @@ const OrderCreate = () => {
 							В ближайшее время с вами свяжется наш администратор и уточнит детали
 						</div>
 						{
-							payError &&
+							typeof pay === 'string' &&
+							<div className="order-accepted__content-title">
+								Сейчас вы будите перенаправлены, на страницу оплаты <br />
+                если этого не произошло нажмите <a href={pay}>здесь</a>
+
+								
+							</div>
+						}
+						{
+							!pay &&
 							<div className="order-accepted__content-title"><strong>Внимание!</strong> Ошибка при обработке оплаты</div>
 						}
 					</div>
