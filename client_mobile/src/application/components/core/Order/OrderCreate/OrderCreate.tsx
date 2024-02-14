@@ -57,7 +57,7 @@ const OrderCreate = () => {
 							В ближайшее время с вами свяжется наш администратор и уточнит детали
 						</div>
 						{
-							typeof pay === 'string' &&
+							pay &&
 							<div className="order-accepted__content-title">
 								Сейчас вы будите перенаправлены, на страницу оплаты <br />
                 если этого не произошло нажмите <a href={pay}>здесь</a>
@@ -66,7 +66,7 @@ const OrderCreate = () => {
 							</div>
 						}
 						{
-							!pay &&
+							pay === 'error' &&
 							<div className="order-accepted__content-title"><strong>Внимание!</strong> Ошибка при обработке оплаты</div>
 						}
 					</div>

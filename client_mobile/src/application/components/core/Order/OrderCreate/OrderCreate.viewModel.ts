@@ -61,12 +61,12 @@ export function useOrderCreateViewModel() {
 				if(pay && typeof pay === 'string'){
 					setPay(pay)
 				}else{
-					setPay(false)
+					setPay('error')
 				}
 				
 			}
 		} catch (error) {
-			setPay(false)
+			setPay('error')
 		}
 		
 	}
