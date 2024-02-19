@@ -102,7 +102,7 @@ export class OrderCreateUseCase {
 				if (typeof pay.redirectUrl === 'string') {
 					window.location.href = pay.redirectUrl;
 				}
-
+				return pay.redirectUrl
 			}else{
 				return null
 			}

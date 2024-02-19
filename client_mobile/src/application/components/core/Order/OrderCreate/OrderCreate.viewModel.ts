@@ -15,7 +15,7 @@ export function useOrderCreateViewModel() {
 
 	const [orderNumber,setOrderNumber] = useState<null | number>(null)
 	const [orderLoad, setOrderLoad] = useState(true);
-	const [payError,setPayError] = useState(false)
+	const [pay,setPay] = useState<string | boolean >(false)
 
 
 	
@@ -58,10 +58,15 @@ export function useOrderCreateViewModel() {
 		try {
 			if(result && result.orderNumber && result.orderParams.paymentMethod === PAYMENT_METODS.CARD && !result.payment){
 				const pay = await orderCreateUseCase.createPayment(result)
-				!pay && setPayError(true)
+				if(pay && typeof pay === 'string'){
+					setPay(pay)
+				}else{
+					setPay('error')
+				}
+				
 			}
 		} catch (error) {
-			setPayError(true)
+			setPay('error')
 		}
 		
 	}
@@ -109,7 +114,7 @@ export function useOrderCreateViewModel() {
 	this.data({
 		orderNumber,
 		orderLoad,
-		payError
+		pay
 	});
 	this.handlers({
 		navigate
