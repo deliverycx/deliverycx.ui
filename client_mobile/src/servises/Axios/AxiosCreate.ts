@@ -34,6 +34,7 @@ class AxiosCreate {
                 config.headers.Authorization = `Bearer ${token}`;
             }
 
+						config.headers.localhost = `${document.location.protocol}//${document.location.host}`
             return config;
         });
         
