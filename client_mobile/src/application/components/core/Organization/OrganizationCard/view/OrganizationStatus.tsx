@@ -121,7 +121,7 @@ const OrganizationStatus:FC<{organization:IOrganization}> = ({organization}) => 
 			<div className="order-placement__tabs__notification">
 				<h3>Хинкальная скоро закроется</h3>
 				<h4>Но вы ещё успеваете воспользоваться самовывозом</h4>
-				<h5>Оформить доставку можно с {timeworkOrganization?.todaytime[0]} - {timeworkOrganization?.todaytime[1]}</h5>
+				<h5>Оформить заказ можно с {timeworkOrganization?.todaytime[0]} - {timeworkOrganization?.todaytime[1]}</h5>
 				<small>А пока вы можете ознакомиться с нашим меню и почитать новости на главной странице</small>
 			</div>
 		</div>
