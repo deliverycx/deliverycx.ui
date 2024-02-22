@@ -63,6 +63,7 @@ export class OrderCreateBodyEntity{
 		const result = {
 			organizationid: organization.guid,
 			organization: organization.guid,
+			terminal:organization.temital,
 			localhost:`${document.location.protocol}//${document.location.host}`,
 			hash:hashCode,
 			userid:userid,

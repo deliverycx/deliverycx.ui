@@ -62,6 +62,7 @@ class CreateOrder{
 	bodyOrder(hashCode:string,userid:string){
 		const result = {
 			organization: this.selectLocationPoint.guid,
+			terminal:this.selectLocationPoint.terminal,
 			name: this.selectCart.orderInfo.name,
       date:`${format(new Date(), 'yyyy-MM-dd')} ${new Date().toLocaleTimeString()}`,
 			phone: this.selectCart.orderInfo.phone,

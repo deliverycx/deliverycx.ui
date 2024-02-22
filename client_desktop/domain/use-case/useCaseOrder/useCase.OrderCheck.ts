@@ -13,7 +13,7 @@ export function useOrderCheck(this:any) {
 	const router = useRouter()
   const dispatch = useDispatch()
 
-	const {guid} = adapterSelector.useSelectors(selector => selector.point)
+	const {guid,terminal} = adapterSelector.useSelectors(selector => selector.point)
 	const user = adapterSelector.useSelectors(selector => selector.profile)
 
 	const handlerSubmitOrder = async (value:IInitialValues) =>{
@@ -22,7 +22,8 @@ export function useOrderCheck(this:any) {
 			const request =  await dispatch(fetchOrderCart({
 				organizationid: guid,
 				address: value,
-				userid:user.id
+				userid:user.id,
+				terminal:terminal
 			}) as any);
 			
 			if (request.payload && request.payload.data) {

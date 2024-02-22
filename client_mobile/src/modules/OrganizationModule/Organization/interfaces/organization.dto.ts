@@ -31,8 +31,13 @@ export class OrganizationDTO{
 	@IsString()
 	guid!:string
 
+	@IsString()
+	temital!:string
+
 	@IsOptional()
 	delivery!: string | null
+
+
 
 	@IsArray()
 	gallery!:string[] | []
@@ -48,6 +53,7 @@ export const organizationMapper = (p:IOrganizationResponse[] | IOrganizationResp
 	return mappersDTO<IOrganizationResponse,OrganizationDTO>(p,(val)=>{
 		organizationDTO.id = val.id
 		organizationDTO.guid = val.guid
+		organizationDTO.temital =  val.terminal
 		organizationDTO.info = {
 			address:val.address,
 			cords:val.cords,

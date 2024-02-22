@@ -25,14 +25,17 @@ class AxiosCreate {
             }
         );
 
-        this.api.interceptors.request.use((config: AxiosRequestConfig) => {
+        this.api.interceptors.request.use((config: any) => {
             const token = localStorage.getItem("authToken");
 
             if (token && config.headers) {
                 config.headers.Authorization = `Bearer ${token}`;
             }
 
+						config.headers.localhost = `${document.location.protocol}//${document.location.host}`
             return config;
+
+            
         });
         /**/
     }
