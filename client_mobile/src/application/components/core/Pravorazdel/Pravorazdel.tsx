@@ -33,6 +33,11 @@ const Pravorazdel = () => {
                     <a href="/docs/Порядок_приобретения_и_использования_Подарочных_сертификатов_1_1.docx" target='_blank'>Порядок приобретения и использования Подарочных сертификатов</a> </div>
                 <br/>
 
+								<div className={'href_mobile'}>
+                    <a href="https://disk.yandex.ru/d/4kazVwmdSm85HQ" target='_blank'>Правила посещения хинкальной</a> </div>
+                <br/>
+								
+
                 <div className={'href_mobile'}>
                     <a href="/docs/Региональная%20Акция%20Приведи%20друга.pdf" target='_blank'>Региональная акция- Приведи друга</a> </div>
             </div>

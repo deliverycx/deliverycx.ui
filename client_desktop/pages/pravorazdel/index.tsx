@@ -49,6 +49,10 @@ const Pravorazdel = () => {
                         </div>
                         <br/>
 
+												<div className={'href'}>
+				                    <a href="https://disk.yandex.ru/d/4kazVwmdSm85HQ" target='_blank'>Правила посещения хинкальной</a> </div>
+				                <br/>
+
                         <div className={'href'}>
                             <a href="https://drive.google.com/file/d/1HRqHJvBBw0M-mRymYDmbTYPxDbwoNvj3/view" target='_blank'>Региональная акция- Приведи друга</a>
                         </div>
