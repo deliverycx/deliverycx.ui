@@ -8,6 +8,7 @@ import { useRouter } from "next/router"
 import { useState, useEffect } from "react"
 import { adapterSelector } from "servises/redux/selectors/selectors"
 import { RequestWebhook } from "servises/repository/Axios/Request"
+import RequestLocation from "servises/repository/Axios/Request/Request.Location"
 import { RequestAdmin } from "servises/repository/Axios/RequestAdmin"
 
 const CouterPage = () =>{
@@ -16,16 +17,17 @@ const CouterPage = () =>{
 	const [count, setCount] = useState<any>('000000000000');
 	const [tik, setTik] = useState<boolean>(false);
 	const [load, setLoad] = useState<boolean>(false);
+	const [org, setOrg] = useState<any>(null);
 
 	const router = useRouter()
 	const pageid = router.query.id as string
 
-	console.log(pageid);
+	//console.log(pageid);
 	/**/
 	useEffect(() => {
 		let timer: any
 		let timercoutn: any
-		(async () => {
+		org && (async () => {
 			let numbFlip = await getFlip()
 
 
@@ -67,9 +69,9 @@ const CouterPage = () =>{
 					}, 1)
 				}*/
 			}
-			async function organizationCoutn(guid: string) {
+			async function organizationCoutn(id: string) {
 
-				const { data: countorg } = await RequestAdmin.getOraganizationCount(guid)
+				const { data: countorg } = await RequestAdmin.getOraganizationCount(id)
 				if (countorg) {
 					const today = format(new Date(), "yyy-LL-dd")
 					if (today !== countorg.date) {
@@ -99,8 +101,8 @@ const CouterPage = () =>{
 
 
 			/**/
-			if (numbFlip && guid) {
-				await organizationCoutn(pageid || guid)
+			if (numbFlip && org) {
+				await organizationCoutn(org.guid)
 				/*
 				timercoutn = setInterval(async () => {
 					console.log('iiiiiiii');
@@ -112,12 +114,27 @@ const CouterPage = () =>{
 			
 
 		})();
-
+		//console.log(org);
 		return () => {
 			clearTimeout(timer)
 			clearInterval(timercoutn)
 		}
-	}, [])
+	}, [org,pageid])
+
+
+	const getOrg = async (id:string) =>{
+		try {
+			const {data} = await RequestLocation.geBuOrg(id)
+			setOrg(data)
+		} catch (error) {
+			
+		}
+	}
+
+	useEffect(()=>{
+		
+		pageid && getOrg(pageid)
+	},[pageid])
 
 
 
@@ -139,7 +156,7 @@ const CouterPage = () =>{
 			const time = format(new Date(), "yyy-LL-dd")
 			const oldtime = dtime_nums(-1)
 			const { data } = await RequestWebhook.flip({
-				time, oldtime, phone
+				time, oldtime, phone:org.phone
 			})
 			//console.log('сьедено за сегодня', data);
 			if (data) {
