@@ -23,7 +23,8 @@ const Home: NextPage = () => {
 							<script src='/met2.js'/>
 							<noscript><img src="https://vk.com/rtrg?p=VK-RTRG-1599244-vAKY" className="metrika" alt=""/></noscript>
 							<script src='/yan.js'/>
-							<noscript><div><img src="https://mc.yandex.ru/watch/91135511" className="metrika" /></div></noscript>
+							<noscript><div><img src="https://mc.yandex.ru/watch/96158823" className="metrika" alt="" /></div></noscript>
+						
 						</Head>
             <LocationLayout />
             <div className="container">

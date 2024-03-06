@@ -21,7 +21,7 @@ const PointWorkTimeModal = () => {
                 </div>
                 <div className="attention-info">
                     Наша хинкальная сейчас закрыта.<br/>
-										Оформить заказ можно: <span>{workTimeCheck(selectedPoint.workTime)}</span>
+										Оформить заказ можно: <span>{workTimeCheck(selectedPoint.workTime,selectedPoint.guid)}</span>
                 
                     </div>
                 <div className="secondary-text">

@@ -22,7 +22,7 @@ const Ordering: FC = (): JSX.Element => {
           <div className="cart_title-box">
               <h2 className="cart_title">Ваш заказ обрабатывается</h2>
            </div>   
-            <div className="cart_list">
+            <div className="cart_list orderload">
               <LoaderProduct />
             </div>
             

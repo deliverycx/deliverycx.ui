@@ -15,6 +15,7 @@ import { useCallback, useEffect, useMemo, useReducer } from "react";
 import { useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom";
 import { adapterSelector } from "servises/redux/selectors/selectors";
+import { setOrderInfo } from "servises/redux/slice/cartSlice";
 import { setAdress, setCordAdress, setKladrId } from "servises/redux/slice/cartSlice";
 import RequestWebhook from "servises/repository/Axios/Request/Request.Webhook";
 import { useGetDeliveryZonesQuery } from "servises/repository/RTK/RTKCart";
@@ -27,7 +28,7 @@ export function useCartMap() {
         (selector) => selector.point,
         (val) => val.cords
     );
-    const { address } = adapterSelector.useSelectors(
+    const { orderInfo  } = adapterSelector.useSelectors(
         (selector) => selector.cart
     );
     const { city,guid,address:pointadress } = adapterSelector.useSelectors((selector) => selector.point);
@@ -46,13 +47,13 @@ export function useCartMap() {
 
     useEffect(() => getGeoLoc(), [pointCords]);
     useEffect(() => {
-        if (address) {
+        if (orderInfo.address) {
             dispatchMap({
                 type: ReducerActionTypePoints.setValueMap,
-                payload: address
+                payload: orderInfo.address
             });
         }
-    }, [address]);
+    }, [orderInfo.address]);
 
     const mapstate = useMemo(() => {
         return { center: stateReduceMap.stateMap, zoom: 17 };
@@ -93,7 +94,7 @@ export function useCartMap() {
 
         axios
             .get<IGeoCodeResponse>(
-                `https://geocode-maps.yandex.ru/1.x/?geocode=${cords.reverse()}&format=json&apikey=e45f9cf9-d514-40a5-adb9-02524aaef83f`
+                `https://geocode-maps.yandex.ru/1.x/?geocode=${cords.reverse()}&format=json&apikey=473431c9-b8f6-45d6-a166-243a0152c68b`
             )
             .then(({ data }) => {
                 geoCodeValidAdress(
@@ -159,7 +160,7 @@ export function useCartMap() {
      */
     const hendleMapPopup = async () => {
         if (
-            (stateReduceMap.valueMap || address) &&
+            (stateReduceMap.valueMap || orderInfo.address) &&
             !stateReduceMap.disclaimer
         ) {
 
@@ -169,11 +170,12 @@ export function useCartMap() {
 						const findstreet = ikkostreet.some(element => element.classifierId === kladrid && !element.isDeleted);
 						
 						if(findstreet){
-							dispatch(setKladrId(kladrid)) 
+							dispatch(setOrderInfo({kladrid:kladrid})) 
 						}else{
 							const pointKladrId = await daData(`${city}, ${pointadress}` )
-							dispatch(setKladrId(pointKladrId)) 
+							dispatch(setOrderInfo({kladrid:pointKladrId})) 
 						}
+						dispatch(setOrderInfo({address:stateReduceMap.valueMap}));
 						dispatch(setCordAdress(stateReduceMap.stateMap))
 						dispatch(setAdress(stateReduceMap.valueMap));
 						history.push(ROUTE_APP.CART.CART_DELIVERY);

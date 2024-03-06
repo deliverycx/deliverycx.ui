@@ -18,6 +18,7 @@ const CityList = () => {
 
 		if (cities) sortedCities = cities.slice().sort((a: { name: string; }, b: { name: string; }) => a.name > b.name ? 1 : -1);
 
+		
     return (
         <div className="container welcome__city-list">
             <div className="welcome__search">

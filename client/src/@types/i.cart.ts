@@ -1,21 +1,27 @@
 import { IProduct } from "@types";
 
 export interface ICart {
+		orderInfo:IInitialValues
     totalPrice: number;
     address: string;
 		kladrid:string
 		cordAddress:[number,number]
     orderError: ICheckoutError;
     orderNumber: ICheckout;
-    deliveryPrice: number;
-    deltaPrice: number;
     orderType:string;
 		loadingDiscount:boolean;
+		orderPrice:IOrderPrice
 		orderTable:{
 			id:string
 			numb:number
 			section:string
 		}
+}
+
+export interface IOrderPrice {
+	deliveryPrice: number;
+  deltaPrice: number;
+	totalPrice:number;
 }
 
 export interface ICheckout {
@@ -30,11 +36,12 @@ export interface IInitialValues {
     name: string;
     phone: string;
     address: string;
+		house:string;
     flat: string;
     intercom: string;
     entrance: string;
     floor: string;
-    notCall: boolean;
+		kladrid:string
 }
 export interface ISubmitData extends IInitialValues {
     payment: any;

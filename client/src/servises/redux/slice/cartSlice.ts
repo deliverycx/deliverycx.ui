@@ -3,13 +3,14 @@ import {
     createEntityAdapter,
     createSlice
 } from "@reduxjs/toolkit";
-import { IReqCart } from "@types";
+import { IProduct, IReqCart } from "@types";
 import { AxiosError } from "axios";
 import CartEntities from "domain/entities/CartEntities/Cart.entities";
 import { RequestCart } from "servises/repository/Axios/Request";
 import { RTKCart } from "servises/repository/RTK/RTKCart";
 import { AppDispatch, RootState } from "../createStore";
 import { actionPaymentAccsess, actionPaymentReady } from "./bankCardSlice";
+import { DefaultinitialValues } from "application/components/core/Cart/CartForm/CartForm";
 
 const cartAdapter = createEntityAdapter<IReqCart>({
     selectId: (product) => product.id
@@ -21,7 +22,7 @@ export const cartSelector = cartAdapter.getSelectors(
 
 const helperOrderType = (getState: any) : {orderType:string,organization:string} => {
     const state = getState() as RootState
-		console.log('orderrr ---',state.cart.orderType);
+
     return {orderType:state.cart.orderType,organization:state.location.point.guid}
 }
 
@@ -72,10 +73,10 @@ export const fetchRefreshCart = createAsyncThunk(
 );
 export const fetchAddToCart = createAsyncThunk(
     "cart/add",
-    async (id: string, { dispatch, getState,rejectWithValue }) => {
+    async (product: IProduct, { dispatch, getState,rejectWithValue }) => {
         try {
             const state = getState() as RootState
-            const request = await RequestCart.addToCart({ productId: id,...helperOrderType(getState) });
+            const request = await RequestCart.addToCart({product,...helperOrderType(getState) });
             if (request.status == 200 && request.data) {
                 dispatch(addCart(request.data.item));
                 dispatch(
@@ -161,19 +162,38 @@ export const fetchDeleteCart = createAsyncThunk(
         }
     }
 );
+
+export const fetchDectroyCart = createAsyncThunk(
+	"cart/deleteAll",
+	async (_, { dispatch, rejectWithValue }) => {
+			try {
+					const request = await RequestCart.deleteCart();
+					if (request.status == 200) {
+							dispatch(deleteCart());
+							dispatch(setOrderInfo(DefaultinitialValues))
+							dispatch(
+									setTotalPrice({
+											totalPrice: 0,
+											deltaPrice: 0,
+											deliveryPrice:0
+									})
+							);
+							dispatch(setOrderTable(null))
+							
+					}
+			} catch (error: any) {
+					return rejectWithValue(error.response.data);
+			}
+	}
+);
 export const fetchOrderCart = createAsyncThunk(
     "cart/order",
     async (value: any, { dispatch, rejectWithValue }) => {
       try {
         
-            const request = await RequestCart.OrderCheckCart(value);
-            if (request.data && request.status === 200) {
-                const order = await RequestCart.OrderCart(value);
-                
-                dispatch(actionPaymentAccsess());
-                return order.data 
-								
-            }
+            const request:any = await RequestCart.OrderCheckCart(value);
+						return request
+            
         } catch (error: any) {
             // Ошибка валидации по количеству
             dispatch(actionPaymentReady(false));
@@ -209,11 +229,12 @@ const cartSlice = createSlice({
 				setKladrId: (state, action) => {
 					state.kladrid = action.payload;
 				},
+				setOrderInfo: (state, action) => {
+					state.orderInfo = {...state.orderInfo,...action.payload};
+				},
 
         setTotalPrice: (state, action) => {
-            state.totalPrice = action.payload.totalPrice;
-            state.deltaPrice = action.payload.deltaPrice;
-            state.deliveryPrice = action.payload.deliveryPrice;
+					state.orderPrice = action.payload;
         },
         setErrors: (state, action) => {
             state.orderError = action.payload.errors;
@@ -254,6 +275,7 @@ export const {
     removeCart,
     deleteCart,
     setAdress,
+		setOrderInfo,
 		setCordAdress,
 		setKladrId,
     setTotalPrice,

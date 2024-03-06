@@ -8,9 +8,16 @@ import ShopLayout from "application/components/core/Shop/ShopLayout";
 
 import type { NextPage } from "next";
 import { useDispatch } from "react-redux";
+import { useEffect } from 'react';
+import { fetchUser } from "servises/redux/slice/profileSlice";
 
 const Home: NextPage = () => {
   
+	const dispatch = useDispatch();
+
+	useEffect(()=>{
+		dispatch(fetchUser() as any)
+	},[])
     return (
         <>
             <LocationLayout />

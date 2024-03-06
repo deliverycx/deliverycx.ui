@@ -4,7 +4,7 @@ import logger from 'redux-logger'
 import { createTransform, persistReducer, persistStore } from 'redux-persist';
 import storage from 'redux-persist/lib/storage'
 import { authApi, AUTH_API_REDUCER_KEY } from 'servises/repository/RTK/RTKAuth';
-import { fetchUser } from './slice/profileSlice';
+import profileSlice, { fetchUser } from './slice/profileSlice';
 import { LOCATION_API_REDUCER_KEY, RTKLocation } from 'servises/repository/RTK/RTKLocation';
 import locationSlice from './slice/locationSlice';
 import { CATEGORIES_API_REDUCER_KEY, RTKCategories } from 'servises/repository/RTK/RTKCategories';
@@ -25,7 +25,7 @@ const persistConfig = {
     CATEGORIES_API_REDUCER_KEY,
     SHOP_API_REDUCER_KEY,
     ShopSlice.name,
-    bankCardSlice.name
+    bankCardSlice.name,
   ],
   transforms: [
     createTransform(
@@ -39,6 +39,7 @@ const persistConfig = {
         whitelist: [
           locationSlice.name,
           cartSlice.name,
+					profileSlice.name
         ]
       }
     )
@@ -54,7 +55,8 @@ const createRootReducer = combineReducers({
   [locationSlice.name]: locationSlice.reducer,
   [ShopSlice.name]: ShopSlice.reducer,
   [cartSlice.name]: cartSlice.reducer,
-  [bankCardSlice.name]:bankCardSlice.reducer
+  [bankCardSlice.name]:bankCardSlice.reducer,
+	[profileSlice.name]:profileSlice.reducer
 })
 
 const persistedReducer = persistReducer(persistConfig, createRootReducer);
@@ -82,7 +84,7 @@ const store = configureStore({
 })
 
 const persistor = persistStore(store, undefined, async () => {
-  await store.dispatch(fetchUser() as any)
+  //await store.dispatch(fetchUser() as any)
   //await store.dispatch(fetchAllCart() as any) 
 });
 

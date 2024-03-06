@@ -2,10 +2,7 @@
 import { ApiSuper, methods, token } from "../AxiosApi";
 
 namespace Req{
-  export type  Favorites = {
-    isFav: boolean
-    product:string
-  }
+  export type  Favorites = []
 }
 namespace Res{
   export type Favorites = {
@@ -18,8 +15,13 @@ namespace Res{
 class RequestShop extends ApiSuper {
  
   @methods('put')
-  addFavorites(productId:Res.Favorites) {
-    return this.request<Req.Favorites>(`/favorite/click`)
+  addFavorites(productId:any) {
+    return this.request<any>(`/favorite/click`)
+  }
+
+	@methods('get')
+  getFavorites() {
+    return this.request<Req.Favorites>(`/product/favorites`)
   }
 }
 export default new RequestShop()

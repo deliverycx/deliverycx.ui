@@ -75,7 +75,7 @@ export const mokPoint = [
 
 const placeMarkOption = {
   iconLayout: 'default#image',
-  iconImageHref: require("assets/i/placemark.svg").default,
+  iconImageHref: '',
   iconImageSize: [50, 60],
   iconImageOffset: [-25, -60]
 }

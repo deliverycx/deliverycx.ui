@@ -4,24 +4,28 @@ import { useEffect, useState, useCallback } from 'react';
 import { useGetProductCartQuery } from "servises/repository/RTK/RTKShop";
 import { setProductItem } from "servises/redux/slice/shopSlice";
 import { useDispatch } from "react-redux";
+import { IProduct } from '@types';
 
 export function useCaseShopCard(this: any, category: string) {
   const dispatch = useDispatch()
-  const [id,setId] = useState(true)
+  const [modal,setModal] = useState(true)
+	const [product,setProduct] = useState<IProduct | null>(null)
   const { productid } = adapterSelector.useSelectors(selector => selector.shop)
+	/*
   const { data:product, isFetching } = useGetProductCartQuery(productid,{
     skip:id,
     refetchOnMountOrArgChange:true,
   })
+	*/
   
   useEffect(() => {
-    productid && setId(false)  
+    productid && setProduct(productid)  
   }, [productid])
   
-  const handlerClose = useCallback(() => {
+  const handlerClose = () => {
     dispatch(setProductItem(null))
-    setId(true) 
-  },[productid])
+    setProduct(null) 
+  }
 
 
   this.data({
@@ -32,6 +36,6 @@ export function useCaseShopCard(this: any, category: string) {
     handlerClose
   })
   this.status({
-    isFetching
+
   })
 }

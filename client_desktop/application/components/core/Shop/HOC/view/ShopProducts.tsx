@@ -8,18 +8,18 @@ import ShopProductItems from "./ShopProductItems"
 
 type IProps = {
   idCategory:string
+	nomenclatureProducts:IProduct[]
 }
 
-const ShopProducts: FC<IProps> = ({ idCategory }) => {
-  const useCasePoints = adapterComponentUseCase(useCaseShop,idCategory)
+const ShopProducts: FC<IProps> = ({ idCategory,nomenclatureProducts }) => {
+  const useCasePoints = adapterComponentUseCase(useCaseShop,{category:idCategory,products:nomenclatureProducts})
   const { category,products } = useCasePoints.data
-  const { isFetching } = useCasePoints.status
 
   return (
     <div className="shop_grid">
       {
 
-        !isFetching && products ? (
+        products ? (
           products.length
                 ? products.map((item: IProduct) => {
                   return <ShopProductItems key={item.id} products={item}/>

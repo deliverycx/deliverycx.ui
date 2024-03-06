@@ -1,4 +1,4 @@
-import { ICart, IReqCart } from "@types";
+import { ICart, IProduct, IReqCart } from "@types";
 import encodeQueryData from "application/helpers/encodeQuery";
 import { string } from "yup";
 import { ApiSuper, methods, token } from "../AxiosApi";
@@ -41,7 +41,7 @@ export namespace ResCart {
         orderType:string
     }
     export type add = {
-        productId: string;
+        product: IProduct;
     } & orderType;
     export type amount = {
         amount: number;

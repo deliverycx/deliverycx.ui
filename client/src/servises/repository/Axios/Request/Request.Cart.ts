@@ -3,6 +3,7 @@ import { ICart, IReqCart } from "@types";
 import encodeQueryData from "application/helpers/encodeQuery";
 import { string } from "yup";
 import { ApiSuper, methods, token } from "../AxiosApi";
+import { IProduct } from '@types';
 
 // получаем
 namespace ReqCart {
@@ -38,7 +39,7 @@ namespace ResCart {
         orderType:string
     }
     export type add = {
-        productId: string;
+			product: IProduct;
     } & orderType;
     export type amount = {
         amount: number;
@@ -72,7 +73,7 @@ class RequestCart extends ApiSuper {
     }
     @methods("post")
     OrderCheckCart(body: any) {
-        return this.request<ReqCart.orderCreate>("/order/check");
+        return this.request<any>("/order/check");
     }
     @methods("post")
     OrderCart(body: any) {

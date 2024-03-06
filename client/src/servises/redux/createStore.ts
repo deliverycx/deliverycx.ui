@@ -30,8 +30,6 @@ const persistConfig = {
     CART_API_REDUCER_KEY,
     profileSlice.name,
     ShopSlice.name,
-    cartSlice.name,
-    bankCardSlice.name
   ],
   transforms: [
     createTransform(
@@ -43,7 +41,9 @@ const persistConfig = {
       },
       {
         whitelist: [
-          locationSlice.name
+          locationSlice.name,
+					cartSlice.name,
+					bankCardSlice.name
         ]
       }
     )
@@ -87,7 +87,8 @@ const store = configureStore({
 })
 
 const persistor = persistStore(store, undefined, async () => {
-  await store.dispatch(fetchUser() as any)
+	
+  //await store.dispatch(fetchUser() as any)
   await store.dispatch(fetchAllCart() as any) 
 });
 

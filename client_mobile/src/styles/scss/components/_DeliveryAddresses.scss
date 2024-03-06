@@ -1,0 +1,83 @@
+.delivery-addresses{
+  height: 100vh;
+
+  &__list{
+    display: flex;
+    flex-direction: column;
+    flex: 1 0 auto;
+
+    &__items{
+      display: flex;
+      flex-direction: column;
+      padding: 16px;
+      gap: 8px;
+
+      &-item{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        color: $c-black;
+        font-size: 18px;
+        font-weight: 600;
+        line-height: 15px;
+				padding: 5px;
+				height: 35px;
+
+        button{
+          svg{
+            width: 24px;
+            height: 24px;
+            fill: #8D191D;
+          }
+        }
+      }
+			&-item.active{
+				background-color:rgba(244, 244, 244, 0.39);
+				
+				border-radius: 17px;
+			}
+			&-nocity{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        color: #d0d0d0;
+        font-size: 18px;
+        font-weight: 600;
+        line-height: 20px;
+				margin-bottom: 10px;
+      }
+    }
+  }
+
+  &__buttons{
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    padding: 16px;
+    button{
+      img{
+        width: 24px;
+        height: 24px;
+      }
+    }
+  }
+}
+
+.maps_notificate{
+	position: absolute;
+	top: 60px;
+	width: 100%;
+	background-color: #8D191D;
+	color: #fff;
+	opacity: 0.5;
+	text-align: center;
+	padding: 10px;
+}
+.delivery-addresses__list-box{
+	width: 100%;
+	display: flex;
+	.order-placement__payment-method__item-btn{
+		width: 40px;
+		padding: 0;
+	}
+}

@@ -15,15 +15,15 @@ import { checkPoint } from "application/helpers/checkPoint";
 
 type IProps ={
 	pages?:string
+	nomenclatureCategories:ICategory[]
 }
 
-const Categories:FC<IProps> = ({pages}) => {
+const Categories:FC<IProps> = ({pages,nomenclatureCategories}) => {
   const slider = useRef<typeof Slider>(null);
 
-  const useCasePoints = adapterComponentUseCase(useCategories)
+  const useCasePoints = adapterComponentUseCase(useCategories,nomenclatureCategories)
   const { router,categories, currentSlide, category } = useCasePoints.data
   const { handleSliderClick,hanleMainClick } = useCasePoints.handlers
-  const { isFetching } = useCasePoints.status
 
   useEffect(() => {
     scrollSpy.update()
@@ -53,9 +53,9 @@ const Categories:FC<IProps> = ({pages}) => {
         <div className="categories_flex">
           <LogoMini />
           {
-          (!isFetching && categories) &&
+          categories &&
             categories.map((category: ICategory, i: number) => {
-              if (category.name !== 'Избранное') {
+              if (category.name !== 'Избранное' && category.description !== 'HIDDEN') {
                 const CN = cn("categories__item", { active: currentSlide === i });
 								if(pages !== 'main'){
 									return (
@@ -69,7 +69,7 @@ const Categories:FC<IProps> = ({pages}) => {
 	                    <div className="categories__item__content-wrapper">
 	          						<div className="categories__item__img-wrap">
 	          							<div>
-	                          <img src={imgRout(category.image)} alt={category.name} />
+	                          <img src={category.image} alt={category.name} />
 	          							</div>
 	          						</div>
 	          						<div className="categories__item__title">{category.name}</div>

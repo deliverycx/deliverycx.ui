@@ -29,9 +29,9 @@ services:
         networks:
           - mynetwork
     deliverycx_client:
-        image: docker/client
+        image: docker/client_mobile
         container_name: development_client
-        build: ./client
+        build: ./client_mobile
         ports:
           - "88:88"
         

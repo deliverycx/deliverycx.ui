@@ -6,7 +6,7 @@ import { CartContext } from "application/components/core/Cart/CartBasket/CartLis
 import debounce from "lodash.debounce";
 import { useDispatch } from "react-redux";
 import { FC, useContext, useEffect, useMemo, useState } from "react";
-import { fetchChangeAmount, fetchRemoveCart } from "servises/redux/slice/cartSlice";
+import { fetchChangeAmount, fetchRemoveCart, setErrors } from "servises/redux/slice/cartSlice";
 import classNames from "classnames";
 
 interface IProps{
@@ -34,6 +34,7 @@ const CartItem: FC<IProps> = ({ product, errorSchema }) => {
   useEffect(() => () => debouncedChangeHandler.cancel(), [product.amount]);
 
   useEffect(() => {
+		
     if (product.productTags) {
       const tag = product.productTags.find(el => el !== "HIDDEN"); //?.match(/[a-z]{2,}/i)![0]
       const tag_hi = tag ? tag.match(/[a-z]{2,}/i)![0].toUpperCase() : " "

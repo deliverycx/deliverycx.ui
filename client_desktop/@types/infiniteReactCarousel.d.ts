@@ -5,3 +5,4 @@ declare global {
   }
 }
 declare var window: any
+declare module '@pqina/flip';

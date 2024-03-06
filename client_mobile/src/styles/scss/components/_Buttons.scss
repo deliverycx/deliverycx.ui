@@ -1,0 +1,140 @@
+.btn {
+  font-family: "Tilda Sans", sans-serif;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  outline: none;
+  border: none;
+  background: none;
+  color: #FFF;
+  border-radius: 12px;
+  text-decoration: none;
+
+  &[disabled] {
+    pointer-events: none;
+  }
+
+  &.btn-icon {
+    justify-content: space-between;
+  }
+
+  &-mini {
+    &.btn-icon {
+      padding: 8px;
+    }
+    padding: 4px;
+    gap: 4px;
+
+    font-size: 13px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 20px;
+
+    i {
+      &:before {
+        font-size: 12px;
+      }
+    }
+  }
+
+  &-tiny {
+    &.btn-icon {
+      padding: 8px;
+    }
+    padding: 8px 12px;
+    gap: 12px;
+
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 16px;
+
+    i {
+      &:before {
+        font-size: 12px;
+      }
+    }
+  }
+
+  &-sm {
+    &.btn-icon {
+      padding: 12px;
+    }
+    padding: 12px 16px;
+    gap: 16px;
+
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 16px;
+
+    i {
+      &:before {
+        font-size: 16px;
+      }
+    }
+  }
+
+  &-md {
+    &.btn-icon {
+      padding: 16px;
+    }
+    padding: 16px 24px;
+    gap: 16px;
+    max-height: 44px;
+
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 16px;
+
+    i {
+      &:before {
+        font-size: 16px;
+      }
+    }
+  }
+
+  &-lg {
+    &.btn-icon {
+      padding: 24px;
+    }
+    padding: 24px 32px;
+    gap: 24px;
+
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 16px;
+
+    i {
+      &:before {
+        font-size: 16px;
+      }
+    }
+  }
+
+  &-icon-modal{
+    padding: 4px;
+    gap: 4px;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 20px;
+  }
+
+  &-none-defualt{
+    padding: 4px;
+    gap: 4px;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 20px;
+    height: 44px;
+  }
+}
+
+@include btn("red", $c-red, #fff);
+@include btn("gray", #E6E6E6, #8D191D);
+@include btn("none", transparent, $c-red);

@@ -5,7 +5,6 @@ import axios from "axios";
 import { useEffect, useMemo, useState } from "react";
 import { YMaps, Map, SearchControl, Placemark, YMapsApi, withYMaps, Polygon } from "react-yandex-maps";
 import { useDispatch, useSelector } from 'react-redux';
-import { setAdress } from "servises/redux/slice/cartSlice";
 import { getGeoLocation } from "application/helpers/yandexapi";
 import { RootState } from "servises/redux/createStore";
 import MapSuggestComponent from "application/components/common/Maps/MapSuggest";
@@ -20,7 +19,7 @@ import { adapterSelector } from "servises/redux/selectors/selectors";
 
 const placeMarkOption = {
   iconLayout: 'default#image',
-  iconImageHref: require("assets/i/placemark.svg").default,
+  iconImageHref: '',
   iconImageSize: [50, 60],
   iconImageOffset: [-25, -60]
 }
@@ -47,7 +46,7 @@ const CartYmap = () => {
     <div className="address-select-map">
       <YMaps
         enterprise
-        query={{ apikey: "e45f9cf9-d514-40a5-adb9-02524aaef83f" }}
+        query={{ apikey: "473431c9-b8f6-45d6-a166-243a0152c68b" }}
       >
         <Map className="address-select-map map" modules={["geocode"]} onClick={onMapClick}
              state={mapstate} defaultState={

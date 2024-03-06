@@ -18,6 +18,7 @@
     "@mui/lab": "^5.0.0-alpha.80",
     "@mui/material": "^5.6.4",
     "@mui/styled-engine-sc": "^5.0.3",
+    "@pqina/flip": "^1.7.7",
     "@reduxjs/toolkit": "^1.7.2",
     "@types/lodash.debounce": "^4.0.6",
     "@types/react-dom": "^17.0.11",

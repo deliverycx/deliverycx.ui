@@ -5,6 +5,8 @@ import cn from "classnames";
 import { Link } from "react-router-dom";
 import { isEqual } from "lodash";
 import { ROUTE_APP } from 'application/contstans/route.const';
+import { adapterSelector } from "servises/redux/selectors/selectors";
+import { workTimeHelp } from "application/helpers/workTime";
 
 interface IProps{
     isActive: boolean,
@@ -12,8 +14,9 @@ interface IProps{
 }
 
 const Menu: FC<IProps> = ({isActive, setter})=>{
+	const point = adapterSelector.useSelectors(selector => selector.point)
     const menuCN = cn("header__menu", {active: isActive});
-
+console.log(point.reservetable,workTimeHelp(point.workTime));
     return (
         <div className={menuCN}>
 
@@ -37,7 +40,11 @@ const Menu: FC<IProps> = ({isActive, setter})=>{
                         54654
                     </div> */}
                     <div className="header__menu__link__list">
-                        {/* <a href="#" className="header__menu__link profile">Профиль</a> */}
+												{
+													point.reservetable && !workTimeHelp(point.workTime) &&
+													<a href={ROUTE_APP.SHOP.SHOP_RESERVE} className="header__menu__link order-history">Забронировать стол</a>
+												}
+                        
                         {/* <a href="#" className="header__menu__link qrcode">Номер столика</a> */}
                         <Link to="/" className="header__menu__link mark">Выбор заведения</Link>
                         {/* <a href="#" className="header__menu__link order-history">История заказов</a> */}

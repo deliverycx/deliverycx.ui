@@ -795,6 +795,235 @@
 }
 
 
+
+
+.reserve {
+	height: 100%;
+	padding-bottom: 30px;
+	position: absolute;
+	left: 0;
+	top: 80px;
+	width: 100%;
+  background-color: #fff;
+  .fild__box {
+    margin-bottom: 15px;
+  }
+
+  .reserve-container {
+    padding: 0 10px;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
+
+    .rows-container {
+      height: 80%;
+      overflow: hidden;
+    }
+
+    .modals_title {
+      margin-top: 15px;
+      font-size: 26px;
+      color: #132A3E;
+      font-family: $regular;
+    }
+
+    .close {
+      position: absolute;
+      right: 16px;
+      top: 25px;
+      cursor: pointer;
+      width: 32px;
+      height: 32px;
+      display: flex;
+      justify-content: center;
+      transition: all 0.3s ease-in-out;
+      svg {
+        path {
+          stroke: #ABABAB;
+        }
+      }
+      svg:hover {
+        path {
+          stroke: #333333;
+        }
+      }
+    }
+  }
+
+  .sucsess {
+    font-size: 11px;
+    color: green;
+    text-align: center;
+    margin-top: 15px;
+  }
+
+  .error {
+    font-size: 11px;
+    color: #8D191D;
+    text-align: center;
+    margin-top: 15px;
+  }
+
+  .welcome__select-adress__info {
+    padding-left: 35px;
+    margin-top: 30px;
+  }
+
+  .form__field-wrapper__error {
+    text-align: left;
+  }
+
+  .product_card-container {
+    position: relative;
+    display: flex;
+    padding: 5% 5%;
+  }
+
+  .date-and-time_box {
+    width: 180px;
+		margin: 5px;
+  }
+
+	.welcome__select-adress__info {
+		margin-top: 7px;
+		height: 40px;
+		background-color: #558950;
+		color: #fff;
+		font-family: "sf-ui-regular";
+			}
+
+  .name, .phone {
+    border: 1px solid #666666;
+    border-radius: 100px;
+    width: 100%;
+    padding-left: 25px;
+    padding-right: 25px;
+    margin-top: 15px;
+    display: flex;
+    justify-content: space-between;
+    position: relative;
+
+    input {
+      border: none;
+      color: #666666;
+      font-size: 15px;
+      height: 48px;
+      line-height: 48px;
+      width: 100%;
+    }
+  }
+
+  .date-and-time-container {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 25px;
+
+    .date-text {
+      font-size: 12px;
+      margin-left: auto;
+      margin-right: auto;
+      padding-bottom: 0;
+      border-radius: 100px;
+      border-color: #132A3E !important;
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      position: relative;
+    }
+
+    .date-input {
+      border: none;
+      color: #666666;
+      font-size: 15px;
+      height: 48px;
+      line-height: 48px;
+      width: 100%;
+    }
+
+    .fild__box.not-valid.error .css-9ddj71-MuiInputBase-root-MuiOutlinedInput-root.Mui-error .MuiOutlinedInput-notchedOutline {
+      border: 1px solid #8D191D !important;
+    }
+
+    .css-9ddj71-MuiInputBase-root-MuiOutlinedInput-root.Mui-error .MuiOutlinedInput-notchedOutline,
+    .css-o9k5xi-MuiInputBase-root-MuiOutlinedInput-root.Mui-error .MuiOutlinedInput-notchedOutline {
+      border: 1px solid #CCCCCC;
+      color: #132A3E;
+      &:hover {
+        border-color: none;
+      }
+      &:focus {
+        border-color: #8D191D !important;
+      }
+    }
+  }
+}
+// hide penIcon on MUI pickers
+.PrivateDatePickerToolbar-penIcon {
+  visibility: hidden !important;
+}
+
+.MuiButtonBase-root {
+  [class*='MuiSvgIcon-root'] {
+    display: none !important;
+  }
+}
+
+.ded-popup {
+  
+  
+	position: relative;
+  .popup-container {
+    padding: 5% 5% 0;
+    position: absolute;
+		left: 0;
+		top: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
+
+    
+
+    
+
+    .popup-info {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      margin-top: 40px;
+
+      .sent {
+        font-family:$regular;
+        font-size: 26px;
+        font-weight: 400;
+        text-align: center;
+
+        span {
+          color: #8D191D;
+        }
+      }
+      .admin {
+        font-family: $regular;
+        font-size: 15px;
+        font-weight: 400;
+        text-align: center;
+        margin-top: 5px;
+      }
+    }
+
+    
+  }
+}
+
+.cart__order-btn.btn.reserve-btn {
+  margin-top: 15px;
+}
+
+
+
 @media only screen and (max-width: 560px) and (orientation: portrait) {
     .address-select-map {
         top: 0;

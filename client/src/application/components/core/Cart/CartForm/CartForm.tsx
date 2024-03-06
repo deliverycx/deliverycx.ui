@@ -1,3 +1,4 @@
+/* eslint-disable react/jsx-no-target-blank */
 /* eslint-disable no-mixed-spaces-and-tabs */
 /* eslint-disable @typescript-eslint/no-var-requires */
 /* eslint-disable @typescript-eslint/ban-types */
@@ -21,7 +22,22 @@ import CartModals from "../CartModals/CartModals";
 import React from "react";
 import { CartFormMetods } from "./CartMetods";
 import { DELIVERY_METODS } from "application/contstans/const.orgstatus";
+import { useOrderCheck } from "domain/use-case/useCaseOrder/useCase.OrderCheck";
+import { adapterSelector } from './../../../../../../../client_desktop/servises/redux/selectors/selectors';
 
+/**/
+export const DefaultinitialValues: IInitialValues = {
+	comment: "",
+	address: "",
+	flat: "",
+	intercom: "",
+	entrance: "",
+	floor: "",
+	name: "",
+	phone: "",
+	kladrid: "",
+	house: ""
+};
 
 type IProps = {
   builder: any
@@ -39,11 +55,14 @@ const CartFrom: FC<IProps> = ({ builder,paths }) => {
     (state: RootState) => state.profile
   );
   const { city } = useSelector((state: RootState) => state.location.point);
-  const {address:selectAddress,orderError,orderNumber,loadingOrder,orderType} = useSelector((state: RootState) => state.cart);
+  const {orderInfo,orderError,orderNumber,loadingOrder,orderType} = useSelector((state: RootState) => state.cart);
   const errors:any = []
+
+	/*
   const initialValues: IInitialValues = {
     comment: "",
     address: "",
+		house:"",
     flat: "",
     intercom: "",
     entrance: "",
@@ -53,54 +72,38 @@ const CartFrom: FC<IProps> = ({ builder,paths }) => {
     notCall: false,
   };
   //mocki array
+	*/
 
-  const timesArray: object[] = [
-    {
-      id: "1",
-      value: "По готовности",
-    },
-  ];
 
-  const [times, setTimes] = useState<object>(timesArray[0]);
 	const [cxofer, setCXOfer] = useState<boolean>(true);
   const useCaseForm = adapterComponentUseCase(useCartForm,paths)
-	console.log(useCaseForm);
+
   const {paymentMetod,paymentOrder } = useCaseForm.data
   const { paymentReady } = useCaseForm.status
 
+	const useCaseOrderCheck = adapterComponentUseCase(useOrderCheck)
+	const {handlerSubmitOrder} =	useCaseOrderCheck.handlers
+
+
+	const initialValues: IInitialValues = orderInfo
   const formik = useFormik({
     initialValues,
     validationSchema: schema(orderType),
     onSubmit: (values, meta) => {
+			console.log('qqq',values);
+			handlerSubmitOrder(values)
+			/*
       submitHandler<ISubmitData>(
         {
           ...values,
           payment_method: paymentMetod.id,
           paymentOrderCard:paymentOrder,
-          times,
           city: city.name,
           orderType
         },
         meta
       );
-      /*
-      if (!paymentReady && paymentMetod.id === CartFormMetods.paymentsMetod[1].id) {
-        history.push(paths + '/card')
-      } else {
-        submitHandler<ISubmitData>(
-          {
-            ...values,
-            payment_method: paymentMetod.id,
-            paymentOrderCard:paymentOrder,
-            times,
-            city: city.name,
-            orderType
-          },
-          meta
-        );
-
-      }
-      */
+			*/	
 
     },
   });
@@ -112,11 +115,11 @@ const CartFrom: FC<IProps> = ({ builder,paths }) => {
   }, 400);
 
   useEffect(() => {
-    selectAddress && formik.setFieldValue("address", selectAddress)
     orderError.status && dispatch(setErrors({errors:{}}))
+		
   },[])
 
-	console.log(cxofer);
+
 
   return (
     <FormikProvider value={formik}>
@@ -128,7 +131,7 @@ const CartFrom: FC<IProps> = ({ builder,paths }) => {
 
 					<div className="box_checkbox">
 						<input className="styled-checkbox" id="styled-checkbox-1" type="checkbox" value="value1" />
-	    			<label htmlFor="styled-checkbox-1" onClick={()=> setCXOfer(prev => !prev)} ><span>Я согласен на <a href={require("assets/i/cx.pdf").default} download="">обработку персональных данных</a></span></label>
+	    			<label htmlFor="styled-checkbox-1" onClick={()=> setCXOfer(prev => !prev)} ><span>Я согласен на <a href="https://starikkhinkalich.ru/legal" target="_blank" download="">обработку персональных данных</a></span></label>
 					</div>
           
 					{

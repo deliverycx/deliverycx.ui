@@ -35,14 +35,15 @@ export function useCartForm(this: any, paths:string) {
 
   const initialValues: IInitialValues = {
     comment: "",
-    address: "",
-    flat: "",
-    intercom: "",
-    entrance: "",
-    floor: "",
-    name: "",
-    phone: "",
-    notCall: false,
+		address: "",
+		flat: "",
+		intercom: "",
+		entrance: "",
+		floor: "",
+		name: "",
+		phone: "",
+		kladrid: "",
+		house: ""
   };
   
 

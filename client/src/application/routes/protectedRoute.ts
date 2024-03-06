@@ -1,5 +1,8 @@
 import { IRoute } from "@types";
+import ReserveTableLayout from "application/components/common/reserveTable/ReserveTableLayout";
+
 import { CartDelivery, CartOnspot, CartPickup } from "application/components/core/Cart";
+import ShopSearch from "application/components/core/Shop/ShopSearch";
 import { ROUTE_APP } from "application/contstans/route.const";
 import { lazy } from "react";
 
@@ -13,6 +16,11 @@ const protectedRoutes: IRoute[] = [
     exact: true,
     path: ROUTE_APP.SHOP.SHOP_PRODUCT,
     component: lazy(() => import('presentation/layout/Shop/ShopCardLayout'))
+  },
+	{
+    exact: true,
+    path: ROUTE_APP.SHOP.SHOP_SERCH,
+    component: lazy(() => import('application/components/core/Shop/ShopSearch'))
   },
   {
     exact: false,
@@ -48,8 +56,22 @@ const protectedRoutes: IRoute[] = [
 
 	{
     exact: false,
+    path: ROUTE_APP.ORDER_CREATE,
+    component: lazy(() => import('application/components/core/Order/OrderCreate')),
+    
+  },
+
+	{
+    exact: false,
     path: ROUTE_APP.DUALPAYMENT,
     component: lazy(() => import('application/components/core/Order/DyalPayment')),
+    
+  },
+
+	{
+    exact: false,
+    path: ROUTE_APP.SHOP.SHOP_RESERVE,
+    component: ReserveTableLayout,
     
   },
   

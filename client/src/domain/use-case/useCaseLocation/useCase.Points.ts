@@ -1,3 +1,4 @@
+/* eslint-disable no-mixed-spaces-and-tabs */
 import { useEffect, useReducer } from "react";
 import { useDispatch } from "react-redux";
 
@@ -17,8 +18,9 @@ import { ROUTE_APP } from "application/contstans/route.const";
 import { adapterSelector } from "servises/redux/selectors/selectors";
 import { fetchDeleteCart, fetchRefreshCart, setOrderType } from "servises/redux/slice/cartSlice";
 import _ from "lodash";
-import { fetStopList } from "servises/redux/slice/shopSlice";
+import { fetStopList, setRefreshShop } from "servises/redux/slice/shopSlice";
 import { DELIVERY_METODS, ORG_STATUS } from "application/contstans/const.orgstatus";
+import { Redirects } from "application/helpers/redirectTo";
 
 export function usePoints() {
   const history = useHistory();
@@ -54,7 +56,7 @@ export function usePoints() {
 
   useEffect(() => {
     if(addresses && !isFetching){
-			getRecvisites(addresses[statePoint.slideIndex].id)
+			getRecvisites(addresses[statePoint.slideIndex].guid)
 			getOrgstatus(addresses[statePoint.slideIndex].guid)
 			
 		}
@@ -137,22 +139,16 @@ export function usePoints() {
 
     const selectPointHandler = async (address: IPoint) => {
         try {
+						await Redirects(address)
             const { data: regData } = await RequestProfile.register();
-            /*
-      if (regData.isNew) {
-        localStorage.setItem("authToken", regData.access!);
-      }
-
-      const { data } = await RequestProfile.update({
-        organization: address._id,
-      })
-      */
+						 
 
             //dispatch(setProfileAction(regData));
             dispatch(setPoint(address));
 						if(address.id !== id){
 							dispatch(setOrderType(DELIVERY_METODS.COURIER))
 							dispatch(fetchRefreshCart())
+							dispatch(setRefreshShop())
 						} 
             history.push(`${ROUTE_APP.SHOP.SHOP_MAIN}/?address=${address.city + ',' + address.address}` );
             //RequestProfile.update({ organizationId: address.id });

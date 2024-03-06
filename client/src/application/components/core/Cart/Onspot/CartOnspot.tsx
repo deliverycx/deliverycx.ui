@@ -7,8 +7,6 @@ import { CartFormMetods } from "../CartForm/CartMetods";
 import OnspotSelect from "./OnspotSelect";
 
 const CartOnspot = () => {
-  const { deltaPrice, orderType } = adapterSelector.useSelectors(selector => selector.cart)
-  const { city, address } = adapterSelector.useSelectors(selector => selector.point)
   return (
     <>
       <div className="cart__memo">

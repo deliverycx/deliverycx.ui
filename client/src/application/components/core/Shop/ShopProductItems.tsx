@@ -9,20 +9,21 @@ import AddToFavorites from "../../../../presentation/viewModel/viewShop/AddToFav
 import cn from "classnames";
 
 type IProps = {
-    products:IProduct<{ image: string }>
+    products:IProduct
 }
 
 const ShopProductItem: FC<IProps> = ({ products }) => {
     const { id, productId ,name, price, categoryImage, measureUnit, weight, description, image, isFav } = products
 
-    const useCasePoints = adapterComponentUseCase(useCaseShopItem,{id,productId});
+
+    const useCasePoints = adapterComponentUseCase(useCaseShopItem,productId);
     const { cardRef,disableItem } = useCasePoints.data;
     const { clickItemHandler } = useCasePoints.handlers;
     
     const CN = cn("product__item", { product__stoplist: disableItem})
 
     return (
-        <div ref={cardRef} className={CN}  data-id={id} onClick={(e)=> clickItemHandler(e,id)}>
+        <div ref={cardRef} className={CN}  data-id={id} onClick={(e)=> clickItemHandler(e,id,products)}>
             <div className="product__item__img-wrap">
                 <img src={image} alt={name} />
                 {
@@ -33,7 +34,7 @@ const ShopProductItem: FC<IProps> = ({ products }) => {
             <div className="product__item__content">
                 <div className="row justify-end">
                     {/* <div className="product__item__cooking-time">15 мин</div> */}
-                    <AddToFavorites _class="product__item__favorite" isFav={isFav} id={id} />
+                    <AddToFavorites _class="product__item__favorite" isFav={isFav} product={products} />
                 </div>
 
                 <div className="product__item__title">
@@ -53,13 +54,13 @@ const ShopProductItem: FC<IProps> = ({ products }) => {
 													? `${convertWeight(weight)} г`:
 													measureUnit === "мл"  ? weight + 'мл'
 													
-													: "1 шт"
+													: "1 шт."
 												}
 												</div>
                         <div className="product__item__price">{price} ₽</div>
                     </div>
                    
-                    {!disableItem && <AddToCart id={id} _class={"add-to-cart"} groupImage={categoryImage} />} 
+                    {!disableItem && <AddToCart product={products} _class={"add-to-cart"} groupImage={categoryImage} />} 
                 </div>
             </div>
         </div>   

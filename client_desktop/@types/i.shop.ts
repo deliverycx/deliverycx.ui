@@ -2,10 +2,12 @@ export interface ICategory {
     image: string;
     id: string;
     name: string;
+		description:string
 }
 export interface IProduct<C = ICategory> {
     id: string;
     name: string;
+		category:string
 		productId:string;
     description: string;
     additionalInfo: string;

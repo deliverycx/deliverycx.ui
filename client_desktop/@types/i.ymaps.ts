@@ -26,3 +26,10 @@ export interface IGeoCodeResponse{
       }
   }
 }
+
+export type IIkkoStreet = {
+	id: string, name: string,
+	externalRevision: number,
+	classifierId: string,
+	isDeleted: boolean
+}

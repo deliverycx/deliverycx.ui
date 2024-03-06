@@ -69,6 +69,8 @@ const PointStatus: FC<IProp> = ({ point }) => {
 		</div>
 	))
 
+	
+
 
 
 	return (

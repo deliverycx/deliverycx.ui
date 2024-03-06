@@ -13,7 +13,8 @@ interface Iselectors {
   shop: (state: RootState) => IShopEntities,
   stoplist: (state: RootState) => TStopListItems[],
   cart: (state: RootState) => ICart,
-  bankcard:(state: RootState) => IBankCard
+  bankcard:(state: RootState) => IBankCard,
+	profile:(state: RootState) => IProfile
 }
 const selectors:Iselectors = {
   point: (state) => state.location.point,
@@ -23,6 +24,7 @@ const selectors:Iselectors = {
   shop: (state) => state.shop,
   stoplist: (state) => state.shop.stoplist,
   cart: (state) => state.cart,
-  bankcard: (state) => state.bankcard
+  bankcard: (state) => state.bankcard,
+	profile: (state) => state.profile
 }
 export const adapterSelector = new AdapterSelector<Iselectors>(selectors)

@@ -1,4 +1,4 @@
-import { IPoint } from "@types";
+import { IPoint, IProduct } from "@types";
 import LoaderProduct from "application/components/common/Loaders/loaderProduct";
 import convertWeight from "application/helpers/convertWeight";
 import AddToCart from "presentation/viewModel/viewShop/AddToCart";
@@ -10,27 +10,30 @@ import { useGetProductCartQuery } from "servises/repository/RTK/RTKShop"
 
 
 type IProps = {
-  productId: string
-  setgrop:any
+  product:IProduct
 }
 
-const ShopProductCard: FC<IProps> = ({ productId, setgrop }) => {
+const ShopProductCard: FC<IProps> = ({ product }) => {
   const organization = adapterSelector.createSelectors<IPoint>(selector => selector.point, val => val.id)
-  const { data:product, isLoading } = useGetProductCartQuery(productId)
+	
+  
+	/*
+	const { data:product, isLoading } = useGetProductCartQuery(productId)
 
   useEffect(() => {
     !isLoading && setgrop(product?.categoryImage)
   }, [product])
+	*/
 
   return (
-    (!isLoading && product) ?
+    product &&
       <>
       <div className="product-card__image-wrap">
         <div className="container">
             <img className="product-card__image" src={product.image} alt="Картинка продукта" />
             <div className="product-card__title">{product.name}</div>
             <div className="row justify-between">
-                <AddToFavorites id={productId} _class="add-favorite" isFav={product.isFav} />
+                <AddToFavorites product={product} _class="add-favorite" isFav={product.isFav} />
                 {/* <button className="add-favorite"></button> */}
                 <div className="product-card__price">
                     <div className="product-card__measure">
@@ -40,12 +43,12 @@ const ShopProductCard: FC<IProps> = ({ productId, setgrop }) => {
 													? `${convertWeight(product.weight)} г`:
 													product.measureUnit === "мл"  ? product.weight + 'мл'
 													
-													: "1 шт"
+													: "1 шт."
 												}
                     </div>
                     <span className="select-red">{product.price} ₽</span>
                 </div>
-                <AddToCart id={productId} groupImage={product.categoryImage} _class={"product-card__add"} />
+                <AddToCart product={product} groupImage={product.categoryImage} _class={"product-card__add"} />
             </div>
           </div>
 
@@ -88,7 +91,7 @@ const ShopProductCard: FC<IProps> = ({ productId, setgrop }) => {
 
             </div>
       </>
-     : <LoaderProduct />
+    
 
   )
 }

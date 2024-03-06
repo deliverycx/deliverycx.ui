@@ -7,6 +7,7 @@ export class FormBuilderCart {
             return [
                 //builder.paymentPopup(),
                 //builder.payment(metods.paymentsMetod),
+								builder.selectdeliv(),
                 builder.adress(),
                 builder.name(),
                 builder.phone(),

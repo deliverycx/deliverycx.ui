@@ -1,0 +1,117 @@
+.profile{
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  padding: 56px 0 72px;
+  overflow-y: auto;
+
+  &-content{
+    margin-top: 15px;
+    display: flex;
+    flex-direction: column;
+    flex: 1 0 auto;
+    padding: 0 16px;
+
+    &__info{
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      padding: 16px 0;
+
+      &-name{
+        color: $c_red;
+      }
+      &-numb{
+        color: #4D4D4D;
+      }
+    }
+
+    &__gift{
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      padding: 24px;
+      border-radius: 17px;
+      background: #8D191D;
+      box-shadow: 0 4px 24px 0 rgba(0, 0, 0, 0.12);
+
+      &-header{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 44px;
+        color: #FFF;
+
+        button{
+          padding: 4px;
+          img{
+            width: 24px;
+            height: 24px;
+          }
+        }
+      }
+
+      &__content{
+        display: grid;
+        grid-template-columns: repeat(6, 1fr);
+        justify-content: center;
+        align-content: center;
+        gap: 8px;
+
+        &-item{
+          width: 40px;
+          height: 40px;
+
+          svg{
+            fill: #731418;
+          }
+
+          &.active{
+              svg{
+              fill: white;
+            }
+          }
+        }
+      }
+    }
+
+    &__list{
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      padding: 16px 0;
+
+      &-link{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        text-decoration: none;
+        padding: 12px 0;
+
+        color: $c-black;
+        font-size: 18px;
+        font-weight: 600;
+        line-height: 20px;
+
+        svg{
+          padding: 0 4px 0 0;
+          width: 24px;
+          height: 24px;
+        }
+      }
+    }
+  }
+
+  &__button{
+    display: flex;
+    margin-bottom: 15px;
+    flex-direction: column;
+    padding: 16px;
+    button{
+      img{
+        width: 24px;
+        height: 24px;
+      }
+    }
+  }
+}

@@ -13,17 +13,21 @@ const submitHandler = async <T>(values: any, meta: FormikHelpers<any>) => {
         //await store.dispatch(checkOut({...values,promocode,cart_choice,totalPrice}));
 
         // Разделение адреса на улицу и дом
+				/*
         const prepareAddress: { street: string; home: number } =
             values.address &&
             values.address.match(/(?<street>.*?),\s?(?<home>.*)/).groups;
+
+				*/
+				
 
         const val = {
             organization: storage.location.point.id,
             name: values.name,
             address: {
                 city: storage.location.point.city,
-                street: prepareAddress.street || "",
-                home: prepareAddress.home || 1,
+                street: values.address || "",
+                home: values.house || "",
                 flat: values.flat,
                 intercom: values.intercom,
                 entrance: values.entrance,

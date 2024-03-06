@@ -14,40 +14,40 @@ export function useOrder(this: any) {
     const url = location.pathname.split("/")[2];
     const ref = useRef<NodeJS.Timeout>();
 
-    const presentOrder = async (url: string, tik = 0) => {
-        try {
-            let tik = 0;
-            ref.current = setInterval(async () => {
-                const { data } = await RequestOrder.OrderNumber(url);
-                new Promise((res, rej) => {
-                    if (data && data.number) {
-                        clearInterval(ref.current as any);
-                        res(data.number);
-                    } else {
-                        ++tik;
-                        rej();
-                    }
-                })
-                    .then((number) => {
-                        setOrderNumber(number as number);
-                        setOrderLoad(false);
-                        handleBacktoShop()
-                    })
-                    .catch(() => {
-                        setOrderNumber(null);
-                        if (tik > 10) {
-                            clearInterval(ref.current as any);
-                            setOrderLoad(false);
-                        } else {
-                            setOrderLoad(true);
-                        }
-                    });
-            }, 1000);
-        } catch (error) {
-            setOrderNumber(null);
-            clearInterval(ref.current as any);
-        }
-    };
+    const presentOrder = async (hashNumb: string, tik = 0) => {
+			try {
+					let tik = 0;
+						ref.current = setInterval(async () => {
+								const { data } = await RequestOrder.getOrder(hashNumb);
+								new Promise((res, rej) => {
+										if (data && data.orderNumber) {
+												clearInterval(ref.current as any);
+												res(data.orderNumber);
+										} else {
+												++tik;
+												rej();
+										}
+								})
+										.then((number) => {
+												setOrderNumber(number as number);
+												setOrderLoad(false);
+										})
+										.catch(() => {
+												setOrderNumber(null);
+												if (tik > 15) {
+														clearInterval(ref.current as any);
+														setOrderLoad(false);
+												} else {
+														setOrderLoad(true);
+												}
+										});
+						}, 5000);
+				} catch (error) {
+						setOrderNumber(null);
+						clearInterval(ref.current as any);
+				}
+		};
+	
 
     useEffect(() => {
         if (router.isReady && Object.keys(router.query).length) {
@@ -61,14 +61,19 @@ export function useOrder(this: any) {
     const handleBacktoShop = () => {
         dispatch(fetchDeleteCart());
         dispatch(accessOrder());
-       
+				router.push(ROUTE_APP.MENU)
     };
+
+		const handleBacktoCart = () =>{
+			router.push(ROUTE_APP.MENU)
+		}
 
     this.data({
         orderNumber
     });
     this.handlers({
-        handleBacktoShop
+        handleBacktoShop,
+				handleBacktoCart
     });
     this.status({
         orderLoad
