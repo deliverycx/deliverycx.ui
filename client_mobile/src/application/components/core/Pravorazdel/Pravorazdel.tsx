@@ -30,6 +30,7 @@ const Pravorazdel = () => {
 					<a href="/docs/Порядок%20возврата.pdf" target='_blank'>Порядок возврата</a></div>
 				<br />
 
+
 				<div className={'href_mobile'}>
 					<a href="/docs/Акции%20сети%20кафе.pdf" target='_blank'>Акция сети кафе</a> </div>
 				<br />
@@ -39,10 +40,15 @@ const Pravorazdel = () => {
 				<br />
 
 				<div className={'href_mobile'}>
+                    <a href="https://disk.yandex.ru/d/4kazVwmdSm85HQ" target='_blank'>Правила посещения хинкальной</a> </div>
+                <br/>
+
+				<div className={'href_mobile'}>
 					<a href="/docs/Региональная%20Акция%20Приведи%20друга.pdf" target='_blank'>Региональная акция- Приведи друга</a> </div>
 			</div>
 		</div>
 	);
+
 };
 
 export default Pravorazdel;

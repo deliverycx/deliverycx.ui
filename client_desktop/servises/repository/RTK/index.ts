@@ -4,7 +4,13 @@ import { AuthFailAction } from 'servises/redux/slice/profileSlice';
 
 
 export const defFetchBaseQuery = fetchBaseQuery({
-  baseUrl: process.env.NEXT_PUBLIC_API_URL, credentials: "include"
+  baseUrl: process.env.NEXT_PUBLIC_API_URL, credentials: "include",
+	prepareHeaders: (headers) => {
+	
+		headers.set('localhost', `${document.location.protocol}//${document.location.host}`);
+		
+		return headers;
+},
 })
 
 export const baseQuery = fetchBaseQuery({
@@ -14,6 +20,8 @@ export const baseQuery = fetchBaseQuery({
       if (token) {
         headers.set('authorization', `Bearer ${token}`);
       }
+			headers.set('localhost', `${document.location.protocol}//${document.location.host}`);
+			
       return headers;
   },
 });

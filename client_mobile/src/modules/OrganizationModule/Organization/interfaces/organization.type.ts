@@ -3,6 +3,7 @@ import { OrganizationDTO } from "./organization.dto"
 export interface IOrganizationResponse {
 	reservetable: boolean
   id:	string
+	terminal:string
   address:	string
   city:	string
 	cityid:{

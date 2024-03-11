@@ -36,7 +36,7 @@ export function useOrderCreateViewModel() {
 		if(orderNumber){
 
 			appUseCase.crearOrder()
-			//ym('reachGoal','ordercreate')
+			process.env.NODE_ENV === 'production' && ym('reachGoal','ordercreate')
 		}
 	},[orderNumber])
 

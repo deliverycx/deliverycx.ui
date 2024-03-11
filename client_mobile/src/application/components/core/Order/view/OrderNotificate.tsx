@@ -89,9 +89,9 @@ const OrderNotificate:FC<{disable:any}> = ({disable}) =>{
 				<p>
 					А пока вы можете ознакомиться с нашим меню и почитать новости на главной странице
 				</p>
-				<a href="tel:+79781297087" className="btn btn-sm btn-red no-drag">
+				<a href={`tel:${point?.info.phone}`} className="btn btn-sm btn-red no-drag">
 				<img src={require('assets/images/icons/phonewite.png')} alt="" />
-					+7 978 129-70-87
+					{point?.info.phone}
 				</a>
 				<button onClick={() => setModal(false)} className="btn btn-sm btn-gray no-drag">
 					Назад

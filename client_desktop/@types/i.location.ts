@@ -17,6 +17,7 @@ export interface IPoint {
 	reservetable:boolean
 	redirect:string
 	redirectON:boolean
+	terminal:string
 }
 export type IPointStatus = {
 	_id:string,
