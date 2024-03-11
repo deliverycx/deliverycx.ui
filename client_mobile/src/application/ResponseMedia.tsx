@@ -12,7 +12,7 @@ export const isDesctomMediaQuery = () => useMediaQuery({ minWidth: Number(proces
 
 export const Mobile:FC<IProps> = ({ children }) => {
 	
-  const isMobile = useMediaQuery({ maxWidth: 780 })
+  const isMobile = useMediaQuery({ maxWidth: 99998 })
 
   return isMobile ? children : null
 }
