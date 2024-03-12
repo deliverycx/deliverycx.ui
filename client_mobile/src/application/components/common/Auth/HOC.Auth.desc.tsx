@@ -24,12 +24,12 @@ const HOCAUTHDesc = () => {
 					</div>
 				</div>
 				{
-					(sendSMS && typeof sendSMS === 'boolean')
-						? <UserRegister formik={formik} set={setSendSMS} />
+					(sendSMS && typeof sendSMS === 'number')
+						? <UserRegister formik={formik} set={setSendSMS} codes={sendSMS} /> 
 						: <UserSendSMS formik={formik} />
 				}
 				{
-					sendSMS === 'error' &&
+					typeof sendSMS === 'boolean' && sendSMS === false &&
 					<span>Произошла ошибка, попробуйте ещё раз или сообщите нам об ошибке</span>
 				}
 				

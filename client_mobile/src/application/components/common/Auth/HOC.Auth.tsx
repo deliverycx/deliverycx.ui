@@ -23,14 +23,14 @@ const HOCAUTH = () => {
 				</div>
 			</div>
 			{
-				(sendSMS && typeof sendSMS === 'boolean')
-					? <UserRegister formik={formik} set={setSendSMS} />
-					: <UserSendSMS formik={formik} />
-			}
-			{
-				sendSMS === 'error' &&
-				<span>Произошла ошибка, попробуйте ещё раз или сообщите нам об ошибке</span>
-			}
+					(sendSMS)
+						? <UserRegister formik={formik} set={setSendSMS} codes={sendSMS} />
+						: <UserSendSMS formik={formik} />
+				}
+				{
+					typeof sendSMS === 'boolean' && sendSMS === false &&
+					<span>Произошла ошибка, попробуйте ещё раз или сообщите нам об ошибке</span>
+				}
 			<TabBar />
 		</div>
 	)

@@ -6,7 +6,7 @@ import { useState } from 'react';
 import * as yup from "yup";
 
 export function useAuthViewModel(this: any) {
-	const [sendSMS, setSendSMS] = useState<boolean | 'error' | null>(null)
+	const [sendSMS, setSendSMS] = useState<string | boolean | null>(null)
 
 	const initialValues = {
 		phone: '',
@@ -38,12 +38,16 @@ export function useAuthViewModel(this: any) {
 	const handlerSMSSend = async (phone: string) => {
 		try {
 			if (phone) {
-				await requestUser.smsSend(phone)
-				setSendSMS(true)
+				const {data} = await requestUser.smsSend(phone)
+				
+				if(data && typeof data === 'number'){
+					setSendSMS(String(data))
+				}
+				
 			}
 
 		} catch (error) {
-			setSendSMS('error')
+			setSendSMS(false)
 		}
 	}
 

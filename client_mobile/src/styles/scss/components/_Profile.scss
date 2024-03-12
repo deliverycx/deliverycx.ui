@@ -102,6 +102,24 @@
     }
   }
 
+	.gift_info{
+		display: flex;
+		justify-content: space-between;
+		.gift_info-box{
+			
+			color: #fff;
+			span{
+				display: block;
+				font-size: 12px;
+			}
+			.gift_info-box-count{
+				font-size: 18px;
+				font-weight: 600;
+			}
+
+		}
+	}
+
   &__button{
     display: flex;
     margin-bottom: 15px;

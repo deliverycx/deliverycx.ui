@@ -36,6 +36,8 @@
 			}
 		}
 
+		
+
 		&__inputs {
 			display: flex;
 			flex-direction: column;
@@ -81,6 +83,12 @@
 		}
 	}
 
+	.btn_sucsess-code{
+		background-color: #558950;
+		color: #fff;
+		
+		cursor: pointer;
+	}
 	&-footer {
 		display: flex;
 		flex-direction: column;
@@ -150,4 +158,15 @@
 	font-size: 14px;
 	font-weight: 500;
 	color: #8D191D;
+}
+
+.labyrinth{
+	display: flex;
+	flex-wrap: wrap;
+	width: 100%;
+	
+}
+.labyrinth_item{
+	margin: 5px;
+	text-align: center;
 }

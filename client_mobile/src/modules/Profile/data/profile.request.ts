@@ -25,5 +25,10 @@ class RequestProfile extends ApiSuper {
 	ordersUser(userid:string){
 		return this.request<IRequestOrderUser[]>(`/order/orderuser/${userid}`);
 	}
+
+	@methods("get")
+	getBumerang(phone:string){
+		return this.request<any>(`/profile/bumerang?phone=${phone}`);
+	}
 }
 export const requestProfile = new RequestProfile()

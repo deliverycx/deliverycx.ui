@@ -16,7 +16,7 @@ class RequestUser extends ApiSuper {
 	}
 	@methods("get")
 	smsSend(phone:string) {
-		return this.request(`/user/send_sms?phone=${phone}`);
+		return this.request<any>(`/user/send_sms?phone=${phone}`);
 	}
 	@methods("post")
 	update(data: userType.IUpdateData) {

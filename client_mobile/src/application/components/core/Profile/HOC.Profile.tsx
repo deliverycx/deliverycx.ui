@@ -5,6 +5,7 @@ import { adapterComponentUseCase } from 'adapters/adapterComponents';
 import { useProfileViewModel } from "./Profile.viewModel";
 import { ROUTE_APP } from "application/contstans/route.const";
 import { observer } from 'mobx-react-lite';
+import HOCLabyrinth from "./Labyrinth/HOC.Labyrinth";
 
 const HOCProfile = () => {
 	const useCase = adapterComponentUseCase(useProfileViewModel)
@@ -29,26 +30,7 @@ const HOCProfile = () => {
 						<h2 className="profile-content__info-name">{profile.personal && profile.personal.name ? profile.personal.name : <a href={ROUTE_APP.PROFILE.PROFILE_PERSONAL}>Добавить имя</a> } </h2>
 						<h4 className="profile-content__info-numb">{user.phone}</h4>
 					</div>
-					{
-							/*
-					<div className="profile-content__gift">
-						
-							
-							<div className="profile-content__gift-header">
-							<h3>Получи дюжину хинкали в подарок!</h3>
-							<button className="btn btn-none">
-								<img src={require("assets/images/icons/info.png")} alt="" />
-							</button>
-						</div>
-							
-						
-						
-						<div className="profile-content__gift__content">
-
-						</div>
-					</div>
-						*/
-						}
+					<HOCLabyrinth />
 					<div className="profile-content__list">
 						<NavLink to={ROUTE_APP.PROFILE.PROFILE_PERSONAL} className="profile-content__list-link">
 							Личные данные

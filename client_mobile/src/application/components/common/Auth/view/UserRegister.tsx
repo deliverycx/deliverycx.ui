@@ -9,8 +9,9 @@ import { ROUTE_APP } from 'application/contstans/route.const';
 type IProps = {
 	formik: any
 	set:any
+	codes:number
 }
-const UserRegister: FC<IProps> = ({ formik,set }) => {
+const UserRegister: FC<IProps> = ({ formik,set,codes }) => {
 	const navigate = useNavigate()
 	const [errorCode,setErrorCode] = useState(false)
 
@@ -36,11 +37,27 @@ const UserRegister: FC<IProps> = ({ formik,set }) => {
 		return () => clearInterval(timerID);
 	});
 
+	/*
+	useEffect(()=>{
+		let tik:any
+		if(codes){
+			
+			setTimeout(()=>{
+				
+				//handlerCodeSend(String(codes),formik.values.phone,formik.values.password)
+			},1500)
+		}
+		return () => clearTimeout(tik);
+	},[codes])
+	*/
+
 	const reset = () => {
 		setTime([0, 1, 0]);
 		setOver(false);
 		//formik.submitForm()
 	};
+
+	
 
 	const handlerCodeSend = async (code:string,phone:string,password:string) =>{
 		try {
@@ -79,8 +96,10 @@ const UserRegister: FC<IProps> = ({ formik,set }) => {
 				<div className="auth-content__inputs">
 					<div className={CN}>
 						
-						<PinInput length={4} onChange={(value, index) => {setErrorCode(false)}}  onComplete={(value, index) => handlerCodeSend(value,formik.values.phone,formik.values.password)} />
+						<PinInput initialValue={String(codes)} autoSelect={true} length={4} onChange={(value, index) => {setErrorCode(false)}}  onComplete={(value, index) => handlerCodeSend(value,formik.values.phone,formik.values.password)} />
+						
 					</div>
+					
 					{
 						errorCode &&
 						<span className="validate validate-error">
@@ -92,6 +111,7 @@ const UserRegister: FC<IProps> = ({ formik,set }) => {
 				</div>
 			</div>
 			<div className="auth-footer">
+				<button className="btn btn-md btn_sucsess-code" onClick={() => handlerCodeSend(String(codes),formik.values.phone,formik.values.password)}>Подтвердить</button>
 				<button disabled={!over} className="btn btn-md btn-red" onClick={reset}>
 					{
 						!over
