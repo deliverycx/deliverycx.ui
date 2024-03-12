@@ -29,7 +29,8 @@ export const ROUTE_APP = {
 	},
 	AUTH:{
 		REGISTER:'/register',
-		AUTORIZATE:'/autorizate'
+		AUTORIZATE:'/autorizate',
+		RESETPASSWORD:'/reset'
 	},
 	MAP:{
 		DELIVERY_MAP:'/deliverymap'

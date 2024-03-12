@@ -8,10 +8,11 @@ import FormFieldWrapper from "../../Forms/FormFieldWrapper";
 type IProps = {
 
 	formik: any
+	codes:any
 }
 
-const UserSendSMS: FC<IProps> = ({ formik }) => {
-
+const UserSendSMS: FC<IProps> = ({ formik,codes }) => {
+	
 	return (
 		<FormikProvider value={formik}>
 			<form onSubmit={formik.handleSubmit}>
@@ -104,6 +105,10 @@ const UserSendSMS: FC<IProps> = ({ formik }) => {
 
 							</div>
 						</div>
+						{
+					typeof codes === 'boolean' && codes === false &&
+					<span className="error">Произошла ошибка, такой пользователь существует,<br /> попробуйте ещё раз или сообщите нам об ошибке</span>
+				}
 
 					</div> 
 					

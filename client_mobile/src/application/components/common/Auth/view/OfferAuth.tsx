@@ -150,7 +150,7 @@ const OfferAuth = () => {
 									</div>
 									{
 										loginError &&
-										<div className="login-error">Не верный телефон или пароль</div>
+										<div className="login-error">Не верный телефон или пароль, <a className="error" href="/reset">Восстановление пароля</a></div>
 									}
 
 									<div className="auth-footer">
@@ -259,7 +259,9 @@ const OfferAuth = () => {
 									</div>
 									{
 										loginError &&
-										<div className="login-error">Не верный телефон или пароль</div>
+										<div className="login-error">Не верный телефон или пароль,
+										<a className="error" href="">Восстановление пароля</a>
+										</div>
 									}
 
 									<div className="auth-footer">

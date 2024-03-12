@@ -21,5 +21,12 @@ export type ILoginUser = {
 	phone: string;
 	password:string
 }
+export type IsendSms = {
+	phone:string
+}
+export type IResetPass = {
+	phone:string
+	password:string
+}
 
 export type IUser = UserDTO

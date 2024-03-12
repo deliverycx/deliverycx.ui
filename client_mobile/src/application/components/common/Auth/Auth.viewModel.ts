@@ -1,4 +1,5 @@
 import { valid } from "application/helpers/validationSchema";
+import { el } from "date-fns/locale";
 import { useFormik } from "formik";
 import { requestUser } from "modules/UserModule/data/user.request";
 import { userUseCase } from "modules/UserModule/user.module";
@@ -38,10 +39,12 @@ export function useAuthViewModel(this: any) {
 	const handlerSMSSend = async (phone: string) => {
 		try {
 			if (phone) {
-				const {data} = await requestUser.smsSend(phone)
+				const {data} = await requestUser.smsSend({phone})
 				
 				if(data && typeof data === 'number'){
 					setSendSMS(String(data))
+				}else{
+					setSendSMS(false)
 				}
 				
 			}

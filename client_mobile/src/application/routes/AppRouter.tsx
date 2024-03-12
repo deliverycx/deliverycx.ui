@@ -36,6 +36,7 @@ import HOCDeliveryAdressDesc from 'application/components/core/Profile/DeliveryA
 import OrderCreateDesc from 'application/components/core/Order/OrderCreate/OrderCreate.desc';
 import OrderSuccesDesc from 'application/components/core/Order/OrderCreate/OrderSucces.desc';
 import LayoutDesctop from 'application/components/common/Layout/LayoutDesctop';
+import PasswordReset from 'application/components/common/Auth/view/PasswordReset';
 
 
 
@@ -85,6 +86,10 @@ export const publicRoutesMobile = [
 	{
 		path: ROUTE_APP.AUTH.AUTORIZATE,
 		Component: OfferAuth
+	},
+	{
+		path: ROUTE_APP.AUTH.RESETPASSWORD,
+		Component: PasswordReset
 	},
 	{
 		path: ROUTE_APP.PROFILE.PROFILE_MAIN,

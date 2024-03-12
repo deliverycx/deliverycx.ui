@@ -14,9 +14,18 @@ class RequestUser extends ApiSuper {
 	check(body:userType.IUser) {
 		return this.request<userType.IUserGuest>("/user/check_guest");
 	}
-	@methods("get")
-	smsSend(phone:string) {
-		return this.request<any>(`/user/send_sms?phone=${phone}`);
+	@methods("post")
+	smsSend(body:userType.IsendSms) {
+		return this.request<any>(`/user/send_sms`);
+	}
+
+	@methods("post")
+	smsResetSend(body:userType.IsendSms) {
+		return this.request<any>(`/user/send_resetsms`);
+	}
+	@methods("post")
+	smsResetPass(body:userType.IResetPass) {
+		return this.request<any>(`/user/resetpassword`);
 	}
 	@methods("post")
 	update(data: userType.IUpdateData) {

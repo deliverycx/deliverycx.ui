@@ -62,6 +62,11 @@ body {
 	}
 }
 
+.error{
+	color: #8D191D;
+	font-size: 11px;
+}
+
 .modal {
 	&:not(.react-draggable-dragging) {
 		transition: transform ease .3s;

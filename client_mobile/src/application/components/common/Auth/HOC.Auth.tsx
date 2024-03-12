@@ -9,7 +9,7 @@ const HOCAUTH = () => {
 	const useCase = adapterComponentUseCase(useAuthViewModel)
 	const { formik, sendSMS } = useCase.data
 	const { setSendSMS } = useCase.handlers
-
+	
 
 	return (
 		<div className="auth unauthorized">
@@ -25,12 +25,9 @@ const HOCAUTH = () => {
 			{
 					(sendSMS)
 						? <UserRegister formik={formik} set={setSendSMS} codes={sendSMS} />
-						: <UserSendSMS formik={formik} />
+						: <UserSendSMS formik={formik} codes={sendSMS} />
 				}
-				{
-					typeof sendSMS === 'boolean' && sendSMS === false &&
-					<span>Произошла ошибка, попробуйте ещё раз или сообщите нам об ошибке</span>
-				}
+				
 			<TabBar />
 		</div>
 	)
