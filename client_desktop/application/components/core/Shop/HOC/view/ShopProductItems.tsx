@@ -46,6 +46,12 @@ const ShopProductItem: FC<IProps> = ({ products }) => {
 													 
 													 : "1 шт."
 												}
+												{
+							measureUnit === "порц"
+								? `${Number.isInteger(weight) ? weight : convertWeight(weight)} г` :
+								measureUnit === "мл" ?   weight   + 'мл'
+									: "1 шт."
+						}
 												</div>
                         <div className="price">{price} ₽</div>
                     </div>
