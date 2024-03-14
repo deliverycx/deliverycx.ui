@@ -175,7 +175,7 @@ const CouterPage = () =>{
 	return(
 		<>
     <section className="checkout_page">
-    <div className="container">
+    <div className="telikcount">
 		  <div className="header">
   			<div className="header__left">
           <Link href="/">
@@ -183,7 +183,7 @@ const CouterPage = () =>{
           </Link>
           </div>
   			<div className="header__center">
-  				<h1 className="cart_page-title">Сьедено хинкалей</h1>
+  				<h1 className="cart_page-title">стчечик хинкалей</h1>
   			</div>
   			<div className="back_shop"><Link href="/">
           Вернуться в меню
