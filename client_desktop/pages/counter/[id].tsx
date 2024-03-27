@@ -102,13 +102,13 @@ const CouterPage = () =>{
 
 			/**/
 			if (numbFlip && org) {
-				await organizationCoutn(org.guid)
-				/*
+				//await organizationCoutn(org.guid)
+				/**/
 				timercoutn = setInterval(async () => {
 					console.log('iiiiiiii');
-					await organizationCoutn(point.guid)
+					await organizationCoutn(org.guid)
 				}, 100000)
-				*/
+				
 
 			}
 			
@@ -183,7 +183,7 @@ const CouterPage = () =>{
           </Link>
           </div>
   			<div className="header__center">
-  				<h1 className="cart_page-title">счетчик хинкалей</h1>
+  				<h1 className="cart_page-title">счетчик хинкали</h1>
   			</div>
   			<div className="back_shop"><Link href="/">
           Вернуться в меню
