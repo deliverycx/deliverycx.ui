@@ -102,7 +102,7 @@ const CouterPage = () =>{
 
 			/**/
 			if (numbFlip && org) {
-				//await organizationCoutn(org.guid)
+				await organizationCoutn(org.guid)
 				/**/
 				timercoutn = setInterval(async () => {
 					console.log('iiiiiiii');
