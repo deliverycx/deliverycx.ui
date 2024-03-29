@@ -39,7 +39,7 @@ const CouterPage = () =>{
 				
 				timer = setTimeout(() => {
 					counter++
-					const zeroLength = 12;
+					const zeroLength = 11;
 					const c = parseInt(count)
 					const newcount = String(c + counter).padStart(zeroLength, '0')
 					console.log('nex',newcount);
