@@ -43,7 +43,7 @@ const HOCShop = () => {
 			</div>
 			
 			{
-				!userUseCase.checkAuthUser() && <OrderAuthNotificate openmodal={true} />
+				//!userUseCase.checkAuthUser() && <OrderAuthNotificate openmodal={true} />
 			}
 		</div>
 		<TabBar />	
