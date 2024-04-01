@@ -35,11 +35,11 @@ const CouterPage = () =>{
 				const setDelay = (((num1) * delay) / (num2));
 				return { delay2: setDelay, delay1: delay }
 			}
-			function setCounter(el: any, toNumber: any, delay: any, counter = (Number(numbFlip) - 100)) {
+			function setCounter(el: any, toNumber: any, delay: any, counter = (Number(numbFlip) -1)) {
 				
 				timer = setTimeout(() => {
 					counter++
-					const zeroLength = 11;
+					const zeroLength = 8;
 					const c = parseInt(count)
 					const newcount = String(c + counter).padStart(zeroLength, '0')
 					console.log('nex',newcount);
@@ -89,7 +89,7 @@ const CouterPage = () =>{
 
 
 					const num1 = Number(numbFlip);
-					const num2 = Number(numbFlip) - 10;
+					const num2 = Number(numbFlip) ;
 					const { delay1, delay2 } = getDelay(num1, num2, 2)
 					setCounter('span1', num1, delay1)
 					//setCounter('span2',num2, delay2)
@@ -107,7 +107,7 @@ const CouterPage = () =>{
 				timercoutn = setInterval(async () => {
 					console.log('iiiiiiii');
 					await organizationCoutn(org.guid)
-				}, 100000)
+				}, 3000)
 				
 
 			}
@@ -191,12 +191,12 @@ const CouterPage = () =>{
       </div>
       <div className="cart_page-container">
 			<section className="counter-tik_box">
-								<h3 className="counter-tik_title">Съедено хинкали</h3>
+								<h3 className="counter-tik_title">Съедено</h3>
 								
 								{
 									load ? <LoaderProduct /> : <CountTik value={count} />
 								}
-								
+								<h3 className="counter-tik_title">хинкали</h3>
 								
 							</section>
       </div>
