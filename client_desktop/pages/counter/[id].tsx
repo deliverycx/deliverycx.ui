@@ -176,19 +176,7 @@ const CouterPage = () =>{
 		<>
     <section className="checkout_page telikpage">
     <div className="telikcount">
-		  <div className="header">
-  			<div className="header__left">
-          <Link href="/">
-  				<img className="header_logo" src="../images/logo-top.svg" alt="" />
-          </Link>
-          </div>
-  			<div className="header__center">
-  				<h1 className="cart_page-title">счетчик хинкали</h1>
-  			</div>
-  			<div className="back_shop"><Link href="/">
-          Вернуться в меню
-          </Link></div>
-      </div>
+		  
       <div className="cart_page-container">
 			<section className="counter-tik_box">
 								<h3 className="counter-tik_title">Съедено</h3>
