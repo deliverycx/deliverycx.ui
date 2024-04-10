@@ -78,7 +78,7 @@ const OrganizationCardItem: FC<IProps> = ({ organization, active, viseble }) => 
 						active && !load ?
 							<>
 								<OrganizationCounterHi point={organization} />
-								<OragnizationRequisities organization={organization} />
+								
 							</>
 							: <LoaderProduct />
 					}
