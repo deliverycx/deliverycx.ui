@@ -90,6 +90,10 @@ const OrganizationCardItem: FC<IProps> = ({ organization, active, viseble }) => 
 					}
 					<OrganizationTipeDelivery organization={organization} />
 					<OrganizationTableRestaurant organization={organization} />
+					{
+						active && !load &&
+						<OragnizationRequisities organization={organization} />
+					}
 				</div>
 			</div>
 

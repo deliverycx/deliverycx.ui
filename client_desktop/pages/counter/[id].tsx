@@ -14,7 +14,7 @@ import { RequestAdmin } from "servises/repository/Axios/RequestAdmin"
 const CouterPage = () =>{
 
 	const {phone,address,city,guid} = adapterSelector.useSelectors(selector => selector.point)
-	const [count, setCount] = useState<any>('000000000000');
+	const [count, setCount] = useState<any>('0000000');
 	const [tik, setTik] = useState<boolean>(false);
 	const [load, setLoad] = useState<boolean>(false);
 	const [org, setOrg] = useState<any>(null);
