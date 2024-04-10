@@ -14,7 +14,7 @@ import { RequestAdmin } from "servises/repository/Axios/RequestAdmin"
 const CouterPage = () =>{
 
 	const {phone,address,city,guid} = adapterSelector.useSelectors(selector => selector.point)
-	const [count, setCount] = useState<any>('000000000000');
+	const [count, setCount] = useState<any>('0000000');
 	const [tik, setTik] = useState<boolean>(false);
 	const [load, setLoad] = useState<boolean>(false);
 	const [org, setOrg] = useState<any>(null);
@@ -35,11 +35,11 @@ const CouterPage = () =>{
 				const setDelay = (((num1) * delay) / (num2));
 				return { delay2: setDelay, delay1: delay }
 			}
-			function setCounter(el: any, toNumber: any, delay: any, counter = (Number(numbFlip) - 100)) {
+			function setCounter(el: any, toNumber: any, delay: any, counter = (Number(numbFlip) -1)) {
 				
 				timer = setTimeout(() => {
 					counter++
-					const zeroLength = 12;
+					const zeroLength = 8;
 					const c = parseInt(count)
 					const newcount = String(c + counter).padStart(zeroLength, '0')
 					console.log('nex',newcount);
@@ -89,7 +89,7 @@ const CouterPage = () =>{
 
 
 					const num1 = Number(numbFlip);
-					const num2 = Number(numbFlip) - 10;
+					const num2 = Number(numbFlip) ;
 					const { delay1, delay2 } = getDelay(num1, num2, 2)
 					setCounter('span1', num1, delay1)
 					//setCounter('span2',num2, delay2)
@@ -103,12 +103,12 @@ const CouterPage = () =>{
 			/**/
 			if (numbFlip && org) {
 				await organizationCoutn(org.guid)
-				/*
+				/**/
 				timercoutn = setInterval(async () => {
 					console.log('iiiiiiii');
-					await organizationCoutn(point.guid)
-				}, 100000)
-				*/
+					await organizationCoutn(org.guid)
+				}, 3000)
+				
 
 			}
 			
@@ -174,29 +174,17 @@ const CouterPage = () =>{
 	}
 	return(
 		<>
-    <section className="checkout_page">
+    <section className="checkout_page telikpage">
     <div className="telikcount">
-		  <div className="header">
-  			<div className="header__left">
-          <Link href="/">
-  				<img className="header_logo" src="../images/logo-top.svg" alt="" />
-          </Link>
-          </div>
-  			<div className="header__center">
-  				<h1 className="cart_page-title">стчечик хинкалей</h1>
-  			</div>
-  			<div className="back_shop"><Link href="/">
-          Вернуться в меню
-          </Link></div>
-      </div>
+		  
       <div className="cart_page-container">
 			<section className="counter-tik_box">
-								<h3 className="counter-tik_title">Съедено хинкали</h3>
+								<h3 className="counter-tik_title">Съедено</h3>
 								
 								{
 									load ? <LoaderProduct /> : <CountTik value={count} />
 								}
-								
+								<h3 className="counter-tik_title">хинкали</h3>
 								
 							</section>
       </div>

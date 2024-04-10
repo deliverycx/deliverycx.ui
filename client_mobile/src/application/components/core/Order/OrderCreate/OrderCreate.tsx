@@ -54,7 +54,7 @@ const OrderCreate = () => {
 							<span>№ {orderNumber}</span>
 						</div>
 						<div className="order-accepted__content-text">
-							В ближайшее время с вами свяжется наш администратор и уточнит детали
+							В ближайшее время с вами свяжутся и уточнят детали
 						</div>
 						{
 							pay &&
@@ -91,7 +91,7 @@ const OrderCreate = () => {
 						</div>
 						<div className="order-accepted__content-title">Ошибка при заказе</div>
 						<div className="order-accepted__content-text">
-							С вами свяжется администратор
+						Пожалуйста, позвоните в хинкальную
 						</div>
 					</div>
 					<div className="order-accepted__buttons">
