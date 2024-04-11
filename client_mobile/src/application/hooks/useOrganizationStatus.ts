@@ -109,6 +109,7 @@ export class StatusTSX {
 			(
 				this.pointstatus.organizationStatus !== ORG_STATUS.OPEN && 
 				this.pointstatus.organizationStatus !== ORG_STATUS.NODELIVERY &&
+				this.pointstatus.organizationStatus !== ORG_STATUS.SEZONNOTWORK &&
 				this.pointstatus.organizationStatus !== ORG_STATUS.NOWORK
 			),
 			tsx
