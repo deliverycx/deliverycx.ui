@@ -75,6 +75,23 @@ const OrderNotificate:FC<{disable:any}> = ({disable}) =>{
 		</div>
 	))
 
+	statusTSX.SezonNoWork((
+		<div className="modal__wrapper">
+			<div className="modal__header">
+				<div className="modal__header-btn">
+					<img className="no-drag" onClick={() => setModal(false)} src={require("assets/images/icons/close.png")} alt="" />
+				</div>
+				<h3>Временно не работает (не сезон)</h3>
+			</div>
+			<div className="modal__content gap-8">
+				<strong>На сайте вы можете посмотреть наше меню, контакты.</strong>
+				<button onClick={() => setModal(false)} className="btn btn-sm btn-gray no-drag">
+					Назад
+				</button>
+			</div>
+		</div>
+	))
+
 	statusTSX.NoDeliveryPoint((
 		<div className="modal__wrapper">
 			<div className="modal__header">

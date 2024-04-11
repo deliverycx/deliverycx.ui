@@ -70,6 +70,14 @@ export class StatusTSX {
 		)
 	}
 
+	SezonNoWork(tsx?: ReactNode) {
+		return this.init(
+			'временно не работает',
+			this.pointstatus.organizationStatus === ORG_STATUS.SEZONNOTWORK,
+			tsx
+		)
+	}
+
 	NoTimeWork(tsx?: ReactNode) {
 		return this.init(
 			'закрылась',
@@ -85,6 +93,8 @@ export class StatusTSX {
 			tsx
 		)
 	}
+
+	
 
 	OnliPICKUP(tsx?:ReactNode){
 		const picup = this.pointstatus.deliveryTipe.find((val:any) =>{
