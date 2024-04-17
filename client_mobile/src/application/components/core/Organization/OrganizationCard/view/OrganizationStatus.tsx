@@ -64,6 +64,20 @@ const OrganizationStatus:FC<{organization:IOrganization}> = ({organization}) => 
 		</div>
 	))
 
+
+	statusTSX && statusTSX.SezonNoWork((
+
+		<div className="order-placement__form">
+			<div className="order-placement__tabs__notification">
+				<h3>Временно не работает (не сезон)</h3>
+				<strong>Приносим извинения за неудобства!</strong>
+				<p>
+					На сайте вы можете посмотреть наше меню, контакты.
+				</p>
+			</div>
+		</div>
+	))
+
 	statusTSX && statusTSX.OpenPoint((
 
 		<div className="order-placement__form">

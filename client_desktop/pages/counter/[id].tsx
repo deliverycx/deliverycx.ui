@@ -83,7 +83,9 @@ const CouterPage = () =>{
 						})
 						numbFlip = (Number(countorg.coutn) + Number(numbFlip))
 					} else {
-						numbFlip = Number(countorg.coutn)
+						const coutToday = await getFlipToday()
+						console.log('today',coutToday);
+						numbFlip = Number(countorg.coutn) + Number(coutToday)
 					}
 
 
@@ -107,7 +109,7 @@ const CouterPage = () =>{
 				timercoutn = setInterval(async () => {
 					console.log('iiiiiiii');
 					await organizationCoutn(org.guid)
-				}, 3000)
+				}, 10000)
 				
 
 			}
@@ -172,6 +174,27 @@ const CouterPage = () =>{
 		}
 
 	}
+
+	const getFlipToday = async () => {
+		try {
+
+			
+			const time = format(new Date(), "yyy-LL-dd")
+			const oldtime = dtime_nums(1)
+			const { data } = await RequestWebhook.flip({
+				time, oldtime, phone:org.phone,	pages:true
+			})
+			//console.log('сьедено за сегодня', data);
+			
+			return data
+		} catch (error) {
+			console.log(error);
+		}
+
+	}
+
+
+
 	return(
 		<>
     <section className="checkout_page telikpage">
