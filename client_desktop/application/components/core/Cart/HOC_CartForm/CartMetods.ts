@@ -15,10 +15,15 @@ export const CartFormMetods = {
       value: "Картой курьеру",
 			icon:"/images/icon/bank/card.svg"
     },
-    {
+
+   
+  ]
+}
+
+/*
+ {
       id: "CARD",
       value: "Картой в приложении",
       icon:"/images/icon/bank/card.svg"
     },
-  ]
-}
+*/
