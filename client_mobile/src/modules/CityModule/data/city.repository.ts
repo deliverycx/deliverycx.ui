@@ -5,11 +5,13 @@ import { ICityResponse } from "../interfaces/city.type";
 import { AjaxResponse } from "rxjs/ajax";
 import { guardPiPeRepository, guardRepository } from "application/guards/repository.guard";
 import { requestCity, requestCityAjax } from "./city.request";
+import { DTOMapper } from "application/guards/aplication.guard";
+import { InjectableDI } from "application/helpers/dependencyInjection";
 
 
 
-
-export class CityRepository extends CityEntiti {
+@InjectableDI()
+export class CityRepository{
 
 
 	/*
@@ -36,19 +38,23 @@ export class CityRepository extends CityEntiti {
 	}
 	*/
 
+	@DTOMapper(cityMapper)
 	async getCityRepository(cityname: string) {
 		try {
 			const { data } = await requestCity.getAll(cityname) // получаем города по имени или без
+			return data
+			/*
 			const result = guardRepository(this.existingCity)(data) // убираем скрытые города
 			if(result){
 				const sortCity = this.sortByNameCity(result as ICityResponse[]) // сортируем по алфовиту и раставляем по алфовиту
 				return sortCity && sortCity.map((val) => {
 					return cityMapper(val as unknown as ICityResponse) // пропускаем через маппер и валидатор
 				})
+				
 			}else{
 				throw Error()
 			}
-			
+			*/
 		} catch (error) {
 			console.log(error);
 		}

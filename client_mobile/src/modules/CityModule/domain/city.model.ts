@@ -1,40 +1,31 @@
 import { action, computed, configure, makeObservable, observable } from "mobx"
-import { CityDTO } from "../interfaces/city.dto"
+import { cityDTO } from "../interfaces/city.dto"
 import { CityRepository } from "../data/city.repository"
 import { makePersistable } from 'mobx-persist-store';
 import { ICity } from 'modules/CityModule/interfaces/city.type';
+import { CityEntiti } from "./city.entity";
+import { InjectableDI } from "application/helpers/dependencyInjection";
 
-export class CityModel extends CityRepository {
-	cityList: Array<CityDTO> = []
-	selectCity:CityDTO | null = null
+@InjectableDI()
+export class CityModel{
+	cityList: Array<ICity> = []
+	selectCity:CityEntiti | null = null
 
 	constructor() {
-		super()
+	
 		makeObservable(this, {
 			cityList: observable,
 			selectCity: observable,
-			actionSetSity: action,
+			actionSetSityList: action,
 			actionSelectSity:action,
 		})
 		makePersistable(this, { name: 'city', properties: ['selectCity'],storage: window.localStorage });
-		/*
-		configure({
-			useProxies: "never"
-		})
-		*/
+
 	}
 
 	
-	actionSetSity(name: string) {
-		/*
-		this.getCityRepository(name).subscribe((data: any) => {
-			this.sityList = data
-		})
-		*/
-		return this.getCityRepository(name).then((data: any) => {
-			this.cityList = data
-			return data
-		})
+	actionSetSityList(citys:ICity[] | []) {
+		this.cityList = citys
 	}
 
 	actionSelectSity(city:ICity){

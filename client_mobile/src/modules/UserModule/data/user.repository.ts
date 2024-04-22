@@ -1,56 +1,63 @@
 import { guardRepository } from "application/guards/repository.guard";
-import { ILoginUser, IUpdateData, IUser, IUserGuest } from "../interfaces/user.type";
+import * as userType from "../interfaces/user.type";
 import { requestUser } from "./user.request";
-import { UserEntity } from "../domain/user.entity";
 import { userMapper } from "../interfaces/user.dto";
+import { UserGuards } from "../interfaces/user.guard";
+import { AccessGuard, DTOMapper } from "application/guards/aplication.guard";
 
-export class UserRepository extends UserEntity {
+export class UserRepository extends UserGuards {
 
 	async repositoryCreateGuest() {
 		try {
 			const { data } = await requestUser.register()
-			const result = guardRepository(this.existingUser)(data)
+			const result = guardRepository(this.existing)(data)
 			if (result) {
-				return userMapper(result as unknown as IUserGuest)
+				return userMapper(result as unknown as userType.IUserGuest)
 			}
 		} catch (error) {
 			console.log(error);
 		}
 	}
 
-	async repositoryCheckGuest(user: IUser) {
+	@DTOMapper(userMapper)
+	@AccessGuard(UserGuards)	
+	async repositoryCheckGuest(user: userType.IUser) {
 		try {
 			const { data } = await requestUser.check(user)
+			
+			return data
+			/*
 			const result = guardRepository(this.existingUser)(data)
 			if (result) {
-				return userMapper(result as unknown as IUserGuest)
+				return userMapper(result as unknown as userType.IUserGuest)
 			}
+			*/
 		} catch (error) {
 			console.log(error);
 			this.repositoryCreateGuest()
 		}
 	}
 
-	async repositoryAuthUser(body: IUpdateData) {
+	async repositoryAuthUser(body: userType.IUpdateData) {
 		try {
 			const { data } = await requestUser.update(body)
-			const result = guardRepository(this.existingUser)(data)
+			const result = guardRepository(this.existing)(data)
 
 			if (result) {
-				return userMapper(result as unknown as IUserGuest)
+				return userMapper(result as unknown as userType.IUserGuest)
 			}
 		} catch (error) {
 			console.log(error);
 		}
 	}
 
-	async repositoryLoginUser(body: ILoginUser) {
+	async repositoryLoginUser(body: userType.ILoginUser) {
 		try {
 			const { data } = await requestUser.loginUser(body)
-			const result = guardRepository(this.existingUser)(data)
+			const result = guardRepository(this.existing)(data)
 
 			if (result) {
-				return userMapper(result as unknown as IUserGuest)
+				return userMapper(result as unknown as userType.IUserGuest)
 			}
 		} catch (error) {
 

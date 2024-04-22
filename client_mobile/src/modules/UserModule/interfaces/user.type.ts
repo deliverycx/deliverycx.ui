@@ -1,4 +1,4 @@
-import { UserDTO } from "./user.dto";
+import { userDTO } from "./user.dto";
 
 export type IDatReg = {
 	isNew: boolean;
@@ -29,4 +29,4 @@ export type IResetPass = {
 	password:string
 }
 
-export type IUser = UserDTO
+export type IUser = typeof userDTO

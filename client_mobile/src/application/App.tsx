@@ -8,7 +8,10 @@ import { profileUseCase } from 'modules/Profile/profile.module';
 import { YMInitializer } from 'react-yandex-metrika';
 
 
+
+
 const App = (): JSX.Element => {
+
 
 	useEffect(()=>{
 		userUseCase.checkUserGuest()

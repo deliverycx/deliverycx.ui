@@ -32,7 +32,7 @@
     "history": "^5.3.0",
     "html-react-parser": "^4.0.0",
     "infinite-react-carousel": "^1.2.11",
-    "inversify": "^6.0.1",
+    "inversify": "^6.0.2",
     "inversify-inject-decorators": "^3.1.0",
     "localforage": "^1.10.0",
     "lodash": "^4.17.21",
@@ -67,7 +67,7 @@
     "redux-logger": "3.0.6",
     "redux-persist": "^6.0.0",
     "redux-thunk": "2.4.2",
-    "reflect-metadata": "^0.1.13",
+    "reflect-metadata": "^0.1.14",
     "rxjs": "^7.8.1",
     "semantic-ui-css": "^2.5.0",
     "semantic-ui-react": "^2.1.4",
@@ -77,7 +77,9 @@
     "stories-react": "1.1.2",
     "styled-components": "^5.3.11",
     "swiper": "^11.0.5",
+    "tsyringe": "^4.8.0",
     "tv4": "^1.3.0",
+    "typedi": "^0.10.0",
     "typescript": "5.1.3",
     "web-vitals": "^3.3.2",
     "yup": "^1.2.0"
@@ -94,7 +96,7 @@
       "react-app",
       "react-app/jest"
     ],
-		"rules": {
+    "rules": {
       "jsx-a11y/anchor-is-valid": "off"
     }
   },

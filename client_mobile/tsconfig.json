@@ -1,15 +1,13 @@
 {
   "compilerOptions": {
-    "experimentalDecorators": true,
     "emitDecoratorMetadata": true,
-    "baseUrl": "src",
-    "target": "es5",
-    "lib": [
-      "dom",
-      "dom.iterable",
-      "esnext"
-    ],
+    "experimentalDecorators": true,
     
+    "baseUrl": "src",
+		"target": "ES6",
+    "lib": ["DOM", "ES6", "esnext", "DOM.Iterable", "ScriptHost", "ES2016.Array.Include"],
+   
+    "strictPropertyInitialization": false,
     "allowJs": true,
     "skipLibCheck": true,
     "esModuleInterop": true,

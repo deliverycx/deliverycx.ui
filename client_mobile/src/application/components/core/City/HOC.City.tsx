@@ -5,7 +5,6 @@ import { adapterComponentUseCase } from 'adapters/adapterComponents';
 import { observer } from 'mobx-react-lite';
 import { useCityViewModel } from './useCity.viewModel';
 import { cityModel } from 'modules/CityModule/city.module';
-import { CityDTO } from 'modules/CityModule/interfaces/city.dto';
 import { ICity } from 'modules/CityModule/interfaces/city.type';
 import CountCity from './view/CountCity';
 import CityListView from './view/CityListView';

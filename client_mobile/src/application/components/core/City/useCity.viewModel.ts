@@ -7,7 +7,6 @@ import { useMemo } from 'react';
 import { useMutation, useQuery,QueryClient } from 'react-query';
 import { requestCity } from 'modules/CityModule/data/city.request';
 import { ICity } from 'modules/CityModule/interfaces/city.type';
-import { CityDTO } from 'modules/CityModule/interfaces/city.dto';
 import { organizationModel } from 'modules/OrganizationModule/organization.module';
 import { appUseCase } from 'modules/AppModule/app.module';
 import { ROUTE_APP } from 'application/contstans/route.const';
