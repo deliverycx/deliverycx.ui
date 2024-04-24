@@ -112,7 +112,7 @@ const CouterPage = () =>{
 				timercoutn = setInterval(async () => {
 					console.log('iiiiiiii');
 					await organizationCoutn(org.guid)
-				}, 15000)
+				},20000)
 				
 
 			}
