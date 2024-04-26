@@ -1,12 +1,10 @@
 import { FC, useEffect, useState } from "react";
 import ModalCard from "../../../../common/Modals/ModalCard";
 import axios from "axios";
-import { organizationModel } from "../../../../../../modules/OrganizationModule/organization.module";
-import {
-    IRequisitiesOrganization
-} from "../../../../../../modules/OrganizationModule/Organization/interfaces/organization.type";
+
+
 import { requestOrganizationAdmin, requestOrganizationApi } from "modules/OrganizationModule/Organization/data/organization.request";
-import { IOrganization } from 'modules/OrganizationModule/Organization/interfaces/organization.type';
+import { IOrganization, IRequisitiesOrganization } from 'modules/OrganizationModule/Organization/interfaces/organization.type';
 
 const OragnizationRequisities:FC<{organization:IOrganization}> = ({organization}) => {
     const [modal, setModal] = useState(false)

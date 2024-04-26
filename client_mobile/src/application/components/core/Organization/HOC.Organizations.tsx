@@ -46,7 +46,7 @@ const HOCOrganizations = () => {
 
 		
 			{
-				organizations &&
+				organizations && 
 				<HOCOrganizationCard organizations={organizations} pointIndex={pointIndex} />
 			}
 			
@@ -63,7 +63,7 @@ const HOCOrganizations = () => {
 			}
 			<div className="map__map">
 				{
-					organizations &&
+					organizations && 
 					<OrganizationMap organizations={organizations} setPointIndex={setPointIndex} setCord={pointCords} />
 				}
 			</div>
@@ -85,6 +85,7 @@ const HOCOrganizations = () => {
 						
 					</button>
 					<HOCOrganizationFilters city={city} />
+					
 
 				</div>
 				{

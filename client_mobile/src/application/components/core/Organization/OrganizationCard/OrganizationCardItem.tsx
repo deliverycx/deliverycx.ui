@@ -17,10 +17,11 @@ import { organizationModel, useCaseOrganizationStatus } from 'modules/Organizati
 import { observer } from "mobx-react-lite"
 import LoaderProduct from "application/components/common/Loaders/loaderProduct"
 import Slider from "react-slick"
+import { IOrganizationStatus } from "modules/OrganizationModule/OrganizationStatuses/interfaces/organizationStatus.type"
 
 
 type IProps = {
-	organization: IOrganization
+	organization: IOrganization & IOrganizationStatus
 	active: any
 	viseble: any
 }
@@ -37,7 +38,7 @@ const OrganizationCardItem: FC<IProps> = ({ organization, active, viseble }) => 
 			tiks = setTimeout(() => {
 				setLoad(false)
 			}, 500)
-			useCaseOrganizationStatus.statusOrganization()
+			//useCaseOrganizationStatus.statusOrganization()
 		}
 
 
@@ -51,6 +52,8 @@ const OrganizationCardItem: FC<IProps> = ({ organization, active, viseble }) => 
 		slidesToShow: 1,
 		slidesToScroll: 1
 	};
+
+	
 
 	return (
 		<>
@@ -71,9 +74,41 @@ const OrganizationCardItem: FC<IProps> = ({ organization, active, viseble }) => 
 			}
 			<div className="map__institute-content no-drag">
 				<div className="institute-header">
+				<OrganizationCard organization={organization} />
+				<OrganizationStatus organization={organization} />
+					{
+						active && !load ?
+							<>
+								<OrganizationCounterHi point={organization} />
+								
+							</>
+							: <LoaderProduct />
+					}
+					
+					<OranizationWorkTime organization={organization}/>
+					{
+						organization.filters && organization.filters.length !== 0 &&
+						<OrganizationCardFilter organization={organization} />
+					}
+					<OrganizationTipeDelivery organization={organization} />
+					
+					{
+						active && !load &&
+						<OragnizationRequisities organization={organization} />
+					}	
+				</div>
+			</div>
 
-					<OrganizationCard organization={organization} />
-					<OrganizationStatus organization={organization} />
+
+		</div>
+		</>
+	)
+}
+export default observer(OrganizationCardItem)
+//<OrganizationCounterHi point={organization} /> 
+/**
+ *<OrganizationCard organization={organization} />
+ *  <OrganizationStatus organization={organization} />
 					{
 						active && !load ?
 							<>
@@ -94,17 +129,9 @@ const OrganizationCardItem: FC<IProps> = ({ organization, active, viseble }) => 
 						active && !load &&
 						<OragnizationRequisities organization={organization} />
 					}
-				</div>
-			</div>
-
-
-		</div>
-		</>
-	)
-}
-export default observer(OrganizationCardItem)
-//<OrganizationCounterHi point={organization} /> 
-/**
+ * 
+ * 
+ * 
  * {
 															selectOrganization &&
 															<>

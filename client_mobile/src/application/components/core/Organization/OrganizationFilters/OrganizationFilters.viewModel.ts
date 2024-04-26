@@ -1,6 +1,6 @@
 import { requestOrganizationAdmin } from "modules/OrganizationModule/Organization/data/organization.request"
 import { OrganizationFilters } from "modules/OrganizationModule/Organization/interfaces/organization.type"
-import { organizationModel } from "modules/OrganizationModule/organization.module"
+import { organizationModel, organizationModule } from "modules/OrganizationModule/organization.module"
 import { useState, useEffect } from "react"
 import { ICity } from 'modules/CityModule/interfaces/city.type';
 
@@ -17,7 +17,7 @@ export function useOrganizationFiltersViewModel(this:any,city:ICity) {
 	}, [])
 
 	useEffect(() => {
-		changeFilter && organizationModel.actionFilterOrganization(changeFilter, city.id)
+		changeFilter && organizationModule.handlerBus.handlerFilterOrganization(changeFilter, city.id)
 	}, [changeFilter])
 
 	const getFilters = async () => {
@@ -50,7 +50,7 @@ export function useOrganizationFiltersViewModel(this:any,city:ICity) {
 	}
 
 	const handlerResetFilter = () =>{
-		organizationModel.actionSetOrganizationAll(city.id)
+		organizationModule.handlerBus.handlerOrganizationsList(city.id)
 		setIsOpenedFilters(false)
 		setChangeFilter(null)
 	}

@@ -22,7 +22,7 @@ type IProps = {
 }
 const OrganizationCounterHi:FC<{point:IOrganization}> = ({point}) => {
 	
-	const [count, setCount] = useState<any>('000000000000');
+	const [count, setCount] = useState<any>('000000000');
 	const [tik, setTik] = useState<boolean>(false);
 	const [load, setLoad] = useState<boolean>(false);
 

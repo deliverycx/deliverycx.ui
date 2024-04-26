@@ -2,7 +2,7 @@
 
 import { DELIVERY_METODS, ORG_STATUS } from "application/contstans/const.orgstatus"
 import { workTimeHelp } from "application/helpers/workTime"
-import { IPointStatus } from "modules/OrganizationModule/OrganizationStatuses/interfaces/organizationStatus.type"
+import { IOrganizationStatus, IPointStatus } from "modules/OrganizationModule/OrganizationStatuses/interfaces/organizationStatus.type"
 import { organizationModel, organizationStatusModel, useCaseOrganizationStatus } from "modules/OrganizationModule/organization.module"
 import React, { ReactNode } from "react"
 import { useQuery } from "react-query"
@@ -46,6 +46,7 @@ export class StatusTSX {
 
 		return false
 	}
+
 
 
 	OpenPoint(tsx?: ReactNode) {
@@ -115,19 +116,30 @@ export class StatusTSX {
 			tsx
 		)
 	}
+
+	DeliveryPickUP(tsx?: ReactNode) {
+		const delivery = this.pointstatus.deliveryTipe.find((val:any) =>{
+			return val.metod === DELIVERY_METODS.COURIER
+		})
+
+		return this.init(
+			'доставка и самовывоз',
+			delivery &&
+			this.pointstatus.organizationStatus === ORG_STATUS.WORK,
+			tsx
+		)
+	}
 }
 
 
-export const useOrganizationStatus = (): [StatusTSX, any] => {
-	const { organizationStatus,timeworkOrganization,deliveryTipe } = organizationStatusModel
+export const useOrganizationStatus = (organizationStatusMetods:IOrganizationStatus): [StatusTSX, any] => {
+	const { organizationStatus,timeworkOrganization,deliveryTipe } = organizationStatusMetods
 
 
 	
-	useQuery('pointstatus', () => useCaseOrganizationStatus.statusOrganization(), {
-		refetchOnWindowFocus: true,
-	})
+	
 
-	const tsx = new StatusTSX(organizationStatus as string, timeworkOrganization?.typework,deliveryTipe)
+	const tsx = new StatusTSX(organizationStatus, timeworkOrganization?.typework,deliveryTipe)
 
 
 	const switchMetod = () => {

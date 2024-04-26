@@ -81,7 +81,11 @@ body {
 	right: 0;
 	margin: 0 auto;
 	z-index: 8888;
-
+	h3{
+		color: #111;
+		font-weight: 700;
+		font-size: 18px;
+	}
 	.modal-draggles{
 			display: block;
 			position: absolute;

@@ -1,4 +1,4 @@
-import { OrganizationStatusDTO } from "./organizationStatus.dto"
+import { organizationStatusDTO } from "./organizationStatus.dto"
 
 export type IPointStatusRequest = {
 	_id:string,
@@ -8,14 +8,16 @@ export type IPointStatusRequest = {
 	paymentMetod:string[]
 }
 
-export type IPointStatus = OrganizationStatusDTO
+export type IPointStatus = typeof organizationStatusDTO
 
 export type IOrganizationStatus = {
 	_id:string,
 	organization:string,
 	deliveryMetod:string[]
+	deliveryTipe:IDeliveryTypes
 	organizationStatus:string
 	paymentMetod:string[]
+	timeworkOrganization:IWorkTimePoint
 }
 
 export type IDeliveryTypes = {

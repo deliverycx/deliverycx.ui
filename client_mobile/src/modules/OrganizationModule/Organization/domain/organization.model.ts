@@ -29,24 +29,10 @@ export class OrganizationModel extends OrganizationRepository {
 	}
 
 	
-	actionSetOrganizationAll(cityid: string) {
-		return this.repositoryAllOrganization(cityid)
-			.subscribe((data: any) => {
-				this.organizationList = data
-			})
+	actionSetOrganizationAll(list:IOrganization[]) {
+		this.organizationList = list
 	}
 
-	actionFilterOrganization(filter:string[],cityid:string){
-		return this.repositoryFilterOrganization(filter,cityid)
-			.subscribe((data: any) => {
-				if(data.length !== 0){
-					this.organizationList = data
-				}else{
-					this.actionSetOrganizationAll(cityid)
-				}
-				
-			})
-	}
 
 	actionSelectOrganization(pointid: string | null) {
 		if(pointid){

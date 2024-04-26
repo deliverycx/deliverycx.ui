@@ -38,6 +38,7 @@ export class UserModel extends UserRepository{
 	async actionCheckGusetUser(user:IUser){
 		try {
 			const result = await this.repositoryCheckGuest(user)
+			console.log('user',result);
 			if(result){
 				this.guestUser = result
 			}else{

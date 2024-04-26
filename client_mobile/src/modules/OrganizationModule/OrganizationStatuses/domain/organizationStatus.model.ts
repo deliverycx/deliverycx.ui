@@ -26,6 +26,7 @@ export class OrganizationStatusModel extends OrganizationStatusRepository{
 	}
 
 	actionOrganizationStatus(point:IOrganization | null){
+		/*
 		if(point){
 			const observableStatus = this.getOrganizationStatus(point.guid)
 			observableStatus.subscribe((data: IPointStatus) => {
@@ -41,6 +42,7 @@ export class OrganizationStatusModel extends OrganizationStatusRepository{
 		}else{
 			this.deliveryTipe = null
 		}
+		*/
 		
 	}
 
@@ -50,7 +52,7 @@ export class OrganizationStatusModel extends OrganizationStatusRepository{
 
 	actionCheckDeliveryTipe(deliveryTipe:IDeliveryTypes){
 		if(this.deliveryTipe && this.timeworkOrganization){
-			this.deliveryTipe = this.changesDeliveryType(this.deliveryTipe,this.timeworkOrganization,deliveryTipe)
+			//this.deliveryTipe = this.changesDeliveryType(this.deliveryTipe,this.timeworkOrganization,deliveryTipe)
 
 		}
 	}

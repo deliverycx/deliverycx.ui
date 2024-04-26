@@ -1,7 +1,7 @@
 import { ICityResponse } from "modules/CityModule/interfaces/city.type"
 import { ApiAdminSuper, ApiSuper, methods } from "servises/Axios/AxiosApi"
 import { AjaxApiSuper } from "servises/rxjs/AjaxApi"
-import type { IOrganization, IRequisitiesOrganization, OrganizationFilters, pointSerch } from "../interfaces/organization.type"
+import type { IOrganization, IOrganizationResponse, IRequisitiesOrganization, OrganizationFilters, pointSerch } from "../interfaces/organization.type"
 import { OrganizationGoodPlaceID } from "../interfaces/organization.type";
 
 class RequestOrganization extends AjaxApiSuper {
@@ -29,14 +29,23 @@ class RequestOrganization extends AjaxApiSuper {
 
 
 class RequestOrganizationApi extends ApiSuper {
+	@methods('get')
+	getAll(cityId:string) {
+		return this.request<IOrganizationResponse[]>(`organization/all?cityId=${cityId}`)
+	}
+	
 	@methods('post')
 	pointSerch(body:any){
-		return this.request<IOrganization[]>(`organization/serch`)
+		return this.request<IOrganizationResponse[]>(`organization/serch`)
 	}
 
 	@methods('get')
 	getRequisites(cityId: string) {
 		return this.request<any>(`organization/recvisites?organizationId=${cityId}`)
+	}
+	@methods('post')
+	filterPoint(data:any){
+		return this.request<IOrganizationResponse[]>(`organization/filter`)
 	}
 }
 

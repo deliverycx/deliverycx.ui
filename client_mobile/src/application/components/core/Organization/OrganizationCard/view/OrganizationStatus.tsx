@@ -21,12 +21,14 @@ const OrganizationStatus:FC<{organization:IOrganization}> = ({organization}) => 
 	
 	const getStatus = async (organization:any) =>{
 		try {
+			/*
 			const result = await useCaseOrganizationStatus.statusPointsList(organization)
 			if(result){
 				const tsx = new StatusTSX(result.organizationStatus as string, result.timeworkOrganization.typework,result.deliveryTipe)
 			
 				setStatusTSX(tsx)
 			}
+			*/
 			
 		} catch (error) {
 			console.log(error);

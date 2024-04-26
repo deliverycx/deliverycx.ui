@@ -4,7 +4,7 @@ import HOCOrganizations from "application/components/core/Organization/HOC.Organ
 
 import { ROUTE_APP } from "application/contstans/route.const"
 
-import {useCaseCity } from "modules/CityModule/city.module"
+
 
 
 export const publicRoutes = [
@@ -12,7 +12,7 @@ export const publicRoutes = [
 		path: ROUTE_APP.MAIN,
 		element:<HOCCity />,
 		errorElement: <ErrorPage />,
-		loader:async () => await useCaseCity.handlerGetCity('')
+		//loader:async () => await useCaseCity.handlerGetCity('')
 	},
 	{
 		path: ROUTE_APP.POINT,

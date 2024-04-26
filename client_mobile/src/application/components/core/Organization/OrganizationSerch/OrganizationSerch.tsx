@@ -1,16 +1,17 @@
 import { ICity } from "modules/CityModule/interfaces/city.type"
 import { requestOrganizationApi } from "modules/OrganizationModule/Organization/data/organization.request"
-import { organizationModel } from "modules/OrganizationModule/organization.module"
+import { organizationModel, organizationModule } from "modules/OrganizationModule/organization.module"
 import { FC, useEffect } from "react"
 
 
 const OrganizationSerch: FC<{ city: ICity }> = ({ city }) => {
 
 	const handlerSerchPoint = async (value:string) =>{
-		organizationModel.actionSerchOrganizations({
+		organizationModule.handlerBus.handlerSerchOrganization({
 			data:value,
 			cityid:city.id
 		})
+		
 	}
 
 	

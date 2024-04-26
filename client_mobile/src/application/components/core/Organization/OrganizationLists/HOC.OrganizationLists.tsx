@@ -21,7 +21,7 @@ const HOCOrganizationLists: FC<IProps> = ({ set, organizations,setCord,setPointI
 			<div className="orglistmodal">
 				<div className="orglist_box">
 					{
-						organizations && organizations.map((org) => {
+						organizations && organizations.map((org:any) => {
 							return <OrganizationListsItem organization={org} set={set} setPointIndex={setPointIndex} setCordPoint={setCord} key={org.id} />
 						})
 					}

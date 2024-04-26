@@ -22,7 +22,7 @@ class DependencyContainer {
 			if (this.dependencies.has(clazz.name)) {
 					return this.dependencies.get(clazz.name);
 			}
-			throw new Error(`Dependency ${name} not found.`);
+			throw new Error(`Dependency ${clazz.name} not found.`);
 	}
 }
 

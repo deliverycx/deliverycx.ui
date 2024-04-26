@@ -19,8 +19,8 @@ export class UserRepository extends UserGuards {
 		}
 	}
 
-	@DTOMapper(userMapper)
-	@AccessGuard(UserGuards)	
+	//@DTOMapper(userMapper)
+	//@AccessGuard(UserGuards)	
 	async repositoryCheckGuest(user: userType.IUser) {
 		try {
 			const { data } = await requestUser.check(user)

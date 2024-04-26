@@ -23,11 +23,13 @@ export function DTOMapper(mapper:any){
 	return function (target: any, propertyName: string, descriptor: PropertyDescriptor) {
 		const originalMethod = descriptor.value;
 
-		descriptor.value = function (...args: any) {
-			
-				const dto = mappersDTO(args[0],(val)=> mapper(val))
-				
-				validatorDTO(dto)
+		descriptor.value =  function (...args: any) {
+				const originalResult = originalMethod.apply(this, args);
+				if(originalResult){
+					const dto = mappersDTO(originalResult,(val)=> mapper(val))
+					validatorDTO(dto)
+					return dto
+				}
 				return originalMethod.apply(this, args);
 		};
 

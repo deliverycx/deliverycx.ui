@@ -17,7 +17,7 @@ const HOCCity = () => {
 	const { cityList, selectCity } = useCase.data
 	const { seletSerchCity, submitCity } = useCase.handlers
 
-
+	
 
 	return (
 		<>

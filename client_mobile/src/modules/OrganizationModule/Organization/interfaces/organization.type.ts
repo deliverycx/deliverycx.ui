@@ -1,4 +1,4 @@
-import { OrganizationDTO } from "./organization.dto"
+import { organizationDTO } from "./organization.dto"
 
 export interface IOrganizationResponse {
 	reservetable: boolean
@@ -44,4 +44,4 @@ export type pointSerch= {
 	cityid:string
 }
 
-export type IOrganization = OrganizationDTO
+export type IOrganization = typeof organizationDTO

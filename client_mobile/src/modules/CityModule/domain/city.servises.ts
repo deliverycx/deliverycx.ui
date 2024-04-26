@@ -4,16 +4,16 @@ import { ICity, ICityResponse } from "../interfaces/city.type";
 @InjectableDI()
 export class CityServises{
 
-	existingCity(cityMap: ICity[]) {
+	existingCity(cityMap: ICityResponse[]) {
 		return cityMap.filter((value) => {
-			return value && typeof value.cityname === "string" && value.isHidden == false
+			return value && typeof value.name === "string" && value.isHidden == false
 		})
 
 	}
 
 	sortByNameCity(cities: ICity[]):any {
 		if (cities) {
-			const sortedCities = cities.slice().sort((a: { cityname: string; }, b: { cityname: string; }) => a.cityname > b.cityname ? 1 : -1);
+			const sortedCities = cities.slice().sort((a: {cityname : string; }, b: { cityname: string; }) => a.cityname > b.cityname ? 1 : -1);
 
 			let curr_inner = [sortedCities[0]], result = [curr_inner];
 

@@ -6,7 +6,6 @@ import React from "react";
 import { observer } from "mobx-react-lite"
 import ModalCard from "application/components/common/Modals/ModalCard";
 import { IOrganization } from "modules/OrganizationModule/Organization/interfaces/organization.type";
-import { useCaseOrganization, useCaseOrganizationStatus } from "modules/OrganizationModule/organization.module";
 import OrganizationCardItem from "./OrganizationCardItem";
 import { appUseCase } from "modules/AppModule/app.module";
 import { Swiper, SwiperSlide } from 'swiper/react';
@@ -16,8 +15,11 @@ import { FreeMode, Pagination } from 'swiper/modules';
 import 'swiper/css';
 import 'swiper/css/virtual';
 
+
 import { useSwiper } from 'swiper/react';
 import { Virtual } from 'swiper/modules';
+import { organizationModule } from "modules/OrganizationModule/organization.module";
+import OrganizationSwipe from "./OrganizationSwipe";
 
 export const PointsContext = React.createContext<TadapterCaseCallback>({
 	data: {},
@@ -27,75 +29,34 @@ export const PointsContext = React.createContext<TadapterCaseCallback>({
 const HOCOrganizationCard: FC<{ organizations: IOrganization[],pointIndex:string }> = ({ organizations,pointIndex }) => {
 	const useCase = adapterComponentUseCase(useOrganizationCardViewModel)
 
-	const { selectOrganization, timeworkOrganization, cardModal, deliveryTipe } = useCase.data
+	const { selectOrganization, timeworkOrganization, cardModal, point } = useCase.data
 	const { setCardModal, handlerCloseCardModal } = useCase.handlers
-	const sw = useRef<any>()
 
 
+	
+
+	/*
 	useEffect(()=>{
+		
 		if(cardModal && selectOrganization){
 			const findindex = organizations.findIndex(val => val.guid === pointIndex)
 			sw && sw.current && sw.current.slideToLoop(findindex, 500);
 		}
 	},[cardModal,pointIndex,sw.current])
+	*/
+
+	
+
 
 	//
 	return (
 		<>
 			<PointsContext.Provider value={useCase}>
 				{
-					cardModal && selectOrganization &&
+					cardModal &&
 					<ModalCard setIsOpened={handlerCloseCardModal}>
 
-
-						{
-
-							organizations &&
-							<Swiper
-
-								
-								spaceBetween={0}
-								loop={true}
-								slidesPerView={1.1}
-								centeredSlides={true}
-							
-								className="organization_slide"
-								onSwiper={(swiper) => sw.current = swiper}
-							
-								onRealIndexChange={(swiper) => {
-									useCaseOrganization.selectOrganization(organizations[swiper.realIndex])
-									appUseCase.crealPoint()
-								}}
-							>
-
-								{
-									organizations.map((organization: IOrganization, index) => {
-
-										return (
-
-
-											<SwiperSlide key={organization.guid} >
-												{({ isActive,isVisible }) => (
-													<OrganizationCardItem active={isActive} viseble={isVisible}  organization={organization} />
-												)}
-
-											</SwiperSlide>
-
-
-
-
-										)
-
-									})
-								}
-
-
-
-							</Swiper>
-
-
-						}
-
+						<OrganizationSwipe organizations={organizations} point={point} />
 
 					</ModalCard>
 				}

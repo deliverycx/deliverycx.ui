@@ -2,7 +2,7 @@ import { isDesctomMediaQuery } from 'application/ResponseMedia';
 import { PointsReducer, ReducerActionTypePoints, initialStatePointsMap } from 'application/reducers/PointsReducer';
 import { appUseCase } from 'modules/AppModule/app.module';
 import { IOrganization } from 'modules/OrganizationModule/Organization/interfaces/organization.type';
-import { organizationModel, useCaseOrganization } from 'modules/OrganizationModule/organization.module';
+import { organizationModel, organizationModule } from 'modules/OrganizationModule/organization.module';
 import { useReducer, useEffect } from 'react';
 
 export function useOrganizationMapViewModel(this: any, { organizations, setCord,setPointIndex }: { organizations: IOrganization[], setCord: any,setPointIndex:any }) {
@@ -40,8 +40,8 @@ export function useOrganizationMapViewModel(this: any, { organizations, setCord,
 			}
 			
 		}
-
-		useCaseOrganization.selectOrganization(organization)
+		organizationModule.handlerBus.choosePoint(organization)
+		//useCaseOrganization.selectOrganization(organization)
 		setPointIndex(organization.guid)
 		dispatchPoint({
 			type: ReducerActionTypePoints.placemarkClick,
