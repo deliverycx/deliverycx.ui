@@ -1404,7 +1404,864 @@ const ng = [
 	},
 	
 ]
+*/
 
+const ng = [
+	{
+		id:"6c25145f-e6d3-4831-bd8f-62e0e741c1cb",
+		data:[
+			{
+				d:new Date(2024,4,29),
+				time:"10:00-23:00"
+			},
+			{
+				d:new Date(2024,4,30),
+				time:"10:00-23:00"
+			},
+			{
+				d:new Date(2024,5,1),
+				time:"10:00-23:00"
+			},
+			{
+				d:new Date(2024,5,9),
+				time:"10:00-23:00"
+			},
+			{
+				d:new Date(2024,5,10),
+				time:"10:00-23:00"
+			},
+			{
+				d:new Date(2024,5,11),
+				time:"10:00-23:00"
+			},
+			
+		]
+	},
+	{
+		id:"d7414ac1-82b0-4fb3-898c-f05718497c17",
+		data:[
+			
+			{
+				d:new Date(2024,5,1),
+				time:"10:00-23:00"
+			},
+			{
+				d:new Date(2024,5,2),
+				time:"10:00-23:00"
+			},
+			{
+				d:new Date(2024,5,3),
+				time:"10:00-23:00"
+			},
+			{
+				d:new Date(2024,5,4),
+				time:"10:00-23:00"
+			},
+			{
+				d:new Date(2024,5,5),
+				time:"10:00-23:00"
+			},
+			{
+				d:new Date(2024,5,6),
+				time:"10:00-23:00"
+			},
+			{
+				d:new Date(2024,5,7),
+				time:"10:00-23:00"
+			},
+			{
+				d:new Date(2024,5,8),
+				time:"10:00-23:00"
+			},
+			{
+				d:new Date(2024,5,9),
+				time:"10:00-23:00"
+			},
+			{
+				d:new Date(2024,5,10),
+				time:"10:00-23:00"
+			},
+			
+			
+		]
+	},
+	{
+		id:"6fd0903a-dba0-40b5-995f-f919031e23d4",
+		data:[
+
+			{
+				d:new Date(2024,4,29),
+				time:"10:00-23:00"
+			},
+			{
+				d:new Date(2024,5,1),
+				time:"10:00-23:00"
+			},
+			{
+				d:new Date(2024,5,2),
+				time:"10:00-23:00"
+			},
+			{
+				d:new Date(2024,5,3),
+				time:"10:00-23:00"
+			},
+			{
+				d:new Date(2024,5,4),
+				time:"10:00-23:00"
+			},
+			{
+				d:new Date(2024,5,5),
+				time:"10:00-23:00"
+			},
+			{
+				d:new Date(2024,5,6),
+				time:"10:00-23:00"
+			},
+			{
+				d:new Date(2024,5,7),
+				time:"10:00-23:00"
+			},
+			{
+				d:new Date(2024,5,8),
+				time:"10:00-23:00"
+			},
+			{
+				d:new Date(2024,5,9),
+				time:"10:00-23:00"
+			},
+			{
+				d:new Date(2024,5,10),
+				time:"10:00-23:00"
+			},
+			
+			
+		]
+	},
+	{
+		id:"982f1bef-772b-4443-9262-f10c4e4bcf7e",
+		data:[
+
+
+			{
+				d:new Date(2024,5,1),
+				time:"10:00-23:00"
+			},
+			{
+				d:new Date(2024,5,2),
+				time:"10:00-23:00"
+			},
+			{
+				d:new Date(2024,5,3),
+				time:"10:00-23:00"
+			},
+			{
+				d:new Date(2024,5,4),
+				time:"10:00-23:00"
+			},
+			{
+				d:new Date(2024,5,5),
+				time:"10:00-23:00"
+			},
+			{
+				d:new Date(2024,5,6),
+				time:"10:00-23:00"
+			},
+			{
+				d:new Date(2024,5,7),
+				time:"10:00-23:00"
+			},
+			{
+				d:new Date(2024,5,8),
+				time:"10:00-23:00"
+			},
+			{
+				d:new Date(2024,5,9),
+				time:"10:00-23:00"
+			},
+	
+			
+			
+		]
+	},
+	{
+		id:"fc66c24b-1f6f-4495-8563-e70cbd31a1df",
+		data:[
+
+
+			{
+				d:new Date(2024,5,1),
+				time:"11:00-23:00"
+			},
+			{
+				d:new Date(2024,5,2),
+				time:"11:00-23:00"
+			},
+			{
+				d:new Date(2024,5,3),
+				time:"11:00-23:00"
+			},
+			{
+				d:new Date(2024,5,4),
+				time:"11:00-23:00"
+			},
+			{
+				d:new Date(2024,5,5),
+				time:"11:00-23:00"
+			},
+			{
+				d:new Date(2024,5,6),
+				time:"11:00-23:00"
+			},
+			{
+				d:new Date(2024,5,7),
+				time:"11:00-23:00"
+			},
+			{
+				d:new Date(2024,5,8),
+				time:"11:00-23:00"
+			},
+			{
+				d:new Date(2024,5,9),
+				time:"11:00-23:00"
+			},
+	
+			
+			
+		]
+	},
+	{
+		id:"012f36ea-4a57-4267-9104-90bd354b7037",
+		data:[
+
+
+			{
+				d:new Date(2024,4,27),
+				time:"11:00-23:00"
+			},
+			{
+				d:new Date(2024,4,28),
+				time:"11:00-23:00"
+			},
+			{
+				d:new Date(2024,4,29),
+				time:"11:00-23:00"
+			},
+			{
+				d:new Date(2024,4,30),
+				time:"11:00-23:00"
+			},
+			
+			{
+				d:new Date(2024,5,8),
+				time:"11:00-23:00"
+			},
+			{
+				d:new Date(2024,5,9),
+				time:"11:00-23:00"
+			},
+			{
+				d:new Date(2024,5,10),
+				time:"11:00-23:00"
+			},
+			{
+				d:new Date(2024,5,11),
+				time:"11:00-23:00"
+			},
+			
+			
+		]
+	},
+	{
+		id:"93448991-df76-4320-a24d-5815d22082bf",
+		data:[
+
+
+			
+			{
+				d:new Date(2024,4,29),
+				time:"11:00-23:00"
+			},
+			{
+				d:new Date(2024,4,30),
+				time:"11:00-23:00"
+			},
+			
+			{
+				d:new Date(2024,5,8),
+				time:"11:00-23:00"
+			},
+			{
+				d:new Date(2024,5,9),
+				time:"11:00-23:00"
+			},
+			
+			
+			
+		]
+	},
+	{
+		id:"26836a54-db7f-4bfb-9687-391ae9d7137f",
+		data:[
+
+
+			{
+				d:new Date(2024,4,27),
+				time:"11:00-23:00"
+			},
+			{
+				d:new Date(2024,4,28),
+				time:"11:00-23:00"
+			},
+			{
+				d:new Date(2024,4,29),
+				time:"11:00-23:00"
+			},
+			{
+				d:new Date(2024,4,30),
+				time:"11:00-23:00"
+			},
+			
+			{
+				d:new Date(2024,5,1),
+				time:"11:00-23:00"
+			},
+			
+			
+			
+			
+		]
+	},
+	{
+		id:"a80a4277-1604-4bdf-814a-3a0151d6e96b",
+		data:[
+
+
+			
+			{
+				d:new Date(2024,4,29),
+				time:"10:00-23:00"
+			},
+			{
+				d:new Date(2024,4,30),
+				time:"10:00-23:00"
+			},
+			
+			{
+				d:new Date(2024,5,1),
+				time:"10:00-23:00"
+			},
+			{
+				d:new Date(2024,5,8),
+				time:"10:00-23:00"
+			},
+			{
+				d:new Date(2024,5,9),
+				time:"10:00-23:00"
+			},
+			{
+				d:new Date(2024,5,10),
+				time:"10:00-23:00"
+			},
+			
+			
+			
+		]
+	},
+	{
+		id:"d5940803-dcea-4d68-b00a-9aeb17234e73",
+		data:[
+
+
+			
+			{
+				d:new Date(2024,4,29),
+				time:"10:00-23:00"
+			},
+			{
+				d:new Date(2024,4,30),
+				time:"10:00-23:00"
+			},
+			
+			{
+				d:new Date(2024,5,1),
+				time:"10:00-23:00"
+			},
+			{
+				d:new Date(2024,5,8),
+				time:"10:00-23:00"
+			},
+			{
+				d:new Date(2024,5,9),
+				time:"10:00-23:00"
+			},
+			{
+				d:new Date(2024,5,10),
+				time:"10:00-23:00"
+			},
+			
+			
+			
+		]
+	},
+	{
+		id:"d5940803-dcea-4d68-b00a-9aeb17234e73",
+		data:[
+
+
+			{
+				d:new Date(2024,4,28),
+				time:"10:00-22:00"
+			},
+			{
+				d:new Date(2024,4,29),
+				time:"10:00-22:00"
+			},
+			{
+				d:new Date(2024,4,30),
+				time:"10:00-22:00"
+			},
+			
+			{
+				d:new Date(2024,5,1),
+				time:"10:00-22:00"
+			},
+			
+			{
+				d:new Date(2024,5,9),
+				time:"10:00-22:00"
+			},
+			{
+				d:new Date(2024,5,10),
+				time:"10:00-22:00"
+			},
+			
+			
+			
+		]
+	},
+	{
+		id:"7fd74ec2-3f7e-4107-8efe-6f826cde60c9",
+		data:[
+
+
+			{
+				d:new Date(2024,4,28),
+				time:"10:00-22:00"
+			},
+			{
+				d:new Date(2024,4,29),
+				time:"10:00-22:00"
+			},
+			{
+				d:new Date(2024,4,30),
+				time:"10:00-22:00"
+			},
+			
+			
+			
+			{
+				d:new Date(2024,5,9),
+				time:"10:00-22:00"
+			},
+			{
+				d:new Date(2024,5,8),
+				time:"10:00-22:00"
+			},
+			
+			
+			
+		]
+	},
+	{
+		id:"aeb9ca75-4ef5-4727-b9e6-169d51b2e97b",
+		data:[
+
+			{
+				d:new Date(2024,5,9),
+				time:"10:00-22:00"
+			},	
+			
+			
+		]
+	},
+	{
+		id:"d5940803-dcea-4d68-b00a-9aeb17234e73",
+		data:[
+
+
+			{
+				d:new Date(2024,4,28),
+				time:"10:00-22:00"
+			},
+			{
+				d:new Date(2024,4,29),
+				time:"10:00-22:00"
+			},
+			{
+				d:new Date(2024,4,30),
+				time:"10:00-22:00"
+			},
+			
+			{
+				d:new Date(2024,5,1),
+				time:"10:00-22:00"
+			},
+			
+			{
+				d:new Date(2024,5,9),
+				time:"10:00-22:00"
+			},
+			{
+				d:new Date(2024,5,10),
+				time:"10:00-22:00"
+			},
+			
+			
+			
+		]
+	},
+	{
+		id:"9f1ffb96-6392-4c00-aecc-f84fd5514ea6",
+		data:[
+
+
+			{
+				d:new Date(2024,4,28),
+				time:"10:00-23:00"
+			},
+			{
+				d:new Date(2024,4,29),
+				time:"10:00-23:00"
+			},
+			{
+				d:new Date(2024,4,30),
+				time:"10:00-23:00"
+			},
+			
+			{
+				d:new Date(2024,5,8),
+				time:"10:00-23:00"
+			},
+			
+			{
+				d:new Date(2024,5,9),
+				time:"10:00-23:00"
+			},
+			{
+				d:new Date(2024,5,10),
+				time:"10:00-23:00"
+			},
+			{
+				d:new Date(2024,5,11),
+				time:"10:00-23:00"
+			},
+			
+			
+		]
+	},
+	{
+		id:"bc8f5461-f8aa-432b-9c6c-3b0e9e7ec5f6",
+		data:[
+
+			{
+				d:new Date(2024,4,27),
+				time:"10:00-23:00"
+			},
+			{
+				d:new Date(2024,4,28),
+				time:"10:00-23:00"
+			},
+			{
+				d:new Date(2024,4,29),
+				time:"10:00-23:00"
+			},
+			{
+				d:new Date(2024,4,30),
+				time:"10:00-23:00"
+			},
+			
+			{
+				d:new Date(2024,5,1),
+				time:"10:00-23:00"
+			},
+			
+			
+			
+		]
+	},
+	{
+		id:"826933a7-4f8f-4539-abab-305a0776eba0",
+		data:[
+
+			
+			{
+				d:new Date(2024,4,29),
+				time:"10:00-23:00"
+			},
+			{
+				d:new Date(2024,4,30),
+				time:"10:00-23:00"
+			},
+			
+			{
+				d:new Date(2024,5,1),
+				time:"10:00-23:00"
+			},
+			
+			{
+				d:new Date(2024,5,8),
+				time:"10:00-23:00"
+			},
+			{
+				d:new Date(2024,5,9),
+				time:"10:00-23:00"
+			},
+			{
+				d:new Date(2024,5,10),
+				time:"10:00-23:00"
+			},
+			{
+				d:new Date(2024,5,11),
+				time:"10:00-23:00"
+			},
+		]
+	},
+	{
+		id:"d93eca6d-3aec-4417-b326-250399a586ca",
+		data:[
+
+		
+			
+			{
+				d:new Date(2024,5,1),
+				time:"10:00-23:00"
+			},
+			{
+				d:new Date(2024,5,2),
+				time:"10:00-23:00"
+			},
+			{
+				d:new Date(2024,5,3),
+				time:"10:00-23:00"
+			},
+			{
+				d:new Date(2024,5,4),
+				time:"10:00-23:00"
+			},
+			{
+				d:new Date(2024,5,5),
+				time:"10:00-23:00"
+			},
+			{
+				d:new Date(2024,5,6),
+				time:"10:00-23:00"
+			},
+			{
+				d:new Date(2024,5,7),
+				time:"10:00-23:00"
+			},
+			{
+				d:new Date(2024,5,8),
+				time:"10:00-23:00"
+			},
+			{
+				d:new Date(2024,5,9),
+				time:"10:00-23:00"
+			},
+			{
+				d:new Date(2024,5,10),
+				time:"10:00-23:00"
+			},
+			
+			
+		]
+	},
+	{
+		id:"dbd5ee14-5153-45fe-b7e4-771aee93a502",
+		data:[
+
+			
+			
+			{
+				d:new Date(2024,5,1),
+				time:"10:00-23:00"
+			},
+			{
+				d:new Date(2024,5,2),
+				time:"10:00-23:00"
+			},
+			{
+				d:new Date(2024,5,3),
+				time:"10:00-23:00"
+			},
+			{
+				d:new Date(2024,5,4),
+				time:"10:00-23:00"
+			},
+			{
+				d:new Date(2024,5,5),
+				time:"10:00-23:00"
+			},
+			{
+				d:new Date(2024,5,6),
+				time:"10:00-23:00"
+			},
+			{
+				d:new Date(2024,5,7),
+				time:"10:00-23:00"
+			},
+			{
+				d:new Date(2024,5,8),
+				time:"10:00-23:00"
+			},
+			{
+				d:new Date(2024,5,9),
+				time:"10:00-23:00"
+			},
+			{
+				d:new Date(2024,5,10),
+				time:"10:00-23:00"
+			},
+			
+			
+		]
+	},
+	{
+		id:"0570ba49-f045-4b6e-aad4-cdd3d4924517",
+		data:[
+
+			
+			{
+				d:new Date(2024,4,27),
+				time:"11:00-23:00"
+			},
+			{
+				d:new Date(2024,4,28),
+				time:"11:00-23:00"
+			},
+			{
+				d:new Date(2024,4,29),
+				time:"11:00-23:00"
+			},
+			{
+				d:new Date(2024,4,30),
+				time:"11:00-23:00"
+			},
+			{
+				d:new Date(2024,5,1),
+				time:"11:00-23:00"
+			},
+		
+			{
+				d:new Date(2024,5,8),
+				time:"11:00-23:00"
+			},
+			{
+				d:new Date(2024,5,9),
+				time:"11:00-23:00"
+			},
+			{
+				d:new Date(2024,5,10),
+				time:"11:00-23:00"
+			},
+			{
+				d:new Date(2024,5,11),
+				time:"11:00-23:00"
+			},
+			
+		]
+	},
+	{
+		id:"90fd8b1c-b367-4a29-a808-3c10c55329b1",
+		data:[
+
+			
+			{
+				d:new Date(2024,4,27),
+				time:"11:00-23:00"
+			},
+			{
+				d:new Date(2024,4,28),
+				time:"11:00-23:00"
+			},
+			{
+				d:new Date(2024,4,29),
+				time:"11:00-23:00"
+			},
+			{
+				d:new Date(2024,4,30),
+				time:"11:00-23:00"
+			},
+			{
+				d:new Date(2024,5,1),
+				time:"11:00-23:00"
+			},
+		
+			{
+				d:new Date(2024,5,8),
+				time:"11:00-23:00"
+			},
+			{
+				d:new Date(2024,5,9),
+				time:"11:00-23:00"
+			},
+			{
+				d:new Date(2024,5,10),
+				time:"11:00-23:00"
+			},
+			{
+				d:new Date(2024,5,11),
+				time:"11:00-23:00"
+			},
+			
+		]
+	},
+	{
+		id:"d7c79a4a-a2ce-4329-8b51-4198227741fa",
+		data:[
+
+			
+			{
+				d:new Date(2024,4,27),
+				time:"11:00-23:00"
+			},
+			{
+				d:new Date(2024,4,28),
+				time:"11:00-23:00"
+			},
+			{
+				d:new Date(2024,4,29),
+				time:"11:00-23:00"
+			},
+			{
+				d:new Date(2024,4,30),
+				time:"11:00-23:00"
+			},
+			{
+				d:new Date(2024,5,1),
+				time:"11:00-23:00"
+			},
+		
+			{
+				d:new Date(2024,5,8),
+				time:"11:00-23:00"
+			},
+			{
+				d:new Date(2024,5,9),
+				time:"11:00-23:00"
+			},
+			{
+				d:new Date(2024,5,10),
+				time:"11:00-23:00"
+			},
+			{
+				d:new Date(2024,5,11),
+				time:"11:00-23:00"
+			},
+			
+		]
+	},
+]
 
 
 export const ngFN = (org:any) =>{
@@ -1431,7 +2288,7 @@ export const ngFN = (org:any) =>{
 	console.log(time);
 	return time
 }
-*/
+
 
 
 export const workTimeHelp = (work:any,guid?:string) =>{
@@ -1447,7 +2304,7 @@ export const workTimeHelp = (work:any,guid?:string) =>{
 		const mok = workTime || work
 		const [min,max] = mok ? mok2.split('-') : mok2.split('-')
 		*/
-		const [min,max] = workTimeCheck(work) ? workTimeCheck(work).split('-') : mok2   //!ngFN(guid) ? workTimeCheck(work).split('-')  :ngFN(guid).split('-')
+		const [min,max] = !ngFN(guid) ? workTimeCheck(work).split('-')  :ngFN(guid).split('-') //workTimeCheck(work) ? workTimeCheck(work).split('-') : mok2
 		const time = format(new Date(), "HH:mm")
 
 		if(min >= time){
@@ -1488,13 +2345,13 @@ export const workTimeCheck = (work:any,org?:string):any => {
 
 	//console.log('wokcheck',work);
 
-	/*
+	/**/
 	const NGtime = org && ngFN(org)
 
 	if(NGtime){
 		return NGtime
 	}
-	*/
+	
 
 	if(!work || work.length === 0){
 		console.log('время сломано');

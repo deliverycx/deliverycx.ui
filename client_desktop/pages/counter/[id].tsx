@@ -70,9 +70,10 @@ const CouterPage = () =>{
 				}*/
 			}
 			async function organizationCoutn(id: string) {
-
-				const { data: countorg } = await RequestAdmin.getOraganizationCount(id)
-				if (countorg) {
+				const coutToday = await getFlipToday()
+				//const { data: countorg } = await RequestAdmin.getOraganizationCount(id)
+				if (coutToday) {
+					/*
 					const today = format(new Date(), "yyy-LL-dd")
 					if (today !== countorg.date) {
 						console.log('дата не совпала', today, countorg.date);
@@ -87,8 +88,10 @@ const CouterPage = () =>{
 						console.log('today',coutToday);
 						numbFlip = Number(countorg.coutn) + Number(coutToday)
 					}
+					*/
 
-
+					
+					numbFlip = Number(coutToday)
 
 					const num1 = Number(numbFlip);
 					const num2 = Number(numbFlip) ;
@@ -109,7 +112,7 @@ const CouterPage = () =>{
 				timercoutn = setInterval(async () => {
 					console.log('iiiiiiii');
 					await organizationCoutn(org.guid)
-				}, 10000)
+				},20000)
 				
 
 			}
@@ -179,8 +182,8 @@ const CouterPage = () =>{
 		try {
 
 			
-			const time = format(new Date(), "yyy-LL-dd")
-			const oldtime = dtime_nums(1)
+			const time = dtime_nums(1) //format(new Date(), "yyy-LL-dd")
+			const oldtime = "2015-01-01"
 			const { data } = await RequestWebhook.flip({
 				time, oldtime, phone:org.phone,	pages:true
 			})
