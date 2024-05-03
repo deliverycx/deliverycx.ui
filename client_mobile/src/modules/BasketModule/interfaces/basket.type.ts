@@ -7,6 +7,7 @@ export type IRequestBasket  = {
   deltaPrice: number;
 	totalPrice:number;
 	fullPrice:number
+	discounts:Record<string,any>
 }
 
 export interface ICartProd {
@@ -28,6 +29,7 @@ export interface IBasketPrice {
   deltaPrice: number;
 	totalPrice:number;
 	fullPrice:number
+	discounts:Record<string,any>
 }
 
 export type IaddBasket = {

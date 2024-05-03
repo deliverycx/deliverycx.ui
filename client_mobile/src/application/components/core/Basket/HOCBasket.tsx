@@ -16,7 +16,9 @@ import BasketDevices from "./view/BasketDevices";
 const HOCBasket = () => {
 	const { cart, basketPrice } = basketUseCase.basketModel
 	const [isModalDeleteOpened, setIsModalDeleteOpened] = useState(false)
+	
 	const navigate = useNavigate()
+	
 
 	useEffect(() => {
 		basketUseCase.cartCase().then(data => {
@@ -48,7 +50,7 @@ const HOCBasket = () => {
 
 							<HOCCart cart={cart} />
 							<BasketDevices />
-							<CartDiscount cartList={cart} />
+							<CartDiscount cartList={cart} basketPrice={basketPrice} />
 							<BasketPrice basketPrice={basketPrice} />
 
 						</div>

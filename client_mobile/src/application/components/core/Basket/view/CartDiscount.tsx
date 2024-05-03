@@ -1,20 +1,24 @@
 import { validationHIdiscount } from "application/helpers/validationHIdiscount"
-import { ICartProd } from "modules/BasketModule/interfaces/basket.type"
+import { basketModel } from "modules/BasketModule/basket.module"
+import { IBasketPrice, ICartProd } from "modules/BasketModule/interfaces/basket.type"
 import { useState, useEffect, FC, memo } from "react"
 
-const CartDiscount:FC<{cartList:ICartProd[]}> = ({cartList}) => {
+const CartDiscount:FC<{cartList:ICartProd[],basketPrice:IBasketPrice}> = ({cartList,basketPrice}) => {
 	const [countDiscount, setCountDiscount] = useState(0)
 	const [freeHi, setFreeHi] = useState(0)
+	
 
 	const { count, free } = validationHIdiscount(cartList)
 
-
+	
 	useEffect(() => {
 		if (count !== 0) {
 			setCountDiscount(count)
 			setFreeHi(free)
 		}
 	}, [count])
+
+	console.log(basketPrice.discounts);
 
 	return (
 		<>
@@ -62,6 +66,42 @@ const CartDiscount:FC<{cartList:ICartProd[]}> = ({cartList}) => {
                             </div>
                         </div>
                     </div>))
+			}
+
+			{
+				basketPrice.discounts.forhach && !basketPrice.discounts.forhach.active &&
+				<div className="basket__content__dozen dozen--discount">
+                        <div className="basket__content__dozen__item">
+                            <div className="basket__content__dozen__item__icon">
+                                
+                                <div className="basket__content__dozen__item__icon-numb">
+                                    {basketPrice.discounts.forhach.coutn}
+                                </div>
+                            </div>
+                            <div className="basket__content__dozen__item__content">
+                                <h3 className="basket__content__dozen__item__content-title">осталось до акции</h3>
+                                <div className="basket__content__dozen__item__content-addition">заказывайте 4 любых наших пирога или хачапури всего за 1099₽!</div>
+                            </div>
+                        </div>
+                    </div>
+
+			}
+			{
+				basketPrice.discounts.forhach && basketPrice.discounts.forhach.active &&
+				<div className="basket__content__dozen dozen--gift">
+                        <div className="basket__content__dozen__item">
+                            
+                            <div className="basket__content__dozen__item__content">
+                                <h3 className="basket__content__dozen__item__content-title">Условия акции выполнены</h3><br />
+																<h4 className="basket__content__dozen__item__content-title">Детали заказа и акции уточните у администратора. Благодарим!</h4>
+                                <div className="basket__content__dozen__item__content-addition">Условия акции выполнены
+																заказывайте 4 любых наших пирога или хачапури всего за 1099₽! <br/>
+																
+																</div>
+																
+                            </div>
+                        </div>
+                    </div>
 			}
 		</>
 	)

@@ -23,7 +23,8 @@ export const basketMapper = (p: IRequestBasket): BasketDTO => {
 		deliveryPrice: p.deliveryPrice,
 		deltaPrice: p.deltaPrice,
 		totalPrice: p.totalPrice,
-		fullPrice:p.fullPrice
+		fullPrice:p.fullPrice,
+		discounts:p.discounts
 	}
 
 
