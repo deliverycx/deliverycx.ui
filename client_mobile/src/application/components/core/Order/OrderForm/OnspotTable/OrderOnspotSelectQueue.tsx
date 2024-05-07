@@ -12,18 +12,20 @@ const OrderOnspotSelectQueue:FC<{organization:IOrganization}> = ({organization})
 
 	const cansel = () =>{
 		orderUseCase.setOnSpotTable(null)
-		useCaseOrganizationStatus.selectDeliveryMetod(null)
+		//useCaseOrganizationStatus.selectDeliveryMetod(null)
 		navigate(ROUTE_APP.MAIN)
 	}
 
 
 	useEffect(()=>{
+		/*
 		useCaseOrganizationStatus.selectDeliveryMetod({
 			metod: DELIVERY_METODS.ONSPOT,
 			name: "За столом",
 			active: false,
 			sort:3
 		})
+		*/
 	},[])
 
 	return(

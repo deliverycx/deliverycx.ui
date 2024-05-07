@@ -13,10 +13,10 @@ const HOCOrderMetods = () =>{
 	
 	useEffect(()=>{
 		if(selectDeliveryTipe){
-			useCaseOrganizationStatus.statusOrganization()
+			//useCaseOrganizationStatus.statusOrganization()
 		}else{
 			if(deliveryTipe){
-				useCaseOrganizationStatus.selectDeliveryMetod(deliveryTipe.slice().sort((a:any, b:any) => a['sort'] > b['sort'] ? 1 : -1)[0])
+				//useCaseOrganizationStatus.selectDeliveryMetod(deliveryTipe.slice().sort((a:any, b:any) => a['sort'] > b['sort'] ? 1 : -1)[0])
 				basketUseCase.cartCase()
 			}
 			

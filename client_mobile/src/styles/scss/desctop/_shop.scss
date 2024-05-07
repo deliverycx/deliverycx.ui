@@ -93,6 +93,17 @@
 	border-radius:0;
 }
 
+.catalogue-content_container-desc{
+	display: flex;
+	flex-wrap: nowrap;
+	.catalogue-content__cards{
+		width: 60%;
+	}
+	.catalogue-content__basket{
+		width: 40%;
+	}
+}
+
 @media screen and (max-width: 1024px) {
 	.stocks-desc .slick-prev,.stocks .slick-next{
 		display: none !important;

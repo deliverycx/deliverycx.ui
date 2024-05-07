@@ -1,17 +1,18 @@
 import { observer } from "mobx-react-lite"
 import { basketModel, basketUseCase } from "modules/BasketModule/basket.module"
 import { orderModel } from "modules/OrderModule/order.module"
-import { organizationStatusModel, useCaseOrganization } from "modules/OrganizationModule/organization.module"
+import { organizationStatusModel } from "modules/OrganizationModule/organization.module"
 import { OrderFormPayMetods } from "../OrderForm/view/OrderFormPayMetods"
 import { DELIVERY_METODS, PAYMENT_METODS } from "application/contstans/const.orgstatus"
 import { FC } from "react"
 import OrderGeneralErrors from "./OrderGeneralErrors"
+import { cityModel } from "modules/CityModule/city.module"
 
 const HOCOrderGeneral:FC<{errors:any}> = ({errors}) => {
 	const { cart, basketPrice } = basketModel
 	const { orderBody } = orderModel
 	const { selectDeliveryTipe } = organizationStatusModel
-	const city = useCaseOrganization.cityModel.selectCity
+	const city = cityModel.selectCity
 
 
 

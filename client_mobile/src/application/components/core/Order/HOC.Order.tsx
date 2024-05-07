@@ -3,7 +3,7 @@ import { ROUTE_APP } from 'application/contstans/route.const';
 import TabBar from 'application/components/common/TabBar/TabBar';
 import HOCOrderMetods from './OrderMetods/HOC.OrderMetods';
 import { useQuery } from 'react-query';
-import { organizationStatusModel, useCaseOrganizationStatus } from 'modules/OrganizationModule/organization.module';
+import { organizationModel, organizationStatusModel, useCaseOrganizationStatus } from 'modules/OrganizationModule/organization.module';
 import { useEffect } from 'react';
 import HOCOrderForm from './OrderForm/HOC.OrderForm';
 import HOCOrderGeneral from './OrderGeneral/HOC.OrderGeneral';
@@ -18,12 +18,15 @@ import OrderAuthNotificate from './view/OrderAuthNotificate';
 
 const HOCOrder = () => {
 	const navigate = useNavigate()
-	const [statusTSX, switchMetod] = useOrganizationStatus()
+	
+	//const [statusTSX, switchMetod] =  useOrganizationStatus()
 	const {paymentMetod} = organizationStatusModel
 
+	/*
 	useQuery('pointstatus', () => useCaseOrganizationStatus.statusOrganization(), {
 		refetchOnWindowFocus: true,
 	})
+	*/
 
 	useEffect(() => {
 		basketUseCase.cartCase()
@@ -31,7 +34,7 @@ const HOCOrder = () => {
 
 	
 
-	const CN = cn("order-placement__form", { 'close-soon': statusTSX.NoTimeWork() })
+	const CN = cn("order-placement__form", { 'close-soon': true }) //statusTSX && statusTSX.NoTimeWork()
 	return (
 		
 		<div className="order-placement unauthorized">

@@ -5,6 +5,7 @@ import Categories from "./Categories/Categories"
 import HOCProducts from "./Products/HOC.Products"
 import StocksDesc from "./Stocks/Stocks.desc"
 import { observer } from "mobx-react-lite"
+import HOCBasketDesc from "../Basket/HOC.Basket.desc"
 
 const HOCShopDesc = () => {
 	const useCase = adapterComponentUseCase(useShopViewModel)
@@ -30,11 +31,16 @@ const HOCShopDesc = () => {
 
 			<div className="catalogue-content">
 				<div className="container">
-					<div className="catalogue-content__cards">
-						{
-							!isLoading && nomenclatures ?
-								nomenclatures.products && <HOCProducts nomenclatureProducts={nomenclatures.products} selectCat={selectCat} /> : <LoaderProduct />
-						}
+					<div className="catalogue-content_container-desc">
+						<div className="catalogue-content__cards">
+							{
+								!isLoading && nomenclatures ?
+									nomenclatures.products && <HOCProducts nomenclatureProducts={nomenclatures.products} selectCat={selectCat} /> : <LoaderProduct />
+							}
+						</div>
+						<div className="catalogue-content__basket">
+							<HOCBasketDesc />
+						</div>
 					</div>
 				</div>
 			</div>

@@ -1,3 +1,4 @@
+/* eslint-disable react/no-unknown-property */
 import { IDeliveryTypes, IOrganizationStatus } from "modules/OrganizationModule/OrganizationStatuses/interfaces/organizationStatus.type"
 import { FC, useContext, useEffect } from "react"
 import { NavLink, useNavigate } from "react-router-dom"
@@ -23,7 +24,7 @@ import OrganizationTableRestaurant from "./OrganizationTableRestaurant";
 const OrganizationTipeDelivery: FC<{ organization: any }> = ({ organization }) => {
 	const useCasePoints = useContext(PointsContext)
 
-	const { handlerSelectDeliveryTipe, handlerCloseCardModal } = useCasePoints.handlers
+	const { handlerSelectMenu } = useCasePoints.handlers
 	const navigate = useNavigate()
 
 	const mediaDesc = isDesctomMediaQuery()
@@ -37,58 +38,7 @@ const OrganizationTipeDelivery: FC<{ organization: any }> = ({ organization }) =
 		}
 	}, [organization.deliveryTipe])
 
-	const icons = (type: string) => {
-		switch (type) {
-			case DELIVERY_METODS.COURIER: return iconDelivery
-			case DELIVERY_METODS.ONSPOT: return iconQrCodeScanner
-			case DELIVERY_METODS.PICKUP: return iconSelfPickup
-		}
-	}
-	/*
-		if (organization.deliveryTipe.length !== 0 && statusTSX.OpenPoint()) {
-			return (
-				<button onClick={() => handlerCloseCardModal(false)} className="btn btn-mini btn-gray no-drag">Выбрать другую</button>
-			)
-		}
 	
-		if (organization.delivery) {
-			return (
-				<button disabled className="btn btn-mini btn-gray no-drag">
-	
-					Онлайн-заказ в данной хинкальной недоступен
-				</button>
-			)
-		}
-	
-	
-	
-	
-		const handlerMenu = () => {
-			if (!mediaDesc && organization.guid !== organization.guid) {
-				appUseCase.clearApp()
-			}
-	
-			if (organization.delivery === ORG_STATUS.NOWORK && organization.redirect.redirectON) {
-				console.log(organization.delivery, organization.redirect.redirectON);
-				Redirects(organization)
-			} else {
-				navigate(`/shop?address=${organization.info.city},${organization.info.address}`)
-			}
-	
-		}
-	
-		if (organization.delivery && organization.organizationStatus !== ORG_STATUS.WORK) {
-			return (
-				<button disabled className="btn btn-mini btn-gray no-drag">
-	
-					Онлайн-заказ в данной хинкальной недоступен
-				</button>
-			)
-		}
-	*/
-
-	console.log(organization);
-
 	statusTSX && statusTSX.NoWorkPoint((
 		<>
 			<button disabled className="btn btn-mini btn-gray no-drag">
@@ -166,7 +116,7 @@ const OrganizationTipeDelivery: FC<{ organization: any }> = ({ organization }) =
 				<svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
 					<path d="M4.66665 12.6666C4.11109 12.6666 3.63887 12.4722 3.24998 12.0833C2.86109 11.6944 2.66665 11.2222 2.66665 10.6666H1.99998C1.81109 10.6666 1.65276 10.6028 1.52498 10.475C1.3972 10.3472 1.33331 10.1889 1.33331 9.99998V8.66665C1.33331 7.93331 1.59442 7.30554 2.11665 6.78331C2.63887 6.26109 3.26665 5.99998 3.99998 5.99998H5.99998C6.18887 5.99998 6.3472 6.06387 6.47498 6.19165C6.60276 6.31942 6.66665 6.47776 6.66665 6.66665V9.33331H8.99998L11.3333 6.43331V4.66665H9.99998C9.81109 4.66665 9.65276 4.60276 9.52498 4.47498C9.3972 4.3472 9.33331 4.18887 9.33331 3.99998C9.33331 3.81109 9.3972 3.65276 9.52498 3.52498C9.65276 3.3972 9.81109 3.33331 9.99998 3.33331H11.3333C11.7 3.33331 12.0139 3.46387 12.275 3.72498C12.5361 3.98609 12.6666 4.29998 12.6666 4.66665V6.43331C12.6666 6.58887 12.6416 6.73609 12.5916 6.87498C12.5416 7.01387 12.4722 7.14442 12.3833 7.26665L10.0666 10.1666C9.94442 10.3222 9.78887 10.4444 9.59998 10.5333C9.41109 10.6222 9.21665 10.6666 9.01665 10.6666H6.66665C6.66665 11.2222 6.4722 11.6944 6.08331 12.0833C5.69442 12.4722 5.2222 12.6666 4.66665 12.6666ZM4.66665 11.3333C4.85554 11.3333 5.01387 11.2694 5.14165 11.1416C5.26942 11.0139 5.33331 10.8555 5.33331 10.6666H3.99998C3.99998 10.8555 4.06387 11.0139 4.19165 11.1416C4.31942 11.2694 4.47776 11.3333 4.66665 11.3333ZM3.99998 5.33331C3.81109 5.33331 3.65276 5.26942 3.52498 5.14165C3.3972 5.01387 3.33331 4.85554 3.33331 4.66665C3.33331 4.47776 3.3972 4.31942 3.52498 4.19165C3.65276 4.06387 3.81109 3.99998 3.99998 3.99998H5.99998C6.18887 3.99998 6.3472 4.06387 6.47498 4.19165C6.60276 4.31942 6.66665 4.47776 6.66665 4.66665C6.66665 4.85554 6.60276 5.01387 6.47498 5.14165C6.3472 5.26942 6.18887 5.33331 5.99998 5.33331H3.99998ZM12.6666 12.6666C12.1111 12.6666 11.6389 12.4722 11.25 12.0833C10.8611 11.6944 10.6666 11.2222 10.6666 10.6666C10.6666 10.1111 10.8611 9.63887 11.25 9.24998C11.6389 8.86109 12.1111 8.66665 12.6666 8.66665C13.2222 8.66665 13.6944 8.86109 14.0833 9.24998C14.4722 9.63887 14.6666 10.1111 14.6666 10.6666C14.6666 11.2222 14.4722 11.6944 14.0833 12.0833C13.6944 12.4722 13.2222 12.6666 12.6666 12.6666ZM12.6666 11.3333C12.8555 11.3333 13.0139 11.2694 13.1416 11.1416C13.2694 11.0139 13.3333 10.8555 13.3333 10.6666C13.3333 10.4778 13.2694 10.3194 13.1416 10.1916C13.0139 10.0639 12.8555 9.99998 12.6666 9.99998C12.4778 9.99998 12.3194 10.0639 12.1916 10.1916C12.0639 10.3194 12 10.4778 12 10.6666C12 10.8555 12.0639 11.0139 12.1916 11.1416C12.3194 11.2694 12.4778 11.3333 12.6666 11.3333Z" fill="#333333" />
 				</svg>
-				Доставка доступна с 10:00–21:00
+				Доставка доступна с 10:00–21:00
 			</button>
 			<button disabled className="btn btn-mini btn-gray no-drag">
 				Самовывоз доступен до 21:30
@@ -181,7 +131,7 @@ const OrganizationTipeDelivery: FC<{ organization: any }> = ({ organization }) =
 				<svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
 					<path d="M4.66665 12.6666C4.11109 12.6666 3.63887 12.4722 3.24998 12.0833C2.86109 11.6944 2.66665 11.2222 2.66665 10.6666H1.99998C1.81109 10.6666 1.65276 10.6028 1.52498 10.475C1.3972 10.3472 1.33331 10.1889 1.33331 9.99998V8.66665C1.33331 7.93331 1.59442 7.30554 2.11665 6.78331C2.63887 6.26109 3.26665 5.99998 3.99998 5.99998H5.99998C6.18887 5.99998 6.3472 6.06387 6.47498 6.19165C6.60276 6.31942 6.66665 6.47776 6.66665 6.66665V9.33331H8.99998L11.3333 6.43331V4.66665H9.99998C9.81109 4.66665 9.65276 4.60276 9.52498 4.47498C9.3972 4.3472 9.33331 4.18887 9.33331 3.99998C9.33331 3.81109 9.3972 3.65276 9.52498 3.52498C9.65276 3.3972 9.81109 3.33331 9.99998 3.33331H11.3333C11.7 3.33331 12.0139 3.46387 12.275 3.72498C12.5361 3.98609 12.6666 4.29998 12.6666 4.66665V6.43331C12.6666 6.58887 12.6416 6.73609 12.5916 6.87498C12.5416 7.01387 12.4722 7.14442 12.3833 7.26665L10.0666 10.1666C9.94442 10.3222 9.78887 10.4444 9.59998 10.5333C9.41109 10.6222 9.21665 10.6666 9.01665 10.6666H6.66665C6.66665 11.2222 6.4722 11.6944 6.08331 12.0833C5.69442 12.4722 5.2222 12.6666 4.66665 12.6666ZM4.66665 11.3333C4.85554 11.3333 5.01387 11.2694 5.14165 11.1416C5.26942 11.0139 5.33331 10.8555 5.33331 10.6666H3.99998C3.99998 10.8555 4.06387 11.0139 4.19165 11.1416C4.31942 11.2694 4.47776 11.3333 4.66665 11.3333ZM3.99998 5.33331C3.81109 5.33331 3.65276 5.26942 3.52498 5.14165C3.3972 5.01387 3.33331 4.85554 3.33331 4.66665C3.33331 4.47776 3.3972 4.31942 3.52498 4.19165C3.65276 4.06387 3.81109 3.99998 3.99998 3.99998H5.99998C6.18887 3.99998 6.3472 4.06387 6.47498 4.19165C6.60276 4.31942 6.66665 4.47776 6.66665 4.66665C6.66665 4.85554 6.60276 5.01387 6.47498 5.14165C6.3472 5.26942 6.18887 5.33331 5.99998 5.33331H3.99998ZM12.6666 12.6666C12.1111 12.6666 11.6389 12.4722 11.25 12.0833C10.8611 11.6944 10.6666 11.2222 10.6666 10.6666C10.6666 10.1111 10.8611 9.63887 11.25 9.24998C11.6389 8.86109 12.1111 8.66665 12.6666 8.66665C13.2222 8.66665 13.6944 8.86109 14.0833 9.24998C14.4722 9.63887 14.6666 10.1111 14.6666 10.6666C14.6666 11.2222 14.4722 11.6944 14.0833 12.0833C13.6944 12.4722 13.2222 12.6666 12.6666 12.6666ZM12.6666 11.3333C12.8555 11.3333 13.0139 11.2694 13.1416 11.1416C13.2694 11.0139 13.3333 10.8555 13.3333 10.6666C13.3333 10.4778 13.2694 10.3194 13.1416 10.1916C13.0139 10.0639 12.8555 9.99998 12.6666 9.99998C12.4778 9.99998 12.3194 10.0639 12.1916 10.1916C12.0639 10.3194 12 10.4778 12 10.6666C12 10.8555 12.0639 11.0139 12.1916 11.1416C12.3194 11.2694 12.4778 11.3333 12.6666 11.3333Z" fill="#333333" />
 				</svg>
-				Доставка доступна с 10:00–21:00
+				Доставка доступна с 10:00–21:00
 			</button>
 			<button className="btn btn-mini btn-gray no-drag">
 				<svg width="17" height="16" viewBox="0 0 17 16" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -223,7 +173,8 @@ const OrganizationTipeDelivery: FC<{ organization: any }> = ({ organization }) =
 				switchMetod()
 			}
 			<OrganizationTableRestaurant organization={organization} />
-			<NavLink to={`/shop?address=${organization.info.city},${organization.info.address}`} className="btn btn-mini no-drag gomenu">Посмотреть меню</NavLink>
+			<button className="btn btn-mini no-drag gomenu" onClick={()=>handlerSelectMenu(organization)}>Посмотреть меню</button>
+			
 		</div>
 	)
 }

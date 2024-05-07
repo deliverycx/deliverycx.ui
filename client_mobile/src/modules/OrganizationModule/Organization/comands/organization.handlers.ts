@@ -18,7 +18,7 @@ export class OrganizationHandlers{
 			const orglist = await this.organizationRepository.repositoryAllOrganization(cityid)
 			orglist && this.organizationComand(orglist)
 		} catch (error) {
-			
+			console.log(error);
 		}
 	}
 
@@ -28,7 +28,7 @@ export class OrganizationHandlers{
 			const orglist = await this.organizationRepository.repositoryOrganizationSerch(value)
 			orglist && this.organizationComand(orglist)
 		} catch (error) {
-			
+			console.log(error);
 		}
 	}
 
@@ -43,7 +43,7 @@ export class OrganizationHandlers{
 			}
 			
 		} catch (error) {
-			
+			console.log(error);
 		}
 	}
 

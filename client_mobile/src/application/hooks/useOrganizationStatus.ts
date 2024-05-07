@@ -12,14 +12,14 @@ export class StatusTSX {
 	public readonly pointstatus: {
 		organizationStatus: string
 		timeworkOrganization: string
-		deliveryTipe:any
+		deliveryTipe: any
 	}
 	public statuses: {
 		name: string
 		exect: boolean
 		content: ReactNode
 	} | null = null
-	constructor(organizationStatus: string = '', timeworkOrganization: string = '',deliveryTipe:any = []) {
+	constructor(organizationStatus: string = '', timeworkOrganization: string = '', deliveryTipe: any = []) {
 		this.pointstatus = {
 			organizationStatus,
 			timeworkOrganization,
@@ -95,20 +95,20 @@ export class StatusTSX {
 		)
 	}
 
-	
 
-	OnliPICKUP(tsx?:ReactNode){
-		const picup = this.pointstatus.deliveryTipe.find((val:any) =>{
+
+	OnliPICKUP(tsx?: ReactNode) {
+		const picup = this.pointstatus.deliveryTipe.find((val: any) => {
 			return val.metod === DELIVERY_METODS.COURIER
 		})
 
-		
+
 
 		return this.init(
 			"Только самовывоз",
 			!picup &&
 			(
-				this.pointstatus.organizationStatus !== ORG_STATUS.OPEN && 
+				this.pointstatus.organizationStatus !== ORG_STATUS.OPEN &&
 				this.pointstatus.organizationStatus !== ORG_STATUS.NODELIVERY &&
 				this.pointstatus.organizationStatus !== ORG_STATUS.SEZONNOTWORK &&
 				this.pointstatus.organizationStatus !== ORG_STATUS.NOWORK
@@ -118,7 +118,7 @@ export class StatusTSX {
 	}
 
 	DeliveryPickUP(tsx?: ReactNode) {
-		const delivery = this.pointstatus.deliveryTipe.find((val:any) =>{
+		const delivery = this.pointstatus.deliveryTipe.find((val: any) => {
 			return val.metod === DELIVERY_METODS.COURIER
 		})
 
@@ -132,37 +132,22 @@ export class StatusTSX {
 }
 
 
-export const useOrganizationStatus = (organizationStatusMetods:IOrganizationStatus): [StatusTSX, any] => {
-	const { organizationStatus,timeworkOrganization,deliveryTipe } = organizationStatusMetods
+export const useOrganizationStatus = (organizationStatusMetods: IOrganizationStatus | null): [StatusTSX | null, any] => {
+	if (organizationStatusMetods) {
+		const { organizationStatus, timeworkOrganization, deliveryTipe } = organizationStatusMetods
+		const tsx = new StatusTSX(organizationStatus, timeworkOrganization?.typework, deliveryTipe)
+		const switchMetod = () => {
+			const wrappers = tsx.statuses
 
-
-	
-	
-
-	const tsx = new StatusTSX(organizationStatus, timeworkOrganization?.typework,deliveryTipe)
-
-
-	const switchMetod = () => {
-		/*
-		const wrappers = tsx.statuses.filter((val:typeof tsx.statuses[0]) =>{
-			return val.exect
-		})
-		console.log(wrappers);
-		const w = wrappers.map((wrapp:typeof tsx.statuses[0],index:number) => {
-			return React.createElement(React.Fragment, {key: index}, wrapp.content)
-		})
-		return React.createElement(React.Fragment, null, w)
-		*/
-		const wrappers = tsx.statuses
-		
-		if (wrappers) {
-			const w = React.createElement(React.Fragment, { key: wrappers.name }, wrappers.content)
-			return React.createElement(React.Fragment, null, w)
+			if (wrappers) {
+				const w = React.createElement(React.Fragment, { key: wrappers.name }, wrappers.content)
+				return React.createElement(React.Fragment, null, w)
+			}
+			return false
 		}
-		return false
+		return [tsx, switchMetod]
+	}else{
+		return [null,null]
 	}
 
-	
-
-	return [tsx, switchMetod]
 }

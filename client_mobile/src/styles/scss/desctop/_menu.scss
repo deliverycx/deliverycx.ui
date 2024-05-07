@@ -10,7 +10,7 @@
 		font-weight: 500;
 		line-height: 20px;
 		text-decoration: none;
-		color: var(--Red-Red, #8D191D); 
+		color: var(--black-to-white-white-20-second-button-active);
 		&:hover{
 			text-decoration: underline;
 		}
@@ -21,5 +21,24 @@
 		border-radius: 12px;
 		background: var(--Red-Red, #8D191D); 
 		color: #fff;
+	}
+
+	.franc_menu{
+		border-radius: 12px;
+		padding: 4px 16px;
+		background: var(--yellow-yellow);
+		font-family: var(--font-family);
+		font-weight: 500;
+		font-size: 16px;
+		line-height: 125%;
+		color: var(--black-to-white-black);
+		position: relative;
+		text-decoration: none;
+		svg{
+			position: absolute;
+			top: -12px;
+			right: 0;
+			z-index: 2;
+		}
 	}
 }

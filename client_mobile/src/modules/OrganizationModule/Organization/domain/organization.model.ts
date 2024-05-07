@@ -10,13 +10,13 @@ interface IRequisites {
 	name: string
 }
 
-export class OrganizationModel extends OrganizationRepository {
+export class OrganizationModel{
 	organizationList: Array<IOrganization> | null = []
 	selectOrganization:IOrganization | null = null
 	selectRequisites:IRequisites | null = null
 
 	constructor() {
-		super()
+		
 		makeObservable(this, {
 			organizationList: observable,
 			selectOrganization: observable,
@@ -34,25 +34,13 @@ export class OrganizationModel extends OrganizationRepository {
 	}
 
 
-	actionSelectOrganization(pointid: string | null) {
-		if(pointid){
-			const point = this.repositoryOrganization(pointid)
-			point.subscribe((data: any) => {
-				this.selectOrganization = data
-				
-			})
-			return point
-		}else{
-			this.selectOrganization = null
-		}
+	actionSelectOrganization(organization: IOrganization | null) {
+		this.selectOrganization = organization
 	}
 
 
 	actionSerchOrganizations(valueSerch:pointSerch){
-		this.repositoryOrganizationSerch(valueSerch)
-			.subscribe((data: any) => {
-				this.organizationList = data
-			})
+		console.log('serch');
 	}
 
 	actionResetOrganizationAll(){

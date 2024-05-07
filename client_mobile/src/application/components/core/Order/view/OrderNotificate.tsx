@@ -9,7 +9,8 @@ import ModalCard from "application/components/common/Modals/ModalCard";
 import { useQuery } from "react-query";
 
 const OrderNotificate:FC<{disable:any}> = ({disable}) =>{
-	const [statusTSX, switchMetod] = useOrganizationStatus()
+	/*
+	const [statusTSX, switchMetod] = [null,null] //useOrganizationStatus()
 	const point = organizationModel.selectOrganization
 	const { timeworkOrganization } = organizationStatusModel
 	const [modal, setModal] = useState(false)
@@ -18,7 +19,7 @@ const OrderNotificate:FC<{disable:any}> = ({disable}) =>{
 	
 
 	useEffect(() => {
-		if(statusTSX.statuses){
+		if(statusTSX.statuses){ //
 			setModal(true)
 			if(timeworkOrganization && timeworkOrganization.typework === 'ONWORK'){
 				disable(false)
@@ -178,12 +179,16 @@ const OrderNotificate:FC<{disable:any}> = ({disable}) =>{
 			modal &&
 			<ModalCard setIsOpened={setModal}>
 				{
-					switchMetod()
+					//switchMetod()
 				}
 			</ModalCard>
 			
 		}
 		</>
+	)
+	*/
+	return (
+		<></>
 	)
 }
 export default observer(OrderNotificate) 

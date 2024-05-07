@@ -5,9 +5,10 @@ import { ROUTE_APP } from 'application/contstans/route.const';
 import { ICartProd } from "modules/BasketModule/interfaces/basket.type";
 
 
-export function useCartViewModel(this: any,cart:ICartProd[]) {
+export function useCartViewModel(this: any) {
 	const [select, setSelect] = useState<string[]>([])
 	const navigate = useNavigate()
+	const { cart, basketPrice } = basketUseCase.basketModel
 
 	const dispatchSelectCart = (e:any, id: string) => {
 		if (e.target.checked) {
@@ -49,10 +50,19 @@ export function useCartViewModel(this: any,cart:ICartProd[]) {
 			navigate(ROUTE_APP.SHOP.SHOP_MAIN)
 		}
 	},[cart])
+
+	useEffect(() => {
+		basketUseCase.cartCase().then(data => {
+			if (!data && !Array.isArray(data)) {
+				navigate(ROUTE_APP.SHOP.SHOP_MAIN)
+			}
+		})
+	}, [])
 	
 
 	this.data({
 		cart,
+		basketPrice,
 		select
 	});
 	this.handlers({

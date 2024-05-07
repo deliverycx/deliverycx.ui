@@ -42,7 +42,7 @@ const OrderAdressMap: FC<IProps> = ({ formik }) => {
 		} else {
 			if (orderDeliveryAddress) {
 				navigate(ROUTE + `/${orderDeliveryAddress.address}${orderDeliveryAddress.house}`)
-				
+
 			} else {
 				navigate(ROUTE)
 			}
@@ -82,8 +82,8 @@ const OrderAdressMap: FC<IProps> = ({ formik }) => {
 										{
 											profile && profile.adressdelivery.length === 0 &&
 											<div className="delivery-addresses__list__items-empty">
-												<h3>Нет адресов</h3>
-												<span>Добавьте адрес доставки для быстрого оформления ваших заказов</span>
+												<h3>Нет адресов</h3>
+												<span>Добавьте адрес доставки для быстрого оформления ваших заказов</span>
 											</div>
 										}
 										{profile && profile.adressdelivery && profile.adressdelivery.map((val) => {
@@ -134,8 +134,8 @@ const OrderAdressMap: FC<IProps> = ({ formik }) => {
 										{
 											profile && profile.adressdelivery.length === 0 &&
 											<div className="delivery-addresses__list__items-empty">
-												<h3>Нет адресов</h3>
-												<span>Добавьте адрес доставки для быстрого оформления ваших заказов</span>
+												<h3>Нет адресов</h3>
+												<span>Добавьте адрес доставки для быстрого оформления ваших заказов</span>
 											</div>
 										}
 										{profile && profile.adressdelivery && profile.adressdelivery.map((val) => {
@@ -169,8 +169,8 @@ const OrderAdressMap: FC<IProps> = ({ formik }) => {
 
 									<div className="delivery-addresses__buttons">
 										<button className="btn btn-md btn-red gap-4" onClick={() => {
-											 navigate(ROUTE)
-											 setIsModalOpened(false)
+											navigate(ROUTE)
+											setIsModalOpened(false)
 										}}>
 
 											Добавить новый адрес

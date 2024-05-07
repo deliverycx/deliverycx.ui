@@ -1,4 +1,4 @@
-import { organizationModel, organizationStatusModel, useCaseOrganization, useCaseOrganizationStatus } from "modules/OrganizationModule/organization.module";
+import { organizationModel, organizationStatusModel, useCaseOrganizationStatus } from "modules/OrganizationModule/organization.module";
 import { useEffect, useState } from "react";
 import { useNavigate } from 'react-router-dom';
 import { ROUTE_APP } from 'application/contstans/route.const';
@@ -58,6 +58,7 @@ export function useShopViewModel(this: any) {
 		
 
 		if(queyOrg){
+			/*
 			appUseCase.clearApp()
 			const obversPoint = useCaseOrganizationStatus.targetOrganization(queyOrg,delivMetod)
 			
@@ -68,6 +69,7 @@ export function useShopViewModel(this: any) {
 					queyTable && orderUseCase.onSpotTableQR(data.guid,JSON.parse(queyTable))
 				})
 			}
+			*/
 		}else{
 			if (!organization) {
 				if(descQuery){
@@ -81,7 +83,7 @@ export function useShopViewModel(this: any) {
 				
 			}else{
 				setPointid(organization.guid)
-				useCaseOrganizationStatus.statusOrganization()
+				//useCaseOrganizationStatus.statusOrganization()
 				//userRegister()
 				
 			}

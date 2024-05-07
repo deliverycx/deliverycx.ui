@@ -37,8 +37,15 @@
 		padding: 4px 16px;
 		justify-content: center;
 		align-items: center;
-		font-weight: 500;
 		gap: 4px; 
+		a{
+				font-family: var(--font-family);
+				font-weight: 600;
+				font-size: 18px;
+				color: var(--black-to-white-white-20-second-button-active);
+				text-decoration: none;
+		}
+	
 	}
 
 	.head-auth{
@@ -47,13 +54,18 @@
 		font-style: normal;
 		font-weight: 600;
 		line-height: 24px;
-		color: var(--Red-Red, #8D191D); 
 		cursor: pointer;
-		a{
-			margin-left: 5px;
-			text-decoration: none;
-			color: var(--Red-Red, #8D191D); 
+		svg{
+			position: relative;
+			top: 3px;
 		}
+		a{
+			margin-left: 8px;
+			text-decoration: none;
+			font-weight: 600;
+			font-size: 18px;
+			color: var(--black-to-white-white-20-second-button-active);
+		}	
 	}
 
 	.head-cart{

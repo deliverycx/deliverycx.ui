@@ -14,19 +14,21 @@ import { ROUTE_APP } from "application/contstans/route.const"
 
 const HOCOrderDesc = () => {
 	const navigate = useNavigate()
-	const [statusTSX, switchMetod] = useOrganizationStatus()
+	//const [statusTSX, switchMetod] = useOrganizationStatus()
 	const { paymentMetod } = organizationStatusModel
 	const params = useLocation()
 
+	/*
 	useQuery('pointstatus', () => useCaseOrganizationStatus.statusOrganization(), {
 		refetchOnWindowFocus: true,
 	})
+	*/
 
 	useEffect(() => {
 		basketUseCase.cartCase()
 	}, [])
 
-	const CN = cn("order-placement__form", { 'close-soon': statusTSX.NoTimeWork() })
+	const CN = cn("order-placement__form", { 'close-soon': true}) //statusTSX.NoTimeWork() 
 	return (
 		<LayoutDesctop>
 			<div className="order-desc">

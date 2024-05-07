@@ -8,18 +8,19 @@ import { organizationStatusModel, useCaseOrganizationStatus } from "modules/Orga
 import { FC, useEffect } from 'react';
 
 const OrderMetodsTabs: FC<{ deliveryTabs: IDeliveryTypes[] }> = ({ deliveryTabs }) => {
-	const [statusTSX, switchMetod] = useOrganizationStatus()
+	const [statusTSX, switchMetod] = useOrganizationStatus(null)
 	const {orderOnspotTable} = orderModel
 
 
 	const handlerSwitchTab = (tab: IDeliveryTypes) => {
+		/*
 		if (statusTSX.NoTimeWork()) {
 			return
 		} else {
 			useCaseOrganizationStatus.selectDeliveryMetod(tab)
 			basketUseCase.cartCase()
 		}
-
+		*/
 	}
 
 	
@@ -42,7 +43,7 @@ const OrderMetodsTabs: FC<{ deliveryTabs: IDeliveryTypes[] }> = ({ deliveryTabs 
 
 						: deliveryTabs && deliveryTabs.length &&
 						deliveryTabs.slice().sort((a:any, b:any) => a['sort'] > b['sort'] ? 1 : -1).map((tab) => {
-							if (statusTSX.ONTimeWork()) {
+							if (statusTSX && statusTSX.ONTimeWork()) {
 								if(tab.metod !== DELIVERY_METODS.COURIER)
 								return (
 									<div key={tab.metod} onClick={() => handlerSwitchTab(tab)} className="form-radio__toggle__item">

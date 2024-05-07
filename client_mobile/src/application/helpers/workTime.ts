@@ -2274,7 +2274,7 @@ export const ngFN = (org:any) =>{
 			
 			val.data.forEach((value:any) =>{
 				//console.log(formatDate(trueDate),formatDate(value.d));
-				console.log(org,value.d);
+				
 			
 				
 
@@ -2285,7 +2285,7 @@ export const ngFN = (org:any) =>{
 			})
 		}
 	})
-	console.log(time);
+	
 	return time
 }
 

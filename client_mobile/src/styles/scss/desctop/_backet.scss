@@ -1,82 +1,100 @@
-.basket-desc{
-	padding: 30px 7%;
-	.basket-desc_header{
+.basket-desc {
+	box-shadow: 0 4px 24px 0 rgba(0, 0, 0, 0.12);
+	background: var(--black-to-white-white-100);
+	border-radius: 17px;
+	.basket-desc_header {
 		display: flex;
 		justify-content: space-between;
-		margin-bottom: 25px;
-		h1{
-			font-size: 48px;
-			font-style: normal;
+		align-items: center;
+		padding: 5px 15px;
+		h1 {
 			font-weight: 700;
-			line-height: 52px;
-			color: #111;
+			font-size: 18px;
+			line-height: 111%;
+			color: var(--black-to-white-black);
+			svg{
+				position: relative;
+				top: 3px;
+				margin-right: 5px;
+			}
 		}
 	}
-	.basket-desc_main{
+	.basket__content__buttons{
+		padding: 0 15px;
+	}
+
+	.basket-desc_main {
 		display: flex;
+		flex-direction: column;
 	}
-	.basket-desc_cart{
-		width: 60%;
+
+	.basket-desc_cart {
+		width: 100%;
+		max-height: 500px;
+		overflow: auto;
+		padding:15px;
 	}
-	.basket-desc_order{
-		position: sticky;
-  	top: 0;
-		width: 40%;
-		
-		max-height: 300px;
-		margin-left: 20px;
-		
-		
-		.basket-desc_order-box{
-			box-shadow: 0px 4px 24px 0px rgba(0, 0, 0, 0.12);
+
+	.basket-desc_order {
+		.basket__content__price strong{
+			font-size: 14px;
+		}
+
+
+		.basket-desc_order-box {
+			box-shadow: 0 4px 24px 0 rgba(0, 0, 0, 0.12);
 			background-color: #fff;
-			border-radius: 17px;
+			border-radius:0 0 17px 17px;
 			padding: 15px;
 		}
-		.dozen--discount{
+
+		.dozen--discount {
 			margin: 15px 0;
 		}
-		.btn-red{
+
+		.btn-red {
 			width: 100%;
 			margin-top: 10px;
 		}
 	}
 
-	.basket__content__product_card{
+	.basket__content__product_card {
 		background-color: #fff;
 		margin-bottom: 10px;
 	}
 
-	.basket__more{
+	.basket__more {
 		margin-top: 40px;
 		padding: 0;
-		.basket__more-title{
+
+		.basket__more-title {
 			font-size: 24px;
 			font-style: normal;
-			font-weight: 700; 
+			font-weight: 700;
 		}
 	}
-	
+
 }
 
-.delite_basket{
+.delite_basket {
 	display: flex;
 	cursor: pointer;
 	align-items: center;
-	.delite_basket-text{
+
+	.delite_basket-text {
 		display: block;
 		font-size: 18px;
 		font-style: normal;
 		font-weight: 600;
-		color: var(--Red-Red, #8D191D); 
-		
+		color: var(--Red-Red, #8D191D);
+
 		vertical-align: middle;
 	}
 }
 
 
-@media only screen and (max-width: 1024px){
-	.basket-desc{
+@media only screen and (max-width: 1024px) {
+	.basket-desc {
 		padding: 30px 1%;
 	}
 }

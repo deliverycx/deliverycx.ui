@@ -37,7 +37,7 @@ export function useUserOrdersViewModel(this:any) {
 		orderUseCase.orderModel.actionOrderBody(data.orderBody)
 		orderUseCase.orderModel.actionOrderDeliveryAddress(data.orderDelivery)
 		data.order.orderParams.orderTable && orderUseCase.setOnSpotTable(data.order.orderParams.orderTable)
-		point && useCaseOrganizationStatus.findDeliveryType(data.order.orderParams.orderType,point)
+		//point && useCaseOrganizationStatus.findDeliveryType(data.order.orderParams.orderType,point)
 		data.order.orderItems && data.order.orderItems.map((item) => {
 			const cartbody = {
 				anmount: item.amount,
