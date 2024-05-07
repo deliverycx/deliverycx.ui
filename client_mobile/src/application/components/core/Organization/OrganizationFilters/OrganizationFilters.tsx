@@ -20,7 +20,25 @@ const HOCOrganizationFilters: FC<{ city: ICity }> = ({ city }) => {
 		<>
 			{
 				filters &&
+				<>
+				<Desktop>
 				<button onClick={() => setIsOpenedFilters((prev:boolean) => !prev)} className="btn btn-icon btn-tiny btn-red">
+					{
+						isOpenedFilters ?
+						
+							<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+								<path d="M18.3002 5.70875C17.9102 5.31875 17.2802 5.31875 16.8902 5.70875L12.0002 10.5888L7.11022 5.69875C6.72022 5.30875 6.09021 5.30875 5.70021 5.69875C5.31021 6.08875 5.31021 6.71875 5.70021 7.10875L10.5902 11.9988L5.70021 16.8887C5.31021 17.2787 5.31021 17.9087 5.70021 18.2987C6.09021 18.6887 6.72022 18.6887 7.11022 18.2987L12.0002 13.4087L16.8902 18.2987C17.2802 18.6887 17.9102 18.6887 18.3002 18.2987C18.6902 17.9087 18.6902 17.2787 18.3002 16.8887L13.4102 11.9988L18.3002 7.10875C18.6802 6.72875 18.6802 6.08875 18.3002 5.70875Z" fill="white" />
+							</svg> :
+							<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+								<path d="M11 18H13C13.55 18 14 17.55 14 17C14 16.45 13.55 16 13 16H11C10.45 16 10 16.45 10 17C10 17.55 10.45 18 11 18ZM3 7C3 7.55 3.45 8 4 8H20C20.55 8 21 7.55 21 7C21 6.45 20.55 6 20 6H4C3.45 6 3 6.45 3 7ZM7 13H17C17.55 13 18 12.55 18 12C18 11.45 17.55 11 17 11H7C6.45 11 6 11.45 6 12C6 12.55 6.45 13 7 13Z" fill="white" />
+							</svg>
+					}
+
+					Фильтры
+				</button>
+				</Desktop>
+				<Mobile>
+<button onClick={() => setIsOpenedFilters((prev:boolean) => !prev)} className="btn btn-icon btn-tiny btn-red">
 					{
 						isOpenedFilters ?
 						
@@ -34,6 +52,9 @@ const HOCOrganizationFilters: FC<{ city: ICity }> = ({ city }) => {
 
 
 				</button>
+				</Mobile>
+				</>
+				
 			}
 
 			{

@@ -8,6 +8,8 @@ import cn from "classnames";
 import { createPortal } from 'react-dom';
 import { useCaseOrganizationStatus } from 'modules/OrganizationModule/organization.module';
 import { IOrganizationStatus } from 'modules/OrganizationModule/OrganizationStatuses/interfaces/organizationStatus.type';
+import ModalDesctop from 'application/components/common/Modals/ModalDesc/ModalsDesctop';
+import { Desktop, Mobile } from 'application/ResponseMedia';
 
 type IProps = {
 	organization: IOrganization
@@ -77,36 +79,63 @@ const OranizationWorkTime: FC<{ organization: IOrganization & IOrganizationStatu
 				</button>
 			</div>
 			{modalWork && !checktype &&
-				<ModalCard setIsOpened={setModalWork} theme="children-pre">
+				<>
+					<Desktop>
+						<ModalDesctop setIsOpened={setModalWork} theme={"children"} title='Ваша заявка отправлена'>
+							<div className="modal__content point-time_container-desc">
+								<ul className="map__schedule-list">
+									{
+										organization.timeworkOrganization
+										&& Array.isArray(organization.timeworkOrganization.timelist)
+										&& organization.timeworkOrganization.timelist.map((value: string, index: number) => {
+											const CNActive = cn("welcome_timebox_item", { active: activeDate === index })
+											return (
+												<li key={index} className={CNActive}>
+													<span>{dni[index]}</span>
+													<span>{value}</span>
+												</li>
+											)
+										})
+									}
 
-					<div className="modal__wrapper">
-						<div className="modal__header">
-							<div className="modal__header-btn">
-								<img className="no-drag" onClick={() => setModalWork(false)} src={require('assets/images/icons/arrow_back.png')} alt="" />
+								</ul>
 							</div>
-							<h3>Режим работы</h3>
-						</div>
-						<div className="modal__content">
-							<ul className="map__schedule-list">
-								{
-									organization.timeworkOrganization
-									&& Array.isArray(organization.timeworkOrganization.timelist)
-									&& organization.timeworkOrganization.timelist.map((value: string, index: number) => {
-										const CNActive = cn("welcome_timebox_item", { active: activeDate === index })
-										return (
-											<li key={index} className={CNActive}>
-												<span>{dni[index]}</span>
-												<span>{value}</span>
-											</li>
-										)
-									})
-								}
+						</ModalDesctop>
+					</Desktop>
+					<Mobile>
+						<ModalCard setIsOpened={setModalWork} theme="children-pre">
 
-							</ul>
-						</div>
-					</div>
+							<div className="modal__wrapper">
+								<div className="modal__header">
+									<div className="modal__header-btn">
+										<img className="no-drag" onClick={() => setModalWork(false)} src={require('assets/images/icons/arrow_back.png')} alt="" />
+									</div>
+									<h3>Режим работы</h3>
+								</div>
+								<div className="modal__content">
+									<ul className="map__schedule-list">
+										{
+											organization.timeworkOrganization
+											&& Array.isArray(organization.timeworkOrganization.timelist)
+											&& organization.timeworkOrganization.timelist.map((value: string, index: number) => {
+												const CNActive = cn("welcome_timebox_item", { active: activeDate === index })
+												return (
+													<li key={index} className={CNActive}>
+														<span>{dni[index]}</span>
+														<span>{value}</span>
+													</li>
+												)
+											})
+										}
 
-				</ModalCard>
+									</ul>
+								</div>
+							</div>
+
+						</ModalCard>
+					</Mobile>
+
+				</>
 			}
 		</>
 	)

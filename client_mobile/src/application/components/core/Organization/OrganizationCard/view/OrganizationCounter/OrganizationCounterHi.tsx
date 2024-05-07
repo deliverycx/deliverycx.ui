@@ -49,7 +49,7 @@ const OrganizationCounterHi:FC<{point:IOrganization}> = ({point}) => {
 				
 				timer = setTimeout(() => {
 					counter++
-					const zeroLength = 12;
+					const zeroLength = 7;
 					const c = parseInt(count)
 					const newcount = String(c + counter).padStart(zeroLength, '0')
 					console.log('nex',newcount);

@@ -5,6 +5,8 @@ import axios from "axios";
 
 import { requestOrganizationAdmin, requestOrganizationApi } from "modules/OrganizationModule/Organization/data/organization.request";
 import { IOrganization, IRequisitiesOrganization } from 'modules/OrganizationModule/Organization/interfaces/organization.type';
+import { Desktop, Mobile } from "application/ResponseMedia";
+import ModalDesctop from "application/components/common/Modals/ModalDesc/ModalsDesctop";
 
 const OragnizationRequisities:FC<{organization:IOrganization}> = ({organization}) => {
     const [modal, setModal] = useState(false)
@@ -29,7 +31,31 @@ const OragnizationRequisities:FC<{organization:IOrganization}> = ({organization}
             {
                 (data && Object.keys(data).length !== 0) && <div onClick={() => setModal(true)} className="recvisites">Реквизиты компаний</div>
             }
-
+						<Desktop>
+							{
+								modal && (
+									<ModalDesctop setIsOpened={setModal} theme={"children"} title="Реквизиты">
+										
+												<div className="recvisites_box modal__content gap-8">
+                                <div className='word-bold'>
+                                    <b>ИП: </b>
+                                    {data?.name}
+                                </div>
+                                <div className='ur-address'>Юридический адрес:</div>
+                                <div className='data-company'>
+                                    <div>
+                                        ОГРН {data?.ogrn}
+                                    </div>
+                                    <div>
+                                        ИНН {data?.inn}
+                                    </div>
+                                </div>
+                            </div>
+									</ModalDesctop>
+								)
+							}
+						</Desktop>
+						<Mobile>
             {
                 modal && (
                     <ModalCard setIsOpened={setModal} theme="children-pre">
@@ -60,6 +86,7 @@ const OragnizationRequisities:FC<{organization:IOrganization}> = ({organization}
                     </ModalCard>
                 )
             }
+						</Mobile>
         </>
     );
 };

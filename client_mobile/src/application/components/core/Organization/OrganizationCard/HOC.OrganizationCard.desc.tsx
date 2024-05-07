@@ -16,26 +16,30 @@ import { useState, useEffect } from "react"
 import LoaderProduct from "application/components/common/Loaders/loaderProduct"
 import OragnizationRequisities from "./view/OragnizationRequisities"
 import OrganizationCounterHi from "./view/OrganizationCounter/OrganizationCounterHi"
+import OrganizationCardItem from "./OrganizationCardItem"
+import { PointsContext } from "./HOC.OrganizationCard"
 
 const HOCOrganizationCardDesc = () => {
 	const useCase = adapterComponentUseCase(useOrganizationCardViewModel)
-	const { selectOrganization, timeworkOrganization, cardModal, deliveryTipe } = useCase.data
+	const { point, timeworkOrganization, cardModal, deliveryTipe } = useCase.data
 	const { setCardModal, handlerCloseCardModal } = useCase.handlers
 
 	const [load, setLoad] = useState(true)
 
+	/*
 	useEffect(() => {
 		let tiks: any
 		if (selectOrganization) {
 			tiks = setTimeout(() => {
 				setLoad(false)
 			}, 500)
-			useCaseOrganizationStatus.statusOrganization()
+			//useCaseOrganizationStatus.statusOrganization()
 		}
 
 
 		return () => clearTimeout(tiks)
 	}, [selectOrganization])
+	*/
 
 	const settings = {
 		dots: true,
@@ -47,58 +51,16 @@ const HOCOrganizationCardDesc = () => {
 
 	return (
 		<>
+		<PointsContext.Provider value={useCase}>
 			{
 				cardModal &&
-				<ModalCard setIsOpened={() => handlerCloseCardModal()} theme="children" styles="organization_modal">
-					<div className="modal__wrapper map__institute-info">
-						<div onClick={handlerCloseCardModal} className="map__institute-close no-drag">
-							<img src={require('assets/images/icons/close_gray.png')} alt="" />
-						</div>
-
-						{
-							selectOrganization.gallery && selectOrganization.gallery.length !== 0 &&
-							<Slider {...settings} className="carousel">
-								{selectOrganization.gallery.map((image: string, index: number) => (
-									<img key={index} src={imgRoutDef(image)} alt="" />
-								))}
-							</Slider>
-						}
-						<div className="map__institute-content no-drag">
-							<div className="institute-header">
-
-								<OrganizationCard organization={selectOrganization} />
-								<OrganizationStatus organization={selectOrganization} />
-								{
-									!load ?
-										<>
-											<OrganizationCounterHi point={selectOrganization} />
-											<OragnizationRequisities organization={selectOrganization} />
-										</>
-										: <LoaderProduct />
-								}
-								{
-									timeworkOrganization &&
-									<OranizationWorkTime organization={selectOrganization} />
-								}
-								{
-									selectOrganization.filters && selectOrganization.filters.length !== 0 &&
-									<OrganizationCardFilter organization={selectOrganization} />
-								}
-								{
-									timeworkOrganization && deliveryTipe &&
-									<OrganizationTipeDelivery organization={selectOrganization} />
-								}
-								<OrganizationTableRestaurant organization={selectOrganization} />
-							</div>
-						</div>
-
-
-					</div>
-
-				</ModalCard>
+				<div className="modalcard_map">
+					<OrganizationCardItem active={true} viseble={true}  organization={point} />
+				</div>
 			}
+			</PointsContext.Provider>
 		</>
-
+		
 	)
 }
 export default observer(HOCOrganizationCardDesc) 

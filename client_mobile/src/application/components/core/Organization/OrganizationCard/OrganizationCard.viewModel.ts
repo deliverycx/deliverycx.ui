@@ -47,7 +47,7 @@ export function useOrganizationCardViewModel() {
 
 
 	const handlerCloseCardModal = () => {
-		!desc && appUseCase.clearApp()
+		//!desc && appUseCase.clearApp()
 		setCardModal(false)
 	}
 

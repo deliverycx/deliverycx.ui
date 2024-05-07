@@ -6,6 +6,7 @@ import { IOrganization } from 'modules/OrganizationModule/Organization/interface
 import { useState } from 'react';
 import { useEffect } from 'react';
 import placemark from "assets/images/icons/placemark.svg"
+import { isDesctomMediaQuery } from "application/ResponseMedia";
 
 
 export const mokPoint = [
@@ -93,7 +94,7 @@ type IProps = {
 const YMapPoint:FC<IProps> = ({statePoint,addresses,placemarkClick}) => {
 	const [cord,setCord] = useState([0.0, 0.0])
 
-	
+	const desc = isDesctomMediaQuery()
 
 	useEffect(()=>{
 		if(addresses && addresses.length){	
@@ -115,7 +116,7 @@ const YMapPoint:FC<IProps> = ({statePoint,addresses,placemarkClick}) => {
                         <Map
                             
                             width="100"
-                            height="100vh"
+                            height={desc ? "760px" : "100vh"} 
                             defaultState={{
                                 center: cord,
                                 zoom: 13
@@ -127,8 +128,8 @@ const YMapPoint:FC<IProps> = ({statePoint,addresses,placemarkClick}) => {
                             }}
 														
                         >
-													<ZoomControl options={{ position: { right: 10, bottom: 300 }, zoomSize: 'small' }} />
-                            <GeolocationControl options={{ position: { right: 10, bottom: 250 }}} />
+													<ZoomControl options={{ position: { right: 10, bottom: desc ? 400 : 300 }, zoomSize: 'small' }} />
+                            <GeolocationControl options={{ position: { right: 10, bottom: desc ? 350 : 250 }}} />
                             {
                                 addresses.map((address:IOrganization, index:number) => {
 																	if(address.info){
