@@ -1,6 +1,6 @@
 import { action, makeObservable, observable } from "mobx";
 import { BasketRepository } from "../data/basket.repository";
-import { IBasketError, IBasketPrice, ICartProd, IaddBasket } from "../interfaces/basket.type";
+import { IBasketError, IBasketPrice, ICartAdditonalSous, ICartProd, IaddBasket } from "../interfaces/basket.type";
 import { IProduct } from "modules/ShopModule/interfaces/shop.type";
 import { makePersistable } from "mobx-persist-store";
 
@@ -8,6 +8,7 @@ export class BasketModel extends BasketRepository{
 	cart:ICartProd[] | null = null
 	basketPrice:IBasketPrice | null = null
 	basketError:IBasketError | null = null
+	cartAddional:ICartAdditonalSous[] = []
 
 	constructor() {
 		super()
@@ -33,6 +34,25 @@ export class BasketModel extends BasketRepository{
 
 	async actionCheckbasketError(error:any){
 		this.basketError = error
+	}
+
+	cartAddionalSous(prodSous:ICartAdditonalSous){
+		this.cartAddional.push(prodSous)
+	}
+	cartAddionalDeleteSous(prodSousid:string,parent:string){
+		const indexToRemove = this.cartAddional.findIndex(item => item.sousid === prodSousid && item.parentid === parent);
+		if (indexToRemove !== -1) {
+			this.cartAddional.splice(indexToRemove, 1);
+		}
+	}
+	cartAddionalSousChange(prodSousid:string,parent:string,count:number){
+		const updatedcartAddional = this.cartAddional.map(item => {
+			if (item.sousid === prodSousid && item.parentid === parent) {
+					return { ...item, count: count}
+			}
+			return item;
+		});
+		this.cartAddional = updatedcartAddional
 	}
 
 }

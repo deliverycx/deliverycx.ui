@@ -1,10 +1,11 @@
 /* eslint-disable prefer-const */
 /* eslint-disable @typescript-eslint/no-var-requires */
-import { useCallback, useEffect, useRef, useState } from 'react';
+import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import { ICategory } from "modules/ShopModule/interfaces/shop.type";
 import { shopModel } from "modules/ShopModule/shop.module";
 import Slider from 'react-slick';
-
+import debounce from 'lodash.debounce';
+import { isDesctomMediaQuery } from 'application/ResponseMedia';
 
 
 
@@ -13,7 +14,8 @@ export function useCategoriesViewModel({categories,setCat}:{categories: ICategor
 	const slider = useRef<any>(null);
 	const [currentSlide, setCurrentSlide] = useState<number>(0)
 	const category = shopModel.selectCategory
-
+	const [slidecount,setSlideCount] = useState(7)
+	const desc = isDesctomMediaQuery()
 
 	//console.log('categories',categories);
 
@@ -50,8 +52,24 @@ export function useCategoriesViewModel({categories,setCat}:{categories: ICategor
 	}, [categories,category])
 
 
+	const handleWindowResize = useMemo(() => debounce(() => {
+    if (window.innerWidth < 600) {
+      setSlideCount(5)
+    }else if(window.innerWidth < 780){
+			setSlideCount(7)
+		}else{
+			setSlideCount(9)
+		}
+  }, 100), [])
+
+  useEffect(() => {
+    handleWindowResize()
+    window.addEventListener('resize', handleWindowResize);
+    return () => window.removeEventListener('resize', handleWindowResize);
+  }, [])
 
 	this.data({
+		slidecount,
 		categories,
 		currentSlide,
 		category,
@@ -61,6 +79,6 @@ export function useCategoriesViewModel({categories,setCat}:{categories: ICategor
 		handleSliderClick
 	})
 	this.status({
-
+		desc
 	})
 }

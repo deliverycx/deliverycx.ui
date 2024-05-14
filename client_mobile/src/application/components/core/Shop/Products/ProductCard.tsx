@@ -5,6 +5,8 @@ import cn from "classnames"
 import HOCCartChange from "../../Basket/CartChange/HOC.CartChange";
 import { IStopList } from 'modules/ShopModule/interfaces/shop.type';
 import AdditionSouses from "./AdditionProducts/AdditionSouses";
+import { adapterComponentUseCase } from "adapters/adapterComponents";
+import { CartChangeViewModel } from "../../Basket/CartChange/CartChange.viewModel";
 
 type IProps = {
 	product: IProduct
@@ -14,6 +16,7 @@ type IProps = {
 const ProductCard: FC<IProps> = ({ product, setIsModalOpened,stoplist }) => {
 	const [disableItem,setDisableItem] = useState(false)
 	const CN = cn('productbox', { ended: disableItem })
+	
 
 
 	useEffect(() => {
@@ -60,7 +63,7 @@ const ProductCard: FC<IProps> = ({ product, setIsModalOpened,stoplist }) => {
 									{product.description}
 								</p>
 							</div>
-							<AdditionSouses set={setIsModalOpened} />
+							<AdditionSouses set={setIsModalOpened} parent={product} />
 							{
 								!disableItem ?
 										<HOCCartChange theme="card" product={product} close={setIsModalOpened} />

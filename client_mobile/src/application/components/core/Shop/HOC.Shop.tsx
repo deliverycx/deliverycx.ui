@@ -28,11 +28,12 @@ const HOCShop = () => {
 				{
 					organization && <Stocks organization={organization} />
 				}
-				{
+				
+			</div>
+			{
 					!isLoading && nomenclatures ?
 						nomenclatures.categoryes && <Categories nomenclatureCategories={nomenclatures.categoryes} setCat={setSelectCat} /> : <LoaderProduct />
 				}
-			</div>
 			<div className="catalogue-content">
 				<div className="catalogue-content__cards">
 					{

@@ -94,13 +94,17 @@
 }
 
 .catalogue-content_container-desc{
-	display: flex;
+	
 	flex-wrap: nowrap;
 	.catalogue-content__cards{
+		float: left;
 		width: 60%;
+		
 	}
 	.catalogue-content__basket{
 		width: 40%;
+		padding-left: 10px;
+		float: right;
 	}
 }
 

@@ -76,7 +76,7 @@ const HOCBasketDesc = () => {
 
 
 								</div>
-								<div className="basket-desc_cart">
+								<div className="basket-desc_cart link-to-cart">
 									<HOCCart cart={cart} />
 
 								</div>

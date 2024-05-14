@@ -1,9 +1,13 @@
 import { shopUseCase } from 'modules/ShopModule/shop.module';
 import { FC, useEffect, useState } from 'react';
 import { IProduct } from 'modules/ShopModule/interfaces/shop.type';
-import HOCCartChange from 'application/components/core/Basket/CartChange/HOC.CartChange';
 
-const AdditionSouses:FC<{set:any}> = ({set}) => {
+import { basketUseCase } from 'modules/BasketModule/basket.module';
+import AdditionSousesProduct from './AdditionSousesProduct';
+
+
+const AdditionSouses: FC<{ set: any,parent:IProduct }> = ({ set,parent }) => {
+
 	const [souses, setSouses] = useState<IProduct[] | null>(null)
 
 	const getSous = async () => {
@@ -20,32 +24,21 @@ const AdditionSouses:FC<{set:any}> = ({set}) => {
 		getSous()
 	}, [])
 
+	
+
+
+	
+
 	return (
 		<div className="product__modal-additional">
 			{souses && <h3>Добавить к заказу</h3>}
 			{
 				souses && souses.map((product) => {
-					return product && (
-						<div key={product.id} className="additional-item">
-							<div className="input__checkbox no-drag">
-								<div className="checkbox">
-									<img src={product.image} width="50" />
-								</div>
-								<div className="input__checkbox-label">
-									<strong>{product.name}</strong>
-									
-								</div>
-							</div>
-							<div className="button_souse product-card__button">
-								<HOCCartChange theme="list" product={product} />
-							</div>
-						</div>
-
-					)
+					return product && <AdditionSousesProduct key={product.id} product={product} parent={parent.id} />
 				})
 			}
 
-			
+
 		</div>
 	)
 }

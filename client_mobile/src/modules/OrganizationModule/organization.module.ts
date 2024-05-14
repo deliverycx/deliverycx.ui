@@ -17,7 +17,6 @@ export const organizationStatusModel = new OrganizationStatusModel()
 export const organizationComandBus = new OrganizationComandBus()
 export const organizationStatusComandBus = new OrganizationStatusComandBus()
 
-export const useCaseOrganizationStatus = {}
 
 class OrganizationModule{
 	queryBus:OrganizationQuery = adapterResolveDI(OrganizationQuery)
@@ -28,5 +27,7 @@ export const organizationModule = new OrganizationModule()
 class OrganizationStatusModule{
 	queryBus:OrganizationStatusQuery = adapterResolveDI(OrganizationStatusQuery)
 	handlerBus:OrganizationStatusHandlers = adapterResolveDI(OrganizationStatusHandlers)
+	useCaseOrganizationStatus:UseCaseOrganizationStatus = adapterResolveDI(UseCaseOrganizationStatus)
 }
 export const organizationStatusModule = new OrganizationStatusModule()
+export const {useCaseOrganizationStatus} = organizationStatusModule

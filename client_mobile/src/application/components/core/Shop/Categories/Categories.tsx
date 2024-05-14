@@ -2,7 +2,7 @@ import Slider from "infinite-react-carousel";
 import cn from "classnames";
 /* eslint-disable @typescript-eslint/no-var-requires */
 import { FC, memo, useMemo,useEffect, useRef } from 'react';
-import debounce from 'lodash.debounce';
+
 import { adapterComponentUseCase } from "adapters/adapterComponents";
 
 
@@ -19,29 +19,16 @@ type IProps = {
 
 const Categories: FC<IProps> = ({ nomenclatureCategories,setCat }) => {
 	
-	const [slidecount,setSlideCount] = useState(7)
+	
 
 	const useCasePoints = adapterComponentUseCase(useCategoriesViewModel,{categories:nomenclatureCategories,setCat} )
-	const { categories, currentSlide, slider } = useCasePoints.data
+	const { categories, currentSlide, slider,slidecount } = useCasePoints.data
 	const { handleSliderClick } = useCasePoints.handlers
+	const {desc} = useCasePoints.status
 
 	
 
-	const handleWindowResize = useMemo(() => debounce(() => {
-    if (window.innerWidth < 600) {
-      setSlideCount(5)
-    }else if(window.innerWidth < 780){
-			setSlideCount(7)
-		}else{
-			setSlideCount(9)
-		}
-  }, 100), [])
-
-  useEffect(() => {
-    handleWindowResize()
-    window.addEventListener('resize', handleWindowResize);
-    return () => window.removeEventListener('resize', handleWindowResize);
-  }, [])
+	
 
 
 	return (
@@ -50,7 +37,7 @@ const Categories: FC<IProps> = ({ nomenclatureCategories,setCat }) => {
 			initialSlide={currentSlide}
 			afterChange={(index: number) => handleSliderClick(index, slider)}
 			ref={slider}
-			centerMode
+			centerMode={desc ? false : true}
 			slidesToShow={slidecount}
 			arrows={false}
 			centerPadding={0}

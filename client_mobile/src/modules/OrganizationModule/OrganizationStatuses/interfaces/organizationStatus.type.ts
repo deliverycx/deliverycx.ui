@@ -14,7 +14,7 @@ export type IOrganizationStatus = {
 	_id:string,
 	organization:string,
 	deliveryMetod:string[]
-	deliveryTipe:IDeliveryTypes
+	deliveryTipe:IDeliveryTypes[]
 	organizationStatus:string
 	paymentMetod:string[]
 	timeworkOrganization:IWorkTimePoint

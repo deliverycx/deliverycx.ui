@@ -21,7 +21,7 @@ export class UserModel extends UserRepository{
 	async actionCreateGusetUser(){
 		try {
 			const result = await this.repositoryCreateGuest()
-
+			console.log('user',result);
 			if(result){
 				this.guestUser = result
 			}else{

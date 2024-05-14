@@ -4,7 +4,7 @@
 	position: relative;
   &-header{
     background-color: #fff;
-    box-shadow: 0 4px 24px 0 rgba(0, 0, 0, 0.12);
+    
 
     //Header-info start
 
@@ -366,14 +366,18 @@
 
 .categories {
   box-shadow: 0 20px 24px 0 rgba(0, 0, 0, 0.1);
-  padding-bottom: 20px;
+  padding-bottom: 10px;
   position: sticky;
-  top: -10px;
-  padding-top: 20px;
-  height: 117px;
+  
+  padding-top: 15px;
+  height: 110px;
   z-index: 99;
   user-select: none;
   overflow: hidden;
+	position: sticky;
+	top: 0;
+	
+	background: #fff;
 
   .carousel-initialized {
     overflow: initial;
@@ -433,14 +437,14 @@
         left: 0;
         right: 0;
         background-color: #8D191D;
-        bottom: -21px;
+        bottom: -20px;
         border-radius: 1.5em;
         margin: 0 auto;
       }
       .categories__item__title {
         margin-top: 5px;
         margin-bottom: 5px;
-        font-size: 13px;
+        font-size: 12px;
         font-weight: bold;
         color: #8D191D;
       }

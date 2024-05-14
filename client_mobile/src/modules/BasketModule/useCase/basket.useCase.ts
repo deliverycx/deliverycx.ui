@@ -2,7 +2,7 @@ import { OrganizationModel } from "modules/OrganizationModule/Organization/domai
 import { OrganizationStatusModel } from "modules/OrganizationModule/OrganizationStatuses/domain/organizationStatus.model";
 import { BasketModel } from "../domain/basket.model";
 import { IProduct } from "modules/ShopModule/interfaces/shop.type";
-import { IbodyReqCart } from "../interfaces/basket.type";
+import { IbodyReqCart, ICartAdditonalSous, ICartProd } from "../interfaces/basket.type";
 import { UserModel } from "modules/UserModule/domain/user.model";
 
 export class BasketUseCase {
@@ -62,10 +62,11 @@ export class BasketUseCase {
 
 	async changeAmountCart(id: string, coutn: number) {
 		
-		const cartId = this.findIdCart(id)
+		const cartId = this.findIdCart(id) 
 		if(cartId){
 			this.cartCase(async (bodyReqCart:IbodyReqCart)=>{
 				this.basketModel.actionCheckbasketError(null)
+				
 				if(coutn !== 0){
 					await this.basketModel.repositoryChangeAmountCart({
 							amount:coutn,
@@ -77,6 +78,8 @@ export class BasketUseCase {
 				}
 				
 			})
+
+			//this.checkSousCart(cartId)
 		}
 
 	}
@@ -107,5 +110,65 @@ export class BasketUseCase {
 	async checkCartHI(){
 		const user = this.userModel.guestUser && this.userModel.guestUser.id
 		user && await this.basketModel.repositoryCheckCart({userid:user})
+	}
+
+
+	findSousCart(product:string,parent:string){
+		const findProd = this.basketModel.cartAddional.find(item => item.sousid === product && item.parentid === parent);
+		return findProd
+	}
+
+	checkSousCart(product:any){
+		const findSous = this.basketModel.cartAddional.find(item => item.sousid === product.productId);
+		if(findSous){
+			const countSous = this.basketModel.cartAddional.reduce((acc,value)=>{
+				if(findSous.sousid === value.sousid){
+					return acc += value.count
+				}
+				return acc 
+			},0)
+			if(countSous > (Number(product.anmout) - 1)){
+				console.log('meee');
+			}
+			console.log(countSous,(Number(product.anmout) - 1));
+		}
+	}
+
+	changeSousCart(sosus:ICartAdditonalSous,count:number,parent:string){
+		
+		const cartid = this.findIdCart(sosus.sousid)
+		if(sosus && cartid){
+			this.basketModel.cartAddionalSousChange(sosus.sousid,parent,count)
+			const countSous = this.basketModel.cartAddional.reduce((acc,value)=>{
+				if(sosus.sousid === value.sousid){
+					return acc += value.count
+				}
+				return acc 
+			},0)
+			this.changeAmountCart(sosus.sousid,countSous)
+			
+			
+		}
+		
+	}
+	addtionalSousCart(product:IProduct,parent:string){
+		const cartid = this.findIdCart(product.productId)
+		const sousParent = this.findSousCart(product.productId,parent)
+		
+		if (cartid && sousParent) {
+			if(sousParent.parentid === parent){
+				this.changeAmountCart(product.productId,(cartid.anmout - sousParent.count))
+			}
+			
+			this.basketModel.cartAddionalDeleteSous(product.productId,parent)
+		} else {
+			this.addtoCart(product)
+			this.basketModel.cartAddionalSous({
+				sousid:product.productId,
+				parentid:parent,
+				count:1,
+				amount:product.price
+			})
+		}
 	}
 }

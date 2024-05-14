@@ -30,7 +30,7 @@ const CartList: FC<IProps> = ({ product,choise,select }) => {
 
   }, [errorSchema])
 
-	console.log(error,errorSchema);
+	
 
 	return (
 		<>

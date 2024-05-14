@@ -1,9 +1,9 @@
 import { appUseCase } from "modules/AppModule/app.module";
 import { IDeliveryTypes } from "modules/OrganizationModule/OrganizationStatuses/interfaces/organizationStatus.type";
-import { organizationModel, organizationModule, organizationStatusModel, useCaseOrganizationStatus } from "modules/OrganizationModule/organization.module";
+import { organizationModel, organizationModule, organizationStatusModel, organizationStatusModule } from "modules/OrganizationModule/organization.module";
 import { useEffect, useState } from "react";
 import { isDesctomMediaQuery } from "application/ResponseMedia";
-import { IOrganization } from "modules/OrganizationModule/Organization/interfaces/organization.type";
+import { IOrganization, IOrganizationAndStatuses } from "modules/OrganizationModule/Organization/interfaces/organization.type";
 import { useNavigate } from "react-router-dom";
 
 
@@ -37,11 +37,13 @@ export function useOrganizationCardViewModel() {
 		setCardModal(false)
 	}
 
-	const handlerSelectDeliveryTipe = (typeDeliv: IDeliveryTypes) => {
-		//useCaseOrganizationStatus.selectDeliveryMetod(typeDeliv)
+	const handlerSelectDeliveryTipe = (typeDeliv: string,organization:IOrganizationAndStatuses) => {
+		const resultType = organizationStatusModule.useCaseOrganizationStatus.findDeliveryType(typeDeliv,organization)
+		resultType && organizationStatusModel.actionSelectDeliveryTipe(resultType)
+		handlerSelectMenu(organization)
 	}
 
-	const handlerSelectMenu = (organization:IOrganization) => {
+	const handlerSelectMenu = (organization:IOrganizationAndStatuses) => {
 		
 		organizationModel.actionSelectOrganization(organization)
 		navigate(`/shop?address=${organization.info.city},${organization.info.address}`)

@@ -20,6 +20,13 @@ export interface ICartProd {
 	oneprice:number;
 }
 
+export interface ICartAdditonalSous {
+	sousid:string
+	parentid:string
+	count:number
+	amount:number
+}
+
 export type IbodyReqCart = { orderType: string, organization: string }
 
 

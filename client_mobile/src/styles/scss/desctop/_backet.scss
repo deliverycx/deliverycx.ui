@@ -39,7 +39,17 @@
 		.basket__content__price strong{
 			font-size: 14px;
 		}
+		.basket__content__price{
+			margin-top: 10px;
+		}
 
+		.dozen--one_more{
+			background-color: #fff;
+			.basket__content__dozen__item-title,.basket__content__dozen__item-addition{
+				color: var(--red-red);
+			}
+			
+		}
 
 		.basket-desc_order-box {
 			box-shadow: 0 4px 24px 0 rgba(0, 0, 0, 0.12);

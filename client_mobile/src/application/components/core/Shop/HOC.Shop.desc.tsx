@@ -41,6 +41,7 @@ const HOCShopDesc = () => {
 						<div className="catalogue-content__basket">
 							<HOCBasketDesc />
 						</div>
+						<div className="clear"></div>
 					</div>
 				</div>
 			</div>

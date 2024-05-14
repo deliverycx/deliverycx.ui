@@ -46,7 +46,7 @@ const TabBar = () => {
 
 	return (
 		<>
-			<nav className="tab-bar">
+			<nav className="tab-bar link-to-cart">
 				<ul className="tab-bar__list">
 					<li className="tab-bar__item">
 						<NavLink onClick={scroll} to={ROUTE_APP.SHOP.SHOP_MAIN} className="tab-bar__link">

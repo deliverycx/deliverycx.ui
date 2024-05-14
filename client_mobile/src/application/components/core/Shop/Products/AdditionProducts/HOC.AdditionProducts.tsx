@@ -1,12 +1,11 @@
 import { requestShopApi } from "modules/ShopModule/data/shop.request"
 import { IProduct } from "modules/ShopModule/interfaces/shop.type";
 import { shopModel, shopUseCase } from "modules/ShopModule/shop.module";
-import { useEffect } from 'react';
+import { FC, useEffect } from 'react';
 import { useState } from 'react';
 import cn from "classnames"
 import { CircularProgress } from "@mui/material";
-import HOCCartChange from "application/components/core/Basket/CartChange/HOC.CartChange";
-import convertWeight from "application/helpers/convertWeight";
+
 import React from "react";
 import ImageLoader from "react-imageloader";
 import ProductCard from "../ProductCard";

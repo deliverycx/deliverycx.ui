@@ -187,31 +187,7 @@
       }
     }
 
-    .dozen--gift {
-      background: #558950;
-    }
-
-    .dozen--discount{
-      background: #132A3E;
-    }
-
-    .dozen--one_more{
-      background: #8D191D;
-      &__item{
-        flex-direction: column;
-        gap: 4px;
-
-        &-tile{
-          color: #FFF;
-        }
-        &-addition{
-          color: #FFF;
-          font-size: 12px;
-          font-weight: 400;
-          line-height: 16px;
-        }
-      }
-    }
+    
 
     &__price{
       display: flex;
@@ -384,6 +360,32 @@
 	.cart__item__validate{
 		font-size: 11px;
 		color: #8D191D;
+	}
+}
+
+.dozen--gift {
+	background: #558950;
+}
+
+.dozen--discount{
+	background: #132A3E;
+}
+
+.dozen--one_more{
+	background: #8D191D;
+	&__item{
+		flex-direction: column;
+		gap: 4px;
+
+		&-tile{
+			color: #FFF;
+		}
+		&-addition{
+			color: #FFF;
+			font-size: 12px;
+			font-weight: 400;
+			line-height: 16px;
+		}
 	}
 }
 

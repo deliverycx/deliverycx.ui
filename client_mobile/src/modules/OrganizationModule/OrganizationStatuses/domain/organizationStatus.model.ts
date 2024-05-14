@@ -3,8 +3,10 @@ import { OrganizationStatusRepository } from "../data/organizationStatus.reposit
 import { IDeliveryTypes, IPointStatus, IWorkTimePoint } from "../interfaces/organizationStatus.type"
 import { makePersistable } from "mobx-persist-store"
 import { IOrganization } from "modules/OrganizationModule/Organization/interfaces/organization.type"
+import { InjectableDI } from "application/helpers/dependencyInjection"
 
-export class OrganizationStatusModel extends OrganizationStatusRepository{
+@InjectableDI()
+export class OrganizationStatusModel{
 	deliveryTipe:IDeliveryTypes[] | null = null
 	organizationStatus:string | null = null
 	timeworkOrganization:IWorkTimePoint | null = null
@@ -12,7 +14,7 @@ export class OrganizationStatusModel extends OrganizationStatusRepository{
 	paymentMetod:string[] | null = null
 	
 	constructor() {
-		super()
+
 		makeObservable(this, {
 			deliveryTipe: observable,
 			organizationStatus: observable,

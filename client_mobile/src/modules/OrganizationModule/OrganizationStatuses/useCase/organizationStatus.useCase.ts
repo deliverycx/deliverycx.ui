@@ -1,18 +1,19 @@
 import { OrganizationModel } from "modules/OrganizationModule/Organization/domain/organization.model";
 import { OrganizationStatusModel } from "../domain/organizationStatus.model";
 import * as organizationStatusType from "../interfaces/organizationStatus.type";
-import { IOrganization } from "modules/OrganizationModule/Organization/interfaces/organization.type";
+import { IOrganization, IOrganizationAndStatuses } from "modules/OrganizationModule/Organization/interfaces/organization.type";
 import { OrganizationStatusServises } from "../domain/organizationStatus.servises";
 import { InjectableDI } from "application/helpers/dependencyInjection";
 import { DTOMapper } from "application/guards/aplication.guard";
 import { organizationStatusDTO, organizationStatusMapper } from "../interfaces/organizationStatus.dto";
-import { IPointStatus } from "../interfaces/organizationStatus.type";
+import { IDeliveryTypes, IOrganizationStatus, IPointStatus } from "../interfaces/organizationStatus.type";
 
 
-@InjectableDI([OrganizationStatusServises])
+@InjectableDI([OrganizationStatusServises,OrganizationStatusModel])
 export class UseCaseOrganizationStatus {
 	constructor(
-		private readonly organizationStatusServises:OrganizationStatusServises
+		private readonly organizationStatusServises:OrganizationStatusServises,
+		private readonly organizationStatusModel:OrganizationStatusModel
 	) { }
 
 	@DTOMapper(organizationStatusMapper)
@@ -35,36 +36,11 @@ export class UseCaseOrganizationStatus {
 		}
 	
 	}
-
-	/*
-
-	selectDeliveryMetod(deliveryTipe: IDeliveryTypes | null) {
-		this.organizationStatusModel.actionSelectDeliveryTipe(deliveryTipe)
+	
+	findDeliveryType(deliveryMetod: string,point:IOrganizationAndStatuses) {
+		return point.deliveryTipe.find((value) => value.metod === deliveryMetod)
 	}
-
-	statusOrganization() {
-		if (this.organizationModel.selectOrganization) {
-			return this.organizationStatusModel.actionOrganizationStatus(this.organizationModel.selectOrganization)
-		}
-	}
-
-	checkDeliveryMetod() {
-		if (this.organizationStatusModel.selectDeliveryTipe) {
-			this.organizationStatusModel.actionCheckDeliveryTipe(this.organizationStatusModel.selectDeliveryTipe)
-		}
-
-	}
-
-	findDeliveryType(deliveryMetod: string,point:IOrganization) {
-		
-		const pointstatus = this.organizationStatusModel.actionOrganizationStatus(point)
-		pointstatus && pointstatus.subscribe(data => {
-			const delivery = this.organizationStatusModel.deliveryTypesMetod(data.deliveryMetod)
-			delivery.forEach((metod) => {
-				metod.metod === deliveryMetod && this.organizationStatusModel.actionSelectDeliveryTipe(metod)
-			})
-		})
-	}
+	/*/*
 
 
 	targetOrganization(guid: string, deliveryMetod: any) {

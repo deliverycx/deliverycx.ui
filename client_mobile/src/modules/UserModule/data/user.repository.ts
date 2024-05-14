@@ -12,7 +12,7 @@ export class UserRepository extends UserGuards {
 			const { data } = await requestUser.register()
 			const result = guardRepository(this.existing)(data)
 			if (result) {
-				return userMapper(result as unknown as userType.IUserGuest)
+				return userMapper(data)
 			}
 		} catch (error) {
 			console.log(error);
@@ -24,14 +24,12 @@ export class UserRepository extends UserGuards {
 	async repositoryCheckGuest(user: userType.IUser) {
 		try {
 			const { data } = await requestUser.check(user)
-			
-			return data
-			/*
-			const result = guardRepository(this.existingUser)(data)
+
+			const result = guardRepository(this.existing)(data)
 			if (result) {
-				return userMapper(result as unknown as userType.IUserGuest)
+				return userMapper(data)
 			}
-			*/
+			
 		} catch (error) {
 			console.log(error);
 			this.repositoryCreateGuest()
@@ -60,7 +58,7 @@ export class UserRepository extends UserGuards {
 				return userMapper(result as unknown as userType.IUserGuest)
 			}
 		} catch (error) {
-
+			console.log(error);
 		}
 	}
 }

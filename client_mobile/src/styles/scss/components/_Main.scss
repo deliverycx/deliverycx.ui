@@ -10,10 +10,20 @@ body {
 	}
 }
 
+.clear{
+	clear: both;
+}
+
 body {
 	min-width: 360px;
 	
 	margin: 0 auto;
+}
+
+#root{
+	overflow-y: initial;
+	height: auto;
+	box-sizing: initial;
 }
 
 .d-flex {
@@ -65,6 +75,28 @@ body {
 .error{
 	color: #8D191D;
 	font-size: 11px;
+}
+
+.hot_box{
+	position: relative;
+	.addtocart{
+		width: 100%;
+	}
+}
+.hot_box_hidden{
+	.addtocart{
+		display: none !important;
+	}
+}
+.hot {
+	position: absolute;
+  width: 45px;
+  height: 45px;
+  left: -70px;
+  background-repeat: no-repeat;
+  background-position: 0 0;
+	background-size: cover;
+  z-index: 99;
 }
 
 .modal {

@@ -1,3 +1,4 @@
+import { IOrganizationStatus } from "modules/OrganizationModule/OrganizationStatuses/interfaces/organizationStatus.type"
 import { organizationDTO } from "./organization.dto"
 
 export interface IOrganizationResponse {
@@ -45,3 +46,5 @@ export type pointSerch= {
 }
 
 export type IOrganization = typeof organizationDTO
+
+export type IOrganizationAndStatuses = IOrganization & IOrganizationStatus
