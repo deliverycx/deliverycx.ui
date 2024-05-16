@@ -81,7 +81,7 @@ const OranizationWorkTime: FC<{ organization: IOrganization & IOrganizationStatu
 			{modalWork && !checktype &&
 				<>
 					<Desktop>
-						<ModalDesctop setIsOpened={setModalWork} theme={"children"} title='Ваша заявка отправлена'>
+						<ModalDesctop setIsOpened={setModalWork} theme={"children"} title='Режим работы'>
 							<div className="modal__content point-time_container-desc">
 								<ul className="map__schedule-list">
 									{
