@@ -40,25 +40,7 @@
     font-weight: 700;
     color: #808080;
 		position: relative;
-		.coming_soon{
-			position: absolute;
-			
-			top: -2px;
-			right: -20px;
-			border: 1px solid var(--black-to-white-white-100);
-			border-radius: 12px;
-			padding: 4px;
-			text-align: center;
-			width: 40px;
-			height: 20px;
-			background: var(--yellow-yellow);
-			font-family: var(--font-family);
-			font-weight: 500;
-			font-size: 10px;
-			line-height: 100%;
-			text-align: center;
-			color: var(--black-to-white-black);
-		}
+		
 
     &.active{
       color: $c_red;
@@ -125,11 +107,32 @@
   }
 }
 .tabcart_disable{
-	cursor: no-drop;
-	svg,span{
+	position: relative;
+	cursor: no-drop !important;
+	svg,span,a{
 		opacity: 0.4;
 	}
 	
 
 	
+}
+
+.coming_soon{
+	position: absolute;
+	opacity: 1;
+	top: -2px;
+	right: -20px;
+	border: 1px solid var(--black-to-white-white-100);
+	border-radius: 12px;
+	padding: 4px;
+	text-align: center;
+	width: 40px;
+	height: 20px;
+	background: var(--yellow-yellow);
+	font-family: var(--font-family);
+	font-weight: 500;
+	font-size: 10px;
+	line-height: 100%;
+	text-align: center;
+	color: var(--black-to-white-black);
 }

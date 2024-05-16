@@ -167,11 +167,13 @@ const HOCCartChange: FC<IProps> = ({ theme, product, close }) => {
 						changeCount !== 0 && close(false)
 					}} className="btn btn-md btn-red no-drag">
 						<img src={require("assets/images/icons/add_white.png")} alt="" />
+					
 						{changeCartCount !== 0
 							? `
 									
 									${basketPrice && (product.price * (changeCount + changeCartCount)) + countSousToPrice}₽
 								`
+							: changeCount == 0 ? "Добавить"
 							: `${product.price + countSousToPrice} ₽`}
 					</button>
 				</div>

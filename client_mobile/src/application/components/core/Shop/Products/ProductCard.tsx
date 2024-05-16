@@ -30,7 +30,7 @@ const ProductCard: FC<IProps> = ({ product, setIsModalOpened,stoplist }) => {
 	
 	return (
 		<div className="product">
-			<ModalCard setIsOpened={setIsModalOpened}>
+			<ModalCard setIsOpened={setIsModalOpened} theme="" styles="product_card-modal">
 				<div className={CN}>
 					<div className="modal__wrapper">
 						<div className="product__modal-img">

@@ -6,9 +6,10 @@ type IProps = {
 	setIsOpened: any;
 	children: any;
 	theme?: string | null;
-	title?: string
+	title?: string,
+	styles?: string
 };
-const ModalDesctop: FC<IProps> = ({ setIsOpened, children, theme, title }) => {
+const ModalDesctop: FC<IProps> = ({ setIsOpened, children, theme, title, styles }) => {
 
 	useEffect(() => {
 		document.body.style.overflow = 'hidden';
@@ -27,7 +28,7 @@ const ModalDesctop: FC<IProps> = ({ setIsOpened, children, theme, title }) => {
 	return createPortal(
 		<>
 			<div className={CN} onClick={handleClose}></div>
-			<div className="modal_desctop">
+			<div className={`modal_desctop ${styles}`}>
 				<div className="modal__wrapper-desc">
 					<div className="modal__header">
 						<svg className="no-drag" onClick={() => setIsOpened(false)} width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">

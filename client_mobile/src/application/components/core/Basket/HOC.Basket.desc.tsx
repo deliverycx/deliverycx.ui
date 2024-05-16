@@ -88,7 +88,7 @@ const HOCBasketDesc = () => {
 										<BasketPrice basketPrice={basketPrice} />
 										{
 											basketPrice &&
-											<BasketOrder basketPrice={basketPrice} />
+											<BasketOrder basketPrice={basketPrice} modal={true} />
 										}
 									</div>
 								</div>
