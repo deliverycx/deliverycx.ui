@@ -69,6 +69,7 @@ const CartDiscount:FC<{cartList:ICartProd[],basketPrice:IBasketPrice}> = ({cartL
 			}
 
 			{
+				/*
 				basketPrice.discounts.forhach && !basketPrice.discounts.forhach.active &&
 				<div className="basket__content__dozen dozen--discount">
                         <div className="basket__content__dozen__item">
@@ -84,9 +85,10 @@ const CartDiscount:FC<{cartList:ICartProd[],basketPrice:IBasketPrice}> = ({cartL
                             </div>
                         </div>
                     </div>
-
+*/
 			}
 			{
+				/*
 				basketPrice.discounts.forhach && basketPrice.discounts.forhach.active &&
 				<div className="basket__content__dozen dozen--gift">
                         <div className="basket__content__dozen__item">
@@ -102,6 +104,7 @@ const CartDiscount:FC<{cartList:ICartProd[],basketPrice:IBasketPrice}> = ({cartL
                             </div>
                         </div>
                     </div>
+										*/
 			}
 		</>
 	)
