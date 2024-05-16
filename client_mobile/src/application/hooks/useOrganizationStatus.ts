@@ -79,6 +79,21 @@ export class StatusTSX {
 		)
 	}
 
+	DeliveryPickUP(tsx?: ReactNode) {
+		const delivery = this.pointstatus.deliveryTipe.find((val: any) => {
+			return val.metod === DELIVERY_METODS.COURIER
+		})
+
+		return this.init(
+			'доставка и самовывоз',
+			delivery &&
+			this.pointstatus.organizationStatus === ORG_STATUS.WORK &&
+			this.pointstatus.timeworkOrganization !== ORG_STATUS.NOWORK &&
+			this.pointstatus.timeworkOrganization !== ORG_STATUS.ONWORK,
+			tsx
+		)
+	}
+
 	NoTimeWork(tsx?: ReactNode) {
 		return this.init(
 			'закрылась',
@@ -117,25 +132,16 @@ export class StatusTSX {
 		)
 	}
 
-	DeliveryPickUP(tsx?: ReactNode) {
-		const delivery = this.pointstatus.deliveryTipe.find((val: any) => {
-			return val.metod === DELIVERY_METODS.COURIER
-		})
-
-		return this.init(
-			'доставка и самовывоз',
-			delivery &&
-			this.pointstatus.organizationStatus === ORG_STATUS.WORK,
-			tsx
-		)
-	}
+	
 }
 
 
-export const useOrganizationStatus = (organizationStatusMetods: IOrganizationStatus | null): [StatusTSX | null, any] => {
+export const useOrganizationStatus = (organizationStatusMetods: IOrganizationStatus | null | any): [StatusTSX | null, any] => {
+	//console.log(organizationStatusMetods.info.address);
 	if (organizationStatusMetods) {
 		const { organizationStatus, timeworkOrganization, deliveryTipe } = organizationStatusMetods
-		const tsx = new StatusTSX(organizationStatus, timeworkOrganization?.typework, deliveryTipe)
+		
+		const tsx = new StatusTSX(organizationStatus, timeworkOrganization.typework, deliveryTipe)
 		const switchMetod = () => {
 			const wrappers = tsx.statuses
 

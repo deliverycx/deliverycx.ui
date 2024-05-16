@@ -20,11 +20,14 @@ export class OrganizationStatusHandlers{
 			const result:IPointStatus | null = this.useCaseOrganizationStatus.getOrganizationStatus(requestResult)
 			const status =  this.useCaseOrganizationStatus.organizationStatusMetods(result,point)
 			
+			organizationStatusComandBus.handlersComandSubject.next(status)
 			return status
 		} catch (error) {
 			console.log(error);
 		}
 	}
+
+	
 	
 	
 }

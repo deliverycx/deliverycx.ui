@@ -3,8 +3,8 @@ import { ROUTE_APP } from 'application/contstans/route.const';
 import TabBar from 'application/components/common/TabBar/TabBar';
 import HOCOrderMetods from './OrderMetods/HOC.OrderMetods';
 import { useQuery } from 'react-query';
-import { organizationModel, organizationStatusModel, useCaseOrganizationStatus } from 'modules/OrganizationModule/organization.module';
-import { useEffect } from 'react';
+import { organizationModel, organizationStatusModel, organizationStatusModule, useCaseOrganizationStatus } from 'modules/OrganizationModule/organization.module';
+import { useEffect, useState } from 'react';
 import HOCOrderForm from './OrderForm/HOC.OrderForm';
 import HOCOrderGeneral from './OrderGeneral/HOC.OrderGeneral';
 import { basketUseCase } from 'modules/BasketModule/basket.module';
@@ -15,26 +15,35 @@ import { observer } from 'mobx-react-lite';
 import { userUseCase } from 'modules/UserModule/user.module';
 import OfferAuth from 'application/components/common/Auth/view/OfferAuth';
 import OrderAuthNotificate from './view/OrderAuthNotificate';
+import { IOrganization } from 'modules/OrganizationModule/Organization/interfaces/organization.type';
+import { IOrganizationStatus } from 'modules/OrganizationModule/OrganizationStatuses/interfaces/organizationStatus.type';
 
 const HOCOrder = () => {
 	const navigate = useNavigate()
+	const point = organizationModel.selectOrganization
+	const [organizationStatus,setOrganizationStatus] =  useState<IOrganizationStatus | null>(null)
 	
-	//const [statusTSX, switchMetod] =  useOrganizationStatus()
+	const [statusTSX, switchMetod] =  useOrganizationStatus(point)
 	const {paymentMetod} = organizationStatusModel
 
-	/*
-	useQuery('pointstatus', () => useCaseOrganizationStatus.statusOrganization(), {
+	/**/
+	useQuery('pointstatus', () => organizationStatusModule.handlerBus.handlerOrganizationsListStatus(point as IOrganization), {
 		refetchOnWindowFocus: true,
+		enabled: !!point,
 	})
-	*/
+	
 
 	useEffect(() => {
 		basketUseCase.cartCase()
+		organizationStatusModule.queryBus.handlerOrganizationStatus((data:IOrganizationStatus) =>{
+			organizationStatusModel.actionOrganizationStatus(data)
+			setOrganizationStatus(data)
+		})
 	}, [])
 
 	
 
-	const CN = cn("order-placement__form", { 'close-soon': true }) //statusTSX && statusTSX.NoTimeWork()
+	const CN = cn("order-placement__form", { 'close-soon': statusTSX && statusTSX.NoTimeWork() }) //statusTSX && statusTSX.NoTimeWork()
 	return (
 		
 		<div className="order-placement unauthorized">

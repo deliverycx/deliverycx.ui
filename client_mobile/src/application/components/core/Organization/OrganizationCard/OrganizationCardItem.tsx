@@ -20,6 +20,7 @@ import Slider from "react-slick"
 import { IOrganizationStatus } from "modules/OrganizationModule/OrganizationStatuses/interfaces/organizationStatus.type"
 
 
+
 type IProps = {
 	organization: IOrganization & IOrganizationStatus
 	active: any
@@ -31,19 +32,23 @@ const OrganizationCardItem: FC<IProps> = ({ organization, active, viseble }) => 
 	const { timeworkOrganization, deliveryTipe, selectOrganization } = useCasePoints.data
 	const { handlerCloseCardModal } = useCasePoints.handlers
 	const [load, setLoad] = useState(true)
+	//const [organization, setOrganization] = useState<IOrganization & IOrganizationStatus | null>(null)
 
 	useEffect(() => {
 		let tiks: any
 		if (active) {
 			tiks = setTimeout(() => {
 				setLoad(false)
-			}, 500)
-			//useCaseOrganizationStatus.statusOrganization()
+				
+			}, 0)
+			
 		}
-
+//setOrganization(organizations)
 
 		return () => clearTimeout(tiks)
-	}, [selectOrganization, active])
+
+		
+	}, [active])
 
 	const settings = {
 		dots: true,
@@ -53,54 +58,57 @@ const OrganizationCardItem: FC<IProps> = ({ organization, active, viseble }) => 
 		slidesToScroll: 1
 	};
 
-	
+	//console.log(organization);
 
 	return (
 		<>
 		
-		<div className="modal__wrapper map__institute-info">
-			
-			<div onClick={() => handlerCloseCardModal()} className="map__institute-close no-drag">
-				<img src={require('assets/images/icons/close_gray.png')} alt="" />
-			</div>
 
-			{
-				organization.gallery && organization.gallery.length !== 0 &&
-				<Slider {...settings} className="carousel">
-					{organization.gallery.map((image: string, index: number) => (
-						<img key={index} src={imgRoutDef(image)} alt="" />
-					))}
-				</Slider>
-			}
-			<div className="map__institute-content no-drag">
-				<div className="institute-header">
-				<OrganizationCard organization={organization} />
-				<OrganizationStatus organization={organization} />
+				<div className="modal__wrapper map__institute-info">
+
+					<div onClick={() => handlerCloseCardModal()} className="map__institute-close no-drag">
+						<img src={require('assets/images/icons/close_gray.png')} alt="" />
+					</div>
+
 					{
-						active && !load ?
-							<>
-								<OrganizationCounterHi point={organization} />
-								
-							</>
-							: <LoaderProduct />
+						organization.gallery && organization.gallery.length !== 0 &&
+						<Slider {...settings} className="carousel">
+							{organization.gallery.map((image: string, index: number) => (
+								<img key={index} src={imgRoutDef(image)} alt="" />
+							))}
+						</Slider>
 					}
-					
-					<OranizationWorkTime organization={organization}/>
-					{
-						organization.filters && organization.filters.length !== 0 &&
-						<OrganizationCardFilter organization={organization} />
-					}
-					<OrganizationTipeDelivery organization={organization} />
-					
-					{
-						active && !load &&
-						<OragnizationRequisities organization={organization} />
-					}	
+					<div className="map__institute-content no-drag">
+						<div className="institute-header">
+							<OrganizationCard organization={organization} />
+							<OrganizationStatus organization={organization} />
+							{
+								active && !load ?
+									<>
+										<OrganizationCounterHi point={organization} />
+
+									</>
+									: <LoaderProduct />
+							}
+
+							<OranizationWorkTime organization={organization} />
+							{
+								organization.filters && organization.filters.length !== 0 &&
+								<OrganizationCardFilter organization={organization} />
+							}
+							<OrganizationTipeDelivery organization={organization} />
+
+							{
+								active && !load &&
+								<OragnizationRequisities organization={organization} />
+							}
+						</div>
+					</div>
+
+
 				</div>
-			</div>
 
-
-		</div>
+			
 		</>
 	)
 }

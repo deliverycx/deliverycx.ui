@@ -12,13 +12,14 @@ export class FormBuilderTabsOrder {
 					//console.log('build delivery',builder);
             return [
                 //builder.paymentPopup(),
-                
+                builder.deliveryTime(),
 								builder.selectdeliv(),
                 //builder.adress(),
+								builder.comment(),
                 builder.name(),
                 builder.phone(),
-								builder.deliveryTime(),
-								builder.comment(),
+								
+								
 								builder.payment(metods.paymentsMetod),
             ];
         };
@@ -30,9 +31,11 @@ export class FormBuilderTabsOrder {
                 //builder.paymentPopup(),
                 //builder.payment(metods.paymentsMetod),
                 //builder.adress(),
+								builder.deliveryTime(),
+								builder.comment(),
                 builder.name(),
                 builder.phone(),
-								builder.comment()
+								
             ];
         };
     }

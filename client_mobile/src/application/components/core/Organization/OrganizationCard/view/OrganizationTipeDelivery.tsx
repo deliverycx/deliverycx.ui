@@ -1,6 +1,6 @@
 /* eslint-disable react/no-unknown-property */
 import { IDeliveryTypes, IOrganizationStatus } from "modules/OrganizationModule/OrganizationStatuses/interfaces/organizationStatus.type"
-import { FC, useContext, useEffect } from "react"
+import { FC, useContext, useEffect, useState } from "react"
 import { NavLink, useNavigate } from "react-router-dom"
 import { ROUTE_APP } from 'application/contstans/route.const';
 import { DELIVERY_METODS, ORG_STATUS } from "application/contstans/const.orgstatus";
@@ -23,19 +23,19 @@ import OrganizationTableRestaurant from "./OrganizationTableRestaurant";
 
 const OrganizationTipeDelivery: FC<{ organization: any }> = ({ organization }) => {
 	const useCasePoints = useContext(PointsContext)
-
 	const { handlerSelectMenu,handlerSelectDeliveryTipe } = useCasePoints.handlers
 	const navigate = useNavigate()
 
 
 	
 	const [statusTSX, switchMetod] = useOrganizationStatus(organization)
-	//console.log(statusTSX, organization);
+
 	useEffect(() => {
 		if (!Array.isArray(organization.deliveryTipe) || organization.deliveryTipe.length === 0) {
 			navigate(ROUTE_APP.MAIN)
 		}
 	}, [organization.deliveryTipe])
+
 
 	
 	statusTSX && statusTSX.NoWorkPoint((
@@ -172,7 +172,7 @@ const OrganizationTipeDelivery: FC<{ organization: any }> = ({ organization }) =
 				switchMetod()
 			}
 			<OrganizationTableRestaurant organization={organization} />
-			<button className="btn btn-mini no-drag gomenu" onClick={()=>handlerSelectMenu(organization)}>Посмотреть меню</button>
+			<button className="btn btn-mini no-drag gomenu" onClick={()=>handlerSelectMenu(organization)}>Перейти в меню</button>
 			
 		</div>
 	)

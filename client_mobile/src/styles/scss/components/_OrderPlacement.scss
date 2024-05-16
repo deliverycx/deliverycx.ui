@@ -172,13 +172,9 @@
 
 		&__item{
 			
-			padding: 16px;
+			padding: 10px 0;
 		}
-		&__item.active{
-			background-color:rgba(244, 244, 244, 0.39);
-			box-shadow: 0 4px 24px 0 rgba(0, 0, 0, 0.12);
-  		border-radius: 17px;
-		}
+		
 
     &-title{
       display: flex;
@@ -194,12 +190,17 @@
       align-items: center;
       gap: 8px;
       cursor: pointer;
+			svg{
+				path{
+					fill: #111111;
+				}
+			}
 		}
     &__item{
       
 
       &-name{
-        color: $c_red;
+        color: var(--black-to-white-black);;
         font-size: 16px;
         font-weight: 400;
         line-height: 24px;
@@ -232,6 +233,17 @@
         }
       }
     }
+
+		&__item.active{
+			.order-placement__payment-method__item-name{
+				color: #558950 !important;
+			}
+			svg{
+				path{
+					fill: #558950;
+				}
+			}
+		}
 
     .input__item{
       .input__container{
@@ -573,4 +585,12 @@
 		color: #558950;
 		font-weight: 500;
 	}
+}
+
+.order-placement__check__info__delivery__price-cost{
+	font-family: var(--font-family);
+	font-weight: 700;
+	font-size: 18px;
+	line-height: 111%;
+	color: var(--black-to-white-black);
 }

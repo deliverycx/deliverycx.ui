@@ -3,6 +3,7 @@ import { makePersistable } from "mobx-persist-store";
 import { ICity } from "modules/CityModule/interfaces/city.type";
 import { OrganizationRepository } from "../data/organization.repository";
 import { IOrganization, pointSerch } from "../interfaces/organization.type";
+import { IOrganizationStatus } from "modules/OrganizationModule/OrganizationStatuses/interfaces/organizationStatus.type";
 
 interface IRequisites {
 	ogrn: string

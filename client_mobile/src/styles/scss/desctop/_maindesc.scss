@@ -10,7 +10,7 @@
 
 .modal_desc {
 	top: 10% !important;
-	min-width: 480px;
+	max-width: 480px;
 	max-height: 72vh;
 	border-radius: 15px;
 	overflow: auto;
@@ -26,6 +26,10 @@
 	}
 
 
+}
+
+.citymodal{
+	max-width: 780px;
 }
 
 .modaldesc__bg_childen{

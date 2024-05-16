@@ -52,7 +52,7 @@ const HOCOrderGeneral:FC<{errors:any}> = ({errors}) => {
 								<h3 className="order-placement__check__info__delivery__price-title">Доставка</h3>
 								<div className="order-placement__check__info__delivery__price-cost">
 									{
-										basketPrice?.deliveryPrice === 0 ? <span>Бесплатно</span> : <span>{basketPrice?.deliveryPrice}₽</span>
+										basketPrice?.deliveryPrice === 0 ? <span>0₽</span> : <span>{basketPrice?.deliveryPrice}₽</span>
 									}
 
 								</div>
@@ -62,7 +62,7 @@ const HOCOrderGeneral:FC<{errors:any}> = ({errors}) => {
 							<div className="order-placement__check__info__delivery__info">
 								<div className="order-placement__check__info__delivery__info-time">{orderBody.timedelivery || "В ближайшее время"}</div>
 								<div className="order-placement__check__info__delivery__info-contact">{orderBody.name} {orderBody.phone}</div>
-								<div className="order-placement__check__info__delivery__info-addresses">{orderBody.address && `${orderBody.address},`}{city?.cityname}</div>
+								<div className="order-placement__check__info__delivery__info-addresses">{orderBody.address && `${orderBody.address}`}</div>
 								{
 									basketPrice?.deltaPrice !== 0 &&
 									<div className="order-placement__check__info__delivery__info-additional">

@@ -40,7 +40,19 @@ export class UseCaseOrganizationStatus {
 	findDeliveryType(deliveryMetod: string,point:IOrganizationAndStatuses) {
 		return point.deliveryTipe.find((value) => value.metod === deliveryMetod)
 	}
-	/*/*
+
+	changeActiveDeliveryTypes(organizationStatus:IOrganizationStatus,selectType:IDeliveryTypes){
+		return this.organizationStatusServises.changesDeliveryType(organizationStatus.deliveryTipe,organizationStatus.timeworkOrganization,selectType)
+	}
+
+	selectActiveDeliveryType(organizationStatus:IOrganizationStatus,selectType:IDeliveryTypes){
+		const result = this.changeActiveDeliveryTypes(organizationStatus,selectType)
+		const findType = result.find((item) => item.active === true)
+		return findType
+	}
+
+	/*
+	changeActiveDeliveryTypes = 
 
 
 	targetOrganization(guid: string, deliveryMetod: any) {

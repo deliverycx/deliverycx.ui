@@ -50,7 +50,7 @@
       }
 
       &.active {
-        background-color: #8D191D;
+        background-color: var(--green-green);
 
         &:before {
           transform: translateX(20px);

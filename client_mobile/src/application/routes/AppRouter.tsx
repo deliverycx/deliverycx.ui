@@ -37,6 +37,7 @@ import OrderCreateDesc from 'application/components/core/Order/OrderCreate/Order
 import OrderSuccesDesc from 'application/components/core/Order/OrderCreate/OrderSucces.desc';
 import LayoutDesctop from 'application/components/common/Layout/LayoutDesctop';
 import PasswordReset from 'application/components/common/Auth/view/PasswordReset';
+import HOCBasketPageDesc from 'application/components/core/Basket/HOC.BasketPage.desc';
 
 
 
@@ -141,7 +142,7 @@ const publicRoutesDeskop = [
 	},
 	{
 		path: ROUTE_APP.CART.BASKET_MAIN,
-		Component: HOCBasketDesc,
+		Component: HOCBasketPageDesc,
 	},
 	{
 		path: ROUTE_APP.ORDER.ORDER_MAIN,

@@ -28,6 +28,7 @@ const HOCBasketDesc = () => {
 	const { selectAllCart, removeSelectItems } = useCase.handlers
 	const [isModalDeleteOpened, setIsModalDeleteOpened] = useState(false)
 
+
 	return (
 		<BasketContext.Provider value={useCase}>
 			<div className="basket-desc">
@@ -51,7 +52,7 @@ const HOCBasketDesc = () => {
 				</div>
 				<div className="basket-desc_main">
 					{
-						cart && basketPrice ?
+						cart && cart.length !== 0 && basketPrice ?
 							<>
 								<div className="basket__content__buttons">
 									<label className="input__checkbox">
@@ -92,7 +93,11 @@ const HOCBasketDesc = () => {
 									</div>
 								</div>
 							</>
-							: <LoaderProduct />
+							: <div className="empty_basket">
+								<img src={require("assets/images/delivery/no_addresses.png")} alt="Весёлый хинкалик" />
+								<h4 className="empty_basket-title">Ваша корзина пуста</h4>
+								<span className="empty_basket_content">Чтобы совершить заказ, выберите себе что-нибудь вкусное!</span>
+							</div>
 					}
 
 
@@ -115,7 +120,10 @@ const HOCBasketDesc = () => {
 								<p>
 									Вы точно хотите очистить корзину? Отменить данное действие будет невозможно.
 								</p>
-								<button onClick={() => basketUseCase.deliteCart()} className="btn btn-sm btn-red no-drag">
+								<button onClick={() => {
+									basketUseCase.deliteCart()
+									setIsModalDeleteOpened(false)
+								}} className="btn btn-sm btn-red no-drag">
 									Очистить корзину
 								</button>
 								<button onClick={() => setIsModalDeleteOpened(false)} className="btn btn-sm btn-gray no-drag">

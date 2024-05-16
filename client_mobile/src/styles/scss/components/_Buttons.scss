@@ -64,9 +64,9 @@
     padding: 12px 16px;
     gap: 16px;
 
-    font-size: 14px;
+    font-size: 16px;
     font-style: normal;
-    font-weight: 700;
+    font-weight: 600;
     line-height: 16px;
 
     i {
@@ -136,5 +136,5 @@
 }
 
 @include btn("red", $c-red, #fff);
-@include btn("gray", #E6E6E6, #8D191D);
+@include btn("gray", #E6E6E6, #8D191D); 
 @include btn("none", transparent, $c-red);

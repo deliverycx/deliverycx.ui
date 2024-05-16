@@ -8,34 +8,36 @@ import { useNavigate } from "react-router-dom";
 import ModalCard from "application/components/common/Modals/ModalCard";
 import { useQuery } from "react-query";
 
-const OrderNotificate:FC<{disable:any}> = ({disable}) =>{
-	/*
-	const [statusTSX, switchMetod] = [null,null] //useOrganizationStatus()
-	const point = organizationModel.selectOrganization
+const OrderNotificate: FC<{ disable: any }> = ({ disable }) => {
+	const point:any = organizationModel.selectOrganization
 	const { timeworkOrganization } = organizationStatusModel
+	const [statusTSX, switchMetod] = useOrganizationStatus(point)
+
+
 	const [modal, setModal] = useState(false)
 	const navigate = useNavigate()
 
-	
+
 
 	useEffect(() => {
-		if(statusTSX.statuses){ //
+		if (statusTSX && statusTSX.statuses) { //
 			setModal(true)
-			if(timeworkOrganization && timeworkOrganization.typework === 'ONWORK'){
+			if (timeworkOrganization && timeworkOrganization.typework === 'ONWORK') {
 				disable(false)
-			}else{
+			} else {
 				disable(true)
 			}
-			
-		}else{
+
+		} else {
 			disable(false)
 		}
+		
 
-
-	}, [timeworkOrganization])
+	}, [])
 
 	
-	statusTSX.NoWorkPoint((
+
+	statusTSX && statusTSX.NoWorkPoint((
 		<div className="modal__wrapper">
 			<div className="modal__header">
 				<div className="modal__header-btn">
@@ -52,14 +54,14 @@ const OrderNotificate:FC<{disable:any}> = ({disable}) =>{
 				<button onClick={() => setModal(false)} className="btn btn-sm btn-gray no-drag">
 					Назад
 				</button>
-				<button onClick={()=> navigate(ROUTE_APP.SHOP.SHOP_MAIN)} className="btn btn-sm btn-none no-drag">
+				<button onClick={() => navigate(ROUTE_APP.SHOP.SHOP_MAIN)} className="btn btn-sm btn-none no-drag">
 					Посмотреть меню
 				</button>
 			</div>
 		</div>
 	))
 
-	statusTSX.OpenPoint((
+	statusTSX && statusTSX.OpenPoint((
 		<div className="modal__wrapper">
 			<div className="modal__header">
 				<div className="modal__header-btn">
@@ -76,7 +78,7 @@ const OrderNotificate:FC<{disable:any}> = ({disable}) =>{
 		</div>
 	))
 
-	statusTSX.SezonNoWork((
+	statusTSX && statusTSX.SezonNoWork((
 		<div className="modal__wrapper">
 			<div className="modal__header">
 				<div className="modal__header-btn">
@@ -93,7 +95,7 @@ const OrderNotificate:FC<{disable:any}> = ({disable}) =>{
 		</div>
 	))
 
-	statusTSX.NoDeliveryPoint((
+	statusTSX && statusTSX.NoDeliveryPoint((
 		<div className="modal__wrapper">
 			<div className="modal__header">
 				<div className="modal__header-btn">
@@ -108,20 +110,20 @@ const OrderNotificate:FC<{disable:any}> = ({disable}) =>{
 					А пока вы можете ознакомиться с нашим меню и почитать новости на главной странице
 				</p>
 				<a href={`tel:${point?.info.phone}`} className="btn btn-sm btn-red no-drag">
-				<img src={require('assets/images/icons/phonewite.png')} alt="" />
+					<img src={require('assets/images/icons/phonewite.png')} alt="" />
 					{point?.info.phone}
 				</a>
 				<button onClick={() => setModal(false)} className="btn btn-sm btn-gray no-drag">
 					Назад
 				</button>
-				<button onClick={()=> navigate(ROUTE_APP.SHOP.SHOP_MAIN)} className="btn btn-sm btn-none no-drag">
+				<button onClick={() => navigate(ROUTE_APP.SHOP.SHOP_MAIN)} className="btn btn-sm btn-none no-drag">
 					Посмотреть меню
 				</button>
 			</div>
 		</div>
 	))
 
-	statusTSX.NoTimeWork((
+	statusTSX && statusTSX.NoTimeWork((
 		<div className="modal__wrapper">
 			<div className="modal__header">
 				<div className="modal__header-btn">
@@ -130,13 +132,13 @@ const OrderNotificate:FC<{disable:any}> = ({disable}) =>{
 				<h3>Хинкальная закрыта</h3>
 			</div>
 			<div className="modal__content gap-8">
-				
-				<strong>Оформить доставку можно с {timeworkOrganization?.todaytime[0]} - {timeworkOrganization?.todaytime[1]}</strong>
+
+				<strong>Оформить доставку можно с {timeworkOrganization?.todaytime[0]} - {point?.timeworkOrganization.todaytime[1]}</strong>
 				<p>
 					А пока вы можете ознакомиться с нашим меню и почитать новости на главной странице
 				</p>
-				<button onClick={()=> navigate(ROUTE_APP.MAIN)} className="btn btn-sm btn-red no-drag">
-				На главную
+				<button onClick={() => navigate(ROUTE_APP.MAIN)} className="btn btn-sm btn-red no-drag">
+					На главную
 				</button>
 				<button onClick={() => setModal(false)} className="btn btn-sm btn-gray no-drag">
 					Назад
@@ -146,7 +148,7 @@ const OrderNotificate:FC<{disable:any}> = ({disable}) =>{
 		</div>
 	))
 
-	statusTSX.ONTimeWork((
+	statusTSX && statusTSX.ONTimeWork((
 		<div className="modal__wrapper">
 			<div className="modal__header">
 				<div className="modal__header-btn">
@@ -156,18 +158,18 @@ const OrderNotificate:FC<{disable:any}> = ({disable}) =>{
 			</div>
 			<div className="modal__content gap-8">
 				<span className="bold">Но вы ещё успеваете воспользоваться самовывозом</span>
-				<strong>Оформить доставку можно с {timeworkOrganization?.todaytime[0]} - {timeworkOrganization?.todaytime[1]}</strong>
+				<strong>Оформить доставку можно с {point?.timeworkOrganization.todaytime[0]} - {timeworkOrganization?.todaytime[1]}</strong>
 				<p>
 					А пока вы можете ознакомиться с нашим меню и почитать новости на главной странице
 				</p>
-				<button onClick={()=> navigate(ROUTE_APP.MAIN)} className="btn btn-sm btn-red no-drag">
-				На главную
+				<button onClick={() => navigate(ROUTE_APP.MAIN)} className="btn btn-sm btn-red no-drag">
+					На главную
 				</button>
 				<button onClick={() => setModal(false)} className="btn btn-sm btn-gray no-drag">
 					Назад
 				</button>
 				<button className="btn btn-sm btn-none no-drag">
-				Самовывоз
+					Самовывоз
 				</button>
 			</div>
 		</div>
@@ -175,20 +177,18 @@ const OrderNotificate:FC<{disable:any}> = ({disable}) =>{
 
 	return (
 		<>
-		{
-			modal &&
-			<ModalCard setIsOpened={setModal}>
-				{
-					//switchMetod()
-				}
-			</ModalCard>
-			
-		}
+			{
+				modal &&
+				<ModalCard setIsOpened={setModal}>
+					{
+						switchMetod()
+					}
+				</ModalCard>
+
+			}
 		</>
 	)
-	*/
-	return (
-		<></>
-	)
+
+
 }
 export default observer(OrderNotificate) 

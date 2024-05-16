@@ -3,26 +3,35 @@ import { useOrganizationStatus } from "application/hooks/useOrganizationStatus";
 import { observer } from "mobx-react-lite";
 import { basketUseCase } from "modules/BasketModule/basket.module";
 import { orderModel } from "modules/OrderModule/order.module";
-import { IDeliveryTypes } from "modules/OrganizationModule/OrganizationStatuses/interfaces/organizationStatus.type"
-import { organizationStatusModel, useCaseOrganizationStatus } from "modules/OrganizationModule/organization.module"
-import { FC, useEffect } from 'react';
+import { IDeliveryTypes, IOrganizationStatus } from "modules/OrganizationModule/OrganizationStatuses/interfaces/organizationStatus.type"
+import { organizationStatusComandBus, organizationStatusModel, organizationStatusModule, useCaseOrganizationStatus } from "modules/OrganizationModule/organization.module"
+import { FC, useEffect, useState } from 'react';
 
-const OrderMetodsTabs: FC<{ deliveryTabs: IDeliveryTypes[] }> = ({ deliveryTabs }) => {
-	const [statusTSX, switchMetod] = useOrganizationStatus(null)
+const OrderMetodsTabs = () => {
+	const {selectDeliveryTipe,organizationStatusMetods} = organizationStatusModel
+	const [deliveryTabs,setDeliveryTabs] = useState<IDeliveryTypes[] | null>(null)
+	const [statusTSX, switchMetod] = useOrganizationStatus(organizationStatusMetods)
 	const {orderOnspotTable} = orderModel
 
 
 	const handlerSwitchTab = (tab: IDeliveryTypes) => {
-		/*
-		if (statusTSX.NoTimeWork()) {
+		/**/
+		if (statusTSX && statusTSX.NoTimeWork()) {
 			return
 		} else {
-			useCaseOrganizationStatus.selectDeliveryMetod(tab)
+			organizationStatusModel.actionSelectDeliveryTipe(tab)
 			basketUseCase.cartCase()
 		}
-		*/
+		
 	}
 
+	useEffect(()=>{
+		if(selectDeliveryTipe && organizationStatusMetods){
+			const deliverytypes = useCaseOrganizationStatus.changeActiveDeliveryTypes(organizationStatusMetods,selectDeliveryTipe)
+			setDeliveryTabs(deliverytypes)
+		}
+		
+	},[selectDeliveryTipe,organizationStatusMetods])
 	
 
 	return (
@@ -43,6 +52,7 @@ const OrderMetodsTabs: FC<{ deliveryTabs: IDeliveryTypes[] }> = ({ deliveryTabs 
 
 						: deliveryTabs && deliveryTabs.length &&
 						deliveryTabs.slice().sort((a:any, b:any) => a['sort'] > b['sort'] ? 1 : -1).map((tab) => {
+							
 							if (statusTSX && statusTSX.ONTimeWork()) {
 								if(tab.metod !== DELIVERY_METODS.COURIER)
 								return (

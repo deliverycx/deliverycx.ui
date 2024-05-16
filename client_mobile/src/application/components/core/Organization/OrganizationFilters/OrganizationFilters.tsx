@@ -82,7 +82,7 @@ const HOCOrganizationFilters: FC<{ city: ICity }> = ({ city }) => {
 							</div>
 							<div className="d-flex flex-column gap-8 filers-button">
 								<button onClick={() => setIsOpenedFilters(false)} className="btn btn-sm btn-red no-drag">
-									Принять
+									Показать
 								</button>
 								<button onClick={handlerResetFilter} className="btn btn-sm btn-gray no-drag">
 									Сбросить
@@ -125,7 +125,7 @@ const HOCOrganizationFilters: FC<{ city: ICity }> = ({ city }) => {
 								</div>
 								<div className="d-flex flex-column gap-8">
 									<button onClick={() => setIsOpenedFilters(false)} className="btn btn-sm btn-red no-drag">
-										Принять
+										Показать
 									</button>
 									<button onClick={handlerResetFilter} className="btn btn-sm btn-gray no-drag">
 										Сбросить

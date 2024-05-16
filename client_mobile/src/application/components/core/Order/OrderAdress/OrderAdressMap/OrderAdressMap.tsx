@@ -10,6 +10,7 @@ import { FC, useEffect, useState } from "react"
 import { useNavigate, useSearchParams } from 'react-router-dom';
 import cn from "classnames"
 import { Desktop, Mobile, isDesctomMediaQuery } from "application/ResponseMedia";
+import { Field } from "formik";
 
 type IProps = {
 	formik?: any
@@ -41,7 +42,7 @@ const OrderAdressMap: FC<IProps> = ({ formik }) => {
 			setIsModalOpened(true)
 		} else {
 			if (orderDeliveryAddress) {
-				navigate(ROUTE + `/${orderDeliveryAddress.address}${orderDeliveryAddress.house}`)
+				navigate(ROUTE_APP.MAP.DELIVERY_MAP + `/${orderDeliveryAddress.address}${orderDeliveryAddress.house}?query=${JSON.stringify(orderDeliveryAddress)}`)
 
 			} else {
 				navigate(ROUTE)
@@ -61,15 +62,84 @@ const OrderAdressMap: FC<IProps> = ({ formik }) => {
 		setIsModalOpened(false)
 	}
 
+	
+
 	return (
 		<>
+			<div className="adress_fild">
+				
+				<div className="	input__item input_address">
+					<label htmlFor="adresses-delivey">Адрес доставки</label>
+					<div className="input__container">
+						{
+							//input_icon not-valid input_icon_left input_icon_right <img src={require("assets/images/icons/location_gray_999.png")} alt="" />
+						}
+						{
+							orderDeliveryAddress 
+							? <input readOnly onClick={handlerMap} placeholder="Нажмите для выбора адреса" value={`${orderDeliveryAddress.city},ул ${orderDeliveryAddress.address}`} name="address" type="text" />
+							: <input readOnly onClick={handlerMap} placeholder="Нажмите для выбора адреса" value="" name="address" type="text" />
+						}
+						
+					</div>
+				</div>
+				<div className="input__item input_house">
+					<label htmlFor="entrance">Дом</label>
+					<div className="input__container">
+						<Field
+							className="form__field-wrapper__input gray"
+							name="flat"
+							placeholder="Дом"
+							value={orderDeliveryAddress?.house || ""}
+							onClick={handlerMap}
+						/>
+					</div>
+				</div>
+				
+			</div>
+			<div className="adress_fild">
 
-			<div className="	input__item input_icon not-valid input_icon_left input_icon_right">
-				<div className="input__container">
-					<img src={require("assets/images/icons/location_gray_999.png")} alt="" />
-					<input readOnly onClick={handlerMap} placeholder="Нажмите для выбора адреса" value={formik.values.address} name="address" type="text" />
+				<div className="d-flex flex-center gap-8">
+					<div className="input__item">
+						<label htmlFor="entrance">Кв/офис</label>
+						<div className="input__container">
+							<Field
+								className="form__field-wrapper__input gray"
+								name="flat"
+								placeholder="кв / офис"
+								value={orderDeliveryAddress?.flat || ""}
+								onClick={handlerMap}
+							/>
+						</div>
+					</div>
+					
+					<div className="input__item">
+						<label htmlFor="entrance">Подъезд</label>
+						<div className="input__container">
+							<Field
+								className="form__field-wrapper__input gray"
+								name="entrance"
+								placeholder="подъезд"
+								value={orderDeliveryAddress?.entrance || ""}
+								onClick={handlerMap}
+							/>
+						</div>
+					</div>
+					<div className="input__item">
+						<label htmlFor="entrance">Этаж</label>
+						<div className="input__container">
+							<Field
+								className="form__field-wrapper__input gray floor"
+								name="floor"
+								placeholder="этаж"
+								value={orderDeliveryAddress?.floor || ""}
+								onClick={handlerMap}
+							/>
+						</div>
+					</div>
+
 				</div>
 			</div>
+
 			{
 
 				isModalOpened &&

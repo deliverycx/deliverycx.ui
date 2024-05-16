@@ -209,7 +209,7 @@
 				}
 
 				&-counter {
-					padding-top: 10px;
+					
 					display: flex;
 					align-items: center;
 					justify-content: space-between;
@@ -265,7 +265,7 @@
 					display: flex;
 					align-items: center;
 					gap: 8px;
-					padding-top: 16px;
+					
 
 					button {
 						flex-grow: 1;
@@ -287,7 +287,7 @@
 				}
 
 				&-specification {
-					padding-top: 16px;
+					padding-top: 10px;
 					padding-bottom: 10px;
 					display: grid;
 					grid-template-columns: repeat(2, 1fr);
@@ -334,7 +334,7 @@
 					display: flex;
 					flex-direction: column;
 					gap: 8px;
-					padding-top: 16px;
+					
 
 					img {
 						width: 16px;
@@ -359,7 +359,7 @@
 }
 
 .goodpalese {
-	margin-top: 15px;
+	margin-top: 0;
 	border-radius: 5px;
 	overflow: hidden;
 }
@@ -403,7 +403,7 @@
 		display: flex;
 		flex-direction: column;
 		align-items: flex-start;
-		margin-left: 10px;
+		
 		flex: 1 0 0;
 		cursor: pointer;
 
@@ -412,7 +412,7 @@
 			font-style: normal;
 			font-weight: 700;
 			line-height: 20px;
-			color: #8D191D;
+			color: var(--black-to-white-white-20-second-button-active);
 			margin-bottom: 5px;
 		}
 

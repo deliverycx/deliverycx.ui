@@ -22,15 +22,15 @@ export interface IWrapper {
 	name(): ReactNode
 	phone(): ReactNode
 	deliv(): ReactNode
-	onspotSelect():ReactNode
+	onspotSelect(): ReactNode
 	selectdeliv(): ReactNode
 	deliveryTime(): ReactNode
 	comment(): ReactNode
 }
 export const OrderFormWrapper = (formik: any, usecase: any): IWrapper => {
 	const navigate = useNavigate()
-	const { selectDeliveryTipe,selectOrganization, paymentMetod } = usecase.data
-	
+	const { selectDeliveryTipe, selectOrganization, paymentMetod } = usecase.data
+
 
 	return {
 		paymentPopup() {
@@ -64,27 +64,29 @@ export const OrderFormWrapper = (formik: any, usecase: any): IWrapper => {
 
 
 			return (
-				
+
 
 				<div className="order-placement__payment-method">
 					<h2 className="order-placement__payment-method-title">Способ оплаты</h2>
-					
+
 					{
-						paymentsMetod && 
+						paymentsMetod &&
 						paymentsMetod.map((value: any) => {
-							const CN = cn('order-placement__payment-method__item',{active:formik.values.payment === value.id})
+							const CN = cn('order-placement__payment-method__item', { active: formik.values.payment === value.id })
 							const findpay = paymentMetod && paymentMetod.includes(value.id)
-						
+
 							return findpay && (
 								<div key={value.id} onClick={() => formik.setFieldValue('payment', value.id)} className={CN}>
 									<div className="order-placement__payment-method-box">
-									{parse(value.icon)}
+										{parse(value.icon)}
 										<div className="order-placement__payment-method__item-name">{value.value}</div>
 										{
 											formik.values.payment === value.id &&
-											<img src={require("assets/images/icons/doneok.png")} />
+											<svg width="18" height="13" viewBox="0 0 18 13" fill="none" xmlns="http://www.w3.org/2000/svg">
+												<path d="M6.00012 10.1998L2.50012 6.69982C2.11012 6.30982 1.49012 6.30982 1.10012 6.69982C0.710117 7.08982 0.710117 7.70982 1.10012 8.09982L5.29012 12.2898C5.68012 12.6798 6.31012 12.6798 6.70012 12.2898L17.3001 1.69982C17.6901 1.30982 17.6901 0.689824 17.3001 0.299824C16.9101 -0.0901758 16.2901 -0.0901758 15.9001 0.299824L6.00012 10.1998Z" fill="#558950" />
+											</svg>
 										}
-										
+
 									</div>
 									{
 										formik.values.payment === PAYMENT_METODS.CASH && value.id === PAYMENT_METODS.CASH &&
@@ -120,7 +122,7 @@ export const OrderFormWrapper = (formik: any, usecase: any): IWrapper => {
 					errorValue={formik.errors.deliv}
 				>
 					<label htmlFor="adresses-delivey">Адрес доставки</label>
-					
+
 				</FormFieldWrapper>
 			)
 		},
@@ -134,15 +136,15 @@ export const OrderFormWrapper = (formik: any, usecase: any): IWrapper => {
 					error={!!formik.errors.address || !!formik.errors.house}
 					errorValue={formik.errors.address || formik.errors.house}
 				>
-					<label htmlFor="adresses-delivey">Адрес доставки</label>
+
 					<OrderAdressMap formik={formik} />
 
 				</FormFieldWrapper>
 
 			)
 		},
-		onspotSelect(){
-			return(
+		onspotSelect() {
+			return (
 				<FormFieldWrapper
 					placeholderIco={""}
 					placeholderValue="Где"
@@ -154,7 +156,7 @@ export const OrderFormWrapper = (formik: any, usecase: any): IWrapper => {
 
 						<HOCOrderOnspotSelect deliveryType={selectDeliveryTipe} organization={selectOrganization} />
 					}
-					
+
 				</FormFieldWrapper>
 			)
 		},
@@ -320,7 +322,7 @@ export const OrderFormWrapper = (formik: any, usecase: any): IWrapper => {
 								/>
 							)}
 						/>
-					
+
 					</div>
 
 				</FormFieldWrapper>

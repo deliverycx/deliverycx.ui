@@ -137,7 +137,7 @@
       display: flex;
       justify-content: center;
       align-items: center;
-      padding: 16px;
+      padding:10px 16px;
 
       border-radius: 17px;
       box-shadow: 0 4px 24px 0 rgba(0, 0, 0, 0.12);
@@ -195,7 +195,7 @@
       gap: 8px;
       padding: 8px 0;
 			strong{
-				font-size: 21px;
+				font-size: 16px;
 				font-weight: 700;
 				color: #8D191D;
 			}
@@ -372,16 +372,23 @@
 }
 
 .dozen--one_more{
-	background: #8D191D;
+	background: none;
+	box-shadow: none;
+	color: var(--red-red);
 	&__item{
 		flex-direction: column;
 		gap: 4px;
 
 		&-tile{
-			color: #FFF;
+			color: var(--red-red);
+			font-weight: 700;
+			font-size: 18px;
+			span{
+				margin-left: 10px;
+			}
 		}
 		&-addition{
-			color: #FFF;
+			color: var(--red-red);
 			font-size: 12px;
 			font-weight: 400;
 			line-height: 16px;

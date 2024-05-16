@@ -43,7 +43,7 @@ const DeliveryAdress: FC<IProps> = ({ openModalAdress,setModalStreet }) => {
 		}
 	}, [stateReduceMap.clickValueMap])
 
-
+	
 
 	return (
 		<>

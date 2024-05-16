@@ -25,7 +25,7 @@ const HOCOrderOnspotSelect: FC<{ deliveryType: IDeliveryTypes | null, organizati
 
 	}
 
-	console.log(orderOnspotTable);
+	
 	
 	return (
 		<>
