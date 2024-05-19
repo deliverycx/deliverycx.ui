@@ -2,9 +2,10 @@
 
 import { DELIVERY_METODS, ORG_STATUS } from "application/contstans/const.orgstatus"
 import { workTimeHelp } from "application/helpers/workTime"
+import { IOrganization } from "modules/OrganizationModule/Organization/interfaces/organization.type"
 import { IOrganizationStatus, IPointStatus } from "modules/OrganizationModule/OrganizationStatuses/interfaces/organizationStatus.type"
-import { organizationModel, organizationStatusModel, useCaseOrganizationStatus } from "modules/OrganizationModule/organization.module"
-import React, { ReactNode } from "react"
+import { organizationModel, organizationStatusComandBus, organizationStatusModel, organizationStatusModule, useCaseOrganizationStatus } from "modules/OrganizationModule/organization.module"
+import React, { ReactNode, useEffect, useState } from "react"
 import { useQuery } from "react-query"
 
 
@@ -132,15 +133,27 @@ export class StatusTSX {
 		)
 	}
 
-	
+
 }
 
 
-export const useOrganizationStatus = (organizationStatusMetods: IOrganizationStatus | null | any): [StatusTSX | null, any] => {
-	//console.log(organizationStatusMetods.info.address);
-	if (organizationStatusMetods) {
-		const { organizationStatus, timeworkOrganization, deliveryTipe } = organizationStatusMetods
-		
+export const useOrganizationStatus = (organization?: any): [StatusTSX | null, any] => {
+	const [pointStatus, setPointStatus] = useState<any>()
+	const metods = organizationStatusModel.organizationStatusMetods
+
+	useEffect(() => {
+		if (organization) {
+			setPointStatus(organization)
+		} else {
+			metods && setPointStatus(metods)
+		}
+	}, [organization,metods])
+
+
+
+	if (pointStatus) {
+		const { organizationStatus, timeworkOrganization, deliveryTipe } = pointStatus
+
 		const tsx = new StatusTSX(organizationStatus, timeworkOrganization.typework, deliveryTipe)
 		const switchMetod = () => {
 			const wrappers = tsx.statuses
@@ -152,8 +165,8 @@ export const useOrganizationStatus = (organizationStatusMetods: IOrganizationSta
 			return false
 		}
 		return [tsx, switchMetod]
-	}else{
-		return [null,null]
+	} else {
+		return [null, null]
 	}
 
 }

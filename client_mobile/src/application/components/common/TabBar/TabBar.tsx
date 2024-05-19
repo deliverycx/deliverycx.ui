@@ -98,7 +98,10 @@ const TabBar = () => {
 							</li>
 						)
 					}
-					<li className="tab-bar__item">
+					{
+						/*
+						
+						<li className="tab-bar__item">
 						{user && user.phone ? (
 							<NavLink to={ROUTE_APP.PROFILE.PROFILE_MAIN} className="tab-bar__link ">
 								<div className="tab-bar__img">
@@ -123,8 +126,14 @@ const TabBar = () => {
 							</NavLink>
 
 
-						)}
+						)
+						
+						}
 					</li>
+						
+						*/
+					}
+					
 					<li className="tab-bar__item">
 						<button onClick={() => setIsMenuOpen(prevState => !prevState)} className="tab-bar__link">
 							<div className="tab-bar__img">

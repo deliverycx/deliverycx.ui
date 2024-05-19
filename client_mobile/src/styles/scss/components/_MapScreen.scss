@@ -209,7 +209,7 @@
 				}
 
 				&-counter {
-					
+					height: 40px;
 					display: flex;
 					align-items: center;
 					justify-content: space-between;
@@ -362,6 +362,8 @@
 	margin-top: 0;
 	border-radius: 5px;
 	overflow: hidden;
+	height: 32px;
+	border-radius: 15px;
 }
 
 .orglistmodal {

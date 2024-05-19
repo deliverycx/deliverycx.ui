@@ -7,22 +7,25 @@ import { useOrganizationStatus } from "application/hooks/useOrganizationStatus";
 import { useNavigate } from "react-router-dom";
 import ModalCard from "application/components/common/Modals/ModalCard";
 import { useQuery } from "react-query";
+import { ORG_STATUS } from "application/contstans/const.orgstatus";
 
 const OrderNotificate: FC<{ disable: any }> = ({ disable }) => {
 	const point:any = organizationModel.selectOrganization
-	const { timeworkOrganization } = organizationStatusModel
-	const [statusTSX, switchMetod] = useOrganizationStatus(point)
+
+	const { timeworkOrganization,organizationStatusMetods } = organizationStatusModel
+	const [statusTSX, switchMetod] = useOrganizationStatus()
 
 
 	const [modal, setModal] = useState(false)
 	const navigate = useNavigate()
 
-
+	
 
 	useEffect(() => {
 		if (statusTSX && statusTSX.statuses) { //
+		
 			setModal(true)
-			if (timeworkOrganization && timeworkOrganization.typework === 'ONWORK') {
+			if (point.timeworkOrganization && point.timeworkOrganization.typework === ORG_STATUS.ONWORK && organizationStatusMetods?.organizationStatus === ORG_STATUS.WORK) {
 				disable(false)
 			} else {
 				disable(true)
@@ -32,8 +35,8 @@ const OrderNotificate: FC<{ disable: any }> = ({ disable }) => {
 			disable(false)
 		}
 		
-
-	}, [])
+		
+	}, [organizationStatusMetods])
 
 	
 

@@ -11,7 +11,6 @@ export type IPointStatusRequest = {
 export type IPointStatus = typeof organizationStatusDTO
 
 export type IOrganizationStatus = {
-	_id:string,
 	organization:string,
 	deliveryMetod:string[]
 	deliveryTipe:IDeliveryTypes[]

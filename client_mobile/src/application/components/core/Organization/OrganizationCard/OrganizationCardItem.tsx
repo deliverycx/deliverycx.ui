@@ -58,7 +58,7 @@ const OrganizationCardItem: FC<IProps> = ({ organization, active, viseble }) => 
 		slidesToScroll: 1
 	};
 
-	//console.log(organization);
+	console.log(organization.info.address,organization);
 
 	return (
 		<>
@@ -82,14 +82,7 @@ const OrganizationCardItem: FC<IProps> = ({ organization, active, viseble }) => 
 						<div className="institute-header">
 							<OrganizationCard organization={organization} />
 							<OrganizationStatus organization={organization} />
-							{
-								active && !load ?
-									<>
-										<OrganizationCounterHi point={organization} />
-
-									</>
-									: <LoaderProduct />
-							}
+							<OrganizationCounterHi point={organization} />
 
 							<OranizationWorkTime organization={organization} />
 							{

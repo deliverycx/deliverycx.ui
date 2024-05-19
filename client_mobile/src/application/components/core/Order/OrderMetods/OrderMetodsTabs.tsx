@@ -10,7 +10,7 @@ import { FC, useEffect, useState } from 'react';
 const OrderMetodsTabs = () => {
 	const {selectDeliveryTipe,organizationStatusMetods} = organizationStatusModel
 	const [deliveryTabs,setDeliveryTabs] = useState<IDeliveryTypes[] | null>(null)
-	const [statusTSX, switchMetod] = useOrganizationStatus(organizationStatusMetods)
+	const [statusTSX, switchMetod] = useOrganizationStatus()
 	const {orderOnspotTable} = orderModel
 
 

@@ -57,7 +57,8 @@ const HOCdescHead: FC<{ styles?: string }> = ({ styles }) => {
 			<div className={`head-desc ${styles}`}>
 
 				<section>
-					<img src={require("assets/images/logo.svg").default} alt="Старик Хинкалыч" />
+					<a href="/"><img src={require("assets/images/logo.svg").default} alt="Старик Хинкалыч" /></a>
+					
 					{
 						point &&
 						<>
@@ -80,6 +81,8 @@ const HOCdescHead: FC<{ styles?: string }> = ({ styles }) => {
 					}
 				</section>
 
+				
+				<section>
 				{
 					point &&
 					<div className="head-phone">
@@ -89,8 +92,10 @@ const HOCdescHead: FC<{ styles?: string }> = ({ styles }) => {
 						<a href={`tel:${point.info.phone}`}>{formatPhoneNumber(point.info.phone)}</a>
 					</div>
 				}
-				<section>
-					<div className="head-auth tabcart_disable">
+					{
+						/*
+						
+						<div className="head-auth tabcart_disable">
 					<div className="coming_soon">
 										Скоро
 									</div>
@@ -102,6 +107,9 @@ const HOCdescHead: FC<{ styles?: string }> = ({ styles }) => {
 						}
 						<a>Войти</a>
 					</div>
+						*/
+					}
+					
 					{
 						point &&
 						<div className="head-cart">
@@ -131,8 +139,15 @@ const HOCdescHead: FC<{ styles?: string }> = ({ styles }) => {
 					<OfferAuth />
 				</ModalCard>
 			}
-			<HOCCITYDesc />
-			<HOCOrganizationsDesc />
+			{
+				params.pathname === ROUTE_APP.CITY &&
+				<HOCCITYDesc />
+			}
+			{
+				params.pathname === ROUTE_APP.POINT &&
+				<HOCOrganizationsDesc />
+			}
+			
 		</>
 	)
 }

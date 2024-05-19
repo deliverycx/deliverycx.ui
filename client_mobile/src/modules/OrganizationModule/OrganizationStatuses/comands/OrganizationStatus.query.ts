@@ -3,9 +3,10 @@ import { organizationStatusComandBus } from "modules/OrganizationModule/organiza
 
 @InjectableDI()
 export class OrganizationStatusQuery{
-	useCaseOrganizationStatus: any;
-	handlerOrganizationStatus(action:any){
-		organizationStatusComandBus.handlersComandSubject.subscribe((data:any) =>{
+	
+	handlerOrganizationStatus(action:(data:any) => void){
+		return organizationStatusComandBus.handlersComandSubject.subscribe((data:any) =>{
+			console.log('qyery',data);
 			if(data){
 				action(data)
 				organizationStatusComandBus.queryComandSubject.next(data)

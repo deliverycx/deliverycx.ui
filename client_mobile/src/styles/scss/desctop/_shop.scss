@@ -3,6 +3,8 @@
 
 	.categories {
 		box-shadow: none;
+		padding-left: 8px;
+		padding-right: 8px;
 	}
 }
 
@@ -32,8 +34,8 @@
 
 
 .stocks-desc {
-	margin-top: 30px;
-	margin-bottom: 60px;
+	margin-top: 8px;
+	margin-bottom: 32px;
 	position: relative;
 	height: 400px;
 
@@ -65,7 +67,7 @@
 		width: 100%;
 		max-width: 1280px;
 		margin: 0 auto;
-		padding: 10px 20px;
+		padding: 0;
 		height: 400px;
 		box-shadow: none;
 		border-radius: 30px;
@@ -74,7 +76,7 @@
 
 	.stocks__points {
 		display: flex;
-		margin-top: 15px;
+	
 		justify-content: center;
 		text-align: center;
 
@@ -104,11 +106,12 @@
 }
 
 .catalogue-content_container-desc {
-
+	display: flex;
+  align-items: flex-start;
 	flex-wrap: nowrap;
 
 	.catalogue-content__cards {
-		float: left;
+		flex-grow: 1;
 		width: 60%;
 
 	}
@@ -116,7 +119,7 @@
 	.catalogue-content__basket {
 		width: 40%;
 		padding-left: 10px;
-		float: right;
+
 	}
 }
 

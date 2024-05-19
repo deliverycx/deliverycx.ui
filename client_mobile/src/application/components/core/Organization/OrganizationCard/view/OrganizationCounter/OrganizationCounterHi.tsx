@@ -9,10 +9,11 @@ import { format } from "date-fns";
 import RequestWebhook from "servises/Request/Request.Webhook";
 import LoaderProduct from "application/components/common/Loaders/loaderProduct";
 import CounterTik from "./CounterTik";
-import { organizationModel } from 'modules/OrganizationModule/organization.module';
+import { organizationModel, organizationModule } from 'modules/OrganizationModule/organization.module';
 import { observer } from 'mobx-react-lite';
 import RequestAdmins from "servises/Request/Request.Admins";
 import { IOrganization } from 'modules/OrganizationModule/Organization/interfaces/organization.type';
+import { isDesctomMediaQuery } from "application/ResponseMedia";
 
 
 type IProps = {
@@ -25,6 +26,7 @@ const OrganizationCounterHi:FC<{point:IOrganization}> = ({point}) => {
 	const [count, setCount] = useState<any>('000000000');
 	const [tik, setTik] = useState<boolean>(false);
 	const [load, setLoad] = useState<boolean>(false);
+	const desc = isDesctomMediaQuery()
 
 	function dtime_nums(e: any) {
 		// eslint-disable-next-line no-var
@@ -32,6 +34,8 @@ const OrganizationCounterHi:FC<{point:IOrganization}> = ({point}) => {
 		n.setDate(n.getDate() + e);
 		return format(n, "yyy-LL-dd") //n.toLocaleDateString();
 	}
+
+
 
 
 	useEffect(() => {
@@ -112,13 +116,10 @@ const OrganizationCounterHi:FC<{point:IOrganization}> = ({point}) => {
 
 			/**/
 			if (numbFlip && point) {
+
 				await organizationCoutn(point.guid)
-				/*
-				timercoutn = setInterval(async () => {
-					console.log('iiiiiiii');
-					await organizationCoutn(point.guid)
-				}, 100000)
-				*/
+				
+				
 
 			}
 			
@@ -129,7 +130,7 @@ const OrganizationCounterHi:FC<{point:IOrganization}> = ({point}) => {
 			clearTimeout(timer)
 			clearInterval(timercoutn)
 		}
-	}, [])
+	}, [point])
 
 
 

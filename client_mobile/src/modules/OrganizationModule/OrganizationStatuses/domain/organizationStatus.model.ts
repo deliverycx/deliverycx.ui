@@ -29,7 +29,7 @@ export class OrganizationStatusModel{
 		makePersistable(this, { name: 'selectDeliveryTipe', properties: ['selectDeliveryTipe'],storage: window.localStorage });
 	}
 
-	actionOrganizationStatus(status:IOrganizationStatus){
+	actionOrganizationStatus(status:any){
 		this.deliveryTipe = status.deliveryTipe
 		this.organizationStatus = status.organizationStatus
 		this.timeworkOrganization = status.timeworkOrganization

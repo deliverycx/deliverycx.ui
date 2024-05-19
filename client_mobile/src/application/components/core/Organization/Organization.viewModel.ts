@@ -16,27 +16,29 @@ export function useOrganizationsViewModel(this:any) {
 	const [pointIndex,setPointIndex] = useState<string | null>(null)
 	//const [organizations,setOrganizations] = useState<IOrganization[] | null>(null)
 
-	/*
-	const {data:organizations,isLoading} = useQuery('city', async () => city && organizationModule.handlerBus.organizationsList(city.id),{
-    refetchOnWindowFocus: false,
+	/**/
+	useQuery('organizations', async () => city && organizationModule.handlerBus.handlerOrganizationsList(city.id),{
+    refetchOnWindowFocus: true,
 		enabled: !!city,
   }) 
-	*/
+	
 
 	
 	
 	useEffect(()=>{
 		organizationModule.queryBus.handleOrganizationListMerdgeStatus((data:IOrganization[])=>{
-			console.log(data);
+			
 			data && organizationModel.actionSetOrganizationAll(data)
 		})
 
-		
+		/*
 		if(city){
 			organizationModule.handlerBus.handlerOrganizationsList(city.id)
 		}else{
 			navigate(ROUTE_APP.MAIN)
 		}
+		*/
+		!city && navigate(ROUTE_APP.MAIN)
 	},[city])
 
 	const handleBackCity = () =>{

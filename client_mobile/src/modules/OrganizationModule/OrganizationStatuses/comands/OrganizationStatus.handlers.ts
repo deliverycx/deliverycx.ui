@@ -4,6 +4,7 @@ import { UseCaseOrganizationStatus } from "../useCase/organizationStatus.useCase
 import { organizationStatusComandBus } from "modules/OrganizationModule/organization.module";
 import { IPointStatus } from "../interfaces/organizationStatus.type";
 import { IOrganization } from "modules/OrganizationModule/Organization/interfaces/organization.type";
+import { startWith } from "rxjs/operators";
 
 @InjectableDI([OrganizationStatusRepository,UseCaseOrganizationStatus])
 export class OrganizationStatusHandlers{
@@ -16,17 +17,19 @@ export class OrganizationStatusHandlers{
 
 	async handlerOrganizationsListStatus(point:IOrganization){
 		try {
+			
 			const requestResult = await this.organizationStatusRepository.repositoryOrganizationStatus(point.guid)
 			const result:IPointStatus | null = this.useCaseOrganizationStatus.getOrganizationStatus(requestResult)
-			const status =  this.useCaseOrganizationStatus.organizationStatusMetods(result,point)
+			return  this.useCaseOrganizationStatus.organizationStatusMetods(result,point)
 			
-			organizationStatusComandBus.handlersComandSubject.next(status)
-			return status
 		} catch (error) {
 			console.log(error);
 		}
 	}
 
+	handlerTest(){
+		return organizationStatusComandBus.handlersComandSubject.next('qqqqq')
+	}
 	
 	
 	

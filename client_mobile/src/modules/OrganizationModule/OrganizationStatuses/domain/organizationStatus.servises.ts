@@ -96,7 +96,7 @@ export class OrganizationStatusServises{
 				
 				// если точка закрылась неодного типа нету
 			} else if (deliveryTime.typework === ORG_STATUS.NOWORK) {
-				return { ...types, active: false }
+				return { ...types, active: true }
 			} else {
 				// делаем активный выбранный тип при выборе точки
 				if (deliveryMetod && types.metod === deliveryMetod.metod) {

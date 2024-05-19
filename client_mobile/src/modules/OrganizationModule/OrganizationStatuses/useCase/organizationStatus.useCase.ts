@@ -47,6 +47,7 @@ export class UseCaseOrganizationStatus {
 
 	selectActiveDeliveryType(organizationStatus:IOrganizationStatus,selectType:IDeliveryTypes){
 		const result = this.changeActiveDeliveryTypes(organizationStatus,selectType)
+		console.log(result);
 		const findType = result.find((item) => item.active === true)
 		return findType
 	}

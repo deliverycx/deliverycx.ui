@@ -40,7 +40,7 @@ const BasketOrder:FC<{basketPrice:IBasketPrice,modal?:boolean}> = ({basketPrice,
 		}
 
 	}
-
+	
 
 	return (
 		<>

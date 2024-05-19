@@ -20,6 +20,9 @@ export function CartChangeViewModel(this: any, product: IProduct) {
 
 	const { redirectToDectPoints } = useMediaRedirectPoint()
 
+
+	
+
 	useEffect(() => {
 		const cartid = basketUseCase.findIdCart(product.productId)
 		if (cartid && cartid.productId === product.productId) {
@@ -125,6 +128,7 @@ export function CartChangeViewModel(this: any, product: IProduct) {
 	
 		return findProdSous
 	}
+
 
 
 	/*

@@ -16,30 +16,30 @@ import { IOrganizationStatus } from "modules/OrganizationModule/OrganizationStat
 
 const HOCOrderDesc = () => {
 	const navigate = useNavigate()
-	//const [statusTSX, switchMetod] = useOrganizationStatus()
-	const { paymentMetod } = organizationStatusModel
+	const {deliveryTipe,selectDeliveryTipe,organizationStatusMetods,paymentMetod} = organizationStatusModel
 	const params = useLocation()
 
 	const point = organizationModel.selectOrganization
-	const [organizationStatus,setOrganizationStatus] =  useState<IOrganizationStatus | null>(null)
 	
-	const [statusTSX, switchMetod] =  useOrganizationStatus(point)
-	
-
-	/**/
-	useQuery('pointstatus', () => organizationStatusModule.handlerBus.handlerOrganizationsListStatus(point as IOrganization), {
+	useQuery('pointstatus', async () => {
+		const result = await organizationStatusModule.handlerBus.handlerOrganizationsListStatus(point as IOrganization)
+		
+		result && organizationStatusModel.actionOrganizationStatus(result)
+	}, {
 		refetchOnWindowFocus: true,
 		enabled: !!point,
 	})
 	
+	const [statusTSX, switchMetod] =  useOrganizationStatus()
 
-	useEffect(() => {
-		basketUseCase.cartCase()
-		organizationStatusModule.queryBus.handlerOrganizationStatus((data:IOrganizationStatus) =>{
-			organizationStatusModel.actionOrganizationStatus(data)
-			setOrganizationStatus(data)
-		})
-	}, [])
+	useEffect(()=>{
+		
+		if(!selectDeliveryTipe && deliveryTipe && organizationStatusMetods){
+			const resultType = useCaseOrganizationStatus.selectActiveDeliveryType(organizationStatusMetods,deliveryTipe.slice().sort((a:any, b:any) => a['sort'] > b['sort'] ? 1 : -1)[0])
+			
+			resultType && organizationStatusModel.actionSelectDeliveryTipe(resultType)
+		}
+	},[organizationStatusMetods,deliveryTipe])
 
 	const CN = cn("order-placement__form", { 'close-soon': statusTSX && statusTSX.NoTimeWork() }) //statusTSX.NoTimeWork() 
 	return (

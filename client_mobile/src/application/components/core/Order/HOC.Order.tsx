@@ -21,25 +21,18 @@ import { IOrganizationStatus } from 'modules/OrganizationModule/OrganizationStat
 const HOCOrder = () => {
 	const navigate = useNavigate()
 	const point = organizationModel.selectOrganization
-	const [organizationStatus,setOrganizationStatus] =  useState<IOrganizationStatus | null>(null)
 	
-	const [statusTSX, switchMetod] =  useOrganizationStatus(point)
-	const {paymentMetod} = organizationStatusModel
-
-	/**/
-	useQuery('pointstatus', () => organizationStatusModule.handlerBus.handlerOrganizationsListStatus(point as IOrganization), {
+	useQuery('pointstatus', async () => {
+		const result = await organizationStatusModule.handlerBus.handlerOrganizationsListStatus(point as IOrganization)
+		
+		result && organizationStatusModel.actionOrganizationStatus(result)
+	}, {
 		refetchOnWindowFocus: true,
 		enabled: !!point,
 	})
 	
-
-	useEffect(() => {
-		basketUseCase.cartCase()
-		organizationStatusModule.queryBus.handlerOrganizationStatus((data:IOrganizationStatus) =>{
-			organizationStatusModel.actionOrganizationStatus(data)
-			setOrganizationStatus(data)
-		})
-	}, [])
+	const [statusTSX, switchMetod] =  useOrganizationStatus()
+	const {paymentMetod} = organizationStatusModel
 
 	
 

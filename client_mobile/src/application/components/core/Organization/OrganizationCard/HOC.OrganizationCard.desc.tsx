@@ -21,33 +21,8 @@ import { PointsContext } from "./HOC.OrganizationCard"
 
 const HOCOrganizationCardDesc = () => {
 	const useCase = adapterComponentUseCase(useOrganizationCardViewModel)
-	const { point, timeworkOrganization, cardModal, deliveryTipe } = useCase.data
-	const { setCardModal, handlerCloseCardModal } = useCase.handlers
+	const { point, cardModal } = useCase.data
 
-	const [load, setLoad] = useState(true)
-
-	/*
-	useEffect(() => {
-		let tiks: any
-		if (selectOrganization) {
-			tiks = setTimeout(() => {
-				setLoad(false)
-			}, 500)
-			//useCaseOrganizationStatus.statusOrganization()
-		}
-
-
-		return () => clearTimeout(tiks)
-	}, [selectOrganization])
-	*/
-
-	const settings = {
-		dots: true,
-		infinite: true,
-		speed: 500,
-		slidesToShow: 1,
-		slidesToScroll: 1
-	};
 
 	return (
 		<>

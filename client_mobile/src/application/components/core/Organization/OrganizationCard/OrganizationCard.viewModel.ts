@@ -10,7 +10,7 @@ import { useNavigate } from "react-router-dom";
 export function useOrganizationCardViewModel() {
 	const [cardModal, setCardModal] = useState(false)
 	const [choosePoint, setChoosePoint] = useState<IOrganization | null>(null)
-	const { selectOrganization,actionSelectOrganization } = organizationModel
+	const { selectOrganization,organizationList } = organizationModel
 	const { deliveryTipe, organizationStatus, timeworkOrganization } = organizationStatusModel
 	const organization = organizationModel.selectOrganization
 	const desc = isDesctomMediaQuery()
@@ -27,7 +27,7 @@ export function useOrganizationCardViewModel() {
 			}
 		})
 
-	}, [])
+	}, [organizationList])
 
 
 

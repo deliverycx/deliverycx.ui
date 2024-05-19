@@ -3,12 +3,16 @@ import { useEffect, useState } from "react";
 import { useNavigate } from 'react-router-dom';
 import { ROUTE_APP } from 'application/contstans/route.const';
 import { ICartProd } from "modules/BasketModule/interfaces/basket.type";
+import { organizationModel, organizationStatusComandBus, organizationStatusModel, organizationStatusModule } from "modules/OrganizationModule/organization.module";
+import { IOrganization } from "modules/OrganizationModule/Organization/interfaces/organization.type";
+import { useQuery } from "react-query";
 
 
 export function useCartViewModel(this: any) {
 	const [select, setSelect] = useState<string[]>([])
 	const navigate = useNavigate()
 	const { cart, basketPrice } = basketUseCase.basketModel
+	const point = organizationModel.selectOrganization
 
 	const dispatchSelectCart = (e:any, id: string) => {
 		if (e.target.checked) {
@@ -18,7 +22,23 @@ export function useCartViewModel(this: any) {
 		}
 	}
 
+	
+	useQuery('pointstatus', async () => {
+		const result = await organizationStatusModule.handlerBus.handlerOrganizationsListStatus(point as IOrganization)
+		
+		result && organizationStatusModel.actionOrganizationStatus(result)
+	}, {
+		refetchOnWindowFocus: true,
+		enabled: !!point,
+	})
+	
+
+	
+
+	
+
 	const selectAllCart = (e:any) =>{
+		
 		if (e.target.checked) {
 			if(cart){
 				const res = cart.reduce((accumulator:any, currentValue:any) => {

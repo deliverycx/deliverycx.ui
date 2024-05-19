@@ -82,6 +82,7 @@
 			margin: 0 5px;
 			padding: 8px 15px;
 		}
+		
 	}
 
 	.points-desc_map-filter {
@@ -107,12 +108,23 @@
 			.btn {
 				width: 45%;
 				margin: 0 5px;
+				padding: 12px 15px;
+			}
+			.btn-gray{
+				color: #000;
 			}
 		}
 	}
 
 	.points-desc_map-list {
 		position: relative;
+		.btn{
+			svg{
+				width: 25px;
+				height: 25px;
+			}
+			height: 40px;
+		}
 	}
 
 	.points-desc_list {
