@@ -11,8 +11,8 @@ import { OrganizationStatusComandBus } from "./OrganizationStatuses/comands/Orga
 import { OrganizationStatusQuery } from "./OrganizationStatuses/comands/OrganizationStatus.query";
 import { OrganizationStatusHandlers } from "./OrganizationStatuses/comands/OrganizationStatus.handlers";
 
-export const organizationModel = new OrganizationModel()
-export const organizationStatusModel = new OrganizationStatusModel()
+
+
 
 export const organizationComandBus = new OrganizationComandBus()
 export const organizationStatusComandBus = new OrganizationStatusComandBus()
@@ -21,13 +21,19 @@ export const organizationStatusComandBus = new OrganizationStatusComandBus()
 class OrganizationModule{
 	queryBus:OrganizationQuery = adapterResolveDI(OrganizationQuery)
 	handlerBus:OrganizationHandlers = adapterResolveDI(OrganizationHandlers)
+	organizationModel:OrganizationModel = adapterResolveDI(OrganizationModel)
 }
 export const organizationModule = new OrganizationModule()
+export const {organizationModel} = organizationModule
 
 class OrganizationStatusModule{
 	queryBus:OrganizationStatusQuery = adapterResolveDI(OrganizationStatusQuery)
 	handlerBus:OrganizationStatusHandlers = adapterResolveDI(OrganizationStatusHandlers)
 	useCaseOrganizationStatus:UseCaseOrganizationStatus = adapterResolveDI(UseCaseOrganizationStatus)
+	organizationStatusModel:OrganizationStatusModel = adapterResolveDI(OrganizationStatusModel)
 }
 export const organizationStatusModule = new OrganizationStatusModule()
-export const {useCaseOrganizationStatus} = organizationStatusModule
+export const {
+	useCaseOrganizationStatus,
+	organizationStatusModel
+} = organizationStatusModule

@@ -4,6 +4,7 @@ import { ICity } from "modules/CityModule/interfaces/city.type";
 import { OrganizationRepository } from "../data/organization.repository";
 import { IOrganization, pointSerch } from "../interfaces/organization.type";
 import { IOrganizationStatus } from "modules/OrganizationModule/OrganizationStatuses/interfaces/organizationStatus.type";
+import { InjectableDI } from "application/helpers/dependencyInjection";
 
 interface IRequisites {
 	ogrn: string
@@ -11,6 +12,7 @@ interface IRequisites {
 	name: string
 }
 
+@InjectableDI()
 export class OrganizationModel{
 	organizationList: Array<IOrganization> | null = []
 	selectOrganization:IOrganization | null = null

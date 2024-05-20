@@ -18,21 +18,9 @@ const HOCOrderDesc = () => {
 	const navigate = useNavigate()
 	const {deliveryTipe,selectDeliveryTipe,organizationStatusMetods,paymentMetod} = organizationStatusModel
 	const params = useLocation()
-
-	const point = organizationModel.selectOrganization
-
-	console.log('deliveryTipe',deliveryTipe);
-	console.log('selectDeliveryTipe',selectDeliveryTipe);
-	console.log('paymentMetod',paymentMetod);
-	console.log('organizationStatusMetods',organizationStatusMetods);
 	
-	useQuery('pointstatus', async () => {
-		const result = await organizationStatusModule.handlerBus.handlerOrganizationsListStatus(point as IOrganization)
-		
-		result && organizationStatusModel.actionOrganizationStatus(result)
-	}, {
-		refetchOnWindowFocus: true,
-		enabled: !!point,
+	useQuery('pointstatus', async () => await organizationStatusModule.handlerBus.handlerOrganizationStatus(), {
+		refetchOnWindowFocus: true
 	})
 	
 	const [statusTSX, switchMetod] =  useOrganizationStatus()

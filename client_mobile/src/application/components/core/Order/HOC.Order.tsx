@@ -20,23 +20,28 @@ import { IOrganizationStatus } from 'modules/OrganizationModule/OrganizationStat
 
 const HOCOrder = () => {
 	const navigate = useNavigate()
-	const point = organizationModel.selectOrganization
+	const {deliveryTipe,selectDeliveryTipe,organizationStatusMetods,paymentMetod} = organizationStatusModel
 	
-	useQuery('pointstatus', async () => {
-		const result = await organizationStatusModule.handlerBus.handlerOrganizationsListStatus(point as IOrganization)
-		
-		result && organizationStatusModel.actionOrganizationStatus(result)
+	useQuery('pointstatus', async () => {await organizationStatusModule.handlerBus.handlerOrganizationStatus()
 	}, {
 		refetchOnWindowFocus: true,
-		enabled: !!point,
 	})
 	
 	const [statusTSX, switchMetod] =  useOrganizationStatus()
-	const {paymentMetod} = organizationStatusModel
 
 	useEffect(() => {
 		basketUseCase.cartCase()
 	}, [])
+
+	useEffect(()=>{
+		
+		if(!selectDeliveryTipe && deliveryTipe && organizationStatusMetods){
+			const resultType = useCaseOrganizationStatus.selectActiveDeliveryType(organizationStatusMetods,deliveryTipe.slice().sort((a:any, b:any) => a['sort'] > b['sort'] ? 1 : -1)[0])
+			
+			resultType && organizationStatusModel.actionSelectDeliveryTipe(resultType)
+		}
+	},[organizationStatusMetods,deliveryTipe])
+
 
 	const CN = cn("order-placement__form", { 'close-soon': statusTSX && statusTSX.NoTimeWork() }) //statusTSX && statusTSX.NoTimeWork()
 	return (
