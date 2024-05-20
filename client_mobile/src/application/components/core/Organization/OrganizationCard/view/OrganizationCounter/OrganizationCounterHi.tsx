@@ -138,10 +138,14 @@ const OrganizationCounterHi:FC<{point:IOrganization}> = ({point}) => {
 		try {
 
 			setLoad(true)
+			/*
 			const time = format(new Date(), "yyy-LL-dd")
 			const oldtime = dtime_nums(-1)
+			*/
+			const time = dtime_nums(1) //format(new Date(), "yyy-LL-dd")
+			const oldtime = "2015-01-01"
 			const { data } = await RequestWebhook.flip({
-				time, oldtime, phone: point?.info.phone
+				time, oldtime, phone: point?.info.phone,pages:true
 			})
 			//console.log('сьедено за сегодня', data);
 			if (data) {

@@ -13,7 +13,7 @@ export function useOrganizationCardViewModel() {
 	const { selectOrganization,organizationList } = organizationModel
 	const { deliveryTipe, organizationStatus, timeworkOrganization } = organizationStatusModel
 	const organization = organizationModel.selectOrganization
-	const desc = isDesctomMediaQuery()
+	
 	const [point, setPoint] = useState<any>()
 	const navigate = useNavigate()
 

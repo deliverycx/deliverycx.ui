@@ -34,7 +34,9 @@ const HOCOrder = () => {
 	const [statusTSX, switchMetod] =  useOrganizationStatus()
 	const {paymentMetod} = organizationStatusModel
 
-	
+	useEffect(() => {
+		basketUseCase.cartCase()
+	}, [])
 
 	const CN = cn("order-placement__form", { 'close-soon': statusTSX && statusTSX.NoTimeWork() }) //statusTSX && statusTSX.NoTimeWork()
 	return (

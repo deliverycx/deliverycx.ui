@@ -72,8 +72,9 @@ export const OrderFormWrapper = (formik: any, usecase: any): IWrapper => {
 					{
 						paymentsMetod &&
 						paymentsMetod.map((value: any) => {
-							const CN = cn('order-placement__payment-method__item', { active: formik.values.payment === value.id })
+							const CN = cn('order-placement__payment-method__item', { active: formik.values.payment === paymentMetod.includes(value.id) })
 							const findpay = paymentMetod && paymentMetod.includes(value.id)
+							console.log(formik.values.payment,paymentMetod);
 
 							return findpay && (
 								<div key={value.id} onClick={() => formik.setFieldValue('payment', value.id)} className={CN}>

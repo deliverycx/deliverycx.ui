@@ -1,19 +1,31 @@
 import { InjectableDI } from "application/helpers/dependencyInjection";
 import { CityComandBus } from "./City.comandBus";
-import { cityComandBus } from "../city.module";
+import { CityRepository } from "../data/city.repository";
+import { UseCaseCity } from "../useCase/city.useCase";
+import { CityModel } from "../domain/city.model";
 
-@InjectableDI()
+@InjectableDI([UseCaseCity,CityRepository,CityModel])
 export class CityQuery extends CityComandBus{
+	constructor(
+		private readonly useCaseCity:UseCaseCity,
+		private readonly cityRepository:CityRepository,
+		private readonly cityModel:CityModel
+	){
+		super()
+	}
 
-	handle(action:any){
-		
-		cityComandBus.handlersComandSubject.subscribe((data)=>{
+	async queryCityList(cityname:string){
+		try {
+			const repository = await this.cityRepository.getCityRepository(cityname)
 			
-			if(data){
-				action(data)
-				cityComandBus.queryComandSubject.next(data)
-			}
-		});
+			const result = this.useCaseCity.getCityList(repository)
+			const citys = this.useCaseCity.citySort(result)
+			citys && this.cityModel.actionSetSityList(citys)
+			return citys
+			
+		} catch (error) {
+			console.log(error);
+		}
 		
 	}
 }

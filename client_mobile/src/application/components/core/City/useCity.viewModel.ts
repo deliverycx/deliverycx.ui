@@ -18,10 +18,7 @@ export function useCityViewModel(this:any) {
 	const {cityList,selectCity} = cityModel
 
 	useEffect(()=>{
-		cityModule.queryBus.handle((data:any) =>{
-			cityModel.actionSetSityList(data)
-		})
-		cityModule.handlerBus.handlerCityList('')
+		cityModule.queryBus.queryCityList('')
 	},[])
 
 	const submitCity = (city:ICity) =>{
@@ -32,7 +29,7 @@ export function useCityViewModel(this:any) {
 	}
 
 	const seletSerchCity = (name:string) =>{
-		cityModule.handlerBus.handlerCityList(name)
+		cityModule.queryBus.queryCityList(name)
 	}
 
 	const closeModalDesc = () =>{

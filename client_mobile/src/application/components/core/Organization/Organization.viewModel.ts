@@ -6,6 +6,7 @@ import { useNavigate  } from "react-router-dom";
 import { ROUTE_APP } from 'application/contstans/route.const';
 import { IOrganization } from "modules/OrganizationModule/Organization/interfaces/organization.type";
 import { IOrganizationStatus } from "modules/OrganizationModule/OrganizationStatuses/interfaces/organizationStatus.type";
+import { isDesctomMediaQuery } from "application/ResponseMedia";
 
 
 export function useOrganizationsViewModel(this:any) {
@@ -14,9 +15,9 @@ export function useOrganizationsViewModel(this:any) {
 	const navigate = useNavigate()
 	const [pointCords,setPointCords] = useState<string[] | null>(null)
 	const [pointIndex,setPointIndex] = useState<string | null>(null)
-	//const [organizations,setOrganizations] = useState<IOrganization[] | null>(null)
+	const desc = isDesctomMediaQuery()
 
-	/**/
+
 	useQuery('organizations', async () => city && organizationModule.handlerBus.handlerOrganizationsList(city.id),{
     refetchOnWindowFocus: true,
 		enabled: !!city,
@@ -31,18 +32,11 @@ export function useOrganizationsViewModel(this:any) {
 			data && organizationModel.actionSetOrganizationAll(data)
 		})
 
-		/*
-		if(city){
-			organizationModule.handlerBus.handlerOrganizationsList(city.id)
-		}else{
-			navigate(ROUTE_APP.MAIN)
-		}
-		*/
 		!city && navigate(ROUTE_APP.MAIN)
 	},[city])
 
 	const handleBackCity = () =>{
-		navigate(ROUTE_APP.MAIN)
+		desc ? navigate(ROUTE_APP.CITY) : navigate(ROUTE_APP.MAIN)
 	}
 
 	const selectPointPosition = (index:string) =>{

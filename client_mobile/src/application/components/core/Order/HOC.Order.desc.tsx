@@ -20,6 +20,11 @@ const HOCOrderDesc = () => {
 	const params = useLocation()
 
 	const point = organizationModel.selectOrganization
+
+	console.log('deliveryTipe',deliveryTipe);
+	console.log('selectDeliveryTipe',selectDeliveryTipe);
+	console.log('paymentMetod',paymentMetod);
+	console.log('organizationStatusMetods',organizationStatusMetods);
 	
 	useQuery('pointstatus', async () => {
 		const result = await organizationStatusModule.handlerBus.handlerOrganizationsListStatus(point as IOrganization)
@@ -40,6 +45,10 @@ const HOCOrderDesc = () => {
 			resultType && organizationStatusModel.actionSelectDeliveryTipe(resultType)
 		}
 	},[organizationStatusMetods,deliveryTipe])
+
+	useEffect(() => {
+		basketUseCase.cartCase()
+	}, [])
 
 	const CN = cn("order-placement__form", { 'close-soon': statusTSX && statusTSX.NoTimeWork() }) //statusTSX.NoTimeWork() 
 	return (
