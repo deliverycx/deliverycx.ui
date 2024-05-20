@@ -55,7 +55,7 @@ const OrganizationCounterHi:FC<{point:IOrganization}> = ({point}) => {
 					counter++
 					const zeroLength = 7;
 					const c = parseInt(count)
-					const newcount = String(c + counter).padStart(zeroLength, '0')
+					const newcount = String(counter).padStart(zeroLength, '0')
 					console.log('nex',newcount);
 					setCount(newcount)
 					if (toNumber === counter) {
@@ -86,8 +86,10 @@ const OrganizationCounterHi:FC<{point:IOrganization}> = ({point}) => {
 			async function organizationCoutn(guid: string) {
 
 				const { data: countorg } = await RequestAdmins.getOraganizationCount(guid)
+				
 				if (countorg) {
 					const today = format(new Date(), "yyy-LL-dd")
+					
 					if (today !== countorg.date) {
 						console.log('дата не совпала', today, countorg.date);
 						await RequestAdmins.setOraganizationCount({
@@ -100,7 +102,7 @@ const OrganizationCounterHi:FC<{point:IOrganization}> = ({point}) => {
 						numbFlip = Number(countorg.coutn)
 					}
 
-
+					console.log(numbFlip);
 
 					const num1 = Number(numbFlip);
 					const num2 = Number(numbFlip) - 10;
@@ -138,14 +140,10 @@ const OrganizationCounterHi:FC<{point:IOrganization}> = ({point}) => {
 		try {
 
 			setLoad(true)
-			/*
 			const time = format(new Date(), "yyy-LL-dd")
 			const oldtime = dtime_nums(-1)
-			*/
-			const time = dtime_nums(1) //format(new Date(), "yyy-LL-dd")
-			const oldtime = "2015-01-01"
 			const { data } = await RequestWebhook.flip({
-				time, oldtime, phone: point?.info.phone,pages:true
+				time, oldtime, phone: point?.info.phone
 			})
 			//console.log('сьедено за сегодня', data);
 			if (data) {

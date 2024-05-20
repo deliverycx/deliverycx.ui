@@ -58,7 +58,7 @@ const OrganizationCardItem: FC<IProps> = ({ organization, active, viseble }) => 
 		slidesToScroll: 1
 	};
 
-	console.log(organization.info.address,organization);
+	//console.log(organization.info.address,organization);
 
 	return (
 		<>
