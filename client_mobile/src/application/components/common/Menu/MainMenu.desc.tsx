@@ -26,10 +26,10 @@ const MainMenuDesc = () => {
 	return (
 		<div className="menu-desc">
 			<a className={CNSHOP} onClick={shophandler}>Меню</a>
-			<NavLink to="https://starikkhinkalich.ru/">Новости и акции</NavLink>
+			<NavLink target="_blank" to="https://starikkhinkalich.ru/">Новости и акции</NavLink>
 			<a className={CNPoint} onClick={pointhandler}>Старик Хинкалыч на карте</a>
-			<NavLink to="https://docs.google.com/forms/d/e/1FAIpQLScF_kqRIOC4YtZGJnravy94pIEbzlmW4MM3IWhR_tBGLqcQ0g/viewform?pli=1">Вакансии</NavLink>
-			<NavLink className="franc_menu" to="https://франшиза.хинкалыч.рф/">
+			<NavLink target="_blank" to="https://docs.google.com/forms/d/e/1FAIpQLScF_kqRIOC4YtZGJnravy94pIEbzlmW4MM3IWhR_tBGLqcQ0g/viewform?pli=1">Вакансии</NavLink>
+			<NavLink target="_blank" className="franc_menu" to="https://франшиза.хинкалыч.рф/">
 				<svg width="27" height="27" viewBox="0 0 27 27" fill="none" xmlns="http://www.w3.org/2000/svg">
 					<g clip-path="url(#clip0_8806_65257)">
 						<path d="M21.7267 23.427L3.43095 21.504C3.02121 21.4609 2.72532 21.0826 2.76987 20.6587L3.09245 17.5896C3.137 17.1657 3.50509 16.8572 3.91483 16.9002L22.2106 18.8232C22.6203 18.8662 22.9162 19.2446 22.8716 19.6685L22.5491 22.7377C22.5045 23.1615 22.1364 23.47 21.7267 23.427Z" fill="#F0952A" />

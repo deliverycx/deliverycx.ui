@@ -52,9 +52,8 @@ const HOCBasketDesc = () => {
 				</div>
 				<div className="basket-desc_main">
 					{
-						cart && cart.length !== 0 && basketPrice ?
-							<>
-								<div className="basket__content__buttons">
+						cart && cart.length !== 0 && basketPrice &&
+							<div className="basket__content__buttons">
 									<label className="input__checkbox">
 										<div className="checkbox">
 											<input type="checkbox" onChange={selectAllCart} />
@@ -77,7 +76,13 @@ const HOCBasketDesc = () => {
 
 
 								</div>
-								<div className="basket-desc_cart link-to-cart">
+					}
+					<div className="link-to-cart">
+					{
+						cart && cart.length !== 0 && basketPrice ?
+							<>
+								
+								<div className="basket-desc_cart">
 									<HOCCart cart={cart} />
 
 								</div>
@@ -99,7 +104,7 @@ const HOCBasketDesc = () => {
 								<span className="empty_basket_content">Чтобы совершить заказ, выберите себе что-нибудь вкусное!</span>
 							</div>
 					}
-
+				</div>
 
 				</div>
 				{isModalDeleteOpened &&

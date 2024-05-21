@@ -30,6 +30,7 @@ export function CartChangeViewModel(this: any, product: IProduct) {
 		} else {
 			setChangeCount(0)
 		}
+		
 	}, [cart, product.productId])
 
 	//console.log('prodInCart',product.name);
@@ -40,7 +41,7 @@ export function CartChangeViewModel(this: any, product: IProduct) {
 
 
 	const changeCountHandler = ({ id, type, code }: any) => {
-
+		
 		if (typeof changeCount === 'number') {
 			switch (type) {
 				case 'inc':
@@ -93,16 +94,17 @@ export function CartChangeViewModel(this: any, product: IProduct) {
 	const handlerInputAddAmout = (id: string, count: number) => {
 		if (count === 0) {
 			setChangeCartCount(0)
-			//debouncedChangeHandler({ id, count:1})
+			debouncedChangeHandler({ id, count:1})
 		} else {
 			setChangeCartCount(count - 1)
 			setChangeCount(1)
-			//debouncedChangeHandler({ id, count})
+			debouncedChangeHandler({ id, count})
 		}
 	}
 
 	const handlerAddCard = () => {
 		redirectToDectPoints()
+		
 		if (changeCartCount) {
 			const count = Number(changeCount) + Number(changeCartCount)
 			debouncedChangeHandler({ id: product.id, count: count })
@@ -178,43 +180,36 @@ export function CartChangeAnimateViewModel(this: any,) {
 	}));
 	const root = document.querySelector("#root") as HTMLElement;
 	const AnimateHandle = () => {
-		try {
-			if (springRef.current && queryCartRef.current && root) {
+		
+		if (springRef.current && queryCartRef.current && root) {
 				
-				
-					
-				animate({
-					x:
-						descQuery
-							? - ((springRef.current.offsetLeft - queryCartRef.current.offsetLeft) - 70)
-							: - ( (springRef.current.offsetLeft - 280)),
-					y:
-						descQuery
-							? - (springRef.current.offsetTop - (queryCartRef.current.offsetTop + root.scrollTop) - (110 * Number(cart && cart.length < 4 ? cart.length : 0)))
-							: - (springRef.current.offsetTop - (queryCartRef.current.offsetTop + window.pageYOffset) + 30),
-					opacity: 1,
-					loop: {
-						x: 0,
-						y: 0,
-						opacity: 0,
-						immediate: true,
-					}
-				})
-			} else {
-				throw Error();
-			}
+		
+			animate({
+				x:
+					descQuery
+						? - ((springRef.current.offsetLeft - queryCartRef.current.offsetLeft) - 70)
+						: - ( (springRef.current.offsetLeft - 280)),
+				y:
+					descQuery
+						? - (springRef.current.offsetTop - (queryCartRef.current.offsetTop + root.scrollTop) - (110 * Number(cart && cart.length < 4 ? cart.length : 0)))
+						: - (springRef.current.offsetTop - (queryCartRef.current.offsetTop + window.pageYOffset) + 30),
+				opacity: 1,
+				loop: {
+					x: 0,
+					y: 0,
+					opacity: 0,
+					immediate: true,
+				}
+			})
 
-		} catch (e) {
-			console.log(e)
+
 		}
-
-
-		//addCart(id)
 	}
+	
 
 	useEffect(() => {
 		queryCartRef.current = document.querySelector('.link-to-cart') as HTMLElement;
-	}, [])
+	}, [cart])
 
 
 	this.data({

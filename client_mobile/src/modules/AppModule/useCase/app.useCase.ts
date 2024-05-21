@@ -38,6 +38,11 @@ export class AppUseCase{
 		this.organizationStatusModel.actionSelectDeliveryTipe(null)
 	}
 
+	clearCart(){
+		this.basketUseCase.deliteCart()
+		this.orderModel.actionResetOrder()
+	}
+
 	authNotificate(val:boolean){
 		this.appModel.actionAuthNotificate(val)
 	}

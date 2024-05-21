@@ -44,7 +44,9 @@ export function useOrganizationCardViewModel() {
 	}
 
 	const handlerSelectMenu = (organization:IOrganizationAndStatuses) => {
-		
+		if(selectOrganization && selectOrganization.guid !== organization.guid){
+			appUseCase.clearCart()
+		}
 		organizationModel.actionSelectOrganization(organization)
 		navigate(`/shop?address=${organization.info.city},${organization.info.address}`)
 	}

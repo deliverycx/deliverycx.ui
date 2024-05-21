@@ -14,6 +14,7 @@ import CartDiscount from "./view/CartDiscount"
 import { adapterComponentUseCase } from "adapters/adapterComponents"
 import { useCartViewModel } from "./Cart/Cart.viewModel"
 import { BasketContext } from "./HOC.Basket.desc"
+import { observer } from "mobx-react-lite"
 
 const HOCBasketPageDesc = () =>{
 	const useCase = adapterComponentUseCase(useCartViewModel)
@@ -106,4 +107,4 @@ const HOCBasketPageDesc = () =>{
 	)
 
 }
-export default HOCBasketPageDesc
+export default observer(HOCBasketPageDesc)

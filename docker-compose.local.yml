@@ -1,0 +1,24 @@
+version: "3.9"
+
+services:
+    
+    deliverycx_client:
+            image: docker/client_mobile
+            build:
+              context: ./client_mobile
+              dockerfile: Dockerfile.local
+            container_name: client
+            ports:
+              - "3000:3000"
+            volumes:
+              - ./client_mobile:/app
+              - /app/node_modules
+            environment:
+              - CHOKIDAR_USEPOLLING=true
+            networks:
+              - mynetwork
+      
+networks:
+  mynetwork:
+    external:
+      name: my_global_network 
