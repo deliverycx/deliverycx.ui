@@ -143,13 +143,14 @@
         text-decoration: none;
         padding: 4px;
         color: $c_red;
-        font-size: 14px;
-        font-weight: 500;
+        font-size: 16px;
+        font-weight: 600;
         line-height: 20px;
         border: none;
         border-radius: 12px;
 				cursor: pointer;
         background: #E6E6E6;
+				font-family: Tilda Sans VF;
 
         & svg{
           width: 16px;

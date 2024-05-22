@@ -23,7 +23,7 @@ type IProps = {
 }
 const OrganizationCounterHi:FC<{point:IOrganization}> = ({point}) => {
 	
-	const [count, setCount] = useState<any>('000000000');
+	const [count, setCount] = useState<any>('0000000');
 	const [tik, setTik] = useState<boolean>(false);
 	const [load, setLoad] = useState<boolean>(false);
 	const desc = isDesctomMediaQuery()
@@ -148,7 +148,7 @@ const OrganizationCounterHi:FC<{point:IOrganization}> = ({point}) => {
 			//console.log('сьедено за сегодня', data);
 			if (data) {
 				setLoad(false)
-				const zeroLength = 12;
+				const zeroLength = 7;
 				const c = parseInt(count)
 				const newcount = String(data).padStart(zeroLength, '0')
 				setCount(newcount)

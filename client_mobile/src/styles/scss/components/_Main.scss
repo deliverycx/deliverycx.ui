@@ -1,13 +1,14 @@
 html,
 body {
-	font-family: "Tilda Sans", serif;
+	font-family: "Tilda Sans" !important;
 	min-height: 100vh;
 	font-feature-settings: "lnum";
 	font-style: normal;
 
 	& {
-		font-family: "Tilda Sans", sans-serif;
+		font-family: "Tilda Sans" !important;
 	}
+	
 }
 
 .clear{

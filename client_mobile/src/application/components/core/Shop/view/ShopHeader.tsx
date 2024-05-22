@@ -12,7 +12,7 @@ const ShopHeader:FC<{organization:IOrganization}> = ({organization}) => {
 				{organization.info.city}, {organization.info.address}
 			</NavLink>
 
-			<a  className="catalogue-header__info-phone">
+			<a  className="catalogue-header__info-phone" href={`tel:${organization.info.phone}`}>
 				<img src={require("assets/images/icons/phone.png")} alt="Телефончик" />
 				{organization.info.phone}
 			</a>

@@ -65,6 +65,8 @@ const MainMenu: FC<{ closeMenu: any, like: string | any }> = observer(({ closeMe
 					</button>
 				</div>
 				<div className="menu-menu">
+				{
+					/*
 					{user && user.phone ? (
 						<>
 							<NavLink to={ROUTE_APP.PROFILE.PROFILE_MAIN}>
@@ -88,6 +90,9 @@ const MainMenu: FC<{ closeMenu: any, like: string | any }> = observer(({ closeMe
 							Войти в	профиль
 						</NavLink>
 					)}
+					*/
+				}
+					
 
 					<NavLink to={ROUTE_APP.MAIN}>
 						<img src={iconStoreGray} alt="" />
