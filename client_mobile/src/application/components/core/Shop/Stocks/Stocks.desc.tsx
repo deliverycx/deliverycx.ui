@@ -12,7 +12,7 @@ const StocksDesc:FC<{organization:string}> = ({organization}) =>{
 
 	const getStocks = async (guid:string) =>{
 		try {
-			console.log(guid);
+			
 			const {data}:any = await requestShopAdmin.bannersList(guid)
 			const ban = data.reduce((acc:any,val:any,index:number) =>{
 				
@@ -34,14 +34,14 @@ const StocksDesc:FC<{organization:string}> = ({organization}) =>{
 
 	useEffect(() => {
 		const updateSlidesToShow = () => {
-			if (window.innerWidth >= 1200) {
-				setSlidesToShow("200px");
-			} else if (window.innerWidth >= 900) {
-				setSlidesToShow("50px");
-			} else if (window.innerWidth >= 759) {
-				setSlidesToShow("25px");
+			if (window.innerWidth >= 1600) {
+				setSlidesToShow("250px");
+			} else if (window.innerWidth >= 1240) {
+				setSlidesToShow("100px");
+			} else if (window.innerWidth >= 860) {
+				setSlidesToShow("0");
 			} else {
-				setSlidesToShow("200px");
+				setSlidesToShow("400px");
 			}
 		};
 
