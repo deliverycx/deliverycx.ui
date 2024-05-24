@@ -2,6 +2,7 @@ import { observer } from "mobx-react-lite"
 import { requestOrganizationAdmin } from "modules/OrganizationModule/Organization/data/organization.request"
 import { organizationModel } from "modules/OrganizationModule/organization.module"
 import { useState, useEffect } from "react"
+import { NavLink } from "react-router-dom"
 
 /* eslint-disable no-irregular-whitespace */
 const HOCFooterDesc = () => {
@@ -31,8 +32,8 @@ const HOCFooterDesc = () => {
 					
 					<div className="foot_menu">
 						<div className="foot_menu-title">О нас</div>
-						<a href="#" className="foot_menu-item">Условия доставки</a>
-						<a href="/docs/Старик_Хинкалыч_Калорийность_блюд_Осень_2023.pdf" className="foot_menu-item">Калорийность и состав</a>
+						<a href="https://starikkhinkalich.ru/doctavka" className="foot_menu-item">Условия доставки</a>
+						<NavLink to="/docs/Старик_Хинкалыч_Калорийность_блюд_Осень_2023.pdf" target="_blank" className="foot_menu-item">Калорийность и состав</NavLink>
 						<a href="https://docs.google.com/forms/d/e/1FAIpQLScF_kqRIOC4YtZGJnravy94pIEbzlmW4MM3IWhR_tBGLqcQ0g/viewform?pli=1" className="foot_menu-item">Вакансии</a>
 						<a href="https://франшиза.хинкалыч.рф/" className="foot_menu-item">Франшиза</a>
 					</div>
