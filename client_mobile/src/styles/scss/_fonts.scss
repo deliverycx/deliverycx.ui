@@ -28,7 +28,7 @@
 	src: url('../fonts/Tida/TildaSansVF.eot');
 	src: local('../fonts/Tida/Tilda Sans VF'), local('TildaSansVF'),
 			url('../fonts/Tida/TildaSansVF.eot?#iefix') format('embedded-opentype'),
-			url('../fonts/Tida/TildaSansVF.woff2') format('woff2'),
+			url('../fonts/Tida/TildaSansVF.woff2') format('woff2 supports variations'),
 			url('../fonts/Tida/TildaSansVF.woff') format('woff'),
 			url('../fonts/Tida/TildaSansVF.ttf') format('truetype');
 	font-weight: 600;

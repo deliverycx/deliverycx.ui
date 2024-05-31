@@ -42,7 +42,7 @@ const OrderAdressMap: FC<IProps> = ({ formik }) => {
 			setIsModalOpened(true)
 		} else {
 			if (orderDeliveryAddress) {
-				navigate(ROUTE_APP.MAP.DELIVERY_MAP + `/${orderDeliveryAddress.address}${orderDeliveryAddress.house}?query=${JSON.stringify(orderDeliveryAddress)}`)
+				navigate(ROUTE + `/${orderDeliveryAddress.address}${orderDeliveryAddress.house}?query=${JSON.stringify(orderDeliveryAddress)}`)
 
 			} else {
 				navigate(ROUTE)

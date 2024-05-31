@@ -22,22 +22,19 @@ export function useShopViewModel(this: any) {
 	//const isDesctomMediaQuery = useMediaQuery({ minWidth: process.env.REACT_APP_MEDIAQUERY_DESC })
 	const descQuery = isDesctomMediaQuery()
 
-	const { data:nomenclatures, isLoading } = useQuery('shop', async () => await shopUseCase.getNomenclature(pointid), {
-		refetchOnWindowFocus: false,
-		cacheTime:5,
-		enabled: !!pointid,
+
+	const { data:nomenclatures, isLoading } = useQuery('shop', async () => await shopUseCase.getNomenclature(pointid),{
+		enabled:!!pointid
 	})
 
+
+
 	
-	
-
-
-
 
 
 	useEffect(()=>{
 		if(organization && organization.redirect && organization.redirect.redirectON){
-			setPointid(undefined)
+			//setPointid(undefined)
 			Redirects(organization.redirect)
 		
 		}else{

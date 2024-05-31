@@ -62,7 +62,7 @@ const StocksDesc:FC<{organization:string}> = ({organization}) =>{
 			getStocks(process.env.REACT_APP_DEFAULT_ORG as string)
 		}
 	},[organization])
-		/*
+		
     const settings = {
         className: "center",
         infinite: true,
@@ -72,7 +72,7 @@ const StocksDesc:FC<{organization:string}> = ({organization}) =>{
         dots: true,
         dotsClass:'stocks__points'
       };
-			*/
+			/*
 			const settings = {
 				className: "center",
 				centerMode: true,
@@ -84,7 +84,7 @@ const StocksDesc:FC<{organization:string}> = ({organization}) =>{
 				slidesPerRow: 1,
 				dots: true,
 				dotsClass:'stocks__points'
-			};
+			};*/
 
     return (
         <div className="stocks-desc">

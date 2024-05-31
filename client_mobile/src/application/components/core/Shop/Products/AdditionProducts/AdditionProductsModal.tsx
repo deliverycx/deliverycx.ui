@@ -17,6 +17,7 @@ const AdditionProductsModal: FC<{ setIsOpened: any }> = ({ setIsOpened }) => {
 		<>
 			<div className="modal__bg" onClick={() => setIsOpened(false)}></div>
 				<div className="modal_desctop addtionalproduct_modal">
+					<div className="addtionalproduct_modal_box">
 					<div className="addtionalproduct_modal_head">
 						<div className="addtionalproduct_modal_head-img">
 							<svg width="24" height="19" viewBox="0 0 24 19" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -29,8 +30,15 @@ const AdditionProductsModal: FC<{ setIsOpened: any }> = ({ setIsOpened }) => {
 							</svg>
 						</div>
 					</div>
-					<HOCAdditionProducts />
+					<div className="addtionalproduct_modal_container">
+						<HOCAdditionProducts />
+					</div>
+					
+					
+					</div>
+					<div className="addtionalproduct_modal_box-btn">
 					<button className="addtionalproduct_modal-btn" onClick={handlerGoOrder}>Продолжить</button>
+					</div>
 				</div>
 			
 

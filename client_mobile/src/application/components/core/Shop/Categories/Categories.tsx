@@ -28,7 +28,7 @@ const Categories: FC<IProps> = ({ nomenclatureCategories,setCat }) => {
 
 	
 
-	
+	//console.log(currentSlide);
 
 
 	return (
@@ -46,6 +46,7 @@ const Categories: FC<IProps> = ({ nomenclatureCategories,setCat }) => {
 			{
 				categories && categories.map((category: ICategory, i: number) => {
 					const CN = cn("categories__item", { active: currentSlide === i });
+					//console.log(currentSlide,i,category.name);
 					if (category.description !== 'HIDDEN') {
 						return (
 							<div key={i}

@@ -32,7 +32,16 @@ export function useCategoriesViewModel({categories,setCat}:{categories: ICategor
 		let time: null | ReturnType<typeof setTimeout> = null
 		if (category && slider.current) {
 			const catIndex = categories.findIndex((cat) => cat.id === category.id)
-			setCat(categories[catIndex])
+
+			if(catIndex === -1){
+				setCat(categories[0])
+				shopModel.actionSelectCategory(categories[0])
+			}else{
+				setCat(categories[catIndex])
+			}
+			
+
+			
 		
 			time = setTimeout(() => {
 

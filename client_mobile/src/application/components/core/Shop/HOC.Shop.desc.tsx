@@ -16,11 +16,11 @@ const HOCShopDesc = () => {
 	return (
 		<>
 			<div className="categories-desc">
+					
+				<div className="container">
 					{
 						organization ? <StocksDesc organization={organization.guid} /> : <StocksDesc organization={process.env.REACT_APP_DEFAULT_ORG as string} />
 					}
-				<div className="container">
-					
 					{
 						!isLoading && nomenclatures ?
 							nomenclatures.categoryes && <Categories nomenclatureCategories={nomenclatures.categoryes} setCat={setSelectCat} /> : <LoaderProduct />

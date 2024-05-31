@@ -10,6 +10,7 @@ export class ShopUseCase{
 	){}
 
 	async getNomenclature(pointid:string | undefined){
+		console.log('pointid',pointid);
 		return pointid && await this.shopModel.reposityNomenclature(pointid)
 	}
 
