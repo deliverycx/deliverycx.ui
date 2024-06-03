@@ -1,73 +1,73 @@
-.profile{
+.profile {
   display: flex;
   flex-direction: column;
   height: 100vh;
   padding: 56px 0 72px;
   overflow-y: auto;
 
-  &-content{
+  &-content {
     margin-top: 15px;
     display: flex;
     flex-direction: column;
     flex: 1 0 auto;
     padding: 0 16px;
 
-    &__info{
+    &__info {
       display: flex;
       flex-direction: column;
       gap: 8px;
       padding: 16px 0;
 
-      &-name{
+      &-name {
         color: $c_red;
       }
-      &-numb{
-        color: #4D4D4D;
+      &-numb {
+        color: #4d4d4d;
       }
     }
 
-    &__gift{
+    &__gift {
       display: flex;
       flex-direction: column;
       gap: 16px;
       padding: 24px;
       border-radius: 17px;
-      background: #8D191D;
+      background: #8d191d;
       box-shadow: 0 4px 24px 0 rgba(0, 0, 0, 0.12);
 
-      &-header{
+      &-header {
         display: flex;
         align-items: center;
         justify-content: center;
         gap: 44px;
-        color: #FFF;
+        color: #fff;
 
-        button{
+        button {
           padding: 4px;
-          img{
+          img {
             width: 24px;
             height: 24px;
           }
         }
       }
 
-      &__content{
+      &__content {
         display: grid;
         grid-template-columns: repeat(6, 1fr);
         justify-content: center;
         align-content: center;
         gap: 8px;
 
-        &-item{
+        &-item {
           width: 40px;
           height: 40px;
 
-          svg{
+          svg {
             fill: #731418;
           }
 
-          &.active{
-              svg{
+          &.active {
+            svg {
               fill: white;
             }
           }
@@ -75,13 +75,13 @@
       }
     }
 
-    &__list{
+    &__list {
       display: flex;
       flex-direction: column;
       gap: 8px;
       padding: 16px 0;
 
-      &-link{
+      &-link {
         display: flex;
         justify-content: space-between;
         align-items: center;
@@ -93,7 +93,7 @@
         font-weight: 600;
         line-height: 20px;
 
-        svg{
+        svg {
           padding: 0 4px 0 0;
           width: 24px;
           height: 24px;
@@ -102,31 +102,29 @@
     }
   }
 
-	.gift_info{
-		display: flex;
-		justify-content: space-between;
-		.gift_info-box{
-			
-			color: #fff;
-			span{
-				display: block;
-				font-size: 12px;
-			}
-			.gift_info-box-count{
-				font-size: 18px;
-				font-weight: 600;
-			}
+  .gift_info {
+    display: flex;
+    justify-content: space-between;
+    .gift_info-box {
+      color: #fff;
+      span {
+        display: block;
+        font-size: 12px;
+      }
+      .gift_info-box-count {
+        font-size: 18px;
+        font-weight: 600;
+      }
+    }
+  }
 
-		}
-	}
-
-  &__button{
+  &__button {
     display: flex;
     margin-bottom: 15px;
     flex-direction: column;
     padding: 16px;
-    button{
-      img{
+    button {
+      img {
         width: 24px;
         height: 24px;
       }

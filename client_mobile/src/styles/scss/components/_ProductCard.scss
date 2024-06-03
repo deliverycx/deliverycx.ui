@@ -1,390 +1,385 @@
+.productbox {
+  position: relative;
+  bottom: 70px;
+  .product__modal-buttons {
+    bottom: 56px;
+  }
+}
+.modal_desc .productbox {
+  bottom: 0;
+  .product__modal-buttons {
+    bottom: 0;
+  }
+}
+.product-card {
+  display: flex;
+  flex-direction: column;
+  flex: 1 1 0;
+  width: 100%;
+  min-width: 160px;
+  border-radius: 17px;
+  background: #fff;
+  box-shadow: 0 4px 24px 0 rgba(0, 0, 0, 0.12);
+  cursor: pointer;
+  outline: none;
 
-.productbox{
-	position: relative;
-	bottom: 70px;
-	.product__modal-buttons{
-		bottom: 56px;
-	}
-}
-.modal_desc .productbox{
-	bottom: 0;
-	.product__modal-buttons{
-		bottom: 0;
-	}
-}
-.product-card{
+  &-img {
+    position: relative;
     display: flex;
-    flex-direction: column;
-    flex: 1 1 0;
-    width: 100%;
-    min-width: 160px;
-    border-radius: 17px;
-    background: #FFF;
-    box-shadow: 0 4px 24px 0 rgba(0, 0, 0, 0.12);
+    align-self: center;
+    justify-content: center;
     cursor: pointer;
-		outline: none;
-		
-		
-    &-img{
-      position: relative;
-      display: flex;
-      align-self: center;
-      justify-content: center;
-			cursor: pointer;
-			
-      img{
-        border-radius: 17px 17px 0 0;
-        width: 160px;
-        height: 160px;
 
-        .ended &{
-          opacity: 0.4;
-        }
-      }
-    }
+    img {
+      border-radius: 17px 17px 0 0;
+      width: 160px;
+      height: 160px;
 
-    &-sale{
-      display: none;
-
-      .sale &{
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        position: absolute;
-        left: 8px;
-        bottom: 8px;
-        padding: 0 2px;
-        transform: rotate(-5deg);
-        border-radius: 4px;
-        background: #8D191D;
-        color: #FFF;
-        font-size: 14px;
-        font-weight: 700;
-        line-height: 16px;
-      }
-    }
-
-    &.ended {
-      pointer-events: none;
-
-      .product-card-sale {
-        background: #BFBFBF;
-      }
-			
-    }
-
-    &-ended{
-      display: none;
-			
-      .ended &{
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        position: absolute;
-        left: 25px;
-        bottom: 55px;
-        padding: 4px;
-        transform: rotate(-10deg);
-        border-radius: 8px;
-        background: #FDCB3D;
-        color: $c-black;
-        text-align: center;
-        font-size: 18px;
-        font-weight: 700;
-        line-height: 20px;
-      }
-    }
-
-    &__content{
-      display: flex;
-      flex-direction: column;
-      gap: 4px;
-      flex: 1 1 0;
-      padding: 8px 8px 0 8px;
-			
-      &-title{
-        flex: 1 1 0;
-        color: $c-black;
-				cursor: pointer;
-        font-weight: 600;
-				font-size: 16px;
-
-      }
-
-      &__info{
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-
-        &-weight{
-          width: 50px;
-          color: #B3B3B3;
-					font-size: 20px;
-					position: relative;
-					top: 2px;
-          .ended &{
-            color: #BFBFBF;
-          }
-        }
-      }
-    }
-
-    &__button{
-      display: flex;
-      flex-direction: column;
-      justify-content: flex-end;
-      padding: 8px;
-
-      .addtocart{
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        gap: 4px;
-        text-decoration: none;
-        padding: 4px;
-        color: $c_red;
-        font-size: 16px;
-        font-weight: 600;
-        line-height: 20px;
-        border: none;
-        border-radius: 12px;
-				cursor: pointer;
-        background: #E6E6E6;
-				font-family: Tilda Sans VF;
-
-        & svg{
-          width: 16px;
-          height: 16px;
-          fill: #8D191D;
-        }
-
-        .ended &{
-          color: #BFBFBF;
-          background: #F2F2F2;
-
-          svg{
-            fill: #BFBFBF;
-          }
-        }
+      .ended & {
+        opacity: 0.4;
       }
     }
   }
 
-  .basket__more .product-card{
-    min-width: 104px;
+  &-sale {
+    display: none;
 
-    &.added{
-      button{
-        background: #8D191D;
-        svg{
-          fill: #fff;
-
-          path{
-            d: path("M5.99975 10.7999L3.66642 8.46655C3.40642 8.20655 2.99309 8.20655 2.73309 8.46655C2.47309 8.72655 2.47309 9.13988 2.73309 9.39988L5.52642 12.1932C5.78642 12.4532 6.20642 12.4532 6.46642 12.1932L13.5331 5.13322C13.7931 4.87322 13.7931 4.45988 13.5331 4.19988C13.2731 3.93988 12.8598 3.93988 12.5998 4.19988L5.99975 10.7999Z");
-          }
-        }
-      }
-    }
-
-    &-img{
-
-      img{
-        width: 104px;
-        height: 104px;
-      }
-    }
-
-    &-ended{
-      left: 7px;
-      bottom: 35px;
+    .sale & {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: absolute;
+      left: 8px;
+      bottom: 8px;
+      padding: 0 2px;
+      transform: rotate(-5deg);
+      border-radius: 4px;
+      background: #8d191d;
+      color: #fff;
       font-size: 14px;
       font-weight: 700;
       line-height: 16px;
     }
+  }
 
-    &.ended {
-      .product-card__content__info{
-        &-title {
-          color: #B3B3B3;
-        }
+  &.ended {
+    pointer-events: none;
 
-        &-weight{
-          color: #B3B3B3;
-          width: 50px;
-        }
-      }
-      .product-card__button{
-        button{
-          color: #BFBFBF;
-          background: #F2F2F2;
+    .product-card-sale {
+      background: #bfbfbf;
+    }
+  }
 
-          svg{
-            fill: #BFBFBF;
-          }
+  &-ended {
+    display: none;
+
+    .ended & {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: absolute;
+      left: 25px;
+      bottom: 55px;
+      padding: 4px;
+      transform: rotate(-10deg);
+      border-radius: 8px;
+      background: #fdcb3d;
+      color: $c-black;
+      text-align: center;
+      font-size: 18px;
+      font-weight: 700;
+      line-height: 20px;
+    }
+  }
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    flex: 1 1 0;
+    padding: 8px 8px 0 8px;
+
+    &-title {
+      flex: 1 1 0;
+      color: $c-black;
+      cursor: pointer;
+      font-weight: 600;
+      font-size: 16px;
+    }
+
+    &__info {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+
+      &-weight {
+        width: 50px;
+        color: #b3b3b3;
+        font-size: 20px;
+        position: relative;
+        top: 2px;
+        .ended & {
+          color: #bfbfbf;
         }
       }
     }
+  }
 
-    &-sale{
-      font-size: 12px;
+  &__button {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding: 8px;
+
+    .addtocart {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 4px;
+      text-decoration: none;
+      padding: 4px;
+      color: $c_red;
+      font-size: 16px;
+      font-weight: 600;
+      line-height: 20px;
+      border: none;
+      border-radius: 12px;
+      cursor: pointer;
+      background: #e6e6e6;
+      font-family: Tilda Sans VF;
+
+      & svg {
+        width: 16px;
+        height: 16px;
+        fill: #8d191d;
+      }
+
+      .ended & {
+        color: #bfbfbf;
+        background: #f2f2f2;
+
+        svg {
+          fill: #bfbfbf;
+        }
+      }
+    }
+  }
+}
+
+.basket__more .product-card {
+  min-width: 104px;
+
+  &.added {
+    button {
+      background: #8d191d;
+      svg {
+        fill: #fff;
+
+        path {
+          d: path(
+            'M5.99975 10.7999L3.66642 8.46655C3.40642 8.20655 2.99309 8.20655 2.73309 8.46655C2.47309 8.72655 2.47309 9.13988 2.73309 9.39988L5.52642 12.1932C5.78642 12.4532 6.20642 12.4532 6.46642 12.1932L13.5331 5.13322C13.7931 4.87322 13.7931 4.45988 13.5331 4.19988C13.2731 3.93988 12.8598 3.93988 12.5998 4.19988L5.99975 10.7999Z'
+          );
+        }
+      }
+    }
+  }
+
+  &-img {
+    img {
+      width: 104px;
+      height: 104px;
+    }
+  }
+
+  &-ended {
+    left: 7px;
+    bottom: 35px;
+    font-size: 14px;
+    font-weight: 700;
+    line-height: 16px;
+  }
+
+  &.ended {
+    .product-card__content__info {
+      &-title {
+        color: #b3b3b3;
+      }
+
+      &-weight {
+        color: #b3b3b3;
+        width: 50px;
+      }
+    }
+    .product-card__button {
+      button {
+        color: #bfbfbf;
+        background: #f2f2f2;
+
+        svg {
+          fill: #bfbfbf;
+        }
+      }
+    }
+  }
+
+  &-sale {
+    font-size: 12px;
+  }
+
+  &__content {
+    &__info {
+      &-title {
+        flex: 1 1 0;
+        color: $c-black;
+        font-size: 14px;
+        font-weight: 700;
+        line-height: 16px;
+      }
+
+      &-weight {
+        width: 50px;
+        color: #b3b3b3;
+        font-size: 20px;
+        font-weight: 400;
+        line-height: 24px;
+      }
     }
 
-    &__content{
-      &__info{
-        
+    &__price {
+      display: flex;
+      justify-content: flex-end;
 
-        &-title{
-          flex: 1 1 0;
-          color: $c-black;
+      &-cost {
+        font-size: 18px;
+        font-weight: 700;
+        line-height: 20px;
+        span {
           font-size: 14px;
-          font-weight: 700;
+          font-weight: 400;
           line-height: 16px;
         }
-
-        &-weight{
-          width: 50px;
-          color: #B3B3B3;
-          font-size: 20px;
-          font-weight: 400;
-          line-height: 24px;
-        }
-      }
-
-      &__price{
-        display: flex;
-        justify-content: flex-end;
-
-        &-cost{
-          font-size: 18px;
-          font-weight: 700;
-          line-height: 20px;
-          span {
-            font-size: 14px;
-            font-weight: 400;
-            line-height: 16px;
-          }
-        }
-      }
-    }
-
-    &__button{
-      button{
-        height: 28px;
-        svg{
-          fill: #8D191D;
-          path{
-            d: path("M11.9997 8.66683H8.66634V12.0002C8.66634 12.3668 8.36634 12.6668 7.99967 12.6668C7.63301 12.6668 7.33301 12.3668 7.33301 12.0002V8.66683H3.99967C3.63301 8.66683 3.33301 8.36683 3.33301 8.00016C3.33301 7.6335 3.63301 7.3335 3.99967 7.3335H7.33301V4.00016C7.33301 3.6335 7.63301 3.3335 7.99967 3.3335C8.36634 3.3335 8.66634 3.6335 8.66634 4.00016V7.3335H11.9997C12.3663 7.3335 12.6663 7.6335 12.6663 8.00016C12.6663 8.36683 12.3663 8.66683 11.9997 8.66683Z");
-          }
-        }
       }
     }
   }
 
-  .price--fix {
-    width: 100%!important;
-  }
-
-  .product-card__content__price-cost, .product-card__content__info-cost{
-    display: flex;
-    width: 50%;
-    justify-content: end;
-    gap: 4px;
-    color: $c_red;
-		font-size: 21px;
-		line-height: 30px;
-		font-weight: 700;
-		margin-top: 5px;
-    .ended &{
-      color: #BFBFBF;
-    }
-
-    span {
-      small{
-        .ended &{
-          color: #B3B3B3;
-        }
-      }
-
-      &:after {
-        .ended &{
-          background: #BFBFBF;
+  &__button {
+    button {
+      height: 28px;
+      svg {
+        fill: #8d191d;
+        path {
+          d: path(
+            'M11.9997 8.66683H8.66634V12.0002C8.66634 12.3668 8.36634 12.6668 7.99967 12.6668C7.63301 12.6668 7.33301 12.3668 7.33301 12.0002V8.66683H3.99967C3.63301 8.66683 3.33301 8.36683 3.33301 8.00016C3.33301 7.6335 3.63301 7.3335 3.99967 7.3335H7.33301V4.00016C7.33301 3.6335 7.63301 3.3335 7.99967 3.3335C8.36634 3.3335 8.66634 3.6335 8.66634 4.00016V7.3335H11.9997C12.3663 7.3335 12.6663 7.6335 12.6663 8.00016C12.6663 8.36683 12.3663 8.66683 11.9997 8.66683Z'
+          );
         }
       }
     }
   }
+}
 
-	.dditional-item-sosus{
-		display: flex;
-		flex-wrap: wrap;
-		span{
-			color: #B3B3B3;
-		}
-	}
-	.addsous{
-		.custom-checkbox {
-      position: absolute;
-      z-index: -1;
-      opacity: 0;
+.price--fix {
+  width: 100% !important;
+}
+
+.product-card__content__price-cost,
+.product-card__content__info-cost {
+  display: flex;
+  width: 50%;
+  justify-content: end;
+  gap: 4px;
+  color: $c_red;
+  font-size: 21px;
+  line-height: 30px;
+  font-weight: 700;
+  margin-top: 5px;
+  .ended & {
+    color: #bfbfbf;
+  }
+
+  span {
+    small {
+      .ended & {
+        color: #b3b3b3;
+      }
     }
 
-    /* для элемента label, связанного с .custom-checkbox */
-    .custom-checkbox+label {
-      display: inline-flex;
-      align-items: center;
-      user-select: none;
+    &:after {
+      .ended & {
+        background: #bfbfbf;
+      }
     }
+  }
+}
 
-    /* создание в label псевдоэлемента before со следующими стилями */
-    .custom-checkbox+label::before {
-      content: '';
-      display: inline-block;
-      width: 1em;
-      height: 1em;
-      flex-shrink: 0;
-      flex-grow: 0;
-      border: 1px solid #B3B3B3;
-      border-radius: 0.25em;
-      margin-right: 0.5em;
-      background-repeat: no-repeat;
-      background-position: center center;
-      cursor: pointer;
-    }
+.dditional-item-sosus {
+  display: flex;
+  flex-wrap: wrap;
+  span {
+    color: #b3b3b3;
+  }
+}
+.addsous {
+  .custom-checkbox {
+    position: absolute;
+    z-index: -1;
+    opacity: 0;
+  }
 
-    /* стили при наведении курсора на checkbox */
-    .custom-checkbox:not(:disabled):not(:checked)+label:hover::before {
-      border-color: #B3B3B3;
-    }
+  /* для элемента label, связанного с .custom-checkbox */
+  .custom-checkbox + label {
+    display: inline-flex;
+    align-items: center;
+    user-select: none;
+  }
 
-    /* стили для активного чекбокса (при нажатии на него) */
-    .custom-checkbox:not(:disabled):active+label::before {
-      
-    }
+  /* создание в label псевдоэлемента before со следующими стилями */
+  .custom-checkbox + label::before {
+    content: '';
+    display: inline-block;
+    width: 1em;
+    height: 1em;
+    flex-shrink: 0;
+    flex-grow: 0;
+    border: 1px solid #b3b3b3;
+    border-radius: 0.25em;
+    margin-right: 0.5em;
+    background-repeat: no-repeat;
+    background-position: center center;
+    cursor: pointer;
+  }
 
-    /* стили для чекбокса, находящегося в фокусе */
-    .custom-checkbox:focus+label::before {
-      box-shadow: none
-    }
+  /* стили при наведении курсора на checkbox */
+  .custom-checkbox:not(:disabled):not(:checked) + label:hover::before {
+    border-color: #b3b3b3;
+  }
 
-    /* стили для чекбокса, находящегося в фокусе и не находящегося в состоянии checked */
-    .custom-checkbox:focus:not(:checked)+label::before {
-      border-color: #B3B3B3;
-    }
+  /* стили для активного чекбокса (при нажатии на него) */
+  .custom-checkbox:not(:disabled):active + label::before {
+  }
 
-    /* стили для чекбокса, находящегося в состоянии checked */
-    .custom-checkbox:checked+label::before {
-     
-      background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' width='18' height='18' viewBox='0 0 18 18'%3e%3cpath fill='%238D191D' d='M16 0H2C0.9 0 0 0.9 0 2V16C0 17.1 0.9 18 2 18H16C17.1 18 18 17.1 18 16V2C18 0.9 17.1 0 16 0ZM7.71 13.29C7.32 13.68 6.69 13.68 6.3 13.29L2.71 9.7C2.32 9.31 2.32 8.68 2.71 8.29C3.1 7.9 3.73 7.9 4.12 8.29L7 11.17L13.88 4.29C14.27 3.9 14.9 3.9 15.29 4.29C15.68 4.68 15.68 5.31 15.29 5.7L7.71 13.29Z'/%3e%3c/svg%3e");
-    }
+  /* стили для чекбокса, находящегося в фокусе */
+  .custom-checkbox:focus + label::before {
+    box-shadow: none;
+  }
 
-    /* стили для чекбокса, находящегося в состоянии disabled */
-    .custom-checkbox:disabled+label::before {
-      background-color: #e9ecef;
-    }
-	}
-		
+  /* стили для чекбокса, находящегося в фокусе и не находящегося в состоянии checked */
+  .custom-checkbox:focus:not(:checked) + label::before {
+    border-color: #b3b3b3;
+  }
 
-	@media (min-width: 480px) {
-		.product-card {
-			max-width: 180px;
-		}
-	}	
+  /* стили для чекбокса, находящегося в состоянии checked */
+  .custom-checkbox:checked + label::before {
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' width='18' height='18' viewBox='0 0 18 18'%3e%3cpath fill='%238D191D' d='M16 0H2C0.9 0 0 0.9 0 2V16C0 17.1 0.9 18 2 18H16C17.1 18 18 17.1 18 16V2C18 0.9 17.1 0 16 0ZM7.71 13.29C7.32 13.68 6.69 13.68 6.3 13.29L2.71 9.7C2.32 9.31 2.32 8.68 2.71 8.29C3.1 7.9 3.73 7.9 4.12 8.29L7 11.17L13.88 4.29C14.27 3.9 14.9 3.9 15.29 4.29C15.68 4.68 15.68 5.31 15.29 5.7L7.71 13.29Z'/%3e%3c/svg%3e");
+  }
+
+  /* стили для чекбокса, находящегося в состоянии disabled */
+  .custom-checkbox:disabled + label::before {
+    background-color: #e9ecef;
+  }
+}
+
+@media (min-width: 480px) {
+  .product-card {
+    max-width: 180px;
+  }
+}

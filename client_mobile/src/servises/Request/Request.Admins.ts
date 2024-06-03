@@ -1,15 +1,14 @@
-import { ApiAdminSuper, methods } from "servises/Axios/AxiosApi"
+import { ApiAdminSuper, methods } from 'servises/Axios/AxiosApi';
 
 class RequestAdmins extends ApiAdminSuper {
- 
-	@methods('get')
-	getOraganizationCount(orgid:string){
-		return this.request<any>(`/counterhinkal/buorg?organization=${orgid}`)
-	}
+  @methods('get')
+  getOraganizationCount(orgid: string) {
+    return this.request<any>(`/counterhinkal/buorg?organization=${orgid}`);
+  }
 
-	@methods('post')
-	setOraganizationCount(body:any){
-		return this.request(`/counterhinkal/setcount`)
-	}
+  @methods('post')
+  setOraganizationCount(body: any) {
+    return this.request(`/counterhinkal/setcount`);
+  }
 }
-export default new RequestAdmins()
+export default new RequestAdmins();

@@ -4,7 +4,7 @@
 
     background-color: $background-color;
     transition-property: color, background-color;
-    transition-duration: .3s;
+    transition-duration: 0.3s;
     transition-timing-function: ease;
     &:hover {
       color: $text-color;
@@ -20,7 +20,7 @@
       background-color: darken($background-color, 7%);
     }
     &[disabled] {
-      opacity: .5;
+      opacity: 0.5;
     }
   }
 }

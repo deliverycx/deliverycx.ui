@@ -1,5 +1,5 @@
 .btn {
-  font-family: "Tilda Sans", sans-serif;
+  font-family: 'Tilda Sans', sans-serif;
   cursor: pointer;
   display: flex;
   justify-content: center;
@@ -7,7 +7,7 @@
   outline: none;
   border: none;
   background: none;
-  color: #FFF;
+  color: #fff;
   border-radius: 12px;
   text-decoration: none;
 
@@ -115,7 +115,7 @@
     }
   }
 
-  &-icon-modal{
+  &-icon-modal {
     padding: 4px;
     gap: 4px;
     font-size: 16px;
@@ -124,7 +124,7 @@
     line-height: 20px;
   }
 
-  &-none-defualt{
+  &-none-defualt {
     padding: 4px;
     gap: 4px;
     font-size: 18px;
@@ -135,6 +135,6 @@
   }
 }
 
-@include btn("red", $c-red, #fff);
-@include btn("gray", #E6E6E6, #8D191D); 
-@include btn("none", transparent, $c-red);
+@include btn('red', $c-red, #fff);
+@include btn('gray', #e6e6e6, #8d191d);
+@include btn('none', transparent, $c-red);

@@ -1,11 +1,11 @@
-import { CityEntiti } from "../domain/city.entity"
-import { cityDTO } from "../interfaces/city.dto"
+import { CityEntiti } from '../domain/city.entity';
+import { cityDTO } from '../interfaces/city.dto';
 
- export type ICityResponse  = {
-	id:string
-	name:string
-	isHidden:boolean
-	countOrg:number
-}
+export type ICityResponse = {
+  id: string;
+  name: string;
+  isHidden: boolean;
+  countOrg: number;
+};
 
-export type ICity  = CityEntiti
+export type ICity = CityEntiti;

@@ -1,4 +1,4 @@
 export type IOrderuserProfile = {
-	name:string
-	phone:string
-}
+  name: string;
+  phone: string;
+};

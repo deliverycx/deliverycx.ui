@@ -1,6 +1,6 @@
-import { Subject } from "rxjs"
+import { Subject } from 'rxjs';
 
-export class OrganizationStatusComandBus{
-	queryComandSubject = new Subject()
-	handlersComandSubject = new Subject()
+export class OrganizationStatusComandBus {
+  queryComandSubject = new Subject();
+  handlersComandSubject = new Subject();
 }

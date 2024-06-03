@@ -1,31 +1,35 @@
-import { makeObservable, observable, action } from "mobx";
-import { ProfileRepository } from "../data/profile.repository";
-import { IProfile } from "../interfaces/profile.type";
-import { makePersistable } from "mobx-persist-store";
+import { makeObservable, observable, action } from 'mobx';
+import { ProfileRepository } from '../data/profile.repository';
+import { IProfile } from '../interfaces/profile.type';
+import { makePersistable } from 'mobx-persist-store';
 
-export class ProfileModel extends ProfileRepository{
-	profile:IProfile | null = null
+export class ProfileModel extends ProfileRepository {
+  profile: IProfile | null = null;
 
-	constructor() {
-		super()
-		makeObservable(this, {
-			profile:observable,
-			actionProfile:action,
-			actionLogoutProfile:action
-		})
-		makePersistable(this, { name: 'profile', properties: ['profile'],storage: window.localStorage });
-	}
+  constructor() {
+    super();
+    makeObservable(this, {
+      profile: observable,
+      actionProfile: action,
+      actionLogoutProfile: action,
+    });
+    makePersistable(this, {
+      name: 'profile',
+      properties: ['profile'],
+      storage: window.localStorage,
+    });
+  }
 
-	async actionProfile(userid:string){
-		const resProfile = await this.repositoryGetProfile(userid)
-		if(resProfile){
-			this.profile = resProfile
-		}else{
-			this.profile = null
-		}
-	}
+  async actionProfile(userid: string) {
+    const resProfile = await this.repositoryGetProfile(userid);
+    if (resProfile) {
+      this.profile = resProfile;
+    } else {
+      this.profile = null;
+    }
+  }
 
-	actionLogoutProfile(){
-		this.profile = null
-	}
+  actionLogoutProfile() {
+    this.profile = null;
+  }
 }

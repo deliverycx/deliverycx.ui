@@ -6,7 +6,7 @@
   color: #333333;
   text-align: center;
   font-size: 26px;
-  font-family: 'TildaSans',Arial,sans-serif;
+  font-family: 'TildaSans', Arial, sans-serif;
   line-height: 1.55;
   font-weight: 600;
   background-position: center center;
@@ -28,7 +28,7 @@
     box-shadow: none;
     text-decoration: none;
     font-size: 13px;
-    font-family: 'TildaSans',Arial,sans-serif;
+    font-family: 'TildaSans', Arial, sans-serif;
     font-weight: 600;
     visibility: visible;
   }
@@ -44,7 +44,7 @@
   padding: 9px 31.5px;
   color: #132a3e;
   font-size: 15px;
-  font-family: 'monrope',Arial,sans-serif;
+  font-family: 'monrope', Arial, sans-serif;
   text-align: center;
   margin: 25px 15px 0 15px;
   cursor: pointer;
@@ -55,8 +55,10 @@
 }
 
 .header-back {
-  box-shadow: 0px 10px 15px rgba(0, 0, 0, 0.05),
-  0px 5px 10px rgba(0, 0, 0, 0.05), 0px 3px 5px rgba(0, 0, 0, 0.05);
+  box-shadow:
+    0px 10px 15px rgba(0, 0, 0, 0.05),
+    0px 5px 10px rgba(0, 0, 0, 0.05),
+    0px 3px 5px rgba(0, 0, 0, 0.05);
   padding: 30px 0;
   z-index: 2;
 
@@ -64,7 +66,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
-		position: relative;
+    position: relative;
   }
 
   &__return-btn {

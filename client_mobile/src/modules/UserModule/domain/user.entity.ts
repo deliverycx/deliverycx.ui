@@ -1,15 +1,14 @@
-import { IsNotEmpty, IsString, IsOptional } from "class-validator";
-import { IUserGuest } from "../interfaces/user.type";
-
+import { IsNotEmpty, IsString, IsOptional } from 'class-validator';
+import { IUserGuest } from '../interfaces/user.type';
 
 export class UserEntity {
-	@IsNotEmpty()
-	id!: string
+  @IsNotEmpty()
+  id!: string;
 
-	@IsString()
-	username!: string
+  @IsString()
+  username!: string;
 
-	@IsString()
-	@IsOptional()
-	phone?: string
+  @IsString()
+  @IsOptional()
+  phone?: string;
 }

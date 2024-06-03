@@ -1,11 +1,11 @@
-.personal{
+.personal {
   display: flex;
   flex-direction: column;
   height: 100vh;
   padding: 56px 0 72px;
   overflow-y: auto;
 
-  &-content{
+  &-content {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -13,7 +13,7 @@
     padding: 16px;
     flex: 1 0 auto;
 
-    &__items{
+    &__items {
       width: 100%;
       display: flex;
       gap: 8px;
@@ -21,8 +21,8 @@
       align-items: center;
     }
 
-    label{
-      p{
+    label {
+      p {
         color: #333;
         font-size: 14px;
         font-weight: 400;
@@ -31,7 +31,7 @@
     }
   }
 
-  &-buttons{
+  &-buttons {
     display: flex;
     flex-direction: column;
     gap: 8px;

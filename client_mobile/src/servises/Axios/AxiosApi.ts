@@ -1,19 +1,19 @@
-import Api from "./AxiosCreate";
+import Api from './AxiosCreate';
 import axios, {
-    AxiosInstance,
-    AxiosPromise,
-    CancelTokenSource,
-    AxiosRequestConfig,
-    CancelToken
-} from "axios";
+  AxiosInstance,
+  AxiosPromise,
+  CancelTokenSource,
+  AxiosRequestConfig,
+  CancelToken,
+} from 'axios';
 
 type Iparams = {
-    params: {
-        method: string;
-        url: string;
-        data?: Record<string, unknown>;
-        cancelToken?: CancelToken;
-    };
+  params: {
+    method: string;
+    url: string;
+    data?: Record<string, unknown>;
+    cancelToken?: CancelToken;
+  };
 };
 /**
  * @abstract
@@ -29,24 +29,28 @@ type Iparams = {
  * @returns AxiosRequest
  */
 export abstract class ApiSuper {
-    protected readonly api: AxiosInstance = Api.getInstance(process.env.REACT_APP_API_URL as string).api;
-    protected params = {};
-    protected request<T>(url: string): AxiosPromise<T> {
-        return this.api({
-            ...this.params,
-            url
-        });
-    }
+  protected readonly api: AxiosInstance = Api.getInstance(
+    process.env.REACT_APP_API_URL as string,
+  ).api;
+  protected params = {};
+  protected request<T>(url: string): AxiosPromise<T> {
+    return this.api({
+      ...this.params,
+      url,
+    });
+  }
 }
 export abstract class ApiAdminSuper {
-	protected readonly api: AxiosInstance = Api.getInstance(process.env.REACT_APP_API_ADMIN as string).api;
-	protected params = {};
-	protected request<T>(url: string): AxiosPromise<T> {
-			return this.api({
-					...this.params,
-					url
-			});
-	}
+  protected readonly api: AxiosInstance = Api.getInstance(
+    process.env.REACT_APP_API_ADMIN as string,
+  ).api;
+  protected params = {};
+  protected request<T>(url: string): AxiosPromise<T> {
+    return this.api({
+      ...this.params,
+      url,
+    });
+  }
 }
 
 /**
@@ -60,19 +64,19 @@ export abstract class ApiAdminSuper {
  * @description добавляет токен в параметры
  */
 export function token(
-    target: any,
-    propertyKey: string,
-    descriptor: PropertyDescriptor
+  target: any,
+  propertyKey: string,
+  descriptor: PropertyDescriptor,
 ) {
-    const childFunction = descriptor.value;
-    descriptor.value = function (this: Iparams, ...arg: []) {
-        const productsRequestSource = axios.CancelToken.source();
-        this.params = {
-            ...this.params,
-            cancelToken: productsRequestSource.token
-        };
-        return childFunction.call(this, ...arg);
+  const childFunction = descriptor.value;
+  descriptor.value = function (this: Iparams, ...arg: []) {
+    const productsRequestSource = axios.CancelToken.source();
+    this.params = {
+      ...this.params,
+      cancelToken: productsRequestSource.token,
     };
+    return childFunction.call(this, ...arg);
+  };
 }
 
 /**
@@ -81,53 +85,53 @@ export function token(
  * @description в зависимости от метода, добавляет в params, method и data из аргументов управляющей функции
  * @returns вызывает управляющиею функцию
  */
-export function methods(method: "post" | "get" | "put" | "delete" | "patch") {
-    return function (
-        target: any,
-        propertyKey: string,
-        descriptor: PropertyDescriptor
-    ) {
-        const childFunction = descriptor.value;
-        const get_args = (fn: any) =>
-            fn
-                .toString()
-                .match(/\((.*?)\)/)[1]
-                .split(", ");
+export function methods(method: 'post' | 'get' | 'put' | 'delete' | 'patch') {
+  return function (
+    target: any,
+    propertyKey: string,
+    descriptor: PropertyDescriptor,
+  ) {
+    const childFunction = descriptor.value;
+    const get_args = (fn: any) =>
+      fn
+        .toString()
+        .match(/\((.*?)\)/)[1]
+        .split(', ');
 
-        descriptor.value = function (this: Iparams, ...arg: []) {
-            // eslint-disable-next-line no-case-declarations
+    descriptor.value = function (this: Iparams, ...arg: []) {
+      // eslint-disable-next-line no-case-declarations
 
-            const data = arg.reduce((acc, n, i) => {
-                if (typeof n === "object") {
-                    return Object.assign(acc, n);
-                } else {
-                    return acc;
-                    /*
+      const data = arg.reduce((acc, n, i) => {
+        if (typeof n === 'object') {
+          return Object.assign(acc, n);
+        } else {
+          return acc;
+          /*
                     return Object.assign(acc, {
                         [get_args(childFunction)[i]]: n
                     });
                     */
-                }
-            }, {});
-            if (method === "get") {
-                this.params = {
-                    ...this.params,
-                    method
-                };
-            } else if (
-                method === "post" ||
-                method === "put" ||
-                method === "delete" ||
-                method === "patch"
-            ) {
-                this.params = {
-                    ...this.params,
-                    method,
-                    data
-                };
-            }
-
-            return childFunction.call(this, ...arg);
+        }
+      }, {});
+      if (method === 'get') {
+        this.params = {
+          ...this.params,
+          method,
         };
+      } else if (
+        method === 'post' ||
+        method === 'put' ||
+        method === 'delete' ||
+        method === 'patch'
+      ) {
+        this.params = {
+          ...this.params,
+          method,
+          data,
+        };
+      }
+
+      return childFunction.call(this, ...arg);
     };
+  };
 }
