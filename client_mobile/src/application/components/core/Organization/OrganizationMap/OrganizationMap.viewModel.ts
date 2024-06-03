@@ -21,11 +21,14 @@ export function useOrganizationMapViewModel(this: any, { organizations, setCord,
 
 
 	const randomPoint = () => {
-		const randomindex = Math.floor(Math.random() * organizations.length)
-		dispatchPoint({
-			type: ReducerActionTypePoints.slidePoint,
-			payload: randomindex
-		});
+		if(!desc){
+			const randomindex = Math.floor(Math.random() * organizations.length)
+			dispatchPoint({
+				type: ReducerActionTypePoints.slidePoint,
+				payload: randomindex
+			});
+		}
+		
 	};
 
 	const placemarkClickHandler = (organization: IOrganization, index: number) => {
