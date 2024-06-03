@@ -185,7 +185,7 @@ const OrganizationTipeDelivery: FC<{ organization: any }> = ({ organization }) =
 	))
 
 
-	console.log(organization.redirect.redirectON);
+	
 
 	return (
 		<div className="institute-buttons">
