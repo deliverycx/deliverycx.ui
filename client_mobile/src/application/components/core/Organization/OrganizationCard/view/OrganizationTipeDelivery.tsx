@@ -58,7 +58,7 @@ const OrganizationTipeDelivery: FC<{ organization: any }> = ({ organization }) =
     return newTimeString;
 }
 
-
+	console.log(organization.redirect.redirectON);
 	
 	statusTSX && statusTSX.NoWorkPoint((
 		<>
@@ -185,7 +185,7 @@ const OrganizationTipeDelivery: FC<{ organization: any }> = ({ organization }) =
 	))
 
 
-
+	console.log(organization.redirect.redirectON);
 
 	return (
 		<div className="institute-buttons">
@@ -194,7 +194,14 @@ const OrganizationTipeDelivery: FC<{ organization: any }> = ({ organization }) =
 				switchMetod && switchMetod()
 			}
 			<OrganizationTableRestaurant organization={organization} />
-			<button className="btn btn-mini no-drag gomenu" onClick={()=>handlerSelectMenu(organization)}>Перейти в меню</button>
+			{
+				organization.delivery !== "NOWORK" &&
+				<button className="btn btn-mini no-drag gomenu" onClick={()=>handlerSelectMenu(organization)}>Перейти в меню</button>
+			}
+			{
+				organization.delivery === "NOWORK" && (organization.redirect && organization.redirect.redirectON) &&
+				<button className="btn btn-mini no-drag gomenu" onClick={()=>handlerSelectMenu(organization)}>Перейти в меню</button>
+			}
 			
 		</div>
 	)

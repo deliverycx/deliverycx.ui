@@ -44,7 +44,7 @@ export function useShopViewModel(this: any) {
 			}
 		}
 		
-	},[nomenclatures,isLoading])
+	},[organization])
 
 
 	useEffect(()=>{
