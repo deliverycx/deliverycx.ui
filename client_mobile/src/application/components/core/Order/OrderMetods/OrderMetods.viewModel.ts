@@ -1,18 +1,5 @@
-
-
-export function useOrderMetodsViewModel(this:any) {
-	
-	
-
-	this.data({
-
-	});
-	this.handlers({
-
-	});
-	this.status({
-
-	});
-
-
+export function useOrderMetodsViewModel(this: any) {
+  this.data({});
+  this.handlers({});
+  this.status({});
 }

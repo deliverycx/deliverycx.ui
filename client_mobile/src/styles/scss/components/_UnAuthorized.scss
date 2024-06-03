@@ -1,11 +1,13 @@
-.unauthorized,.authorized,.order-accepted{
+.unauthorized,
+.authorized,
+.order-accepted {
   display: flex;
   flex-direction: column;
   height: 100vh;
   padding: 56px 0 72px;
   overflow-y: auto;
 
-  &__content{
+  &__content {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -14,12 +16,12 @@
     flex: 1 0 auto;
     padding: 16px;
 
-    &-sticker{
+    &-sticker {
       display: flex;
       justify-content: center;
       align-items: center;
       padding: 16px 0;
-      img{
+      img {
         display: flex;
         align-items: center;
         justify-content: center;
@@ -28,7 +30,7 @@
       }
     }
 
-    &-title{
+    &-title {
       color: $c-black;
       text-align: center;
       font-size: 18px;
@@ -36,26 +38,26 @@
       line-height: 20px;
     }
 
-    &-text{
-      color: #4D4D4D;
+    &-text {
+      color: #4d4d4d;
       text-align: center;
       font-size: 16px;
       font-weight: 400;
       line-height: 20px;
     }
 
-    &-number{
+    &-number {
       display: flex;
       align-items: center;
       justify-content: center;
       gap: 4px;
 
-      color: #4D4D4D;
+      color: #4d4d4d;
       text-align: center;
       font-size: 16px;
       font-weight: 400;
       line-height: 20px;
-      span{
+      span {
         color: $c-black;
         text-align: center;
         font-size: 16px;
@@ -65,17 +67,17 @@
     }
   }
 
-  &__buttons{
+  &__buttons {
     display: flex;
     flex-direction: column;
     gap: 8px;
     padding: 16px;
-		width: 100%;
+    width: 100%;
   }
 }
 
-.checkout{
-	.order-accepted__content-title{
-		margin-bottom: 15px;
-	}
+.checkout {
+  .order-accepted__content-title {
+    margin-bottom: 15px;
+  }
 }

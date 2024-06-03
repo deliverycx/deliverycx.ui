@@ -1,11 +1,9 @@
-import * as yup from "yup";
+import * as yup from 'yup';
 // import debounce from 'lodash.debounce';
 // import axios from "axios";
 // import { useSelector } from "react-redux";
 // import { RootState } from "../store";
 // import store from "../store";
-
-
 
 // const findSiti = (GeoCode: {
 //     Components:
@@ -34,10 +32,9 @@ import * as yup from "yup";
 //         .metaDataProperty
 //         .GeocoderMetaData
 //         .Address
-        
- 
+
 //         if(+data.response.GeoObjectCollection.metaDataProperty.GeocoderResponseMetaData.found === 0 ) throw Error();
-        
+
 //         resolve(true);
 //     }catch(e){
 //         resolve(false);
@@ -46,89 +43,78 @@ import * as yup from "yup";
 
 // const debounceCheckAddress = debounce(checkAddress, 200);
 
-export const valid ={
-	name: yup
-			.string()
-			.required('Поле обязательно для заполнения'),
-	address: yup
-			.string()
-			.required('Все поля обезательны для заполнения'),
-	house: yup
-			.string()
-			.required('Все поля обезательны для заполнения'),		
-	phone: yup
-			.string()
-			.trim()
-			.matches(/^(\+7)(\s(\d){3}){2}(\s(\d){2}){2}/, {
-					message: "Не верный формат телефона"
-			})
-			.required('Поле обязательно для заполнения'),
-	email:yup.string().email()		
-}
+export const valid = {
+  name: yup.string().required('Поле обязательно для заполнения'),
+  address: yup.string().required('Все поля обезательны для заполнения'),
+  house: yup.string().required('Все поля обезательны для заполнения'),
+  phone: yup
+    .string()
+    .trim()
+    .matches(/^(\+7)(\s(\d){3}){2}(\s(\d){2}){2}/, {
+      message: 'Не верный формат телефона',
+    })
+    .required('Поле обязательно для заполнения'),
+  email: yup.string().email(),
+};
 
-const schemaBuild = (type:string) => {
+const schemaBuild = (type: string) => {
   switch (type) {
     case 'COURIER':
       return yup.object().shape({
-        address:valid.address,
-				//house:valid.house,
+        address: valid.address,
+        //house:valid.house,
         name: valid.name,
-        phone: valid.phone
-      })
+        phone: valid.phone,
+      });
       break;
     case 'PICKUP':
       return yup.object().shape({
         name: valid.name,
-        phone: valid.phone
-      })
+        phone: valid.phone,
+      });
       break;
-		case 'ONSPOT':
+    case 'ONSPOT':
       return yup.object().shape({
         name: valid.name,
-        phone: valid.phone
-      })
-      break;	
+        phone: valid.phone,
+      });
+      break;
     default:
       return yup.object().shape({
         //address:valid.address,
         name: valid.name,
-        phone: valid.phone
-      })
+        phone: valid.phone,
+      });
       break;
   }
+};
 
-}
-
-export const shemaReserve = () => yup.object().shape({
-  fullname: valid.name,
-  phone: valid.phone,
-  date: yup
+export const shemaReserve = () =>
+  yup.object().shape({
+    fullname: valid.name,
+    phone: valid.phone,
+    date: yup.string().required('Поле обязательно для заполнения'),
+    time: yup
       .string()
-    .required('Поле обязательно для заполнения'),
-  time: yup
-    .string()
       .nullable()
-    .min(5, 'Неверный формат времени')
-    .required('Поле обязательно для заполнения'),
-  person: yup
-    .string()
-    .required('Поле обязательно для заполнения'),
-})
+      .min(5, 'Неверный формат времени')
+      .required('Поле обязательно для заполнения'),
+    person: yup.string().required('Поле обязательно для заполнения'),
+  });
 
-export const shemaAdress = () => yup.object().shape({
-  address:valid.address,
-	house:valid.house,
-})
+export const shemaAdress = () =>
+  yup.object().shape({
+    address: valid.address,
+    house: valid.house,
+  });
 
-export const shemaProfilePersonal = () => yup.object().shape({
-  name: valid.name,
-	lastname:yup.string(),
-	male:yup
-		.string()
-		.required('Поле обязательно для заполнения'),
-  phone: valid.phone,
-	email:valid.email
-})
-
+export const shemaProfilePersonal = () =>
+  yup.object().shape({
+    name: valid.name,
+    lastname: yup.string(),
+    male: yup.string().required('Поле обязательно для заполнения'),
+    phone: valid.phone,
+    email: valid.email,
+  });
 
 export default schemaBuild;

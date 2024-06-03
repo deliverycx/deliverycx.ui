@@ -1,19 +1,18 @@
-.catalogue{
-
+.catalogue {
   //Header start
-	position: relative;
-  &-header{
+  position: relative;
+  &-header {
     background-color: #fff;
-    
 
     //Header-info start
 
-    &__info{
+    &__info {
       display: flex;
       justify-content: space-between;
       padding: 8px 16px;
 
-      &-geo,&-phone{
+      &-geo,
+      &-phone {
         padding: 8px 0;
         display: flex;
         align-items: center;
@@ -28,33 +27,30 @@
 
     //Header-info end
 
-
-
     //Header-stories start
 
-    &__stories{
+    &__stories {
       display: flex;
       gap: 12px;
 
       padding: 8px 16px;
 
       overflow-x: scroll;
-      &::-webkit-scrollbar{
+      &::-webkit-scrollbar {
         display: none;
       }
 
-      &__item{
+      &__item {
         display: flex;
 
         min-width: 80px;
         height: 96px;
 
         border-radius: 12px;
-        border: 2px solid #FDCB3D;
+        border: 2px solid #fdcb3d;
         //background: url(../../../assetss/images/stories/stories.png);
 
-
-        &-title{
+        &-title {
           display: flex;
           align-items: flex-end;
           padding: 0 8px 8px 8px;
@@ -70,20 +66,17 @@
 
     //Header-stories end
 
-
-
     //Header-tabs start
 
-    &__tabs{
-
-      &__items{
+    &__tabs {
+      &__items {
         display: flex;
         overflow-x: scroll;
-        &::-webkit-scrollbar{
+        &::-webkit-scrollbar {
           display: none;
         }
 
-        &-item{
+        &-item {
           display: flex;
           flex-direction: column;
           justify-content: flex-start;
@@ -92,16 +85,16 @@
           gap: 7px;
           text-decoration: none;
 
-          &-icon{
+          &-icon {
             width: 36px;
             height: 36px;
 
-            & svg{
+            & svg {
               fill: #333333;
             }
           }
 
-          &-title{
+          &-title {
             color: #333;
             font-size: 11px;
             font-weight: 400;
@@ -110,14 +103,14 @@
             max-width: 51px;
           }
 
-          hr{
+          hr {
             display: none;
           }
 
-          &.active{
+          &.active {
             padding: 12px 12px 0 12px;
 
-            .catalogue-header__tabs__items-item-icon{
+            .catalogue-header__tabs__items-item-icon {
               display: flex;
               justify-content: center;
               align-items: center;
@@ -125,16 +118,16 @@
               width: 60px;
               height: 60px;
               border-radius: 15px;
-              background: #8D191D;
+              background: #8d191d;
 
-              & svg{
+              & svg {
                 width: 36px;
                 height: 36px;
                 fill: #fff;
               }
             }
 
-            .catalogue-header__tabs__items-item-title{
+            .catalogue-header__tabs__items-item-title {
               display: flex;
               flex-direction: column;
               justify-content: center;
@@ -145,13 +138,13 @@
               font-weight: 700;
               line-height: normal;
 
-              hr{
+              hr {
                 display: block;
                 margin-block-end: 0;
                 width: 100%;
                 height: 0;
                 border: none;
-                border-top: 1px solid #8D191D;
+                border-top: 1px solid #8d191d;
                 border-radius: 5px;
               }
             }
@@ -161,20 +154,18 @@
     }
 
     //Header-tabs end
-
   }
 
   //Header end
 
-
   //Content start
 
-  &-content{
+  &-content {
     padding: 16px 10px 72px;
-    background-color: #F9F9F9;
+    background-color: #f9f9f9;
     //Content-cards start
 
-    &__cards{
+    &__cards {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
       //grid-template-columns: repeat(4, 1fr);
@@ -182,14 +173,12 @@
     }
 
     //Content-cards end
-
   }
 
   //Content end
-
 }
 
-.products{
+.products {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -200,16 +189,14 @@
     pointer-events: none;
 
     .product-card-sale {
-      background: #BFBFBF;
+      background: #bfbfbf;
     }
-    .product__modal-img{
+    .product__modal-img {
       opacity: 0.3;
     }
-
   }
 
   &__modal {
-
     &-buttons {
       z-index: 2;
       position: relative;
@@ -224,7 +211,7 @@
       box-shadow: 0px -4px 20px 0px rgba(0, 0, 0, 0.12);
       button {
         width: 100%;
-        img{
+        img {
           width: 24px;
           height: 24px;
         }
@@ -240,7 +227,6 @@
       svg {
         z-index: 1;
       }
-
     }
     &-desc {
       padding: 20px 16px;
@@ -257,7 +243,7 @@
       justify-content: center;
       width: 100%;
       max-width: 340px;
-      img{
+      img {
         width: 100%;
       }
     }
@@ -286,7 +272,7 @@
       display: flex;
       align-items: center;
       justify-content: space-between;
-      h2{
+      h2 {
         color: #111;
         font-size: 21px;
         font-weight: bold;
@@ -345,39 +331,37 @@
         }
       }
     }
-
   }
-
 }
-.product-price{
+.product-price {
   font-size: 32px;
   font-weight: bold;
 }
-.gomenu{
-	background-color: #8D191D;
-	color: #fff;
-	height: 32px;
-	padding: 4px 16px; 
-	font-size: 16px;
-	font-style: normal;
-	font-weight: 500;
-	line-height: 20px;
+.gomenu {
+  background-color: #8d191d;
+  color: #fff;
+  height: 32px;
+  padding: 4px 16px;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 20px;
 }
 
 .categories {
   box-shadow: 0 20px 24px 0 rgba(0, 0, 0, 0.1);
   padding-bottom: 10px;
   position: sticky;
-  
+
   padding-top: 15px;
   height: 110px;
   z-index: 99;
   user-select: none;
   overflow: hidden;
-	position: sticky;
-	top: 0;
-	
-	background: #fff;
+  position: sticky;
+  top: 0;
+
+  background: #fff;
 
   .carousel-initialized {
     overflow: initial;
@@ -393,7 +377,7 @@
       align-items: center;
       justify-content: center;
       outline: none;
-      &-box{
+      &-box {
         max-width: 80px;
         min-width: 60px;
         display: flex;
@@ -425,18 +409,17 @@
     }
 
     &.active {
-
       position: relative;
 
       &:after {
-        content: "";
+        content: '';
         position: absolute;
         max-width: 80px;
         min-width: 60px;
         height: 1px;
         left: 0;
         right: 0;
-        background-color: #8D191D;
+        background-color: #8d191d;
         bottom: -20px;
         border-radius: 1.5em;
         margin: 0 auto;
@@ -446,13 +429,13 @@
         margin-bottom: 5px;
         font-size: 12px;
         font-weight: bold;
-        color: #8D191D;
+        color: #8d191d;
       }
       .categories__item__img-wrap {
         margin-top: -10px;
         width: 60px;
         height: 60px;
-        background-color: #8D191D;
+        background-color: #8d191d;
         border-radius: 15px;
 
         img {
@@ -463,8 +446,8 @@
   }
 }
 
-.button_souse{
-	width: 200px;
+.button_souse {
+  width: 200px;
 }
 
 .loader_shop {
@@ -473,7 +456,7 @@
   display: block;
   margin: auto;
   position: relative;
-  background: #FFF;
+  background: #fff;
   box-sizing: border-box;
 }
 .loader_shop::after {
@@ -483,29 +466,45 @@
   top: 15px;
   left: 15px;
   position: absolute;
-  background-image: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.5) 50%, transparent 100%),
-   radial-gradient(circle 50px , #DDD 100%, transparent 0),
-   linear-gradient(#DDD 16px, transparent 0),
-   linear-gradient(#DDD 24px, transparent 0);
+  background-image: linear-gradient(
+      90deg,
+      transparent,
+      rgba(255, 255, 255, 0.5) 50%,
+      transparent 100%
+    ),
+    radial-gradient(circle 50px, #ddd 100%, transparent 0),
+    linear-gradient(#ddd 16px, transparent 0),
+    linear-gradient(#ddd 24px, transparent 0);
   background-repeat: no-repeat;
-  background-size: 75px 175px, 100% 100px, 80% 16px, 80% 16px;
-  background-position: -185px 0, center 10px, center 125px, center 155px;
+  background-size:
+    75px 175px,
+    100% 100px,
+    80% 16px,
+    80% 16px;
+  background-position:
+    -185px 0,
+    center 10px,
+    center 125px,
+    center 155px;
   box-sizing: border-box;
   animation: animloader 1s linear infinite;
 }
 
 @keyframes animloader {
   to {
-    background-position: 185px 0, center 10px, center 125px, center 155px;
+    background-position:
+      185px 0,
+      center 10px,
+      center 125px,
+      center 155px;
   }
 }
 
-
-@media only screen and (max-width: 780px){
-	.product__modal-buttons{
-		position: fixed;
-	}
-	.product__modal-content{
-		padding-bottom: 64px;
-	}
+@media only screen and (max-width: 780px) {
+  .product__modal-buttons {
+    position: fixed;
+  }
+  .product__modal-content {
+    padding-bottom: 64px;
+  }
 }

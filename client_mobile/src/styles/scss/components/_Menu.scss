@@ -1,4 +1,4 @@
-.menu-wrapper{
+.menu-wrapper {
   z-index: 99;
   position: fixed;
   top: 0;
@@ -9,7 +9,7 @@
   backdrop-filter: blur(2px);
 }
 
-.menu{
+.menu {
   display: flex;
   flex-direction: column;
   gap: 8px;
@@ -20,20 +20,20 @@
   bottom: 0;
   right: -264px;
   padding: 0 0 56px 0;
-  transition: right ease .3s;
+  transition: right ease 0.3s;
   overflow-y: auto;
 
   &.opened {
     right: 0;
   }
 
-  &-header{
+  &-header {
     display: flex;
     padding: 4px;
     justify-content: flex-end;
     align-items: center;
 
-    button{
+    button {
       display: flex;
       justify-content: center;
       align-items: center;
@@ -45,14 +45,14 @@
       background: none;
       cursor: pointer;
 
-      svg{
+      svg {
         width: 24px;
         height: 24px;
       }
     }
   }
 
-  &-menu{
+  &-menu {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
@@ -60,7 +60,7 @@
     padding: 0 32px;
     flex: 1 0 auto;
 
-    a{
+    a {
       flex: 1 1 0;
       display: flex;
       align-items: center;
@@ -85,26 +85,26 @@
           line-height: 16px;
         }
       }
-      img{
+      img {
         width: 24px;
         height: 24px;
       }
     }
   }
 
-  &-social{
+  &-social {
     display: flex;
     justify-content: center;
     align-items: center;
     gap: 8px;
     padding: 6px 8px;
-    img{
+    img {
       width: 36px;
       height: 36px;
     }
   }
 
-  &-full-link{
+  &-full-link {
     display: flex;
     justify-content: center;
     align-items: center;

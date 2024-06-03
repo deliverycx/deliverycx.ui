@@ -1,64 +1,73 @@
-import { delivertyTime, workTimeCheck, workTimeHelp } from "application/helpers/workTime"
-import { IOrganizationResponse, OrganizationFilters } from "../interfaces/organization.type"
-import { IsNotEmpty, IsObject, IsBoolean, IsString, IsOptional, IsArray } from "class-validator"
-import * as organizationStatusType from "modules/OrganizationModule/OrganizationStatuses/interfaces/organizationStatus.type"
+import {
+  delivertyTime,
+  workTimeCheck,
+  workTimeHelp,
+} from 'application/helpers/workTime';
+import {
+  IOrganizationResponse,
+  OrganizationFilters,
+} from '../interfaces/organization.type';
+import {
+  IsNotEmpty,
+  IsObject,
+  IsBoolean,
+  IsString,
+  IsOptional,
+  IsArray,
+} from 'class-validator';
+import * as organizationStatusType from 'modules/OrganizationModule/OrganizationStatuses/interfaces/organizationStatus.type';
 
 export class OrganizationEntity {
-	@IsNotEmpty()
-	id!:string
+  @IsNotEmpty()
+  id!: string;
 
-	@IsObject()
-	info!:{
-		address:string
-		cords:number[]
-		phone:	string
-		city:	string
-	}
+  @IsObject()
+  info!: {
+    address: string;
+    cords: number[];
+    phone: string;
+    city: string;
+  };
 
-	@IsBoolean()
-	isHidden!:boolean
+  @IsBoolean()
+  isHidden!: boolean;
 
-	@IsObject()
-	redirect!:{
-		redirectUrl:string
-		redirectON:boolean
-	}
+  @IsObject()
+  redirect!: {
+    redirectUrl: string;
+    redirectON: boolean;
+  };
 
-	@IsNotEmpty()
-	workTime!: string | string[]
-	
-	@IsString()
-	guid!:string
+  @IsNotEmpty()
+  workTime!: string | string[];
 
-	@IsString()
-	temital!:string
+  @IsString()
+  guid!: string;
 
-	@IsOptional()
-	delivery!: string | null
+  @IsString()
+  temital!: string;
 
+  @IsOptional()
+  delivery!: string | null;
 
+  @IsArray()
+  gallery!: string[] | [];
 
-	@IsArray()
-	gallery!:string[] | []
+  @IsBoolean()
+  reservetable!: boolean;
 
-	@IsBoolean()
-	reservetable!:boolean
-	
-	filters!:OrganizationFilters[] | []
+  filters!: OrganizationFilters[] | [];
 
-
-	existingOrganization(pointMap: IOrganizationResponse[]) {
-		return pointMap.filter((value: IOrganizationResponse) => {
-			return value && value.isHidden == false
-		})
-	}
-	existingCardOrganization(point:IOrganizationResponse){
-		if(point && point.isHidden !== true){
-			return point
-		}else{
-			return false
-		}
-	}
-
-	
+  existingOrganization(pointMap: IOrganizationResponse[]) {
+    return pointMap.filter((value: IOrganizationResponse) => {
+      return value && value.isHidden == false;
+    });
+  }
+  existingCardOrganization(point: IOrganizationResponse) {
+    if (point && point.isHidden !== true) {
+      return point;
+    } else {
+      return false;
+    }
+  }
 }

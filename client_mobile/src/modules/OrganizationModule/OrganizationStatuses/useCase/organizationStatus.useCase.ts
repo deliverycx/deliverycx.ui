@@ -1,58 +1,91 @@
-import { OrganizationModel } from "modules/OrganizationModule/Organization/domain/organization.model";
-import { OrganizationStatusModel } from "../domain/organizationStatus.model";
-import * as organizationStatusType from "../interfaces/organizationStatus.type";
-import { IOrganization, IOrganizationAndStatuses } from "modules/OrganizationModule/Organization/interfaces/organization.type";
-import { OrganizationStatusServises } from "../domain/organizationStatus.servises";
-import { InjectableDI } from "application/helpers/dependencyInjection";
-import { DTOMapper } from "application/guards/aplication.guard";
-import { organizationStatusDTO, organizationStatusMapper } from "../interfaces/organizationStatus.dto";
-import { IDeliveryTypes, IOrganizationStatus, IPointStatus } from "../interfaces/organizationStatus.type";
+import { OrganizationModel } from 'modules/OrganizationModule/Organization/domain/organization.model';
+import { OrganizationStatusModel } from '../domain/organizationStatus.model';
+import * as organizationStatusType from '../interfaces/organizationStatus.type';
+import {
+  IOrganization,
+  IOrganizationAndStatuses,
+} from 'modules/OrganizationModule/Organization/interfaces/organization.type';
+import { OrganizationStatusServises } from '../domain/organizationStatus.servises';
+import { InjectableDI } from 'application/helpers/dependencyInjection';
+import { DTOMapper } from 'application/guards/aplication.guard';
+import {
+  organizationStatusDTO,
+  organizationStatusMapper,
+} from '../interfaces/organizationStatus.dto';
+import {
+  IDeliveryTypes,
+  IOrganizationStatus,
+  IPointStatus,
+} from '../interfaces/organizationStatus.type';
 
-
-@InjectableDI([OrganizationStatusServises,OrganizationStatusModel])
+@InjectableDI([OrganizationStatusServises, OrganizationStatusModel])
 export class UseCaseOrganizationStatus {
-	constructor(
-		private readonly organizationStatusServises:OrganizationStatusServises,
-		private readonly organizationStatusModel:OrganizationStatusModel
-	) { }
+  constructor(
+    private readonly organizationStatusServises: OrganizationStatusServises,
+    private readonly organizationStatusModel: OrganizationStatusModel,
+  ) {}
 
-	@DTOMapper(organizationStatusMapper)
-	getOrganizationStatus(status:organizationStatusType.IPointStatusRequest | undefined){
-		if(status){
-			return this.organizationStatusServises.existingOrganizationStatus(status)
-		}
-		return null
-	}
+  @DTOMapper(organizationStatusMapper)
+  getOrganizationStatus(
+    status: organizationStatusType.IPointStatusRequest | undefined,
+  ) {
+    if (status) {
+      return this.organizationStatusServises.existingOrganizationStatus(status);
+    }
+    return null;
+  }
 
-	organizationStatusMetods(pointStatus:IPointStatus | null,point:IOrganization){
-		const time = this.organizationStatusServises.timeWorkOrganizationEntiti(point.workTime,point.guid)
-		
-		const deliverytypes = pointStatus && this.organizationStatusServises.deliveryTypesMetod(pointStatus.deliveryMetod)
+  organizationStatusMetods(
+    pointStatus: IPointStatus | null,
+    point: IOrganization,
+  ) {
+    const time = this.organizationStatusServises.timeWorkOrganizationEntiti(
+      point.workTime,
+      point.guid,
+    );
 
-		return {
-			...pointStatus,
-			timeworkOrganization:time,
-			deliveryTipe:deliverytypes
-		}
-	
-	}
-	
-	findDeliveryType(deliveryMetod: string,point:IOrganizationAndStatuses) {
-		return point.deliveryTipe.find((value) => value.metod === deliveryMetod)
-	}
+    const deliverytypes =
+      pointStatus &&
+      this.organizationStatusServises.deliveryTypesMetod(
+        pointStatus.deliveryMetod,
+      );
 
-	changeActiveDeliveryTypes(organizationStatus:IOrganizationStatus,selectType:IDeliveryTypes){
-		return this.organizationStatusServises.changesDeliveryType(organizationStatus.deliveryTipe,organizationStatus.timeworkOrganization,selectType)
-	}
+    return {
+      ...pointStatus,
+      timeworkOrganization: time,
+      deliveryTipe: deliverytypes,
+    };
+  }
 
-	selectActiveDeliveryType(organizationStatus:IOrganizationStatus,selectType:IDeliveryTypes){
-		const result = this.changeActiveDeliveryTypes(organizationStatus,selectType)
-		console.log(result);
-		const findType = result.find((item) => item.active === true)
-		return findType
-	}
+  findDeliveryType(deliveryMetod: string, point: IOrganizationAndStatuses) {
+    return point.deliveryTipe.find((value) => value.metod === deliveryMetod);
+  }
 
-	/*
+  changeActiveDeliveryTypes(
+    organizationStatus: IOrganizationStatus,
+    selectType: IDeliveryTypes,
+  ) {
+    return this.organizationStatusServises.changesDeliveryType(
+      organizationStatus.deliveryTipe,
+      organizationStatus.timeworkOrganization,
+      selectType,
+    );
+  }
+
+  selectActiveDeliveryType(
+    organizationStatus: IOrganizationStatus,
+    selectType: IDeliveryTypes,
+  ) {
+    const result = this.changeActiveDeliveryTypes(
+      organizationStatus,
+      selectType,
+    );
+    console.log(result);
+    const findType = result.find((item) => item.active === true);
+    return findType;
+  }
+
+  /*
 	changeActiveDeliveryTypes = 
 
 

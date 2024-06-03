@@ -1,49 +1,51 @@
-import { ReducerAction } from ".";
+import { ReducerAction } from '.';
 
 export const initialStatePointsMap = {
   isOpen: false,
   selectedPoint: null,
   slideIndex: 0,
-  recvisites:false
+  recvisites: false,
 };
-type typeinitialState = typeof initialStatePointsMap
+type typeinitialState = typeof initialStatePointsMap;
 
 export enum ReducerActionTypePoints {
   placemarkClick,
   buttonClick,
   nearPoint,
   slidePoint,
-  recvisitesModal
+  recvisitesModal,
 }
 
-
-export function PointsReducer(state: typeinitialState, action: ReducerAction<ReducerActionTypePoints>) {
+export function PointsReducer(
+  state: typeinitialState,
+  action: ReducerAction<ReducerActionTypePoints>,
+) {
   switch (action.type) {
     case ReducerActionTypePoints.placemarkClick:
       return {
         ...state,
         isOpen: true,
         slideIndex: action.payload.index,
-        selectedPoint: action.payload.address
+        selectedPoint: action.payload.address,
       };
-  
+
     case ReducerActionTypePoints.buttonClick:
       return {
         ...state,
         isOpen: true,
-        selectedPoint:action.payload
+        selectedPoint: action.payload,
       };
     case ReducerActionTypePoints.slidePoint:
       return {
         ...state,
-        slideIndex:action.payload
-      }
-     case ReducerActionTypePoints.recvisitesModal:
-        return {
-          ...state,
-          recvisites:action.payload
-        }
+        slideIndex: action.payload,
+      };
+    case ReducerActionTypePoints.recvisitesModal:
+      return {
+        ...state,
+        recvisites: action.payload,
+      };
     default:
-      return state
+      return state;
   }
 }
