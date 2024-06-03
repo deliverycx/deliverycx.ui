@@ -23,7 +23,7 @@ export function useShopViewModel(this: any) {
 	const descQuery = isDesctomMediaQuery()
 
 
-	const { data:nomenclatures, isLoading } = useQuery('shop', async () => await shopUseCase.getNomenclature(pointid),{
+	const { data:nomenclatures, isLoading } = useQuery(['shop',pointid], async () => await shopUseCase.getNomenclature(pointid),{
 		enabled:!!pointid
 	})
 
@@ -34,7 +34,7 @@ export function useShopViewModel(this: any) {
 
 	useEffect(()=>{
 		if(organization && organization.redirect && organization.redirect.redirectON){
-			//setPointid(undefined)
+			setPointid(undefined)
 			Redirects(organization.redirect)
 		
 		}else{
@@ -67,7 +67,7 @@ export function useShopViewModel(this: any) {
 				})
 			}
 			*/
-		}else{
+		}else{	
 			if (!organization) {
 				if(descQuery){
 					

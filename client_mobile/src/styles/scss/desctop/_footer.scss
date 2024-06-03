@@ -1,3 +1,36 @@
+
+.hidden_user{
+	background: var(--red-red-click);
+	width: 100%;
+	height: 48px;
+	display: flex;
+	justify-content: center;
+	.hidden_user_box{
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		.hidden_user_box-title{
+			font-family: var(--font-family);
+			font-weight: 700;
+			font-size: 18px;
+			line-height: 111%;
+			color: var(--black-to-white-white-100);
+
+		}
+		.hidden_user_box-btn{
+			display: block;
+			width: 180px;
+			height: 36px;
+			text-align: center;
+			background: var(--yellow-yellow);
+			font-family: var(--font-family);
+			font-weight: 600;
+			font-size: 16px;
+			line-height: 125%;
+			color: var(--black-to-white-black);
+		}
+	}
+}
 .footer-desc{
 	background: var(--Deep-Blue, #132A3E);
 	padding: 35px;
