@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-var-requires */
 import { observer } from "mobx-react-lite"
 import { requestOrganizationAdmin } from "modules/OrganizationModule/Organization/data/organization.request"
 import { organizationModel } from "modules/OrganizationModule/organization.module"
@@ -24,7 +25,17 @@ const HOCFooterDesc = () => {
 
 	return (
 		<>
-			
+			<div className="hidden_user">
+				<div className="hidden_user_box">
+					<img src={require("assets/images/icons/hidenuser.svg").default} />
+					<a href="https://starikkhinkalich.ru/control" className="hidden_user_box-title">Стань тайным гостем хинкалыча</a>
+					<div className="hidden_user_box-btn"><span>Оставить заявку</span>
+						<svg width="15" height="16" viewBox="0 0 15 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+							<path d="M12.785 4.11094L1.88496 15.0109C1.70163 15.1943 1.46829 15.2859 1.18496 15.2859C0.901628 15.2859 0.668294 15.1943 0.484961 15.0109C0.301628 14.8276 0.209961 14.5943 0.209961 14.3109C0.209961 14.0276 0.301628 13.7943 0.484961 13.6109L11.385 2.71094H5.78496C5.50163 2.71094 5.26413 2.6151 5.07246 2.42344C4.88079 2.23177 4.78496 1.99427 4.78496 1.71094C4.78496 1.4276 4.88079 1.1901 5.07246 0.998437C5.26413 0.806771 5.50163 0.710938 5.78496 0.710938H13.785C14.0683 0.710938 14.3058 0.806771 14.4975 0.998437C14.6891 1.1901 14.785 1.4276 14.785 1.71094V9.71094C14.785 9.99427 14.6891 10.2318 14.4975 10.4234C14.3058 10.6151 14.0683 10.7109 13.785 10.7109C13.5016 10.7109 13.2641 10.6151 13.0725 10.4234C12.8808 10.2318 12.785 9.99427 12.785 9.71094V4.11094Z" fill="#111111" />
+						</svg>
+					</div>
+				</div>
+			</div>
 			<div className="footer-desc">
 				<div className="container">
 					<div className="footer-desc_box">
