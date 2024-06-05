@@ -1,23 +1,31 @@
-import HOCFooterDesc from 'application/components/common/Footer/HOC.footer.desc';
-import HOCShopDesc from '../Shop/HOC.Shop.desc';
-import HOCdescHead from 'application/components/common/Head/HOC.desc.Head';
-import HOCCity from './HOC.City';
 import CountCity from './view/CountCity';
 import ModalCard from 'application/components/common/Modals/ModalCard';
 import { adapterComponentUseCase } from 'adapters/adapterComponents';
-import { ICity } from 'modules/CityModule/interfaces/city.type';
 import { useCityViewModel } from './useCity.viewModel';
-import CityListView from './view/CityListView';
-import { useLocation } from 'react-router-dom';
-import { ROUTE_APP } from './../../../contstans/route.const';
+import { useLocation, useNavigate } from 'react-router-dom';
+import { ROUTE_APP } from '../../../contstans/route.const';
 import { observer } from 'mobx-react-lite';
+import { City, CityList } from '../../../../entities/cities';
+import { useQueryClient } from '@tanstack/react-query';
 
 const HOCCITYDesc = () => {
   const useCase = adapterComponentUseCase(useCityViewModel);
-  const { cityList, selectCity } = useCase.data;
-  const { seletSerchCity, submitCity, closeModalDesc } = useCase.handlers;
+  const { cityList } = useCase.data;
+  const { submitCity, closeModalDesc } = useCase.handlers;
+
+  const navigate = useNavigate();
 
   const params = useLocation();
+
+  const handleCityClick = (city: City) => {
+    const flatCityList = cityList.flat();
+    const nextCity = flatCityList.find(({ id }: any) => city.id === id);
+
+    if (nextCity) {
+      submitCity(nextCity);
+      navigate(ROUTE_APP.POINT);
+    }
+  };
 
   return (
     <>
@@ -46,45 +54,7 @@ const HOCCITYDesc = () => {
               <h3>Выберете город</h3>
             </div>
             <CountCity />
-
-            <div className="select__search">
-              <div className="input__item input_icon input_icon_left">
-                <label htmlFor="search">Выберите город</label>
-                <div className="input__container">
-                  <img src={require('assets/images/icons/search.png')} alt="" />
-                  <input
-                    onChange={(e) => seletSerchCity(e.target.value)}
-                    placeholder="Найти"
-                    name="search"
-                    type="text"
-                  />
-                </div>
-              </div>
-            </div>
-            <ul className="select__list select__list-desc">
-              {cityList &&
-                cityList.length !== 0 &&
-                cityList.map((cityMass: ICity[], index: number) => {
-                  return (
-                    <li className="select__item" key={index}>
-                      <div className="item__letter">
-                        {cityMass[0].cityname[0]}
-                      </div>
-                      <div className="select__item-box">
-                        {cityMass.map((val: ICity) => {
-                          return (
-                            <CityListView
-                              key={val.id}
-                              submitCity={submitCity}
-                              city={val}
-                            />
-                          );
-                        })}
-                      </div>
-                    </li>
-                  );
-                })}
-            </ul>
+            <CityList onCityClick={handleCityClick} />
           </div>
         </ModalCard>
       )}

@@ -4,11 +4,15 @@ import { useMediaRedirectPoint } from 'application/hooks/useMediaRedirectPoint';
 import { NavLink, useLocation, useNavigate } from 'react-router-dom';
 import { observer } from 'mobx-react-lite';
 import cn from 'classnames';
+import { fetchCities, hasCities } from '../../../../entities/cities';
+import { useQueryClient } from '@tanstack/react-query';
 
 const MainMenuDesc = () => {
   const navigate = useNavigate();
   const params = useLocation();
   const { redirectToDectPoints } = useMediaRedirectPoint();
+
+  const queryClient = useQueryClient();
 
   const shophandler = () => {
     const p = redirectToDectPoints();
@@ -25,6 +29,12 @@ const MainMenuDesc = () => {
   });
   const CNPoint = cn('', { active: params.pathname == ROUTE_APP.POINT });
 
+  const handleLinkMouseEnter = async () => {
+    if (!hasCities(queryClient)) {
+      await fetchCities(queryClient);
+    }
+  };
+
   return (
     <div className="menu-desc">
       <a className={CNSHOP} onClick={shophandler}>
@@ -33,7 +43,11 @@ const MainMenuDesc = () => {
       <NavLink target="_blank" to="https://starikkhinkalich.ru/">
         Новости и акции
       </NavLink>
-      <a className={CNPoint} onClick={pointhandler}>
+      <a
+        className={CNPoint}
+        onClick={pointhandler}
+        onMouseEnter={handleLinkMouseEnter}
+      >
         Старик Хинкалыч на карте
       </a>
       <NavLink
