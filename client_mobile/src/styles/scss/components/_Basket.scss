@@ -4,24 +4,24 @@
   height: 100vh;
 }
 
-.basket{
+.basket {
   padding: 56px 0 124px;
   display: flex;
   flex-direction: column;
 
-  &__content{
+  &__content {
     display: flex;
     flex-direction: column;
     gap: 8px;
     padding: 16px;
 
-    &__buttons{
+    &__buttons {
       display: flex;
       justify-content: space-between;
       align-items: center;
 
-      label{
-        p{
+      label {
+        p {
           color: $c_red;
           font-size: 16px;
           font-weight: 600;
@@ -29,43 +29,43 @@
         }
       }
 
-      button{
-        color: #8D191D;
+      button {
+        color: #8d191d;
       }
     }
 
-    &__product_card{
+    &__product_card {
       display: flex;
       align-items: center;
 
       border-radius: 17px;
       box-shadow: 0 4px 24px 0 rgba(0, 0, 0, 0.12);
 
-      &-img{
-       display: flex;
+      &-img {
+        display: flex;
         width: 60px;
         height: 60px;
       }
 
-      &__info{
+      &__info {
         display: flex;
         flex-direction: column;
         gap: 8px;
         padding: 8px;
         flex: 1 1 0;
 
-        &__price{
+        &__price {
           display: flex;
           align-items: flex-start;
           gap: 8px;
 
-          &__data{
+          &__data {
             display: flex;
             flex-direction: column;
             gap: 4px;
             flex: 1 1 0;
 
-            &-title{
+            &-title {
               overflow: hidden;
               color: $c-black;
               text-overflow: ellipsis;
@@ -74,7 +74,7 @@
               line-height: 16px;
             }
 
-            &-price{
+            &-price {
               color: #808080;
               font-size: 14px;
               font-weight: 400;
@@ -82,25 +82,25 @@
             }
           }
 
-          &-cost{
+          &-cost {
             padding: 8px 0;
           }
         }
 
-        &__buttons{
+        &__buttons {
           display: flex;
           justify-content: space-between;
           align-items: center;
 
-          button{
+          button {
             width: 28px;
             height: 28px;
           }
 
-          &-input{
+          &-input {
             padding: 0;
             max-width: 144px;
-            svg{
+            svg {
               cursor: pointer;
             }
           }
@@ -108,59 +108,58 @@
       }
     }
 
-    &__tableware{
+    &__tableware {
       display: flex;
       justify-content: space-between;
       align-items: center;
       padding: 16px 0;
 
-      &-title{
+      &-title {
         display: flex;
         align-items: center;
         gap: 4px;
         color: $c-black;
-        img{
+        img {
           width: 24px;
           height: 24px;
         }
       }
 
-      &-buttons{
+      &-buttons {
         display: flex;
         align-items: center;
         gap: 16px;
       }
-
     }
 
-    &__dozen{
+    &__dozen {
       display: flex;
       justify-content: center;
       align-items: center;
-      padding:10px 16px;
+      padding: 10px 16px;
 
       border-radius: 17px;
       box-shadow: 0 4px 24px 0 rgba(0, 0, 0, 0.12);
 
-      &__item{
+      &__item {
         display: flex;
         gap: 8px;
         flex: 1 1 0;
 
-        &__icon{
+        &__icon {
           display: flex;
           align-items: center;
           gap: 4px;
 
-          img{
+          img {
             width: 40px;
             height: 40px;
           }
 
-          &-numb{
+          &-numb {
             width: 36px;
             height: 36px;
-            color: #FFF;
+            color: #fff;
             text-align: center;
             font-size: 32px;
             font-weight: 700;
@@ -168,17 +167,17 @@
           }
         }
 
-        &__content{
+        &__content {
           display: flex;
           flex-direction: column;
           align-items: flex-start;
 
-          &-title{
-            color: #FFF;
+          &-title {
+            color: #fff;
           }
 
-          &-addition{
-            color: #FFF;
+          &-addition {
+            color: #fff;
             font-size: 12px;
             font-weight: 400;
             line-height: 16px;
@@ -187,19 +186,17 @@
       }
     }
 
-    
-
-    &__price{
+    &__price {
       display: flex;
       flex-direction: column;
       gap: 8px;
       padding: 8px 0;
-			strong{
-				font-size: 16px;
-				font-weight: 700;
-				color: #8D191D;
-			}
-      &__item{
+      strong {
+        font-size: 16px;
+        font-weight: 700;
+        color: #8d191d;
+      }
+      &__item {
         display: flex;
         justify-content: space-between;
         align-items: center;
@@ -210,8 +207,8 @@
         font-weight: 700;
         line-height: 20px;
 
-        &-cost{
-          span{
+        &-cost {
+          span {
             font-size: 18px;
             font-weight: 400;
             line-height: 24px;
@@ -221,55 +218,55 @@
     }
   }
 
-  &__more{
+  &__more {
     padding: 16px;
 
-    &-title{
+    &-title {
       color: $c-black;
-			font-size: 18px;
-			font-style: normal;
-			font-weight: 700; 
-			margin-bottom: 15px;
+      font-size: 18px;
+      font-style: normal;
+      font-weight: 700;
+      margin-bottom: 15px;
     }
 
-    &__content{
+    &__content {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
       gap: 8px;
 
-      &__product_card{
+      &__product_card {
         display: flex;
         flex-direction: column;
         min-width: 104px;
-				
+
         border-radius: 17px;
-        background: #FFF;
+        background: #fff;
         box-shadow: 0 4px 24px 0 rgba(0, 0, 0, 0.12);
 
-        &-img{
+        &-img {
           display: flex;
           justify-content: center;
           align-items: center;
 
-          img{
+          img {
             width: 104px;
             height: 104px;
             border-radius: 17px;
           }
         }
 
-        &__info{
+        &__info {
           display: flex;
           flex-direction: column;
           gap: 4px;
           padding: 8px 8px 0;
 
-          &__data{
+          &__data {
             display: flex;
             flex-direction: column;
             gap: 4px;
 
-            &-name{
+            &-name {
               overflow: hidden;
               color: $c-black;
               text-overflow: ellipsis;
@@ -278,24 +275,24 @@
               line-height: 16px;
             }
 
-            &-weight{
-              color: #B3B3B3;
+            &-weight {
+              color: #b3b3b3;
               font-size: 14px;
               font-weight: 400;
               line-height: 16px;
             }
           }
 
-          &__price{
+          &__price {
             display: flex;
             justify-content: flex-end;
 
-            &-cost{
+            &-cost {
               font-size: 18px;
               font-weight: 700;
               line-height: 20px;
 
-              span{
+              span {
                 font-size: 14px;
                 font-weight: 400;
                 line-height: 16px;
@@ -304,24 +301,23 @@
           }
         }
 
-        &__button{
+        &__button {
           display: flex;
           flex-direction: column;
           padding: 8px;
 
-          button{
+          button {
             height: 28px;
           }
         }
       }
     }
-
   }
 
-  &__buttons{
+  &__buttons {
     position: fixed;
     left: 0;
-		right: 0;
+    right: 0;
     bottom: 56px;
     width: 100%;
 
@@ -329,26 +325,26 @@
     justify-content: center;
     align-items: center;
     gap: 16px;
-		max-width: 760px;
-		margin: 0 auto;
+    max-width: 760px;
+    margin: 0 auto;
     padding: 8px 16px;
     background: #fff;
     box-shadow: 0 -4px 20px 0 rgba(0, 0, 0, 0.12);
 
-    &__total{
+    &__total {
       display: flex;
       flex-direction: column;
       align-items: flex-start;
       gap: 4px;
       flex: 1 1 0;
 
-      &-title{
+      &-title {
         color: $c-black;
       }
 
-      &__price{
-        &-cost{
-          span{
+      &__price {
+        &-cost {
+          span {
             font-size: 18px;
             font-weight: 700;
             line-height: 20px;
@@ -357,45 +353,45 @@
       }
     }
   }
-	.cart__item__validate{
-		font-size: 11px;
-		color: #8D191D;
-	}
+  .cart__item__validate {
+    font-size: 11px;
+    color: #8d191d;
+  }
 }
 
 .dozen--gift {
-	background: #558950;
+  background: #558950;
 }
 
-.dozen--discount{
-	background: #132A3E;
+.dozen--discount {
+  background: #132a3e;
 }
 
-.dozen--one_more{
-	background: none;
-	box-shadow: none;
-	color: var(--red-red);
-	&__item{
-		flex-direction: column;
-		gap: 4px;
+.dozen--one_more {
+  background: none;
+  box-shadow: none;
+  color: var(--red-red);
+  &__item {
+    flex-direction: column;
+    gap: 4px;
 
-		&-tile{
-			color: var(--red-red);
-			font-weight: 700;
-			font-size: 18px;
-			span{
-				margin-left: 10px;
-			}
-		}
-		&-addition{
-			color: var(--red-red);
-			font-size: 12px;
-			font-weight: 400;
-			line-height: 16px;
-		}
-	}
+    &-tile {
+      color: var(--red-red);
+      font-weight: 700;
+      font-size: 18px;
+      span {
+        margin-left: 10px;
+      }
+    }
+    &-addition {
+      color: var(--red-red);
+      font-size: 12px;
+      font-weight: 400;
+      line-height: 16px;
+    }
+  }
 }
 
-.basket__more .product-card{
-	max-width: 100%;
+.basket__more .product-card {
+  max-width: 100%;
 }

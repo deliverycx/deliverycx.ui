@@ -1,23 +1,25 @@
-import { ICityResponse } from "modules/CityModule/interfaces/city.type"
-import { ApiSuper, methods } from "servises/Axios/AxiosApi"
-import { AjaxApiSuper } from "servises/rxjs/AjaxApi"
-import { IPointStatusRequest } from "../interfaces/organizationStatus.type"
+import { ICityResponse } from 'modules/CityModule/interfaces/city.type';
+import { ApiSuper, methods } from 'servises/Axios/AxiosApi';
+import { AjaxApiSuper } from 'servises/rxjs/AjaxApi';
+import { IPointStatusRequest } from '../interfaces/organizationStatus.type';
 
 class RequestOrganizationStatus extends AjaxApiSuper {
- 
   @methods('get')
-  getPointStatus(pointid:string) {
-    return this.request<IPointStatusRequest>(`organization/organizationstatus?organization=${pointid}`)
+  getPointStatus(pointid: string) {
+    return this.request<IPointStatusRequest>(
+      `organization/organizationstatus?organization=${pointid}`,
+    );
   }
 }
 
 class RequestOrganizationStatusAPI extends ApiSuper {
- 
   @methods('get')
-  getPointStatus(pointid:string) {
-    return this.request<IPointStatusRequest>(`organization/organizationstatus?organization=${pointid}`)
+  getPointStatus(pointid: string) {
+    return this.request<IPointStatusRequest>(
+      `organization/organizationstatus?organization=${pointid}`,
+    );
   }
 }
 
-export const requestOrganizationStatusAPI = new RequestOrganizationStatusAPI()
-export const requestOrganizationStatus = new RequestOrganizationStatus()
+export const requestOrganizationStatusAPI = new RequestOrganizationStatusAPI();
+export const requestOrganizationStatus = new RequestOrganizationStatus();

@@ -1,6 +1,4 @@
-const StoksStories = () =>{
-	return (
-		<></>
-	)
-}
-export default StoksStories
+const StoksStories = () => {
+  return <></>;
+};
+export default StoksStories;

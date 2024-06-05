@@ -5,29 +5,37 @@ import { observer } from 'mobx-react-lite';
 import OrganizationListsItem from './OrganizationListsItem';
 
 type IProps = {
-	set: any,
-	organizations: IOrganization[]
-	setCord:any
-	setPointIndex:any
-}
+  set: any;
+  organizations: IOrganization[];
+  setCord: any;
+  setPointIndex: any;
+};
 
-const HOCOrganizationLists: FC<IProps> = ({ set, organizations,setCord,setPointIndex }) => {
-	
-
-	
-	return (
-		<>
-
-			<div className="orglistmodal">
-				<div className="orglist_box">
-					{
-						organizations && organizations.map((org:any) => {
-							return <OrganizationListsItem organization={org} set={set} setPointIndex={setPointIndex} setCordPoint={setCord} key={org.id} />
-						})
-					}
-				</div>
-			</div>
-		</>
-	)
-}
-export default HOCOrganizationLists
+const HOCOrganizationLists: FC<IProps> = ({
+  set,
+  organizations,
+  setCord,
+  setPointIndex,
+}) => {
+  return (
+    <>
+      <div className="orglistmodal">
+        <div className="orglist_box">
+          {organizations &&
+            organizations.map((org: any) => {
+              return (
+                <OrganizationListsItem
+                  organization={org}
+                  set={set}
+                  setPointIndex={setPointIndex}
+                  setCordPoint={setCord}
+                  key={org.id}
+                />
+              );
+            })}
+        </div>
+      </div>
+    </>
+  );
+};
+export default HOCOrganizationLists;

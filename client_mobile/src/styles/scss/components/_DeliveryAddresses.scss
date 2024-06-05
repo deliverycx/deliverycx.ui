@@ -1,18 +1,18 @@
-.delivery-addresses{
+.delivery-addresses {
   height: 100vh;
 
-  &__list{
+  &__list {
     display: flex;
     flex-direction: column;
     flex: 1 0 auto;
 
-    &__items{
+    &__items {
       display: flex;
       flex-direction: column;
       padding: 16px;
       gap: 8px;
 
-      &-item{
+      &-item {
         display: flex;
         justify-content: space-between;
         align-items: center;
@@ -20,23 +20,23 @@
         font-size: 18px;
         font-weight: 600;
         line-height: 15px;
-				padding: 5px;
-				height: 35px;
+        padding: 5px;
+        height: 35px;
 
-        button{
-          svg{
+        button {
+          svg {
             width: 24px;
             height: 24px;
-            fill: #8D191D;
+            fill: #8d191d;
           }
         }
       }
-			&-item.active{
-				background-color:rgba(244, 244, 244, 0.39);
-				
-				border-radius: 17px;
-			}
-			&-nocity{
+      &-item.active {
+        background-color: rgba(244, 244, 244, 0.39);
+
+        border-radius: 17px;
+      }
+      &-nocity {
         display: flex;
         justify-content: space-between;
         align-items: center;
@@ -44,18 +44,18 @@
         font-size: 18px;
         font-weight: 600;
         line-height: 20px;
-				margin-bottom: 10px;
+        margin-bottom: 10px;
       }
     }
   }
 
-  &__buttons{
+  &__buttons {
     display: flex;
     flex-direction: column;
     gap: 8px;
     padding: 16px;
-    button{
-      img{
+    button {
+      img {
         width: 24px;
         height: 24px;
       }
@@ -63,38 +63,38 @@
   }
 }
 
-.maps_notificate{
-	position: absolute;
-	top: 60px;
-	width: 100%;
-	background-color: #8D191D;
-	color: #fff;
-	opacity: 0.5;
-	text-align: center;
-	padding: 10px;
+.maps_notificate {
+  position: absolute;
+  top: 60px;
+  width: 100%;
+  background-color: #8d191d;
+  color: #fff;
+  opacity: 0.5;
+  text-align: center;
+  padding: 10px;
 }
-.delivery-addresses__list-box{
-	width: 100%;
-	display: flex;
-	.order-placement__payment-method__item-btn{
-		width: 40px;
-		padding: 0;
-	}
+.delivery-addresses__list-box {
+  width: 100%;
+  display: flex;
+  .order-placement__payment-method__item-btn {
+    width: 40px;
+    padding: 0;
+  }
 }
 
-.delivery-addresses__list__items-empty{
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	flex-direction: column;
-	padding:30px 15px;
-	height: 100%;
-	text-align: center;
-	h3{
-		font-size: 18px;
-		font-style: normal;
-		font-weight: 700;
-		color: #111;
-		margin-bottom: 20px;
-	}
+.delivery-addresses__list__items-empty {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  padding: 30px 15px;
+  height: 100%;
+  text-align: center;
+  h3 {
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 700;
+    color: #111;
+    margin-bottom: 20px;
+  }
 }

@@ -1,33 +1,32 @@
-.validate{
+.validate {
   display: flex;
   align-items: center;
   gap: 4px;
- 
 
   font-size: 12px;
   font-weight: 400;
   line-height: 16px;
 
-  &-error{
+  &-error {
     color: $c_red;
 
-    img{
+    img {
       width: 16px;
       height: 16px;
     }
   }
 
-  &-additional{
-    color: #4D4D4D;
-		text-decoration: underline;
+  &-additional {
+    color: #4d4d4d;
+    text-decoration: underline;
 
-    img{
+    img {
       width: 16px;
       height: 16px;
     }
   }
 
-  svg{
+  svg {
     width: 16px;
     height: 16px;
   }

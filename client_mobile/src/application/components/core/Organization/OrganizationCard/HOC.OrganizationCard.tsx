@@ -1,13 +1,16 @@
-import { TadapterCaseCallback, adapterComponentUseCase } from "adapters/adapterComponents"
-import { useOrganizationCardViewModel } from "./OrganizationCard.viewModel"
+import {
+  TadapterCaseCallback,
+  adapterComponentUseCase,
+} from 'adapters/adapterComponents';
+import { useOrganizationCardViewModel } from './OrganizationCard.viewModel';
 import { FC, useState, useEffect, useMemo, useRef } from 'react';
-import OrganizationCard from "./view/OrganizationCard";
-import React from "react";
-import { observer } from "mobx-react-lite"
-import ModalCard from "application/components/common/Modals/ModalCard";
-import { IOrganization } from "modules/OrganizationModule/Organization/interfaces/organization.type";
-import OrganizationCardItem from "./OrganizationCardItem";
-import { appUseCase } from "modules/AppModule/app.module";
+import OrganizationCard from './view/OrganizationCard';
+import React from 'react';
+import { observer } from 'mobx-react-lite';
+import ModalCard from 'application/components/common/Modals/ModalCard';
+import { IOrganization } from 'modules/OrganizationModule/Organization/interfaces/organization.type';
+import OrganizationCardItem from './OrganizationCardItem';
+import { appUseCase } from 'modules/AppModule/app.module';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { EffectCards } from 'swiper/modules';
 import { FreeMode, Pagination } from 'swiper/modules';
@@ -15,27 +18,27 @@ import { FreeMode, Pagination } from 'swiper/modules';
 import 'swiper/css';
 import 'swiper/css/virtual';
 
-
 import { useSwiper } from 'swiper/react';
 import { Virtual } from 'swiper/modules';
-import { organizationModule } from "modules/OrganizationModule/organization.module";
-import OrganizationSwipe from "./OrganizationSwipe";
+import { organizationModule } from 'modules/OrganizationModule/organization.module';
+import OrganizationSwipe from './OrganizationSwipe';
 
 export const PointsContext = React.createContext<TadapterCaseCallback>({
-	data: {},
-	handlers: {},
-	status: {}
+  data: {},
+  handlers: {},
+  status: {},
 });
-const HOCOrganizationCard: FC<{ organizations: IOrganization[],pointIndex:string }> = ({ organizations,pointIndex }) => {
-	const useCase = adapterComponentUseCase(useOrganizationCardViewModel)
+const HOCOrganizationCard: FC<{
+  organizations: IOrganization[];
+  pointIndex: string;
+}> = ({ organizations, pointIndex }) => {
+  const useCase = adapterComponentUseCase(useOrganizationCardViewModel);
 
-	const { selectOrganization, timeworkOrganization, cardModal, point } = useCase.data
-	const { setCardModal, handlerCloseCardModal } = useCase.handlers
+  const { selectOrganization, timeworkOrganization, cardModal, point } =
+    useCase.data;
+  const { setCardModal, handlerCloseCardModal } = useCase.handlers;
 
-
-	
-
-	/*
+  /*
 	useEffect(()=>{
 		
 		if(cardModal && selectOrganization){
@@ -45,28 +48,20 @@ const HOCOrganizationCard: FC<{ organizations: IOrganization[],pointIndex:string
 	},[cardModal,pointIndex,sw.current])
 	*/
 
-	
-
-
-	//
-	return (
-		<>
-			<PointsContext.Provider value={useCase}>
-				{
-					cardModal &&
-					<ModalCard setIsOpened={handlerCloseCardModal}>
-
-						<OrganizationSwipe organizations={organizations} point={point} />
-
-					</ModalCard>
-				}
-
-			</PointsContext.Provider>
-
-		</>
-	)
-}
-export default observer(HOCOrganizationCard)
+  //
+  return (
+    <>
+      <PointsContext.Provider value={useCase}>
+        {cardModal && (
+          <ModalCard setIsOpened={handlerCloseCardModal}>
+            <OrganizationSwipe organizations={organizations} point={point} />
+          </ModalCard>
+        )}
+      </PointsContext.Provider>
+    </>
+  );
+};
+export default observer(HOCOrganizationCard);
 
 /*
 <div className="modal__wrapper map__institute-info">

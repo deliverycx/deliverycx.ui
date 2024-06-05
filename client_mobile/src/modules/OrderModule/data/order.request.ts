@@ -1,10 +1,10 @@
-import { ApiSuper, methods } from "servises/Axios/AxiosApi";
+import { ApiSuper, methods } from 'servises/Axios/AxiosApi';
 
 class RequestOrder extends ApiSuper {
-	@methods("get")
-	orgTables(query: any) {
-			return this.request<[]>(`/cart/organizationtables?id=${query}`);
-	}
+  @methods('get')
+  orgTables(query: any) {
+    return this.request<[]>(`/cart/organizationtables?id=${query}`);
+  }
 }
 
-export const requestOrder = new RequestOrder()
+export const requestOrder = new RequestOrder();

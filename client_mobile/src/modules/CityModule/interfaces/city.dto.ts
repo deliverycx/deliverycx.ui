@@ -1,11 +1,17 @@
-import { validatorDTO } from "application/helpers/validatorDTO";
-import { ICity, ICityResponse } from "./city.type"
-import { validate, IsNotEmpty, IsString, IsOptional, IsBoolean, IsNumber } from "class-validator";
-import { mappersDTO } from "application/helpers/mappersDTO";
-import { CityEntiti } from "../domain/city.entity";
+import { validatorDTO } from 'application/helpers/validatorDTO';
+import { ICity, ICityResponse } from './city.type';
+import {
+  validate,
+  IsNotEmpty,
+  IsString,
+  IsOptional,
+  IsBoolean,
+  IsNumber,
+} from 'class-validator';
+import { mappersDTO } from 'application/helpers/mappersDTO';
+import { CityEntiti } from '../domain/city.entity';
 
-
-export const cityDTO = new CityEntiti()
+export const cityDTO = new CityEntiti();
 
 /*
 export const cityMapper = (p:ICityResponse[] | ICityResponse):CityDTO[] | CityDTO => {
@@ -22,11 +28,10 @@ export const cityMapper = (p:ICityResponse[] | ICityResponse):CityDTO[] | CityDT
 }
 **/
 export const cityMapper = (val: ICityResponse) => {
-	
-	cityDTO.id = val.id
-	cityDTO.isHidden = val.isHidden
-	cityDTO.cityname = val.name
-	cityDTO.countOrganization = val.countOrg
+  cityDTO.id = val.id;
+  cityDTO.isHidden = val.isHidden;
+  cityDTO.cityname = val.name;
+  cityDTO.countOrganization = val.countOrg;
 
-	return { ...cityDTO }
-}
+  return { ...cityDTO };
+};
