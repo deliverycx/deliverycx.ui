@@ -6,7 +6,7 @@ import { useLocation, useNavigate } from 'react-router-dom';
 import { ROUTE_APP } from '../../../contstans/route.const';
 import { observer } from 'mobx-react-lite';
 import { City, CityList } from '../../../../entities/cities';
-import { useQueryClient } from '@tanstack/react-query';
+import { CityButton } from '../../../../features/cities';
 
 const HOCCITYDesc = () => {
   const useCase = adapterComponentUseCase(useCityViewModel);
@@ -54,7 +54,11 @@ const HOCCITYDesc = () => {
               <h3>Выберете город</h3>
             </div>
             <CountCity />
-            <CityList onCityClick={handleCityClick} />
+            <CityList>
+              {(city: City) => (
+                <CityButton onClick={handleCityClick} city={city} />
+              )}
+            </CityList>
           </div>
         </ModalCard>
       )}

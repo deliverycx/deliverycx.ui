@@ -1,13 +1,13 @@
-import { ChangeEvent, FC, useState } from 'react';
+import { ChangeEvent, FC, useState, ReactElement } from 'react';
 import { useCityGroups } from '../../hooks/useCityGroups';
 import { InputSearch } from 'shared/ui/InputSearch';
 import { City } from '../../types/citiesTypes';
 
 type Props = {
-  onCityClick?: (city: City) => void;
+  children: (city: City) => ReactElement;
 };
 
-export const CityList: FC<Props> = ({ onCityClick }) => {
+export const CityList: FC<Props> = ({ children }) => {
   const [inputValue, setInputValue] = useState('');
 
   const cities = useCityGroups({
@@ -36,14 +36,7 @@ export const CityList: FC<Props> = ({ onCityClick }) => {
             <ul className="grid w-full grid-cols-3 gap-3">
               {cities.map((city) => (
                 <li className="flex gap-2 items-center" key={city.id}>
-                  <button
-                    type="button"
-                    onClick={() => onCityClick?.(city)}
-                    className="cursor-pointer border-0 bg-transparent p-0 font-tilda text-base hover:text-main"
-                  >
-                    {city.name}
-                  </button>
-                  <span className="text-secondary">{city.countOrg}</span>
+                  {children(city)}
                 </li>
               ))}
             </ul>

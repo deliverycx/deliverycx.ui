@@ -1,6 +1,7 @@
 import { useMemo } from 'react';
 import { useCitiesQuery } from '../queries/citiesQueries';
 import { City } from '../types/citiesTypes';
+import { includesWithLayout } from 'shared/utils/includesWithLayout';
 
 type Options = {
   searchValue?: string;
@@ -16,7 +17,7 @@ export const useCityGroups = (options?: Options) => {
     if (!searchValue) return data;
 
     return data.filter((city) =>
-      city.name.toLowerCase().includes(searchValue.toLowerCase()),
+      includesWithLayout(city.name.toLowerCase(), searchValue.toLowerCase()),
     );
   }, [data, searchValue]);
 
