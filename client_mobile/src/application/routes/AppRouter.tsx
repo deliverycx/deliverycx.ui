@@ -217,7 +217,7 @@ const AppRouter = () => {
 							<Route key={path} path={path} element={<Component />}></Route>
 						);
 					})}
-
+					<Route path="*" element={<Navigate to="" />} />
 				</Routes>
 			</Desktop>
 			<Mobile>
