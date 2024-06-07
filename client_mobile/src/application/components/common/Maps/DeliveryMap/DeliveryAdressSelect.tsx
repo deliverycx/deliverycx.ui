@@ -16,7 +16,7 @@ export type IIkkoStreet = {
 
 const DeliveryAdressSelect: FC<IProps> = ({ setModalStreet }) => {
 	const useCase = useContext(DeliveryMapContext);
-	const { formik, stateReduceMap, ikkostreet } = useCase.data;
+	const { formik, stateReduceMap, ikkoStreet } = useCase.data;
 	const { onMapTyping } = useCase.handlers;
 	const { isLoading } = useCase.status;
 
@@ -29,11 +29,11 @@ const DeliveryAdressSelect: FC<IProps> = ({ setModalStreet }) => {
 
 	useEffect(() => {
 		if (!isLoading) {
-			ikkostreet &&
+			ikkoStreet &&
 				serchInp &&
-				searchHandle(serchInp, ikkostreet.data as IIkkoStreet[]);
+				searchHandle(serchInp, ikkoStreet.data as IIkkoStreet[]);
 		}
-	}, [ikkostreet, isLoading, serchInp]);
+	}, [ikkoStreet, isLoading, serchInp]);
 
 	const handlerСhooseAdress = (val: IIkkoStreet) => {
 		onMapTyping().setValueFomMap(null);

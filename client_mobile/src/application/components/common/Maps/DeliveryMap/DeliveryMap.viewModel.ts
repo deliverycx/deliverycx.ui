@@ -38,6 +38,8 @@ export function useDeliveryMapViewModel() {
 		},
 	);
 
+
+
 	const [stateReduceMap, dispatchMap] = useReducer(
 		CartMapReducer,
 		initialStateCartMap,
