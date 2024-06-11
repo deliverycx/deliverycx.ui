@@ -1,6 +1,10 @@
-export { hasCities, fetchCities } from './queries/citiesQueries';
+import { adapterResolveDI } from 'application/helpers/dependencyInjection';
+import { CitiesApi } from './api/cities.api';
+import { CitiesRepository } from './api/cities.repository';
 
-export { CityList } from './ui/CityList';
 
-export type { City } from './types/citiesTypes';
+export type { ICitys } from './interface/cities.type';
 
+
+export const citiesApi: CitiesApi = adapterResolveDI(CitiesApi);
+export const citiesRepository: CitiesRepository = adapterResolveDI(CitiesRepository);

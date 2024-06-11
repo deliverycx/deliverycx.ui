@@ -1,4 +1,4 @@
-import { Input, Props as InputProps } from '../Input';
+import { Input, Props as InputProps } from './Input';
 import { FC } from 'react';
 import cn from 'classnames';
 import { Icon } from '../../../Icons';

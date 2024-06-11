@@ -1,22 +1,19 @@
-import CountCity from './view/CountCity';
 import ModalCard from 'application/components/common/Modals/ModalCard';
-import { adapterComponentUseCase } from 'adapters/adapterComponents';
-import { useCityViewModel } from './useCity.viewModel';
+import { ROUTE_APP } from 'application/contstans/route.const';
+import { useCitiesQuery } from 'entities/cities/queries/cities.query';
 import { useLocation, useNavigate } from 'react-router-dom';
-import { ROUTE_APP } from '../../../contstans/route.const';
-import { observer } from 'mobx-react-lite';
+import CitiesCount from 'widgets/Cities/CitiesCount/ui/CitiesCount';
+import CitiesList from 'widgets/Cities/CitiesList/ui/CitiesList';
 
-
-const HOCCITYDesc = () => {
-	const useCase = adapterComponentUseCase(useCityViewModel);
-	const { cityList } = useCase.data;
-	const { submitCity, closeModalDesc } = useCase.handlers;
-
+const CitiesPageDesctop = () => {
+	const { data: cities } = useCitiesQuery();
 	const navigate = useNavigate();
 
 	const params = useLocation();
 
-
+	const closeModalDesc = () => {
+		navigate(ROUTE_APP.MAIN);
+	};
 
 	return (
 		<>
@@ -44,12 +41,17 @@ const HOCCITYDesc = () => {
 							</svg>
 							<h3>Выберете город</h3>
 						</div>
-						<CountCity />
 
+						{cities && (
+							<>
+								<CitiesCount cities={cities} />
+								<CitiesList cities={cities} />
+							</>
+						)}
 					</div>
 				</ModalCard>
 			)}
 		</>
 	);
 };
-export default observer(HOCCITYDesc);
+export default CitiesPageDesctop;
