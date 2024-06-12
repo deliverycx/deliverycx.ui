@@ -1,7 +1,10 @@
 /* eslint-disable no-var */
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { shemaAdress } from 'application/helpers/validationSchema';
-import { getGeoLocation } from 'application/helpers/yandexapi';
+import {
+	geoCodeValidAdress,
+	getGeoLocation,
+} from 'application/helpers/yandexapi';
 import {
 	CartMapReducer,
 	ReducerActionTypePoints,
@@ -13,7 +16,7 @@ import { organizationModel } from 'modules/OrganizationModule/organization.modul
 import { useReducer, useMemo, useCallback, useEffect } from 'react';
 import { useQuery } from 'react-query';
 import { useNavigate, useParams, useSearchParams } from 'react-router-dom';
-import RequestWebhook from 'servises/Request/Request.Webhook';
+import RequestWebhook from 'shared/api/Request/Request.Webhook';
 import { IIkkoStreet } from './DeliveryAdressSelect';
 import { profileModel, profileUseCase } from 'modules/Profile/profile.module';
 import { orderModel } from 'modules/OrderModule/order.module';
@@ -26,19 +29,17 @@ export function useDeliveryMapViewModel() {
 	const point = organizationModel.selectOrganization;
 	const profile = profileModel.profile;
 	const { adress } = useParams();
-	const [searchParams] = useSearchParams();
+	const [searchParams, setSearchParams] = useSearchParams();
 
 	const pointid = point?.guid;
 
-	const { data: ikkoStreet, isLoading } = useQuery(
+	const { data: ikkostreet, isLoading } = useQuery(
 		'street',
 		async () => await RequestWebhook.getStreetCity({ organizationId: pointid }),
 		{
 			enabled: !!pointid,
 		},
 	);
-
-
 
 	const [stateReduceMap, dispatchMap] = useReducer(
 		CartMapReducer,
@@ -94,7 +95,7 @@ export function useDeliveryMapViewModel() {
 	const formik = useFormik({
 		initialValues,
 		validationSchema: shemaAdress(),
-		onSubmit: async (values) => {
+		onSubmit: async (values, meta) => {
 			const adressbody = {
 				city: point?.info.city,
 				kladrid: stateReduceMap.valueMap,
@@ -119,7 +120,7 @@ export function useDeliveryMapViewModel() {
 						payload: [...res],
 					});
 				})
-				.catch(() => {
+				.catch((e: unknown) => {
 					dispatchMap({
 						type: ReducerActionTypePoints.getGeoLoc,
 						payload: [pointCords[0], pointCords[1]],
@@ -161,12 +162,12 @@ export function useDeliveryMapViewModel() {
 			)
 			.then(({ data }) => {
 				//console.log(data.response.GeoObjectCollection.featureMember[0].GeoObject);
-				const validAdress =
+				const validadress =
 					data.response.GeoObjectCollection.featureMember[0].GeoObject.name;
-				if (!validAdress) return;
-				const [street, house] = validAdress.split(',');
+				if (!validadress) return;
+				const [street, house] = validadress.split(',');
 
-				const ikko = ikkoStreet && (ikkoStreet.data as IIkkoStreet[]);
+				const ikko = ikkostreet && (ikkostreet.data as IIkkoStreet[]);
 				const resulr =
 					ikko &&
 					ikko.filter(function (el: IIkkoStreet) {
@@ -259,7 +260,7 @@ export function useDeliveryMapViewModel() {
 		point,
 		adress,
 		formik,
-		ikkoStreet,
+		ikkostreet,
 	});
 	this.handlers({
 		onMapTyping,

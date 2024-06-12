@@ -38,7 +38,8 @@ import OrderSuccesDesc from 'application/components/core/Order/OrderCreate/Order
 import LayoutDesctop from 'application/components/common/Layout/LayoutDesctop';
 import PasswordReset from 'application/components/common/Auth/view/PasswordReset';
 import HOCBasketPageDesc from 'application/components/core/Basket/HOC.BasketPage.desc';
-import HOCCounterPage from 'application/components/common/CounterPage/HOC.CounterPage';
+import CitiesPageDesctop from 'pages/Cities/ui/CitiesPage.desctop';
+import LayoutPageDesctop from 'app/layout/LayoutPage.desctop';
 
 export const publicRoutesMobile = [
 	{
@@ -126,7 +127,7 @@ const publicRoutesDeskop = [
 	},
 	{
 		path: ROUTE_APP.CITY,
-		Component: HOCdeskMain,
+		Component: CitiesPageDesctop,
 	},
 	{
 		path: ROUTE_APP.POINT,
@@ -186,11 +187,6 @@ const publicRoutesDeskop = [
 		path: ROUTE_APP.AUTH.AUTORIZATE,
 		Component: HOCdeskMain,
 	},
-	{
-		path: ROUTE_APP.PAGES.COUNTER + '/:hash',
-		Component: HOCCounterPage,
-	},
-
 ];
 
 //<Route path="*" element={<Navigate to="" />} />
@@ -206,15 +202,17 @@ const AppRouter = () => {
 									key={path}
 									path={path}
 									element={
-										<Layout>
-											<Component />
-										</Layout>
+										<LayoutPageDesctop>
+											<Layout>
+												<Component />
+											</Layout>
+										</LayoutPageDesctop>
 									}
 								></Route>
 							);
 						}
 						return (
-							<Route key={path} path={path} element={<Component />}></Route>
+							<Route key={path} path={path} element={<LayoutPageDesctop><Component /></LayoutPageDesctop>}></Route>
 						);
 					})}
 					<Route path="*" element={<Navigate to="" />} />

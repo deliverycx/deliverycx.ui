@@ -1,5 +1,8 @@
 import { FC, useContext, useEffect, useRef, useState } from 'react';
+import ModalCard from '../../Modals/ModalCard';
+import RequestWebhook from 'shared/api/Request/Request.Webhook';
 import { DeliveryMapContext } from './HOC.DeliveryMap';
+import { useQuery } from 'react-query';
 import LoaderProduct from '../../Loaders/loaderProduct';
 
 type IProps = {
@@ -16,7 +19,7 @@ export type IIkkoStreet = {
 
 const DeliveryAdressSelect: FC<IProps> = ({ setModalStreet }) => {
 	const useCase = useContext(DeliveryMapContext);
-	const { formik, stateReduceMap, ikkoStreet } = useCase.data;
+	const { formik, stateReduceMap, ikkostreet } = useCase.data;
 	const { onMapTyping } = useCase.handlers;
 	const { isLoading } = useCase.status;
 
@@ -29,11 +32,11 @@ const DeliveryAdressSelect: FC<IProps> = ({ setModalStreet }) => {
 
 	useEffect(() => {
 		if (!isLoading) {
-			ikkoStreet &&
+			ikkostreet &&
 				serchInp &&
-				searchHandle(serchInp, ikkoStreet.data as IIkkoStreet[]);
+				searchHandle(serchInp, ikkostreet.data as IIkkoStreet[]);
 		}
-	}, [ikkoStreet, isLoading, serchInp]);
+	}, [ikkostreet, isLoading, serchInp]);
 
 	const handlerСhooseAdress = (val: IIkkoStreet) => {
 		onMapTyping().setValueFomMap(null);

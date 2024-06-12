@@ -4,22 +4,26 @@ import { ROUTE_APP } from 'application/contstans/route.const';
 import { basketModel } from 'modules/BasketModule/basket.module';
 import { requestOrganizationAdmin } from 'modules/OrganizationModule/Organization/data/organization.request';
 import { organizationModel } from 'modules/OrganizationModule/organization.module';
+import { userModel } from 'modules/UserModule/user.module';
 import { useState, useEffect, FC } from 'react';
 import { NavLink, useLocation, useNavigate } from 'react-router-dom';
 import MainMenuDesc from '../Menu/MainMenu.desc';
 import { observer } from 'mobx-react-lite';
 import ModalCard from '../Modals/ModalCard';
 import OfferAuth from '../Auth/view/OfferAuth';
+import HOCAUTHDesc from '../Auth/HOC.Auth.desc';
 import NotificatCity from 'application/components/core/City/view/NotificatCity';
 import HOCCITYDesc from 'application/components/core/City/HOC.City.desc';
 import HOCOrganizationsDesc from 'application/components/core/Organization/HOC.Organizations.desc';
 
 const HOCdescHead: FC<{ styles?: string }> = ({ styles }) => {
 	const point = organizationModel.selectOrganization;
+	const user = userModel.guestUser;
 	const cartprice = basketModel.basketPrice;
 	const navigate = useNavigate();
 
 	const params = useLocation();
+	const [isModalOpened, setIsModalOpened] = useState(false);
 
 	const [goodPlaceId, setGoodPlaceId] = useState<string>('');
 
@@ -192,17 +196,7 @@ const HOCdescHead: FC<{ styles?: string }> = ({ styles }) => {
 			</div>
 			<MainMenuDesc />
 
-			{params.pathname === ROUTE_APP.AUTH.AUTORIZATE && (
-				<ModalCard
-					setIsOpened={() => navigate(-1)}
-					theme={null}
-					styles="login-container_modal"
-				>
-					<OfferAuth />
-				</ModalCard>
-			)}
-			{params.pathname === ROUTE_APP.CITY && <HOCCITYDesc />}
-			{params.pathname === ROUTE_APP.POINT && <HOCOrganizationsDesc />}
+
 		</>
 	);
 };

@@ -5,7 +5,25 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="67ecf96e-fe80-4340-a9f6-f5acc541cf3e" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/client_mobile/src/application/components/common/Auth/HOC.Auth.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client_mobile/src/application/components/common/Auth/HOC.Auth.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client_mobile/src/entities/cities/api/citiesApi.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client_mobile/src/entities/cities/hooks/useCityGroups.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client_mobile/src/entities/cities/index.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client_mobile/src/entities/cities/queries/citiesQueries.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client_mobile/src/entities/cities/types/citiesTypes.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client_mobile/src/entities/cities/ui/CityList/.editorconfig" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client_mobile/src/entities/cities/ui/CityList/CityList.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client_mobile/src/entities/cities/ui/CityList/index.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client_mobile/src/entities/cities/utils/deleteFalseFromArr.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client_mobile/src/shared/ui/Input/Input.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client_mobile/src/shared/ui/Input/index.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client_mobile/src/styles/index.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client_mobile/tailwind.config.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/codeStyles/Project.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/codeStyles/Project.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client_mobile/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/client_mobile/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client_mobile/src/application/components/core/City/HOC.City.desc.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client_mobile/src/application/components/core/City/HOC.City.desc.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client_mobile/src/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client_mobile/src/index.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client_mobile/yarn.lock" beforeDir="false" afterPath="$PROJECT_DIR$/client_mobile/yarn.lock" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -31,19 +49,22 @@
     &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;add-prettier&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;change-city-list&quot;,
     &quot;last_opened_file_path&quot;: &quot;D:/projects/My-Project&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
     &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
     &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;prettierjs.PrettierConfiguration.Package&quot;: &quot;/Users/sergeyrusov/Documents/deliverycx.ui/client_mobile/node_modules/prettier&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;settings.javascript.prettier&quot;,
     &quot;ts.external.directory.path&quot;: &quot;/Users/sergeyrusov/Documents/deliverycx.ui/client_mobile/node_modules/typescript/lib&quot;,
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
 }</component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/client_mobile/src/styles" />
       <recent name="D:\projects\deliverycx.ui\client_mobile\public\docs" />
       <recent name="D:\projects\deliverycx.ui\client_mobile\src\assets\images\icons" />
     </key>
@@ -82,6 +103,9 @@
       <workItem from="1699952408636" duration="271000" />
       <workItem from="1699965939226" duration="1784000" />
       <workItem from="1717444420272" duration="85000" />
+      <workItem from="1717582527278" duration="1300000" />
+      <workItem from="1717583855246" duration="9893000" />
+      <workItem from="1717598075071" duration="1918000" />
     </task>
     <servers />
   </component>
