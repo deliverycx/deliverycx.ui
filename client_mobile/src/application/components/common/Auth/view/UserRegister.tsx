@@ -1,5 +1,5 @@
 import { userUseCase } from 'modules/UserModule/user.module';
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { FC } from 'react';
 import PinInput from 'react-pin-input';
 import cn from 'classnames';
@@ -7,145 +7,129 @@ import { useNavigate } from 'react-router-dom';
 import { ROUTE_APP } from 'application/contstans/route.const';
 
 type IProps = {
-  formik: any;
-  set: any;
-  codes: number;
+	formik: any;
+	set: any;
+	codes: number;
 };
 const UserRegister: FC<IProps> = ({ formik, set, codes }) => {
-  const navigate = useNavigate();
-  const [errorCode, setErrorCode] = useState(false);
+	const navigate = useNavigate();
+	const [errorCode, setErrorCode] = useState(false);
 
-  const [over, setOver] = useState(false);
-  const [[h, m, s], setTime] = useState([0, 3, 0]);
+	const [over, setOver] = useState(false);
+	const [[h, m, s], setTime] = useState([0, 3, 0]);
 
-  const tick = () => {
-    if (over) return;
+	const tick = () => {
+		if (over) return;
 
-    if (h === 0 && m === 0 && s === 0) {
-      setOver(true);
-    } else if (m === 0 && s === 0) {
-      setTime([h - 1, 60, 60]);
-    } else if (s == 0) {
-      setTime([h, m - 1, 60]);
-    } else {
-      setTime([h, m, s - 1]);
-    }
-  };
-
-  useEffect(() => {
-    const timerID = setInterval(() => tick(), 1000);
-    return () => clearInterval(timerID);
-  });
-
-  /*
-	useEffect(()=>{
-		let tik:any
-		if(codes){
-			
-			setTimeout(()=>{
-				
-				//handlerCodeSend(String(codes),formik.values.phone,formik.values.password)
-			},1500)
+		if (h === 0 && m === 0 && s === 0) {
+			setOver(true);
+		} else if (m === 0 && s === 0) {
+			setTime([h - 1, 60, 60]);
+		} else if (s == 0) {
+			setTime([h, m - 1, 60]);
+		} else {
+			setTime([h, m, s - 1]);
 		}
-		return () => clearTimeout(tik);
-	},[codes])
-	*/
+	};
 
-  const reset = () => {
-    setTime([0, 1, 0]);
-    setOver(false);
-    //formik.submitForm()
-  };
+	useEffect(() => {
+		const timerID = setInterval(() => tick(), 1000);
+		return () => clearInterval(timerID);
+	});
 
-  const handlerCodeSend = async (
-    code: string,
-    phone: string,
-    password: string,
-  ) => {
-    try {
-      const successCode = await userUseCase.authUser(phone, code, password);
-      console.log(successCode);
+	const reset = () => {
+		setTime([0, 1, 0]);
+		setOver(false);
+	};
 
-      if (successCode) {
-        navigate(ROUTE_APP.PROFILE.PROFILE_MAIN);
-      } else {
-        setErrorCode(true);
-      }
-    } catch (error) {
-      console.log(error);
-    }
-  };
+	const handlerCodeSend = async (
+		code: string,
+		phone: string,
+		password: string,
+	) => {
+		try {
+			const successCode = await userUseCase.authUser(phone, code, password);
 
-  const CN = cn('auth-content__inputs-sms', { 'validate--error': errorCode });
+			if (successCode) {
+				navigate(ROUTE_APP.PROFILE.PROFILE_MAIN);
+			} else {
+				setErrorCode(true);
+			}
+		} catch (error) {
+			console.log(error);
+		}
+	};
 
-  return (
-    <>
-      <div className="auth-content unauthorized__content">
-        <div className="auth-content__info">
-          <h2 className="auth-content__info-title">Введите код из СМС</h2>
-          <p className="auth-content__info-text">Код отправлен на номер</p>
-          <h3 className="auth-content__info-numb">{formik.values.phone}</h3>
-          <h5 className="codewaith">
-            ожидание может состовлять до <strong>5 мин</strong>
-          </h5>
-        </div>
-        <div className="auth-content__inputs">
-          <div className={CN}>
-            <PinInput
-              initialValue={String(codes)}
-              autoSelect={true}
-              length={4}
-              onChange={(value, index) => {
-                setErrorCode(false);
-              }}
-              onComplete={(value, index) =>
-                handlerCodeSend(
-                  value,
-                  formik.values.phone,
-                  formik.values.password,
-                )
-              }
-            />
-          </div>
+	const CN = cn('auth-content__inputs-sms', { 'validate--error': errorCode });
 
-          {errorCode && (
-            <span className="validate validate-error">
-              <img src={require('assets/images/icons/warning.png')} alt="" />
-              Неверный код, попробуйте ещё раз
-            </span>
-          )}
-        </div>
-      </div>
-      <div className="auth-footer">
-        <button
-          className="btn btn-md btn_sucsess-code"
-          onClick={() =>
-            handlerCodeSend(
-              String(codes),
-              formik.values.phone,
-              formik.values.password,
-            )
-          }
-        >
-          Подтвердить
-        </button>
-        <button disabled={!over} className="btn btn-md btn-red" onClick={reset}>
-          {!over ? (
-            <>
-              Запросить новый код через{' '}
-              <p>{`${m
-                .toString()
-                .padStart(2, '0')}:${s.toString().padStart(2, '0')}`}</p>
-            </>
-          ) : (
-            'Запросить новый код '
-          )}
-        </button>
-        <button className="btn-none btn btn-md" onClick={() => set(false)}>
-          Изменить номер телефона
-        </button>
-      </div>
-    </>
-  );
+	return (
+		<>
+			<div className="auth-content unauthorized__content">
+				<div className="auth-content__info">
+					<h2 className="auth-content__info-title">Введите код из СМС</h2>
+					<p className="auth-content__info-text">Код отправлен на номер</p>
+					<h3 className="auth-content__info-numb">{formik.values.phone}</h3>
+					<h5 className="codewaith">
+						ожидание может состовлять до <strong>5 мин</strong>
+					</h5>
+				</div>
+				<div className="auth-content__inputs">
+					<div className={CN}>
+						<PinInput
+							initialValue={String(codes)}
+							autoSelect={true}
+							length={4}
+							onChange={(_value, _index) => {
+								setErrorCode(false);
+							}}
+							onComplete={(value, _index) =>
+								handlerCodeSend(
+									value,
+									formik.values.phone,
+									formik.values.password,
+								)
+							}
+						/>
+					</div>
+
+					{errorCode && (
+						<span className="validate validate-error">
+							<img src={require('assets/images/icons/warning.png')} alt="" />
+							Неверный код, попробуйте ещё раз
+						</span>
+					)}
+				</div>
+			</div>
+			<div className="auth-footer">
+				<button
+					className="btn btn-md btn_sucsess-code"
+					onClick={() =>
+						handlerCodeSend(
+							String(codes),
+							formik.values.phone,
+							formik.values.password,
+						)
+					}
+				>
+					Подтвердить
+				</button>
+				<button disabled={!over} className="btn btn-md btn-red" onClick={reset}>
+					{!over ? (
+						<>
+							Запросить новый код через{' '}
+							<p>{`${m
+								.toString()
+								.padStart(2, '0')}:${s.toString().padStart(2, '0')}`}</p>
+						</>
+					) : (
+						'Запросить новый код '
+					)}
+				</button>
+				<button className="btn-none btn btn-md" onClick={() => set(false)}>
+					Изменить номер телефона
+				</button>
+			</div>
+		</>
+	);
 };
 export default UserRegister;
