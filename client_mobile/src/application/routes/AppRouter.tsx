@@ -40,11 +40,14 @@ import PasswordReset from 'application/components/common/Auth/view/PasswordReset
 import HOCBasketPageDesc from 'application/components/core/Basket/HOC.BasketPage.desc';
 import CitiesPageDesctop from 'pages/Cities/ui/CitiesPage.desctop';
 import LayoutPageDesctop from 'app/layout/LayoutPage.desctop';
+import CitiesPageMobile from 'pages/Cities/ui/CitiesPage.mobile';
+import OrganizationsPageMobile from 'pages/Organizations/ui/OrganizationsPage.mobile';
+import OrganizationsPageDesctop from 'pages/Organizations/ui/OrganizationsPage.desctop';
 
 export const publicRoutesMobile = [
 	{
 		path: ROUTE_APP.MAIN,
-		Component: HOCCity,
+		Component: CitiesPageMobile,
 	},
 	{
 		path: ROUTE_APP.PRAVORAZDEL,
@@ -52,7 +55,7 @@ export const publicRoutesMobile = [
 	},
 	{
 		path: ROUTE_APP.POINT,
-		Component: HOCOrganizations,
+		Component: OrganizationsPageMobile,
 	},
 	{
 		path: ROUTE_APP.SHOP.SHOP_MAIN,
@@ -131,7 +134,7 @@ const publicRoutesDeskop = [
 	},
 	{
 		path: ROUTE_APP.POINT,
-		Component: HOCdeskMain,
+		Component: OrganizationsPageDesctop,
 	},
 	{
 		path: ROUTE_APP.SHOP.SHOP_MAIN,
