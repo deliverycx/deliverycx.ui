@@ -322,8 +322,14 @@ body {
 	}
 
 	.tick {
+		font-family: 'Roboto Condensed';
+		font-size: 10vh;
 
-		font-size: 3.5em !important;
+
+	}
+
+	.tick-flip-panel {
+		background: linear-gradient(180deg, #101010 0%, #0d0d0d 49.5%, #050505 50%, #0d0d0d 54.5%, #0a0a0a 100%) !important;
 	}
 
 	.tick-credits {
