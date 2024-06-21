@@ -1,10 +1,10 @@
 import { useOrganizationStatus } from 'application/hooks/useOrganizationStatus';
 import { basketUseCase } from 'modules/BasketModule/basket.module';
 import {
-  organizationModel,
-  organizationStatusModel,
-  organizationStatusModule,
-  useCaseOrganizationStatus,
+	organizationModel,
+	organizationStatusModel,
+	organizationStatusModule,
+	useCaseOrganizationStatus,
 } from 'modules/OrganizationModule/organization.module';
 import { useEffect, useState } from 'react';
 import { useQuery } from 'react-query';
@@ -20,59 +20,61 @@ import { IOrganization } from 'modules/OrganizationModule/Organization/interface
 import { IOrganizationStatus } from 'modules/OrganizationModule/OrganizationStatuses/interfaces/organizationStatus.type';
 
 const HOCOrderDesc = () => {
-  const navigate = useNavigate();
-  const {
-    deliveryTipe,
-    selectDeliveryTipe,
-    organizationStatusMetods,
-    paymentMetod,
-  } = organizationStatusModel;
-  const params = useLocation();
+	const navigate = useNavigate();
+	const {
+		deliveryTipe,
+		selectDeliveryTipe,
+		organizationStatusMetods,
+		paymentMetod,
+	} = organizationStatusModel;
+	const params = useLocation();
 
-  useQuery(
-    'pointstatus',
-    async () =>
-      await organizationStatusModule.handlerBus.handlerOrganizationStatus(),
-    {
-      refetchOnWindowFocus: true,
-    },
-  );
+	useQuery(
+		'pointstatus',
+		async () =>
+			await organizationStatusModule.handlerBus.handlerOrganizationStatus(),
+		{
+			refetchOnWindowFocus: true,
+		},
+	);
 
-  const [statusTSX, switchMetod] = useOrganizationStatus();
+	console.log(paymentMetod);
 
-  useEffect(() => {
-    if (!selectDeliveryTipe && deliveryTipe && organizationStatusMetods) {
-      const resultType = useCaseOrganizationStatus.selectActiveDeliveryType(
-        organizationStatusMetods,
-        deliveryTipe
-          .slice()
-          .sort((a: any, b: any) => (a['sort'] > b['sort'] ? 1 : -1))[0],
-      );
+	const [statusTSX, switchMetod] = useOrganizationStatus();
 
-      resultType &&
-        organizationStatusModel.actionSelectDeliveryTipe(resultType);
-    }
-  }, [organizationStatusMetods, deliveryTipe]);
+	useEffect(() => {
+		if (!selectDeliveryTipe && deliveryTipe && organizationStatusMetods) {
+			const resultType = useCaseOrganizationStatus.selectActiveDeliveryType(
+				organizationStatusMetods,
+				deliveryTipe
+					.slice()
+					.sort((a: any, b: any) => (a['sort'] > b['sort'] ? 1 : -1))[0],
+			);
 
-  useEffect(() => {
-    basketUseCase.cartCase();
-  }, []);
+			resultType &&
+				organizationStatusModel.actionSelectDeliveryTipe(resultType);
+		}
+	}, [organizationStatusMetods, deliveryTipe]);
 
-  const CN = cn('order-placement__form', {
-    'close-soon': statusTSX && statusTSX.NoTimeWork(),
-  }); //statusTSX.NoTimeWork()
-  return (
-    <LayoutDesctop>
-      <div className="order-desc">
-        <h1>Оформление заказа</h1>
-        <div className={CN}>
-          {paymentMetod && <HOCOrderForm paymentMetod={paymentMetod} />}
-          {params.pathname.includes(ROUTE_APP.ORDER.ORDER_MAP) && (
-            <HOCDeliveryMapDesc />
-          )}
-        </div>
-      </div>
-    </LayoutDesctop>
-  );
+	useEffect(() => {
+		basketUseCase.cartCase();
+	}, []);
+
+	const CN = cn('order-placement__form', {
+		'close-soon': statusTSX && statusTSX.NoTimeWork(),
+	}); //statusTSX.NoTimeWork()
+	return (
+		<LayoutDesctop>
+			<div className="order-desc">
+				<h1>Оформление заказа</h1>
+				<div className={CN}>
+					{paymentMetod && <HOCOrderForm paymentMetod={paymentMetod} />}
+					{params.pathname.includes(ROUTE_APP.ORDER.ORDER_MAP) && (
+						<HOCDeliveryMapDesc />
+					)}
+				</div>
+			</div>
+		</LayoutDesctop>
+	);
 };
 export default observer(HOCOrderDesc);
