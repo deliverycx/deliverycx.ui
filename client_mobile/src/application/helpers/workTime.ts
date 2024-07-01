@@ -2307,7 +2307,7 @@ export function subtractMinutes(timeString: string, time: number): string {
 	let minutes: number = parseInt(timeParts[1]);
 
 	// Вычитаем 30 минут
-	minutes -= time;
+	minutes -= time || 60;
 
 	// Обработка случая, когда минуты становятся отрицательными
 	if (minutes < 0) {
@@ -2315,12 +2315,14 @@ export function subtractMinutes(timeString: string, time: number): string {
 		hours -= 1;
 		minutes += 60;
 	}
+	console.log('minutes', timeString, time);
 
 	// Форматируем часы и минуты обратно в строку
 	const newTimeString: string =
 		hours.toString().padStart(2, '0') +
 		':' +
 		minutes.toString().padStart(2, '0');
+
 
 	return newTimeString;
 }
