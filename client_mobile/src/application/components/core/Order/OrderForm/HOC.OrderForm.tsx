@@ -16,58 +16,60 @@ import OrderNotificate from '../view/OrderNotificate';
 import HOCOrderMetods from '../OrderMetods/HOC.OrderMetods';
 
 const HOCOrderForm: FC<{ paymentMetod: string[] }> = (paymentMetod) => {
-  const useCase = adapterComponentUseCase(useOrderFromViewModel, paymentMetod);
-  const { builder, formik } = useCase.data;
-  const { error } = useCase.status;
+	const useCase = adapterComponentUseCase(useOrderFromViewModel, paymentMetod);
+	const { builder, formik } = useCase.data;
+	const { error } = useCase.status;
 
-  const [disable, setDisable] = useState(false);
+	const [disable, setDisable] = useState(false);
 
-  const formWrapper = new OrderFormBuilder(formik, useCase);
+	const formWrapper = new OrderFormBuilder(formik, useCase);
 
-  return (
-    <FormikProvider value={formik}>
-      <form onSubmit={formik.handleSubmit} className="order-form">
-        <div className="order-placement__form">
-          <HOCOrderMetods />
-          {builder &&
-            builder.current &&
-            formWrapper.getInitinal(builder.current)}
-        </div>
-        <div className="order-placement_general">
-          <div className="order-placement_general-desc">
-            <HOCOrderGeneral errors={error} />
-            {!disable && (
-              <div className="order-placement__buttons">
-                <input
-                  disabled={formik.isSubmitting}
-                  className="btn btn-md btn-red"
-                  type="submit"
-                  value="Всё верно, продолжить"
-                />
+	console.log('disable', disable);
 
-                <NavLink
-                  to={ROUTE_APP.CART.BASKET_MAIN}
-                  className="btn btn-md btn-gray"
-                >
-                  Назад
-                </NavLink>
-                <NavLink
-                  className="order-placement__buttons-link"
-                  to={ROUTE_APP.PRAVORAZDEL}
-                >
-                  <div>
-                    Продолжая, вы соглашаетесь на{' '}
-                    <span>обработку персональных данных</span> и{' '}
-                    <span>условия пользовательского соглашения</span>
-                  </div>
-                </NavLink>
-              </div>
-            )}
-            <OrderNotificate disable={setDisable} />
-          </div>
-        </div>
-      </form>
-    </FormikProvider>
-  );
+	return (
+		<FormikProvider value={formik}>
+			<form onSubmit={formik.handleSubmit} className="order-form">
+				<div className="order-placement__form">
+					<HOCOrderMetods />
+					{builder &&
+						builder.current &&
+						formWrapper.getInitinal(builder.current)}
+				</div>
+				<div className="order-placement_general">
+					<div className="order-placement_general-desc">
+						<HOCOrderGeneral errors={error} />
+						{!disable && (
+							<div className="order-placement__buttons">
+								<input
+									disabled={formik.isSubmitting}
+									className="btn btn-md btn-red"
+									type="submit"
+									value="Всё верно, продолжить"
+								/>
+
+								<NavLink
+									to={ROUTE_APP.CART.BASKET_MAIN}
+									className="btn btn-md btn-gray"
+								>
+									Назад
+								</NavLink>
+								<NavLink
+									className="order-placement__buttons-link"
+									to={ROUTE_APP.PRAVORAZDEL}
+								>
+									<div>
+										Продолжая, вы соглашаетесь на{' '}
+										<span>обработку персональных данных</span> и{' '}
+										<span>условия пользовательского соглашения</span>
+									</div>
+								</NavLink>
+							</div>
+						)}
+						<OrderNotificate disable={setDisable} />
+					</div>
+				</div>
+			</form>
+		</FormikProvider>
+	);
 };
 export default observer(HOCOrderForm);

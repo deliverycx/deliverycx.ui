@@ -51,7 +51,7 @@ export class StatusTSX {
 			content:content
 		})
 		*/
-		console.log('exect', exect);
+
 		if (exect) {
 			this.statuses = {
 				name,

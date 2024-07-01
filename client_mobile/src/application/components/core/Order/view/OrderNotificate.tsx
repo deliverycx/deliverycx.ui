@@ -25,6 +25,7 @@ const OrderNotificate: FC<{ disable: any }> = ({ disable }) => {
 	const navigate = useNavigate();
 
 	useEffect(() => {
+
 		if (statusTSX && statusTSX.statuses) {
 
 
