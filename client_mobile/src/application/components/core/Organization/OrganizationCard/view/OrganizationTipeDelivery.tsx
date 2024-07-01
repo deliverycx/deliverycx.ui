@@ -24,6 +24,7 @@ import { appUseCase } from 'modules/AppModule/app.module';
 import { Redirects } from 'application/helpers/redirectsOld';
 import { isDesctomMediaQuery } from 'application/ResponseMedia';
 import OrganizationTableRestaurant from './OrganizationTableRestaurant';
+import { subtractMinutes } from 'application/helpers/workTime';
 
 const OrganizationTipeDelivery: FC<{ organization: any }> = ({
 	organization,
@@ -44,30 +45,6 @@ const OrganizationTipeDelivery: FC<{ organization: any }> = ({
 		}
 	}, [organization.deliveryTipe]);
 
-	function subtractMinutes(timeString: string, time: number): string {
-		// Разбиваем строку на часы и минуты
-		const timeParts: string[] = timeString.split(':');
-		let hours: number = parseInt(timeParts[0]);
-		let minutes: number = parseInt(timeParts[1]);
-
-		// Вычитаем 30 минут
-		minutes -= time;
-
-		// Обработка случая, когда минуты становятся отрицательными
-		if (minutes < 0) {
-			// Уменьшаем часы на 1 и добавляем 60 минут
-			hours -= 1;
-			minutes += 60;
-		}
-
-		// Форматируем часы и минуты обратно в строку
-		const newTimeString: string =
-			hours.toString().padStart(2, '0') +
-			':' +
-			minutes.toString().padStart(2, '0');
-
-		return newTimeString;
-	}
 
 	statusTSX &&
 		statusTSX.NoWorkPoint(
@@ -238,7 +215,7 @@ const OrganizationTipeDelivery: FC<{ organization: any }> = ({
 					</svg>
 					Доставка доступна с{' '}
 					{subtractMinutes(
-						organization.timeworkOrganization.todaytime[1],
+						organization.timeworkOrganization.todaytime[0],
 						organization.deliveryTime,
 					)}
 				</button>

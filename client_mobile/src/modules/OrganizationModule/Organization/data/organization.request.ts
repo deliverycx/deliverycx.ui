@@ -52,9 +52,9 @@ class RequestOrganizationApi extends ApiSuper {
 	}
 
 	@methods('get')
-	getRequisites(cityId: string) {
+	getRequisites(pointid: string) {
 		return this.request<any>(
-			`organization/recvisites?organizationId=${cityId}`,
+			`organization/recvisites?organizationId=${pointid}`,
 		);
 	}
 	@methods('post')

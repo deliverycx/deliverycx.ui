@@ -38,7 +38,7 @@ const HOCOrderDesc = () => {
 		},
 	);
 
-	console.log(paymentMetod);
+
 
 	const [statusTSX, switchMetod] = useOrganizationStatus();
 
