@@ -47,7 +47,7 @@ export class OrderCreateBodyEntity {
 	bodyOrder(bodyorder: IInitialValues) {
 		const result = {
 			name: bodyorder.name,
-			phone: bodyorder.phone.trim(),
+			phone: bodyorder.phone.replace(/\s+/g, ''),
 			comment: bodyorder.comment,
 			money: bodyorder.money,
 			timedelivery: bodyorder.timedelivery,
