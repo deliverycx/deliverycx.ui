@@ -191,6 +191,7 @@ const HOCCounterPage = () => {
 
 	return (
 		<>
+			<div className="telikpage_bg"></div>
 			<section className="checkout_page telikpage">
 				<div className="telikcount">
 
