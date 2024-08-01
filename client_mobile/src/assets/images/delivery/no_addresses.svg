@@ -1,0 +1,393 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 26.3.1, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd" [
+	<!ENTITY ns_extend "http://ns.adobe.com/Extensibility/1.0/">
+	<!ENTITY ns_ai "http://ns.adobe.com/AdobeIllustrator/10.0/">
+	<!ENTITY ns_graphs "http://ns.adobe.com/Graphs/1.0/">
+	<!ENTITY ns_vars "http://ns.adobe.com/Variables/1.0/">
+	<!ENTITY ns_imrep "http://ns.adobe.com/ImageReplacement/1.0/">
+	<!ENTITY ns_sfw "http://ns.adobe.com/SaveForWeb/1.0/">
+	<!ENTITY ns_custom "http://ns.adobe.com/GenericCustomNamespace/1.0/">
+	<!ENTITY ns_adobe_xpath "http://ns.adobe.com/XPath/1.0/">
+]>
+<svg version="1.1" xmlns:x="&ns_extend;" xmlns:i="&ns_ai;" xmlns:graph="&ns_graphs;"
+	 xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="512px" height="512px"
+	 viewBox="0 0 512 512" style="enable-background:new 0 0 512 512;" xml:space="preserve">
+<style type="text/css">
+	.st0{fill:#FFFFFF;stroke:#01283F;stroke-width:5.5027;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;}
+	.st1{opacity:0.76;}
+	.st2{fill:#FFFFFF;stroke:#01283F;stroke-width:5.8093;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;}
+	.st3{fill:none;stroke:#ABAABF;stroke-width:5;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;}
+	.st4{fill:#F7F1E8;}
+	.st5{fill:#FFFFFF;stroke:#01283F;stroke-width:4.4716;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;}
+	.st6{fill:none;stroke:#01283F;stroke-width:4.4716;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;}
+	.st7{fill:#FFFFFF;}
+	.st8{fill:#FFC0C9;}
+	.st9{fill:#FFFFFF;stroke:#01283F;stroke-width:3;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;}
+	.st10{fill:none;stroke:#01283F;stroke-width:3;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;}
+	.st11{display:none;fill:#163F54;}
+	.st12{fill-rule:evenodd;clip-rule:evenodd;fill:#FFFFFF;}
+	.st13{fill:#01283F;}
+	.st14{clip-path:url(#SVGID_00000183962877398210797270000000432451804676733600_);}
+	.st15{opacity:0.96;enable-background:new    ;}
+	.st16{fill:#ABAABF;}
+	.st17{fill-rule:evenodd;clip-rule:evenodd;fill:#FFC0C9;}
+	.st18{fill-rule:evenodd;clip-rule:evenodd;fill:#01283F;}
+	.st19{clip-path:url(#SVGID_00000112629986328875583690000010088237856996752300_);}
+	.st20{clip-path:url(#SVGID_00000072995536642983561370000011251747831495798435_);}
+	.st21{clip-path:url(#SVGID_00000042705311070017095320000005140113018777255585_);}
+	.st22{fill-rule:evenodd;clip-rule:evenodd;fill:#891924;}
+	.st23{fill-rule:evenodd;clip-rule:evenodd;fill:#ABAABF;}
+	.st24{fill-rule:evenodd;clip-rule:evenodd;fill:#113E58;}
+	.st25{fill-rule:evenodd;clip-rule:evenodd;fill:#F7F1E8;}
+	.st26{opacity:0;}
+	.st27{fill:#00273E;}
+	.st28{fill-rule:evenodd;clip-rule:evenodd;fill:#F42C3B;}
+	.st29{fill:#AC0C0C;}
+	.st30{fill-rule:evenodd;clip-rule:evenodd;fill:#FF8A55;}
+	.st31{fill:#9B3B15;}
+	.st32{fill-rule:evenodd;clip-rule:evenodd;fill:#FFCF3B;}
+	.st33{fill-rule:evenodd;clip-rule:evenodd;fill:#EB895C;}
+	.st34{fill-rule:evenodd;clip-rule:evenodd;fill:#FFD444;}
+	.st35{fill-rule:evenodd;clip-rule:evenodd;fill:#03273E;}
+	.st36{fill:#03273E;}
+	.st37{fill-rule:evenodd;clip-rule:evenodd;fill:#7CBDE4;}
+	.st38{fill:#3A98D1;}
+	.st39{fill-rule:evenodd;clip-rule:evenodd;fill:#B6DAEF;}
+	.st40{fill:#7CBDE4;}
+	.st41{fill:#3696D0;}
+	.st42{fill:#AB0B0B;}
+	.st43{fill:#AAA9BE;}
+	.st44{fill-rule:evenodd;clip-rule:evenodd;fill:#B0B0B9;}
+	.st45{fill:#868692;}
+	.st46{fill-rule:evenodd;clip-rule:evenodd;fill:#9494A1;}
+	.st47{clip-path:url(#SVGID_00000070821181532647300330000001107042457937949327_);}
+	.st48{clip-path:url(#SVGID_00000132811051609242179930000002508699386508972194_);}
+	.st49{clip-path:url(#SVGID_00000154423752042486176740000005283988176495949699_);}
+	.st50{fill-rule:evenodd;clip-rule:evenodd;fill:#002038;}
+	.st51{clip-path:url(#SVGID_00000006704866727339833370000002472551508572220572_);}
+	.st52{fill-rule:evenodd;clip-rule:evenodd;fill:#3C6583;}
+	.st53{fill:#002038;}
+	.st54{fill:#3C6583;}
+	.st55{fill-rule:evenodd;clip-rule:evenodd;fill:#B59DD4;}
+	.st56{fill:#00253C;}
+	.st57{fill:#C2C1D0;}
+	.st58{clip-path:url(#SVGID_00000136389610754520015530000011852196069130408880_);}
+	.st59{fill:#00263D;}
+	.st60{clip-path:url(#SVGID_00000160162499495186063350000007586908423726981554_);}
+	.st61{clip-path:url(#SVGID_00000098936088603690306580000001950556494952742306_);}
+	.st62{clip-path:url(#SVGID_00000156579055882177399620000014774342359912671163_);}
+	.st63{clip-path:url(#SVGID_00000057137062963271340140000009815680876680264088_);}
+	.st64{fill-rule:evenodd;clip-rule:evenodd;fill:#EB5858;}
+	.st65{clip-path:url(#SVGID_00000048498335746394677270000007342873284696002211_);}
+	.st66{fill-rule:evenodd;clip-rule:evenodd;fill:#7E78FF;}
+	.st67{fill-rule:evenodd;clip-rule:evenodd;fill:#75C474;}
+	.st68{fill-rule:evenodd;clip-rule:evenodd;fill:#FFDD78;}
+	.st69{fill-rule:evenodd;clip-rule:evenodd;fill:#E57D33;}
+	.st70{fill-rule:evenodd;clip-rule:evenodd;fill:#73C372;}
+	.st71{fill:#EB5858;}
+	.st72{fill:#F5F0E7;}
+	.st73{fill:#E7B9C6;}
+	.st74{fill:#142A3D;}
+	.st75{fill-rule:evenodd;clip-rule:evenodd;fill:#142A3D;}
+	.st76{fill-rule:evenodd;clip-rule:evenodd;fill:#223F57;}
+	.st77{clip-path:url(#SVGID_00000084522497750714071560000008266011028037572501_);}
+	.st78{fill:#79653B;}
+	.st79{fill:#C3D77B;}
+	.st80{fill:#BCB29A;}
+	.st81{fill:#ABA28C;}
+	.st82{fill:#938378;}
+	.st83{fill:#A5C051;}
+	.st84{fill:#59595B;}
+	.st85{fill:#AEAFB2;}
+	.st86{fill:none;stroke:#BE2834;stroke-width:6.976;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;}
+	.st87{fill:#1D2A3C;}
+	.st88{fill-rule:evenodd;clip-rule:evenodd;fill:#F4EFE6;}
+	.st89{fill:#AAA8BD;}
+	.st90{fill-rule:evenodd;clip-rule:evenodd;fill:#AAA8BD;}
+	.st91{fill-rule:evenodd;clip-rule:evenodd;fill:#E4B8C5;}
+	.st92{clip-path:url(#SVGID_00000149357504468995955150000002301657892428973459_);}
+	.st93{fill-rule:evenodd;clip-rule:evenodd;fill:#1D2A3C;}
+	.st94{clip-path:url(#SVGID_00000137117452182286819840000015045086202258280864_);}
+	.st95{clip-path:url(#SVGID_00000154426965410278239980000001207975078132254633_);}
+	.st96{fill-rule:evenodd;clip-rule:evenodd;fill:#233E56;}
+	.st97{fill-rule:evenodd;clip-rule:evenodd;fill:#F1CE4A;}
+	.st98{fill:#677330;}
+	.st99{fill:#40452F;}
+	.st100{fill:#21261A;}
+	.st101{fill:#A01C27;}
+	.st102{fill:#E8C02D;}
+	.st103{fill:#FFFFFF;stroke:#01283F;stroke-width:4;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;}
+	.st104{fill:#FEFEFE;}
+	.st105{fill:#113E58;}
+	.st106{fill:#3B6FA3;}
+	.st107{fill:#7CA6D0;}
+	.st108{fill:#5E8DBC;}
+	.st109{fill:#E36F5F;}
+	.st110{fill:#73C372;}
+	.st111{fill:#9C897A;stroke:#766A5A;stroke-width:4;stroke-miterlimit:10;}
+	.st112{fill:#5E4F45;}
+	.st113{fill:none;stroke:#766A5A;stroke-width:4;stroke-linecap:round;stroke-miterlimit:10;}
+	.st114{fill:#BE9471;}
+	.st115{fill:#8F6B3C;}
+	.st116{fill:#AD835F;}
+	.st117{fill:#F0D3AE;}
+	.st118{fill:#805D46;}
+	.st119{fill:none;stroke:#8F6B3C;stroke-width:2.2062;stroke-linecap:round;stroke-miterlimit:10;}
+	.st120{fill:#E7B142;}
+	.st121{fill:none;stroke:#ABAABF;stroke-width:3;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;}
+	.st122{fill:#FFD500;stroke:#D1B726;stroke-width:3.4703;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;}
+	.st123{fill:#F08922;stroke:#C76A00;stroke-width:3.4703;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;}
+	.st124{fill:#891924;stroke:#C74E4E;stroke-width:3.5264;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;}
+	.st125{fill:#98CF41;stroke:#6AA842;stroke-width:3.5264;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;}
+	.st126{fill:#51D2DB;stroke:#4294A8;stroke-width:3.5264;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;}
+	
+		.st127{fill-rule:evenodd;clip-rule:evenodd;fill:none;stroke:#FFFFFF;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;}
+	.st128{fill:none;stroke:#ABAABF;stroke-width:4.4716;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;}
+	.st129{fill:#FFD500;stroke:#D1B726;stroke-width:5.1726;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;}
+	.st130{fill:#F08922;stroke:#C76A00;stroke-width:5.1726;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;}
+	.st131{fill:#DA4856;stroke:#C93434;stroke-width:5.2563;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;}
+	.st132{fill:#98CF41;stroke:#6AA842;stroke-width:5.2563;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;}
+	.st133{fill:#51D2DB;stroke:#4294A8;stroke-width:5.2563;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;}
+	
+		.st134{fill-rule:evenodd;clip-rule:evenodd;fill:none;stroke:#FFFFFF;stroke-width:2.9811;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;}
+	.st135{fill:none;stroke:#01283F;stroke-width:5.5027;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;}
+	.st136{fill:none;stroke:#01283F;stroke-width:5.8093;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;}
+	.st137{fill:#FFD500;}
+	.st138{fill:#D1B726;}
+	.st139{fill:#DA4856;}
+	.st140{fill:#C93434;}
+	.st141{fill:#F08922;}
+	.st142{fill:#C76A00;}
+	.st143{fill:#98CF41;}
+	.st144{fill:#6AA842;}
+	.st145{fill:#51D2DB;}
+	.st146{fill:#4294A8;}
+	.st147{fill:none;stroke:#01283F;stroke-width:4.7468;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;}
+	.st148{fill:none;stroke:#01283F;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;}
+	.st149{fill:none;stroke:#ABAABF;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;}
+	.st150{fill:#C3D77B;stroke:#A2C037;stroke-width:3;stroke-linejoin:round;stroke-miterlimit:10;}
+	.st151{fill:none;stroke:#A2C037;stroke-width:3;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;}
+	.st152{fill:#FFFFFF;stroke:#D8D8E6;stroke-width:3;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;}
+	.st153{fill:#FFDD78;}
+	.st154{fill:#FFFFFF;stroke:#01283F;stroke-width:3.2872;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;}
+	.st155{fill:none;stroke:#01283F;stroke-width:3.2872;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;}
+	.st156{fill:none;stroke:#ABAABF;stroke-width:3.6757;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;}
+	.st157{fill:none;stroke:#01283F;stroke-width:1.4703;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;}
+	.st158{fill:none;stroke:#ABAABF;stroke-width:1.4703;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;}
+	.st159{fill:#A2C037;}
+	.st160{fill:none;stroke:#A2C037;stroke-width:2.2054;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;}
+	.st161{opacity:0.39;fill:#C3D77B;}
+	.st162{fill:#FFFFFF;stroke:#D8D8E6;stroke-width:2.2054;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;}
+	.st163{fill:#292B31;}
+	.st164{fill:#FFFFFF;stroke:#ABAABF;stroke-width:5;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;}
+	.st165{clip-path:url(#XMLID_00000169555789691682962560000010108829499097851021_);fill:#54525A;}
+	
+		.st166{clip-path:url(#XMLID_00000169555789691682962560000010108829499097851021_);fill:none;stroke:#403F45;stroke-miterlimit:10;}
+	.st167{fill:none;stroke:#292B31;stroke-width:6;stroke-linecap:round;stroke-miterlimit:10;}
+	.st168{fill:none;stroke:#292B31;stroke-width:3;stroke-linecap:round;stroke-miterlimit:10;}
+	.st169{fill:none;stroke:#01283F;stroke-width:4;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;}
+	.st170{fill:#99272B;stroke:#861A22;stroke-width:5.9315;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;}
+	.st171{fill:#791F22;}
+	.st172{fill:#9E9EA2;}
+	.st173{fill:none;stroke:#6E7478;stroke-width:5.8093;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;}
+	.st174{fill:none;stroke:#6E7478;stroke-width:4.531;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;}
+	.st175{fill:none;stroke:#D17315;stroke-width:7.379;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;}
+	.st176{fill:none;stroke:#D17315;stroke-width:6;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;}
+	.st177{clip-path:url(#SVGID_00000077283192046925559710000008354027713429155733_);}
+	.st178{clip-path:url(#SVGID_00000033354345276109014770000009250665760635927180_);}
+	.st179{clip-path:url(#XMLID_00000147178453084027226380000016019195004063820727_);fill:#54525A;}
+	
+		.st180{clip-path:url(#XMLID_00000147178453084027226380000016019195004063820727_);fill:none;stroke:#403F45;stroke-miterlimit:10;}
+	.st181{clip-path:url(#XMLID_00000103961065808632184250000002034665263065294002_);fill:#54525A;}
+	
+		.st182{clip-path:url(#XMLID_00000103961065808632184250000002034665263065294002_);fill:none;stroke:#403F45;stroke-miterlimit:10;}
+	.st183{clip-path:url(#SVGID_00000018226391989158855860000017704738300555477901_);}
+	.st184{fill-rule:evenodd;clip-rule:evenodd;fill:#FEFEFE;}
+	.st185{clip-path:url(#XMLID_00000051370005990854689580000007440652532860692647_);fill:#54525A;}
+	
+		.st186{clip-path:url(#XMLID_00000051370005990854689580000007440652532860692647_);fill:none;stroke:#403F45;stroke-miterlimit:10;}
+	.st187{fill:none;stroke:#FFFFFF;stroke-width:4;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;}
+	.st188{fill:none;stroke:#E7B142;stroke-width:5;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;}
+</style>
+<metadata>
+	<sfw  xmlns="&ns_sfw;">
+		<slices></slices>
+		<sliceSourceBounds  bottomLeftOrigin="true" height="6020.3" width="12147.5" x="-5903.8" y="-2702.6"></sliceSourceBounds>
+		<optimizationSettings>
+			<targetSettings  fileFormat="PNG24Format" targetSettingsID="0">
+				<PNG24Format  filtered="false" interlaced="true" matteColor="#FFFFFF" noMatteColor="false" transparency="true">
+					</PNG24Format>
+			</targetSettings>
+		</optimizationSettings>
+	</sfw>
+</metadata>
+<g id="Слой_2">
+</g>
+<g id="Слой_1">
+	<g>
+		<g>
+			<path class="st7" d="M299.5,88.9c3.6,0,7.1,0.7,10.4,2c4.6,1.9,7.8,4.9,8.7,8.2c0.8,3,0.5,4.6,0.1,6.6c-0.6,3-1.5,8,0.5,24.6
+				c4,34.4,10.5,40.1,26.2,53.8c2.5,2.2,6.5,5.1,11.1,8.4c26.3,18.9,75.2,54.1,66.8,112.2c-3.8,26.2-20.7,47-50.2,62
+				c-23.5,11.9-48.7,16.9-60.9,19.3c-2.2,0.4-4.5,0.9-5.6,1.2c-0.4,1.1-0.9,3.4-1.3,5.6c-2.6,12-7,32-19.1,32c-0.1,0-0.2,0-0.3,0
+				c-12.7-0.4-18-26.2-19.3-34.4c-5.2,0.2-10.8,0.3-16.8,0.3c-11.4,0-24.3-0.4-39.2-1.8c0,0-0.1,0-0.2,0c-1,7.3-5.7,34.9-19.8,34.9
+				c-0.1,0-0.2,0-0.3,0c-5.2-0.2-9.6-4.9-13.5-14.5c-2.7-6.7-4.7-14.5-5.8-19.9c-1-4.9-1.5-7.8-1.7-9.5
+				c-21.4-6.9-46.4-18.8-62.9-39.1c-14.5-17.8-20.4-39.3-17.6-64.1c3.8-33.4,41.1-57.1,74-77.9c14.1-8.9,27.3-17.3,36.2-25.5
+				c18.1-16.7,23.3-31.8,26.9-55.5c2.1-13.8,3.5-19.5,16-21.3c1-0.1,1.9-0.2,2.9-0.2c3,0,6.1,0.6,9.3,1.2c3.6,0.7,7.4,1.3,11.5,1.3
+				c5.4,0,11.4-1.2,18.2-5.2C288.5,90.5,294.1,88.9,299.5,88.9 M141,362.9c-1.7-1-3.3-2.1-5-3.2c-17-10.5-29.5-24.3-37-39.5
+				c2.7,6.2,6.3,12.1,10.8,17.6C118.4,348.3,129.5,356.5,141,362.9 M299.5,78.9c-7.3,0-14.6,2-21,5.9c-4.4,2.6-8.6,3.8-13.1,3.8
+				c-3.2,0-6.3-0.6-9.7-1.2c-3.5-0.6-7.2-1.3-11.1-1.3c-1.5,0-2.9,0.1-4.3,0.3c-20.4,2.9-22.5,16.6-24.5,29.7
+				c-3.3,21.9-7.8,34.9-23.8,49.7c-8.2,7.6-21.2,15.8-34.8,24.4c-34.8,22.1-74.3,47.1-78.6,85.3c-3.1,27.6,3.5,51.6,19.8,71.6
+				c14,17.3,34.8,30.8,61.8,40.3c0.2,1.2,0.5,2.5,0.8,4c1.2,5.8,3.3,14.2,6.3,21.6c2,5,8.2,20.3,22.5,20.7c0.2,0,0.4,0,0.6,0
+				c7.2,0,17.3-3.7,24.1-21.1c1.7-4.5,3-9.1,3.9-13.2c10.4,0.7,20.7,1.1,31.2,1.1c2.8,0,5.7,0,8.7-0.1c1,4.2,2.4,9.1,4.3,13.7
+				c6.7,16.6,16.1,20.3,22.9,20.5c0.2,0,0.4,0,0.6,0c6.6,0,15.7-3,22.2-17.4c3.2-7.1,5.1-15.4,6.5-21.7c12.8-2.5,38.4-7.7,62.8-20
+				c15.9-8.1,28.7-18,38-29.4c9.5-11.8,15.4-25.2,17.6-40.1c4-27.9-3.5-54.3-22.4-78.4c-15.3-19.5-35.3-33.9-48.4-43.3
+				c-4.2-3-8.2-5.9-10.3-7.8c-14.8-13-19.3-16.9-22.8-47.5c-1.8-15-1-19.3-0.6-21.6c0.4-2.4,1.1-5.8-0.3-10.9
+				c-1.7-6.4-7-11.8-14.5-15C309.2,79.9,304.4,78.9,299.5,78.9L299.5,78.9z"/>
+		</g>
+		
+			<g id="Untitled_00000011033157091130090780000009562411508088081066_" xmlns:vectornator="http://vectornator.io" vectornator:layerName="Untitled">
+			<g xmlns:vectornator="http://vectornator.io">
+				<g>
+					<path xmlns:vectornator="http://vectornator.io" class="st12" d="M249.2,388.3c3.1,0.3,2.5-1.2,17-0.5
+						c2.2,0.1,5.5,34.2,20.4,34.7c14,0.5,14.7-36.5,18.9-37c0,0,36.2-6.9,43.8-11.3c14.2-8.1,25.2-8,43.2-21.6
+						c25.9-19.6,35.2-53.6,24.2-93.9c-4.9-9.6-22.5-41.7-53-58.2c-9.9-5.4-43.7-30.2-43.2-46.7c0,0-6-25.3-4.1-51.6
+						c0.4-4.7,1-7.8-11.7-11.5c-13.3-3.9-11.8,1.4-26.8,6.9c-20.8,7.6-23.7-6-44.6,4.3c-3.4,1.2-4.9,5.8-4.4,9.4
+						c-0.8,31.3-15,59.7-45.5,77.4c-34.8,20.1-74.5,37.6-87.9,73.2c-15.5,41.3,9.8,89.9,65.1,109.4c10,3.5,33.9,15.1,49.6,16
+						c0,0-2-0.8,8.7,0.3c10.6,1.1-2.2-1,9.3,0.1C242.7,389,249.2,388.3,249.2,388.3z"/>
+				</g>
+				<g>
+					<path xmlns:vectornator="http://vectornator.io" class="st25" d="M119.2,345.2c0,0,202.8,126.4,285.2-106.3
+						c0,0,90.2,137.8-143.4,150.1C252.8,389.4,161.5,391.5,119.2,345.2z"/>
+				</g>
+				<g>
+					<path xmlns:vectornator="http://vectornator.io" class="st25" d="M271.1,401.7c0,0,13.9-18,28.5,0.2l4.6-22.6l-36.8-1.9
+						L271.1,401.7z"/>
+				</g>
+				<g>
+					<path xmlns:vectornator="http://vectornator.io" class="st25" d="M177.9,398.5c0,0,18.5-9,22.9,13.1c0,0,5.8-3.2,8.3-29.2
+						l-30.2-9.5l-6.1,5.8L177.9,398.5z"/>
+				</g>
+				<g>
+					<path xmlns:vectornator="http://vectornator.io" class="st12" d="M171.4,378.6c-0.4-0.1,5.9,42.3,18.7,42.7
+						c13.8,0.4,17.9-34.3,17.9-34.3S187.6,384.5,171.4,378.6z"/>
+					<path class="st13" d="M190.3,423.7c-0.1,0-0.2,0-0.3,0c-5.2-0.2-9.6-4.9-13.5-14.5c-2.7-6.7-4.7-14.5-5.8-19.9
+						c-2.3-11.1-1.9-11.6-1.1-12.4c0.7-0.7,1.7-0.9,2.5-0.6l0,0c15.7,5.7,35.8,8.3,36,8.3c1.3,0.2,2.2,1.4,2.1,2.7
+						C209.9,391.1,205.6,423.7,190.3,423.7z M174.2,382.1c1.6,10.3,7.9,36.6,16,36.8c0.1,0,0.1,0,0.2,0c8.6,0,13.4-20.1,14.9-29.8
+						C199.9,388.3,186.5,386.1,174.2,382.1z"/>
+				</g>
+				<g>
+					<path xmlns:vectornator="http://vectornator.io" class="st17" d="M156.6,298.6c38.4-7.6,24.9-75-25.4-50.1
+						C105.9,260.9,117,306.4,156.6,298.6z"/>
+				</g>
+				<g>
+					<path class="st13" d="M286,424.7c-0.1,0-0.2,0-0.3,0c-12.7-0.4-18-26.2-19.3-34.4c-15,0.5-33.2,0.6-56.1-1.5
+						c-2.9-0.3-70.8-7-104.2-48c-14.5-17.8-20.4-39.3-17.6-64.1c3.8-33.4,41.1-57.1,74-77.9c14.1-8.9,27.3-17.3,36.2-25.5
+						c18.1-16.7,23.3-31.8,26.9-55.5c2.1-13.8,3.5-19.5,16-21.3c3.9-0.6,7.9,0.2,12.2,1c8.3,1.5,17.6,3.2,29.7-3.9
+						c8.3-4.9,18.1-5.8,26.3-2.5c4.6,1.9,7.8,4.9,8.7,8.2c0.8,3,0.5,4.6,0.1,6.6c-0.6,3-1.5,8,0.5,24.6c4,34.4,10.5,40.1,26.2,53.8
+						c2.5,2.2,6.5,5.1,11.1,8.4c26.3,18.9,75.2,54.1,66.8,112.2c-3.8,26.2-20.7,47-50.2,62c-23.5,11.9-48.7,16.9-60.9,19.3
+						c-2.2,0.4-4.5,0.9-5.6,1.2c-0.4,1.1-0.9,3.4-1.3,5.6C302.6,404.7,298.2,424.7,286,424.7z M268.5,385.5c1.2,0,2.2,0.9,2.4,2.1
+						c1.7,12.4,7.3,32.2,15,32.4c8.4,0.2,12.6-19,14.6-28.2c1.3-6,1.7-7.8,3.3-8.6c0,0,0,0,0,0c0.9-0.5,2.6-0.8,7.5-1.8
+						c24.4-4.8,98.8-19.4,107.2-77.3c8-55.2-39.4-89.3-64.8-107.6c-4.9-3.5-8.8-6.3-11.5-8.7c-16.7-14.7-23.7-22.1-27.8-56.9
+						c-2-17.3-1-22.7-0.4-26c0.3-1.8,0.5-2.5-0.1-4.5c-0.5-1.8-2.8-3.7-5.8-5c-5.3-2.2-13.8-2.7-22,2.1c-13.6,8-24.3,6.1-33,4.5
+						c-4-0.7-7.5-1.4-10.6-0.9c-8.9,1.3-9.9,3.6-12,17.3c-3.7,24.3-9.3,40.8-28.4,58.3c-9.2,8.5-22.7,17-36.9,26
+						c-32,20.3-68.3,43.3-71.8,74.4c-2.6,23.5,2.9,43.8,16.5,60.6c32.1,39.5,98.1,46,100.9,46.3C234.5,386.2,253.2,386,268.5,385.5
+						C268.4,385.5,268.4,385.5,268.5,385.5z"/>
+				</g>
+				<g xmlns:vectornator="http://vectornator.io">
+					<g>
+						<path class="st16" d="M208.5,193.2c-0.8,0-1.5-0.5-1.8-1.2c-0.4-1,0.1-2.2,1.1-2.6c29.1-12.2,36.2-55.9,36.3-56.4
+							c0.2-1.1,1.2-1.8,2.3-1.7c1.1,0.2,1.8,1.2,1.7,2.3c-0.3,1.9-7.6,46.4-38.7,59.4C209,193.1,208.7,193.2,208.5,193.2z"/>
+					</g>
+					<g>
+						<path class="st16" d="M267.5,186.5c-0.9,0-1.7-0.6-1.9-1.5c-5.8-22.8,4-45.3,4.4-46.2c0.4-1,1.6-1.5,2.6-1
+							c1,0.4,1.5,1.6,1,2.6c-0.1,0.2-9.6,22.2-4.2,43.6c0.3,1.1-0.4,2.2-1.4,2.4C267.8,186.4,267.6,186.5,267.5,186.5z"/>
+					</g>
+					<g>
+						<path class="st16" d="M321.9,196.1c-0.3,0-0.7-0.1-1-0.2c-32.6-18-28.7-63.1-28.5-65c0.1-1.1,1.1-1.9,2.2-1.8
+							c1.1,0.1,1.9,1.1,1.8,2.2c0,0.4-3.9,44.4,26.4,61.1c1,0.5,1.3,1.7,0.8,2.7C323.3,195.8,322.6,196.1,321.9,196.1z"/>
+					</g>
+				</g>
+				<g>
+					<path xmlns:vectornator="http://vectornator.io" class="st17" d="M318.7,297.8c38.2-8.2,19.7-76.1-30.6-51.3
+						C262.9,259,269.2,308.5,318.7,297.8z"/>
+				</g>
+				<g>
+					<path xmlns:vectornator="http://vectornator.io" class="st23" d="M190.9,212.9c2.5-2.4,0-6.6-3.3-5.4c0,0-0.1,0-0.1,0
+						c-4.1,1.5-9.2,6.3-16.8,7.2c-7.6,0.9-9.6-0.8-11.7,0.4c-2.2,1.2-1.1,8.1,10.7,6.7C179.3,220.6,187,216.7,190.9,212.9z"/>
+				</g>
+				<g>
+					<path xmlns:vectornator="http://vectornator.io" class="st23" d="M296.8,211.4c3.1-1.6,1.9-6.3-1.6-6.1c0,0-0.1,0-0.1,0
+						c-4.3,0.3-10.7,3.3-18.1,2c-7.5-1.3-8.9-3.6-11.3-3.1c-2.4,0.5-3.4,7.4,8.2,9.5C283.4,215.3,291.9,213.9,296.8,211.4z"/>
+				</g>
+				<g>
+					<path class="st16" d="M272.9,351.9c-0.8-0.1-1.6-0.3-2.4-0.6c-3.2-1-5.5-3.1-6.5-6.1c-3.7-11.1,10.4-31.6,12.1-33.9
+						c0.6-0.9,1.9-1.1,2.8-0.5c0.9,0.6,1.1,1.9,0.5,2.8c-4.1,5.8-14.1,22.5-11.5,30.3c0.6,1.8,1.8,2.9,3.9,3.6
+						c13.7,4.3,30.4-17.3,30.6-17.5c0.7-0.9,1.9-1.1,2.8-0.4c0.9,0.7,1,1.9,0.4,2.8C304.6,333.4,288.5,354.3,272.9,351.9z"/>
+				</g>
+				<g>
+					<path xmlns:vectornator="http://vectornator.io" class="st25" d="M180.2,405.6c0,0,9.7-17.9,20.4,1.3c0,0,3.9-7,5.4-17.7
+						c0.1-0.8-10.3,0.2-32.3-7.7C172.2,381.1,180.2,405.6,180.2,405.6z"/>
+				</g>
+				<g>
+					<path class="st13" d="M267.5,127.4c-3,0-6.6-0.4-11.1-1.4c-25.7-5.8-27.3-19.4-27.4-20c-0.1-1.3,0.8-2.5,2.2-2.6
+						c1.3-0.1,2.5,0.8,2.6,2.1c0,0.3,1.8,10.9,23.6,15.8c12,2.7,16.8,0.6,21-1.3c2.8-1.2,5.7-2.5,9.8-2c8.6,1.1,22-5.1,25.6-11.9
+						c0.6-1.2,2.1-1.6,3.2-1c1.2,0.6,1.6,2.1,1,3.2c-4.9,9.3-20.9,15.7-30.5,14.4c-2.8-0.4-4.7,0.5-7.2,1.6
+						C277.2,125.8,273.6,127.4,267.5,127.4z"/>
+				</g>
+				<g>
+					<path class="st56" d="M235.2,270.6c-0.5,0-1-0.2-1.3-0.5l0,0c-0.5-0.5-12.3-11-26.4-0.3c-0.9,0.7-2.1,0.5-2.8-0.4
+						c-0.7-0.9-0.5-2.1,0.4-2.8c16.8-12.6,31.4,0.5,31.5,0.6c0.8,0.7,0.9,2,0.1,2.8C236.3,270.3,235.8,270.6,235.2,270.6z"/>
+				</g>
+				<g>
+					<path xmlns:vectornator="http://vectornator.io" class="st12" d="M155.3,323.5c0,0,16.1,24,31.6,20.2c16.2-4-4.3-37.2-4.3-37.2
+						"/>
+					<path class="st16" d="M183.4,346c-15.2,0-29.1-20.5-29.8-21.5c-0.6-0.9-0.4-2.2,0.5-2.8c0.9-0.6,2.2-0.4,2.8,0.5
+						c0.2,0.2,15.5,22.8,29.4,19.3c2.1-0.5,3.4-1.6,4.1-3.3c3.1-7.6-5.9-24.9-9.7-30.9c-0.6-0.9-0.3-2.2,0.6-2.8
+						c0.9-0.6,2.2-0.3,2.8,0.6c1.5,2.4,14.4,23.7,10,34.5c-1.2,2.9-3.6,4.9-6.8,5.7C186,345.9,184.7,346,183.4,346z"/>
+				</g>
+				<g>
+					<path xmlns:vectornator="http://vectornator.io" class="st12" d="M125.6,256.1c-2.1-12.1,5.7-20.7,34.9-26.9
+						c32.3-6.8,34.5,4.5,35.3,12c0.8,7.5-2.7,29.7-32.3,33.9C136.1,279.1,127.7,268.2,125.6,256.1z"/>
+					<path class="st13" d="M153.1,278c-17.1,0-26.9-7.2-29.4-21.5l0,0c-2.5-14.5,8.4-23.2,36.5-29.2c15.5-3.3,25.8-2.8,31.7,1.4
+						c5,3.6,5.7,9.3,6,12.3c1,8.6-3.2,31.8-34,36.1C160,277.7,156.4,278,153.1,278z M177.5,229.1c-4.6,0-10.1,0.7-16.6,2.1
+						c-31.9,6.8-34.9,15.8-33.3,24.6l0,0c2.6,14.8,14.2,20.5,35.7,17.4c27.6-3.9,31.4-24.2,30.6-31.7c-0.4-3.5-1.1-7.1-4.4-9.5
+						C186.9,230.1,182.9,229.1,177.5,229.1z"/>
+				</g>
+				<g>
+					<path xmlns:vectornator="http://vectornator.io" class="st18" d="M138.7,273.6c0,0,37.8,14.3,35.3-22.5
+						c-1.5-22.1-16.1-21.6-24.7-19.7c-5.5,1.2-19.2,7.5-20.8,12C126.9,247.9,121,261.4,138.7,273.6z"/>
+				</g>
+				<g>
+					<path xmlns:vectornator="http://vectornator.io" class="st24" d="M152.7,256.2c-6.3,3.5-6.1,1.8-15.3,1.4
+						c-7.2-0.3-7.3,9.7,0.6,12.9c7.9,3.3,25.3,1.9,31.4-9.2c4.7-8.5-0.6-19.9-6.8-17.6C156.4,246,159,252.7,152.7,256.2z"/>
+				</g>
+				<g>
+					<path xmlns:vectornator="http://vectornator.io" class="st12" d="M136.1,238.7c0.5-1.3,4.4-2.8,7.7,0.8c2,2.2,3.4,4.6,4.3,7.4
+						c0.7,2.3,0.3,6.6-2.2,8.5c-3.3,1.8-6.5-0.1-8.6-2.5C131.1,244.2,135.2,239.2,136.1,238.7z"/>
+				</g>
+				<g>
+					<path xmlns:vectornator="http://vectornator.io" class="st12" d="M332.3,254.2c2.1-12.1-5.7-20.7-34.9-26.9
+						c-32.3-6.8-34.5,4.5-35.3,12c-0.9,7.5,2.6,29.7,32.3,33.9C321.8,277.1,330.2,266.3,332.3,254.2z"/>
+					<path class="st13" d="M304.8,276c-3.3,0-6.9-0.3-10.8-0.8c-30.7-4.4-34.9-27.6-34-36.1c0.3-3,1-8.7,6-12.3
+						c5.9-4.2,16.3-4.7,31.7-1.4c28.1,6,39,14.7,36.5,29.2l0,0C331.8,268.8,321.9,276,304.8,276z M280.4,227.2
+						c-5.3,0-9.3,0.9-12,2.8c-3.3,2.4-4,6-4.4,9.5c-0.9,7.5,3,27.8,30.6,31.7c21.5,3,33.2-2.7,35.7-17.4l0,0
+						c1.5-8.8-1.5-17.8-33.3-24.6C290.5,227.9,284.9,227.2,280.4,227.2z M332.3,254.2L332.3,254.2L332.3,254.2z"/>
+				</g>
+				<g>
+					<path xmlns:vectornator="http://vectornator.io" class="st18" d="M303.2,271.4c-11.2,2-31.7,0.6-41.3-23.2
+						c-7.8-19.2,11.2-24.4,20-24.5c5.7,0,23.2,3.5,26.7,6.7C317.9,238.9,314.4,269.4,303.2,271.4z"/>
+				</g>
+				<g>
+					<path xmlns:vectornator="http://vectornator.io" class="st24" d="M289.1,252.4c7.2-0.6,6-1.9,13.5-7.3c5.8-4.2,11.4,4,6.6,11.1
+						c-4.8,7.1-20,15.5-31.3,9.6c-8.6-4.5-10.5-16.9-4-18.4C280.3,246,281.9,253,289.1,252.4z"/>
+				</g>
+				<g>
+					<path xmlns:vectornator="http://vectornator.io" class="st12" d="M276.4,228.5c-1.4-1-6.4-0.5-7.4,4.6
+						c-0.6,3.2-0.5,6.1,0.4,9.3c0.8,2.6,4.1,6.5,7.9,7.1c4.7,0.1,6.6-3.3,7.2-6.7C285.2,231.3,277.7,228.6,276.4,228.5z"/>
+				</g>
+			</g>
+		</g>
+	</g>
+</g>
+</svg>
