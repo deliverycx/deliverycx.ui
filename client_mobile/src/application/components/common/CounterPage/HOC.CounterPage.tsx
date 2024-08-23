@@ -8,7 +8,7 @@ import { useParams } from "react-router-dom";
 
 const HOCCounterPage = () => {
 
-	const [count, setCount] = useState<any>('00000000');
+	const [count, setCount] = useState<any>('0000000');
 	const [tik, setTik] = useState<boolean>(false);
 	const [load, setLoad] = useState<boolean>(false);
 	const [org, setOrg] = useState<any>(null);
@@ -30,7 +30,7 @@ const HOCCounterPage = () => {
 
 				timer = setTimeout(() => {
 					counter++
-					const zeroLength = 8;
+					const zeroLength = 7;
 					const c = parseInt(count)
 					const newcount = String(c + counter).padStart(zeroLength, '0')
 					console.log('nex', newcount);
