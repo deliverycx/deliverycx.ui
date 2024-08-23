@@ -1,5 +1,3 @@
-
-
 /*
   Base
 */
@@ -61,106 +59,114 @@
 @import './pages/news';
 @import "./pages/error";
 
-.q{
+.q {
 	position: fixed;
 	top: 0;
 	width: 100%;
 	padding: 50px;
 	background-color: #5555;
 }
-.active{
+
+.active {
 	color: #8D191D;
 }
-.element{
+
+.element {
 	margin-top: 500px;
 	height: 500px;
 	margin-bottom: 1200px;
 }
-.metrika{
-	position:fixed;
-	left:-999px;
+
+.metrika {
+	position: fixed;
+	left: -999px;
 }
 
 
 .tick {
-  font-size: 3em;
+	font-size: 3em;
 	text-align: center;
 }
-.counter-tik_box{
+
+.counter-tik_box {
 	width: 100%;
-	margin: 5% 0;
+	margin-top: 10%;
 }
-.counter-tik_title{	
+
+.counter-tik_title {
 	font-family: 'manrope';
 	font-weight: 600;
 	font-size: 41px;
 	text-align: center;
 	margin-bottom: 20px;
 }
-.counter-tik_point{
+
+.counter-tik_point {
 	font-family: 'manrope';
 	font-weight: 500;
 	font-size: 32px;
 	text-align: center;
 	margin-bottom: 20px;
 }
-.orderload{
+
+.orderload {
 	height: 300px;
 }
 
 .pravo_page {
-  padding-bottom: 200px;
+	padding-bottom: 200px;
 }
 
 .text_atom {
-  color: #333333;
-  font-size: 35px;
-  font-family: 'TildaSans',Arial,sans-serif;
-  line-height: 1.55;
-  font-weight: 600;
-  background-position: center center;
-  border-color: transparent;
-  border-style: solid;
-  margin: 60px 0 25px 0;
+	color: #333333;
+	font-size: 35px;
+	font-family: 'TildaSans', Arial, sans-serif;
+	line-height: 1.55;
+	font-weight: 600;
+	background-position: center center;
+	border-color: transparent;
+	border-style: solid;
+	margin: 60px 0 25px 0;
 }
 
 .hrefs {
-  width: 666px;
+	width: 666px;
 }
 
 .href {
-  a {
-    margin: -5px 0;
-    display: inline-block;
-    cursor: pointer;
-    color: rgb(143, 44, 44);
-    border-bottom-width: 1px;
-    border-bottom-style: solid;
-    box-shadow: none;
-    text-decoration: none;
-    font-size: 17px;
-    font-family: 'TildaSans',Arial,sans-serif;
-    font-weight: 600;
-    visibility: visible;
-  }
+	a {
+		margin: -5px 0;
+		display: inline-block;
+		cursor: pointer;
+		color: rgb(143, 44, 44);
+		border-bottom-width: 1px;
+		border-bottom-style: solid;
+		box-shadow: none;
+		text-decoration: none;
+		font-size: 17px;
+		font-family: 'TildaSans', Arial, sans-serif;
+		font-weight: 600;
+		visibility: visible;
+	}
 }
 
 .pravo_nav {
-  width: 500px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-weight: 500;
-  height: 36px;
-  padding: 9px 31.5px;
-  color: #132a3e;
-  font-size: 16px;
-  font-family: 'monrope',Arial,sans-serif;
-  text-align: center;
-  margin: 25px 15px 0 15px;
-  cursor: pointer;
-  a {
-    color: #132a3e;
-    margin: 0 20px;
-  }
+	width: 500px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	font-weight: 500;
+	height: 36px;
+	padding: 9px 31.5px;
+	color: #132a3e;
+	font-size: 16px;
+	font-family: 'monrope', Arial, sans-serif;
+	text-align: center;
+	margin: 25px 15px 0 15px;
+	cursor: pointer;
+
+	a {
+		color: #132a3e;
+		margin: 0 20px;
+	}
 }
