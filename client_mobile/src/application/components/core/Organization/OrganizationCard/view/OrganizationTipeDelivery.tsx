@@ -214,10 +214,7 @@ const OrganizationTipeDelivery: FC<{ organization: any }> = ({
 						/>
 					</svg>
 					Доставка доступна с{' '}
-					{subtractMinutes(
-						organization.timeworkOrganization.todaytime[0],
-						organization.deliveryTime,
-					)}
+					{organization.timeworkOrganization.todaytime[0]}
 				</button>
 				<button disabled className="btn btn-mini btn-gray no-drag">
 					Самовывоз доступен до{' '}
