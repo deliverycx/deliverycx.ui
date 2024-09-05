@@ -9,8 +9,8 @@ const AdressInfo: FC = () => {
 	const history = useHistory();
 	return (
 		<div className="adress_info">
-			<a href="хинкалыч.рф" className="adress_info__city" >{point.city}</a>
-			<a href="хинкалыч.рф" className="adress_info__street" >{point.address}</a>
+			<a href="https://хинкалыч.рф" className="adress_info__city" >{point.city}</a>
+			<a href="https://хинкалыч.рф" className="adress_info__street" >{point.address}</a>
 			<a href={"tel:" + point.phone} className="adress_info__phone">{point.phone}</a>
 		</div>
 	)
