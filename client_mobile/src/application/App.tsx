@@ -8,29 +8,29 @@ import { profileUseCase } from 'modules/Profile/profile.module';
 import { YMInitializer } from 'react-yandex-metrika';
 
 const App = (): JSX.Element => {
-  useEffect(() => {
-    userUseCase.checkUserGuest();
-    profileUseCase.getProfile();
-  }, []);
+	useEffect(() => {
+		userUseCase.checkUserGuest();
+		profileUseCase.getProfile();
+	}, []);
 
-  return (
-    <>
-      <BrowserRouter>
-        <AppRouter />
-      </BrowserRouter>
-      {
-        //NestedRoute()
-      }
+	return (
+		<>
+			<BrowserRouter>
+				<AppRouter />
+			</BrowserRouter>
+			{
+				//NestedRoute()
+			}
 
-      {process.env.NODE_ENV === 'production' && (
+			{/*process.env.NODE_ENV === 'production' && (
         <YMInitializer
           accounts={[95794868]}
           options={{ webvisor: true }}
           version="2"
         />
-      )}
-    </>
-  );
+      )*/}
+		</>
+	);
 };
 
 export default App;
