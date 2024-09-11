@@ -34,7 +34,6 @@ const ErrorPage = () => {
 					<div className="order-accepted__content-title">
 						Технические неполадки
 					</div>
-
 				</div>
 
 			</div>
