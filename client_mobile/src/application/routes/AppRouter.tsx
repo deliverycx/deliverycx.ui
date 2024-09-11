@@ -197,6 +197,16 @@ const publicRoutesDeskop = [
 const AppRouter = () => {
 	return (
 		<>
+			<Routes>
+				<Route path="*" element={<ErrorPage />} />
+			</Routes>
+		</>
+	)
+}
+/*
+const AppRouter = () => {
+	return (
+		<>
 			<Desktop>
 				<Routes>
 					{publicRoutesDeskop.map(({ path, Component, Layout }) => {
@@ -233,5 +243,5 @@ const AppRouter = () => {
 		</>
 	);
 };
-
+*/
 export default observer(AppRouter);
