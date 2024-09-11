@@ -194,6 +194,7 @@ const publicRoutesDeskop = [
 ];
 
 //<Route path="*" element={<Navigate to="" />} />
+/*
 const AppRouter = () => {
 	return (
 		<>
@@ -203,7 +204,7 @@ const AppRouter = () => {
 		</>
 	)
 }
-/*
+*/
 const AppRouter = () => {
 	return (
 		<>
@@ -243,5 +244,5 @@ const AppRouter = () => {
 		</>
 	);
 };
-*/
+
 export default observer(AppRouter);
