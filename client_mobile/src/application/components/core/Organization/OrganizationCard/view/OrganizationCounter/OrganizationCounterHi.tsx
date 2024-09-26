@@ -130,6 +130,7 @@ const OrganizationCounterHi: FC<{ point: IOrganization }> = ({ point }) => {
 				time,
 				oldtime,
 				phone: point?.info.phone,
+				point: point.guid
 			});
 			//console.log('сьедено за сегодня', data);
 			if (data) {
