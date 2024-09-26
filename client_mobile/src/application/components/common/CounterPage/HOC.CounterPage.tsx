@@ -19,7 +19,7 @@ const HOCCounterPage = () => {
 		let timer: any
 		let timercoutn: any
 		org && (async () => {
-			let numbFlip = await getFlip()
+			let numbFlip = await getFlip(org.guid)
 
 
 			function getDelay(num1: any, num2: any, delay: any) {
@@ -145,14 +145,14 @@ const HOCCounterPage = () => {
 		return format(n, "yyy-LL-dd") //n.toLocaleDateString();
 	}
 
-	const getFlip = async () => {
+	const getFlip = async (id: string) => {
 		try {
 
 			setLoad(true)
 			const time = format(new Date(), "yyy-LL-dd")
 			const oldtime = dtime_nums(-1)
 			const { data } = await RequestWebhook.flip({
-				time, oldtime, phone: org.phone
+				time, oldtime, phone: org.phone, point: id
 			})
 			//console.log('сьедено за сегодня', data);
 			if (data) {
