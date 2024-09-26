@@ -61,7 +61,7 @@ const HOCCounterPage = () => {
 				}*/
 			}
 			async function organizationCoutn(id: string) {
-				const coutToday = await getFlipToday()
+				const coutToday = await getFlipToday(id)
 				//const { data: countorg } = await RequestAdmin.getOraganizationCount(id)
 				if (coutToday) {
 					/*
@@ -169,14 +169,14 @@ const HOCCounterPage = () => {
 
 	}
 
-	const getFlipToday = async () => {
+	const getFlipToday = async (id: string) => {
 		try {
 
 
 			const time = dtime_nums(1) //format(new Date(), "yyy-LL-dd")
 			const oldtime = "2015-01-01"
 			const { data } = await RequestWebhook.flip({
-				time, oldtime, phone: org.phone, pages: true
+				time, oldtime, phone: org.phone, pages: true, point: id
 			})
 			//console.log('сьедено за сегодня', data);
 
