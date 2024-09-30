@@ -378,7 +378,7 @@ const OrganizationTipeDelivery: FC<{ organization: any }> = ({
 		<div className="institute-buttons">
 			{switchMetod && switchMetod()}
 			<OrganizationTableRestaurant organization={organization} />
-			{organization.delivery !== 'NOWORK' && (
+			{organization.delivery !== 'NOWORK' || statusTSX?.SezonNoWork() && (
 				<button
 					className="btn btn-mini no-drag gomenu"
 					onClick={() => handlerSelectMenu(organization)}
