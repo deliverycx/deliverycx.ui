@@ -373,7 +373,7 @@ const OrganizationTipeDelivery: FC<{ organization: any }> = ({
 				</button>
 			</>,
 		);
-	console.log(statusTSX?.SezonNoWork());
+
 	return (
 		<div className="institute-buttons">
 			{switchMetod && switchMetod()}
