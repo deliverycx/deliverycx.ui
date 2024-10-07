@@ -48,6 +48,7 @@ export function useAuthViewModel(this: any) {
 		}
 	};
 
+
 	this.data({
 		formik,
 		sendSMS,

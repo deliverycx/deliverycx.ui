@@ -55,7 +55,7 @@ const OrganizationCounterHi: FC<{ point: IOrganization }> = ({ point }) => {
 					const zeroLength = 8;
 					const c = parseInt(count);
 					const newcount = String(counter).padStart(zeroLength, '0');
-					console.log('nex', newcount);
+
 					setCount(newcount);
 					if (toNumber === counter) {
 						setTik(true);
@@ -70,7 +70,7 @@ const OrganizationCounterHi: FC<{ point: IOrganization }> = ({ point }) => {
 						const zeroLength = 12;
 						const c = parseInt(count)
 						const newcount = String(c + counter).padStart(zeroLength, '0')
-						console.log('nex',newcount);
+			
 						setCount(newcount)
 						if (toNumber === counter) {
 							setTik(true)
@@ -88,7 +88,7 @@ const OrganizationCounterHi: FC<{ point: IOrganization }> = ({ point }) => {
 					const today = format(new Date(), 'yyy-LL-dd');
 
 					if (today !== countorg.date) {
-						console.log('дата не совпала', today, countorg.date);
+
 						await RequestAdmins.setOraganizationCount({
 							...countorg,
 							coutn: Number(countorg.coutn) + Number(numbFlip),
@@ -99,7 +99,7 @@ const OrganizationCounterHi: FC<{ point: IOrganization }> = ({ point }) => {
 						numbFlip = Number(countorg.coutn);
 					}
 
-					console.log(numbFlip);
+
 
 					const num1 = Number(numbFlip);
 					const num2 = Number(numbFlip) - 10;

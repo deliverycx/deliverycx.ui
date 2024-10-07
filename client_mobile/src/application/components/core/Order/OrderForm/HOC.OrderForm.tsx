@@ -24,7 +24,7 @@ const HOCOrderForm: FC<{ paymentMetod: string[] }> = (paymentMetod) => {
 
 	const formWrapper = new OrderFormBuilder(formik, useCase);
 
-	console.log('disable', disable);
+
 
 	return (
 		<FormikProvider value={formik}>

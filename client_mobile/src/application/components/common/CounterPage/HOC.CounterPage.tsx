@@ -33,7 +33,7 @@ const HOCCounterPage = () => {
 					const zeroLength = 7;
 					const c = parseInt(count)
 					const newcount = String(c + counter).padStart(zeroLength, '0')
-					console.log('nex', newcount);
+
 					setCount(newcount)
 					if (toNumber === counter) {
 						setTik(true)
@@ -101,7 +101,7 @@ const HOCCounterPage = () => {
 				await organizationCoutn(org.guid)
 				/**/
 				timercoutn = setInterval(async () => {
-					console.log('iiiiiiii');
+
 					await organizationCoutn(org.guid)
 				}, 20000)
 
@@ -136,7 +136,7 @@ const HOCCounterPage = () => {
 
 
 
-	console.log("load", count);
+
 
 	function dtime_nums(e: any) {
 		// eslint-disable-next-line no-var

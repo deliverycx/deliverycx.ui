@@ -10,8 +10,7 @@ const OrderCreate = () => {
 	const { orderNumber, orderLoad, pay } = useCase.data;
 	const { navigate } = useCase.handlers;
 
-	console.log(orderNumber, orderLoad, pay);
-	console.log(navigate);
+
 
 	return (
 		<div className="order-accepted">

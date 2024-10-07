@@ -132,9 +132,9 @@ export class BasketUseCase {
 				return acc;
 			}, 0);
 			if (countSous > Number(product.anmout) - 1) {
-				console.log('meee');
+
 			}
-			console.log(countSous, Number(product.anmout) - 1);
+
 		}
 	}
 
