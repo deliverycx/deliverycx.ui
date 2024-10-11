@@ -11,6 +11,7 @@ import {
 	IPointStatus,
 } from 'modules/OrganizationModule/OrganizationStatuses/interfaces/organizationStatus.type';
 import { IBasketPrice } from 'modules/BasketModule/interfaces/basket.type';
+import { validatePhoneNumber } from './order.entity';
 
 export class OrderCreateBodyEntity {
 	protected orderState = {};
@@ -47,7 +48,7 @@ export class OrderCreateBodyEntity {
 	bodyOrder(bodyorder: IInitialValues) {
 		const result = {
 			name: bodyorder.name,
-			phone: bodyorder.phone.replace(/\s+/g, ''),
+			phone: validatePhoneNumber(bodyorder.phone),
 			comment: bodyorder.comment,
 			money: bodyorder.money,
 			timedelivery: bodyorder.timedelivery,
