@@ -6,7 +6,7 @@ import { useNavigate, useParams } from 'react-router-dom';
 import { ROUTE_APP } from 'application/contstans/route.const';
 import { appUseCase } from 'modules/AppModule/app.module';
 import ym from 'react-yandex-metrika';
-import { PAYMENT_METODS } from 'application/contstans/const.orgstatus';
+import { DELIVERY_METODS, PAYMENT_METODS } from 'application/contstans/const.orgstatus';
 
 export function useOrderCreateViewModel() {
 	const { hash } = useParams();
@@ -54,6 +54,7 @@ export function useOrderCreateViewModel() {
 				result &&
 				result.orderNumber &&
 				result.orderParams.paymentMethod === PAYMENT_METODS.CARD &&
+				result.orderParams.orderType === DELIVERY_METODS.COURIER &&
 				!result.payment
 			) {
 				const pay = await orderCreateUseCase.createPayment(result);

@@ -76,6 +76,7 @@ export class OrderCreateUseCase {
 	}
 
 	async orderCreate(hash: string) {
+
 		const resultOrder =
 			await orderCreateRepository.repositoryOrderHasRedis(hash);
 		if (!resultOrder) {
