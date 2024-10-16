@@ -65,6 +65,7 @@ export class OrderCreateUseCase {
 
 	async orderCheck() {
 		try {
+
 			const body = this.createOrderFabric();
 			const url = await orderCreateRepository.repositoryCheckOrder(body);
 			return url;
@@ -90,7 +91,9 @@ export class OrderCreateUseCase {
 	}
 
 	async orderCreateMetod(body: any) {
-		if (this.orderModel.orderBody.payment === PAYMENT_METODS.CARD) {
+
+		if (this.orderModel.orderBody.payment === PAYMENT_METODS.CARD
+			&& this.organizationStatusModel.selectDeliveryTipe?.metod === DELIVERY_METODS.COURIER) {
 			const pay = await this.orderCreateModel.repositoryCreateOrder(body, true);
 			if (pay && pay.redirectUrl) {
 				if (typeof pay.redirectUrl === 'string') {
@@ -98,7 +101,7 @@ export class OrderCreateUseCase {
 				}
 			}
 		} else {
-			await this.orderCreateModel.repositoryCreateOrder(body);
+			//await this.orderCreateModel.repositoryCreateOrder(body);
 		}
 	}
 
