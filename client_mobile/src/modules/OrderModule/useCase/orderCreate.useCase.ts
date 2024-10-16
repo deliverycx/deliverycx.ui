@@ -101,7 +101,7 @@ export class OrderCreateUseCase {
 				}
 			}
 		} else {
-			//await this.orderCreateModel.repositoryCreateOrder(body);
+			await this.orderCreateModel.repositoryCreateOrder(body);
 		}
 	}
 
