@@ -2315,7 +2315,6 @@ export function subtractMinutes(timeString: string, time: number): string {
 		hours -= 1;
 		minutes += 60;
 	}
-	console.log('minutes', timeString, time);
 
 	// Форматируем часы и минуты обратно в строку
 	const newTimeString: string =

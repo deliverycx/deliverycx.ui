@@ -8,36 +8,38 @@ import { IOrganization } from 'modules/OrganizationModule/Organization/interface
 import OrderOnspotSelectQueue from './OrderOnspotSelectQueue';
 
 const HOCOrderOnspotSelect: FC<{
-  deliveryType: IDeliveryTypes | null;
-  organization: IOrganization;
+	deliveryType: IDeliveryTypes | null;
+	organization: IOrganization;
 }> = ({ deliveryType, organization }) => {
-  const { orderOnspotTable } = orderModel;
+	const { orderOnspotTable } = orderModel;
 
-  useEffect(() => {
-    if (!orderOnspotTable) {
-      orderUseCase.onSpotTable();
-    }
-  }, []);
+	useEffect(() => {
+		if (!orderOnspotTable) {
+			orderUseCase.onSpotTable();
+		}
+	}, []);
 
-  const handlerChangeOnSpot = (spot: IOrderOnspotTable) => {
-    orderUseCase.setOnSpotTable(spot);
-  };
+	console.log(orderOnspotTable);
 
-  return (
-    <>
-      {orderOnspotTable &&
-        orderOnspotTable.section !== 'queue' &&
-        organization && (
-          <OrderOnspotSelect
-            onSpotTable={orderOnspotTable}
-            set={handlerChangeOnSpot}
-            organization={organization}
-          />
-        )}
-      {orderOnspotTable &&
-        orderOnspotTable.section === 'queue' &&
-        organization && <OrderOnspotSelectQueue organization={organization} />}
-    </>
-  );
+	const handlerChangeOnSpot = (spot: IOrderOnspotTable) => {
+		orderUseCase.setOnSpotTable(spot);
+	};
+
+	return (
+		<>
+			{orderOnspotTable &&
+				orderOnspotTable.section !== 'queue' &&
+				organization && (
+					<OrderOnspotSelect
+						onSpotTable={orderOnspotTable}
+						set={handlerChangeOnSpot}
+						organization={organization}
+					/>
+				)}
+			{orderOnspotTable &&
+				orderOnspotTable.section === 'queue' &&
+				organization && <OrderOnspotSelectQueue organization={organization} />}
+		</>
+	);
 };
 export default HOCOrderOnspotSelect;

@@ -1,6 +1,7 @@
 export class OrderEntity {
 	checkOrderTable(data: any, QRSecton: any) {
-		if (data.length > 1) {
+
+		if (data.length !== 0) {
 			const table = data.find((section: any) => {
 				if (QRSecton && QRSecton.section == section.idsection) {
 					return section;
@@ -16,7 +17,7 @@ export class OrderEntity {
 				};
 			}
 
-			if (table && table.name === 'С собой (СС)') {
+			if (table && table.name === 'С собой') { //'С собой (СС)
 				return {
 					section: 'queue',
 					id: table.tables[0].id,

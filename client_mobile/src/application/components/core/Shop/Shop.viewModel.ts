@@ -1,6 +1,8 @@
 import {
 	organizationModel,
+	organizationModule,
 	organizationStatusModel,
+	organizationStatusModule,
 	useCaseOrganizationStatus,
 } from 'modules/OrganizationModule/organization.module';
 import { useEffect, useState } from 'react';
@@ -59,6 +61,21 @@ export function useShopViewModel(this: any) {
 		const delivMetod = searchParams.get('delivMetod');
 
 		if (queyOrg) {
+			organizationModule.handlerBus.handlerOneOrganization(queyOrg, (point: any) => {
+				organizationModel.actionSelectOrganization(point)
+				if (delivMetod) {
+					const metod = organizationStatusModule.useCaseOrganizationStatus.findDeliveryType(delivMetod, point)
+					if (metod) {
+						const resultType = organizationStatusModule.useCaseOrganizationStatus.selectActiveDeliveryType(point, metod)
+						resultType && organizationStatusModel.actionSelectDeliveryTipe(resultType);
+					}
+					if (queyTable) {
+						orderUseCase.setOnSpotTable(JSON.parse(queyTable))
+					}
+
+				}
+
+			})
 			/*
 			appUseCase.clearApp()
 			const obversPoint = useCaseOrganizationStatus.targetOrganization(queyOrg,delivMetod)

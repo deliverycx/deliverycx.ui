@@ -87,40 +87,39 @@ export class UseCaseOrganizationStatus {
 		return findType;
 	}
 
+
+
 	/*
-	changeActiveDeliveryTypes = 
-
-
-	targetOrganization(guid: string, deliveryMetod: any) {
-		const point = this.organizationModel.actionSelectOrganization(guid)
-		if (point) {
-			point.subscribe((data: any) => {
-				this.findDeliveryType(deliveryMetod,data)
-			})
-		}
-		return point
-
-	}
-
-
-	async statusPointsList(point:IOrganization){
+		targetOrganization(guid: string, deliveryMetod: any) {
+			const point = this.organizationModel.actionSelectOrganization(guid)
+			if (point) {
+				point.subscribe((data: any) => {
+					this.findDeliveryType(deliveryMetod,data)
+				})
+			}
+			return point
 	
-		const observableStatus = await this.organizationStatusModel.getOrganizationStatusAxios(point.guid)
-		if(observableStatus){
-				const time = this.pointTimeWork(point)
-				const deliverytypes = this.organizationStatusModel.deliveryTypesMetod(observableStatus.deliveryMetod)
-			return {
-				deliveryTipe:this.organizationStatusModel.changesDeliveryType(deliverytypes,time),
-				organizationStatus:observableStatus.organizationStatus,
-				timeworkOrganization:time,
-				paymentMetod:observableStatus.paymentMetod
+		}
+	
+	
+		async statusPointsList(point:IOrganization){
+		
+			const observableStatus = await this.organizationStatusModel.getOrganizationStatusAxios(point.guid)
+			if(observableStatus){
+					const time = this.pointTimeWork(point)
+					const deliverytypes = this.organizationStatusModel.deliveryTypesMetod(observableStatus.deliveryMetod)
+				return {
+					deliveryTipe:this.organizationStatusModel.changesDeliveryType(deliverytypes,time),
+					organizationStatus:observableStatus.organizationStatus,
+					timeworkOrganization:time,
+					paymentMetod:observableStatus.paymentMetod
+				}
 			}
 		}
-	}
-
-	pointTimeWork(point:IOrganization){
-		return this.organizationStatusModel.timeWorkOrganizationEntiti(point.workTime,point.guid)
-	}
-
-	*/
+	
+		pointTimeWork(point:IOrganization){
+			return this.organizationStatusModel.timeWorkOrganizationEntiti(point.workTime,point.guid)
+		}
+	
+		*/
 }

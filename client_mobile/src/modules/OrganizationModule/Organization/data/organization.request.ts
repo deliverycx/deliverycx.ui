@@ -43,7 +43,7 @@ class RequestOrganizationApi extends ApiSuper {
 	}
 	@methods('get')
 	geBuOrg(orgid: string) {
-		return this.request(`/organization/buguid?organizationId=${orgid}`)
+		return this.request<IOrganizationResponse>(`/organization/buguid?organizationId=${orgid}`)
 	}
 
 	@methods('post')
