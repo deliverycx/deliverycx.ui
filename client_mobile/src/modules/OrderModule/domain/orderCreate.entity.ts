@@ -64,7 +64,7 @@ export class OrderCreateBodyEntity {
 			organizationid: organization.guid,
 			organization: organization.guid,
 			terminal: organization.temital,
-			localhost: `${document.location.protocol}//${document.location.host}/ordercreate/${hashCode}`,
+			localhost: `${document.location.protocol}//${document.location.host}/success/${hashCode}`,
 			hash: hashCode,
 			userid: userid,
 			date: `${format(new Date(), 'yyyy-MM-dd')} ${new Date().toLocaleTimeString()}`,
