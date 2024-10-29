@@ -63,6 +63,7 @@ export function useShopViewModel(this: any) {
 		if (queyOrg) {
 			organizationModule.handlerBus.handlerOneOrganization(queyOrg, (point: any) => {
 				organizationModel.actionSelectOrganization(point)
+				setPointid(queyOrg)
 				if (delivMetod) {
 					const metod = organizationStatusModule.useCaseOrganizationStatus.findDeliveryType(delivMetod, point)
 					if (metod) {
@@ -76,18 +77,6 @@ export function useShopViewModel(this: any) {
 				}
 
 			})
-			/*
-			appUseCase.clearApp()
-			const obversPoint = useCaseOrganizationStatus.targetOrganization(queyOrg,delivMetod)
-			
-			if(obversPoint){
-				obversPoint.subscribe(data =>{
-					
-					setPointid(data.guid)
-					queyTable && orderUseCase.onSpotTableQR(data.guid,JSON.parse(queyTable))
-				})
-			}
-			*/
 		} else {
 			if (!organization) {
 				if (descQuery) {
