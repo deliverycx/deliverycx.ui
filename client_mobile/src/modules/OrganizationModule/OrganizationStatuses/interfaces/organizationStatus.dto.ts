@@ -8,10 +8,11 @@ import { OrganizationStatusEntity } from '../domain/organizationStatus.entity';
 export const organizationStatusDTO = new OrganizationStatusEntity();
 
 export const organizationStatusMapper = (val: IPointStatusRequest) => {
-  organizationStatusDTO.deliveryMetod = val.deliveryMetod;
-  organizationStatusDTO.organization = val.organization;
-  organizationStatusDTO.organizationStatus = val.organizationStatus;
-  organizationStatusDTO.paymentMetod = val.paymentMetod;
+	organizationStatusDTO.deliveryMetod = val.deliveryMetod;
+	organizationStatusDTO.organization = val.organization;
+	organizationStatusDTO.organizationStatus = val.organizationStatus;
+	organizationStatusDTO.paymentMetod = val.paymentMetod;
+	organizationStatusDTO.deliveryTime = val.deliveryTime
 
-  return { ...organizationStatusDTO };
+	return { ...organizationStatusDTO };
 };

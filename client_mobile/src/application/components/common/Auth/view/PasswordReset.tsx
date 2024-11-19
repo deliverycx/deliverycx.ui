@@ -72,7 +72,7 @@ const PasswordReset = () => {
 				navigate(ROUTE_APP.PROFILE.PROFILE_MAIN);
 			}
 		} else {
-			console.log('qqq');
+
 			setErrorCode(true);
 		}
 	};

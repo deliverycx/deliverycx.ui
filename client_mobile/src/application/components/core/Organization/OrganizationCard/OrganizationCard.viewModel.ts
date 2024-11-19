@@ -1,68 +1,69 @@
 import { appUseCase } from 'modules/AppModule/app.module';
 import { IDeliveryTypes } from 'modules/OrganizationModule/OrganizationStatuses/interfaces/organizationStatus.type';
 import {
-  organizationModel,
-  organizationModule,
-  organizationStatusModel,
-  organizationStatusModule,
+	organizationModel,
+	organizationModule,
+	organizationStatusModel,
+	organizationStatusModule,
 } from 'modules/OrganizationModule/organization.module';
 import { useEffect, useState } from 'react';
 import { isDesctomMediaQuery } from 'application/ResponseMedia';
 import {
-  IOrganization,
-  IOrganizationAndStatuses,
+	IOrganization,
+	IOrganizationAndStatuses,
 } from 'modules/OrganizationModule/Organization/interfaces/organization.type';
 import { useNavigate } from 'react-router-dom';
 
 export function useOrganizationCardViewModel() {
-  const [cardModal, setCardModal] = useState(false);
-  const [choosePoint, setChoosePoint] = useState<IOrganization | null>(null);
-  const { selectOrganization, organizationList } = organizationModel;
-  const { deliveryTipe, organizationStatus, timeworkOrganization } =
-    organizationStatusModel;
-  const organization = organizationModel.selectOrganization;
+	const [cardModal, setCardModal] = useState(false);
+	const [choosePoint, setChoosePoint] = useState<IOrganization | null>(null);
+	const { selectOrganization, organizationList } = organizationModel;
+	const { deliveryTipe, organizationStatus, timeworkOrganization } =
+		organizationStatusModel;
+	const organization = organizationModel.selectOrganization;
 
-  const [point, setPoint] = useState<any>();
-  const navigate = useNavigate();
+	const [point, setPoint] = useState<any>();
+	const navigate = useNavigate();
 
-  useEffect(() => {
-    organizationModule.queryBus.handlerPointQuery((value: IOrganization) => {
-      if (value) {
-        setPoint(value);
-        setCardModal(true);
-      }
-    });
-  }, [organizationList]);
+	useEffect(() => {
+		organizationModule.queryBus.handlerPointQuery((value: IOrganization) => {
+			if (value) {
+				setPoint(value);
+				setCardModal(true);
+			}
+		});
+	}, [organizationList]);
 
-  const handlerCloseCardModal = () => {
-    //!desc && appUseCase.clearApp()
-    setCardModal(false);
-  };
+	const handlerCloseCardModal = () => {
+		//!desc && appUseCase.clearApp()
+		setCardModal(false);
+	};
 
-  const handlerSelectDeliveryTipe = (
-    typeDeliv: string,
-    organization: IOrganizationAndStatuses,
-  ) => {
-    const resultType =
-      organizationStatusModule.useCaseOrganizationStatus.findDeliveryType(
-        typeDeliv,
-        organization,
-      );
-    resultType && organizationStatusModel.actionSelectDeliveryTipe(resultType);
-    handlerSelectMenu(organization);
-  };
+	const handlerSelectDeliveryTipe = (
+		typeDeliv: string,
+		organization: IOrganizationAndStatuses,
+	) => {
+		const resultType =
+			organizationStatusModule.useCaseOrganizationStatus.findDeliveryType(
+				typeDeliv,
+				organization,
+			);
+		resultType && organizationStatusModel.actionSelectDeliveryTipe(resultType);
+		handlerSelectMenu(organization);
+	};
 
-  const handlerSelectMenu = (organization: IOrganizationAndStatuses) => {
-    if (selectOrganization && selectOrganization.guid !== organization.guid) {
-      appUseCase.clearCart();
-    }
-    organizationModel.actionSelectOrganization(organization);
-    navigate(
-      `/shop?address=${organization.info.city},${organization.info.address}`,
-    );
-  };
+	const handlerSelectMenu = (organization: IOrganizationAndStatuses) => {
+		if (selectOrganization && selectOrganization.guid !== organization.guid) {
+			appUseCase.clearCart();
+		}
+		organizationModel.actionSelectOrganization(organization);
+		organizationStatusModel.actionSelectDeliveryTipe(organization.deliveryTipe[0])
+		navigate(
+			`/shop?address=${organization.info.city},${organization.info.address}`,
+		);
+	};
 
-  /*
+	/*
 	const queryClient = useQueryClient();
 	queryClient.prefetchQuery(
 		'shop',
@@ -74,22 +75,22 @@ export function useOrganizationCardViewModel() {
 			)
 			*/
 
-  this.data({
-    selectOrganization,
-    timeworkOrganization,
-    cardModal,
-    deliveryTipe,
-    organizationStatus,
-    choosePoint,
-    point,
-    guid: organization?.guid,
-  });
-  this.handlers({
-    setCardModal,
-    handlerCloseCardModal,
-    setChoosePoint,
-    handlerSelectDeliveryTipe,
-    handlerSelectMenu,
-  });
-  this.status({});
+	this.data({
+		selectOrganization,
+		timeworkOrganization,
+		cardModal,
+		deliveryTipe,
+		organizationStatus,
+		choosePoint,
+		point,
+		guid: organization?.guid,
+	});
+	this.handlers({
+		setCardModal,
+		handlerCloseCardModal,
+		setChoosePoint,
+		handlerSelectDeliveryTipe,
+		handlerSelectMenu,
+	});
+	this.status({});
 }

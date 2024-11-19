@@ -1,6 +1,6 @@
 import { ICityResponse } from 'modules/CityModule/interfaces/city.type';
-import { ApiAdminSuper, ApiSuper, methods } from 'shared/api/Axios/AxiosApi';
-import { AjaxApiSuper } from 'shared/api/rxjs/AjaxApi';
+import { ApiAdminSuper, ApiSuper, methods } from 'servises/Axios/AxiosApi';
+import { AjaxApiSuper } from 'servises/rxjs/AjaxApi';
 import type {
 	IOrganization,
 	IOrganizationResponse,
@@ -41,6 +41,10 @@ class RequestOrganizationApi extends ApiSuper {
 			`organization/all?cityId=${cityId}`,
 		);
 	}
+	@methods('get')
+	geBuOrg(orgid: string) {
+		return this.request<IOrganizationResponse>(`/organization/buguid?organizationId=${orgid}`)
+	}
 
 	@methods('post')
 	pointSerch(body: any) {
@@ -48,9 +52,9 @@ class RequestOrganizationApi extends ApiSuper {
 	}
 
 	@methods('get')
-	getRequisites(cityId: string) {
+	getRequisites(pointid: string) {
 		return this.request<any>(
-			`organization/recvisites?organizationId=${cityId}`,
+			`organization/recvisites?organizationId=${pointid}`,
 		);
 	}
 	@methods('post')

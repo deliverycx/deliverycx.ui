@@ -190,6 +190,17 @@ const publicRoutesDeskop = [
 ];
 
 //<Route path="*" element={<Navigate to="" />} />
+/*
+const AppRouter = () => {
+	return (
+		<>
+			<Routes>
+				<Route path="*" element={<ErrorPage />} />
+			</Routes>
+		</>
+	)
+}
+*/
 const AppRouter = () => {
 	return (
 		<>

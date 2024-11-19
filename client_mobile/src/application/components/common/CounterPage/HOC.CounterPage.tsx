@@ -19,7 +19,7 @@ const HOCCounterPage = () => {
 		let timer: any
 		let timercoutn: any
 		org && (async () => {
-			let numbFlip = await getFlip()
+			let numbFlip = await getFlip(org.guid)
 
 
 			function getDelay(num1: any, num2: any, delay: any) {
@@ -30,10 +30,10 @@ const HOCCounterPage = () => {
 
 				timer = setTimeout(() => {
 					counter++
-					const zeroLength = 8;
+					const zeroLength = 7;
 					const c = parseInt(count)
 					const newcount = String(c + counter).padStart(zeroLength, '0')
-					console.log('nex', newcount);
+
 					setCount(newcount)
 					if (toNumber === counter) {
 						setTik(true)
@@ -61,7 +61,7 @@ const HOCCounterPage = () => {
 				}*/
 			}
 			async function organizationCoutn(id: string) {
-				const coutToday = await getFlipToday()
+				const coutToday = await getFlipToday(id)
 				//const { data: countorg } = await RequestAdmin.getOraganizationCount(id)
 				if (coutToday) {
 					/*
@@ -101,7 +101,7 @@ const HOCCounterPage = () => {
 				await organizationCoutn(org.guid)
 				/**/
 				timercoutn = setInterval(async () => {
-					console.log('iiiiiiii');
+
 					await organizationCoutn(org.guid)
 				}, 20000)
 
@@ -136,7 +136,7 @@ const HOCCounterPage = () => {
 
 
 
-	console.log("load", count);
+
 
 	function dtime_nums(e: any) {
 		// eslint-disable-next-line no-var
@@ -145,14 +145,14 @@ const HOCCounterPage = () => {
 		return format(n, "yyy-LL-dd") //n.toLocaleDateString();
 	}
 
-	const getFlip = async () => {
+	const getFlip = async (id: string) => {
 		try {
 
 			setLoad(true)
 			const time = format(new Date(), "yyy-LL-dd")
 			const oldtime = dtime_nums(-1)
 			const { data } = await RequestWebhook.flip({
-				time, oldtime, phone: org.phone
+				time, oldtime, phone: org.phone, point: id
 			})
 			//console.log('сьедено за сегодня', data);
 			if (data) {
@@ -169,14 +169,14 @@ const HOCCounterPage = () => {
 
 	}
 
-	const getFlipToday = async () => {
+	const getFlipToday = async (id: string) => {
 		try {
 
 
 			const time = dtime_nums(1) //format(new Date(), "yyy-LL-dd")
 			const oldtime = "2015-01-01"
 			const { data } = await RequestWebhook.flip({
-				time, oldtime, phone: org.phone, pages: true
+				time, oldtime, phone: org.phone, pages: true, point: id
 			})
 			//console.log('сьедено за сегодня', data);
 
@@ -191,6 +191,7 @@ const HOCCounterPage = () => {
 
 	return (
 		<>
+			<div className="telikpage_bg"></div>
 			<section className="checkout_page telikpage">
 				<div className="telikcount">
 

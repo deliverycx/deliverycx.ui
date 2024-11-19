@@ -5,33 +5,33 @@ import { shopModel, shopUseCase } from 'modules/ShopModule/shop.module';
 import { useEffect, useState } from 'react';
 
 export function useProductsViewModel({
-  products,
-  selectCat,
+	products,
+	selectCat,
 }: {
-  products: IProduct[];
-  selectCat: ICategory;
+	products: IProduct[];
+	selectCat: ICategory;
 }) {
-  //const [selectProduct,setSelectProduct] = useState<IProduct[] | null>()
-  const { stopList, selectProduct, selectCategory } = shopModel;
-  const descQuery = isDesctomMediaQuery();
+	//const [selectProduct,setSelectProduct] = useState<IProduct[] | null>()
+	const { stopList, selectProduct, selectCategory } = shopModel;
+	const descQuery = isDesctomMediaQuery();
 
-  useEffect(() => {
-    if (selectCategory) {
-      const product = shopUseCase.caseSelectProduct(
-        products,
-        selectCategory.id,
-        descQuery ? process.env.REACT_APP_MEDIAQUERY_DESC : null,
-      );
-      //console.log(product);
-      //product && setSelectProduct(product)
-    }
-  }, [selectCategory]);
+	useEffect(() => {
+		if (selectCategory) {
+			const product = shopUseCase.caseSelectProduct(
+				products,
+				selectCategory.id,
+				descQuery ? process.env.REACT_APP_MEDIAQUERY_DESC : null,
+			);
 
-  this.data({
-    selectProduct,
-    stopList,
-    selectCategory,
-  });
-  this.handlers({});
-  this.status({});
+			//product && setSelectProduct(product)
+		}
+	}, [selectCategory]);
+
+	this.data({
+		selectProduct,
+		stopList,
+		selectCategory,
+	});
+	this.handlers({});
+	this.status({});
 }

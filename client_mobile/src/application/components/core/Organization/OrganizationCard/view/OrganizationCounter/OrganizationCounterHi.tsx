@@ -5,7 +5,7 @@ import React from 'react';
 import '@pqina/flip/dist/flip.min.css';
 
 import { format } from 'date-fns';
-import RequestWebhook from 'shared/api/Request/Request.Webhook';
+import RequestWebhook from 'servises/Request/Request.Webhook';
 import LoaderProduct from 'application/components/common/Loaders/loaderProduct';
 import CounterTik from './CounterTik';
 import {
@@ -13,7 +13,7 @@ import {
 	organizationModule,
 } from 'modules/OrganizationModule/organization.module';
 import { observer } from 'mobx-react-lite';
-import RequestAdmins from 'shared/api/Request/Request.Admins';
+import RequestAdmins from 'servises/Request/Request.Admins';
 import { IOrganization } from 'modules/OrganizationModule/Organization/interfaces/organization.type';
 import { isDesctomMediaQuery } from 'application/ResponseMedia';
 
@@ -22,7 +22,7 @@ type IProps = {
 	setIsModalOpen: any;
 };
 const OrganizationCounterHi: FC<{ point: IOrganization }> = ({ point }) => {
-	const [count, setCount] = useState<any>('0000000');
+	const [count, setCount] = useState<any>('00000000');
 	const [tik, setTik] = useState<boolean>(false);
 	const [load, setLoad] = useState<boolean>(false);
 	const desc = isDesctomMediaQuery();
@@ -52,10 +52,10 @@ const OrganizationCounterHi: FC<{ point: IOrganization }> = ({ point }) => {
 			) {
 				timer = setTimeout(() => {
 					counter++;
-					const zeroLength = 7;
+					const zeroLength = 8;
 					const c = parseInt(count);
 					const newcount = String(counter).padStart(zeroLength, '0');
-					console.log('nex', newcount);
+
 					setCount(newcount);
 					if (toNumber === counter) {
 						setTik(true);
@@ -70,7 +70,7 @@ const OrganizationCounterHi: FC<{ point: IOrganization }> = ({ point }) => {
 						const zeroLength = 12;
 						const c = parseInt(count)
 						const newcount = String(c + counter).padStart(zeroLength, '0')
-						console.log('nex',newcount);
+			
 						setCount(newcount)
 						if (toNumber === counter) {
 							setTik(true)
@@ -88,7 +88,7 @@ const OrganizationCounterHi: FC<{ point: IOrganization }> = ({ point }) => {
 					const today = format(new Date(), 'yyy-LL-dd');
 
 					if (today !== countorg.date) {
-						console.log('дата не совпала', today, countorg.date);
+
 						await RequestAdmins.setOraganizationCount({
 							...countorg,
 							coutn: Number(countorg.coutn) + Number(numbFlip),
@@ -99,7 +99,7 @@ const OrganizationCounterHi: FC<{ point: IOrganization }> = ({ point }) => {
 						numbFlip = Number(countorg.coutn);
 					}
 
-					console.log(numbFlip);
+
 
 					const num1 = Number(numbFlip);
 					const num2 = Number(numbFlip) - 10;
@@ -130,6 +130,7 @@ const OrganizationCounterHi: FC<{ point: IOrganization }> = ({ point }) => {
 				time,
 				oldtime,
 				phone: point?.info.phone,
+				point: point.guid
 			});
 			//console.log('сьедено за сегодня', data);
 			if (data) {

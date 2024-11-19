@@ -1,7 +1,9 @@
 import {
-  organizationModel,
-  organizationStatusModel,
-  useCaseOrganizationStatus,
+	organizationModel,
+	organizationModule,
+	organizationStatusModel,
+	organizationStatusModule,
+	useCaseOrganizationStatus,
 } from 'modules/OrganizationModule/organization.module';
 import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
@@ -18,80 +20,87 @@ import { useMediaQuery } from 'react-responsive';
 import { isDesctomMediaQuery } from 'application/ResponseMedia';
 
 export function useShopViewModel(this: any) {
-  const [searchParams, setSearchParams] = useSearchParams();
-  const [selectCat, setSelectCat] = useState<ICategory | null>(null);
-  const organization = organizationModel.selectOrganization;
-  const [pointid, setPointid] = useState<string | undefined>();
-  const navigate = useNavigate();
-  //const isDesctomMediaQuery = useMediaQuery({ minWidth: process.env.REACT_APP_MEDIAQUERY_DESC })
-  const descQuery = isDesctomMediaQuery();
+	const [searchParams, setSearchParams] = useSearchParams();
+	const [selectCat, setSelectCat] = useState<ICategory | null>(null);
+	const organization = organizationModel.selectOrganization;
+	const [pointid, setPointid] = useState<string | undefined>();
+	const navigate = useNavigate();
+	//const isDesctomMediaQuery = useMediaQuery({ minWidth: process.env.REACT_APP_MEDIAQUERY_DESC })
+	const descQuery = isDesctomMediaQuery();
 
-  const { data: nomenclatures, isLoading } = useQuery(
-    ['shop', pointid],
-    async () => await shopUseCase.getNomenclature(pointid),
-    {
-      enabled: !!pointid,
-    },
-  );
+	const { data: nomenclatures, isLoading } = useQuery(
+		['shop', pointid],
+		async () => await shopUseCase.getNomenclature(pointid),
+		{
+			enabled: !!pointid,
+		},
+	);
 
-  useEffect(() => {
-    if (
-      organization &&
-      organization.redirect &&
-      organization.redirect.redirectON
-    ) {
-      setPointid(undefined);
-      Redirects(organization.redirect);
-    } else {
-      if (!isLoading && nomenclatures) {
-        basketUseCase.cartCase();
-        shopUseCase.getStopList();
-      }
-    }
-  }, [organization]);
-
-  useEffect(() => {
-    const queyOrg = searchParams.get('organuzation');
-    const queyTable = searchParams.get('table');
-    const delivMetod = searchParams.get('delivMetod');
-
-    if (queyOrg) {
-      /*
+	useEffect(() => {
+		if (
+			organization &&
+			organization.redirect &&
+			organization.redirect.redirectON
+		) {
+			const point = organization.redirect
+			setPointid(undefined);
 			appUseCase.clearApp()
-			const obversPoint = useCaseOrganizationStatus.targetOrganization(queyOrg,delivMetod)
-			
-			if(obversPoint){
-				obversPoint.subscribe(data =>{
-					
-					setPointid(data.guid)
-					queyTable && orderUseCase.onSpotTableQR(data.guid,JSON.parse(queyTable))
-				})
-			}
-			*/
-    } else {
-      if (!organization) {
-        if (descQuery) {
-          setPointid(String(process.env.REACT_APP_DEFAULT_ORG));
-        } else {
-          navigate(ROUTE_APP.MAIN);
-        }
-      } else {
-        setPointid(organization.guid);
-        //useCaseOrganizationStatus.statusOrganization()
-        //userRegister()
-      }
-    }
-  }, [searchParams, organization]);
+			Redirects(point);
 
-  this.data({
-    organization,
-    nomenclatures,
-    selectCat,
-  });
-  this.handlers({
-    setSelectCat,
-  });
-  this.status({
-    isLoading,
-  });
+		} else {
+			if (!isLoading && nomenclatures) {
+				basketUseCase.cartCase();
+				shopUseCase.getStopList();
+			}
+		}
+	}, [organization]);
+
+	useEffect(() => {
+		const queyOrg = searchParams.get('organuzation');
+		const queyTable = searchParams.get('table');
+		const delivMetod = searchParams.get('delivMetod');
+
+		if (queyOrg) {
+			organizationModule.handlerBus.handlerOneOrganization(queyOrg, (point: any) => {
+				organizationModel.actionSelectOrganization(point)
+				setPointid(queyOrg)
+				if (delivMetod) {
+					const metod = organizationStatusModule.useCaseOrganizationStatus.findDeliveryType(delivMetod, point)
+					if (metod) {
+						const resultType = organizationStatusModule.useCaseOrganizationStatus.selectActiveDeliveryType(point, metod)
+						resultType && organizationStatusModel.actionSelectDeliveryTipe(resultType);
+					}
+					if (queyTable) {
+						orderUseCase.setOnSpotTable(JSON.parse(queyTable))
+					}
+
+				}
+
+			})
+		} else {
+			if (!organization) {
+				if (descQuery) {
+					setPointid(String(process.env.REACT_APP_DEFAULT_ORG));
+				} else {
+					navigate(ROUTE_APP.MAIN);
+				}
+			} else {
+				setPointid(organization.guid);
+				//useCaseOrganizationStatus.statusOrganization()
+				//userRegister()
+			}
+		}
+	}, [searchParams, organization]);
+
+	this.data({
+		organization,
+		nomenclatures,
+		selectCat,
+	});
+	this.handlers({
+		setSelectCat,
+	});
+	this.status({
+		isLoading,
+	});
 }
