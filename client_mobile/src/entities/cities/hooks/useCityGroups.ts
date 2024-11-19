@@ -1,5 +1,4 @@
 import { useMemo } from 'react';
-import { useCitiesQuery } from '../queries/cities.query';
 import { ICity } from 'modules/CityModule/interfaces/city.type';
 
 export const useCityGroups = (cities?: ICity[]) => {
