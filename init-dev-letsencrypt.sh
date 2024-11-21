@@ -75,7 +75,7 @@ docker-compose -f docker-compose.test.yml run --rm --entrypoint "\
     --rsa-key-size $rsa_key_size \
     --agree-tos \
     --force-renewal
-		--dry-run" certbot
+		" certbot
 echo
 
 echo "### Reloading nginx ..."
