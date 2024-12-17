@@ -59,7 +59,7 @@ export class OrderCreateBodyEntity {
 		this.orderStates = result;
 	}
 
-	defaultBody(hashCode = '', organization: IOrganization, userid: string) {
+	defaultBody(hashCode = '', organization: IOrganization, userid: string, organizationStatus: string) {
 		const result = {
 			organizationid: organization.guid,
 			organization: organization.guid,
@@ -68,6 +68,7 @@ export class OrderCreateBodyEntity {
 			hash: hashCode,
 			userid: userid,
 			date: `${format(new Date(), 'yyyy-MM-dd')} ${new Date().toLocaleTimeString()}`,
+			organizationStatus
 		};
 
 		this.orderStates = result;

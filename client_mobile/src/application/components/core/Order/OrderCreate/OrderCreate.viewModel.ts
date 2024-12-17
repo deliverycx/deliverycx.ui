@@ -7,6 +7,7 @@ import { ROUTE_APP } from 'application/contstans/route.const';
 import { appUseCase } from 'modules/AppModule/app.module';
 import ym from 'react-yandex-metrika';
 import { DELIVERY_METODS, PAYMENT_METODS } from 'application/contstans/const.orgstatus';
+import { organizationStatusModel } from 'modules/OrganizationModule/organization.module';
 
 export function useOrderCreateViewModel() {
 	const { hash } = useParams();
@@ -37,6 +38,12 @@ export function useOrderCreateViewModel() {
 
 	const orderCreate = async (hashorder: string) => {
 		setOrderLoad(true);
+
+		if (organizationStatusModel.organizationStatus !== "WORK") {
+			setOrderNumber(null);
+			setOrderLoad(false);
+			return
+		}
 		const order = await orderCreateUseCase.orderCreate(hashorder);
 
 		if (order) {

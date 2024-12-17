@@ -29,17 +29,19 @@ export class OrderCreateUseCase {
 	}
 
 	protected createOrderFabric(hash?: string) {
+
 		if (this.orderModel.orderDeliveryAddress) {
 			this.createOrderBody.prepareAddress(this.orderModel.orderDeliveryAddress);
 		}
 		if (this.orderModel.orderBody) {
 			this.createOrderBody.bodyOrder(this.orderModel.orderBody);
 		}
-		if (this.organizationModel.selectOrganization && this.userModel.guestUser) {
+		if (this.organizationModel.selectOrganization && this.userModel.guestUser && this.organizationStatusModel.organizationStatus) {
 			this.createOrderBody.defaultBody(
 				hash,
 				this.organizationModel.selectOrganization,
 				this.userModel.guestUser.id,
+				this.organizationStatusModel.organizationStatus
 			);
 		}
 		if (
@@ -68,6 +70,7 @@ export class OrderCreateUseCase {
 
 			const body = this.createOrderFabric();
 			const url = await orderCreateRepository.repositoryCheckOrder(body);
+			console.log(body);
 			return url;
 		} catch (error: any) {
 			this.userModel.guestUser &&
