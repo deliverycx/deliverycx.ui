@@ -21,6 +21,7 @@ type IProps = {
 	isModalOpen: boolean;
 	setIsModalOpen: any;
 };
+
 const OrganizationCounterHi: FC<{ point: IOrganization }> = ({ point }) => {
 	const [count, setCount] = useState<any>('00000000');
 	const [tik, setTik] = useState<boolean>(false);
@@ -39,6 +40,7 @@ const OrganizationCounterHi: FC<{ point: IOrganization }> = ({ point }) => {
 		let timercoutn: any;
 		(async () => {
 			let numbFlip = await getFlip();
+
 
 			function getDelay(num1: any, num2: any, delay: any) {
 				const setDelay = (num1 * delay) / num2;
@@ -61,24 +63,7 @@ const OrganizationCounterHi: FC<{ point: IOrganization }> = ({ point }) => {
 						setTik(true);
 					}
 				}, 1);
-				/*
-				for (let i = (toNumber - 100); i < toNumber; i++) {
-					//clearTimeout(timer)
 
-					timer = setTimeout(() => {
-						counter++
-						const zeroLength = 12;
-						const c = parseInt(count)
-						const newcount = String(c + counter).padStart(zeroLength, '0')
-			
-						setCount(newcount)
-						if (toNumber === counter) {
-							setTik(true)
-
-						}
-
-					}, 1)
-				}*/
 			}
 			async function organizationCoutn(guid: string) {
 				const { data: countorg } =
@@ -109,10 +94,11 @@ const OrganizationCounterHi: FC<{ point: IOrganization }> = ({ point }) => {
 				}
 			}
 
-			/**/
+			/*
 			if (numbFlip && point) {
 				await organizationCoutn(point.guid);
 			}
+			*/
 		})();
 
 		return () => {
@@ -132,7 +118,7 @@ const OrganizationCounterHi: FC<{ point: IOrganization }> = ({ point }) => {
 				phone: point?.info.phone,
 				point: point.guid
 			});
-			//console.log('сьедено за сегодня', data);
+			console.log('сьедено за сегодня', data);
 			if (data) {
 				setLoad(false);
 				const zeroLength = 7;
