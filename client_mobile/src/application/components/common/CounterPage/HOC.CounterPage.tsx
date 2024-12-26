@@ -149,8 +149,8 @@ const HOCCounterPage = () => {
 		try {
 
 			setLoad(true)
-			const time = format(new Date(), "yyy-LL-dd")
-			const oldtime = dtime_nums(-1)
+			const time = dtime_nums(1)
+			const oldtime = dtime_nums(0)
 			const { data } = await RequestWebhook.flip({
 				time, oldtime, phone: org.phone, point: id
 			})
