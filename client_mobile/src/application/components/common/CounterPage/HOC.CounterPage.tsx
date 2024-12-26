@@ -19,7 +19,7 @@ const HOCCounterPage = () => {
 		let timer: any
 		let timercoutn: any
 		org && (async () => {
-			let numbFlip = await getFlip(org.guid)
+			let numbFlip = await getFlipToday(org.guid)
 
 
 			function getDelay(num1: any, num2: any, delay: any) {
