@@ -119,6 +119,10 @@ const MainMenu: FC<{ closeMenu: any; like: string | any }> = observer(
 							<img src={iconChat} alt="" />
 							Связаться с нами
 						</NavLink>
+						<NavLink to="https://starikkhinkalich.ru/control" target="_blank">
+							<img src={iconChat} alt="" />
+							Cтать тайным гостем
+						</NavLink>
 					</div>
 					<div className="menu-social">
 						<NavLink to="https://vk.com/starikhinkalych" target="_blank">

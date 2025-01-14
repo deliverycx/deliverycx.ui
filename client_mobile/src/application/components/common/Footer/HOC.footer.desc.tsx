@@ -61,6 +61,12 @@ const HOCFooterDesc = () => {
 							>
 								Франшиза
 							</a>
+							<a
+								href="https://starikkhinkalich.ru/control"
+								className="foot_menu-item"
+							>
+								Cтать тайным гостем
+							</a>
 						</div>
 						<div className="foot_menu">
 							<div className="foot_menu-title">Контакты</div>
@@ -125,7 +131,7 @@ const HOCFooterDesc = () => {
 						</div>
 					</div>
 					<div className="footsub">
-						<a href="/">«Старик Хинкалыч» © 2016 — 2023</a>
+						<a href="/">«Старик Хинкалыч» © 2016 — 2025</a>
 						<svg
 							width="1"
 							height="16"
