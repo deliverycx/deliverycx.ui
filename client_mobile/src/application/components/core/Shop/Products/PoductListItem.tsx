@@ -8,82 +8,90 @@ import HOCCartChange from '../../Basket/CartChange/HOC.CartChange';
 import cn from 'classnames';
 
 type IProps = {
-  product: IProduct;
-  setModalmodalProduct: any;
-  stoplist: IStopList[] | null;
+	product: IProduct;
+	setModalmodalProduct: any;
+	stoplist: IStopList[] | null;
 };
 
 const PoductListItem: FC<IProps> = ({
-  product,
-  setModalmodalProduct,
-  stoplist,
+	product,
+	setModalmodalProduct,
+	stoplist,
 }) => {
-  const [disableItem, setDisableItem] = useState(false);
+	const [disableItem, setDisableItem] = useState(false);
 
-  useEffect(() => {
-    if (stoplist && product) {
-      stoplist.forEach((item: IStopList) => {
-        item.productId === product.id && setDisableItem(true);
-      });
-    }
-  }, [stoplist, product]);
+	useEffect(() => {
+		if (stoplist && product) {
+			stoplist.forEach((item: IStopList) => {
+				item.productId === product.id && setDisableItem(true);
+			});
+		}
+	}, [stoplist, product]);
 
-  const CN = cn('products product-card', { ended: disableItem });
-  return (
-    <div className={CN}>
-      <div
-        className="product-card-img"
-        onClick={() => setModalmodalProduct(product)}
-      >
-        <ImageLoader
-          src={product.image}
-          wrapper={React.createFactory('div')}
-          preloader={() => <div className="cssload-loader"></div>}
-        >
-          {product.name}
-        </ImageLoader>
-        <div className="product-card-sale">-123%</div>
-        <div className="product-card-ended">
-          Упс..
-          <br />
-          Закончилось
-        </div>
-      </div>
-      <div
-        className="product-card__content"
-        onClick={() => setModalmodalProduct(product)}
-      >
-        <h5
-          style={{
-            color: disableItem ? '#BFBFBF' : '',
-          }}
-          className="product-card__content-title"
-        >
-          {product.name}
-        </h5>
-        <div className="product-card__content__info">
-          <small className="product-card__content__info-weight">
-            {product.measureUnit === 'порц'
-              ? `${Number.isInteger(product.weight) ? product.weight : convertWeight(product.weight)} г`
-              : product.measureUnit === 'мл'
-                ? product.weight + 'мл'
-                : '1 шт.'}
-          </small>
-          <h3 className="product-card__content__info-cost price--cost">
-            {product.price} ₽
-          </h3>
-        </div>
-      </div>
-      <div className="product-card__button">
-        {!disableItem ? (
-          <HOCCartChange theme="list" product={product} />
-        ) : (
-          <button className="addtocart" disabled={true}>
-            Будет позже
-          </button>
-        )}
-      </div>
-    </div>
-  );
+	const CN = cn('products product-card', { ended: disableItem }, { newprod: product.tags.includes("NEW") });
+
+	//console.log(product.tags.includes("NEW"));
+	return (
+		<div className={CN}>
+			<div
+				className="product-card-img"
+				onClick={() => setModalmodalProduct(product)}
+			>
+
+				{
+					product.tags.includes("NEW") &&
+					<img className="newprod_strars" src={require("assets/images/cards/stars.png")} />
+				}
+
+				<ImageLoader
+					src={product.image}
+					wrapper={React.createFactory('div')}
+					preloader={() => <div className="cssload-loader"></div>}
+				>
+					{product.name}
+				</ImageLoader>
+				<div className="product-card-sale">-123%</div>
+				<div className="product-card-ended">
+					Упс..
+					<br />
+					Закончилось
+				</div>
+			</div>
+			<div
+				className="product-card__content"
+				onClick={() => setModalmodalProduct(product)}
+			>
+				<h5
+					style={{
+						color: disableItem ? '#BFBFBF' : '',
+					}}
+					className="product-card__content-title"
+				>
+					{product.name}
+				</h5>
+				<div className="product-card__content__info">
+					<small className="product-card__content__info-weight">
+						{product.measureUnit === 'порц'
+							? `${Number.isInteger(product.weight) ? product.weight : convertWeight(product.weight)} г`
+							: product.measureUnit === 'мл'
+								? product.weight + 'мл'
+								: '1 шт.'}
+					</small>
+					<h3 className="product-card__content__info-cost price--cost">
+						{product.price} ₽
+					</h3>
+				</div>
+			</div>
+			<div className="product-card__button">
+				{!disableItem ? (
+					<HOCCartChange theme="list" product={product} />
+				) : (
+					<button className="addtocart" disabled={true}>
+						Будет позже
+					</button>
+				)}
+			</div>
+		</div>
+	);
 };
 export default PoductListItem;
