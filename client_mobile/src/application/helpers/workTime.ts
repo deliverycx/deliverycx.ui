@@ -2195,9 +2195,12 @@ export const workTimeHelp = (work: any, guid?: string) => {
 		const mok = workTime || work
 		const [min,max] = mok ? mok2.split('-') : mok2.split('-')
 		*/
+		/*
 		const [min, max] = !ngFN(guid)
 			? workTimeCheck(work).split('-')
 			: ngFN(guid).split('-'); //workTimeCheck(work) ? workTimeCheck(work).split('-') : mok2
+		*/
+		const [min, max] = workTimeCheck(work) ? workTimeCheck(work).split('-') : mok2
 		const time = format(new Date(), 'HH:mm');
 
 		if (min >= time) {
