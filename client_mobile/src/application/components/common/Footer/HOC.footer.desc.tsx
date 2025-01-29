@@ -128,6 +128,20 @@ const HOCFooterDesc = () => {
 									/>
 								</a>
 							</div>
+							<div className="foot_social-social">
+								<a href="https://apps.apple.com/ru/app/старик-хинкалыч/id6651860740">
+									<img
+										src={require('assets/images/icons/App_Store.png')}
+										alt="app"
+									/>
+								</a>
+								<a href="https://www.rustore.ru/catalog/app/com.deliverycx_mobile">
+									<img
+										src={require('assets/images/icons/ru_Store.png')}
+										alt="ru"
+									/>
+								</a>
+							</div>
 						</div>
 					</div>
 					<div className="footsub">

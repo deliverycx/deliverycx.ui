@@ -44,13 +44,13 @@ const App = (): JSX.Element => {
 				//NestedRoute()
 			}
 
-			{/*process.env.NODE_ENV === 'production' && (
-        <YMInitializer
-          accounts={[95794868]}
-          options={{ webvisor: true }}
-          version="2"
-        />
-      )*/}
+			{process.env.NODE_ENV === 'production' && (
+				<YMInitializer
+					accounts={[95794868]}
+					options={{ webvisor: false }}
+					version="2"
+				/>
+			)}
 		</>
 	);
 };
