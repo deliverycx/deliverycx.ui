@@ -47,6 +47,7 @@ export const ROUTE_APP = {
 		ERROR404: '/404',
 		ERROR501: '/501',
 	},
+	DOWNLOAD: "download"
 };
 
 export const QUERY_APP = {

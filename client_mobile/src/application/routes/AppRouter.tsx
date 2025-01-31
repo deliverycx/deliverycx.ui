@@ -39,6 +39,7 @@ import LayoutDesctop from 'application/components/common/Layout/LayoutDesctop';
 import PasswordReset from 'application/components/common/Auth/view/PasswordReset';
 import HOCBasketPageDesc from 'application/components/core/Basket/HOC.BasketPage.desc';
 import HOCCounterPage from 'application/components/common/CounterPage/HOC.CounterPage';
+import MobilePageDownload from 'application/components/common/MobilePage/MobilePageDownload';
 
 export const publicRoutesMobile = [
 	{
@@ -116,6 +117,10 @@ export const publicRoutesMobile = [
 	{
 		path: ROUTE_APP.ERRORS.ERROR501,
 		Component: ErrorPage,
+	},
+	{
+		path: ROUTE_APP.DOWNLOAD,
+		Component: MobilePageDownload,
 	},
 ];
 

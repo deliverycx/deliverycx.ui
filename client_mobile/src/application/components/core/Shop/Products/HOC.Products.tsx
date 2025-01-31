@@ -15,45 +15,45 @@ import HOCCartChange from '../../Basket/CartChange/HOC.CartChange';
 import PoductListItem from './PoductListItem';
 
 type IProps = {
-  nomenclatureProducts: IProduct[];
-  selectCat: ICategory;
+	nomenclatureProducts: IProduct[];
+	selectCat: ICategory;
 };
 const HOCProducts: FC<IProps> = ({ nomenclatureProducts, selectCat }) => {
-  const useCase = adapterComponentUseCase(useProductsViewModel, {
-    products: nomenclatureProducts,
-    selectCat,
-  });
-  const { selectProduct, stopList, selectCategory } = useCase.data;
+	const useCase = adapterComponentUseCase(useProductsViewModel, {
+		products: nomenclatureProducts,
+		selectCat,
+	});
+	const { selectProduct, stopList, selectCategory } = useCase.data;
 
-  const [modalProduct, setModalmodalProduct] = useState<IProduct | boolean>(
-    false,
-  );
-  //console.log(selectProduct,selectCategory.name);
-  return (
-    <>
-      {selectProduct && selectCategory && selectProduct.length !== 0
-        ? selectProduct.map((product: IProduct, index: number) => {
-            return (
-              selectCategory.id === product.category && (
-                <PoductListItem
-                  key={index}
-                  product={product}
-                  stoplist={stopList}
-                  setModalmodalProduct={setModalmodalProduct}
-                />
-              )
-            );
-          })
-        : 'Эта категория пуста :('}
+	const [modalProduct, setModalmodalProduct] = useState<IProduct | boolean>(
+		false,
+	);
+	//console.log(selectProduct,selectCategory.name);
+	return (
+		<>
+			{selectProduct && selectCategory && selectProduct.length !== 0
+				? selectProduct.map((product: IProduct, index: number) => {
+					return (
+						selectCategory.id === product.category && (
+							<PoductListItem
+								key={index}
+								product={product}
+								stoplist={stopList}
+								setModalmodalProduct={setModalmodalProduct}
+							/>
+						)
+					);
+				})
+				: 'Эта категория пуста :('}
 
-      {modalProduct && (
-        <ProductCard
-          setIsModalOpened={setModalmodalProduct}
-          product={modalProduct as IProduct}
-          stoplist={stopList}
-        />
-      )}
-    </>
-  );
+			{modalProduct && (
+				<ProductCard
+					setIsModalOpened={setModalmodalProduct}
+					product={modalProduct as IProduct}
+					stoplist={stopList}
+				/>
+			)}
+		</>
+	);
 };
 export default observer(HOCProducts);
