@@ -213,7 +213,7 @@ const OrganizationTipeDelivery: FC<{ organization: any }> = ({
 							fill="#333333"
 						/>
 					</svg>
-					Доставка доступна с{' '}
+					Хинкальная работает с{' '}
 					{organization.timeworkOrganization.todaytime[0]}
 				</button>
 				<button disabled className="btn btn-mini btn-gray no-drag">
@@ -239,7 +239,7 @@ const OrganizationTipeDelivery: FC<{ organization: any }> = ({
 							fill="#333333"
 						/>
 					</svg>
-					Доставка доступна с {organization.timeworkOrganization.todaytime[0]} -{' '}
+					Хинкальная работает с {organization.timeworkOrganization.todaytime[0]} -{' '}
 					{subtractMinutes(
 						organization.timeworkOrganization.todaytime[1],
 						organization.deliveryTime,
@@ -291,7 +291,7 @@ const OrganizationTipeDelivery: FC<{ organization: any }> = ({
 							fill="#333333"
 						/>
 					</svg>
-					Доставка доступна с{' '}
+					Хинкальная работает с{' '}
 					{subtractMinutes(
 						organization.timeworkOrganization.todaytime[1],
 						organization.deliveryTime,

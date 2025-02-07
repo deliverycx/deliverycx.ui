@@ -236,7 +236,7 @@ const OrderNotificate: FC<{ disable: any }> = ({ disable }) => {
 				</div>
 				<div className="modal__content gap-8">
 					<strong>
-						Доставка доступна:
+						Хинкальная работает:
 
 						{
 							timeworkOrganization?.todaytime[0]
