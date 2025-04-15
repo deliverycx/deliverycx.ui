@@ -49,7 +49,7 @@ const DeliveryAdressSelect: FC<IProps> = ({ setModalStreet }) => {
 
 	function searchHandle(s: any, arr: IIkkoStreet[]) {
 		const resulr = arr.filter(function (el: IIkkoStreet) {
-			if (!el.isDeleted) {
+			if (!el.isDeleted && !el.classifierId) {
 				return el.name.toUpperCase().indexOf(s.toUpperCase()) > -1; //el.name.indexOf(s) > -1;
 			}
 		});
