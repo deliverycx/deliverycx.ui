@@ -37,12 +37,7 @@ const Pravorazdel = () => {
 				</div>
 				<br />
 
-				<div className={'href_mobile'}>
-					<a href="/docs/Акции%20сети%20кафе.pdf" target="_blank">
-						Акция сети кафе
-					</a>{' '}
-				</div>
-				<br />
+
 
 				<div className={'href_mobile'}>
 					<a
