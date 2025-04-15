@@ -170,7 +170,7 @@ export function useDeliveryMapViewModel() {
 				const resulr =
 					ikko &&
 					ikko.filter(function (el: IIkkoStreet) {
-						if (!el.isDeleted && !el.classifierId) {
+						if (!el.isDeleted && el.classifierId) {
 							return street.toUpperCase().indexOf(el.name.toUpperCase()) > -1; //el.name.indexOf(s) > -1;  /search(`/${el.name.toUpperCase()}/`)
 						}
 					});
