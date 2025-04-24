@@ -44,7 +44,7 @@ const HOCProducts: FC<IProps> = ({ nomenclatureProducts, selectCat }) => {
 						)
 					);
 				})
-				: 'Эта категория пуста :('}
+				: 'Скоро тут появится что-то очень вкусное, а пока загляните в другие категории'}
 
 			{modalProduct && (
 				<ProductCard
