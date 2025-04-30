@@ -79,6 +79,12 @@ const HOCFooterDesc = () => {
 							>
 								Связаться с нами
 							</a>
+							<a
+								href="https://forms.yandex.ru/u/681210c74936396bf4e9333c"
+								className="foot_menu-item"
+							>
+								Поставщикам
+							</a>
 							<a href={like || ''} className="foot_menu-item">
 								Похвалить
 							</a>
