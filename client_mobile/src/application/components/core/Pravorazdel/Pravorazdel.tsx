@@ -68,7 +68,7 @@ const Pravorazdel = () => {
 						href="https://disk.yandex.ru/d/hEhmaLjHWWwBRw"
 						target="_blank"
 					>
-						Региональные акции
+						Условия акций
 					</a>{' '}
 				</div>
 			</div>

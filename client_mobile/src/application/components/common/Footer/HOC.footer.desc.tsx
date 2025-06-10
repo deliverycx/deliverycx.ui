@@ -70,7 +70,7 @@ const HOCFooterDesc = () => {
 						</div>
 						<div className="foot_menu">
 							<div className="foot_menu-title">Контакты</div>
-							<a href="#" className="foot_menu-item">
+							<a href="starikhinkalych.marketing@yandex.ru" className="foot_menu-item">
 								Отдел рекламы
 							</a>
 							<a
