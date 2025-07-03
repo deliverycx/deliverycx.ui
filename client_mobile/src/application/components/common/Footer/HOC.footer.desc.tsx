@@ -181,7 +181,7 @@ const HOCFooterDesc = () => {
 								fill="white"
 							/>
 						</svg>
-						<a href="/pravorazdel">Политика обработки персональных данных</a>
+						<a href="/pravorazdel">Правовой портал</a>
 					</div>
 				</div>
 			</div>
