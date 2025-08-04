@@ -48,6 +48,15 @@ const Pravorazdel = () => {
 					</a>{' '}
 				</div>
 				<br />
+				<div className={'href_mobile'}>
+					<a
+						href="/docs/Руководство_по_акциям_и_спецпредложениям.pdf"
+						target="_blank"
+					>
+						Руководство по акциям и спецпредложениям
+					</a>{' '}
+				</div>
+				<br />
 
 				<div className={'href_mobile'}>
 					<a href="/docs/Правила посещения хинкальной.pdf" target="_blank">
