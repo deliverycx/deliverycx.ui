@@ -167,13 +167,30 @@ export function useDeliveryMapViewModel() {
 				const [street, house] = validAdress.split(',');
 
 				const ikko = ikkoStreet && (ikkoStreet.data as IIkkoStreet[]);
-				const resulr =
+				const qq =
 					ikko &&
-					ikko.filter(function (el: IIkkoStreet) {
-						if (!el.isDeleted && !el.classifierId) {
-							return street.toUpperCase().indexOf(el.name.toUpperCase()) > -1; //el.name.indexOf(s) > -1;  /search(`/${el.name.toUpperCase()}/`)
+					ikko.find((el) => {
+						if (el.isDeleted === false && el.classifierId != null) {
+							return street.toUpperCase().indexOf(el.name.toUpperCase()) > -1
 						}
-					});
+					})
+
+
+				/*
+				ikko.filter(function (el: IIkkoStreet) {
+					if (!el.isDeleted && !el.classifierId) {
+
+
+
+						return street.toUpperCase().indexOf(el.name.toUpperCase()) > -1; //el.name.indexOf(s) > -1;  
+					}
+				});
+				*/
+
+
+
+
+				const resulr = [qq || { name: '' }]
 
 				if (street && house) {
 					if (resulr && resulr.length !== 0 && resulr.length > 1) {
