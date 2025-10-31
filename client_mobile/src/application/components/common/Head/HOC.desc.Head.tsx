@@ -63,7 +63,7 @@ const HOCdescHead: FC<{ styles?: string }> = ({ styles }) => {
 		<>
 			<div className={`head-desc ${styles}`}>
 				<section>
-					<a href="/">
+					<a href="https://хинкалыч.рф">
 						<img
 							src={require('assets/images/logo.svg').default}
 							alt="Старик Хинкалыч"
