@@ -28,7 +28,7 @@ const PoductListItem: FC<IProps> = ({
 		}
 	}, [stoplist, product]);
 
-	const CN = cn('products product-card', { ended: disableItem }, { newprod: product.tags.includes("NEW") });
+	const CN = cn('products product-card', { ended: false }, { newprod: product.tags.includes("NEW") });
 
 	//console.log(product.tags.includes("NEW"));
 	return (
