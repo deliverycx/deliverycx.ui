@@ -67,12 +67,7 @@ const HOCFooterDesc = () => {
 							>
 								Cтать тайным гостем
 							</a>
-							<a
-								href="/docs/mm.pdf"
-								className="foot_menu-item"
-							>
-								Исследования
-							</a>
+
 						</div>
 						<div className="foot_menu">
 							<div className="foot_menu-title">Контакты</div>
