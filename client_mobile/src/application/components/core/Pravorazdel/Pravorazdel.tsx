@@ -1,8 +1,8 @@
 /* eslint-disable react/jsx-no-target-blank */
 /* eslint-disable @typescript-eslint/no-var-requires */
 
-import { Mobile } from 'application/ResponseMedia';
-import HeaderBack from '../../common/HeaderBack/HeaderBack';
+import { Mobile } from 'application/ResponseMedia'
+import HeaderBack from '../../common/HeaderBack/HeaderBack'
 
 const Pravorazdel = () => {
 	return (
@@ -59,7 +59,7 @@ const Pravorazdel = () => {
 				<br />
 
 				<div className={'href_mobile'}>
-					<a href="/docs/Правила посещения хинкальной.pdf" target="_blank">
+					<a href="/docs/Правила посещения хинкальной.docx" target="_blank">
 						Правила посещения хинкальной
 					</a>{' '}
 				</div>
