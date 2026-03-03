@@ -15,31 +15,34 @@ import { useHistory } from "react-router-dom";
 const App = (): JSX.Element => {
 	/**/
 	const history = useHistory();
-  const dispatch = useDispatch()
+	const dispatch = useDispatch()
 	/*
-  useEffect(() => {
-    SocketSingle.newsocket(process.env.REACT_APP_STOPLIST as string)
-      .subscribers<IStopList>('stoplist_event', (data: IStopList | null, error: boolean) => {
-        if (!error) {
-          dispatch(setStopList(data))
-          dispatch(fetchRefreshCart())
-        }
-      })
+	useEffect(() => {
+		SocketSingle.newsocket(process.env.REACT_APP_STOPLIST as string)
+			.subscribers<IStopList>('stoplist_event', (data: IStopList | null, error: boolean) => {
+				if (!error) {
+					dispatch(setStopList(data))
+					dispatch(fetchRefreshCart())
+				}
+			})
 
-      
-  },[])
+		  
+	},[])
 	*/
-	useEffect(() =>{
+	useEffect(() => {
 		//history.push(ROUTE_APP.ERROR)
 		//window.location.href = ROUTE_APP.ERROR as string
-	},[])
+		if (process.env.NODE_ENV === 'production') {
+			window.location.href = 'https://хинкалыч.рф/'
+		}
+	}, [])
 	//window.location.href = ROUTE_APP.ERROR as string
-	
+
 
 	return (
-    <>
-      <NestedRoute />
-    </>
+		<>
+			<NestedRoute />
+		</>
 	)
 }
 
