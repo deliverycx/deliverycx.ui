@@ -35,10 +35,11 @@ const HOCOrderForm: FC<{ paymentMetod: string[] }> = (paymentMetod) => {
 						builder.current &&
 						formWrapper.getInitinal(builder.current)}
 				</div>
-				<strong>Сегодня нельзя сделать заказ с сайта</strong>
+				
 				<div className="order-placement_general">
 					<div className="order-placement_general-desc">
 						<HOCOrderGeneral errors={error} />
+						<strong>Сегодня нельзя сделать заказ с сайта</strong>
 						{!disable && (
 							<div className="order-placement__buttons">
 								<input
